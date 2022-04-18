@@ -1,0 +1,16 @@
+\beamer@sectionintoc {1}{Basic theory}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Introduction:}{4}{0}{1}
+\beamer@sectionintoc {2}{Naive Bayes}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Bayes rule}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Naive Bayes Assumption}{8}{0}{2}
+\beamer@sectionintoc {3}{Estimating $P$([$\mathbf {x}]_\alpha $ $|$ $y$)}{9}{0}{3}
+\beamer@subsectionintoc {3}{1}{Categorical features}{10}{0}{3}
+\beamer@subsectionintoc {3}{2}{Multinomial features}{12}{0}{3}
+\beamer@subsectionintoc {3}{3}{Continuous features (Gaussian Naive Bayes)}{14}{0}{3}
+\beamer@sectionintoc {4}{Naive Bayes classifier}{16}{0}{4}
+\beamer@subsectionintoc {4}{1}{Naive Bayes is a linear classifier}{17}{0}{4}
+\beamer@subsectionintoc {4}{2}{Gaussian Naive Bayes}{19}{0}{4}
+\beamer@sectionintoc {5}{Examples and Application}{20}{0}{5}
+\beamer@subsectionintoc {5}{1}{Filter spam with naive bayes}{21}{0}{5}
+\beamer@sectionintoc {6}{Naive Bayes summary}{23}{0}{6}
+\beamer@subsectionintoc {6}{1}{Summary of Naive Bayes}{24}{0}{6}

@@ -1,0 +1,680 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{beamer}
+\usepackage{CJK}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathtools}
+\usepackage{animate}
+\usepackage{listings}
+
+%\usepackage{media9}
+%% A LATEX package for embedding interactive Adobe Flash (SWF) and 3D files (Adobe U3D & PRC) as well as video and sound files or streams (FLV, MP4/H.246, MP3) into PDF documents with Adobe Reader-9/X
+%compatibility.
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   %Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  %UseOutput in the format of Algorithm
+\newcommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+%\mode<presentation>{\usetheme{Madrid}}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\begin{document}
+\begin{CJK*}{GBK}{kai}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Machine Learning]{Overview} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+%\author{Fuhao Zou(邹复好)}
+\author{Fuhao Zou(邹复好)} % Your name
+%\logo{%
+%   \includegraphics[scale=.2]{logo.pdf}\hspace*{4.75cm}~%
+%   \includegraphics[scale=.2]{logo.jpg}\hspace*{0.75cm}%
+%   }
+%\pgfdeclareimage[width=1cm]{hust}{logo.pdf}
+%\logo{\pgfuseimage{hust}{\vspace{-10pt}}}
+\titlegraphic{\includegraphics[width=1.3cm]{logo.pdf}}
+\institute[IEC, HUST] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Intelligent and Embedded Computing Lab，\\
+                   Huazhong University of Science \& Technology \\ % Your institution for the title page
+\medskip
+\textit{fuhao\_zou@hust.edu.cn} % Your email address
+}
+
+\date{2019年04月09日} % Date, can be changed to a custom date
+%\par
+%\begin{document}
+
+%\begin{frame}
+%\titlepage % Print the title page as the first slide
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+\frame{\titlepage}
+
+\frame{\frametitle{Table of contents}\tableofcontents}
+
+\AtBeginSection[]
+{
+\begin{frame}{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+%\section{Brief Introduction of DSIS} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%%------------------------------------------------
+%%------------------------------------------------
+%\subsection{Support Organization} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Support Organization}
+%\begin{enumerate}
+%\item 武汉国家光电实验室
+%\item 计算机外存储系统国家专业实验室
+%\item 信息存储系统教育部重点实验室
+%\end{enumerate}
+%\centerline{\includegraphics[width=0.9\textwidth]{wnlo-image.pdf}}
+%\end{frame}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%
+%\subsection{Members and Research Interests} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%
+%\begin{frame}
+%\frametitle{Members and Research Interests}
+%\setbeamercovered{transparent}
+%\uncover<1->{
+%\begin{block}{Faculty and Students}
+%\begin{itemize}
+%\item Full Professor: 周可，陈进才，周功业
+%\item Associate Professor:邹复好，郑胜，李春花，卢萍
+%\item Lecturer:王桦，张胜
+%\item Phd and Master Candiates: near sixty
+%\end{itemize}
+%\end{block}
+%}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%\uncover<2->{
+%\begin{block}{Research Interests}
+%\begin{itemize}
+%\item Digital Storage: Cloud Storage, Security of Cloud Storage
+%\item Big Data Analysis: Machine Learning and its application to Big Data
+%\end{itemize}
+%\end{block}
+%}
+%\end{frame}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%
+%\subsection{Projects and Awards} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%
+%\begin{frame}
+%\frametitle{Projects and Awards}
+%\setbeamercovered{transparent}
+%\uncover<1->{
+%\begin{block}{Projects}
+%%\rowcolors[]{1}{blue!20}{blue!10}
+%\begin{tabular}{l|l}
+%\toprule
+%\textbf{Project Name} & \textbf{Project Class}\\%\hline
+%\midrule
+%面向复杂应用环境的数据存储系统理论与技术基础研究&973计划项目\\
+%存储访问安全关键技术&863重大项目 \\
+%网络公用存储服务的系统结构和数据组织方式研究 &国基金重点\\
+%迅雷大数据平台产业化与标准研制 &发改委专项\\
+%\bottomrule
+%\end{tabular}
+%\end{block}
+%}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%\uncover<2->{
+%\begin{block}{Awards}
+%\begin{enumerate}
+%\item 混合云存储系统关键技术（2013湖北省科技进步一等奖）
+%\item 高性能网络存储系统核心技术与构成方法（2006 年获湖北省技术发明一等奖）
+%\item 系统集成和异构通道接口协议变换的网络磁盘阵列（2001 年获国家技术发明二等奖）
+%\end{enumerate}
+%\end{block}
+%}
+%\end{frame}
+
+%------------------------------------------------
+%------------------------------------------------
+\section{Introduction}
+%------------------------------------------------
+\subsection{What is machine learning?}
+\begin{frame}
+\frametitle{What is machine learning?}
+\begin{block}{machine learning}
+\begin{itemize}
+	
+	\item A branch of artificial intelligence, concerned with the design and development of algorithms that allow computers to evolve behaviors based on empirical data.
+	
+	\item As intelligence requires knowledge, it is necessary for the computers to acquire knowledge.
+	
+	
+\end{itemize}
+\end{block}
+
+\begin{itemize}
+\item Study of algorithms that improve their performance at some task with experience
+\item Optimize a performance criterion using example data or past experience
+\item Role of Statistics: Inference from a sample
+\item Role of Computer science: Efficient algorithms to	Solve the optimization problem
+Representing and evaluating the model for inference	
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+%\begin{frame}
+%\frametitle{Learning System Model}
+%%\begin{block}{Formal definition}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.4]{learnModel.png}
+%	\caption{Example of k-NN classification. The test sample (inside circle) should be classified either to the first class of blue squares or to the second class of red triangles. If k = 3 (outside circle) it is assigned to the second class because there are 2 triangles and only 1 square inside the inner circle. If, for example k = 5 it is assigned to the first class (3 squares vs. 2 triangles outside the outer circle).}
+%\end{figure}
+%%\end{block}
+%\end{frame}
+
+
+%------------------------------------------------
+\subsection{Supervised Learning}
+\begin{frame}
+\frametitle{Supervised Learning}
+%https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+%https://www.greycampus.com/opencampus/machine-learning/supervised-and-unsupervised-learning
+%\begin{block}{Formal definition}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{supervisedlearning.png}
+
+\end{figure}
+%\end{block}
+Supervised learning, an algorithm learns from a training dataset. We know the correct answers or desired output, the algorithm makes predictions using the given dataset and is corrected by the “supervisor”. The learning stops as and when the algorithm achieves a level of performance which is acceptable. There are two types of supervised learning- regression and classification.
+
+Regression models are applied to solve various problems; e.g. predicting stock price. (https://towardsdatascience.com/stock-prediction-in-python-b66555171a2,https://www.analyticsvidhya.com/blog/2018/10/predicting-stock-price-machine-learningnd-deep-learning-techniques-python/)
+\end{frame}
+
+
+%------------------------------------------------
+\subsection{Unsupervised Learning}
+\begin{frame}
+\frametitle{Unsupervised Learning}
+%https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+%https://www.greycampus.com/opencampus/machine-learning/supervised-and-unsupervised-learning
+%\begin{block}{Formal definition}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{unsupervisedlearning.png}
+	
+\end{figure}
+%\end{block}
+In unsupervised learning there is no trainer or “supervisor” as the name suggests. We do not show the output, or the specific input required to achieve specific output. The machine learns based on its own capability, it decides what should be the input and output- clustering is a method of unsupervised learning, where the machine learns on its own. A well known algorithm in clustering is k-means clustering.
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Supervised Learning and Unsupervised Learning}
+%https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+%https://www.greycampus.com/opencampus/machine-learning/supervised-and-unsupervised-learning
+%\begin{block}{Formal definition}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.8]{TDR2}
+	
+\end{figure}
+%\end{block}
+
+\end{frame}
+
+%------------------------------------------------
+\section{Steup}
+%------------------------------------------------
+\subsection{Examples of Label Spaces}
+\begin{frame}
+
+\frametitle{Examples of feature vectors}
+Let us formalize the supervised machine learning setup. Our training data comes in pairs of inputs $(\mathbf{x},y)$, where $\mathbf{x}\in{\mathcal{R}}^d$ is the input instance and $y$ its label. The entire training data is denoted as
+$$
+D=\left\{(\mathbf{x}_1,y_1),\dots,(\mathbf{x}_n,y_n)\right\}\subseteq {\cal R}^d\times \mathcal{C}\nonumber
+$$
+where:
+
+\begin{itemize}
+	\item $\mathcal{R}^d$ is the d-dimensional feature space
+	\item $\mathbf{x}_i$ is the  input vector of the $i^{th}$ sample
+	\item $y_i$ is the label of the $i^{th}$ sample
+	\item $\mathcal{C}$ is the label space
+\end{itemize}
+The data points $(\mathbf{x}_i,y_i)$ are drawn from some (unknown) distribution $\mathcal{P}(X,Y)$. Ultimately we would like to learn a function $h$ such that for a new pair $(\mathbf{x},y)\sim {\mathcal{P}}$, we have $h(\mathbf{x})=y$ with high probability (or $h(\mathbf{x})\approx y$). We will get to this later. For now let us go through some examples of $X$ and $Y$.
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Examples of Label Spaces}
+There are multiple scenarios for the label space $\mathcal{C}$:
+%\begin{figure}
+%	\centering
+%	\includegraphics[scale=0.7]{labelspace}
+%\end{figure}
+%\begin{table}[tb]
+%\label{table:1}
+\begin{center}
+\begin{tabular}{|c|c|p{4cm} }
+	\hline
+	Binary classification&$\mathcal{C}=\{0,1\}$ or $\mathcal{C}=\{-1,+1\}$.&\multicolumn{1}{|p{4cm}|}{Eg. spam filtering. An email is either spam ($+1$), or not ($-1$).}\\
+	\hline
+	Multi-class classification&$\mathcal{C}=\{1,2,\cdots,K\}$ $(K\ge2)$.&\multicolumn{1}{|p{4cm}|}{Eg. face classification. A person can be exactly one of $K$ identities (e.g., 1="Barack Obama", 2="George W. Bush", etc.).}\\
+	\hline
+	Regression&$\mathcal{C}=\mathbb{R}$&\multicolumn{1}{|p{4cm}|}{Eg. predict future temperature or the height of a person.}\\
+	\hline
+%
+\end{tabular}
+\end{center}
+%\end{table}
+
+\end{frame}
+%-----------------------------------------
+\subsection{Loss Functions}
+
+%%------------------------------------------------
+\section{Loss Functions}
+\subsection{Loss Functions}
+\begin{frame}
+\frametitle{What's a Loss Function}
+%https://blog.algorithmia.com/introduction-to-loss-functions/
+\begin{block}{What's a Loss Function}
+At its core, a loss function is incredibly simple: it’s a method of evaluating how well your algorithm models your dataset. If your predictions are totally off, your loss function will output a higher number. If they’re pretty good, it’ll output a lower number. As you change pieces of your algorithm to try and improve your model, your loss function will tell you if you’re getting anywhere.
+	
+\end{block}
+
+\begin{block}{What's a Loss Function}
+In fact, we can design our own (very) basic loss function to further explain how it works. For each prediction that we make, our loss function will simply measure the absolute difference between our prediction and the actual value. In mathematical notation, it might look something like $abs(y_predicted – y)$.
+	
+\end{block}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{What's a Loss Function}
+Here’s what some situations might look like if we were trying to predict how expensive the rent is in some NYC apartments:
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.55]{predictexpensive}
+\end{figure}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{What's a Loss Function}
+Notice how in the loss function we defined, it doesn’t matter if our predictions were too high or too low. All that matters is how incorrect we were, directionally agnostic. This is not a feature of all loss functions: in fact, your loss function will vary significantly based on the domain and unique context of the problem that you’re applying machine learning to. In your project, it may be much worse to guess too high than to guess too low, and the loss function you select must reflect that.
+\begin{figure}
+	\includegraphics[scale=0.35]{predictexpensive2}
+\end{figure}
+
+\end{frame}
+%------------------------------------------------
+\subsection{Zero-one loss}
+\begin{frame}
+\begin{figure}
+	\includegraphics[scale=0.4]{zeroloss}
+\end{figure}
+\frametitle{Zero-one loss}
+\begin{block}{Zero-one loss}
+ Formally, the zero-one loss can be stated has:
+	$$\mathcal{L}_{0/1}(h)=\frac{1}{n}\sum^n_{i=1}\delta_{h(\mathbf{x}_i)\ne y_i}, \mbox{ where }\delta_{h(\mathbf{x}_i)\ne y_i}=\begin{cases}
+	1,&\mbox{ if $h(\mathbf{x}_i)\ne y_i$}\\
+	0,&\mbox{ o.w.}
+	\end{cases}
+	$$
+	
+	This loss function returns the error rate on this data set $D$. For every example that the classifier misclassifies (i.e. gets wrong) a loss of 1 is suffered, whereas correctly classified samples lead to 0 loss.
+	
+	\textbf{Disadvantage:}The 0-1 loss imposes the same penalty for each misclassified point, so that the points of "wrongly outrageous" (ie margin→?∞) do not receive much attention, which is not intuitively appropriate. In addition, the 0-1 loss is discontinuous, non-convex, and the optimization is difficult.
+
+\end{block}
+
+
+\end{frame}
+%------------------------------------------------
+
+
+
+\subsection{Squared loss}
+\begin{frame}
+\begin{figure}
+	\includegraphics[scale=0.55]{squaredloss}
+\end{figure}
+%https://eranraviv.com/outliers-and-loss-functions/
+\frametitle{Squared loss}
+The squared loss function is typically used in regression settings.
+Formally the squared loss is:
+$$\mathcal{L}_{sq}(h)=\frac{1}{n}\sum^n_{i=1}(h(\mathbf{x}_i)-y_i)^2.$$
+The squaring has two effects:
+\begin{itemize}
+	\item 1., the loss suffered is always nonnegative;
+	\item 2.,  the loss suffered grows quadratically with the absolute mispredicted amount.
+\end{itemize}
+%\begin{itemize}
+%	\item 1., the loss suffered is always nonnegative;
+%	\item 2.,  the loss suffered grows quadratically with the absolute mispredicted amount.
+%\end{itemize}
+     \textbf{Disadvantage:} if a prediction is very close to be correct, the square will be tiny and little attention will be given to that example to obtain zero error. For example, $|h(\mathbf{x}_i)-y_i|=0.001$
+
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\begin{figure}
+	\includegraphics[scale=0.5]{absoluteloss}
+\end{figure}
+\frametitle{Absolute loss}
+%https://eranraviv.com/outliers-and-loss-functions/
+Similar to the squared loss, the absolute loss function is also typically used in regression settings. It suffers the penalties  $|h(\mathbf{x}_i)-y_i|$.  Because the suffered loss  grows linearly with the mispredictions it is more suitable for noisy data (when some mispredictions are unavoidable and shouldn't dominate the loss). If, given an input $\mathbf{x}$, the label $y$ is probabilistic according to some distribution $P(y|\mathbf{x})$ then the optimal prediction to minimize the absolute loss is to predict the median value, i.e. $h(\mathbf{x})=\textrm{MEDIAN}_{P(y|\mathbf{x})}[y]$.
+Formally, the absolute loss can be stated as:
+$$\mathcal{L}_{abs}(h)=\frac{1}{n}\sum^n_{i=1}|h(\mathbf{x}_i)-y_i|.$$
+
+\end{frame}
+
+\section{Generalization}
+%------------------------------------------------
+\subsection{Generalization}
+\begin{frame}
+\frametitle{Generalization}
+
+Given a loss function, we can then attempt to find the function h that minimizes the loss:
+
+       $$h=\textrm{argmin}_{h\in{\mathcal{H}}}\mathcal{L}(h)$$
+
+A big part of machine learning focuses on the question, how to do this minimization efficiently.
+
+If you find a function $h(\cdot)$ with low loss on your data D, how do you know whether it will still get examples right that are not in D?
+
+Bad example: "memorizer" $h(\cdot)$
+		$$h(x)=\begin{cases}
+		y_i,&\mbox{ if $\exists (\mathbf{x}_i,y_i)\in D$, s.t., $\mathbf{x}=\mathbf{x}_i$},\\
+		0,&\mbox{ o.w.}
+		\end{cases}$$
+For this $h(\cdot)$, we get $0\%$ error on the training data $D$, but does horribly with samples not in $D$, i.e., there's the overfitting issue with this function.
+\begin{figure}
+	
+\end{figure}
+\end{frame}
+
+%------------------------------------------------
+%\subsection{overfitting}
+%%------------------------------------------------
+%\begin{frame}
+%\frametitle{overfitting}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.5]{note2_3_table}
+%\end{figure}
+%So as $d\gg 0$ almost the entire space is needed to find the $10$-NN. This breaks down the $k$-NN assumptions, because the $k$-NN are not particularly closer (and therefore more similar) than any other data points in the training set. Why would the test point share the label with those $k$-nearest neighbors, if they are not actually similar to it?
+
+%\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{What is overfitting?}
+Whenever working on a data set to predict or classify a problem, we tend to find accuracy by implementing a design model on first train set, then on test set. If the accuracy is satisfactory, we tend to increase accuracy of data-sets prediction either by increasing or decreasing data feature or features selection or applying feature engineering in our machine learning model.
+
+But sometime our model maybe giving poor result.
+The poor performance of our model maybe because, the model is too simple to describe the target, or may be model is too complex to express the target.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{overfitting}
+%\caption{Figure demonstrating ``the curse of dimensionality''. The histogram plots show the distributions of all pairwise distances between randomly distributed points within $d$-dimensional unit squares.  As the number of dimensions $d$ grows, all distances concentrate within a very small range .}
+\end{figure}
+\end{frame}
+
+%%------------------------------------------------
+\section{Training and Testing}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Training and testing}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{trainTest.png}
+%	\caption{Example of k-NN classification. The test sample (inside circle) should be classified either to the first class of blue squares or to the second class of red triangles. If k = 3 (outside circle) it is assigned to the second class because there are 2 triangles and only 1 square inside the inner circle. If, for example k = 5 it is assigned to the first class (3 squares vs. 2 triangles outside the outer circle).}
+\end{figure}
+
+\end{frame}
+%------------------------------------------------
+\subsection{Training and testing}
+
+%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Test Dataset}
+%A test dataset is a dataset that is independent of the training dataset, but that follows the same probability distribution as the training dataset. If a model fit to the training dataset also fits the test dataset well, minimal overfitting has taken place (see figure below). A better fitting of the training dataset as opposed to the test dataset usually points to overfitting.
+%
+%A test set is therefore a set of examples used only to assess the performance (i.e. generalization) of a fully specified classifier.
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.5]{trainperformance.png}
+%	%	\caption{A training set (left) and a test set (right) from the same statistical population are shown as blue points. Two predictive models are fit to the training data. Both fitted models are plotted with both the training and test sets. In the training set, the MSE of the fit shown in orange is 4 whereas the MSE for the fit shown in green is 9. In the test set, the MSE for the fit shown in orange is 15 and the MSE for the fit shown in green is 13. The orange curve severely overfits the training data, since its MSE increases by almost a factor of four when comparing the test set to the training set. The green curve overfits the training data much less, as its MSE increases by less than a factor of 2.}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Training and testing}
+\begin{block}{}
+	\begin{itemize}
+	\item Training is the process of making the model able to learn.
+	\end{itemize}
+\end{block}
+\begin{block}{No free lunch rule:}
+	\begin{itemize}
+		\item Training set and testing set come from the same distribution
+		\item Need to make some assumptions or bias
+	\end{itemize}
+\end{block}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{trainTest2.png}
+%	\caption{Example of k-NN classification. The test sample (inside circle) should be classified either to the first class of blue squares or to the second class of red triangles. If k = 3 (outside circle) it is assigned to the second class because there are 2 triangles and only 1 square inside the inner circle. If, for example k = 5 it is assigned to the first class (3 squares vs. 2 triangles outside the outer circle).}
+\end{figure}
+
+\end{frame}
+
+%----------------------------------------------
+\subsection{Train / Test splits}
+\begin{frame}
+\frametitle{Train / Test splits}
+To resolve the overfitting issue, we usually split $D$ into three subsets: $D_\mathrm{TR}$ as the training data, $D_\mathrm{VA}$, as the validation data, and $D_\mathrm{TE}$, as the test data. Usually, they are split into a proportion of $80\%$, $10\%$, and $10\%$. Then, we choose $h(\cdot)$ based on $D_\mathrm{TR}$, and evaluate $h(\cdot)$ on $D_\mathrm{TE}$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{splitdata}
+\end{figure}
+
+\begin{block}{Quiz:Why do we need $D_\mathrm{VA}$?}
+	
+	$D_\mathrm{VA}$ is used to check whether the $h(\cdot)$ obtained from $D_\mathrm{TR}$ suffers from the overfitting issue. $h(\cdot)$ will need to be validated on $D_\mathrm{VA}$, if the loss is too large, $h(\cdot)$ will get revised based on $D_\mathrm{TR}$, and validated again on $D_\mathrm{VA}$. This process will keep going back and forth until it gives low loss on $D_\mathrm{VA}$. Here's a trade-off between the sizes of $D_\mathrm{TR}$ and $D_\mathrm{VA}$: the training results will be better for a larger $D_\mathrm{TR}$, but the validation will be more reliable (less noisy) if $D_\mathrm{VA}$ is larger.
+\end{block}
+
+
+\end{frame}
+%------------------------------------------------
+%------------------------------------------------
+\begin{frame}
+\frametitle{How to Split the Data?}
+You have to be very careful when you split the data in Train,Validation,Test. The test set must simulate a real test scenario, i.e. you want to simulate the setting that you will encounter in real life. For example, if you want to train an email spam filter, you train a system on past data to predict if future email is spam. Here it is important to split train / test temporally - so that you strictly predict the future from the past. If there is no such thing as a temporal component, it is often best to split uniformly at random. Definitely never split alphabetically, or by feature values.
+By time, if the data is temporally collected.
+In general, if the data has a temporal component, we must split it by time.
+Uniformly at random, if (and, in general, only if) the data is $i.i.d.$.
+
+The test error (or testing loss) approximates the true generalization error/loss.
+
+\end{frame}
+
+%%------------------------------------------------
+
+
+%%------------------------------------------------
+\section{Putting everything together}
+\subsection{Putting everything together}
+\begin{frame}
+\frametitle{Putting everything together}
+We train our classifier by minimizing the training loss:
+$$\mbox{Learning: }h^*(\cdot)=\textrm{argmin}_{h(\cdot)\in\mathcal{H}}\frac{1}{|D_\mathrm{TR}|}\sum_{(\mathbf{x},y)\in D_\mathrm{TR}}\ell(\mathbf{x},y|h(\cdot)),$$
+where $\mathcal{H}$ is the hypothetical class (i.e., the set of all possible classifiers $h(\cdot)$). In other words, we are trying to find a hypothesis $h$ which would have performed well on the past/known data.
+We evaluate our classifier on the testing loss:
+
+$$\mbox{Evaluation: }\epsilon_\mathrm{TE}=\frac{1}{|D_{TE}|}\sum_{(\mathbf{x},y)\in D_\mathrm{TE}} \ell (\mathbf{x},y|h^*(\cdot)).$$
+
+If the samples are drawn i.i.d. from the same distribution $\mathcal{P}$, then the testing loss is an unbiased estimator of the true generalization loss:
+$$\mbox{Generalization: }\epsilon=\mathbb{E}_{(\mathbf{x},y)\sim \mathcal{P}}[\ell(\mathbf{x},y|h^*(\cdot))].$$
+\end{frame}
+%--------------------------
+
+%
+%\begin{frame}
+%\frametitle{Putting everything together}
+%We train our classifier by minimizing the training loss:
+%$$\mbox{Learning: }h^*(\cdot)=\textrm{argmin}_{h(\cdot)\in\mathcal{H}}\frac{1}{|D_\mathrm{TR}|}\sum_{(\mathbf{x},y)\in D_\mathrm{TR}}\ell(\mathbf{x},y|h(\cdot)),$$
+%where $\mathcal{H}$ is the hypothetical class (i.e., the set of all possible classifiers $h(\cdot)$). In other words, we are trying to find a hypothesis $h$ which would have performed well on the past/known data.
+%We evaluate our classifier on the testing loss:
+%
+%$$\mbox{Evaluation: }\epsilon_\mathrm{TE}=\frac{1}{|D_{TE}|}\sum_{(\mathbf{x},y)\in D_\mathrm{TE}} \ell (\mathbf{x},y|h^*(\cdot)).$$
+%
+%If the samples are drawn i.i.d. from the same distribution $\mathcal{P}$, then the testing loss is an unbiased estimator of the true generalization loss:
+%$$\mbox{Generalization: }\epsilon=\mathbb{E}_{(\mathbf{x},y)\sim \mathcal{P}}[\ell(\mathbf{x},y|h^*(\cdot))].$$
+%\end{frame}
+
+\begin{frame}
+\frametitle{Putting everything together}
+\begin{block}{Quiz}
+	Why does $\epsilon_\mathrm{TE}\to\epsilon$ as $|D_\mathrm{TE}|\to +\infty$?
+	This is due to the weak law of large numbers, which says that the empirical average of data drawn from a distribution converges to its mean.
+\end{block}
+
+\begin{block}{No free lunch}
+	Every ML algorithm has to make assumptions on which hypothesis class $\mathcal{H}$ should you choose? This choice depends on the data, and encodes <u>your assumptions</u> about the data set/distribution $\mathcal{P}$. Clearly, there's no one perfect $\mathcal{H}$ for all problems.
+\end{block}
+\begin{block}{Example}
+	Assume that $(\mathbf{x}_1,y_1)=(1,1)$, $(\mathbf{x}_2,y_2)=(2,2)$, $(\mathbf{x}_3,y_3)=(3,3)$, $(\mathbf{x}_4,y_4)=(4,4)$, and $(\mathbf{x}_5,y_5)=(5,5)$.
+\end{block}
+
+\begin{block}{Question}
+	what is the value of $y$ if $\mathbf{x}=2.5$? Well, it is utterly \underline{impossible} to know the answer without assumptions. The most common assumption of ML algorithms is that the function to be approximated is locally smooth.
+\end{block}
+
+
+\end{frame}
+%%------------------------------------------------
+%\section{Reference}
+%------------------------------------------------
+%\begin{frame}
+%\frametitle{Reference}
+%\begin{thebibliography}{4}
+%\bibitem{LS-SPH} F. Zou, C. Liu, H. Ling, H. Feng, L. Yan, and D. Li, "Least square regularized spectral hashing for similarity search," Signal Processing, vol. 93, pp. 2265-2273, 2013. (SCI,EI)
+%\bibitem{KMFH} F. Zou, Y. Chen, J. Song, K. Zhou, Y. Yang, and N. Sebe, "Compact image fingerprint via multiple kernel hashing," IEEE Transactions on Multimedia, vol. 17, pp. 1006-1018, 2015. (SCI,EI)
+%\bibitem{KNPH} C. Liu, H. Ling, F. Zou, L. Yan, Y. Wang, H. Feng, et al., "Kernelized neighborhood preserving hashing for social-network-oriented digital fingerprints," IEEE Transactions on Information Forensics and Security, vol. 9, pp. 2232-2247, 2014. (SCI,EI)
+%\bibitem{DTSH} Liu, Yu; Song, Jingkuan; Zhou, Ke; Yan, Lingyu; Liu, Li; Zou, Fuhao; Shao, Ling, "Deep Self-taught Hashing for Image Retrieval," IEEE Transactions on Cybernetics, May 3, 2018. (SCI,EI)
+%\bibitem{DeepFace} Fuhao Zou, Fan Yang, Wei Chen,Kai Lia, Jingkuan Song, Jingcai Chen, Hefei Ling, "Fast Large Scale Deep Face Search," Pattern Recognition Letters, Januray 3, 2019. (SCI,EI)
+%\end{thebibliography}
+%\end{frame}
+%------------------------------------------------
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+\end{CJK*}
+\end{document}
+%\end{document}
