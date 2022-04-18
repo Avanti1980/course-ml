@@ -1,5 +1,5 @@
-cp ~/.mume/parser.js ./common/js/
-cp ~/.mume/mathjax_config.js ./common/js/
+cp ~/.mume/parser.js ./js/
+cp ~/.mume/mathjax_config.js ./js/
 
 git add *
 git commit -m $1
