@@ -4,15 +4,18 @@ presentation:
   transition: "convex"
   enableSpeakerNotes: true
   slideNumber: "c/t"
+  navigationMode: "linear"
 ---
 
 @import "../css/font-awesome-4.7.0/css/font-awesome.css"
-@import "../css/solarized.css"
+@import "../css/theme/solarized.css"
+@import "../css/logo.css"
 @import "../plugin/zoom/zoom.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
+@import "../plugin/menu/menu.js"
 
 <!-- slide data-notes="" -->
 
@@ -32,16 +35,12 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-|   公式   |          $p \rightarrow q$           |
+|   公式   | $\|\av\|^2 + \|\bv\|^2 = \|\cv\|^2$  |
 | :------: | :----------------------------------: |
 | **条件** | $A \rightarrow \neg B \wedge \neg C$ |
 |          |    $\neg A \rightarrow B \vee C$     |
 |          | $B \rightarrow \neg A \wedge \neg C$ |
 |          |    $\neg B \rightarrow A \vee C$     |
-
-<!-- slide data-notes="" -->
-
-<video data-autoplay src="https://rr3---sn-npoe7nek.googlevideo.com/videoplayback?expire=1649887671&ei=V_VWYsWnIYG6kwaMlYPIAw&ip=2001%3A470%3A1f04%3A726%3A%3A7&id=o-AOGA8fpYah6mcnJ-F7M0ftFpgosaONyYoXn9gs_LB4B4&itag=22&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ratebypass=yes&dur=267.215&lmt=1616815581796458&fexp=24001373,24007246&c=ANDROID&txp=5432434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRQIhAJB2toZ39POsLuYB6akTFKKrBp2dMl9V9Vg0qm9KOE0lAiAtptEqD9my-adLhBukhnoLgatpl7MjmppDDAQXR-NvSg%3D%3D&redirect_counter=1&cm2rm=sn-axqzes&req_id=9e813d63edbca3ee&cms_redirect=yes&mh=Sp&mip=212.107.28.9&mm=34&mn=sn-npoe7nek&ms=ltu&mt=1649865652&mv=m&mvi=3&pl=24&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgNv5sba0ddDQ_Z7h78sq8IWaNKRa6wVAG2dyLRCCP9vECIQCgIzgRhvVu_2DIncPwVGTxR1EayNQgToNnjyQZtQid5g%3D%3D" width="100%"></video>
 
 <!-- slide data-background-iframe="https://www.bilibili.com/video/BV19E411576i?t=0.0" data-background-interactive data-notes="" -->
 
