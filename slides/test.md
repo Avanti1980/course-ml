@@ -5,11 +5,17 @@ presentation:
   enableSpeakerNotes: true
   slideNumber: "c/t"
   navigationMode: "linear"
+  width: 960
+  height: 700
+  minScale: 0.2
+  maxScale: 1.5
+  center: false
 ---
 
 @import "../css/font-awesome-4.7.0/css/font-awesome.css"
 @import "../css/theme/solarized.css"
 @import "../css/logo.css"
+@import "../css/font.css"
 @import "../plugin/zoom/zoom.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
@@ -18,6 +24,10 @@ presentation:
 @import "../plugin/menu/menu.js"
 
 <!-- slide data-notes="" -->
+
+##### 标题
+
+
 
 <img src="../img/qr.png" height=387px width=387px class="center top10">
 
