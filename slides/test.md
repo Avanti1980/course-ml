@@ -1,21 +1,18 @@
 ---
 presentation:
   margin: 0
+  center: false
   transition: "convex"
   enableSpeakerNotes: true
   slideNumber: "c/t"
   navigationMode: "linear"
-  width: 960
-  height: 700
-  minScale: 0.2
-  maxScale: 1.5
-  center: false
 ---
 
 @import "../css/font-awesome-4.7.0/css/font-awesome.css"
 @import "../css/theme/solarized.css"
 @import "../css/logo.css"
 @import "../css/font.css"
+@import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
@@ -25,15 +22,25 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 标题
+##### 不忘初心 _Staying_
 
+---
 
+不忘初心 牢记使命 Staying True to Our Original Aspiration and Founding Mission 不忘初心 牢记使命 Staying True to Our Original Aspiration and Founding Mission
+
+<!-- slide data-notes="" -->
+
+##### 标题 title
 
 <img src="../img/qr.png" height=387px width=387px class="center top10">
 
 <!-- slide vertical=true data-notes="" -->
 
-@import "../dot/preliminary.dot" {class="top5 center"}
+##### 前导课程
+
+---
+
+@import "../dot/preliminary.dot" {.center}
 
 <!-- slide vertical=true data-notes="" -->
 
