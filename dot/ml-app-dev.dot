@@ -1,0 +1,27 @@
+digraph g {
+    rankdir=LR
+    graph [nodesep=0.4 ranksep=0.5]
+    bgcolor="transparent"
+
+    node [shape=ellipse color="#586e75" fontcolor="#b58900" fontsize=16 fontname="Ysabeau,LXGWWenKai"]
+    edge [color="#586e75" fontcolor="#268bd2" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowsize=0.6]
+
+    机器学习 [shape=box fontsize=24 fontcolor="#cb4b16"]
+    {图像识别,人机博弈,自动驾驶,机器翻译,文本分类,量化交易} -> 机器学习 [label="应用" dir=back]
+
+    node [fontcolor="#dc322f"]
+
+    subgraph cluster_0 {
+        style=dashed
+        fontname="Ysabeau,LXGWWenKai"
+        label=本课程
+        color="#586e75"
+        fontcolor="#d33682"
+
+        机器学习 -> {模型更迭}
+
+        node [fontcolor="#d33682"]
+
+        机器学习 -> {学派兴衰,发展历程,时代背景}
+    }
+}

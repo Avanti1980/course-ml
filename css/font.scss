@@ -84,10 +84,30 @@ $number-array: 100, 200, 400, 500, 700, 900;
 .reveal h4,
 .reveal h5,
 .reveal h6 {
+  font-family: Ysabeau, LXGWWenKai, "Noto Sans SC", NotoSansSC;
+  font-weight: 700;
+}
+
+.reveal h1 {
   font-family: Ysabeau, "Noto Sans SC", NotoSansSC;
+  font-size: 2.2em;
+}
+
+.reveal h2 {
+  font-size: 1.6em;
+}
+
+.reveal h3 {
+  font-size: 1.0em;
+}
+
+.reveal h4 {
+  font-size: 0.8em;
+  font-style: italic;
 }
 
 .reveal h5 {
+  font-family: Ysabeau, "Noto Sans SC", NotoSansSC;
   font-size: 1.2em;
   font-weight: 900;
 }
