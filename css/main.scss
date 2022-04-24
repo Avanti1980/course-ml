@@ -54,6 +54,23 @@
   word-wrap: break-word;
 }
 
+.reveal .mylist ul {
+  list-style-type: none;
+  margin-left: -8rem;
+}
+
+.reveal .mylist ul > li,
+.reveal .mylist ol > li {
+  color: var(--solarized-yellow);
+}
+
+.reveal .mylist ul > li:before {
+  content: "\f260";
+  font-family: FontAwesome;
+  margin-left: -2rem;
+  margin-right: 0.5rem;
+}
+
 .reveal pre {
   background-color: transparent;
   box-shadow: none;
@@ -62,4 +79,16 @@
 .reveal .center {
   margin-left: auto;
   margin-right: auto;
+}
+
+.reveal .mermaid {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#calendar-schedule,
+#venn-ml {
+  width: 800px;
+  height: 500px;
 }

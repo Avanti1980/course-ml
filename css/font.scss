@@ -118,7 +118,18 @@ $number-array: 100, 200, 400, 500, 700, 900;
   font-weight: 700;
 }
 
+.reveal ul > li,
+.reveal ol > li {
+  font-family: Ysabeau, "LXGW WenKai", LXGWWenKai;
+  font-size: 0.7em;
+  font-weight: 700;
+}
+
 .reveal pre {
   font-family: Operator, "LXGW WenKai", LXGWWenKai;
   font-size: 1.2rem;
+}
+
+.reveal .mermaid {
+  font-family: Operator, "LXGW WenKai", LXGWWenKai;
 }
