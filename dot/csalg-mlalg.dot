@@ -1,0 +1,52 @@
+digraph g {
+    graph [nodesep=0.8, ranksep=0.5]
+    node [shape=plaintext color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#d33682" fontsize=20]
+    edge [arrowhead=vee color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#268bd2" fontsize=16 arrowsize=0.5]
+    bgcolor="transparent"
+
+    subgraph cluster_1 {
+        color="#586e75"
+        fontcolor="#dc322f"
+        fontname="Ysabeau,LXGWWenKai"
+        style="invis"
+
+        输入; 输出;
+
+        node [shape=record fontcolor="#268bd2"];
+
+        subgraph cluster_11 {
+            style="dashed"
+            fontsize=18
+            label="传统计算机算法"
+            struct1 [label="<s1>步骤1|步骤2| …… |<sn>步骤n"];
+        }
+
+        输入 -> struct1:s1;
+        struct1:sn -> 输出;
+    }
+
+    subgraph cluster_2 {
+        color="#586e75"
+        fontcolor="#dc322f"
+        fontname="Ysabeau,LXGWWenKai"
+        style="invis"
+
+        数据 [label = <<table border="0">
+                      <tr><td align="left">输入1, 输出1</td></tr>
+                      <tr><td align="left">⋮</td></tr>
+                      <tr><td align="left">输入m, 输出m</td></tr></table>>]
+        算法;
+
+        node [shape=record fontcolor="#268bd2"];
+
+        subgraph cluster_21 {
+            style="dashed"
+            fontsize=18
+            label="机器学习算法"
+            struct2 [label="<s1>步骤1|步骤2| …… |<sn>步骤n"];
+        }
+
+        数据 -> struct2:s1;
+        struct2:sn -> 算法;
+    }
+}
