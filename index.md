@@ -23,7 +23,7 @@
 
 #### 课件
 
-在线浏览，Space 翻页，Esc 导航，校外访问或需借助科学上网
+在线浏览，Space 翻页，Esc 导航
 
 <div class="threelines outline" markdown=1>
 
