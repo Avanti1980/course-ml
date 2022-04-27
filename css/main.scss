@@ -35,6 +35,10 @@
   word-wrap: break-word;
 }
 
+.reveal p .MathJax_Display {
+  margin-top: -1rem !important;
+}
+
 .reveal ul > li,
 .reveal ol > li {
   color: var(--solarized-yellow);
@@ -46,7 +50,7 @@
 }
 
 .reveal pre {
-  background-color: transparent;
+  background-color: transparent !important;
   box-shadow: none;
 }
 

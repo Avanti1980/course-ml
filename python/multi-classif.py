@@ -21,13 +21,13 @@ with plt.style.context('Solarize_Light2'):
         ax = plt.subplot(5, 10, i+1)
         ax.set_axis_off()
         ax.imshow(digits.images[i], interpolation='nearest')
-        ax.set_title('训练: %i' % digits.target[i], fontdict={'fontsize': 12})
+        #ax.set_title('训练: %i' % digits.target[i], fontdict={'fontsize': 12})
 
     for i in range(20):
         ax = plt.subplot(5, 10, i+31)
         ax.set_axis_off()
         ax.imshow(X_test[i].reshape(8, 8), interpolation='nearest')
-        ax.set_title('预测: %i' % predicted[i], fontdict={'fontsize': 12})
+        #ax.set_title('预测: %i' % predicted[i], fontdict={'fontsize': 12})
 
 print(f"{clf}的分类结果\n"
       f"{metrics.classification_report(y_test, predicted)}\n")

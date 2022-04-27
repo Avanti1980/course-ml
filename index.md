@@ -27,9 +27,10 @@
 
 <div class="threelines outline" markdown=1>
 
-|        |          讲义          | 内容      |
-| :----: | :--------------------: | :-------- |
-| 第一讲 | [绪论](slides/01.html) | 1. \*\*\* |
+|        |          讲义          | 内容                                          |
+| :----: | :--------------------: | :-------------------------------------------- |
+| 第一讲 | [绪论](slides/01.html) | 1. 人工智能的三次浪潮：推理期、知识期、学习期 |
+|   ^    |           ^            | 2. 机器学习的基本流程：特征工程、模型学习     |
 
 </div>
 
@@ -41,4 +42,4 @@
 
 第一讲：
 
-- [文本特征提取](python/text-feat.ipynb)
+- [文本特征提取](python/text-feat.ipynb)、[独热编码](python/one-hot-encoding.ipynb)、[缺失特征处理](python/missing-feat.ipynb)、[特征标准化](python/feat-scaler.ipynb)
