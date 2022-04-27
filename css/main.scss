@@ -38,6 +38,7 @@
 .reveal ul > li,
 .reveal ol > li {
   color: var(--solarized-yellow);
+  margin-right: 2rem;
 }
 
 .reveal ul {
@@ -55,7 +56,7 @@
 }
 
 .reveal .mermaid {
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -72,6 +73,16 @@
 .reveal blockquote p {
   text-align: justify;
   word-wrap: break-word;
+}
+
+.reveal table {
+  margin: 2rem auto;
+  th,
+  td {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem 0.1rem 1rem;
+  }
 }
 
 #venn-ml {

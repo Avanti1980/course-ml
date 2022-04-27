@@ -1,0 +1,55 @@
+digraph g {
+    size = 9;
+    graph [nodesep=0.5, ranksep=0.8]
+    node [shape=box color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#b58900" fontsize=20]
+    edge [color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#268bd2" fontsize=18 arrowsize=0.5 dir=none]
+    bgcolor="transparent"
+
+    丘奇 -> {克门尼,图灵} [label=" 导师"]
+
+    爱因斯坦 -> 克门尼 [label=" 助理"]
+
+    node [fontcolor="#dc322f"]
+
+    爱因斯坦 -> 香农 [label=" 同事"]
+
+    克门尼 -> 麦卡锡 [label=" 老板"]
+
+    node [fontcolor="#b58900"]
+
+    {rank = same; 克门尼; 图灵; 香农}
+
+    香农 -> 图灵 [label=" 交流"]
+
+    莱夫谢茨 -> {麦卡锡,塔克} [label=" 导师"]
+
+    塔克 -> 纳什 [label=" 导师"]
+
+    维纳
+
+    node [fontcolor="#dc322f"]
+
+    塔克 -> 明斯基 [label=" 导师"]
+
+    维纳 -> 赛弗里奇 [label=" 导师"]
+
+    node [fontcolor="#b58900"]
+
+    冯诺伊曼 -> 摩根斯顿 [label=" 合作"]
+
+    {rank = same; 维纳; 冯诺伊曼; 丘奇; 爱因斯坦}
+
+    普林斯顿数学系
+
+    node [fontcolor="#dc322f"]
+
+    摩根斯顿 -> 西蒙 [label=" 导师"]
+
+    西蒙 -> 纽厄尔 [label=" 导师"]
+
+    香农 -> {麦卡锡,明斯基} [label=" 老板"]
+
+    赛弗里奇 -> 西蒙 [label=" 交流"]
+
+    {克门尼,麦卡锡,明斯基,纽厄尔} -> 普林斯顿数学系 [label=" 母校"]
+}

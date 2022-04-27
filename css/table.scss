@@ -1,0 +1,96 @@
+.reveal table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  th,
+  td {
+    text-align: center;
+    color: var(--base01);
+  }
+}
+
+.reveal .tr-hover {
+  tbody tr:hover {
+    background-color: var(--solarized-base2);
+  }
+}
+
+@for $i from 0 to 20 {
+  @each $style in "solid", "dashed", "dotted" {
+    // 每列左右边框
+    @each $direction in "left", "right" {
+      .reveal .column#{$i}-border-#{$direction}-#{$style} {
+        th:nth-child(#{$i}),
+        td:nth-child(#{$i}) {
+          border-#{$direction}: 1px #{$style} var(--solarized-base01);
+        }
+      }
+    }
+
+    // 每行上下边框
+    @each $direction in "top", "bottom" {
+      .reveal .row#{$i}-border-#{$direction}-#{$style} {
+        tr:nth-child(#{$i}) {
+          border-#{$direction}: 1px #{$style} var(--solarized-base01);
+        }
+      }
+    }
+
+    @each $direction in "left", "right", "top", "bottom" {
+      @each $thick in "1", "2" {
+        // 表头每格边框
+        .reveal .column#{$i}-border#{$thick}-#{$direction}-#{$style}-head {
+          th:nth-child(#{$i}) {
+            border-#{$direction}: #{$thick}px #{$style} var(--solarized-base01);
+          }
+        }
+        // 表身每格边框
+        @for $j from 0 to 10 {
+          .reveal
+            .row#{$i}-column#{$j}-border#{$thick}-#{$direction}-#{$style} {
+            tr:nth-child(#{$i}) {
+              td:nth-child(#{$j}) {
+                border-#{$direction}: #{$thick}px
+                  #{$style}
+                  var(--solarized-base01);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // 列加粗
+  .reveal .column#{$i}-bold {
+    td:nth-child(#{$i}) {
+      font-weight: 900;
+    }
+  }
+  // 首行深色
+  .reveal .head-highlight-#{$i} {
+    th:nth-child(n + #{$i}) {
+      background-color: var(--solarized-base2);
+    }
+  }
+}
+
+// 全边框
+.reveal .fullborder {
+  th,
+  td {
+    border: 1px solid var(--solarized-base01);
+  }
+}
+
+// 三线表
+.reveal .threelines {
+  th {
+    border-top: 2px solid var(--solarized-base01); // 表头上边框
+  }
+  tbody tr:nth-child(1) {
+    border-top: 1px solid var(--solarized-base01); // 第一行上边框
+  }
+  tbody tr:nth-last-child(1) {
+    border-bottom: 2px solid var(--solarized-base01); // 最后一行下边框
+  }
+}
