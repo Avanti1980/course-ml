@@ -98,7 +98,7 @@ $number-array: 100, 200, 400, 500, 700, 900;
 }
 
 .reveal h3 {
-  font-size: 1.0em;
+  font-size: 1em;
 }
 
 .reveal h4 {
@@ -129,7 +129,7 @@ $number-array: 100, 200, 400, 500, 700, 900;
   font-size: 1.2rem;
 }
 
-.reveal table {
+.reveal table,
+.reveal a {
   font-family: Ysabeau, "LXGW WenKai", LXGWWenKai;
 }
-
