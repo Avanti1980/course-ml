@@ -25,3 +25,8 @@
     color: var(--solarized-#{$color});
   }
 }
+
+mark {
+  background-color: transparent;
+  color: var(--solarized-blue);
+}
