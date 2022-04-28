@@ -1,6 +1,6 @@
 digraph g {
     size = 9;
-    graph [nodesep=0.5, ranksep=0.8]
+    graph [nodesep=0.5, ranksep=0.6]
     node [shape=box color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#b58900" fontsize=20]
     edge [color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#268bd2" fontsize=18 arrowsize=0.5 dir=none]
     bgcolor="transparent"
