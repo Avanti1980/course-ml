@@ -12,7 +12,7 @@ digraph g {
 
         输入; 输出;
 
-        node [shape=record fontcolor="#268bd2"];
+        node [shape=record fontcolor="#b58900"];
 
         subgraph cluster_11 {
             style="dashed"
@@ -32,12 +32,12 @@ digraph g {
         style="invis"
 
         数据 [label = <<table border="0">
-                      <tr><td align="left">输入1, 输出1</td></tr>
+                      <tr><td align="left">(输入1, 输出1)</td></tr>
                       <tr><td align="left">⋮</td></tr>
-                      <tr><td align="left">输入m, 输出m</td></tr></table>>]
+                      <tr><td align="left">(输入m, 输出m)</td></tr></table>>]
         算法;
 
-        node [shape=record fontcolor="#268bd2"];
+        node [shape=record fontcolor="#b58900"];
 
         subgraph cluster_21 {
             style="dashed"

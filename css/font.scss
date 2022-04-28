@@ -133,3 +133,12 @@ $number-array: 100, 200, 400, 500, 700, 900;
 .reveal a {
   font-family: Ysabeau, "LXGW WenKai", LXGWWenKai;
 }
+
+.reveal table {
+  font-family: Ysabeau, "LXGW WenKai", LXGWWenKai;
+  th,
+  td {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+}
