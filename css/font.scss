@@ -129,6 +129,11 @@ $number-array: 100, 200, 400, 500, 700, 900;
   font-size: 1.2rem;
 }
 
+.MathJax .mtext span {
+  font-family: Ysabeau, "LXGW WenKai", LXGWWenKai !important;
+  font-weight: 700 !important;
+}
+
 .reveal table,
 .reveal a {
   font-family: Ysabeau, "LXGW WenKai", LXGWWenKai;
