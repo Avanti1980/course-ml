@@ -23,14 +23,14 @@
 
 #### 课件
 
-在线浏览，Space 翻页，Esc 导航
+在线浏览，Space 翻页，Esc 导航，可能需{==科学上网==}才能打开
 
 <div class="threelines outline" markdown=1>
 
 |        |            讲义            | 内容                                            |
 | :----: | :------------------------: | :---------------------------------------------- |
 | 第一讲 |   [绪论](slides/01.html)   | 1. 机器学习的常见应用，机器学习算法是一种元算法 |
-|   ^    |             ^              | 2. 图灵测试、达特茅斯会议                       |
+|   ^    |             ^              | 2. 图灵测试，达特茅斯会议                       |
 |   ^    |             ^              | 3. 人工智能三次浪潮：推理期、知识期、学习期     |
 | 第二讲 | [基本概念](slides/02.html) | ---                                             |
 | 第三讲 |            ---             | ---                                             |
@@ -39,12 +39,14 @@
 
 #### 参考资料
 
-待添加
+[_Foundations of Machine Learning 2ed_](book/Foundations%20of%20Machine%20Learning%202ed%20-%20Mehryar%20Mohri%2C%20Afshin%20Rostamizadeh%2C%20and%20Ameet%20Talwalkar.pdf) <br>Mehryar Mohri, Afshin Rostamizadeh, and Ameet Talwalkar
+
+[_Understanding Machine Learning From Theory to Algorithms_](book/Understanding%20Machine%20Learning%20From%20Theory%20to%20Algorithms%20-%20Shai%20Shalev-Shwartz%2C%20Shai%20Ben-David.pdf) <br>Shai Shalev-Shwartz, Shai Ben-David
+
+[_Pattern Recognition and Machine Learning_](book/Pattern%20Recognition%20and%20Machine%20Learning%20-%20Christopher%20M.%20Bishop.pdf) <br>Christopher M. Bishop
 
 #### 代码
 
 第一讲：[测试环境](python/demo.ipynb)
 
-第二讲：
-
-- [二分类示例](python/binary-classif.ipynb)
+第二讲：[二分类示例](python/binary-classif.ipynb)
