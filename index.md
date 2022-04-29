@@ -43,4 +43,8 @@
 
 #### 代码
 
-待添加
+第一讲：[测试环境](python/demo.ipynb)
+
+第二讲：
+
+- [二分类示例](python/binary-classif.ipynb)
