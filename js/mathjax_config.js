@@ -16,7 +16,6 @@ module.exports = {
     skipTags: ["script", "noscript", "style", "textarea", "pre", "code"],
   },
   displayAlign: "left",
-  displayIndent: "0.05rem",
   TeX: {
     equationNumbers: { autoNumber: "none", useLabelIds: true },
     extensions: [
@@ -140,6 +139,7 @@ module.exports = {
       Ffrak: "{\\mathfrak F}",
       sup: ["{{(#1)}}", 1],
       acc: "{\\mathrm {acc}}",
+      bias: "{\\mathrm {bias}}",
       diff: "{\\mathrm {d}}",
       diag: "{\\mathrm {diag}}",
       span: "{\\mathrm {span}}",
@@ -205,7 +205,8 @@ module.exports = {
     scale: 100,
     styles: {
       ".MathJax_Display": {
-        margin: "0.6rem auto 1rem 0 !important",
+        "margin-top": "0.6rem !important",
+        "margin-bottom": "1rem !important",
         "border-radius": "0px !important",
         "font-size": "1.8rem !important",
         color: "#d33682",
@@ -213,7 +214,7 @@ module.exports = {
       },
       ".MathJax": {
         "margin-left": "0.2rem !important",
-        "margin-right": "0rem !important",
+        "margin-right": "0.2rem !important",
         border: "0px solid #ccc !important",
         color: "#d33682",
       },

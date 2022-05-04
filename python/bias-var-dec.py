@@ -12,11 +12,10 @@ font_name = fm.FontProperties(fname=font_path).get_name()
 # plt.rcParams["font.style"] = 'italic'
 # plt.rcParams["font.weight"] = 'bold'
 
+
 def true_fun(X):
     return np.cos(1.5 * np.pi * X)
 
-
-np.random.seed(0)
 
 n_samples = 30
 degrees = [1, 4, 15]
