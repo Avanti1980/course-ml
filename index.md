@@ -32,7 +32,8 @@
 | 第一讲 |   [绪论](slides/01.html)   | 1. 机器学习的常见应用，机器学习算法是一种元算法 |
 |   ^    |             ^              | 2. 图灵测试，达特茅斯会议                       |
 |   ^    |             ^              | 3. 人工智能三次浪潮：推理期、知识期、学习期     |
-| 第二讲 | [基本概念](slides/02.html) | ---                                             |
+| 第二讲 | [基本概念](slides/02.html) | 1. 机器学习的常见任务类型：监督、半监督、无监督 |
+|   ^    |             ^              | 2. 机器学习的不同学派：符号、连接、统计、类推   |
 | 第三讲 |            ---             | ---                                             |
 
 </div>
@@ -49,4 +50,4 @@
 
 第一讲：[测试环境](python/demo.ipynb)
 
-第二讲：[二分类示例](python/binary-classif.ipynb)
+第二讲：[二分类示例](python/binary-classif.ipynb)、[多分类示例](python/multi-classif.ipynb)、[回归](python/regression.py)、[聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)
