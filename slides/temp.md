@@ -58,3 +58,11 @@ $$
     & = \var(\xv) + \bias^2(\xv) + \varepsilon^2
 \end{align*}
 $$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 偏差方差分解
+
+---
+
+@import "../python/bias-var-dec.svg" {.center .width80}
