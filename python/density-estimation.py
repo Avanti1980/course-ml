@@ -50,10 +50,7 @@ with plt.style.context('Solarize_Light2'):
         axi.set_ylim(-0.02, 0.34)
 
     for axi in ax[:, 0]:
-        axi.set_ylabel('Normalized Density')
-
-    for axi in ax[1, :]:
-        axi.set_xlabel('x')
+        axi.set_ylabel('Density')
 
     plt.savefig('density-estimation-1.svg', transparent=True)
 

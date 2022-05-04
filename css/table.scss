@@ -88,9 +88,7 @@
 .reveal .threelines {
   th {
     border-top: 2px solid var(--solarized-base01); // 表头上边框
-  }
-  tbody tr:nth-child(1) {
-    border-top: 1px solid var(--solarized-base01); // 第一行上边框
+    border-bottom: 1px solid var(--solarized-base01); // 表头下边框
   }
   tbody tr:nth-last-child(1) {
     border-bottom: 2px solid var(--solarized-base01); // 最后一行下边框

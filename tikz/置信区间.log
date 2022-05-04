@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Arch Linux) (preloaded format=xelatex 2022.4.29)  4 MAY 2022 22:06
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Arch Linux) (preloaded format=xelatex 2022.4.29)  5 MAY 2022 01:56
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -934,9 +934,8 @@ Package xeCJK Warning: Redefining CJKfamily `\CJKrmdefault'
 
 
 Package fontspec Info: Font family 'LXGWWenKai(0)' created for font 'LXGW
-(fontspec)             WenKai' with options
-(fontspec)             [Script={CJK},BoldFont={FZHei-B01},ItalicFont={LXGW
-(fontspec)             WenKai}].
+(fontspec)             WenKai' with options [Script={CJK},BoldFont={LXGW
+(fontspec)             WenKai},ItalicFont={LXGW WenKai}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
@@ -944,8 +943,8 @@ Package fontspec Info: Font family 'LXGWWenKai(0)' created for font 'LXGW
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->"LXGW
 (fontspec)             WenKai/OT:script=hani;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"FZHei-B01/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"LXGW
+(fontspec)             WenKai/OT:script=hani;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.: <->"LXGW
 (fontspec)             WenKai/OT:script=hani;language=dflt;"
@@ -1145,12 +1144,12 @@ Package rerunfilecheck Info: File `置信区间.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 47089 strings out of 476156
- 1105237 string characters out of 5814963
- 1600181 words of memory out of 5000000
- 67051 multiletter control sequences out of 15000+600000
- 472958 words of font info for 71 fonts, out of 8000000 for 9000
+ 47084 strings out of 476156
+ 1105075 string characters out of 5814963
+ 1600456 words of memory out of 5000000
+ 67049 multiletter control sequences out of 15000+600000
+ 472942 words of font info for 69 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,6n,105p,758b,727s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 103i,6n,105p,758b,744s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on 置信区间.pdf (1 page).

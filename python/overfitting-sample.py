@@ -31,8 +31,7 @@ with plt.style.context('Solarize_Light2'):
     plt.plot(X_test, true_fun(X_test), label="true func")
     plt.scatter(X, y, s=20, label="samples")
     plt.xlim((0, 1))
-    plt.ylim((-2, 2))
+    plt.ylim((-1.5, 1.5))
     plt.legend(loc="best", labelcolor='#073642')
 
-    plt.savefig('overfitting.svg', transparent=True)
     plt.show()

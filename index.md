@@ -1,4 +1,3 @@
-@import "css/font-awesome-4.7.0/css/font-awesome.css"
 @import "css/theme/solarized.css"
 @import "css/font.css"
 @import "css/color.css"
@@ -25,7 +24,7 @@
 
 在线浏览，Space 翻页，Esc 导航，可能需{==科学上网==}才能打开
 
-<div class="threelines outline" markdown=1>
+<div class="threelines outline tr-hover" markdown=1>
 
 |        |            讲义            | 内容                                            |
 | :----: | :------------------------: | :---------------------------------------------- |
