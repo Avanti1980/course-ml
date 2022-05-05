@@ -60,7 +60,7 @@ $weight-array: Light, Regular, Bold;
   $weight: nth($weight-array, $i);
   @font-face {
     font-family: LXGWWenKai;
-    src: url("../fonts/lxgw-wenkai-v1.233.6/LXGWWenKai-#{$weight}.ttf");
+    src: url("../fonts/lxgw-wenkai-lite-v1.234/LXGWWenKaiLite-#{$weight}.ttf");
     font-weight: 100 * (3 * $i - 2);
   }
 }

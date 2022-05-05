@@ -140,6 +140,8 @@ module.exports = {
       sup: ["{{(#1)}}", 1],
       acc: "{\\mathrm {acc}}",
       bias: "{\\mathrm {bias}}",
+      variance: "{\\mathrm {variance}}",
+      noise: "{\\mathrm {noise}}",
       diff: "{\\mathrm {d}}",
       diag: "{\\mathrm {diag}}",
       span: "{\\mathrm {span}}",
