@@ -52,4 +52,4 @@
 
 第一讲：[测试环境](python/demo.ipynb)
 
-第二讲：[二分类示例](python/binary-classif.ipynb)、[多分类示例](python/multi-classif.ipynb)、[回归](python/regression.py)、[聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)
+第二讲：[二分类示例](python/binary-classif.ipynb)、[多分类示例](python/multi-classif.ipynb)、[回归](python/regression.py)、[聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)、[模型评估](python/model-evaluation.ipynb)、[过拟合](python/overfitting.ipynb)、[偏差方差分解](python/bias-var-dec.ipynb)
