@@ -148,3 +148,13 @@ $number-array: 100, 200, 400, 500, 700, 900;
     font-weight: 700;
   }
 }
+
+@for $i from 1 to 50 {
+  .reveal .fs#{$i} {
+    th,
+    td {
+      font-size: 0.1rem * $i;
+    }
+    font-size: 0.1rem * $i;
+  }
+}
