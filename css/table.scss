@@ -74,6 +74,22 @@
       background-color: var(--solarized-base2);
     }
   }
+  // 单元格着色
+  @for $j from 0 to 20 {
+    @each $color in "base03", "base02", "base01", "base00", "base0", "base1",
+      "base2", "base3", "yellow", "orange", "red", "magenta", "violet", "blue",
+      "cyan", "green"
+    {
+      .reveal .row#{$i}-column#{$j}-#{$color} {
+        tr:nth-child(#{$i}) {
+          td:nth-child(#{$j}) {
+            background-color: var(--solarized-#{$color});
+            color: var(--solarized-base3);
+          }
+        }
+      }
+    }
+  }
 }
 
 // 全边框
