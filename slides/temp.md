@@ -16,146 +16,76 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 模型选择 验证
+##### 决策树
 
 ---
 
-<div class="threelines column7-border-right-solid head-highlight-1 tr-hover row9-border-top-dashed top-3 fs10 right10">
-
-| 次序 | 约会时间 | 约会方式 | 当天天气 | 课业任务 | 疫情形势 | 当天电视 | 答应约会 |
-| :--: | :------: | :------: | :------: | :------: | :------: | :------: | -------- |
-|  1   |   周六   |   吃饭   |   晴天   |   轻松   |   清零   |   好看   | 是       |
-|  2   |   周日   |   吃饭   |   阴天   |   轻松   |   清零   |   好看   | 是       |
-|  3   |   周日   |   吃饭   |   晴天   |   轻松   |   清零   |   好看   | 是       |
-|  4   |   周六   |   吃饭   |   阴天   |   轻松   |   清零   |   好看   | 是       |
-|  5   |  工作日  |   吃饭   |   晴天   |   轻松   |   清零   |   好看   | 是       |
-|  6   |   周六   |   逛街   |   晴天   |   轻松   |   平缓   |  不好看  | 是       |
-|  7   |   周日   |   逛街   |   晴天   |   繁重   |   平缓   |  不好看  | 是       |
-|  8   |   周日   |   逛街   |   晴天   |   轻松   |   平缓   |   好看   | 是       |
-|  9   |   周日   |   逛街   |   阴天   |   繁重   |   平缓   |   好看   | 否       |
-|  10  |   周六   |   学习   |   雨天   |   轻松   |   严峻   |  不好看  | 否       |
-|  11  |  工作日  |   学习   |   雨天   |   备考   |   严峻   |   好看   | 否       |
-|  12  |  工作日  |   吃饭   |   晴天   |   备考   |   严峻   |  不好看  | 否       |
-|  13  |   周六   |   逛街   |   晴天   |   繁重   |   清零   |   好看   | 否       |
-|  14  |  工作日  |   逛街   |   阴天   |   繁重   |   清零   |   好看   | 否       |
-|  15  |   周日   |   逛街   |   晴天   |   轻松   |   平缓   |  不好看  | 否       |
-|  16  |  工作日  |   吃饭   |   晴天   |   备考   |   严峻   |   好看   | 否       |
-|  17  |   周六   |   吃饭   |   阴天   |   繁重   |   平缓   |   好看   | 否       |
-
-</div>
-
-<!-- slide data-notes="" -->
-
-##### 模型选择 验证
-
----
-
-事先选定合适的模型 (归纳偏倚) 很重要！
-
-从训练集中随机选择一部分样本作为{==验证集==} (validation set)
-
-- 在剩余的训练集上训练一个学习模型
-- 在验证集上计算模型的误差
-
-据此比较多个候选模型的性能
-
-```dot
+```dot {.center}
 digraph g {
-    graph [nodesep=0.3, ranksep=0.2]
+    graph [nodesep=1.0, ranksep=0.3]
     bgcolor="transparent"
-    node [shape=box color="#586e75" fontcolor="#b58900" fontsize=16 fontname="Ysabeau,LXGWWenKai"]
-    edge [arrowhead=vee color="#586e75" fontcolor="#dc322f" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowsize=0.6]
+    node [shape=box color="#586e75" fontcolor="#b58900" fontsize=20 fontname="Ysabeau,LXGWWenKai"]
+    edge [color="#586e75" fontcolor="#268bd2" fontsize=18 fontname="Ysabeau,LXGWWenKai" arrowhead=none]
 
-    subgraph cluster_1 {
-        color="#586e75"
-        fontcolor="#dc322f"
-        fontname="Ysabeau,LXGWWenKai"
-        style="invis"
+    "课业 = ？" -> "方式 = ？" [label="轻松"]
+    "课业 = ？" -> "电视 = ？" [label="较重"]
 
-        D; 输出;
+    node [shape=ellipse]
+    y1 [label="是"]
+    y2 [label="是"]
+    y4 [label="是"]
+    n1 [label="否"]
 
-        node [shape=record fontcolor="#b58900"];
+    n3 [label="否"]
+    n4 [label="否"]
 
-        subgraph cluster_11 {
-            style="dashed"
-            fontsize=18
-            label="传统计算机算法"
-            struct1 [label="训练集|验证集"];
-        }
+    "课业 = ？" -> "n1" [label="繁重"]
 
-        D -> struct1:s1;
-        struct1:sn -> 输出;
-    }
+    "方式 = ？" -> "是" [label="吃饭"]
+
+    node [shape=box]
+    "方式 = ？" -> "时间 = ？" [label="逛街"]
+
+    node [shape=ellipse]
+    n2 [label="否"]
+    "方式 = ？" -> "n2" [label="学习"]
+
+    "电视 = ？" -> "y1" [label="好看"]
+    "电视 = ？" -> "n3" [label="难看"]
+
+    "时间 = ？" -> "y2" [label="周六"]
+
+    node [shape=box]
+    tv [label="电视 = ？"]
+
+    "时间 = ？" -> tv [label="周日"]
+
+    node [shape=ellipse]
+    y3 [label="是"]
+    "时间 = ？" -> "y3" [label="周间"]
+
+    tv -> "y4" [label="好看"]
+    tv -> "n4" [label="难看"]
 }
 ```
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 模型选择 交叉验证
+##### 决策树
 
 ---
 
-{==交叉验证==} (cross validation)：将训练集平均分为$n$份，每轮
+输入：训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，属性集$A = \{ a_j \}_{j \in [d]}$<br>过程：函数$\TG(D,A)$
 
-- 在其中$n-1$份上训练一个学习模型
-- 在剩余的$1$份上计算模型的误差
-
-迭代$n$轮取平均，据此比较多个候选模型的性能
-
-```dot
-digraph g {
-    graph [nodesep=0.3, ranksep=0.2]
-    rankdir=TB
-    bgcolor="transparent"
-    node [shape=box color="#586e75" fontcolor="#b58900" fontsize=16 fontname="Ysabeau,LXGWWenKai"]
-    edge [arrowhead=vee color="#586e75" fontcolor="#dc322f" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowsize=0.6]
-
-    subgraph cluster_0 {
-        color="#586e75"
-        fontcolor="#dc322f"
-        fontname="Ysabeau,LXGWWenKai"
-        style="invis"
-
-        训练集D
-
-        node [shape=record fontcolor="#b58900"];
-
-        struct0 [label="D1|D2|D3|D4|D5"];
-
-        训练集D -> struct0;
-    }
-
-    subgraph cluster_1 {
-        style="invis"
-
-        node [shape=record fontcolor="#b58900"];
-        struct1 [label="D1|D2|D3|D4"];
-        struct2 [label="D1|D2|D3|D5"];
-        struct3 [label="D1|D2|D4|D5"];
-        struct4 [label="D1|D3|D4|D5"];
-        struct5 [label="D2|D3|D4|D5"];
-
-        struct1 -> struct2 [style=invis];
-        struct2 -> struct3 [style=invis];
-        struct3 -> struct4 [style=invis];
-        struct4 -> struct5 [style=invis];
-    }
-
-    subgraph cluster_2 {
-        style="invis"
-
-        node [shape=record fontcolor="#b58900"];
-        D5 -> D4 -> D3 -> D2 -> D1 [style=invis];
-
-        struct1 -> struct2 [style=invis];
-        struct2 -> struct3 [style=invis];
-        struct3 -> struct4 [style=invis];
-        struct4 -> struct5 [style=invis];
-    }
-
-
-
-
-
-}
-```
+1. 生成结点$\node$
+2. {==if==} $D$中样本全属于同一类别$C$ {==then==}
+3. &emsp;&emsp;将$\node$标为$C$类叶结点 {==return==}
+5. {==if==} $A = \emptyset$ {==or==} $D$中样本在$A$上取值相同 {==then==}
+6. &emsp;&emsp;将$\node$标为叶结点，其类别标记为$D$中样本最多的类 {==return==}
+8. 从$A$中选择最优划分属性$a_\star$
+9. {==for==} $a_\star$的每一个取值$a_\star^v$ {==do==}
+10. &emsp;&emsp;为$\node$生成一个分支，令$D_v$表示$D$在$a_\star$上取值为$a_\star^v$的样本子集
+11. {==if==} $D_v = \emptyset$ {==then==}
+12. &emsp;&emsp;将分支结点标为叶结点，其类别标记为$D$中样本最多的类 {==return==}
+12. {==else==}
+12. &emsp;&emsp;以$\TG(D_v, A \setminus \{ a_\star \})$为分支结点

@@ -194,6 +194,7 @@ module.exports = {
       up: "{\\mathbf {up}}",
       cen: "{\\mathrm {cen}}",
       con: "{\\mathrm {con}}",
+      TG: "{\\mathrm {TreeGenerate}}",
       TP: "{\\mathrm {TP}}",
       FP: "{\\mathrm {FP}}",
       TN: "{\\mathrm {TN}}",
