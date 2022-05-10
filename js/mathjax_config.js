@@ -199,6 +199,8 @@ module.exports = {
       FP: "{\\mathrm {FP}}",
       TN: "{\\mathrm {TN}}",
       FN: "{\\mathrm {FN}}",
+      SSE: "{\\mathrm {SSE}}",
+      SSB: "{\\mathrm {SSB}}",
       argmin: "{\\mathop{\\mathrm{argmin}}}",
       argmax: "{\\mathop{\\mathrm{argmax}}}",
     },
