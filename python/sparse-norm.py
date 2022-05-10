@@ -10,15 +10,16 @@ def lsobj(X, y, w):
 
 
 X = np.array([
-    [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0.697, 0.460],
-    [2, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0.774, 0.376],
-    [3, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0.666, 0.091],
-    [4, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0.245, 0.057], ])
+    [1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 1., 0., 1.],
+    [6., 0., 0., 1., 1., 0., 0., 1., 0., 1., 0., 1., 0.],
+    [10., 0., 1., 0., 0., 1., 0., 1., 1., 0., 0., 1., 0.],
+    [13., 0., 0., 1., 1., 0., 1., 0., 0., 0., 1., 0., 1.],
+])
 y = np.array([1, 1, 0, 0])
 y = y - y.mean()
 X = PCA(n_components=2).fit_transform(X)
 
-low_x, high_x, low_y, high_y = -0.45, 0.15, -0.4, 0.2
+low_x, high_x, low_y, high_y = -0.1, 0.15, -0.15, 0.1
 xx, yy = np.meshgrid(np.linspace(low_x, high_x, 500), np.linspace(low_y, high_y, 500))
 
 zz_l1 = np.array([np.abs(xi) + np.abs(yi) for xi, yi in zip(np.ravel(xx), np.ravel(yy))])  # L1 function
@@ -29,9 +30,9 @@ Z_l1, Z_l2, Z_ls = zz_l1.reshape(xx.shape), zz_l2.reshape(xx.shape), zz_ls.resha
 
 fig = plt.figure(figsize=(16, 7))
 
-levels_ls = [1.2**x for x in [-10, -8, -6]]
-levels_l1 = [1.9**x for x in [-5, -4, -3]]
-levels_l2 = [2.2**x for x in [-7, -6, -5]]
+levels_ls = [1.2**x for x in [-8.5, -8, -7.5]]
+levels_l1 = [1.92**x for x in [-6, -5, -4]]
+levels_l2 = [2.38**x for x in [-8, -7, -6]]
 
 with plt.style.context('Solarize_Light2'):
 

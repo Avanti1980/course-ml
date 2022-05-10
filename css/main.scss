@@ -54,6 +54,15 @@
   box-shadow: none;
 }
 
+.reveal .invis {
+  p,
+  ul > li,
+  .MathJax_Display,
+  .MathJax {
+    color: var(--solarized-base1) !important;
+  }
+}
+
 .reveal .center {
   margin-left: auto;
   margin-right: auto;
