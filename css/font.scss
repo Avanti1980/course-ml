@@ -160,6 +160,9 @@ $number-array: 100, 200, 400, 500, 700, 900;
     td {
       font-size: 0.1rem * $i;
     }
+    .MathJax_Display {
+      font-size: 0.1rem * $i !important;
+    }
     font-size: 0.1rem * $i;
   }
 }
