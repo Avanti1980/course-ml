@@ -1,3 +1,127 @@
+// EBGaramond  400      500     600       700   800
+$weight-array: Regular, Medium, SemiBold, Bold, ExtraBold;
+@for $i from 1 through length($weight-array) {
+  $weight: nth($weight-array, $i);
+  @font-face {
+    font-family: EBGaramond;
+    src: url("../fonts/EBGaramond/EBGaramond-#{$weight}.ttf");
+    font-weight: 100 * ($i + 3);
+  }
+  @font-face {
+    font-family: EBGaramond;
+    src: url("../fonts/EBGaramond/EBGaramond-#{$weight}Italic.ttf");
+    font-style: italic;
+    font-weight: 100 * ($i + 3);
+  }
+}
+
+// Ysabeau YsabeauInfant 100 -> 900
+$weight-array: Hairline, Thin, ExtraLight, Light, SemiLight, Regular, Medium,
+  SemiBold, Bold;
+@each $font in "Ysabeau", "YsabeauInfant" {
+  @for $i from 1 through length($weight-array) {
+    $weight: nth($weight-array, $i);
+    @font-face {
+      font-family: #{$font};
+      src: url("../fonts/#{$font}/#{$font}-#{$weight}.otf");
+      font-weight: 100 * $i;
+    }
+    @font-face {
+      font-family: #{$font};
+      src: url("../fonts/#{$font}/#{$font}-#{$weight}Italic.otf");
+      font-style: italic;
+      font-weight: 100 * $i;
+    }
+  }
+}
+
+// Operator
+$weight-array: XLight, Light, Book, Medium, Bold;
+$number-array: 100, 200, 400, 700, 900;
+@for $i from 1 through length($weight-array) {
+  $weight: nth($weight-array, $i);
+  $number: nth($number-array, $i);
+  @font-face {
+    font-family: Operator;
+    src: url("../fonts/Operator/OperatorMono-#{$weight}.otf");
+    font-weight: #{$number};
+  }
+  @font-face {
+    font-family: Operator;
+    src: url("../fonts/Operator/OperatorMono-#{$weight}Italic.otf");
+    font-style: italic;
+    font-weight: #{$number};
+  }
+}
+
+// 霞骛文楷     100    400      700
+$weight-array: Light, Regular, Bold;
+@for $i from 1 through length($weight-array) {
+  $weight: nth($weight-array, $i);
+  @font-face {
+    font-family: LXGWWenKai;
+    src: url("../fonts/lxgw-wenkai-lite-v1.234.5/LXGWWenKaiLite-#{$weight}.ttf");
+    font-weight: 100 * (3 * $i - 2);
+  }
+}
+
+// 思源黑体
+$weight-array: Thin, Light, Regular, Medium, Bold, "Black";
+$number-array: 100, 200, 400, 500, 700, 900;
+@for $i from 1 through length($weight-array) {
+  $weight: nth($weight-array, $i);
+  $number: nth($number-array, $i);
+  @font-face {
+    font-family: NotoSansSC;
+    src: url("../fonts/NotoSansSC/NotoSansSC-#{$weight}.otf");
+    font-weight: #{$number};
+  }
+}
+
+@each $direction in "left", "right", "top", "bottom" {
+  @for $i from -50 to 50 {
+    .#{$direction}#{$i} {
+      margin-#{$direction}: 0.5rem * $i;
+    }
+  }
+  .#{$direction}a {
+    margin-#{$direction}: auto;
+  }
+}
+
+:root {
+  --solarized-base03: #002b36; /* (  0,  43,  54) */
+  --solarized-base02: #073642; /* (  7,  54,  66) */
+  --solarized-base01: #586e75; /* ( 88, 110, 117) */
+  --solarized-base00: #657b83; /* (101, 123, 131) */
+  --solarized-base0: #839496; /* (131, 148, 150) */
+  --solarized-base1: #93a1a1; /* (147, 161, 161) */
+  --solarized-base2: #eee8d5; /* (238, 232, 213) */
+  --solarized-base3: #fdf6e3; /* (253, 246, 227) */
+  --solarized-yellow: #b58900; /* (181, 137,   0) */
+  --solarized-orange: #cb4b16; /* (203,  75,  22) */
+  --solarized-red: #dc322f; /* (220,  50,  47) */
+  --solarized-magenta: #d33682; /* (211,  54, 130) */
+  --solarized-violet: #6c71c4; /* (108, 113, 196) */
+  --solarized-blue: #268bd2; /* ( 38, 139, 210) */
+  --solarized-cyan: #2aa198; /* ( 42, 161, 152) */
+  --solarized-green: #859900; /* (133, 153,   0) */
+}
+
+@each $color in "base03", "base02", "base01", "base00", "base0", "base1",
+  "base2", "base3", "yellow", "orange", "red", "magenta", "violet", "blue",
+  "cyan", "green"
+{
+  .#{$color} {
+    color: var(--solarized-#{$color});
+  }
+}
+
+mark {
+  background-color: transparent;
+  color: var(--solarized-blue);
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -1,8 +1,4 @@
 @import "css/theme/solarized.css"
-@import "css/font.css"
-@import "css/color.css"
-@import "css/margin.css"
-@import "css/table.css"
 @import "css/index.css"
 
 ## 机器学习 课堂二 2022 春
@@ -18,13 +14,14 @@
 
 #### 考核
 
-1 ~ 2 次大作业 (细节待定)
+- 实验：头歌平台编程
+- 期末：1 次大作业
 
 #### 课件
 
 在线浏览，Space 翻页，Esc 导航，可能需{==科学上网==}才能打开
 
-<div class="threelines outline tr-hover head-highlight">
+<div class="threelines outline head-highlight">
 
 |        |             讲义              | 内容                                                |
 | :----: | :---------------------------: | :-------------------------------------------------- |
@@ -62,6 +59,8 @@
 - [二分类示例](python/binary-classif.ipynb)、[多分类示例](python/multi-classif.ipynb)、[回归](python/regression.py)
 - [k-均值聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)
 - [模型评估](python/model-evaluation.ipynb)、[过拟合](python/overfitting.ipynb)、[偏差方差分解](python/bias-var-dec.ipynb)
+
+<div class="top-2"></div>
 
 第三讲：
 
