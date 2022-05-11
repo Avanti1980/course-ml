@@ -1682,8 +1682,10 @@ $$
 </section><section vertical="true" data-notes lineno="1033" class="slide " data-line="1033" data-h="12" data-v="1">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E9%9A%8F%E6%9C%BA%E6%8A%95%E5%BD%B1-1">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x968F;&#x673A;&#x6295;&#x5F71;</h5>
 
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers"><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
+<hr>
+<pre data-role="codeBlock" data-info="python {.line-numbers .top-1 .left4 highlight=[13,16,23]}" class="language-python line-numbers top-1 left4" data-line="13,16,23"><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
 <span class="token keyword keyword-from">from</span> scipy<span class="token punctuation">.</span>spatial <span class="token keyword keyword-import">import</span> distance
+<span class="token keyword keyword-from">from</span> sklearn <span class="token keyword keyword-import">import</span> random_projection
 
 X <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span>
 D1 <span class="token operator">=</span> distance<span class="token punctuation">.</span>cdist<span class="token punctuation">(</span>X<span class="token punctuation">,</span> X<span class="token punctuation">,</span> <span class="token string">&apos;euclidean&apos;</span><span class="token punctuation">)</span> <span class="token comment"># &#x539F;&#x6837;&#x672C;&#x7684;&#x6210;&#x5BF9;&#x8DDD;&#x79BB;&#x77E9;&#x9635;</span>
@@ -1696,15 +1698,67 @@ XX<span class="token punctuation">.</span>shape
 <span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">3947</span><span class="token punctuation">)</span>
 
 np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>D1 <span class="token operator">-</span> D2<span class="token punctuation">,</span> <span class="token builtin">ord</span><span class="token operator">=</span><span class="token string">&apos;fro&apos;</span><span class="token punctuation">)</span> <span class="token comment"># &#x4E24;&#x4E2A;&#x6210;&#x5BF9;&#x8DDD;&#x79BB;&#x77E9;&#x9635;&#x5DEE;&#x7684;F&#x8303;&#x6570;</span>
-<span class="token number">46.74573519884732</span>
+<span class="token number">45.50424703911251</span>
 
 transformer <span class="token operator">=</span> random_projection<span class="token punctuation">.</span>GaussianRandomProjection<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># &#x7A00;&#x758F;&#x968F;&#x673A;&#x77E9;&#x9635;</span>
 XX <span class="token operator">=</span> transformer<span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
 D2 <span class="token operator">=</span> distance<span class="token punctuation">.</span>cdist<span class="token punctuation">(</span>XX<span class="token punctuation">,</span> XX<span class="token punctuation">,</span> <span class="token string">&apos;euclidean&apos;</span><span class="token punctuation">)</span> <span class="token comment"># &#x6295;&#x5F71;&#x540E;&#x6837;&#x672C;&#x7684;&#x6210;&#x5BF9;&#x8DDD;&#x79BB;&#x77E9;&#x9635;</span>
 
 np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>D1 <span class="token operator">-</span> D2<span class="token punctuation">,</span> <span class="token builtin">ord</span><span class="token operator">=</span><span class="token string">&apos;fro&apos;</span><span class="token punctuation">)</span> <span class="token comment"># &#x4E24;&#x4E2A;&#x6210;&#x5BF9;&#x8DDD;&#x79BB;&#x77E9;&#x9635;&#x5DEE;&#x7684;F&#x8303;&#x6570;</span>
-<span class="token number">43.819210159457796</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></section></section><section><section data-notes lineno="1062" class="slide " data-line="1062" data-h="13" data-v="0">
+<span class="token number">45.20040904607192</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span><div class="line-highlight-wrapper">
+
+
+
+
+
+
+
+
+
+
+
+<div aria-hidden="true" class="line-highlight" data-range="13" data-start="13">
+</div></div><div class="line-highlight-wrapper">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div aria-hidden="true" class="line-highlight" data-range="16" data-start="16">
+</div></div><div class="line-highlight-wrapper">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div aria-hidden="true" class="line-highlight" data-range="23" data-start="23">
+</div></div></pre></section></section><section><section data-notes lineno="1065" class="slide " data-line="1065" data-h="13" data-v="0">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-1">&#x7279;&#x5F81;&#x53D8;&#x6362;</h5>
 
 <hr>
@@ -1724,7 +1778,7 @@ np<span class="token punctuation">.</span>linalg<span class="token punctuation">
 <li>&#x5229;&#x7528;&#x6838;&#x51FD;&#x6570;<span class="mathjax-exps">$\kappa(\xv, \zv) = \phi(\xv)^\top \phi(\zv)$</span>&#x9690;&#x5F0F;&#x6784;&#x9020;&#xFF0C;&#x4EE3;&#x8868;&#x6027;&#x65B9;&#x6CD5;&#x4E3A;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</li>
 <li>&#x5229;&#x7528;&#x975E;&#x7EBF;&#x6027;&#x51FD;&#x6570;&#x590D;&#x5408;<span class="mathjax-exps">$f_n ( f_{n-1} ( \cdots f_2 (f_1 (\xv))))$</span>&#xFF0C;&#x4EE3;&#x8868;&#x6027;&#x65B9;&#x6CD5;&#x4E3A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</li>
 </ul>
-</section><section vertical="true" data-notes lineno="1087" class="slide " data-line="1087" data-h="13" data-v="1">
+</section><section vertical="true" data-notes lineno="1090" class="slide " data-line="1090" data-h="13" data-v="1">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E6%9E%84%E9%80%A0%E6%96%B0%E7%89%B9%E5%BE%81">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x6784;&#x9020;&#x65B0;&#x7279;&#x5F81;</h5>
 
 <hr>
@@ -1733,7 +1787,7 @@ np<span class="token punctuation">.</span>linalg<span class="token punctuation">
 
 $$
 \begin{align*}
-    \xv = [x_1; x_2] \xrightarrow{\phi: ~ \Rbb^2 \mapsto \Rbb^6} \xvt = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]
+    \qquad \qquad \qquad [x_1; x_2] \xrightarrow{\phi: ~ \Rbb^2 \mapsto \Rbb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]
 \end{align*}
 $$
 </p>
@@ -1753,7 +1807,7 @@ $$
 $$
 </p>
 
-</section></section><section data-notes lineno="1122" class="slide " data-line="1122" data-h="14" data-v="0">
+</section></section><section data-notes lineno="1125" class="slide " data-line="1125" data-h="14" data-v="0">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E6%A0%B8%E6%8A%80%E5%B7%A7">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x6838;&#x6280;&#x5DE7;</h5>
 
 <hr>
@@ -1767,7 +1821,7 @@ $$
 
 $$
 \begin{align*}
-    \phi(\xv)^\top \phi(\zv) &amp; = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
+    \qquad \phi(\xv)^\top \phi(\zv) &amp; = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
     &amp; = (x_1 z_1 + x_2 z_2 + 1)^2 \\
     &amp; = (\xv^\top \zv + 1)^2 \\
     &amp; = \kappa (\xv, \zv)
@@ -1776,12 +1830,12 @@ $$
 </p>
 
 <div class="top-2"></div>
-<p>&#x6362;&#x8A00;&#x4E4B;&#x6784;&#x9020;&#x65B0;&#x7279;&#x5F81;&#x6709;&#x4E24;&#x5957;&#x65B9;&#x6848;&#xFF1A;</p>
+<p>&#x6784;&#x9020;&#x65B0;&#x7279;&#x5F81;&#x6709;&#x4E24;&#x5957;&#x65B9;&#x6848;&#xFF1A;</p>
 <ul>
 <li>&#x663E;&#x5F0F;&#x6784;&#x9020;&#x6838;&#x6620;&#x5C04;<span class="mathjax-exps">$\phi([x_1;x_2]) = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$</span></li>
-<li>&#x901A;&#x8FC7;&#x5728;&#x539F;&#x7A7A;&#x95F4;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;<mark>&#x6838;&#x51FD;&#x6570;</mark><span class="mathjax-exps">$\kappa (\xv, \zv) = (\xv^\top \zv + 1)^2$</span>&#x9690;&#x5F0F;&#x6784;&#x9020;</li>
+<li><mark>&#x6838;&#x6280;&#x5DE7;</mark>&#xFF1A;&#x901A;&#x8FC7;&#x5728;&#x539F;&#x7A7A;&#x95F4;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;<mark>&#x6838;&#x51FD;&#x6570;</mark><span class="mathjax-exps">$\kappa (\xv, \zv) = (\xv^\top \zv + 1)^2$</span>&#x9690;&#x5F0F;&#x6784;&#x9020;</li>
 </ul>
-</section><section><section data-notes lineno="1155" class="slide " data-line="1155" data-h="15" data-v="0">
+</section><section><section data-notes lineno="1158" class="slide " data-line="1158" data-h="15" data-v="0">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E6%A0%B8%E5%87%BD%E6%95%B0">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x6838;&#x51FD;&#x6570;</h5>
 
 <hr>
@@ -1795,7 +1849,7 @@ $$
 <p>&#x5C06; PCA &#x4E2D;&#x7684;&#x6837;&#x672C;<span class="mathjax-exps">$\xv$</span>&#x7528;<span class="mathjax-exps">$\phi(\xv)$</span>&#x66FF;&#x4EE3;&#x5373;&#x6838; PCA&#xFF0C;&#x5148;&#x5347;&#x7EF4;&#x518D;&#x964D;&#x7EF4;</p>
 <p><span class="mathjax-exps">$\qquad \max \limits_{\|\wv\|_2^2 = 1} \wv^\top \Xv^\top \Xv \wv \overset{\phi}{\longrightarrow} \max \limits_{\|\wv\|_2^2 = 1} \wv^\top \phi(\Xv)^\top \phi(\Xv) \wv$</span></p>
 <p>&#x5176;&#x4E2D;<span class="mathjax-exps">$\Xv = \begin{bmatrix} \xv_1^\top \\ \vdots \\ \xv_m^\top \end{bmatrix}$</span>&#x3001;<span class="mathjax-exps">$\phi(\Xv) = \begin{bmatrix} \phi(\xv_1)^\top \\ \vdots \\ \phi(\xv_m)^\top \end{bmatrix}$</span>&#xFF0C;&#x6CE8;&#x610F;<span class="mathjax-exps">$\wv$</span>&#x7684;&#x7EF4;&#x5EA6;&#x4E0D;&#x4E00;&#x6837;</p>
-</section><section vertical="true" data-notes lineno="1174" class="slide " data-line="1174" data-h="15" data-v="1">
+</section><section vertical="true" data-notes lineno="1177" class="slide " data-line="1177" data-h="15" data-v="1">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E6%A0%B8-span-stylefont-weight900pcaspan">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x6838; <span style="font-weight:900">PCA</span></h5>
 
 <hr>
@@ -1824,12 +1878,13 @@ $$
 </p>
 
 <div class="top-2"></div>
-<p>&#x6838; PCA &#x53EF;&#x91CD;&#x5199;&#x4E3A; <span class="mathjax-exps">$\max_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$</span></p>
-</section><section vertical="true" data-notes lineno="1214" class="slide " data-line="1214" data-h="15" data-v="2">
+<p>&#x6838; PCA &#x53EF;&#x91CD;&#x5199;&#x4E3A; <span class="mathjax-exps">$\max \limits_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$</span></p>
+</section><section vertical="true" data-notes lineno="1217" class="slide " data-line="1217" data-h="15" data-v="2">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E6%A0%B8-span-stylefont-weight900pcaspan-1">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x6838; <span style="font-weight:900">PCA</span></h5>
 
 <hr>
-<p>&#x6838; PCA&#xFF1A;<span class="mathjax-exps">$\max_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$</span></p>
+<p>&#x6838; PCA&#xFF1A;<span class="mathjax-exps">$\max \limits_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$</span></p>
+<div class="top-2"></div>
 <p>&#x8BBE;&#x6700;&#x4F18;&#x89E3;&#x4E3A;<span class="mathjax-exps">$(\alphav_\star, ~ \vv_\star)$</span>&#xFF0C;&#x4E0B;&#x9762;&#x8BF4;&#x660E;<span class="mathjax-exps">$\vv_\star = \zerov$</span></p>
 <ul>
 <li>&#x82E5;<span class="mathjax-exps">$\vv_\star^\top \vv_\star = c &gt; 0$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\alphav_\star^\top \Kv \alphav_\star = 1 - c &lt; 1$</span></li>
@@ -1850,7 +1905,7 @@ $$
 
 <div class="top-4"></div>
 <p>&#x901A;&#x8FC7;&#x6838; PCA &#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5168;&#x7A0B;&#x6211;&#x4EEC;&#x90FD;&#x7528;&#x4E0D;&#x5230;<span class="mathjax-exps">$\phi(\cdot)$</span>&#xFF0C;&#x53EA;&#x9700;&#x8981;<span class="mathjax-exps">$\kappa(\cdot, \cdot)$</span></p>
-</section></section><section data-notes lineno="1248" class="slide " data-line="1248" data-h="16" data-v="0">
+</section></section><section data-notes lineno="1253" class="slide " data-line="1253" data-h="16" data-v="0">
 <h5 class="mume-header" id="%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2-%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%A4%8D%E5%90%88">&#x7279;&#x5F81;&#x53D8;&#x6362; &#x975E;&#x7EBF;&#x6027;&#x590D;&#x5408;</h5>
 
 <hr>
@@ -1886,7 +1941,7 @@ $$
     
     
       <script>
-        Reveal.initialize({"margin":0,"center":false,"transition":"convex","enableSpeakerNotes":true,"slideNumber":"c/t","navigationMode":"linear","dependencies":[{"src":"../plugin/notes/notes.js","async":true}],chalkboard:{boardmarkerWidth:3,chalkWidth:7,chalkEffect:1.0,storage:null,src:null,readOnly:undefined,transition:800,theme:"chalkboard",background:['rgba(127,127,127,.1)',path+'img/blackboard.png'],grid:{color:'rgb(50,50,10,0.5)',distance:80,width:2},eraser:{src:path+'img/sponge.png',radius:20},boardmarkers:[{color:'rgba(100,100,100,1)',cursor:'url('+path+'img/boardmarker-black.png),auto'},{color:'rgba(30,144,255,1)',cursor:'url('+path+'img/boardmarker-blue.png),auto'},{color:'rgba(220,20,60,1)',cursor:'url('+path+'img/boardmarker-red.png),auto'},{color:'rgba(50,205,50,1)',cursor:'url('+path+'img/boardmarker-green.png),auto'},{color:'rgba(255,140,0,1)',cursor:'url('+path+'img/boardmarker-orange.png),auto'},{color:'rgba(150,0,20150,1)',cursor:'url('+path+'img/boardmarker-purple.png),auto'},{color:'rgba(255,220,0,1)',cursor:'url('+path+'img/boardmarker-yellow.png),auto'}],chalks:[{color:'rgba(255,255,255,0.5)',cursor:'url('+path+'img/chalk-white.png),auto'},{color:'rgba(96,154,244,0.5)',cursor:'url('+path+'img/chalk-blue.png),auto'},{color:'rgba(237,20,28,0.5)',cursor:'url('+path+'img/chalk-red.png),auto'},{color:'rgba(20,237,28,0.5)',cursor:'url('+path+'img/chalk-green.png),auto'},{color:'rgba(220,133,41,0.5)',cursor:'url('+path+'img/chalk-orange.png),auto'},{color:'rgba(220,0,220,0.5)',cursor:'url('+path+'img/chalk-purple.png),auto'},{color:'rgba(255,220,0,0.5)',cursor:'url('+path+'img/chalk-yellow.png),auto'}]},customcontrols:{controls:[{icon:'<iclass="fafa-pen-square"></i>',title:'Togglechalkboard(B)',action:'RevealChalkboard.toggleChalkboard();'},{icon:'<iclass="fafa-pen"></i>',title:'Togglenotescanvas(C)',action:'RevealChalkboard.toggleNotesCanvas();'}]},menu:{side:'left',width:'normal',numbers:'h.v',titleSelector:'h1,h2,h3,h4,h5,h6',useTextContentForMissingTitles:false,hideMissingTitles:false,markers:true,custom:[{title:'关于',icon:'<i class="fa fa-info">',content:'<p>本课件由 <b>张腾</b> 制作</p><br><p>欢迎发送问题至 <i><a href="mailto:tengzhang@hust.edu.cn">tengzhang@hust.edu.cn</a></i></p>'}],themes:true,themesPath:'../css/theme/',transitions:true,openButton:true,openSlideNumber:false,keyboard:true,sticky:false,autoOpen:true,delayInit:false,openOnInit:false,loadIcons:true},plugins:[RevealZoom,RevealChalkboard,RevealCustomControls,RevealMenu]})
+        Reveal.initialize({"margin":0,"center":false,"transition":"convex","enableSpeakerNotes":true,"slideNumber":"c/t","navigationMode":"linear","dependencies":[{"src":"../plugin/notes/notes.js","async":true}],chalkboard:{boardmarkerWidth:3,chalkWidth:7,chalkEffect:1.0,storage:null,src:null,readOnly:undefined,transition:800,theme:"chalkboard",background:['rgba(127,127,127,.1)',path+'img/blackboard.png'],grid:{color:'rgb(50,50,10,0.5)',distance:80,width:2},eraser:{src:path+'img/sponge.png',radius:20},boardmarkers:[{color:'rgba(100,100,100,1)',cursor:'url('+path+'img/boardmarker-black.png),auto'},{color:'rgba(30,144,255,1)',cursor:'url('+path+'img/boardmarker-blue.png),auto'},{color:'rgba(220,20,60,1)',cursor:'url('+path+'img/boardmarker-red.png),auto'},{color:'rgba(50,205,50,1)',cursor:'url('+path+'img/boardmarker-green.png),auto'},{color:'rgba(255,140,0,1)',cursor:'url('+path+'img/boardmarker-orange.png),auto'},{color:'rgba(150,0,20150,1)',cursor:'url('+path+'img/boardmarker-purple.png),auto'},{color:'rgba(255,220,0,1)',cursor:'url('+path+'img/boardmarker-yellow.png),auto'}],chalks:[{color:'rgba(255,255,255,0.5)',cursor:'url('+path+'img/chalk-white.png),auto'},{color:'rgba(96,154,244,0.5)',cursor:'url('+path+'img/chalk-blue.png),auto'},{color:'rgba(237,20,28,0.5)',cursor:'url('+path+'img/chalk-red.png),auto'},{color:'rgba(20,237,28,0.5)',cursor:'url('+path+'img/chalk-green.png),auto'},{color:'rgba(220,133,41,0.5)',cursor:'url('+path+'img/chalk-orange.png),auto'},{color:'rgba(220,0,220,0.5)',cursor:'url('+path+'img/chalk-purple.png),auto'},{color:'rgba(255,220,0,0.5)',cursor:'url('+path+'img/chalk-yellow.png),auto'}]},customcontrols:{controls:[{icon:'<iclass="fafa-pen-square"></i>',title:'Togglechalkboard(B)',action:'RevealChalkboard.toggleChalkboard();'},{icon:'<iclass="fafa-pen"></i>',title:'Togglenotescanvas(C)',action:'RevealChalkboard.toggleNotesCanvas();'}]},menu:{side:'left',width:'normal',numbers:'h.v',titleSelector:'h1,h2,h3,h4,h5,h6',useTextContentForMissingTitles:false,hideMissingTitles:false,markers:true,custom:[{title:'关于',icon:'<i class="fa fa-info">',content:'<p>本课件由 <b>张腾</b> 制作</p><br><p>欢迎发送问题至tengzhang@hust.edu.cn</p>'}],themes:true,themesPath:'../css/theme/',transitions:true,openButton:true,openSlideNumber:false,keyboard:true,sticky:false,autoOpen:true,delayInit:false,openOnInit:false,loadIcons:true},plugins:[RevealZoom,RevealChalkboard,RevealCustomControls,RevealMenu]})
       </script>
       
     
