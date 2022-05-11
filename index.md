@@ -42,6 +42,10 @@
 
 </div>
 
+#### 补充
+
+[矩阵求导](slides/supp-matrix-calculus.html)
+
 #### 资料
 
 [_Foundations of Machine Learning 2ed_](book/Foundations%20of%20Machine%20Learning%202ed%20-%20Mehryar%20Mohri%2C%20Afshin%20Rostamizadeh%2C%20and%20Ameet%20Talwalkar.pdf) <br>Mehryar Mohri, Afshin Rostamizadeh, and Ameet Talwalkar

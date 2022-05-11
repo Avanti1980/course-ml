@@ -16,117 +16,126 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 特征变换
+##### 行列式对矩阵求导
 
 ---
 
-模型学习前的最后一步，亦有将该步与模型学习融合的做法
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，其中$\Av, \Bv$与$\Xv$无关
 
-<div class="invis bottom2">
+$$
+\begin{align*}
+    \left[ \frac{\partial |\Av \Xv \Bv|}{\partial \Xv} \right]_{ij} = \frac{\partial |\Yv|}{\partial x_{ji}} = \sum_{p,q} \frac{\partial |\Yv|}{\partial y_{pq}}\frac{\partial y_{pq}}{\partial x_{ji}} = \tr \left( \frac{\partial |\Yv|}{\partial \Yv} \frac{\partial \Yv}{\partial x_{ji}} \right)
+\end{align*}
+$$
 
-当部分特征冗余甚至有害时，挑选或生成有用的特征子集
+记$y_{ji}$有增量$\epsilon$后的矩阵为$\Yv(y_{ji} + \epsilon)$，根据第$j$行拉普拉斯展开
 
-- 去除低方差特征，特别是那些在所有样本上取值均不变的特征
-- 先计算 F 检验值、卡方检验值、互信息、线性相关性等统计量，然后据此设立阈值选择特征
-- 引入$\ell_1$等稀疏范数作为约束，将选择特征与模型学习合二为一
-- 通过 PCA、随机投影等降维技术浓缩现有特征
+$$
+\begin{align*}
+    |\Yv(y_{ji} + \epsilon)| - |\Yv| = \epsilon ~ C_{ji}
+\end{align*}
+$$
 
-</div>
+<div class="top-4"></div>
 
-当特征稀缺时，利用现有特征构造新的特征
+其中$C_{ji}$是关于$y_{ji}$的<span class="blue">代数余子式</span>，于是
 
-- 凭经验显式构造：$[x_1; x_2] \xrightarrow{\Rbb^2 \mapsto \Rbb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$
-- 利用核函数$\kappa(\xv, \zv) = \phi(\xv)^\top \phi(\zv)$隐式构造，代表性方法为支持向量机
-- 利用非线性函数复合$f_n ( f_{n-1} ( \cdots f_2 (f_1 (\xv))))$，代表性方法为神经网络
+$$
+\begin{align*}
+    \left[ \frac{\partial |\Yv|}{\partial \Yv} \right]_{ij} & = \frac{\partial |\Yv|}{\partial y_{ji}} = \lim_{\epsilon \rightarrow 0} \frac{|\Yv(y_{ji} + \epsilon)| - |\Yv|}{\epsilon} = C_{ji} ~ \Longrightarrow ~ \frac{\partial |\Yv|}{\partial \Yv} = \Yv^*
+\end{align*}
+$$
+
+<div class="top-4"></div>
+
+其中$\Yv^*$是$\Yv$的<span class="blue">伴随矩阵</span> (adjugate matrix)
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 特征变换 构造新特征
+##### 行列式对矩阵求导
 
 ---
 
-凭经验显式构造映射$\phi$，如二次多项式特征：
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，其中$\Av, \Bv$与$\Xv$无关
 
 $$
 \begin{align*}
-    \xv = [x_1; x_2] \xrightarrow{\phi: ~ \Rbb^2 \mapsto \Rbb^6} \xvt = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]
+    \left[ \frac{\partial |\Av \Xv \Bv|}{\partial \Xv} \right]_{ij} = \frac{\partial |\Yv|}{\partial x_{ji}} = \sum_{p,q} \frac{\partial |\Yv|}{\partial y_{pq}}\frac{\partial y_{pq}}{\partial x_{ji}} = \tr \left( \Yv^* \frac{\partial \Yv}{\partial x_{ji}} \right)
 \end{align*}
 $$
 
-@import "../tikz/kernel.svg" {.center .top0 .bottom4 .width80}
+<div class="top-4"></div>
 
-- 圆内是一类样本，圆外是另一类样本，它们无法{==线性可分==}
-- 令$[x_1; x_2] \mapsto [z_1 = x_1^2; z_2 = x_2^2]$，在新的$(z_1,z_2)$空间中就线性可分了
-
-<div class="top3"></div>
+又第二项
 
 $$
 \begin{align*}
-    \qquad \qquad \qquad x_1^2 + x_2^2 \le t ~ \longrightarrow ~ z_1 + z_2 \le t
+    \frac{\partial \Yv}{\partial x_{ji}} = \frac{\partial \Av \Xv \Bv}{\partial x_{ji}} = \Av \frac{\partial \Xv}{\partial x_{ji}} \Bv = \Av \Ev_{ji} \Bv
 \end{align*}
 $$
 
-<!-- slide data-notes="" -->
+<div class="top-4"></div>
 
-##### 特征变换 核技巧
+代入可得
+
+$$
+\begin{align*}
+    \left[ \frac{\partial |\Av \Xv \Bv|}{\partial \Xv} \right]_{ij} & = \tr (\Yv^* \Av \Ev_{ji} \Bv) = [\Bv \Yv^* \Av]_{ij} \\
+    & \Longrightarrow \class{blue}{\frac{\partial |\Av \Xv \Bv|}{\partial \Xv} = \Bv (\Av \Xv \Bv)^* \Av}
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="最后一个例子解决了极大似然里的ln sigma对sigma求导的问题" -->
+
+##### 行列式对矩阵求导
 
 ---
 
-显式构造映射$\phi$过于依赖使用者的姿势水平，若后续模型学习
-
-- 不需要样本$\xv$的新特征的显式表示$\phi(\xv)$
-- 只用到新特征空间的内积$\phi(\xv)^\top \phi(\zv)$
-
-对映射$\phi([x_1;x_2]) = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$和样本$\xv,\zv$有
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，其中$\Av, \Bv$与$\Xv$无关
 
 $$
 \begin{align*}
-    \phi(\xv)^\top \phi(\zv) & = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
-    & = (x_1 z_1 + x_2 z_2 + 1)^2 \\
-    & = (\xv^\top \zv + 1)^2 \\
-    & = \kappa (\xv, \zv)
+    \class{blue}{\frac{\partial |\Av \Xv \Bv|}{\partial \Xv} = \Bv (\Av \Xv \Bv)^* \Av}
 \end{align*}
 $$
 
 <div class="top-2"></div>
 
-换言之构造新特征有两套方案：
-
-- 显式构造核映射$\phi([x_1;x_2]) = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$
-- 通过在原空间直接定义{==核函数==}$\kappa (\xv, \zv) = (\xv^\top \zv + 1)^2$隐式构造
-
-<!-- slide data-notes="" -->
-
-##### 特征变换 核函数
-
----
-
-核函数$\kappa(\cdot, \cdot)$是双变量对称函数，常见的有：
-
-- 线性核$\kappa (\xv, \zv) = \xv^\top \zv$，相当于用了恒等核映射$\phi(\xv) = \xv$
-- 多项式核$\kappa (\xv, \zv) = (\xv^\top \zv + k)^d$，$k = 0$则为齐次多项式核，$d \in \Zbb_+$
-- 高斯核$\kappa (\xv, \zv) = \exp (- \| \xv - \zv \|^2 / 2 \sigma^2)$，$\sigma > 0$为高斯核的带宽 (width)
-- 拉普拉斯核$\kappa (\xv, \zv) = \exp (- \| \xv - \zv \| / \sigma)$，$\sigma > 0$
-
-将 PCA 中的样本$\xv$用$\phi(\xv)$替代即核 PCA，先升维再降维
-
-$\qquad \max \limits_{\|\wv\|_2^2 = 1} \wv^\top \Xv^\top \Xv \wv \overset{\phi}{\longrightarrow} \max \limits_{\|\wv\|_2^2 = 1} \wv^\top \phi(\Xv)^\top \phi(\Xv) \wv$
-
-其中$\Xv = \begin{bmatrix} \xv_1^\top \\ \vdots \\ \xv_m^\top \end{bmatrix}$、$\phi(\Xv) = \begin{bmatrix} \phi(\xv_1)^\top \\ \vdots \\ \phi(\xv_m)^\top \end{bmatrix}$，注意$\wv$的维度不一样
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 特征变换 核 <span style="font-weight:900">PCA</span>
-
----
-
-问题：如何让模型中只出现内积$\phi(\xv_i)^\top \phi(\xv_j)$的形式？
-
-对$\wv$做正交分解$\wv = \sum_{i \in [m]} \alpha_i \phi(\xv_i) + \vv = \phi(\Xv)^\top \alphav + \vv$，其中
+若$\Xv, \Av, \Bv$均为可逆方阵，则$\Yv = \Av \Xv \Bv$亦为可逆方阵，于是
 
 $$
 \begin{align*}
-    \qquad \qquad \vv \perp \span \{ \phi(\xv_1), \ldots, \phi(\xv_m) \} ~ \Longrightarrow ~ \phi(\Xv) \vv = \zerov
+    \frac{\partial |\Av \Xv \Bv|}{\partial \Xv} = \Bv (\Av \Xv \Bv)^* \Av = \Bv |\Av \Xv \Bv| (\Av \Xv \Bv)^{-1} \Av = |\Av \Xv \Bv| \Xv^{-1}
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+进一步若$\Av = \Bv = \Iv$，则$\frac{\partial |\Xv|}{\partial \Xv} = \Xv^* = |\Xv| \Xv^{-1}$，由此可得
+
+$$
+\begin{align*}
+    \frac{\partial |\Xv^n|}{\partial \Xv} = \frac{\partial |\Xv|^n}{\partial \Xv} = n |\Xv|^{n-1} \Xv^* = n |\Xv|^n \Xv^{-1} = n |\Xv^n| \Xv^{-1}
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+若$a$与$\Xv$无关，则$\frac{\partial \ln |a \Xv|}{\partial \Xv} = \frac{\partial \ln a^m |\Xv|}{\partial \Xv} = \frac{\partial \ln |\Xv|}{\partial \Xv} = \frac{\Xv^*}{|\Xv|} = \Xv^{-1}$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 行列式对矩阵求导
+
+---
+
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{m \times m}, \Yv = \Xv^\top \Av \Xv \in \Rbb^{n \times n}$可逆，其中$\Av$与$\Xv$无关，易知
+
+$$
+\begin{align*}
+    \left[ \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Xv} \right]_{ij} & = \tr \left( \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Yv} \frac{\partial \Yv}{\partial x_{ji}} \right) = \tr \left( \Yv^* \frac{\partial \Xv^\top \Av \Xv}{\partial x_{ji}} \right) \\
+    & = \tr \left( \Yv^* \frac{\partial \Xv^\top}{\partial x_{ji}} \Av \Xv \right) + \tr \left( \Yv^* \Xv^\top \Av \frac{\partial \Xv}{\partial x_{ji}} \right) \\
+    & = \tr ( \Yv^* \Ev_{ij} \Av \Xv ) + \tr ( \Yv^* \Xv^\top \Av \Ev_{ji} ) = [\Av \Xv \Yv^*]_{ji} + [\Yv^* \Xv^\top \Av]_{ij}
 \end{align*}
 $$
 
@@ -136,71 +145,43 @@ $$
 
 $$
 \begin{align*}
-    \qquad \|\wv\|_2^2 & = \alphav^\top \phi(\Xv) \phi(\Xv)^\top \alphav + \vv^\top \vv = \alphav^\top \Kv \alphav + \vv^\top \vv \\
-    \qquad \phi(\Xv) \wv & = \phi(\Xv) (\phi(\Xv)^\top \alphav + \vv) = \phi(\Xv) \phi(\Xv)^\top \alphav = \Kv \alpha \\
-    \qquad \Kv & = \phi(\Xv) \phi(\Xv)^\top = \begin{bmatrix} \phi(\xv_1)^\top \phi(\xv_1) & \cdots & \phi(\xv_1)^\top \phi(\xv_m) \\ \vdots & \ddots & \vdots \\ \phi(\xv_m)^\top \phi(\xv_1) & \cdots & \phi(\xv_m)^\top \phi(\xv_m) \end{bmatrix}
+    \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Xv} & = (\Av \Xv \Yv^*)^\top + \Yv^* \Xv^\top \Av \\
+    & = (\Av \Xv |\Xv^\top \Av \Xv| (\Xv^\top \Av \Xv)^{-1})^\top + |\Xv^\top \Av \Xv| (\Xv^\top \Av \Xv)^{-1} \Xv^\top \Av \\
+    & = |\Xv^\top \Av \Xv| (\Xv^\top \Av^\top \Xv)^{-1} \Xv^\top \Av^\top + |\Xv^\top \Av \Xv| (\Xv^\top \Av \Xv)^{-1} \Xv^\top \Av \\
+    & = |\Xv^\top \Av \Xv| ((\Xv^\top \Av^\top \Xv)^{-1} \Xv^\top \Av^\top + (\Xv^\top \Av \Xv)^{-1} \Xv^\top \Av)
 \end{align*}
 $$
-
-<div class="top-2"></div>
-
-核 PCA 可重写为 $\max_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 特征变换 核 <span style="font-weight:900">PCA</span>
+##### 行列式对矩阵求导
 
 ---
 
-核 PCA：$\max_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$
-
-设最优解为$(\alphav_\star, ~ \vv_\star)$，下面说明$\vv_\star = \zerov$
-
-- 若$\vv_\star^\top \vv_\star = c > 0$，则$\alphav_\star^\top \Kv \alphav_\star = 1 - c < 1$
-- $(\alphav_0 = 1 / \sqrt{1-c} ~ \alphav_\star, ~ \vv_0 = \zerov)$也是一组可行解
-- 显然$\alphav_0^\top \Kv \Kv \alphav_0 = \alphav_\star^\top \Kv \Kv \alphav_\star / (1-c) > \alphav_\star^\top \Kv \Kv \alphav_\star$，这与$\alphav_\star$最优矛盾
-
-<div class="top2"></div>
-
-核 PCA 的最终形式为 $\max_\alphav ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav = 1$
-
-通过拉格朗日乘子法求得$\alphav$后，样本$\xv_j$在成分$\wv$上的投影为
+如果$\Av$对称，则
 
 $$
 \begin{align*}
-    \qquad \wv^\top \phi(\xv_j) = \sum_{i \in [m]} \alpha_i \phi(\xv_i)^\top \phi(\xv_j) = \sum_{i \in [m]} \alpha_i \kappa (\xv_i, \xv_j)
+    \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Xv} = 2 |\Xv^\top \Av \Xv| (\Xv^\top \Av \Xv)^{-1} \Xv^\top \Av
+\end{align*}
+$$
+
+若$\Xv$、$\Av$是方阵，则其均可逆，于是
+
+$$
+\begin{align*}
+    \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Xv} = 2 |\Xv^\top| |\Av| |\Xv| \Xv^{-1} \Av^{-1} \Xv^{-\top} \Xv^\top \Av = 2 |\Xv|^2 |\Av| \Xv^{-1}
+\end{align*}
+$$
+
+若$\Av = \Iv$，则
+
+$$
+\begin{align*}
+    \frac{\partial |\Xv^\top \Xv|}{\partial \Xv} = 2 |\Xv^\top \Xv| (\Xv^\top \Xv)^{-1} \Xv^\top = 2 |\Xv^\top \Xv| \Xv^\dagger, \quad \frac{\partial \ln |\Xv^\top \Xv|}{\partial \Xv} = 2 \Xv^\dagger
 \end{align*}
 $$
 
 <div class="top-4"></div>
 
-通过核 PCA 可以看出，全程我们都用不到$\phi(\cdot)$，只需要$\kappa(\cdot, \cdot)$
-
-<!-- slide data-notes="" -->
-
-##### 特征变换 非线性复合
-
----
-
-设$\sigma_1, \ldots, \sigma_l$是一系列简单的非线性函数，如$[x]_+ = \max \{ x, 0 \}$
-
-一个简单的$l$层神经网络：
-
-$$
-\begin{align*}
-    \hv_1 & = \sigma_1(\Wv_1 \xv + \bv_1) \\
-    \hv_2 & = \sigma_2(\Wv_2 \hv_1 + \bv_2) \\
-    & \vdots \\
-    \hv_{l-1} & = \sigma_{l-1}(\Wv_{l-1} \hv_{l-2} + \bv_{l-1}) \\
-    f(\xv) & = \sigma_l (\Wv_l \hv_{l-1} + \bv_l)
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-前$l-1$层复合可视为特征变换，最后一层为模型学习
-
-对比
-
-- 核方法毕其功于一役，难点在于{==如何设计核函数==}
-- 神经网络一步一个小目标，难点在于{==如何设计一系列非线性函数==}
+其中$\Xv^\dagger$是$\Xv$的<span class="blue">伪逆</span> (pseudoinverse)

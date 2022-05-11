@@ -110,11 +110,13 @@ $$
 
 ##### 矩阵求导的分子布局
 
+---
+
 <span class="blue">标量对向量、矩阵的求导结果与分母转置尺寸相同</span>
 
 $$
 \begin{align*}
-    \frac{\partial u}{\partial \xv} \triangleq \begin{bmatrix} \frac{\partial u}{\partial x_1} & \ldots & \frac{\partial u}{\partial x_l} \end{bmatrix}, \quad \frac{\partial u}{\partial \Xv} \triangleq \begin{bmatrix}
+    \qquad \frac{\partial u}{\partial \xv} \triangleq \begin{bmatrix} \frac{\partial u}{\partial x_1} & \ldots & \frac{\partial u}{\partial x_l} \end{bmatrix}, \quad \frac{\partial u}{\partial \Xv} \triangleq \begin{bmatrix}
         \frac{\partial u}{\partial x_{11}} & \ldots & \frac{\partial u}{\partial x_{m1}} \\
         \vdots                                                      & \ddots & \vdots                             \\
         \frac{\partial u}{\partial x_{1n}} & \ldots & \frac{\partial u}{\partial x_{mn}}
@@ -128,7 +130,7 @@ $$
 
 $$
 \begin{align*}
-    \frac{\partial \uv}{\partial x} \triangleq \begin{bmatrix}
+    \qquad \frac{\partial \uv}{\partial x} \triangleq \begin{bmatrix}
         \frac{\partial u_1}{\partial x} \\ \vdots \\ \frac{\partial u_l}{\partial x}
     \end{bmatrix}, \quad
     \frac{\partial \Uv}{\partial x} \triangleq \begin{bmatrix}
@@ -143,11 +145,13 @@ $$
 
 ##### 矩阵求导的分子布局
 
+---
+
 向量对向量求导的定义为<span class="blue">雅可比矩阵</span> (行看分子、列看分母)
 
 $$
 \begin{align*}
-    \frac{\partial \uv}{\partial \xv} \triangleq \begin{bmatrix}
+    \qquad \frac{\partial \uv}{\partial \xv} \triangleq \begin{bmatrix}
         \frac{\partial u_1}{\partial x_1} & \frac{\partial u_1}{\partial x_2} & \ldots & \frac{\partial u_1}{\partial x_m} \\
         \frac{\partial u_2}{\partial x_1} & \frac{\partial u_2}{\partial x_2} & \ldots & \frac{\partial u_2}{\partial x_m} \\
         \vdots                            & \vdots                            & \ddots & \vdots                            \\
@@ -158,8 +162,6 @@ $$
 \end{align*}
 $$
 
-<div class="bottom2"></div>
-
 - 分子布局的好处是<span class="blue">链式法则跟单变量求导中的顺序一样</span>
 - 分子布局的坏处是计算$\wv$的梯度$\partial F(\wv) / \partial \wv$时要<span class="blue">多做一个转置</span>
 - 分母布局的结果均是分子布局的转置，好处是算梯度时不用做转置，坏处是链式法则的顺序要完全反过来
@@ -169,6 +171,8 @@ $$
 
 ##### 基本结果
 
+---
+
 单变量求导中<span class="blue">常量的导数为零</span>：$\partial a / \partial x = 0$，类似的这里有
 
 $$
@@ -177,7 +181,7 @@ $$
 \end{align*}
 $$
 
-单变量求导中<span class="blue">常数标量乘</span>的求导法则为$\frac{\partial (a u)}{\partial x} = a \frac{\partial u}{\partial x}$，类似的这里有
+<span class="blue">常数标量乘</span>的求导法则为$\frac{\partial (a u)}{\partial x} = a \frac{\partial u}{\partial x}$，类似的这里有
 
 $$
 \begin{align*}
@@ -185,7 +189,7 @@ $$
 \end{align*}
 $$
 
-单变量微积分中<span class="blue">加法</span>的求导法则为$\frac{\partial (u+v)}{\partial x} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial x}$，类似的这里有
+<span class="blue">加法</span>的求导法则为$\frac{\partial (u+v)}{\partial x} = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial x}$，类似的这里有
 
 $$
 \begin{align*}
@@ -198,7 +202,9 @@ $$
 
 ##### 基本结果
 
-单变量求导中<span class="blue">乘法</span>的求导法则为$\frac{\partial (uv)}{\partial x} = \frac{\partial u}{\partial x} v + u \frac{\partial v}{\partial x}$，类似的这里有
+---
+
+<span class="blue">乘法</span>的求导法则为$\frac{\partial (uv)}{\partial x} = \frac{\partial u}{\partial x} v + u \frac{\partial v}{\partial x}$，类似的这里有
 
 $$
 \begin{align*}
@@ -222,6 +228,8 @@ $$
 
 ##### 基本结果
 
+---
+
 单变量求导中有$\partial x / \partial x = 1$，类似的这里有
 
 $$
@@ -235,38 +243,34 @@ $$
 - $\ev_i$是第$i$个元素为$1$其余为$0$的向量
 - $\Ev_{ij}$是$(i,j)$处为$1$其余为$0$的矩阵
 
-<div class="bottom4"></div>
-
-我的批注 对神经网络第$l$层$\zv_l = \Wv_l ~ \av_{l-1} + \bv_l$，易知有
-
-$$
-\begin{align*}
-    \frac{\partial \zv_l}{\partial \bv_l} = \frac{\partial \bv_l}{\partial \bv_l} = \Iv
-\end{align*}
-$$
-
 <!-- slide data-notes="这里可以假设l=1，借此说一下分母布局会导致链式法则顺序反过来" -->
 
 ##### 链式法则
 
+---
+
 单变量求导中的<span class="blue">链式法则</span>为$\frac{\partial g(u)}{\partial x} = \frac{\partial g(u)}{\partial u} \frac{\partial u}{\partial x}$
 
-情形一，只涉及向量：设$\xv \in \Rbb^n$，$\uv = \uv(\xv) \in \Rbb^m$，$\gv: \Rbb^m \mapsto \Rbb^l$，则
+只涉及向量：设$\xv \in \Rbb^n$，$\uv = \uv(\xv) \in \Rbb^m$，$\gv: \Rbb^m \mapsto \Rbb^l$，则
 
 $$
 \begin{align*}
-    \underbrace{\class{blue}{\frac{\partial \gv(\uv)}{\partial \xv}}}_{l \times n} = \underbrace{\class{blue}{\frac{\partial \gv(\uv)}{\partial \uv}}}_{l \times m} \underbrace{\class{blue}{\frac{\partial \uv}{\partial \xv}}}_{m \times n}
+    \qquad \underbrace{\class{blue}{\frac{\partial \gv(\uv)}{\partial \xv}}}_{l \times n} = \underbrace{\class{blue}{\frac{\partial \gv(\uv)}{\partial \uv}}}_{l \times m} \underbrace{\class{blue}{\frac{\partial \uv}{\partial \xv}}}_{m \times n}
 \end{align*}
 $$
+
+<div class="bottom-4"></div>
 
 这是因为
 
 $$
 \begin{align*}
-    \left[ \frac{\partial \gv(\uv)}{\partial \xv} \right]_{ij} & = \frac{\partial [\gv(\uv)]_i}{\partial x_j} = \sum_{k \in [m]} \frac{\partial [\gv(\uv)]_i}{\partial u_k} \frac{\partial u_k}{\partial x_j} = \frac{\partial [\gv(\uv)]_i}{\partial \uv} \frac{\partial \uv}{\partial x_j} \\
+    \qquad \left[ \frac{\partial \gv(\uv)}{\partial \xv} \right]_{ij} & = \frac{\partial [\gv(\uv)]_i}{\partial x_j} = \sum_{k \in [m]} \frac{\partial [\gv(\uv)]_i}{\partial u_k} \frac{\partial u_k}{\partial x_j} = \frac{\partial [\gv(\uv)]_i}{\partial \uv} \frac{\partial \uv}{\partial x_j} \\
     & = \left[ \frac{\partial \gv(\uv)}{\partial \uv} \right]_{i,:} \left[ \frac{\partial \uv}{\partial \xv} \right]_{:,j} = \left[ \frac{\partial \gv(\uv)}{\partial \uv} \frac{\partial \uv}{\partial \xv} \right]_{ij}
 \end{align*}
 $$
+
+<div class="bottom-4"></div>
 
 我的批注 若$n = m = l = 1$，就退化成了单变量的链式法则
 
@@ -274,11 +278,13 @@ $$
 
 ##### 链式法则
 
+---
+
 单变量求导中的<span class="blue">链式法则</span>为$\frac{\partial g(u)}{\partial x} = \frac{\partial g(u)}{\partial u} \frac{\partial u}{\partial x}$
 
 <div class="bottom4"></div>
 
-情形二，自变量是矩阵：设$u = u(\Xv)$，$g: \Rbb \mapsto \Rbb$，则
+自变量是矩阵：设$u = u(\Xv)$，$g: \Rbb \mapsto \Rbb$，则
 
 $$
 \begin{align*}
@@ -288,7 +294,7 @@ $$
 
 <div class="bottom4"></div>
 
-情形三，中间变量是矩阵：设$\Uv = \Uv(x) \in \Rbb^{m \times n}$，$g: \Rbb^{m \times n} \mapsto \Rbb$，则
+中间变量是矩阵：设$\Uv = \Uv(x) \in \Rbb^{m \times n}$，$g: \Rbb^{m \times n} \mapsto \Rbb$，则
 
 $$
 \begin{align*}
@@ -301,7 +307,7 @@ $$
 
 ##### 大纲
 
-<div class="sparse">
+---
 
 <span class="blue">向量对标量求导</span>
 
@@ -313,11 +319,11 @@ $$
 
 标量对矩阵求导
 
-</div>
-
 <!-- slide vertical=true data-notes="" -->
 
 ##### 向量对标量求导
+
+---
 
 矩阵和向量的乘积是向量，若$\Av$与$\xv$无关，易知有
 
@@ -339,6 +345,8 @@ $$
 <!-- slide vertical=true data-notes="向量的外积也是向量" -->
 
 ##### 向量对标量求导
+
+---
 
 向量的外积也是向量
 
@@ -368,7 +376,7 @@ $$
 
 ##### 大纲
 
-<div class="sparse">
+---
 
 向量对标量求导
 
@@ -380,11 +388,11 @@ $$
 
 标量对矩阵求导
 
-</div>
-
 <!-- slide vertical=true data-notes="最常见的标量对向量求导就是二次型对向量求导，极大似然估计概率分布中对均值\mu的求导就属于此" -->
 
 ##### 标量对向量求导
+
+---
 
 二次型是标量，设$\Av$与$\xv$无关，易知有
 
@@ -409,6 +417,8 @@ $$
 
 ##### 标量对向量求导
 
+---
+
 $$
 \begin{align*}
     \frac{\partial \uv^\top \Av \vv}{\partial \xv} & = \uv^\top \Av \frac{\partial \vv}{\partial \xv} + \vv^\top \Av^\top \frac{\partial \uv}{\partial \xv} \\
@@ -432,6 +442,8 @@ $$
 
 ##### 标量对向量求导
 
+---
+
 范数也是标量，若$\av$与$\xv$无关，则
 
 $$
@@ -448,7 +460,7 @@ $$
 
 ##### 大纲
 
-<div class="sparse">
+---
 
 向量对标量求导
 
@@ -460,13 +472,13 @@ $$
 
 标量对矩阵求导
 
-</div>
-
 <!-- slide vertical=true data-notes="注意第一项是标量乘以雅可比矩阵，第二项是列向量乘以行向量" -->
 
 ##### 向量对向量求导
 
-若$\Av$与$\xv$无关，前面已得向量对标量的求导结果$\frac{\partial \Av \uv}{\partial x} = \Av \frac{\partial \uv}{\partial x}$，于是
+---
+
+若$\Av$与$\xv$无关，根据向量对标量的求导结果$\frac{\partial \Av \uv}{\partial x} = \Av \frac{\partial \uv}{\partial x}$，于是
 
 $$
 \begin{align*}
@@ -474,10 +486,6 @@ $$
     & \overset{\uv = \xv}{\Longrightarrow} \frac{\partial \Av \xv}{\partial \xv} = \Av \frac{\partial \xv}{\partial \xv} = \Av
 \end{align*}
 $$
-
-我的批注 对神经网络第$l$层$\zv_l = \Wv_l ~ \av_{l-1} + \bv_l$，易知有$\frac{\partial \zv_l}{\partial \av_{l-1}} = \frac{\partial (\Wv_l ~ \av_{l-1})}{\partial \av_{l-1}} = \Wv_l$
-
-<div class="bottom2"></div>
 
 若$v = v(\xv)$，则
 
@@ -492,6 +500,8 @@ $$
 
 ##### 向量对向量求导
 
+---
+
 若$\av$与$\xv$无关，结合
 
 $$
@@ -499,6 +509,8 @@ $$
     \class{blue}{\frac{\partial \| \xv - \av \|_2}{\partial \xv^\top} = \frac{\xv - \av}{\| \xv - \av \|_2}}
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 可得$\ell_2$范数的二阶导 (海森矩阵)
 
@@ -515,7 +527,7 @@ $$
 
 ##### 大纲
 
-<div class="sparse">
+---
 
 向量对标量求导
 
@@ -527,11 +539,11 @@ $$
 
 标量对矩阵求导
 
-</div>
-
 <!-- slide vertical=true data-notes="" -->
 
 ##### 矩阵对标量求导
+
+---
 
 若$u = u(x)$，$\Vv = \Vv(x)$，则
 
@@ -556,6 +568,10 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 矩阵对标量求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align}
@@ -584,6 +600,8 @@ $$
 
 ##### 矩阵对标量求导
 
+---
+
 令乘积求导法则中的$\Vv = \Uv^{-1}$可得
 
 $$
@@ -603,11 +621,17 @@ $$
 \end{align*}
 $$
 
+<div class="top-4"></div>
+
 我的批注 遍历$\Xv^{-1}$的下标$kl$即可得到$\Xv^{-1}$对$\Xv$每个元素$x_{ij}$的导数
 
 <!-- slide vertical=true data-notes="" -->
 
 ##### 矩阵对标量求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -630,9 +654,9 @@ $$
 
 ##### 矩阵对标量求导
 
-矩阵除了常规的乘积外，还有哈达玛积和克罗内克积
+---
 
-<br>
+矩阵除了常规的乘积外，还有哈达玛积和克罗内克积
 
 设$\Uv, \Vv \in \Rbb^{m \times n}$，则
 
@@ -659,6 +683,10 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 矩阵对标量求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -688,6 +716,8 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 矩阵对标量求导
+
+---
 
 设$g(x) = a_0 + a_1 x + a_2 x^2 + \cdots$，若$\Av$为与$x$无关的方阵，记
 
@@ -720,7 +750,7 @@ $$
 
 ##### 大纲
 
-<div class="sparse">
+---
 
 向量对标量求导
 
@@ -732,17 +762,15 @@ $$
 
 <span class="blue">标量对矩阵求导</span>
 
-</div>
-
 <!-- slide vertical=true data-notes="" -->
 
 ##### 迹对矩阵求导
 
+---
+
 矩阵常见的标量函数有<span class="blue">迹</span>和<span class="blue">行列式</span>，二次型可以归为迹来处理
 
-<br>
-
-若$a$与$\Xv$无关，$\Uv = \Uv(\Xv)$，$\Vv = \Vv(\Xv)$，则以下结论是显然的：
+若$a$与$\Xv$无关，$\Uv = \Uv(\Xv)$，$\Vv = \Vv(\Xv)$，则以下结论显然：
 
 $$
 \begin{align*}
@@ -764,6 +792,10 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 迹对矩阵求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -792,6 +824,10 @@ $$
 
 ##### 迹对矩阵求导
 
+---
+
+<div class="top2"></div>
+
 $$
 \begin{align*}
     \left[ \frac{\partial \tr(\Uv \Vv)}{\partial \Xv} \right]_{ij} = \frac{\partial \tr(\Uv \Vv)}{\partial x_{ji}} = \tr \left( \frac{\partial (\Uv \Vv)}{\partial x_{ji}} \right)
@@ -807,6 +843,8 @@ $$
 \end{align*}
 $$
 
+<div class="top-2"></div>
+
 从而
 
 $$
@@ -819,6 +857,10 @@ $$
 <!-- slide vertical=true data-notes="本页最后一个式子解决了极大似然里的问题" -->
 
 ##### 迹对矩阵求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -834,6 +876,8 @@ $$
 \end{align*}
 $$
 
+<div class="top-4"></div>
+
 可得
 
 $$
@@ -847,6 +891,10 @@ $$
 <!-- slide data-notes="" -->
 
 ##### 迹对矩阵求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -870,13 +918,17 @@ $$
 
 ##### 迹对矩阵求导
 
+---
+
+<div class="top2"></div>
+
 $$
 \begin{align*}
     \left[ \frac{\partial \tr(\Uv \Vv)}{\partial \Xv} \right]_{ij} = \frac{\partial \tr(\Uv \Vv)}{\partial x_{ji}} = \tr \left( \frac{\partial (\Uv \Vv)}{\partial x_{ji}} \right)
 \end{align*}
 $$
 
-取$\Uv = \Av \Xv \Bv$，$\Vv = \Xv^\top \Cv$，其中$\Av$、$\Bv$、$\Cv$与$\Xv$无关，则
+取$\Uv = \Av \Xv \Bv$，$\Vv = \Xv^\top \Cv$，其中$\Av, \Bv, \Cv$与$\Xv$无关，则
 
 $$
 \begin{align*}
@@ -886,33 +938,7 @@ $$
 \end{align*}
 $$
 
-令$\Xv \leftarrow \Xv^\top$，于是只需对结果取转置即有
-
-$$
-\begin{align*}
-    \frac{\partial \tr(\Av \Xv^\top \Bv \Xv \Cv)}{\partial \Xv} = \Cv \Av \Xv^\top \Bv + \Av^\top \Cv^\top \Xv^\top \Bv^\top
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 迹对矩阵求导
-
-$$
-\begin{align*}
-    \left[ \frac{\partial \tr(\Uv \Vv)}{\partial \Xv} \right]_{ij} = \frac{\partial \tr(\Uv \Vv)}{\partial x_{ji}} = \tr \left( \frac{\partial (\Uv \Vv)}{\partial x_{ji}} \right)
-\end{align*}
-$$
-
-取$\Uv = \Av \Xv \Bv$，$\Vv = \Xv^\top \Cv$，其中$\Av$、$\Bv$、$\Cv$与$\Xv$无关，则
-
-$$
-\begin{align*}
-    & \left[ \frac{\partial \tr(\Av \Xv \Bv \Xv^\top \Cv)}{\partial \Xv} \right]_{ij} = \tr \left( \frac{\partial \Av \Xv \Bv}{\partial x_{ji}} \Xv^\top \Cv \right) + \tr \left( \Av \Xv \Bv \frac{\partial \Xv^\top \Cv}{\partial x_{ji}} \right) \\
-    & \qquad = \tr \left( \Av \Ev_{ji} \Bv \Xv^\top \Cv \right) + \tr \left( \Av \Xv \Bv \Ev_{ij} \Cv \right) = [\Bv \Xv^\top \Cv \Av]_{ij} + [\Cv \Av \Xv \Bv]_{ji} \\
-    & \qquad \Longrightarrow \frac{\partial \tr(\Av \Xv \Bv \Xv^\top \Cv)}{\partial \Xv} = \Bv \Xv^\top \Cv \Av + \Bv^\top \Xv^\top \Av^\top \Cv^\top
-\end{align*}
-$$
+<div class="top-2"></div>
 
 令$\Xv \leftarrow \Xv^\top$，于是只需对结果取转置即有
 
@@ -925,6 +951,10 @@ $$
 <!-- slide data-notes="" -->
 
 ##### 迹对矩阵求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -946,6 +976,10 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 迹对矩阵求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -974,6 +1008,10 @@ $$
 
 ##### 迹对矩阵求导
 
+---
+
+<div class="top2"></div>
+
 $$
 \begin{align*}
     \frac{\partial \tr(e^{\Xv})}{\partial \Xv} & = \frac{\partial }{\partial \Xv} \tr \left( \Iv + \Xv + \frac{\Xv^2}{2!} + \frac{\Xv^3}{3!} + \cdots \right) \\
@@ -989,6 +1027,10 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 迹对矩阵求导
+
+---
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -1012,7 +1054,9 @@ $$
 
 ##### 行列式对矩阵求导
 
-设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，$\Av$、$\Bv$与$\Xv$无关
+---
+
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，其中$\Av, \Bv$与$\Xv$无关
 
 $$
 \begin{align*}
@@ -1020,13 +1064,15 @@ $$
 \end{align*}
 $$
 
-记$y_{ji}$有微小增量$\epsilon$后的矩阵为$\Yv(y_{ji} + \epsilon)$，根据第$j$行拉普拉斯展开
+记$y_{ji}$有增量$\epsilon$后的矩阵为$\Yv(y_{ji} + \epsilon)$，根据第$j$行拉普拉斯展开
 
 $$
 \begin{align*}
     |\Yv(y_{ji} + \epsilon)| - |\Yv| = \epsilon ~ C_{ji}
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 其中$C_{ji}$是关于$y_{ji}$的<span class="blue">代数余子式</span>，于是
 
@@ -1036,19 +1082,25 @@ $$
 \end{align*}
 $$
 
+<div class="top-4"></div>
+
 其中$\Yv^*$是$\Yv$的<span class="blue">伴随矩阵</span> (adjugate matrix)
 
 <!-- slide vertical=true data-notes="" -->
 
 ##### 行列式对矩阵求导
 
-设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，$\Av$、$\Bv$与$\Xv$无关
+---
+
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，其中$\Av, \Bv$与$\Xv$无关
 
 $$
 \begin{align*}
     \left[ \frac{\partial |\Av \Xv \Bv|}{\partial \Xv} \right]_{ij} = \frac{\partial |\Yv|}{\partial x_{ji}} = \sum_{p,q} \frac{\partial |\Yv|}{\partial y_{pq}}\frac{\partial y_{pq}}{\partial x_{ji}} = \tr \left( \Yv^* \frac{\partial \Yv}{\partial x_{ji}} \right)
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 又第二项
 
@@ -1057,6 +1109,8 @@ $$
     \frac{\partial \Yv}{\partial x_{ji}} = \frac{\partial \Av \Xv \Bv}{\partial x_{ji}} = \Av \frac{\partial \Xv}{\partial x_{ji}} \Bv = \Av \Ev_{ji} \Bv
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 代入可得
 
@@ -1071,13 +1125,17 @@ $$
 
 ##### 行列式对矩阵求导
 
-设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，$\Av$、$\Bv$与$\Xv$无关
+---
+
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{l \times m}, \Bv \in \Rbb^{n \times l}, \Yv = \Av \Xv \Bv \in \Rbb^{l \times l}$，其中$\Av, \Bv$与$\Xv$无关
 
 $$
 \begin{align*}
     \class{blue}{\frac{\partial |\Av \Xv \Bv|}{\partial \Xv} = \Bv (\Av \Xv \Bv)^* \Av}
 \end{align*}
 $$
+
+<div class="top-2"></div>
 
 若$\Xv, \Av, \Bv$均为可逆方阵，则$\Yv = \Av \Xv \Bv$亦为可逆方阵，于是
 
@@ -1087,6 +1145,8 @@ $$
 \end{align*}
 $$
 
+<div class="top-2"></div>
+
 进一步若$\Av = \Bv = \Iv$，则$\frac{\partial |\Xv|}{\partial \Xv} = \Xv^* = |\Xv| \Xv^{-1}$，由此可得
 
 $$
@@ -1095,21 +1155,27 @@ $$
 \end{align*}
 $$
 
-若$a$与$\Xv$无关，则$\frac{\partial \ln |a \Xv|}{\partial \Xv} = \frac{\partial \ln a^m |\Xv|}{\partial \Xv} = \frac{\partial \ln |\Xv|}{\partial \Xv} = \frac{1}{|\Xv|} \frac{\partial |\Xv|}{\partial \Xv} = \frac{\Xv^*}{|\Xv|} = \Xv^{-1}$
+<div class="top-2"></div>
+
+若$a$与$\Xv$无关，则$\frac{\partial \ln |a \Xv|}{\partial \Xv} = \frac{\partial \ln a^m |\Xv|}{\partial \Xv} = \frac{\partial \ln |\Xv|}{\partial \Xv} = \frac{\Xv^*}{|\Xv|} = \Xv^{-1}$
 
 <!-- slide vertical=true data-notes="" -->
 
 ##### 行列式对矩阵求导
 
-设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{m \times m}, \Yv = \Xv^\top \Av \Xv \in \Rbb^{n \times n}$可逆，$\Av$与$\Xv$无关，易知
+---
+
+设$\Xv \in \Rbb^{m \times n}, \Av \in \Rbb^{m \times m}, \Yv = \Xv^\top \Av \Xv \in \Rbb^{n \times n}$可逆，其中$\Av$与$\Xv$无关，易知
 
 $$
 \begin{align*}
-    & \left[ \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Xv} \right]_{ij} = \tr \left( \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Yv} \frac{\partial \Yv}{\partial x_{ji}} \right) = \tr \left( \Yv^* \frac{\partial \Xv^\top \Av \Xv}{\partial x_{ji}} \right) \\
+    \left[ \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Xv} \right]_{ij} & = \tr \left( \frac{\partial |\Xv^\top \Av \Xv|}{\partial \Yv} \frac{\partial \Yv}{\partial x_{ji}} \right) = \tr \left( \Yv^* \frac{\partial \Xv^\top \Av \Xv}{\partial x_{ji}} \right) \\
     & = \tr \left( \Yv^* \frac{\partial \Xv^\top}{\partial x_{ji}} \Av \Xv \right) + \tr \left( \Yv^* \Xv^\top \Av \frac{\partial \Xv}{\partial x_{ji}} \right) \\
     & = \tr ( \Yv^* \Ev_{ij} \Av \Xv ) + \tr ( \Yv^* \Xv^\top \Av \Ev_{ji} ) = [\Av \Xv \Yv^*]_{ji} + [\Yv^* \Xv^\top \Av]_{ij}
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 于是
 
@@ -1125,6 +1191,8 @@ $$
 <!-- slide vertical=true data-notes="" -->
 
 ##### 行列式对矩阵求导
+
+---
 
 如果$\Av$对称，则
 
@@ -1149,5 +1217,7 @@ $$
     \frac{\partial |\Xv^\top \Xv|}{\partial \Xv} = 2 |\Xv^\top \Xv| (\Xv^\top \Xv)^{-1} \Xv^\top = 2 |\Xv^\top \Xv| \Xv^\dagger, \quad \frac{\partial \ln |\Xv^\top \Xv|}{\partial \Xv} = 2 \Xv^\dagger
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 其中$\Xv^\dagger$是$\Xv$的<span class="blue">伪逆</span> (pseudoinverse)
