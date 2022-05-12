@@ -202,6 +202,7 @@ module.exports = {
       SSE: "{\\mathrm {SSE}}",
       SSB: "{\\mathrm {SSB}}",
       gain: "{\\mathrm {Gain}}",
+      gini: "{\\mathrm {Gini}}",
       argmin: "{\\mathop{\\mathrm{argmin}}}",
       argmax: "{\\mathop{\\mathrm{argmax}}}",
     },

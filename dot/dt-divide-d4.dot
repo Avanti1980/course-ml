@@ -1,17 +1,27 @@
 digraph g {
-    graph [nodesep=0.4, ranksep=0.5]
+    graph [nodesep=0.35, ranksep=0.35]
     bgcolor="transparent"
     node [shape=box color="#586e75" fontcolor="#b58900" fontsize=18 fontname="Ysabeau,LXGWWenKai"]
     edge [color="#586e75" fontcolor="#268bd2" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowhead=none]
 
-    "课业=？" -> "D1" [xlabel="轻松"]
+    "课业=？" -> "疫情=？" [xlabel="轻松"]
     "课业=？" -> "电视=？" [label="正常"]
 
     node [shape=ellipse]
 
     "课业=？" -> "否" [headlabel="繁重" labeldistance=4]
-    "电视=？" -> "是" [headlabel="精彩" labeldistance=4]
+    "电视=？" -> "是" [headlabel="精彩" labeldistance=2]
 
+    y2 [label="是"]
     n2 [label="否"]
+
     "电视=？" -> n2 [label="无聊"]
+    "疫情=？" -> y2 [xlabel="清零"]
+
+    node [shape=box]
+    "疫情=？" -> "D4" [headlabel="平缓" labeldistance=3]
+
+    node [shape=ellipse]
+    n3 [label="否"]
+    "疫情=？" -> n3 [label="严峻"]
 }
