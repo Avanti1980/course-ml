@@ -5,7 +5,7 @@ digraph g {
     edge [color="#586e75" fontcolor="#268bd2" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowhead=none]
 
     "课业=？" -> "疫情=？" [xlabel="轻松"]
-    "课业=？" -> "电视=？" [label="正常"]
+    "课业=？" -> "电视=？" [label="适中"]
 
     node [shape=ellipse]
 
