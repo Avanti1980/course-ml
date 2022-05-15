@@ -18,10 +18,3 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-entropy.js"
 
-<!-- slide data-notes="" -->
-
-##### 连续属性
-
----
-
-给定数据集$D$和属性$a$，假设

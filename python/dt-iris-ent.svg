@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   xml:space="preserve"
+   width="1181.3333"
+   height="832"
+   viewBox="0 0 1181.3333 832"
+   sodipodi:docname="dt-iris-ent.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs6" /><sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.86418269"
+     inkscape:cx="206.55355"
+     inkscape:cy="415.42142"
+     inkscape:window-width="3840"
+     inkscape:window-height="2346"
+     inkscape:window-x="0"
+     inkscape:window-y="54"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g8" /><g
+     id="g8"
+     inkscape:groupmode="layer"
+     inkscape:label="Source.gv"
+     transform="matrix(1.3333333,0,0,1.3333333,0,2.08e-5)"><g
+       id="g1487"><path
+         d="m 525,40 c 0,0 -135,0 -135,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 135,0 135,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path12" /><path
+         d="m 525,40 c 0,0 -135,0 -135,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 135,0 135,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path14" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text18"
+         x="386"
+         y="55.199219"><tspan
+           x="386 393.50626 400.99854 404.74823 412.25452 415.2529 419.00262 422.00104 429.49329 436.99954 444.50583 448.25552 455.7478 459.4975 464.00571 470.75381 482.75214 487.24634"
+           y="55.199219"
+           sodipodi:role="line"
+           id="tspan16">petal length (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text22"
+         x="490.99603"
+         y="55.199219"><tspan
+           x="490.99603"
+           y="55.199219"
+           id="tspan20">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text34"
+         x="502.24747"
+         y="55.199219"><tspan
+           x="502.24747 509.75372 513.50342 520.99573"
+           y="55.199219"
+           sodipodi:role="line"
+           id="tspan24">2.45</tspan><tspan
+           x="410 417.50626 424.99854 428.74823 433.25644 440.74869 448.25494 455.00308 458.75278 466.99872 470.74841 478.2547 482.00439 489.49667 497.00293"
+           y="70.199219"
+           sodipodi:role="line"
+           id="tspan26">entropy = 1.585</tspan><tspan
+           x="412.5 419.24811 426.75436 438.75269 446.24496 449.24338 456.74963 463.49774 467.24747 475.49338 479.2431 486.74936 494.25562"
+           y="85.199226"
+           sodipodi:role="line"
+           id="tspan28">samples = 150</tspan><tspan
+           x="399.5 406.24811 413.75439 416.75278 424.24506 431.75131 435.50104 443.74695 447.49667 451.24637 458.75266 466.2449 469.99463 473.74432 481.25061 488.75687 492.50656 496.25629 503.74857 511.25482"
+           y="100.19923"
+           sodipodi:role="line"
+           id="tspan30">value = [50, 50, 50]</tspan><tspan
+           x="414 420.74811 423.74652 431.25278 438.00089 444.74902 448.49872 456.74466 460.49435 467.2565 474.74875 478.49847 486.00473 492.75284"
+           y="115.19923"
+           sodipodi:role="line"
+           id="tspan32">class = setosa</tspan></text><path
+         d="m 427,166.5 c 0,0 -93,0 -93,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 93,0 93,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#e58139;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path36" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text46"
+         x="340.5"
+         y="181.69922"><tspan
+           x="340.5 348.00626 355.49854 359.24823 363.75644 371.24869 378.75494 385.50308 389.25278 397.49872 401.24841 408.7547 412.50439"
+           y="181.69922"
+           sodipodi:role="line"
+           id="tspan38">entropy = 0.0</tspan><tspan
+           x="339.5 346.24811 353.75439 365.75269 373.24496 376.24338 383.74963 390.49774 394.24747 402.49338 406.2431 413.74936"
+           y="196.69922"
+           sodipodi:role="line"
+           id="tspan40">samples = 50</tspan><tspan
+           x="330 336.74811 344.25436 347.25278 354.74506 362.25131 366.00101 374.24695 377.99664 381.74637 389.25262 396.7449 400.49463 404.24432 411.75061 415.50031 419.25 426.75629"
+           y="211.69922"
+           sodipodi:role="line"
+           id="tspan42">value = [50, 0, 0]</tspan><tspan
+           x="337 343.74811 346.74652 354.25278 361.00089 367.74902 371.49872 379.74466 383.49435 390.25647 397.74875 401.49847 409.00473 415.75284"
+           y="226.69922"
+           sodipodi:role="line"
+           id="tspan44">class = setosa</tspan></text><path
+         d="m 430.785,123.094 c -7.406,11.254 -15.457,23.488 -22.902,34.801"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path48" /><path
+         d="m 410.75,159.902 -8.422,6.43 2.574,-10.277 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path50" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text54"
+         x="383.28125"
+         y="145.54688"><tspan
+           x="383.28125 391.27313 396.03333 403.5256"
+           y="145.54688"
+           sodipodi:role="line"
+           id="tspan52">True</tspan></text><path
+         d="m 599.5,159 c 0,0 -130,0 -130,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 130,0 130,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path56" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text60"
+         x="465.5"
+         y="174.19922"><tspan
+           x="465.5 473.00626 480.49854 484.24823 491.75452 494.7529 498.50262 508.24915 511.24756 518.75378 522.50354 529.99579 533.74548 538.25366 545.00183 557.00012 561.49432"
+           y="174.19922"
+           sodipodi:role="line"
+           id="tspan58">petal width (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text64"
+         x="565.24402"
+         y="174.19922"><tspan
+           x="565.24402"
+           y="174.19922"
+           id="tspan62">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text76"
+         x="576.49548"
+         y="174.19922"><tspan
+           x="576.49548 584.00171 587.75146 595.24371"
+           y="174.19922"
+           sodipodi:role="line"
+           id="tspan66">1.75</tspan><tspan
+           x="494.5 502.00626 509.49854 513.24823 517.75641 525.24872 532.75494 539.50305 543.25281 551.49872 555.24841 562.7547 566.50439"
+           y="189.19922"
+           sodipodi:role="line"
+           id="tspan68">entropy = 1.0</tspan><tspan
+           x="489.5 496.24811 503.75436 515.75269 523.24493 526.24335 533.74963 540.49774 544.24744 552.49341 556.2431 563.74933 571.25562"
+           y="204.19922"
+           sodipodi:role="line"
+           id="tspan70">samples = 100</tspan><tspan
+           x="480 486.74811 494.25436 497.25278 504.74503 512.25128 516.00104 524.24695 527.99664 531.74634 539.25262 543.00232 546.75208 554.24432 561.75061 565.50031 569.25 576.75629 584.24854"
+           y="219.19922"
+           sodipodi:role="line"
+           id="tspan72">value = [0, 50, 50]</tspan><tspan
+           x="482 488.74811 491.74652 499.25278 506.00089 512.74902 516.49872 524.74463 528.49438 535.25647 542.74872 547.25696 554.00507 557.00348 563.75159 571.24384 574.25623 581.74847"
+           y="234.19923"
+           sodipodi:role="line"
+           id="tspan74">class = versicolor</tspan></text><path
+         d="m 484.215,123.094 c 5.793,8.801 11.98,18.203 17.965,27.293"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path78" /><path
+         d="m 505.258,148.703 2.574,10.277 -8.422,-6.429 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path80" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text84"
+         x="495.88281"
+         y="138.19531"><tspan
+           x="495.88281 504.12671 511.63297 514.63141 521.37952"
+           y="138.19531"
+           sodipodi:role="line"
+           id="tspan82">False</tspan></text><path
+         d="m 501,278 c 0,0 -135,0 -135,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 135,0 135,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#4de88e;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path86" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text90"
+         x="362"
+         y="293.19922"><tspan
+           x="362 369.50626 376.99854 380.74823 388.25452 391.2529 395.00262 398.00104 405.49329 412.99954 420.50583 424.25552 431.7478 435.4975 440.00571 446.75381 458.75214 463.24634"
+           y="293.19922"
+           sodipodi:role="line"
+           id="tspan88">petal length (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text94"
+         x="466.99603"
+         y="293.19922"><tspan
+           x="466.99603"
+           y="293.19922"
+           id="tspan92">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text106"
+         x="478.24747"
+         y="293.19922"><tspan
+           x="478.24747 485.75372 489.50345 496.9957"
+           y="293.19922"
+           sodipodi:role="line"
+           id="tspan96">4.95</tspan><tspan
+           x="386 393.50626 400.99854 404.74823 409.25644 416.74869 424.25494 431.00308 434.75278 442.99872 446.74841 454.2547 458.00439 465.49667 473.00293"
+           y="308.19922"
+           sodipodi:role="line"
+           id="tspan98">entropy = 0.445</tspan><tspan
+           x="392.5 399.24814 406.75439 418.75272 426.24496 429.24338 436.74963 443.49774 447.24747 455.49341 459.2431 466.74936"
+           y="323.19922"
+           sodipodi:role="line"
+           id="tspan100">samples = 54</tspan><tspan
+           x="383 389.74811 397.25439 400.25278 407.74506 415.25131 419.00104 427.24695 430.99667 434.74637 442.25266 446.00235 449.75208 457.24432 464.75061 468.50031 472.25003 479.75629"
+           y="338.19922"
+           sodipodi:role="line"
+           id="tspan102">value = [0, 49, 5]</tspan><tspan
+           x="381 387.74811 390.74652 398.25278 405.00089 411.74902 415.49872 423.74466 427.49435 434.2565 441.74875 446.25693 453.00507 456.00345 462.75159 470.24384 473.25626 480.7485"
+           y="353.19922"
+           sodipodi:role="line"
+           id="tspan104">class = versicolor</tspan></text><path
+         d="m 499.457,242.094 c -7.832,9.074 -16.215,18.785 -24.289,28.136"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path108" /><path
+         d="m 477.664,272.695 -9.184,5.285 3.883,-9.859 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path110" /><path
+         d="m 704,278 c 0,0 -135,0 -135,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 135,0 135,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#843de6;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path112" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text116"
+         x="565"
+         y="293.19922"><tspan
+           x="565 572.50629 579.99854 583.74823 591.25452 594.25293 598.00262 601.00104 608.49329 615.99957 623.5058 627.25555 634.7478 638.4975 643.00568 649.75378 661.75214 666.24634"
+           y="293.19922"
+           sodipodi:role="line"
+           id="tspan114">petal length (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text120"
+         x="669.99603"
+         y="293.19922"><tspan
+           x="669.99603"
+           y="293.19922"
+           id="tspan118">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text132"
+         x="681.2475"
+         y="293.19922"><tspan
+           x="681.2475 688.75372 692.50342 699.99573"
+           y="293.19922"
+           sodipodi:role="line"
+           id="tspan122">4.85</tspan><tspan
+           x="589 596.50629 603.99854 607.74823 612.25641 619.74872 627.25494 634.00305 637.75281 645.99872 649.74841 657.2547 661.00439 668.49664 676.00293"
+           y="308.19922"
+           sodipodi:role="line"
+           id="tspan124">entropy = 0.151</tspan><tspan
+           x="595.5 602.24811 609.75439 621.75269 629.245 632.24335 639.74963 646.49774 650.2475 658.49341 662.2431 669.74939"
+           y="323.19922"
+           sodipodi:role="line"
+           id="tspan126">samples = 46</tspan><tspan
+           x="586 592.74811 600.25439 603.25281 610.74506 618.25128 622.00104 630.24695 633.99664 637.7464 645.25262 649.00238 652.75208 660.24432 663.99402 667.74377 675.25 682.75629"
+           y="338.19922"
+           sodipodi:role="line"
+           id="tspan128">value = [0, 1, 45]</tspan><tspan
+           x="588 594.74811 597.74652 605.25281 612.00092 618.74902 622.49872 630.74469 634.49438 641.25647 644.25488 648.74908 656.25537 659.25378 666.74603 669.74445 676.50653"
+           y="353.19922"
+           sodipodi:role="line"
+           id="tspan130">class = virginica</tspan></text><path
+         d="m 569.887,242.094 c 7.914,9.074 16.379,18.785 24.531,28.136"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path134" /><path
+         d="m 597.242,268.141 3.934,9.839 -9.211,-5.238 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path136" /><path
+         d="m 300.5,397 c 0,0 -130,0 -130,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 130,0 130,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#3de684;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path138" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text142"
+         x="166.5"
+         y="412.19922"><tspan
+           x="166.5 174.00626 181.49852 185.24825 192.7545 195.75291 199.50262 209.24915 212.24754 219.75381 223.50352 230.99579 234.7455 239.25369 246.0018 258.00012 262.49432"
+           y="412.19922"
+           sodipodi:role="line"
+           id="tspan140">petal width (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text146"
+         x="266.24402"
+         y="412.19922"><tspan
+           x="266.24402"
+           y="412.19922"
+           id="tspan144">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text158"
+         x="277.49548"
+         y="412.19922"><tspan
+           x="277.49548 285.00174 288.75143 296.24371"
+           y="412.19922"
+           sodipodi:role="line"
+           id="tspan148">1.65</tspan><tspan
+           x="188.00002 195.50627 202.99854 206.74826 211.25644 218.7487 226.25497 233.00308 236.75279 244.99872 248.74844 256.2547 260.00443 267.49667 275.00293"
+           y="427.19922"
+           sodipodi:role="line"
+           id="tspan150">entropy = 0.146</tspan><tspan
+           x="194.50002 201.24814 208.75439 220.75272 228.24498 231.24338 238.74965 245.49776 249.24748 257.49341 261.2431 268.74939"
+           y="442.19922"
+           sodipodi:role="line"
+           id="tspan152">samples = 48</tspan><tspan
+           x="185.00002 191.74812 199.25439 202.25279 209.74506 217.25133 221.00104 229.24696 232.99667 236.74638 244.25266 248.00237 251.75208 259.24435 266.75061 270.50034 274.25003 281.75629"
+           y="457.19922"
+           sodipodi:role="line"
+           id="tspan154">value = [0, 47, 1]</tspan><tspan
+           x="183.00002 189.74812 192.74654 200.25279 207.00092 213.74902 217.49873 225.74466 229.49438 236.2565 243.74876 248.25694 255.00507 258.00348 264.75159 272.24384 275.25626 282.7485"
+           y="472.19922"
+           sodipodi:role="line"
+           id="tspan156">class = versicolor</tspan></text><path
+         d="m 364.805,361.094 c -16.739,9.89 -34.758,20.539 -51.875,30.652"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path160" /><path
+         d="m 314.465,394.906 -10.391,2.074 6.828,-8.101 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path162" /><path
+         d="m 498.5,397 c 0,0 -130,0 -130,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 130,0 130,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#c09cf2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path164" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text168"
+         x="364.5"
+         y="412.19922"><tspan
+           x="364.5 372.00626 379.49854 383.24823 390.75452 393.7529 397.50262 407.24915 410.24756 417.75381 421.50354 428.99579 432.74548 437.25369 444.0018 456.00012 460.49432"
+           y="412.19922"
+           sodipodi:role="line"
+           id="tspan166">petal width (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text172"
+         x="464.24402"
+         y="412.19922"><tspan
+           x="464.24402"
+           y="412.19922"
+           id="tspan170">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text184"
+         x="475.49548"
+         y="412.19922"><tspan
+           x="475.49548 483.00174 486.75143 494.24371"
+           y="412.19922"
+           sodipodi:role="line"
+           id="tspan174">1.55</tspan><tspan
+           x="386 393.50629 400.99854 404.74826 409.25644 416.74872 424.25497 431.00308 434.75281 442.99872 446.74844 454.2547 458.00443 465.49667 473.00293"
+           y="427.19922"
+           sodipodi:role="line"
+           id="tspan176">entropy = 0.918</tspan><tspan
+           x="396 402.74814 410.25439 422.25272 429.74496 432.74338 440.24963 446.99774 450.74747 458.99341 462.7431"
+           y="442.19922"
+           sodipodi:role="line"
+           id="tspan178">samples = 6</tspan><tspan
+           x="386.5 393.24811 400.75439 403.75278 411.24506 418.75131 422.50104 430.74695 434.49667 438.24637 445.75266 449.50235 453.25208 460.74432 464.49405 468.24377 475.75003"
+           y="457.19922"
+           sodipodi:role="line"
+           id="tspan180">value = [0, 2, 4]</tspan><tspan
+           x="385 391.74811 394.74652 402.25278 409.00092 415.74902 419.49875 427.74466 431.49438 438.2565 441.25488 445.74908 453.25534 456.25375 463.746 466.74442 473.50653"
+           y="472.19922"
+           sodipodi:role="line"
+           id="tspan182">class = virginica</tspan></text><path
+         d="m 433.5,361.094 c 0,8.258 0,17.043 0,25.605"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path186" /><path
+         d="m 437,386.98 -3.5,10 -3.5,-10 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path188" /><path
+         d="m 149,516 c 0,0 -97,0 -97,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 97,0 97,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#39e581;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path190" /><path
+         d="m 149,516 c 0,0 -97,0 -97,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 97,0 97,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path192" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text202"
+         x="60.5"
+         y="531.19922"><tspan
+           x="60.5 68.006264 75.498528 79.248245 83.756432 91.248688 98.754959 105.50307 109.25279 117.49871 121.24843 128.7547 132.50439"
+           y="531.19922"
+           sodipodi:role="line"
+           id="tspan194">entropy = 0.0</tspan><tspan
+           x="59.5 66.248116 73.754379 85.752701 93.244965 96.243362 103.74963 110.49775 114.24747 122.49339 126.2431 133.74936"
+           y="546.19922"
+           sodipodi:role="line"
+           id="tspan196">samples = 47</tspan><tspan
+           x="49.999996 56.748112 64.254379 67.252777 74.745041 82.251305 86.001022 94.246948 97.996658 101.74637 109.25264 113.00235 116.75206 124.24432 131.7506 135.50031 139.25002 146.75629"
+           y="561.19922"
+           sodipodi:role="line"
+           id="tspan198">value = [0, 47, 0]</tspan><tspan
+           x="47.999992 54.748108 57.746513 65.252777 72.000893 78.749008 82.498726 90.744652 94.494362 101.25648 108.74875 113.25693 120.00505 123.00345 129.75157 137.24384 140.25624 147.7485"
+           y="576.19922"
+           sodipodi:role="line"
+           id="tspan200">class = versicolor</tspan></text><path
+         d="m 185.23,480.273 c -11.695,9.485 -24.128,19.571 -35.765,29.012"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path204" /><path
+         d="m 151.527,512.121 -9.972,3.578 5.562,-9.015 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path206" /><path
+         d="m 280,516 c 0,0 -89,0 -89,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 89,0 89,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#8139e5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path208" /><path
+         d="m 280,516 c 0,0 -89,0 -89,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 89,0 89,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path210" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text220"
+         x="195.5"
+         y="531.19922"><tspan
+           x="195.5 203.00626 210.49852 214.24825 218.75642 226.24869 233.75496 240.50308 244.25279 252.49872 256.24841 263.7547 267.50439"
+           y="531.19922"
+           sodipodi:role="line"
+           id="tspan212">entropy = 0.0</tspan><tspan
+           x="198 204.74811 212.25438 224.2527 231.74496 234.74336 242.24963 248.99774 252.74747 260.99338 264.7431"
+           y="546.19922"
+           sodipodi:role="line"
+           id="tspan214">samples = 1</tspan><tspan
+           x="188.49998 195.24811 202.75436 205.75278 213.24504 220.7513 224.50102 232.74695 236.49666 240.24637 247.75262 251.50235 255.25206 262.74432 266.49402 270.24374 277.75"
+           y="561.19922"
+           sodipodi:role="line"
+           id="tspan216">value = [0, 0, 1]</tspan><tspan
+           x="186.99998 193.74811 196.74651 204.25278 211.00089 217.74901 221.49872 229.74464 233.49435 240.25648 243.25488 247.74907 255.25534 258.25372 265.746 268.74442 275.50653"
+           y="576.19922"
+           sodipodi:role="line"
+           id="tspan218">class = virginica</tspan></text><path
+         d="m 235.5,480.273 c 0,8.211 0,16.868 0,25.168"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path222" /><path
+         d="m 239,505.699 -3.5,10 -3.5,-10 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path224" /><path
+         d="m 411,516 c 0,0 -89,0 -89,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 89,0 89,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#8139e5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path226" /><path
+         d="m 411,516 c 0,0 -89,0 -89,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 89,0 89,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path228" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text238"
+         x="326.5"
+         y="531.19922"><tspan
+           x="326.5 334.00626 341.49854 345.24823 349.75644 357.24869 364.75494 371.50308 375.25278 383.49872 387.24841 394.7547 398.50439"
+           y="531.19922"
+           sodipodi:role="line"
+           id="tspan230">entropy = 0.0</tspan><tspan
+           x="329 335.74811 343.25436 355.25269 362.74496 365.74335 373.24963 379.99774 383.74747 391.99338 395.7431"
+           y="546.19922"
+           sodipodi:role="line"
+           id="tspan232">samples = 3</tspan><tspan
+           x="319.5 326.24811 333.75436 336.75278 344.24503 351.75131 355.50101 363.74695 367.49664 371.24637 378.75262 382.50235 386.25208 393.74432 397.49402 401.24374 408.75"
+           y="561.19922"
+           sodipodi:role="line"
+           id="tspan234">value = [0, 0, 3]</tspan><tspan
+           x="318 324.74811 327.74652 335.25278 342.00089 348.74902 352.49872 360.74466 364.49435 371.25647 374.25488 378.74908 386.25534 389.25372 396.746 399.74442 406.50653"
+           y="576.19922"
+           sodipodi:role="line"
+           id="tspan236">class = virginica</tspan></text><path
+         d="m 408.551,480.273 c -5.356,8.758 -11.028,18.024 -16.41,26.821"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path240" /><path
+         d="m 395.078,508.996 -8.203,6.703 2.234,-10.355 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path242" /><path
+         d="m 550,516 c 0,0 -97,0 -97,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 97,0 97,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#9cf2c0;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path244" /><path
+         d="m 550,516 c 0,0 -97,0 -97,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 97,0 97,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path246" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text256"
+         x="454"
+         y="531.19922"><tspan
+           x="454 461.50626 468.99854 472.74823 477.25644 484.74869 492.25494 499.00308 502.75278 510.99872 514.74841 522.2547 526.00439 533.49664 541.00293"
+           y="531.19922"
+           sodipodi:role="line"
+           id="tspan248">entropy = 0.918</tspan><tspan
+           x="464 470.74811 478.25436 490.25269 497.74496 500.74335 508.24963 514.99774 518.74744 526.99341 530.7431"
+           y="546.19922"
+           sodipodi:role="line"
+           id="tspan250">samples = 3</tspan><tspan
+           x="454.5 461.24811 468.75436 471.75278 479.24503 486.75131 490.50101 498.74695 502.49664 506.24637 513.75262 517.50232 521.25208 528.74432 532.49402 536.24377 543.75"
+           y="561.19922"
+           sodipodi:role="line"
+           id="tspan252">value = [0, 2, 1]</tspan><tspan
+           x="449 455.74811 458.74652 466.25278 473.00089 479.74902 483.49872 491.74466 495.49438 502.25647 509.74875 514.25696 521.00507 524.00348 530.75159 538.24384 541.25623 548.74854"
+           y="576.19922"
+           sodipodi:role="line"
+           id="tspan254">class = versicolor</tspan></text><path
+         d="m 458.82,480.273 c 5.438,8.758 11.192,18.024 16.657,26.821"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path258" /><path
+         d="m 478.52,505.359 2.3,10.34 -8.25,-6.648 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path260" /><path
+         d="m 699,397 c 0,0 -125,0 -125,0 -6,0 -12,6 -12,12 0,0 0,59 0,59 0,6 6,12 12,12 0,0 125,0 125,0 6,0 12,-6 12,-12 0,0 0,-59 0,-59 0,-6 -6,-12 -12,-12"
+         style="fill:#c09cf2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path262" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text266"
+         x="570"
+         y="412.19922"><tspan
+           x="570 576.74811 584.25439 591.74664 599.25293 602.25134 606.00104 615.74756 618.74597 626.2522 630.00195 637.4942 641.2439 645.75208 652.50024 664.49854 669.00671"
+           y="412.19922"
+           sodipodi:role="line"
+           id="tspan264">sepal width (cm) </tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text270"
+         x="672.75641"
+         y="412.19922"><tspan
+           x="672.75641"
+           y="412.19922"
+           id="tspan268">≤</tspan></text><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text282"
+         x="683.9939"
+         y="412.19922"><tspan
+           x="683.9939 691.50012 695.24988"
+           y="412.19922"
+           sodipodi:role="line"
+           id="tspan272">3.1</tspan><tspan
+           x="589 596.50629 603.99854 607.74823 612.25641 619.74872 627.25494 634.00305 637.75281 645.99872 649.74841 657.2547 661.00439 668.49664 676.00293"
+           y="427.19922"
+           sodipodi:role="line"
+           id="tspan274">entropy = 0.918</tspan><tspan
+           x="599 605.74811 613.25439 625.25269 632.74493 635.74335 643.24963 649.99774 653.74744 661.99341 665.7431"
+           y="442.19922"
+           sodipodi:role="line"
+           id="tspan276">samples = 3</tspan><tspan
+           x="589.5 596.24811 603.75439 606.75275 614.24506 621.75128 625.50104 633.74695 637.49664 641.2464 648.75262 652.50232 656.25208 663.74432 667.49402 671.24377 678.75"
+           y="457.19922"
+           sodipodi:role="line"
+           id="tspan278">value = [0, 1, 2]</tspan><tspan
+           x="588 594.74811 597.74652 605.25275 612.00092 618.74902 622.49872 630.74463 634.49438 641.25647 644.25488 648.74908 656.25531 659.25372 666.74597 669.74438 676.50653"
+           y="472.19922"
+           sodipodi:role="line"
+           id="tspan280">class = virginica</tspan></text><path
+         d="m 636.5,361.094 c 0,8.258 0,17.043 0,25.605"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path284" /><path
+         d="m 640,386.98 -3.5,10 -3.5,-10 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path286" /><path
+         d="m 834,404.5 c 0,0 -93,0 -93,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 93,0 93,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#8139e5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path288" /><path
+         d="m 834,404.5 c 0,0 -93,0 -93,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 93,0 93,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path290" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text300"
+         x="747.5"
+         y="419.69922"><tspan
+           x="747.5 755.00629 762.49854 766.24823 770.75641 778.24872 785.75494 792.50305 796.25281 804.49872 808.24841 815.7547 819.50439"
+           y="419.69922"
+           sodipodi:role="line"
+           id="tspan292">entropy = 0.0</tspan><tspan
+           x="746.5 753.24811 760.75439 772.75269 780.245 783.24335 790.74963 797.49774 801.24744 809.49341 813.2431 820.74939"
+           y="434.69922"
+           sodipodi:role="line"
+           id="tspan294">samples = 43</tspan><tspan
+           x="737 743.74811 751.25439 754.25281 761.74506 769.25128 773.00104 781.24695 784.99664 788.7464 796.25262 800.00232 803.75208 811.24432 814.99402 818.74377 826.25 833.75629"
+           y="449.69922"
+           sodipodi:role="line"
+           id="tspan296">value = [0, 0, 43]</tspan><tspan
+           x="739 745.74811 748.74652 756.25281 763.00092 769.74902 773.49872 781.74463 785.49438 792.25647 795.25488 799.74908 807.25537 810.25372 817.74603 820.74438 827.50653"
+           y="464.69922"
+           sodipodi:role="line"
+           id="tspan298">class = virginica</tspan></text><path
+         d="m 688.891,361.094 c 15.379,11.918 32.175,24.929 47.476,36.785"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path302" /><path
+         d="m 738.934,395.441 5.761,8.891 -10.05,-3.355 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path304" /><path
+         d="m 681,516 c 0,0 -89,0 -89,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 89,0 89,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#8139e5;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path306" /><path
+         d="m 681,516 c 0,0 -89,0 -89,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 89,0 89,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path308" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text318"
+         x="596.5"
+         y="531.19922"><tspan
+           x="596.5 604.00629 611.49854 615.24823 619.75641 627.24872 634.75494 641.50305 645.25281 653.49872 657.24841 664.7547 668.50439"
+           y="531.19922"
+           sodipodi:role="line"
+           id="tspan310">entropy = 0.0</tspan><tspan
+           x="599 605.74811 613.25439 625.25269 632.74493 635.74335 643.24963 649.99774 653.74744 661.99341 665.7431"
+           y="546.19922"
+           sodipodi:role="line"
+           id="tspan312">samples = 2</tspan><tspan
+           x="589.5 596.24811 603.75439 606.75275 614.24506 621.75128 625.50104 633.74695 637.49664 641.24634 648.75262 652.50232 656.25208 663.74432 667.49402 671.24377 678.75"
+           y="561.19922"
+           sodipodi:role="line"
+           id="tspan314">value = [0, 0, 2]</tspan><tspan
+           x="588 594.74811 597.74652 605.25275 612.00092 618.74902 622.49872 630.74463 634.49438 641.25647 644.25488 648.74908 656.25531 659.25372 666.74597 669.74438 676.50653"
+           y="576.19922"
+           sodipodi:role="line"
+           id="tspan316">class = virginica</tspan></text><path
+         d="m 636.5,480.273 c 0,8.211 0,16.868 0,25.168"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path320" /><path
+         d="m 640,505.699 -3.5,10 -3.5,-10 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path322" /><path
+         d="m 820,516 c 0,0 -97,0 -97,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 97,0 97,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:#39e581;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path324" /><path
+         d="m 820,516 c 0,0 -97,0 -97,0 -6,0 -12,6 -12,12 0,0 0,44 0,44 0,6 6,12 12,12 0,0 97,0 97,0 6,0 12,-6 12,-12 0,0 0,-44 0,-44 0,-6 -6,-12 -12,-12"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path326" /><text
+         style="font-variant:normal;font-weight:normal;font-size:14.0002px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="text336"
+         x="731.5"
+         y="531.19922"><tspan
+           x="731.5 739.00629 746.49854 750.24823 754.75641 762.24872 769.75494 776.50305 780.25281 788.49872 792.24841 799.7547 803.50439"
+           y="531.19922"
+           sodipodi:role="line"
+           id="tspan328">entropy = 0.0</tspan><tspan
+           x="734 740.74811 748.25439 760.25269 767.74493 770.74335 778.24963 784.99774 788.74744 796.99341 800.7431"
+           y="546.19922"
+           sodipodi:role="line"
+           id="tspan330">samples = 1</tspan><tspan
+           x="724.5 731.24811 738.75439 741.75275 749.24506 756.75128 760.50104 768.74695 772.49664 776.24634 783.75262 787.50232 791.25208 798.74432 802.49402 806.24377 813.75"
+           y="561.19922"
+           sodipodi:role="line"
+           id="tspan332">value = [0, 1, 0]</tspan><tspan
+           x="719 725.74811 728.74652 736.25281 743.00092 749.74902 753.49872 761.74463 765.49438 772.25647 779.74878 784.25696 791.00507 794.00348 800.75159 808.24384 811.25623 818.74854"
+           y="576.19922"
+           sodipodi:role="line"
+           id="tspan334">class = versicolor</tspan></text><path
+         d="m 686.77,480.273 c 11.695,9.485 24.128,19.571 35.765,29.012"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path338" /><path
+         d="m 724.883,506.684 5.562,9.015 -9.972,-3.578 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path340" /></g></g></svg>
