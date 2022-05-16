@@ -1,0 +1,43 @@
+\documentclass[openany]{ctexart}
+\usepackage{avanti}
+\pagestyle{empty} % 没有页眉和页脚
+
+ % define the plot style and the axis style
+\tikzset{base/.style={smooth,thick,draw=Solarized-base01,text=Solarized-magenta}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=3]
+
+    \pgfmathtruncatemacro{\range}{1};
+    \pgfmathtruncatemacro{\len}{4};
+    \pgfmathtruncatemacro{\gap}{1};
+    \pgfmathtruncatemacro{\o}{\range+\len+2*\gap};
+
+    \draw [arrow] (-\range-0.5,0) -- (\range+0.5,0);
+    \draw [arrow] (0,-0.2) -- (0,\range);
+
+    \draw [base] (-\range,0) -- (-\range,0.1);
+    \path (-\range,0) node[base,draw=none,below] () {$-1$};
+
+    \draw [base] (\range,0) -- (\range,0.1);
+    \path (\range,0) node[base,draw=none,below] () {$1$};
+
+    \draw [base,Solarized-red,domain=-\range-0.5:\range+0.5] plot(\x, { 1 / ( 1 + exp( (-\x) ) ) } );
+
+    \draw [base,Solarized-red] (0,0) circle (0.1);
+
+
+    \draw [arrow] (\o+0.5,-\range) -- (\o+0.5,\range);
+    \draw [arrow] (\o,0.5-\range) -- (\o+2*\range,0.5-\range);
+
+    \fill [Solarized-blue,opacity=0.5] (\o+0.5,0.5-\range) -- (\o+2.1,0.5-\range) -- (\o+0.5,2.1-\range) -- cycle;
+
+    \fill [Solarized-red,opacity=0.5] (\o+2.1,0.5-\range) -- (\o+0.5,2.1-\range) -- (\o+0.5,3.5-\range) -- (\o+3.5,3.5-\range) -- (\o+3.5,0.5-\range) -- cycle;
+
+\end{tikzpicture}
+
+
+\end{document}

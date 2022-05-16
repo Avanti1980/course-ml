@@ -7,32 +7,31 @@
 \date{}
 \maketitle
 
-
+\tikzset{font=\Large}
+\tikzset{base/.style = {smooth, thick, draw=Solarized-base01, text=Solarized-magenta}}
+\tikzset{nc/.style = {circle, inner sep=#1, outer sep=0pt, base}}
+\tikzset{arrow/.style={->,>=stealth,base}}
 
 \begin{figure}[ht]
     \centering
 
-    \begin{tikzpicture} [ % 先定义每类点的样式
-            thick, >=stealth, scale=1, font=\Large,
-            point/.style = {circle, inner sep=#1, outer sep=0pt, text=Solarized-magenta, draw=Solarized-base01},
-            myptr/.style={decoration={markings,mark=at position 1 with {\arrow[scale=1.5,>=stealth]{>}}},postaction={decorate},text=Solarized-magenta, draw=Solarized-base01}
-        ]
+    \begin{tikzpicture} [scale=1]
 
-        \node [point=4.0pt] (x1) at (0,10) {$x_1$};
-        \node [point=4.0pt] (x2) at (0,8.4) {$x_2$};
-        \node (a) at (0,6.8) {$\vdots$};
-        \node [point=4.0pt] (xd) at (0,5.2) {$x_d$};
-        \node [point=5.8pt] (b) at (0,3.6) {$b$};
+        \node [nc=4.0pt] (x1) at (0,10) {$x_1$};
+        \node [nc=4.0pt] (x2) at (0,8.4) {$x_2$};
+        \node [base, draw=none] (a) at (0,6.8) {$\vdots$};
+        \node [nc=4.0pt] (xd) at (0,5.2) {$x_d$};
 
-        \node [point=4.0pt] (sum) at (4.5,6.8) {$\wv^\top \xv + b$};
+        \node [nc=4.0pt] (sum) at (3,7.6) {$~ ~ ~ b$};
 
-        \node [point=5.8pt] (y) at (8,6.8) {$y$};
+        \node [draw=none] (y) at (9.0,7.6) {};
 
-        \draw [->,myptr] (x1) -- node [above] {$w_1$} (sum);
-        \draw [->,myptr] (x2) -- node [above] {$w_2$} (sum);
-        \draw [->,myptr] (xd) -- node [above] {$w_d$} (sum);
-        \draw [->,myptr] (b) -- (sum);
-        \draw [->,myptr] (sum) -- node [above] {$\sgn$} (y);
+        \draw (3,8.2) -- (3,7.0);
+
+        \draw [arrow] (x1) -- node [above] {$w_1$} (sum);
+        \draw [arrow] (x2) -- node [above] {$w_2$} (sum);
+        \draw [arrow] (xd) -- node [above] {$w_d$} (sum);
+        \draw [arrow] (sum) -- node [midway, above] {$y = h(\sum_{i \in [d]} w_i x_i - b)$} (y);
 
     \end{tikzpicture}
 \end{figure}
