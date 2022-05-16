@@ -190,6 +190,7 @@ module.exports = {
       modd: "{\\mathrm {mod} ~ }",
       hp: "{\\mathrm {hp}}",
       gen: "{\\mathrm {gen}}",
+      ow: "{\\mathrm {o.w.}}",
       rot: "{\\mathbf {rot180}}",
       up: "{\\mathbf {up}}",
       cen: "{\\mathrm {cen}}",
