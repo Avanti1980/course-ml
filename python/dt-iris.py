@@ -6,7 +6,6 @@ from sklearn.tree import DecisionTreeClassifier
 iris = load_iris()
 X, y = iris.data, iris.target
 
-
 clf = tree.DecisionTreeClassifier(criterion='entropy', max_depth=4)
 clf = clf.fit(X, y)
 dot_data = tree.export_graphviz(
