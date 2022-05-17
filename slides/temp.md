@@ -20,3 +20,14 @@ presentation:
 
 <!-- slide data-notes="" -->
 
+##### 感知机
+
+---
+
+实现与、或、非运算，设$x_1,x_2$为布尔变量
+
+- 与：$\sign(x_1 + x_2 - 1.5) = \begin{cases} 1, & x_1 = x_2 = 1 \\ -1, & \ow \end{cases}$
+- 或：$\sign(x_1 + x_2 - 0.5) = \begin{cases} -1, & x_1 = x_2 = 0 \\ 1, & \ow \end{cases}$
+- 非：$\sign(- x_1 + 0.5) = \begin{cases} -1, & x_1 = 1 \\ 1, & x_1 = -1 \end{cases}$
+
+再$(\sign(\cdots) + 1) / 2$就

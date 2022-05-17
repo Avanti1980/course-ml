@@ -17,29 +17,37 @@
 
     \begin{tikzpicture} [scale=1]
 
-        \path [base] (0,0.5) node[above] () {$x_1$};
+        \pgfmathsetmacro{\r}{0.45};
+
+        \draw [base,dashed] (-0.5,0.5) -- (5.3,0.5) -- (5.3,-0.5) -- (-0.5,-0.5) -- cycle;
+
+        \path [base] (0,\r) node[above] () {$x_1$};
         \node [nc] (x1) at (0,0) {};
 
-        \path [base] (1.6,0.5) node[above] () {$x_2$};
+        \path [base] (1.6,\r) node[above] () {$x_2$};
         \node [nc] (x2) at (1.6,0) {};
 
         \node [draw=none] (a) at (3.2,0) {$\cdots$};
 
-        \path [base] (4.8,0.5) node[above] () {$x_d$};
+        \path [base] (4.8,\r) node[above] () {$x_d$};
         \node [nc] (xd) at (4.8,0) {};
 
         \path [base] (6.5,0) node[] () {输入层};
 
-        \node [nc] (sum) at (2.4,-2.4) {};
+        \node [nc] (sum) at (2.4,-1.8) {};
 
-        \path [base] (6.5,-2.4) node[] () {输出层};
+        \draw [base,dashed] (-0.5,-1.3) -- (5.3,-1.3) -- (5.3,-2.3) -- (-0.5,-2.3) -- cycle;
 
-        \node [draw=none] (y) at (2.4,-4.8) {};
+        \path [base] (6.5,-1.8) node[] () {输出层};
+
+        \node [draw=none] (y) at (2.4,-3.6) {};
 
         \draw [arrow] (x1) -- node [left] {$w_1$} (sum);
         \draw [arrow] (x2) -- node [right] {$w_2$} (sum);
         \draw [arrow] (xd) -- node [right] {$w_d$} (sum);
-        \draw [arrow] (sum) -- node [midway, right] {$y = \sgn()$} (y);
+        \draw [arrow] (sum) -- (y);
+
+        \path [base] (2.5,-3.0) node[right] () {$y = \sign(\cdots)$};
 
     \end{tikzpicture}
 \end{figure}

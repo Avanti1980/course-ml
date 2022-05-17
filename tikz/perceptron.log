@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Arch Linux) (preloaded format=xelatex 2022.4.29)  17 MAY 2022 01:19
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Arch Linux) (preloaded format=xelatex 2022.5.3)  17 MAY 2022 10:21
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1041,13 +1041,14 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 9.
  (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+Missing character: There is no ; ("3B) in font nullfont!
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <15.05624> not available
-(Font)              size <14.4> substituted on input line 20.
+(Font)              size <14.4> substituted on input line 24.
 
 
 LaTeX Font Warning: Font shape `U/stmry/m/n' in size <15.05624> not available
-(Font)              size <14.4> substituted on input line 20.
+(Font)              size <14.4> substituted on input line 24.
 
 [1
 
@@ -1060,12 +1061,12 @@ Package rerunfilecheck Info: File `perceptron.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 44513 strings out of 476156
- 1073045 string characters out of 5814963
- 1514637 words of memory out of 5000000
- 64480 multiletter control sequences out of 15000+600000
+ 44516 strings out of 476156
+ 1073105 string characters out of 5814964
+ 1515638 words of memory out of 5000000
+ 64483 multiletter control sequences out of 15000+600000
  487110 words of font info for 122 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,7n,105p,764b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 103i,7n,105p,764b,798s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on perceptron.pdf (1 page).
