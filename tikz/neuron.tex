@@ -26,12 +26,12 @@
 
         \node [draw=none] (y) at (9.0,7.6) {};
 
-        \draw [base] (3,8.35) -- (3,6.85);
+        \draw [base] (3,8.42) -- (3,6.78);
 
         \draw [arrow] (x1) -- node [above] {$w_1$} (sum);
         \draw [arrow] (x2) -- node [above] {$w_2$} (sum);
         \draw [arrow] (xd) -- node [above] {$w_d$} (sum);
-        \draw [arrow] (sum) -- node [midway, above] {$y = h(\sum_{i \in [d]} w_i x_i - b)$} (y);
+        \draw [arrow] (sum) -- node [midway, above] {$y = h(\sum_{i \in [d]} w_i x_i + b)$} (y);
 
     \end{tikzpicture}
 \end{figure}

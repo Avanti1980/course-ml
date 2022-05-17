@@ -24,7 +24,7 @@ presentation:
 
 ---
 
-<div class="threelines column1-border1-right-solid-head column2-border1-right-solid-head column3-border1-right-solid-head column3-border-right-solid column6-border-right-solid column9-border-right-solid head-highlight-1 tr-hover row8-border-top-dashed top-2 center">
+<div class="threelines column1-border1-right-solid-head column2-border1-right-solid-head column3-border1-right-solid-head column3-border-right-solid column6-border-right-solid column9-border-right-solid head-highlight-1 tr-hover row8-border-top-dashed">
 
 |   >   |   >   | 与  |   >   |   >   | 或  |   >   |   >   | 非  | >     | >     | 异或 |
 | :---: | :---: | :-: | :---: | :---: | :-: | :---: | :---: | --- | ----- | ----- | ---- |
@@ -36,7 +36,7 @@ presentation:
 
 </div>
 
-将$y = 1$看作正类，$y = 0$看作负类，一旦感知机$\sign(\cdots)$可以正确分类，再$(\sign(\cdots) + 1) / 2$就可以得到$y$
+将$y = 1$看作正类，$y = 0$看作负类，一旦感知机$\sign(\cdots)$可以正确分类，再$(\sign(\cdots) + 1) / 2$就可以得到布尔变量$y$
 
 <!-- slide vertical=true data-notes="" -->
 
