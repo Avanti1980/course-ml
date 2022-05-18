@@ -58,7 +58,7 @@ figure = plt.figure(figsize=(12, 9))
 i = 1
 
 with plt.style.context('Solarize_Light2'):
-    for ds_cnt, ds in enumerate(datasets):
+    for index, ds in enumerate(datasets):
 
         X, y = ds
         X = StandardScaler().fit_transform(X)  # 标准化
@@ -69,7 +69,7 @@ with plt.style.context('Solarize_Light2'):
         xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 
         ax = plt.subplot(len(datasets), len(classifiers) + 1, i)
-        if ds_cnt == 0:
+        if index == 0:
             ax.set_title("Input data")
         ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, edgecolors='k')
         ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, alpha=0.6, edgecolors='k')
@@ -100,7 +100,7 @@ with plt.style.context('Solarize_Light2'):
             ax.set_ylim(yy.min(), yy.max())
             ax.set_xticks(())
             ax.set_yticks(())
-            if ds_cnt == 0:
+            if index == 0:
                 ax.set_title(name)
             ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'), size=15, horizontalalignment='right')
             i += 1
