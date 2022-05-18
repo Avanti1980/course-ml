@@ -238,10 +238,11 @@ table {
   }
   tbody tr:nth-child(4),
   tbody tr:nth-child(9),
-  tbody tr:nth-child(14) {
+  tbody tr:nth-child(14),
+  tbody tr:nth-child(15) {
     border-top: 1px dashed var(--solarized-base01);
   }
-  tbody tr:nth-child(14) {
+  tbody tr:nth-child(15) {
     td:nth-last-child(1) {
       text-align: center !important;
     }
