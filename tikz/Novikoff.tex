@@ -1,0 +1,71 @@
+\documentclass[openany]{ctexart}
+\usepackage{avanti}
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+ % define the plot style and the axis style
+\tikzset{font=\Huge}
+\tikzset{base/.style={smooth,ultra thick,Solarized-base01}}
+\tikzset{arrow/.style={->,-{Stealth[scale=1.2]},base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \pgfmathtruncatemacro{\range}{6};
+    \pgfmathtruncatemacro{\margin}{2};
+    \pgfmathtruncatemacro{\l}{6};
+    \pgfmathtruncatemacro{\r}{5};
+
+    % 两个坐标轴
+    \draw [arrow] (-\range,0) -- (\range,0);
+    \draw [arrow] (0,-\range) -- (0,\range);
+
+    \path (0,0) coordinate (O);
+
+    \path (0.5,0.3) coordinate (P);
+    \fill [base] (P)  circle[radius=2pt];
+
+    \path (P) ++(150:\l) coordinate (PP1);
+    \path (P) ++(330:\l) coordinate (PP2);
+    \draw [base,Solarized-magenta] (PP1) -- (PP2);
+
+    \path [base,font=\LARGE] (PP1) ++(135:0.3) node [above] () {$\bm{v^\top x = 0}$};
+
+    \path (P) ++(60:\margin) coordinate (P1);
+    \path (P) ++(240:\margin) coordinate (P2);
+
+    \draw [arrow,Solarized-magenta] (P) -- (P1);
+    \draw [arrow,Solarized-magenta] (P) -- (P2);
+    \path [base] (P) ++(30:1) node () {$\bm{\rho}$};
+    \path [base] (P) ++(270:1) node () {$\bm{\rho}$};
+
+    \path (P1) ++(150:\l) coordinate (P11);
+    \path (P1) ++(330:\l) coordinate (P12);
+    \path (P11) ++(60:4) coordinate (P13);
+    \path (P12) ++(60:4) coordinate (P14);
+
+    \path (P2) ++(150:\l) coordinate (P21);
+    \path (P2) ++(330:\l) coordinate (P22);
+    \path (P21) ++(240:4) coordinate (P23);
+    \path (P22) ++(240:4) coordinate (P24);
+
+    % 画半径
+    \path (O) ++(160:\r) coordinate (r);
+    \draw [arrow,Solarized-yellow] (O) -- node [midway,above] {$\yellow{\bm{r}}$} (r);
+
+    \path (0.5,0) ++(60:\r) coordinate (Q);
+
+    \draw [base] (O) circle (\r);
+    \clip (O) circle (\r);
+
+    \fill [Solarized-red,opacity=0.6] (P11) -- (P12) -- (P14) -- (P13) -- cycle;
+    \fill [Solarized-blue,opacity=0.6] (P21) -- (P22) -- (P24) -- (P23) -- cycle;
+
+    %\fill [Solarized-red,opacity=0.5, even odd rule] (-1.5,-1.5) rectangle ++(3,3) {(0,0) circle (1)};
+
+\end{tikzpicture}
+
+
+\end{document}

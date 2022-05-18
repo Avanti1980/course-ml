@@ -44,6 +44,7 @@ presentation:
 
 将第 4 行的 if 条件换成$y_i \sum_{j \in [m]} \alpha_j y_j \kappa(\xv_i ,\xv_j) \le 0$即为核感知机
 
+
 <!-- slide data-notes="" -->
 
 ##### 多层感知机
