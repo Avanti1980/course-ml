@@ -69,4 +69,4 @@
 
 第四讲：[鸢尾花分类](python/dt-iris.ipynb)
 
-第五讲：[感知机实现与或非](python/perceptron-logic.ipynb)
+第五讲：[实现与或非](python/perceptron-logic.ipynb)
