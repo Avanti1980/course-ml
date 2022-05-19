@@ -10,8 +10,9 @@ digraph g {
     node [shape=ellipse]
 
     "课业=？" -> "否" [headlabel="繁重" labeldistance=4]
-    "电视=？" -> "是" [headlabel="精彩" labeldistance=4]
+
+    "电视=？" -> "是" [label="无聊"]
 
     n2 [label="否"]
-    "电视=？" -> n2 [label="无聊"]
+    "电视=？" -> n2 [xlabel="精彩" labeldistance=3]
 }

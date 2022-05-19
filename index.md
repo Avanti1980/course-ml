@@ -39,7 +39,9 @@
 |   ^    |               ^               | 3. 特征选择：方差分析，卡方检验，互信息，相关性分析 |
 |   ^    |               ^               | 4. 特征选择：稀疏范数                               |
 |   ^    |               ^               | 5. 特征变换：主成分分析，随机投影，核映射，函数复合 |
-| 第四讲 |   [决策树](slides/04.html)    | 1.tba                                               |
+| 第四讲 |   [决策树](slides/04.html)    | 1. ID3 决策树，C4.5 决策树，分类回归树 (CART)       |
+|   ^    |               ^               | 2. 信息增益，增益率，基尼指数                       |
+|   ^    |               ^               | 3. 决策树剪枝，分类鸢尾花数据集                     |
 | 第五讲 |   [感知机](slides/05.html)    | ---                                                 |
 
 </div>
@@ -60,16 +62,10 @@
 
 第一讲：[测试环境](python/demo.ipynb)
 
-第二讲：
+第二讲：[二分类](python/binary-classif.ipynb)、[多分类](python/multi-classif.ipynb)、[回归](python/regression.py)、[k-均值聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)、[模型评估](python/model-evaluation.ipynb)、[过拟合](python/overfitting.ipynb)、[偏差方差分解](python/bias-var-dec.ipynb)
 
-- [二分类示例](python/binary-classif.ipynb)、[多分类示例](python/multi-classif.ipynb)、[回归](python/regression.py)
-- [k-均值聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)
-- [模型评估](python/model-evaluation.ipynb)、[过拟合](python/overfitting.ipynb)、[偏差方差分解](python/bias-var-dec.ipynb)
+第三讲：[文本特征提取](python/feat-text.ipynb)、[独热编码](python/feat-one-hot.ipynb)、[缺失特征处理](python/feat-missing.ipynb)、[特征标准化](python/feat-scaler.ipynb)、[特征选择](python/feat-selection.ipynb)、[稀疏范数](python/sparse-norm.ipynb)、[PCA](python/pca.ipynb)、[随机投影](python/random-projection.ipynb)
 
-<div class="top-2"></div>
+第四讲：[鸢尾花分类](python/dt-iris.ipynb)
 
-第三讲：
-
-- [文本特征提取](python/feat-text.ipynb)
-- [独热编码](python/feat-one-hot.ipynb)、[缺失特征处理](python/feat-missing.ipynb)、[特征标准化](python/feat-scaler.ipynb)
-- [特征选择](python/feat-selection.ipynb)、[稀疏范数](python/sparse-norm.ipynb)、[PCA](python/pca.ipynb)、[随机投影](python/random-projection.ipynb)
+第五讲：

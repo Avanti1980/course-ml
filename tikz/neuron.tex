@@ -1,40 +1,33 @@
 \documentclass{ctexart}
 \usepackage{avanti}
+\pagestyle{empty} % 没有页眉和页脚
 
-\begin{document}
-\title{}
-\author{}
-\date{}
-\maketitle
 
 \tikzset{font=\Large}
-\tikzset{base/.style = {smooth, thick, draw=Solarized-base01, text=Solarized-magenta}}
+\tikzset{base/.style = {smooth, very thick, draw=Solarized-base01, text=Solarized-magenta}}
 \tikzset{nc/.style = {circle, inner sep=#1, outer sep=0pt, base}}
-\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{arrow/.style={->,-{Stealth[scale=1]},base}}
 
-\begin{figure}[ht]
-    \centering
+\begin{document}
 
-    \begin{tikzpicture} [scale=1]
+\begin{tikzpicture} [scale=1]
 
-        \node [base, draw=none] (x1) at (0,10) {$x_1$};
-        \node [base, draw=none] (x2) at (0,8.4) {$x_2$};
-        \node [base, draw=none] (a) at (0,6.8) {$\vdots$};
-        \node [base, draw=none] (xd) at (0,5.2) {$x_d$};
+    \node [base, draw=none] (x1) at (0,10) {$x_1$};
+    \node [base, draw=none] (x2) at (0,8.4) {$x_2$};
+    \node [base, draw=none] (a) at (0,6.8) {$\vdots$};
+    \node [base, draw=none] (xd) at (0,5.2) {$x_d$};
 
-        \node [nc=4.0pt] (sum) at (3,7.6) {$\Sigma ~ ~ ~ b ~$};
+    \node [nc=4.0pt] (sum) at (3,7.6) {$\Sigma ~ ~ ~ b ~$};
 
-        \node [draw=none] (y) at (9.0,7.6) {};
+    \node [draw=none] (y) at (9.0,7.6) {};
 
-        \draw [base] (3,8.42) -- (3,6.78);
+    \draw [base] (3,8.42) -- (3,6.78);
 
-        \draw [arrow] (x1) -- node [above] {$w_1$} (sum);
-        \draw [arrow] (x2) -- node [above] {$w_2$} (sum);
-        \draw [arrow] (xd) -- node [above] {$w_d$} (sum);
-        \draw [arrow] (sum) -- node [midway, above] {$y = h(\sum_{i \in [d]} w_i x_i + b)$} (y);
+    \draw [arrow] (x1) -- node [above] {$w_1$} (sum);
+    \draw [arrow] (x2) -- node [above] {$w_2$} (sum);
+    \draw [arrow] (xd) -- node [above] {$w_d$} (sum);
+    \draw [arrow] (sum) -- node [midway, above] {$y = h(\sum_{i \in [d]} w_i x_i + b)$} (y);
 
-    \end{tikzpicture}
-\end{figure}
-
+\end{tikzpicture}
 
 \end{document}
