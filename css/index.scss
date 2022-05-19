@@ -239,10 +239,12 @@ table {
   tbody tr:nth-child(4),
   tbody tr:nth-child(9),
   tbody tr:nth-child(14),
-  tbody tr:nth-child(17) {
+  tbody tr:nth-child(17),
+  tbody tr:nth-child(18) {
     border-top: 1px dashed var(--solarized-base01);
   }
-  tbody tr:nth-child(17) {
+  tbody tr:nth-child(17),
+  tbody tr:nth-child(18) {
     td:nth-last-child(1) {
       text-align: center !important;
     }
