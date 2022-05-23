@@ -29,177 +29,133 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 感知机的对偶形式
+##### 另一个视角
 
 ---
 
-引入特征映射$\phi(\cdot)$，感知机算法的更新变为$\wv \leftarrow \wv + \eta y_j \phi(\xv_j)$
+<div class="threelines row1-column2-border1-left-solid row2-column2-border1-left-solid row3-column1-border1-left-solid row4-column2-border1-left-solid row5-column1-border1-left-solid row6-column2-border1-left-solid row7-column2-border1-left-solid row3-column1-border1-right-dashed row5-column1-border1-right-dashed column3-border-left-dashed column1-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed row5-border-bottom-dashed row6-border-bottom-dashed head-highlight-1 tr-hover">
 
-<div class="top-2"></div>
+|    &emsp;    |                                            >                                            |                                      对率回归                                      |
+| :----------: | :-------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
+|   $\Ycal$    |                                      $\{ \pm 1 \}$                                      |                                    $\{ 0,1 \}$                                     |
+| 后验<br>概率 |                  $\Pr(y=+1 \big\arrowvert \xv) = \sigma(\wv^\top \xv)$                  |                $\Pr(y=1 \big\arrowvert \xv) = \sigma(\wv^\top \xv)$                |
+|      ^       |                 $\Pr(y=-1 \big\arrowvert \xv) = \sigma(-\wv^\top \xv)$                  |               $\Pr(y=0 \big\arrowvert \xv) = \sigma(-\wv^\top \xv)$                |
+| 优化<br>目标 |                $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$                 |     $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$      |
+|      ^       |            $\min_{\wv} (- \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i))$             | $\min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)$ |
+|    $\gv$     |                   $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$                   |                   $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$                    |
+|    $\Hv$     | $\sum_i (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top$ |   $\sum_i \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top$    |
 
-由于初始$\wv = \zerov$，因此最终$\wv = \sum_{j \in [m]} \alpha_j \phi(\xv_j)$
+</div>
 
-- 感知机原始形式维护$\wv$
-- 对偶形式维护$m$维系数向量$\alphav = [\alpha_1; \ldots; \alpha_m]$
-
-<div class="top2"></div>
-
-输入：训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$
-
-<div class="top-4"></div>
-
-输出：系数向量$\alphav$
-
-1. 初始化$\alphav = \zerov$
-2. {==while==} 训练集中存在误分类点 {==do==}
-3. &emsp;&emsp;获取样本$(\xv_i, y_i)$
-4. &emsp;&emsp;{==if==} $(\xv_i, y_i)$被误分类，即$y_i \class{blue}{\sum_{j \in [m]} \alpha_j y_j \phi(\xv_j)}^\top \phi(\xv_i) \le 0$ {==then==}
-5. &emsp;&emsp;&emsp;&emsp;$\alpha_i \leftarrow \alpha_i + \eta y_i$
+以上是通过{==极大似然法==}导出的，用{==交叉熵==}可以导出同样的结果
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 核感知机
+##### 交叉熵
 
 ---
 
-若通过核函数$\kappa(\cdot, \cdot)$隐式定义特征映射$\phi(\cdot)$，则得到核感知机
+问题：给定分布$\qv$，如何度量分布$\pv$与它之间的差异？
+
+定义交叉熵$H_{\qv} (\pv) \triangleq - \sum_i q_i \log p_i = \sum_i q_i \log (1/p_i)$
+
+当$\pv = \qv$时交叉熵最小，此时交叉熵$H_{\qv} (\pv)$即为分布$\qv$的熵$H(\qv)$
+
+<div class="top4"></div>
 
 $$
 \begin{align*}
-    \qquad \phi(\xv)^\top \phi(\zv) & = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
-    & = (x_1 z_1 + x_2 z_2 + 1)^2 = (\xv^\top \zv + 1)^2 = \kappa (\xv, \zv)
+    \qquad \min_{\pv} ~ H_{\qv} (\pv) = - \sum_i q_i \log p_i = \sum_i q_i \log (1/p_i), \quad \st ~ \sum_i p_i = 1
 \end{align*}
 $$
 
-输入：训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$
+<div class="top-2"></div>
 
-<div class="top-4"></div>
+拉格朗日函数为$L = - \sum_i q_i \log p_i + \alpha (\sum_i p_i - 1)$，于是
 
-输出：系数向量$\alphav$
-
-1. 初始化$\alphav = \zerov$
-2. {==while==} 训练集中存在误分类点 {==do==}
-3. &emsp;&emsp;获取样本$(\xv_i, y_i)$
-4. &emsp;&emsp;{==if==} $(\xv_i, y_i)$被误分类，即$y_i \sum_{j \in [m]} \alpha_j y_j \kappa(\xv_j ,\xv_i) \le 0$ {==then==}
-5. &emsp;&emsp;&emsp;&emsp;$\alpha_i \leftarrow \alpha_i + \eta y_i$
-
-预测模型为$f(\zv) = \wv^\top \phi(\zv) = \sum_{j \in [m]} \alpha_j \kappa(\xv_j, \zv)$
+$$
+\begin{align*}
+    \qquad \frac{\partial L}{\partial p_i} = - \frac{q_i}{p_i} + \alpha = 0 \Longrightarrow q_i = \alpha p_i \Longrightarrow \sum_i q_i = \alpha \sum_i p_i \Longrightarrow \alpha = 1
+\end{align*}
+$$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 核感知机
+##### 交叉熵损失
 
 ---
 
-```python {.line-numbers .top-1 .left4 highlight=[12,16,19,25,28,31-34,39-40,52,55,80]}
-import matplotlib.pyplot as plt
-import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
+考虑将对率回归的预测结果和真实标记都写成分布的形式
 
-class KPerceptron(object):
+- 对率回归的预测结果是分布$\pv = [\sigma(\wv^\top \xv); \sigma(-\wv^\top \xv)]$
+- 对$\Ycal = \{ \pm 1 \}$，真实标记分布$\qv_{\{ \pm 1 \}} = [(1+y)/2; (1-y)/2]$
+- 对$\Ycal = \{ 0,1 \}$，真实标记分布$\qv_{\{ 0,1 \}} = [y; 1-y]$
 
-    def __init__(self, ker='poly', gamma=1, coef0=1, degree=2, eta0=1.0, max_iter=100):
-        self.ker = getattr(self, ker)
-        self.gamma, self.coef0, self.degree = gamma, coef0, degree
-        self.eta0, self.max_iter = eta0, max_iter
+<div class="top2"></div>
 
-    def linear(self, Z):  # (|Z|,|SV|), linear = <Z,sv>
-        sv = self.sv[self.sv_index]
-        return np.dot(Z, sv.T)
+$$
+\begin{align*}
+    \qquad H_{\qv_{\{ \pm 1 \}}} (\pv) & = - \frac{1+y}{2} \log \sigma(\wv^\top \xv) - \frac{1-y}{2} \log \sigma(-\wv^\top \xv) \\
+    & = \begin{cases}
+        - \log \sigma(\wv^\top \xv), & y = 1 \\
+        - \log \sigma(-\wv^\top \xv), & y = -1
+    \end{cases} \\
+    & = - \log \sigma(y \wv^\top \xv) = \log (1 + \exp (- y \wv^\top \xv)) \\[6pt]
+    H_{\qv_{\{ 0,1 \}}} (\pv) & = - y \log \sigma(\wv^\top \xv) - (1-y) \log \sigma(-\wv^\top \xv) \\
+    & = -y \log \frac{\sigma(\wv^\top \xv)}{1 - \sigma(\wv^\top \xv)} - \log \sigma(-\wv^\top \xv) \\
+    & = \log (1 + \exp(\wv^\top \xv)) - y \wv^\top \xv
+\end{align*}
+$$
 
-    def poly(self, Z):  # (|Z|,|SV|), poly = (γ <Z,sv> + c)^d
-        return (self.gamma * self.linear(Z) + self.coef0)**self.degree
+<!-- slide data-notes="" -->
 
-    def rbf(self, Z):  # (|Z|,|SV|), rbf = exp(-2 γ |Z-sv|^2)
-        sv = self.sv[self.sv_index]
-        sv_norm = (sv**2).sum(axis=1)  # (|SV|,)
-        Z_norm = (Z**2).sum(axis=1)  # (|Z|,)
-        return np.exp(-2*self.gamma * (Z_norm.reshape(Z.shape[0], 1) - 2*self.linear(self, Z) + sv_norm))  # 用到了广播机制
-
-    def decision_function(self, Z):  # 对Z的预测值
-        return np.dot(self.ker(Z), self.alpha[self.sv_index])
-
-    def fit(self, X, y, classes=None):
-        m = X.shape[0]  # 样本数
-        for k in range(self.max_iter):
-            if not hasattr(self, 'sv'):
-                self.alpha = np.zeros(m)
-                self.sv_index = np.zeros(m, dtype=bool)
-                self.sv = X
-            indexes = np.random.permutation(m)  # 随机打乱样本顺序
-            stop = True
-            for i in np.arange(0, m):
-                xi, yi = X[indexes[i], :], y[indexes[i]]
-                if yi * self.decision_function(xi) <= 0:  # 预测错误 更新模型
-                    self.alpha[indexes[i]] = self.alpha[indexes[i]] + yi * self.eta0
-                    stop = False
-                if self.alpha[indexes[i]] != 0:
-                    self.sv_index[indexes[i]] = True
-                else:
-                    self.sv_index[indexes[i]] = False
-            if stop:
-                # print('模型在第%d轮训练完毕' % (i+1))
-                return
-
-        # print('达到最大迭代轮数')
-
-    def predict(self, Z):
-        return np.sign(self.decision_function(Z))
-
-    def score(self, Z, y):
-        return np.sum(self.predict(Z) == y) / float(y.size)
-
-
-if __name__ == '__main__':
-    X = np.array([[1, 1], [1, 0], [0, 1], [0, 0]])
-    y = np.array([-1, 1, 1, -1])
-
-    np.random.seed(1)
-
-    figure = plt.figure(figsize=(10, 5))
-
-    with plt.style.context('Solarize_Light2'):
-
-        x_min, x_max = -0.2, 1.2
-        y_min, y_max = -0.2, 1.2
-        h = .02
-        xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-
-        ax = plt.subplot(1, 2, 1)
-        ax.set_xlim(xx.min(), xx.max())
-        ax.set_ylim(yy.min(), yy.max())
-        ax.set_xticks(())
-        ax.set_yticks(())
-
-        kp = KPerceptron(ker='poly', gamma=1, coef0=1, degree=2, eta0=0.5)
-        kp.fit(X, y)
-        acc = kp.score(X, y)
-
-        Z = kp.decision_function(np.c_[xx.ravel(), yy.ravel()])
-        Z = Z.reshape(xx.shape)
-
-        ax.contourf(xx, yy, Z, alpha=.8)
-        ax.scatter(X[:, 0], X[:, 1], c=y, edgecolors='#002b36')
-        ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % acc).lstrip('0'), size=14, horizontalalignment='center')
-
-        ax = plt.subplot(1, 2, 2, projection='3d')
-        ax.plot_surface(xx, yy, Z)
-
-        ax.set_xlabel('x1')
-        ax.set_ylabel('x2')
-
-    plt.tight_layout()
-    plt.show()
-```
-
-<!-- slide data-menu-title="sklearn中的感知机" data-background-iframe="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html" vertical=true data-background-interactive data-notes="" -->
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 核感知机实现异或
+##### 多类扩展
 
 ---
 
-采用二阶多项式核，最终模型是个马鞍面
+设共有$C$个类，预测函数$f(\xv) = \argmax_{c \in [C]} (\wv_c^\top \xv + b_c)$
 
-@import "../python/perceptron-kernel.svg" {.center .width90}
+引入$\Rbb^C \mapsto \Delta^C$的 Softmax 映射：
+
+$$
+\begin{align*}
+    p(y = c | \xv) & = \frac{\exp (\wv_c^\top \xv + b_c)}{\sum_{c' \in [C]} \exp (\wv_{c'}^\top \xv + b_{c'})} \\
+    & = \frac{\exp ((\wv_c - \wv_C)^\top \xv + b_c - b_C)}{\sum_{c' \in [C-1]} \exp ((\wv_{c'} - \wv_C)^\top \xv + b_{c'} - b_C) + 1}
+\end{align*}
+$$
+
+令$\wv_c \leftarrow \wv_c - \wv_C$，$b_c \leftarrow b_c - b_C$，记$p_c = p(y = c | \xv)$，于是
+
+$$
+\begin{align*}
+    p_c = \frac{\exp (\wv_c^\top \xv + b_c)}{\sum_{c' \in [C-1]} \exp (\wv_{c'}^\top \xv + b_{c'}) + 1}, \quad p_C = 1 - \sum_{c' \in [C-1]} p_c
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 损失函数
+
+---
+
+$$
+\begin{align*}
+    p_c = \frac{\exp (\wv_c^\top \xv + b_c)}{\sum_{c' \in [C-1]} \exp (\wv_{c'}^\top \xv + b_{c'}) + 1}, \quad p_C = 1 - \sum_{c' \in [C-1]} p_c
+\end{align*}
+$$
+
+对于样本$(\xv_i, y_i)$，$\qv_i = [1_{y_i=1}, 1_{y_i=2}, \ldots, 1_{y_i=C}]$为$y_i$的独热编码
+
+$$
+\begin{align*}
+    \pv_i & = [p_1, \ldots, p_{C-1}, p_C] = \frac{[ \exp (\wv_1^\top \xv_i + b_1), \ldots, \exp (\wv_{C-1}^\top \xv_i + b_{C-1}), 1 ]}{\sum_{c' \in [C-1]} \exp (\wv_{c'}^\top \xv_i + b_{c'}) + 1}
+\end{align*}
+$$
+
+采用交叉熵$H_{\qv_i} (\pv_i)$作为替代损失可得多分类对数几率回归
+
+$$
+\begin{align*}
+    \min_{\wv_c, b_c} & ~ \frac{1}{2} \sum_{c \in [C-1]} \| \wv_c \|_2^2 + \frac{\lambda}{m} \sum_{i \in [m]} \sum_{c \in [C]} [\qv_i]_c \log \frac{1}{[\pv_i]_c}
+\end{align*}
+$$
