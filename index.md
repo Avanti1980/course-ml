@@ -41,9 +41,13 @@
 |   ^    |               ^                | 5. 特征变换：主成分分析，随机投影，核映射，函数复合 |
 | 第四讲 |    [决策树](slides/04.html)    | 1. ID3 决策树，C4.5 决策树，分类回归树 (CART)       |
 |   ^    |               ^                | 2. 信息增益，增益率，基尼指数                       |
-|   ^    |               ^                | 3. 决策树剪枝，分类鸢尾花数据集                     |
-| 第五讲 |    [感知机](slides/05.html)    | ---                                                 |
-| 第六讲 | [对数几率回归](slides/06.html) | ---                                                 |
+|   ^    |               ^                | 3. 鸢尾花分类                                       |
+|   ^    |               ^                | 4. 决策树剪枝                                       |
+| 第五讲 |    [感知机](slides/05.html)    | 1. M-P 神经元模型，激活函数                         |
+|   ^    |               ^                | 2. 感知机模型与算法，实现与或非运算                 |
+|   ^    |               ^                | 3. 感知机理论分析：Novikoff 定理                    |
+|   ^    |               ^                | 4. 感知机的对偶形式，核感知机                       |
+| 第六讲 | [对数几率回归](slides/06.html) | -                                                   |
 
 </div>
 
@@ -65,8 +69,8 @@
 
 第二讲：[二分类](python/binary-classif.ipynb)、[多分类](python/multi-classif.ipynb)、[回归](python/regression.py)、[k-均值聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)、[模型评估](python/model-evaluation.ipynb)、[过拟合](python/overfitting.ipynb)、[偏差方差分解](python/bias-var-dec.ipynb)
 
-第三讲：[文本特征提取](python/feat-text.ipynb)、[独热编码](python/feat-one-hot.ipynb)、[缺失特征处理](python/feat-missing.ipynb)、[特征标准化](python/feat-scaler.ipynb)、[特征选择](python/feat-selection.ipynb)、[稀疏范数](python/sparse-norm.ipynb)、[PCA](python/pca.ipynb)、[随机投影](python/random-projection.ipynb)
+第三讲：[文本特征提取](python/feat-text.ipynb)、[独热编码](python/feat-one-hot.ipynb)、[缺失特征处理](python/feat-missing.ipynb)、[特征标准化](python/feat-scaler.ipynb)、[特征选择](python/feat-selection.ipynb)、[稀疏范数](python/sparse-norm.ipynb)、[主成分分析](python/pca.ipynb)、[随机投影](python/random-projection.ipynb)
 
-第四讲：[鸢尾花分类](python/dt-iris.ipynb)
+第四讲：决策树[分类鸢尾花](python/dt-iris.ipynb)
 
-第五讲：[实现与或非](python/perceptron-logic.ipynb)
+第五讲：感知机[预测约会](python/perceptron-date.ipynb)、[实现与或非](python/perceptron-logic.ipynb)、核感知机[实现异或](python/perceptron-kernel.ipynb)
