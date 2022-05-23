@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
 .reveal h1,
@@ -52,6 +54,7 @@
 .reveal pre {
   background-color: transparent !important;
   box-shadow: none;
+  width: 86%;
 }
 
 .reveal .invis {
