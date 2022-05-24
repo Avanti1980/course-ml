@@ -29,133 +29,136 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 另一个视角
+##### 优化算法 梯度下降
 
 ---
 
-<div class="threelines row1-column2-border1-left-solid row2-column2-border1-left-solid row3-column1-border1-left-solid row4-column2-border1-left-solid row5-column1-border1-left-solid row6-column2-border1-left-solid row7-column2-border1-left-solid row3-column1-border1-right-dashed row5-column1-border1-right-dashed column3-border-left-dashed column1-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed row5-border-bottom-dashed row6-border-bottom-dashed head-highlight-1 tr-hover">
+<div class="threelines head-highlight-1 tr-hover">
 
-|    &emsp;    |                                            >                                            |                                      对率回归                                      |
-| :----------: | :-------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
-|   $\Ycal$    |                                      $\{ \pm 1 \}$                                      |                                    $\{ 0,1 \}$                                     |
+|   学习模型   |                                        标记集合                                         |                                      优化目标                                      |                  梯度                   |
+| :----------: | :-------------------: | :-------------: | :------: |
+|   线性回归   |                                         $\Rbb$                                          |                    $\min_{\wv} \sum_i (\wv^\top \xv_i - y_i)^2$                    | $2 \sum_i (\wv^\top \xv_i - y_i) \xv_i$ |
 | 后验<br>概率 |                  $\Pr(y=+1 \big\arrowvert \xv) = \sigma(\wv^\top \xv)$                  |                $\Pr(y=1 \big\arrowvert \xv) = \sigma(\wv^\top \xv)$                |
 |      ^       |                 $\Pr(y=-1 \big\arrowvert \xv) = \sigma(-\wv^\top \xv)$                  |               $\Pr(y=0 \big\arrowvert \xv) = \sigma(-\wv^\top \xv)$                |
 | 优化<br>目标 |                $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$                 |     $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$      |
 |      ^       |            $\min_{\wv} (- \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i))$             | $\min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)$ |
 |    $\gv$     |                   $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$                   |                   $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$                    |
-|    $\Hv$     | $\sum_i (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top$ |   $\sum_i \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top$    |
+|    $\Hv$     | $\sum_i (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top$ |   $\sum_i \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top$    | a |
 
 </div>
 
-以上是通过{==极大似然法==}导出的，用{==交叉熵==}可以导出同样的结果
+<!-- slide data-notes="" -->
+
+##### 优化算法 梯度下降
+
+---
+
+即采用优化算法求出如下优化问题的最优解
+
+$$
+\begin{align*}
+    \min_\wv ~ F(\wv) \triangleq \lambda \cdot \Omega(\wv) + \frac{1}{m} \sum_{i \in [m]} l(y_i, f(\xv_i))
+\end{align*}
+$$
+
+梯度下降 (GD)：$\wv_{t+1} \leftarrow \wv_t - \eta_t \nabla F(\wv_t)$，其中$\eta_t$称为步长或学习率
+
+<br>
+
+问题：当样本数$m$很大时，梯度$\nabla F(\wv_t)$计算开销很大
+
+方案：小批量梯度下降，随机采样一个下标子集$\Bcal_t \subseteq [m]$
+
+$$
+\begin{align*}
+    \wv_{t+1} \leftarrow \wv_t - \eta_t \left( \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla l(y_i, f(\xv_i)) + \lambda \cdot \nabla \Omega(\wv) \right)
+\end{align*}
+$$
+
+若$|\Bcal_t| = 1$，则为常说的随机梯度下降 (SGD)
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 交叉熵
+##### 优化算法 梯度下降
 
 ---
 
-问题：给定分布$\qv$，如何度量分布$\pv$与它之间的差异？
+梯度下降解最小二乘
 
-定义交叉熵$H_{\qv} (\pv) \triangleq - \sum_i q_i \log p_i = \sum_i q_i \log (1/p_i)$
+<img src="../python/gradient-descent.svg" title="用梯度下降求解R上的最小二乘" class="center top6 width90">
 
-当$\pv = \qv$时交叉熵最小，此时交叉熵$H_{\qv} (\pv)$即为分布$\qv$的熵$H(\qv)$
-
-<div class="top4"></div>
-
-$$
-\begin{align*}
-    \qquad \min_{\pv} ~ H_{\qv} (\pv) = - \sum_i q_i \log p_i = \sum_i q_i \log (1/p_i), \quad \st ~ \sum_i p_i = 1
-\end{align*}
-$$
-
-<div class="top-2"></div>
-
-拉格朗日函数为$L = - \sum_i q_i \log p_i + \alpha (\sum_i p_i - 1)$，于是
-
-$$
-\begin{align*}
-    \qquad \frac{\partial L}{\partial p_i} = - \frac{q_i}{p_i} + \alpha = 0 \Longrightarrow q_i = \alpha p_i \Longrightarrow \sum_i q_i = \alpha \sum_i p_i \Longrightarrow \alpha = 1
-\end{align*}
-$$
+FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 交叉熵损失
+HEADER GD vs. SGD
 
----
-
-考虑将对率回归的预测结果和真实标记都写成分布的形式
-
-- 对率回归的预测结果是分布$\pv = [\sigma(\wv^\top \xv); \sigma(-\wv^\top \xv)]$
-- 对$\Ycal = \{ \pm 1 \}$，真实标记分布$\qv_{\{ \pm 1 \}} = [(1+y)/2; (1-y)/2]$
-- 对$\Ycal = \{ 0,1 \}$，真实标记分布$\qv_{\{ 0,1 \}} = [y; 1-y]$
-
-<div class="top2"></div>
+更新公式：
 
 $$
 \begin{align*}
-    \qquad H_{\qv_{\{ \pm 1 \}}} (\pv) & = - \frac{1+y}{2} \log \sigma(\wv^\top \xv) - \frac{1-y}{2} \log \sigma(-\wv^\top \xv) \\
-    & = \begin{cases}
-        - \log \sigma(\wv^\top \xv), & y = 1 \\
-        - \log \sigma(-\wv^\top \xv), & y = -1
-    \end{cases} \\
-    & = - \log \sigma(y \wv^\top \xv) = \log (1 + \exp (- y \wv^\top \xv)) \\[6pt]
-    H_{\qv_{\{ 0,1 \}}} (\pv) & = - y \log \sigma(\wv^\top \xv) - (1-y) \log \sigma(-\wv^\top \xv) \\
-    & = -y \log \frac{\sigma(\wv^\top \xv)}{1 - \sigma(\wv^\top \xv)} - \log \sigma(-\wv^\top \xv) \\
-    & = \log (1 + \exp(\wv^\top \xv)) - y \wv^\top \xv
+    & \wv_{t+1} \leftarrow \wv_t - \eta_t \left( \frac{1}{m} \sum_{i \in [m]} \nabla l(y_i, f(\xv_i)) + \lambda \cdot \nabla \Omega(\wv) \right) \\
+    & \wv_{t+1} \leftarrow \wv_t - \eta_t \left( \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla l(y_i, f(\xv_i)) + \lambda \cdot \nabla \Omega(\wv) \right)
 \end{align*}
 $$
+
+- 当数据集中有冗余样本时，SGD 可以减少重复计算
+- 迭代前期，SGD 更新频率快，较 GD 优势明显
+- 迭代后期，GD 会停止于最优解处，SGD 则只能在最优解附近震荡
+- 越靠近最优解，梯度越接近零，因此 GD 可以用恒定步长
+- 最优解处随机梯度不一定为零，故 SGD 必须用衰减步长，否则算法不会停止
+- SGD 因随机采样带来的噪声若能随着迭代而受到抑制，则可进一步加速，机器学习顶会有大量相关工作，包括 SAG，SAGA，SVRG 等及其衍生变种
+
+FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
 
 <!-- slide data-notes="" -->
 
-##### 多类扩展
+HEADER 加速梯度下降
 
----
+当目标函数的变量尺度不同时，梯度下降效率很低
 
-设共有$C$个类，预测函数$f(\xv) = \argmax_{c \in [C]} (\wv_c^\top \xv + b_c)$
+<img src="../python/momentum.svg" class="center width90 top2 bottom2">
 
-引入$\Rbb^C \mapsto \Delta^C$的 Softmax 映射：
+动量法 (momentum)：$\wv_{t+1} = \wv_t - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1})$
 
-$$
-\begin{align*}
-    p(y = c | \xv) & = \frac{\exp (\wv_c^\top \xv + b_c)}{\sum_{c' \in [C]} \exp (\wv_{c'}^\top \xv + b_{c'})} \\
-    & = \frac{\exp ((\wv_c - \wv_C)^\top \xv + b_c - b_C)}{\sum_{c' \in [C-1]} \exp ((\wv_{c'} - \wv_C)^\top \xv + b_{c'} - b_C) + 1}
-\end{align*}
-$$
+- 相对于梯度下降，多了第三项，上一轮的更新方向
+- 参数$\gamma < 1$，通常取$0.9$
 
-令$\wv_c \leftarrow \wv_c - \wv_C$，$b_c \leftarrow b_c - b_C$，记$p_c = p(y = c | \xv)$，于是
+FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
 
-$$
-\begin{align*}
-    p_c = \frac{\exp (\wv_c^\top \xv + b_c)}{\sum_{c' \in [C-1]} \exp (\wv_{c'}^\top \xv + b_{c'}) + 1}, \quad p_C = 1 - \sum_{c' \in [C-1]} p_c
-\end{align*}
-$$
+<!-- slide vertical=true data-notes="" -->
 
-<!-- slide data-notes="" -->
-
-##### 损失函数
-
----
+HEADER 动量法
 
 $$
 \begin{align*}
-    p_c = \frac{\exp (\wv_c^\top \xv + b_c)}{\sum_{c' \in [C-1]} \exp (\wv_{c'}^\top \xv + b_{c'}) + 1}, \quad p_C = 1 - \sum_{c' \in [C-1]} p_c
+    \wv_{t+1} - \wv_t & = - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1}) \\
+    \gamma (\wv_t - \wv_{t-1}) & = - \eta_{t-1} \gamma \nabla F(\wv_{t-1}) + \gamma^2 (\wv_{t-1} - \wv_{t-2}) \\
+    & \vdots \\
+    \gamma^{t-1} (\wv_2 - \wv_1) & = - \eta_1 \gamma^{t-1} \nabla F(\wv_1) + \mathtip{\gamma^t (\wv_1 - \wv_0)}{因为\wv_1 = \wv_0，故该项等于零} \\
+    \Longrightarrow ~ \wv_{t+1} - \wv_t & = - \sum_{i \in [t]} \eta_i \gamma^{t-i} \nabla F(\wv_i)
 \end{align*}
 $$
 
-对于样本$(\xv_i, y_i)$，$\qv_i = [1_{y_i=1}, 1_{y_i=2}, \ldots, 1_{y_i=C}]$为$y_i$的独热编码
+动量法每步更新是历史梯度的加权平均
+
+- 若近期梯度方向不太一致，则真实的更新幅度变小，减速，增加稳定性
+- 若近期梯度方向较为一致，则真实的更新幅度变大，加速，加快收敛
+
+Nesterov 加速梯度 (NAG)：改进动量法的第二步
 
 $$
 \begin{align*}
-    \pv_i & = [p_1, \ldots, p_{C-1}, p_C] = \frac{[ \exp (\wv_1^\top \xv_i + b_1), \ldots, \exp (\wv_{C-1}^\top \xv_i + b_{C-1}), 1 ]}{\sum_{c' \in [C-1]} \exp (\wv_{c'}^\top \xv_i + b_{c'}) + 1}
+    \begin{cases} \widetilde{\wv} = \wv_t + \gamma (\wv_t - \wv_{t-1}) \\ \wv_{t+1} = \widetilde{\wv} - \eta_t \class{yellow}{\nabla F (\wv_t)} \end{cases} ~ \longrightarrow ~ \begin{cases} \widetilde{\wv} = \wv_t + \gamma (\wv_t - \wv_{t-1}) \\ \wv_{t+1} = \widetilde{\wv} - \eta_t \class{yellow}{\nabla F (\widetilde{\wv})} \end{cases}
 \end{align*}
 $$
 
-采用交叉熵$H_{\qv_i} (\pv_i)$作为替代损失可得多分类对数几率回归
+FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
 
-$$
-\begin{align*}
-    \min_{\wv_c, b_c} & ~ \frac{1}{2} \sum_{c \in [C-1]} \| \wv_c \|_2^2 + \frac{\lambda}{m} \sum_{i \in [m]} \sum_{c \in [C]} [\qv_i]_c \log \frac{1}{[\pv_i]_c}
-\end{align*}
-$$
+<!-- slide vertical=true data-notes="" -->
+
+HEADER 动量法 vs. NAG
+
+第$t$轮迭代示意图：
+
+<img src="../tikz/mvsnag.svg" class="center width80 top6 bottom2">

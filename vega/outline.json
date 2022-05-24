@@ -2,8 +2,9 @@
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "outline",
     "width": 750,
-    "height": 540,
-    "padding": 30,
+    "height": 520,
+    "background": "transparent",
+    "padding": 26,
     "signals": [
         {
             "name": "labels",
