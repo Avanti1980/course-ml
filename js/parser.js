@@ -27,6 +27,10 @@ module.exports = {
         /我的批注/g,
         (whole, content) => '<span class="yellow">:fa-weixin:</span>'
       );
+      markdown = markdown.replace(
+        /我的启示/g,
+        (whole, content) => '<span class="blue">:fa-lightbulb-o:</span>'
+      );
       return resolve(markdown);
     });
   },

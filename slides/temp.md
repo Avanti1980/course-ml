@@ -29,69 +29,106 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 优化算法 梯度下降
+##### 优化
 
 ---
 
-<div class="threelines head-highlight-1 tr-hover">
+<div class="threelines head-highlight-1 tr-hover column3-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed column2-border-left-solid column3-border-left-solid row1-column4-border1-left-solid row2-column4-border1-left-solid row3-column1-border1-left-solid row4-column4-border1-left-solid row5-column1-border1-left-solid">
 
-|   学习模型   |                                        标记集合                                         |                                      优化目标                                      |                  梯度                   |
-| :----------: | :-------------------: | :-------------: | :------: |
-|   线性回归   |                                         $\Rbb$                                          |                    $\min_{\wv} \sum_i (\wv^\top \xv_i - y_i)^2$                    | $2 \sum_i (\wv^\top \xv_i - y_i) \xv_i$ |
-| 后验<br>概率 |                  $\Pr(y=+1 \big\arrowvert \xv) = \sigma(\wv^\top \xv)$                  |                $\Pr(y=1 \big\arrowvert \xv) = \sigma(\wv^\top \xv)$                |
-|      ^       |                 $\Pr(y=-1 \big\arrowvert \xv) = \sigma(-\wv^\top \xv)$                  |               $\Pr(y=0 \big\arrowvert \xv) = \sigma(-\wv^\top \xv)$                |
-| 优化<br>目标 |                $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$                 |     $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$      |
-|      ^       |            $\min_{\wv} (- \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i))$             | $\min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)$ |
-|    $\gv$     |                   $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$                   |                   $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$                    |
-|    $\Hv$     | $\sum_i (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top$ |   $\sum_i \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top$    | a |
+|   模型   |    $\Ycal$    |                                 优化目标                                  |                        $\gv$                        |
+| :------: | :-----------: | :-----------------------------------------------------------------------: | :-------------------------------------------------: |
+| 线性回归 |    $\Rbb$     |               $\min_{\wv} \sum_i (\wv^\top \xv_i - y_i)^2$                |       $2 \sum_i (\wv^\top \xv_i - y_i) \xv_i$       |
+|  感知机  | $\{ \pm 1 \}$ |          $\min_{\wv} \sum_i \max \{ 0, - y_i \wv^\top \xv_i \}$           | $-\sum_i \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
+|    ^     |   $\{1,0\}$   |      $\min_{\wv} \sum_i (\sgn(\wv^\top \xv_i) - y_i) \wv^\top \xv_i$      |     $\sum_i (\sgn(\wv^\top \xv_i) - y_i) \xv_i$     |
+| 对率回归 | $\{ \pm 1 \}$ |         $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$          | $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$ |
+|    ^     |  $\{ 1,0 \}$  | $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$ |    $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$    |
 
 </div>
 
+求极值通常来说只需令$\gv = \zerov$即可，但$\wv$可能会很难求
+
+线性回归：$\sum_i \xv_i \xv_i^\top \wv = \sum_i y_i \xv_i \Longrightarrow \wv^\star = (\sum_i \xv_i \xv_i^\top)^{-1} (\sum_i y_i \xv_i)$
+
+感知机和对率回归对应的$\gv = \zerov$是非线性方程，$\wv$更难求
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 梯度下降
+
+---
+
+设优化目标函数为$F(\wv)$，用迭代法构造单调递减序列：
+
+$$
+\begin{align*}
+    \qquad F(\wv_0) \ge F(\wv_1) \ge F(\wv_2) \ge F(\wv_3) \ge \cdots
+\end{align*}
+$$
+
+<div class="top-3"></div>
+
+我的启示 {==单调有界序列必收敛==}，若$F$有下界，序列就会收敛到$F(\wv^\star)$
+
+问题：如何实现单调递减？根据泰勒展式及柯西不等式知
+
+$$
+\begin{align*}
+    -\| \nabla F(\wv)\| ~ \|\uv\| \le \lim_{\eta \rightarrow 0} \frac{F(\wv + \eta \uv) - F(\wv)}{\eta} = \nabla F(\wv)^\top \uv \le \| \nabla F(\wv)\| ~ \|\uv\|
+\end{align*}
+$$
+
+<div class="top-1"></div>
+
+- 只要$\uv$与$\nabla F(\wv)$夹角为钝角，就可以使得目标函数值下降
+- 左边取等号条件是$\uv = -k \cdot \nabla F(\wv)$，{==负梯度是瞬时下降最快的方向==}
+
+<div class="top2"></div>
+
+梯度下降 (<u>g</u>radient <u>d</u>escent, GD)：$\wv_{t+1} \leftarrow \wv_t - \eta_t \nabla F(\wv_t)$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 梯度下降解线性回归
+
+---
+
+@import "../python/gradient-descent.svg" {.center .top6 .width90 title="用梯度下降求解 R 上的最小二乘"}
+
 <!-- slide data-notes="" -->
 
-##### 优化算法 梯度下降
+##### 随机梯度下降
 
 ---
 
-即采用优化算法求出如下优化问题的最优解
+许多机器学习模型的优化目标为最小化每个样本上的损失的和
 
 $$
 \begin{align*}
-    \min_\wv ~ F(\wv) \triangleq \lambda \cdot \Omega(\wv) + \frac{1}{m} \sum_{i \in [m]} l(y_i, f(\xv_i))
+    \qquad \min_{\wv} F(\wv) = \frac{1}{m} \sum_{i \in [m]} \ell(y_i, f(\xv_i;\wv))
 \end{align*}
 $$
 
-梯度下降 (GD)：$\wv_{t+1} \leftarrow \wv_t - \eta_t \nabla F(\wv_t)$，其中$\eta_t$称为步长或学习率
+<div class="top-4"></div>
 
-<br>
+计算梯度$\nabla F(\wv) = \sum_{i \in [m]} \nabla \ell (y_i; f(\xv_i;\wv)) / m$需遍历所有训练样本，当样本数$m$很大时，梯度计算开销很大
 
-问题：当样本数$m$很大时，梯度$\nabla F(\wv_t)$计算开销很大
-
-方案：小批量梯度下降，随机采样一个下标子集$\Bcal_t \subseteq [m]$
+批量梯度下降，随机采样一个下标子集$\Bcal_t \subseteq [m]$
 
 $$
 \begin{align*}
-    \wv_{t+1} \leftarrow \wv_t - \eta_t \left( \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla l(y_i, f(\xv_i)) + \lambda \cdot \nabla \Omega(\wv) \right)
+    \qquad \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla \ell(y_i, f(\xv_i;\wv))
 \end{align*}
 $$
 
-若$|\Bcal_t| = 1$，则为常说的随机梯度下降 (SGD)
+<div class="top-4"></div>
+
+若$|\Bcal_t| = 1$，则为常说的{==随机梯度下降==} (SGD)
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 优化算法 梯度下降
+##### GD vs. SGD
 
 ---
-
-梯度下降解最小二乘
-
-<img src="../python/gradient-descent.svg" title="用梯度下降求解R上的最小二乘" class="center top6 width90">
-
-FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
-
-<!-- slide vertical=true data-notes="" -->
-
-HEADER GD vs. SGD
 
 更新公式：
 
@@ -109,11 +146,11 @@ $$
 - 最优解处随机梯度不一定为零，故 SGD 必须用衰减步长，否则算法不会停止
 - SGD 因随机采样带来的噪声若能随着迭代而受到抑制，则可进一步加速，机器学习顶会有大量相关工作，包括 SAG，SAGA，SVRG 等及其衍生变种
 
-FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
-
 <!-- slide data-notes="" -->
 
-HEADER 加速梯度下降
+##### 加速梯度下降
+
+---
 
 当目标函数的变量尺度不同时，梯度下降效率很低
 
@@ -124,11 +161,11 @@ HEADER 加速梯度下降
 - 相对于梯度下降，多了第三项，上一轮的更新方向
 - 参数$\gamma < 1$，通常取$0.9$
 
-FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
-
 <!-- slide vertical=true data-notes="" -->
 
-HEADER 动量法
+##### 动量法
+
+---
 
 $$
 \begin{align*}
@@ -142,7 +179,7 @@ $$
 
 动量法每步更新是历史梯度的加权平均
 
-- 若近期梯度方向不太一致，则真实的更新幅度变小，减速，增加稳定性
+- 若近期梯度方向不一致，则真实的更新幅度变小，减速，增加稳定性
 - 若近期梯度方向较为一致，则真实的更新幅度变大，加速，加快收敛
 
 Nesterov 加速梯度 (NAG)：改进动量法的第二步
@@ -153,12 +190,12 @@ $$
 \end{align*}
 $$
 
-FOOTER3 图神经网络导论 机器学习 tengzhang@hust.edu.cn
-
 <!-- slide vertical=true data-notes="" -->
 
-HEADER 动量法 vs. NAG
+##### 动量法 vs. NAG
+
+---
 
 第$t$轮迭代示意图：
 
-<img src="../tikz/mvsnag.svg" class="center width80 top6 bottom2">
+@import "../tikz/mvsnag.svg" {.center .width90 .top6 .bottom2}
