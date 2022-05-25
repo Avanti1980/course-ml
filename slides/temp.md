@@ -45,11 +45,11 @@ presentation:
 
 </div>
 
-求极值通常来说只需令$\gv = \zerov$即可，但$\wv$可能会很难求
+求极值通常来说只需令梯度$\gv = \zerov$即可，但$\wv$可能会很难求
 
 线性回归：$\sum_i \xv_i \xv_i^\top \wv = \sum_i y_i \xv_i \Longrightarrow \wv^\star = (\sum_i \xv_i \xv_i^\top)^{-1} (\sum_i y_i \xv_i)$
 
-感知机和对率回归对应的$\gv = \zerov$是非线性方程，$\wv$更难求
+感知机和对率回归对应的$\gv = \zerov$是非线性方程，更难求解
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -69,7 +69,7 @@ $$
 
 我的启示 {==单调有界序列必收敛==}，若$F$有下界，序列就会收敛到$F(\wv^\star)$
 
-问题：如何实现单调递减？根据泰勒展式及柯西不等式知
+问题：如何实现单调递减？根据泰勒展开式及柯西不等式知
 
 $$
 \begin{align*}
@@ -96,11 +96,23 @@ $$
 
 <!-- slide data-notes="" -->
 
-##### 随机梯度下降
+##### 优化 损失函数的和
 
 ---
 
-许多机器学习模型的优化目标为最小化每个样本上的损失的和
+<div class="threelines head-highlight-1 tr-hover column3-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed column2-border-left-solid column3-border-left-solid row1-column4-border1-left-solid row2-column4-border1-left-solid row3-column1-border1-left-solid row4-column4-border1-left-solid row5-column1-border1-left-solid bottom-2">
+
+|   模型   |    $\Ycal$    |                                 优化目标                                  |                        $\gv$                        |
+| :------: | :-----------: | :-----------------------------------------------------------------------: | :-------------------------------------------------: |
+| 线性回归 |    $\Rbb$     |               $\min_{\wv} \sum_i (\wv^\top \xv_i - y_i)^2$                |       $2 \sum_i (\wv^\top \xv_i - y_i) \xv_i$       |
+|  感知机  | $\{ \pm 1 \}$ |          $\min_{\wv} \sum_i \max \{ 0, - y_i \wv^\top \xv_i \}$           | $-\sum_i \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
+|    ^     |   $\{1,0\}$   |      $\min_{\wv} \sum_i (\sgn(\wv^\top \xv_i) - y_i) \wv^\top \xv_i$      |     $\sum_i (\sgn(\wv^\top \xv_i) - y_i) \xv_i$     |
+| 对率回归 | $\{ \pm 1 \}$ |         $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$          | $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$ |
+|    ^     |  $\{ 1,0 \}$  | $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$ |    $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$    |
+
+</div>
+
+许多机器学习模型的优化目标为{==最小化每个样本的损失的和==}
 
 $$
 \begin{align*}
@@ -108,11 +120,26 @@ $$
 \end{align*}
 $$
 
-<div class="top-4"></div>
+<div class="top-3"></div>
 
-计算梯度$\nabla F(\wv) = \sum_{i \in [m]} \nabla \ell (y_i; f(\xv_i;\wv)) / m$需遍历所有训练样本，当样本数$m$很大时，梯度计算开销很大
+- 线性回归，平方损失$\ell = (y_i - \wv^\top \xv_i)^2$
+- 感知机，$\ell = \max \{ 0, - y_i \wv^\top \xv_i \}$
+- 对率回归，对率损失$\ell = \ln (1 + \exp(- y_i \wv^\top \xv_i))$，更一般的交叉熵损失
 
-批量梯度下降，随机采样一个下标子集$\Bcal_t \subseteq [m]$
+<!-- slide vertical=true data-notes="" -->
+
+##### 随机梯度下降
+
+---
+
+梯度下降的问题：
+
+- 计算梯度$\nabla F(\wv) = \sum_{i \in [m]} \nabla \ell(y_i, f(\xv_i;\wv)) / m$需遍历所有样本
+- 当样本数$m$很大时，计算开销很大
+
+<div class="top2"></div>
+
+批量梯度下降随机采样一个下标子集$\Bcal_t \subseteq [m]$
 
 $$
 \begin{align*}
@@ -120,13 +147,18 @@ $$
 \end{align*}
 $$
 
-<div class="top-4"></div>
+<div class="top-5"></div>
 
-若$|\Bcal_t| = 1$，则为常说的{==随机梯度下降==} (SGD)
+若$|\Bcal_t| = 1$，则为标准的{==随机梯度下降==} (Stochastic GD)
+
+以感知机为例：
+
+- 优化目标$\min_{\wv} \sum_i \max \{ 0, - y_i \wv^\top \xv_i \}$，梯度$-\sum_i \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
+- 随机梯度下降$\wv_{t+1} \leftarrow \wv_t + \eta_t \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### GD vs. SGD
+##### <span style="font-weight:900">GD _vs._ SGD</span>
 
 ---
 
@@ -134,8 +166,8 @@ $$
 
 $$
 \begin{align*}
-    & \wv_{t+1} \leftarrow \wv_t - \eta_t \left( \frac{1}{m} \sum_{i \in [m]} \nabla l(y_i, f(\xv_i)) + \lambda \cdot \nabla \Omega(\wv) \right) \\
-    & \wv_{t+1} \leftarrow \wv_t - \eta_t \left( \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla l(y_i, f(\xv_i)) + \lambda \cdot \nabla \Omega(\wv) \right)
+    \qquad & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{m} \sum_{i \in [m]} \nabla \ell(y_i, f(\xv_i;\wv)) \\
+    & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla \ell(y_i, f(\xv_i;\wv))
 \end{align*}
 $$
 
@@ -143,7 +175,7 @@ $$
 - 迭代前期，SGD 更新频率快，较 GD 优势明显
 - 迭代后期，GD 会停止于最优解处，SGD 则只能在最优解附近震荡
 - 越靠近最优解，梯度越接近零，因此 GD 可以用恒定步长
-- 最优解处随机梯度不一定为零，故 SGD 必须用衰减步长，否则算法不会停止
+- 最优解处随机梯度不一定为零，故 SGD 必须用衰减步长
 - SGD 因随机采样带来的噪声若能随着迭代而受到抑制，则可进一步加速，机器学习顶会有大量相关工作，包括 SAG，SAGA，SVRG 等及其衍生变种
 
 <!-- slide data-notes="" -->
@@ -154,9 +186,9 @@ $$
 
 当目标函数的变量尺度不同时，梯度下降效率很低
 
-<img src="../python/momentum.svg" class="center width90 top2 bottom2">
+@import "../python/momentum.svg" {.center .width90 .top0 .bottom0}
 
-动量法 (momentum)：$\wv_{t+1} = \wv_t - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1})$
+动量法 (momentum)：$\wv_{t+1} = \wv_t - \eta_t \nabla F(\wv_t) + \class{blue}{\gamma (\wv_t - \wv_{t-1})}$
 
 - 相对于梯度下降，多了第三项，上一轮的更新方向
 - 参数$\gamma < 1$，通常取$0.9$
@@ -169,13 +201,15 @@ $$
 
 $$
 \begin{align*}
-    \wv_{t+1} - \wv_t & = - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1}) \\
+    \qquad \wv_{t+1} - \wv_t & = - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1}) \\
     \gamma (\wv_t - \wv_{t-1}) & = - \eta_{t-1} \gamma \nabla F(\wv_{t-1}) + \gamma^2 (\wv_{t-1} - \wv_{t-2}) \\
     & \vdots \\
-    \gamma^{t-1} (\wv_2 - \wv_1) & = - \eta_1 \gamma^{t-1} \nabla F(\wv_1) + \mathtip{\gamma^t (\wv_1 - \wv_0)}{因为\wv_1 = \wv_0，故该项等于零} \\
+    \gamma^{t-1} (\wv_2 - \wv_1) & = - \eta_1 \gamma^{t-1} \nabla F(\wv_1) + \underbrace{\gamma^t (\wv_1 - \wv_0)}_{\wv_1 = \wv_0} \\
     \Longrightarrow ~ \wv_{t+1} - \wv_t & = - \sum_{i \in [t]} \eta_i \gamma^{t-i} \nabla F(\wv_i)
 \end{align*}
 $$
+
+<div class="top-4"></div>
 
 动量法每步更新是历史梯度的加权平均
 
@@ -192,7 +226,7 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 动量法 vs. NAG
+##### 动量法 <span style="font-weight:900">_vs._ NAG</span>
 
 ---
 
