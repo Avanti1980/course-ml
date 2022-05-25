@@ -74,3 +74,6 @@
 第四讲：决策树[分类鸢尾花](python/dt-iris.ipynb)
 
 第五讲：感知机[预测约会](python/perceptron-date.ipynb)、[实现与或非](python/perceptron-logic.ipynb)、核感知机[实现异或](python/perceptron-kernel.ipynb)
+
+第六讲：对率回归[预测约会](python/lr-date.ipynb)、[分类鸢尾花](python/lr-iris.ipynb)
+
