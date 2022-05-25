@@ -4,7 +4,7 @@ import numpy as np
 if __name__ == '__main__':
 
     iteration = 30
-    a, b, lr = 0.1, 10, 0.09
+    a, b, lr = 1, 100, 0.009
     gamma_list = [0.0, 0.4, 0.8]
     T = len(gamma_list)
 
@@ -17,10 +17,12 @@ if __name__ == '__main__':
     with plt.style.context('Solarize_Light2'):
 
         fig, ax = plt.subplots(nrows=1, ncols=T, figsize=(15, 5))
-        fig.suptitle('30 iterations', color='#586e75', fontproperties={'family': 'EB Garamond', 'size': 20})
+        fig.suptitle(r'$\min ~ %s \cdot x_1^2 + %s \cdot x_2^2$, 30 iterations' % (a,b), color='#586e75', fontproperties={'size': 20})
         for i in range(T):
             gamma = gamma_list[i]
-            cp = ax[i].contour(X, Y, Z, 50)
+            contours = ax[i].contour(X, Y, Z, 20, alpha=.8)
+            ax[i].clabel(contours)
+
             ax[i].set_xlim(-2.5, 2.5)
             ax[i].set_ylim(-.3, .3)
             ax[i].set_xlabel(r'$\gamma=$%s' % gamma)
@@ -44,4 +46,4 @@ if __name__ == '__main__':
 
             ax[i].plot(w_1_curve, w_2_curve)
 
-        plt.savefig("momentum.svg", transparent=True)
+        plt.show()

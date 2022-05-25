@@ -47,7 +47,11 @@
 |   ^    |               ^                | 2. 感知机模型与算法，实现与或非运算                 |
 |   ^    |               ^                | 3. 感知机理论分析：Novikoff 定理                    |
 |   ^    |               ^                | 4. 感知机的对偶形式，核感知机，实现异或运算         |
-| 第六讲 | [对数几率回归](slides/06.html) | -                                                   |
+| 第六讲 | [对数几率回归](slides/06.html) | 1. 对率回归用线性函数拟合几率的对数，输出后验概率   |
+|   ^    |               ^                | 2. 最终形式由极大似然法或最小化交叉熵损失导出       |
+|   ^    |               ^                | 3. 将对率函数换成 softmax 变换可得多分类对率回归    |
+|   ^    |               ^                | 4. 梯度下降，随机梯度下降，动量法，加速梯度法       |
+| 第七讲 |   [神经网络](slides/07.html)   | -                                                   |
 
 </div>
 
@@ -73,7 +77,6 @@
 
 第四讲：决策树[分类鸢尾花](python/dt-iris.ipynb)
 
-第五讲：感知机[预测约会](python/perceptron-date.ipynb)、[实现与或非](python/perceptron-logic.ipynb)、核感知机[实现异或](python/perceptron-kernel.ipynb)
+第五讲：感知机[预测约会](python/perceptron-date.ipynb)、感知机[实现与或非](python/perceptron-logic.ipynb)、核感知机[实现异或](python/perceptron-kernel.ipynb)
 
-第六讲：对率回归[预测约会](python/lr-date.ipynb)、[分类鸢尾花](python/lr-iris.ipynb)
-
+第六讲：对率回归[预测约会](python/lr-date.ipynb)、对率回归[分类鸢尾花](python/lr-iris.ipynb)、[梯度下降](python/gd.ipynb)、[动量法](python/momentum.ipynb)

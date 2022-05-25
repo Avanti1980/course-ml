@@ -240,10 +240,11 @@ table {
   tbody tr:nth-child(9),
   tbody tr:nth-child(14),
   tbody tr:nth-child(18),
-  tbody tr:nth-child(22) {
+  tbody tr:nth-child(22),
+  tbody tr:nth-child(26) {
     border-top: 1px dashed var(--solarized-base01);
   }
-  tbody tr:nth-child(22) {
+  tbody tr:nth-child(26) {
     td:nth-last-child(1) {
       text-align: center !important;
     }

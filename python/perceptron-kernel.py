@@ -85,15 +85,18 @@ if __name__ == '__main__':
         Z = kp.decision_function(np.c_[xx.ravel(), yy.ravel()])
         Z = Z.reshape(xx.shape)
 
-        ax.contourf(xx, yy, Z, alpha=.8)
-        ax.scatter(X[:, 0], X[:, 1], c=y, edgecolors='#002b36')
-        ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % acc).lstrip('0'), size=14, horizontalalignment='center')
+        # ax.contourf(xx, yy, Z, alpha=.8)
+        contours = ax.contour(xx, yy, Z, 20, alpha=.8)
+        ax.clabel(contours)
+
+        ax.scatter(X[:, 0], X[:, 1], s=50, c=y, edgecolors='#002b36')
+        # ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % acc).lstrip('0'), size=14, horizontalalignment='center')
 
         ax = plt.subplot(1, 2, 2, projection='3d')
         ax.plot_surface(xx, yy, Z)
 
-        ax.set_xlabel('x1')
-        ax.set_ylabel('x2')
+        ax.set_xlabel(r'$x_1$')
+        ax.set_ylabel(r'$x_2$')
 
     plt.tight_layout()
     plt.show()

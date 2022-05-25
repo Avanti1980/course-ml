@@ -91,7 +91,9 @@ with plt.style.context('Solarize_Light2'):
                 Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
 
             Z = Z.reshape(xx.shape)
-            ax.contourf(xx, yy, Z, alpha=.8)
+            # ax.contourf(xx, yy, Z, alpha=.8)
+            contours = ax.contour(xx, yy, Z, 16, alpha=.4)
+            ax.clabel(contours)
 
             ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, edgecolors='k')
             ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, edgecolors='k', alpha=0.6)

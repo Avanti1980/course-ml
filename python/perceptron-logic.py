@@ -47,9 +47,11 @@ with plt.style.context('Solarize_Light2'):
         Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])
         Z = Z.reshape(xx.shape)
 
-        ax.contourf(xx, yy, Z, alpha=.8)
-        ax.scatter(X[:, 0], X[:, 1], c=y, edgecolors='#002b36')
-        ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % score).lstrip('0'), size=14, horizontalalignment='center')
+        # ax.contourf(xx, yy, Z, alpha=.8)
+        contours = ax.contour(xx, yy, Z, 10, alpha=.8)
+        ax.clabel(contours)
+        ax.scatter(X[:, 0], X[:, 1], s=50, c=y, edgecolors='#002b36')
+        # ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % score).lstrip('0'), size=14, horizontalalignment='center')
 
 plt.tight_layout()
 plt.show()
