@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Concept}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Problem Settings}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Preliminary}{6}{0}{1}
+\beamer@sectionintoc {2}{Decomposition of Expected Test Error}{15}{0}{2}
+\beamer@subsectionintoc {2}{1}{Decomposition of Expected Test Error}{16}{0}{2}
+\beamer@subsectionintoc {2}{2}{Variance, Bias and Noise}{22}{0}{2}
+\beamer@sectionintoc {3}{Detecting High Bias and High Variance}{27}{0}{3}
+\beamer@subsectionintoc {3}{1}{How to Debug ML Algorithms}{28}{0}{3}
+\beamer@subsectionintoc {3}{2}{High Variance}{31}{0}{3}
+\beamer@subsectionintoc {3}{3}{High Bias}{34}{0}{3}

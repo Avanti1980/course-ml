@@ -1,0 +1,16 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Concept}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Assumptions}{4}{0}{1}
+\beamer@sectionintoc {2}{Classifier}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Parameter Selection}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Hyperplane}{9}{0}{2}
+\beamer@sectionintoc {3}{Perceptron Algorithm}{11}{0}{3}
+\beamer@subsectionintoc {3}{1}{Algorithm}{12}{0}{3}
+\beamer@subsectionintoc {3}{2}{Geometric Intuition}{13}{0}{3}
+\beamer@sectionintoc {4}{Perceptron Convergence}{15}{0}{4}
+\beamer@subsectionintoc {4}{1}{Perceptron Convergence}{16}{0}{4}
+\beamer@subsectionintoc {4}{2}{Theorem and Proof}{18}{0}{4}
+\beamer@sectionintoc {5}{Perceptron in the History}{22}{0}{5}
+\beamer@subsectionintoc {5}{1}{Perceptron History}{23}{0}{5}
+\beamer@subsectionintoc {5}{2}{From Perceptron to Artificial Neurons}{26}{0}{5}
+\beamer@sectionintoc {6}{Reference}{28}{0}{6}

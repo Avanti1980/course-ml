@@ -2,10 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import ListedColormap
 from sklearn.datasets import make_circles, make_classification, make_moons
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.gaussian_process.kernels import RBF
+from sklearn.linear_model import Perceptron
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
@@ -18,29 +15,21 @@ h = .02
 m = 200
 
 names = [
-    # "Nearest Neighbors",
-    "Linear SVM",
+    "Decision Tree",
+    "Perceptron",
+    "Neural Network",
+    "Gaussian Naive Bayes",
+    "3 Nearest Neighbors",
     "RBF SVM",
-    # "Gaussian Process",
-    # "Decision Tree",
-    # "Random Forest",
-    "Neural Net",
-    # "AdaBoost",
-    # "Naive Bayes",
-    # "QDA"
 ]
 
 classifiers = [
-    # KNeighborsClassifier(3),
-    SVC(kernel="linear", C=0.025),
-    SVC(gamma=2, C=1),
-    # GaussianProcessClassifier(1.0 * RBF(1.0)),
-    # DecisionTreeClassifier(max_depth=5),
-    # RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
+    DecisionTreeClassifier(max_depth=5),
+    Perceptron(eta0=0.5),
     MLPClassifier(alpha=1, max_iter=1000),
-    # AdaBoostClassifier(),
-    # GaussianNB(),
-    # QuadraticDiscriminantAnalysis()
+    GaussianNB(),
+    KNeighborsClassifier(3),
+    SVC(gamma=2, C=1),
 ]
 
 X, y = make_classification(n_samples=m, n_features=2, n_redundant=0, n_informative=2, random_state=1, n_clusters_per_class=1)
@@ -54,7 +43,7 @@ datasets = [
     linearly_separable
 ]
 
-figure = plt.figure(figsize=(12, 9))
+figure = plt.figure(figsize=(24, 12))
 i = 1
 
 with plt.style.context('Solarize_Light2'):
@@ -68,20 +57,9 @@ with plt.style.context('Solarize_Light2'):
         y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
         xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 
-        ax = plt.subplot(len(datasets), len(classifiers) + 1, i)
-        if index == 0:
-            ax.set_title("Input data")
-        ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, edgecolors='k')
-        ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, alpha=0.6, edgecolors='k')
-        ax.set_xlim(xx.min(), xx.max())
-        ax.set_ylim(yy.min(), yy.max())
-        ax.set_xticks(())
-        ax.set_yticks(())
-        i += 1
-
         for name, clf in zip(names, classifiers):
-            ax = plt.subplot(len(datasets), len(classifiers) + 1, i)
-            
+            ax = plt.subplot(len(datasets), len(classifiers), i)
+
             clf.fit(X_train, y_train)  # 训练模型
             score = clf.score(X_test, y_test)  # 测试
 
@@ -91,9 +69,9 @@ with plt.style.context('Solarize_Light2'):
                 Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
 
             Z = Z.reshape(xx.shape)
-            # ax.contourf(xx, yy, Z, alpha=.8)
-            contours = ax.contour(xx, yy, Z, 16, alpha=.4)
-            ax.clabel(contours)
+            ax.contourf(xx, yy, Z, alpha=.8)
+            # contours = ax.contour(xx, yy, Z, 16, alpha=.4)
+            # ax.clabel(contours)
 
             ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, edgecolors='k')
             ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, edgecolors='k', alpha=0.6)
@@ -103,9 +81,10 @@ with plt.style.context('Solarize_Light2'):
             ax.set_xticks(())
             ax.set_yticks(())
             if index == 0:
-                ax.set_title(name)
-            ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'), size=15, horizontalalignment='right')
+                ax.set_title(name, color='#586e75')
+            ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'), size=15, horizontalalignment='right', color='#002b36')
+
             i += 1
 
-plt.tight_layout()
+plt.subplots_adjust(wspace=0.05, hspace=0.05)
 plt.show()

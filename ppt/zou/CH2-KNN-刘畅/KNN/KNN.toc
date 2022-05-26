@@ -1,0 +1,19 @@
+\beamer@endinputifotherversion {3.14pt}
+\beamer@sectionintoc {1}{The k-NN algorithm}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Formal definition of k-NN:}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Example}{6}{0}{1}
+\beamer@sectionintoc {2}{Parameter selection}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Distance function}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{K value}{9}{0}{2}
+\beamer@sectionintoc {3}{Special k-nearest neighbor classifier}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{1-nearest neighbor classifier}{11}{0}{3}
+\beamer@subsectionintoc {3}{2}{*weighted nearest neighbor classifier}{15}{0}{3}
+\beamer@sectionintoc {4}{Curse of Dimensionality}{17}{0}{4}
+\beamer@subsectionintoc {4}{1}{Distances between points}{18}{0}{4}
+\beamer@subsectionintoc {4}{2}{Distances to hyperplanes}{21}{0}{4}
+\beamer@sectionintoc {5}{How to solve the curse of dimensionality}{22}{0}{5}
+\beamer@subsectionintoc {5}{1}{Dimension reduction}{23}{0}{5}
+\beamer@subsectionintoc {5}{2}{Data reduction}{24}{0}{5}
+\beamer@sectionintoc {6}{k-NN summary}{26}{0}{6}
+\beamer@subsectionintoc {6}{1}{Quick summary of k-NN}{27}{0}{6}
+\beamer@subsectionintoc {6}{2}{Pros and cons of k-NN}{28}{0}{6}

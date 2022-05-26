@@ -1,0 +1,53 @@
+\documentclass{ctexart}
+\usepackage{avanti}
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+\tikzset{font=\Large}
+
+\tikzset{base/.style = {smooth, thick, draw=Solarized-base01}}
+\tikzset{nc/.style = {circle, minimum size=48, base}}
+\tikzset{label/.style = {Solarized-base01, right}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \pgfmathtruncatemacro{\v}{-2};
+
+    % 第一行的五个圆
+    \node [draw=none] (zlm1) at (-2.4,0) {};
+    \node [nc] (alm1) at (0,0) {$\av_{l-1}$};
+    \node [nc] (zl) at (3.5,0) {$\zv_l$};
+    \node [nc] (al) at (6,0) {$\av_l$};
+    \node [draw=none] (zlp1) at (8.65,0) {};
+
+    \draw [arrow] (zlm1) -- (alm1);
+    \draw [arrow] (alm1) -- (zl) node [midway, above] {$\mathbf{W}_l, \bv_l$};
+    \draw [arrow] (zl) -- (al) node [midway, above] {$h_l$};
+    \draw [arrow] (al) -- (zlp1);
+
+    \node[draw=none] (zlm1rn) at (-2.4,\v) {};
+
+    \node[nc] (alm1rn) at (0,\v) {$\av_{l-1}$};
+    \node[nc] (t1) at (3.5,\v) {};
+    \node[nc] (t2) at (6.0,\v) {};
+    \node[nc, diamond] (t3) at (9.4,\v) {$+$};
+    \node[nc] (zlrn) at (11.9,\v) {$\zv_l$};
+    \node[nc] (alp1) at (14.4,\v) {$\av_l$};
+
+    \draw [arrow] (zlm1rn) -- (alm1rn);
+    \draw [arrow] (alm1rn) -- (t1) node [midway, above] {$\Uv_1, \cv_1$};
+    \draw [arrow] (t1) -- (t2) node [midway, above] {$h$};
+    \draw [arrow] (t2) -- (t3) node [midway, above] {$\Uv_2, \cv_2$};
+    \draw [arrow] (t3) -- (zlrn);
+    \draw [arrow] (zlrn) -- (alp1);
+
+    \draw [arrow] (alm1rn) to [out=330,in=210] (t3);
+
+\end{tikzpicture}
+
+
+\end{document}
+

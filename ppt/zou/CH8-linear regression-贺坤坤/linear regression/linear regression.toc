@@ -1,0 +1,17 @@
+\beamer@endinputifotherversion {3.14pt}
+\beamer@sectionintoc {1}{Linear Regression}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Formal definition of Linear Regression}{4}{0}{1}
+\beamer@sectionintoc {2}{Extensions}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Simple and multiple linear regression}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Generalized linear models}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{Hierarchical linear models}{9}{0}{2}
+\beamer@sectionintoc {3}{Estimating with MLE}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{Estimating with MLE}{11}{0}{3}
+\beamer@sectionintoc {4}{Estimating with MAP}{13}{0}{4}
+\beamer@subsectionintoc {4}{1}{Estimating with MAP}{14}{0}{4}
+\beamer@sectionintoc {5}{Applications}{16}{0}{5}
+\beamer@subsectionintoc {5}{1}{Finance}{17}{0}{5}
+\beamer@subsectionintoc {5}{2}{Environmental science}{18}{0}{5}
+\beamer@sectionintoc {6}{Summary}{19}{0}{6}
+\beamer@subsectionintoc {6}{1}{summary}{20}{0}{6}
+\beamer@subsectionintoc {6}{2}{Code eamples}{21}{0}{6}

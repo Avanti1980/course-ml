@@ -1,0 +1,13 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Overview}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Support Vector Machine (SVM)}{4}{0}{1}
+\beamer@sectionintoc {2}{Linear Support Vector Machine}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Margin}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{Max Margin Classifier}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{Support Vectors}{13}{0}{2}
+\beamer@subsectionintoc {2}{4}{Example of SVM}{14}{0}{2}
+\beamer@sectionintoc {3}{SVM with Soft Constraints}{15}{0}{3}
+\beamer@subsectionintoc {3}{1}{Soft SVM Overview}{16}{0}{3}
+\beamer@subsectionintoc {3}{2}{Unconstrained Formulation}{18}{0}{3}
+\beamer@subsectionintoc {3}{3}{Example of Soft SVM }{22}{0}{3}
+\beamer@sectionintoc {4}{SVM Summary}{25}{0}{4}

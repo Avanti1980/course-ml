@@ -1,0 +1,11 @@
+\beamer@sectionintoc {1}{Linear Regression}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Intorduction}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Loss Function:}{5}{0}{1}
+\beamer@subsectionintoc {1}{3}{Code Example}{6}{0}{1}
+\beamer@sectionintoc {2}{Logistic Regression}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Introduction}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{Loss Function}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{Regularization}{11}{0}{2}
+\beamer@subsectionintoc {2}{4}{Weights Learning of LR}{14}{0}{2}
+\beamer@sectionintoc {3}{Logistic Regression vs Naive Bayes}{16}{0}{3}
+\beamer@subsectionintoc {3}{1}{Comparison}{17}{0}{3}

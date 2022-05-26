@@ -1,0 +1,577 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{beamer}
+\usepackage{CJK}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathtools}
+\usepackage{animate}
+\usepackage{listings}
+
+%\usepackage{media9}
+%% A LATEX package for embedding interactive Adobe Flash (SWF) and 3D files (Adobe U3D & PRC) as well as video and sound files or streams (FLV, MP4/H.246, MP3) into PDF documents with Adobe Reader-9/X
+%compatibility.
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   %Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  %UseOutput in the format of Algorithm
+\newcommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+%\mode<presentation>{\usetheme{Madrid}}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\begin{document}
+\begin{CJK*}{GBK}{kai}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Machine Learning]{Overview} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+ 
+\author{Kun He } % Your name
+%\logo{%
+%   \includegraphics[scale=.2]{logo.pdf}\hspace*{4.75cm}~%
+%   \includegraphics[scale=.2]{logo.jpg}\hspace*{0.75cm}%
+%   }
+%\pgfdeclareimage[width=1cm]{hust}{logo.pdf}
+%\logo{\pgfuseimage{hust}{\vspace{-10pt}}}
+\titlegraphic{\includegraphics[width=1.3cm]{logo.pdf}}
+\institute[JHL, HUST] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+			Data Mining and Machine Learning Lab\\
+			(John Hopcroft Lab)\\
+            Huazhong University of Science \& Technology \\ % Your institution for the title page
+\medskip
+\textit{brooklet60@hust.edu.cn} % Your email address
+}
+
+\date{2022��04��29��} % Date, can be changed to a custom date
+%\par
+%\begin{document}
+
+%\begin{frame}
+%\titlepage % Print the title page as the first slide
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+\frame{\titlepage}
+
+\frame{\frametitle{Table of contents}\tableofcontents}
+
+\AtBeginSection[]
+{
+\begin{frame}{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+%\section{Brief Introduction of DSIS} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%%------------------------------------------------
+%%------------------------------------------------
+%\subsection{Support Organization} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Support Organization}
+%\begin{enumerate}
+%\item �人���ҹ���ʵ����
+%\item ���������洢ϵͳ����רҵʵ����
+%\item ��Ϣ�洢ϵͳ�������ص�ʵ����
+%\end{enumerate}
+%\centerline{\includegraphics[width=0.9\textwidth]{wnlo-image.pdf}}
+%\end{frame}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%
+%\subsection{Members and Research Interests} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%
+%\begin{frame}
+%\frametitle{Members and Research Interests}
+%\setbeamercovered{transparent}
+%\uncover<1->{
+%\begin{block}{Faculty and Students}
+%\begin{itemize}
+%\item Full Professor: �ܿɣ��½��ţ��ܹ�ҵ
+%\item Associate Professor:�޸��ã�֣ʤ�������¬Ƽ
+%\item Lecturer:���룬��ʤ
+%\item Phd and Master Candiates: near sixty
+%\end{itemize}
+%\end{block}
+%}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%\uncover<2->{
+%\begin{block}{Research Interests}
+%\begin{itemize}
+%\item Digital Storage: Cloud Storage, Security of Cloud Storage
+%\item Big Data Analysis: Machine Learning and its application to Big Data
+%\end{itemize}
+%\end{block}
+%}
+%\end{frame}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%
+%\subsection{Projects and Awards} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%
+%\begin{frame}
+%\frametitle{Projects and Awards}
+%\setbeamercovered{transparent}
+%\uncover<1->{
+%\begin{block}{Projects}
+%%\rowcolors[]{1}{blue!20}{blue!10}
+%\begin{tabular}{l|l}
+%\toprule
+%\textbf{Project Name} & \textbf{Project Class}\\%\hline
+%\midrule
+%��������Ӧ�û��������ݴ洢ϵͳ�����뼼�������о�&973�ƻ���Ŀ\\
+%�洢���ʰ�ȫ�ؼ�����&863�ش���Ŀ \\
+%���繫�ô洢������ϵͳ�ṹ��������֯��ʽ�о� &�������ص�\\
+%Ѹ�״�����ƽ̨��ҵ������׼���� &����ίר��\\
+%\bottomrule
+%\end{tabular}
+%\end{block}
+%}
+%
+%%------------------------------------------------
+%%------------------------------------------------
+%\uncover<2->{
+%\begin{block}{Awards}
+%\begin{enumerate}
+%\item �����ƴ洢ϵͳ�ؼ�������2013����ʡ�Ƽ�����һ�Ƚ���
+%\item �����������洢ϵͳ���ļ����빹�ɷ�����2006 ��������ʡ��������һ�Ƚ���
+%\item ϵͳ���ɺ��칹ͨ���ӿ�Э���任�������������У�2001 �������Ҽ����������Ƚ���
+%\end{enumerate}
+%\end{block}
+%}
+%\end{frame}
+
+%------------------------------------------------
+%------------------------------------------------
+\section{Evaluation}
+%------------------------------------------------
+%\subsection{Evaluation}
+\begin{frame}
+	\frametitle{Evaluation}
+	\begin{block}{Good news}
+		\begin{itemize}
+			
+			\item No exams!
+			
+			\item No homework!
+			
+			
+		\end{itemize}
+	\end{block}
+	
+	\begin{itemize}
+		\item Course participation (10\%) 
+		\item Two small projects (15\%*2) 
+		\item Final project (60\%)
+	\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\section{Source Materials}
+%------------------------------------------------
+%\subsection{Evaluation}
+\begin{frame}
+	\frametitle{Source Materials}
+	\begin{itemize}
+		\item No textbook required. Readings will come from freely available online material. 
+		
+		\item Machine Learning Lecture Book (Kun He) %????????????
+		 
+		\item K. Murphy, Machine Learning: a Probabilistic Perspective, MIT Press, 2012
+		
+		\item C. Bishop, Pattern Recognition and Machine Learning, Springer, 2007
+		
+		\item CS 4780 @Cornell University
+		
+		\item Machine Learning (Zhihua Zhou)%??? ???
+		
+		\item Statistics Learning Method (Hang Li)%?? ??????
+		
+	\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\section{Introduction}
+%------------------------------------------------
+\subsection{What is Machine Learning?}
+\begin{frame}
+\frametitle{What is machine learning?}
+\begin{block}{Machine Learning}
+\begin{itemize}
+	
+	\item A branch of artificial intelligence, concerned with the design and development of algorithms that allow computers to evolve behaviors based on empirical data.
+	
+	\item As intelligence requires knowledge, it is necessary for the computers to acquire knowledge.
+	
+	
+\end{itemize}
+\end{block}
+
+\begin{itemize}
+\item Study of algorithms that improve their performance at some task with experience
+\item Optimize a performance criterion using example data or past experience
+\item Role of Statistics: Inference from a sample
+\item Role of Computer Science: Efficient algorithms to	solve the optimization problem,\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Representing and evaluating the model for inference	
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+%\begin{frame}
+%\frametitle{Learning System Model}
+%%\begin{block}{Formal definition}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.4]{learnModel.png}
+%	\caption{Example of k-NN classification. The test sample (inside circle) should be classified either to the first class of blue squares or to the second class of red triangles. If k = 3 (outside circle) it is assigned to the second class because there are 2 triangles and only 1 square inside the inner circle. If, for example k = 5 it is assigned to the first class (3 squares vs. 2 triangles outside the outer circle).}
+%\end{figure}
+%%\end{block}
+%\end{frame}
+
+\begin{frame}
+	\frametitle{ML vs traditional CS}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{MLvsCS.png}
+	
+\end{figure}
+Take the spam email as an example. The core is program but the final goal is the answer.
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{What is machine learning?}
+	\begin{block}{Mtichell, 1997}
+		\begin{itemize}
+			
+			\item A computer program A, learn from experience E, 
+			w.r.t some tasks T, and performance measure P.
+			
+			\item If E helps improve the performance.			
+		\end{itemize}
+	\end{block}
+	
+	\begin{itemize}
+	\item Based on statistics and optimization, Not on logic.	
+	\item Data: i.i.d., independent, identically distributed
+	\end{itemize}
+\end{frame}
+%------------------------------------------------
+\subsection{Supervised Learning}
+\begin{frame}
+\frametitle{Supervised Learning}
+%https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+%https://www.greycampus.com/opencampus/machine-learning/supervised-and-unsupervised-learning
+%\begin{block}{Formal definition}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{supervisedlearning.png}
+
+\end{figure}
+%\end{block}
+Supervised learning, an algorithm learns from a training dataset. We know the correct answers or desired output, the algorithm makes predictions using the given dataset and is corrected by the \textbf{supervisor}. The learning stops as and when the algorithm achieves a level of performance which is acceptable. There are two types of supervised learning - \textbf{classification} and \textbf{regression}.
+
+%Regression models are applied to solve various problems; e.g. predicting stock price. (https://towardsdatascience.com/stock-prediction-in-python-b66555171a2,https://www.analyticsvidhya.com/blog/2018/10/predicting-stock-price-machine-learningnd-deep-learning-techniques-python/)
+\end{frame}
+
+%------------------------------------------------
+%\subsection{Supervised Learning}
+\begin{frame}
+	\frametitle{Supervised Learning-Classification}
+	\begin{block}{Spam filtering}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.3]{SpamFiltering.png}
+		
+	\end{figure}
+	\end{block}
+    
+\end{frame}
+%------------------------------------------------
+%\subsection{Supervised Learning}
+\begin{frame}
+	\frametitle{Supervised Learning-Classification}
+	\begin{block}{Face Recognition}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.3]{FaceReco.png}
+			
+		\end{figure}
+	\end{block}
+	%Do 
+\end{frame}
+%------------------------------------------------
+%\subsection{Supervised Learning}
+\begin{frame}
+	\frametitle{Supervised Learning-Classification}
+	\begin{block}{Weather Prediction}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.3]{WeatherPredict.png}
+			
+		\end{figure}
+	\end{block}
+	%Do 
+\end{frame}
+
+%------------------------------------------------
+%\subsection{Supervised Learning}
+\begin{frame}
+	\frametitle{Supervised Learning-Regression}
+	\begin{block}{Stock Market Prediction}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.3]{StockMarket.png}
+			
+		\end{figure}
+	\end{block}
+	%Do 
+\end{frame}
+%------------------------------------------------
+%\subsection{Supervised Learning}
+\begin{frame}
+	\frametitle{Supervised Learning-Regression}
+	\begin{block}{Weather Prediction}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.3]{WeatherRegression.png}
+			
+		\end{figure}
+	\end{block}
+	%Do 
+\end{frame}
+%------------------------------------------------
+\subsection{Unsupervised Learning}
+\begin{frame}
+\frametitle{Unsupervised Learning}
+%https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+%https://www.greycampus.com/opencampus/machine-learning/supervised-and-unsupervised-learning
+%\begin{block}{Formal definition}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{unsupervisedlearning.png}
+	
+\end{figure}
+%\end{block}
+In unsupervised learning there is no trainer or supervisor as the name suggests. We do not show the output, or the specific input required to achieve specific output. The machine learns based on its own capability, it decides what should be the input and output - clustering is a method of unsupervised learning, where the machine learns on its own. A well known algorithm in clustering is the k-means clustering.
+\end{frame}
+%------------------------------------------------
+%\subsection{Unsupervised Learning}
+\begin{frame}
+	\frametitle{Unsupervised Learning}
+	\begin{block}{Clustering Images}	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.3]{ClusteringImg.png}		
+		\end{figure}
+	\end{block}
+\end{frame}
+%------------------------------------------------
+
+%\subsection{Unsupervised Learning}
+\begin{frame}
+	\frametitle{Unsupervised Learning}
+	\begin{block}{Clustering Web Search Results}	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{WebSearchClustering.png}		
+	\end{figure}
+	\end{block}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Supervised Learning and Unsupervised Learning}
+	%https://towardsdatascience.com/supervised-vs-unsupervised-learning-14f68e32ea8d
+	%https://www.greycampus.com/opencampus/machine-learning/supervised-and-unsupervised-learning
+	%\begin{block}{Formal definition}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.8]{TDR2}
+		
+	\end{figure}
+	%\end{block}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Typical Machine Learning Process}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{TypicalMLProcess.png}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Machine Learning Illustration}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{MLillustration.png}		
+	\end{figure}
+	
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Rapid growth of machine learning}
+	\begin{block}{Machine Learning is perferred approach to}
+		\begin{itemize}
+			\item Natural Language Processing (NLP)
+			\item Computer Vision (CV)			
+			\item Medical outcomes analysis
+			\item Robot control
+			\item Computational biology
+			\item Sensor networks
+			\item ...
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{This trend is accelerating}
+	\begin{itemize}
+		\item Big data
+		\item Improved machine learning algorithms
+		\item Faster computers
+		\item Good open-source software
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+%------------------------------------------------
+\section{History of AI}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{History of AI}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.35]{AIHistory.png}		
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{History of AI}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.35]{AIHistory.png}		
+	\end{figure}
+	
+\end{frame}
+%------------------------------------------------
+%%------------------------------------------------
+%\section{Reference}
+%------------------------------------------------
+%\begin{frame}
+%\frametitle{Reference}
+%\begin{thebibliography}{4}
+%\bibitem{LS-SPH} F. Zou, C. Liu, H. Ling, H. Feng, L. Yan, and D. Li, "Least square regularized spectral hashing for similarity search," Signal Processing, vol. 93, pp. 2265-2273, 2013. (SCI,EI)
+%\bibitem{KMFH} F. Zou, Y. Chen, J. Song, K. Zhou, Y. Yang, and N. Sebe, "Compact image fingerprint via multiple kernel hashing," IEEE Transactions on Multimedia, vol. 17, pp. 1006-1018, 2015. (SCI,EI)
+%\bibitem{KNPH} C. Liu, H. Ling, F. Zou, L. Yan, Y. Wang, H. Feng, et al., "Kernelized neighborhood preserving hashing for social-network-oriented digital fingerprints," IEEE Transactions on Information Forensics and Security, vol. 9, pp. 2232-2247, 2014. (SCI,EI)
+%\bibitem{DTSH} Liu, Yu; Song, Jingkuan; Zhou, Ke; Yan, Lingyu; Liu, Li; Zou, Fuhao; Shao, Ling, "Deep Self-taught Hashing for Image Retrieval," IEEE Transactions on Cybernetics, May 3, 2018. (SCI,EI)
+%\bibitem{DeepFace} Fuhao Zou, Fan Yang, Wei Chen,Kai Lia, Jingkuan Song, Jingcai Chen, Hefei Ling, "Fast Large Scale Deep Face Search," Pattern Recognition Letters, Januray 3, 2019. (SCI,EI)
+%\end{thebibliography}
+%\end{frame}
+%------------------------------------------------
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+\end{CJK*}
+\end{document}
+%\end{document}

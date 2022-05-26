@@ -14,6 +14,8 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # or any {'0', '1', '2'}
 X, y = load_breast_cancer(return_X_y=True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
+print(y_test)
+
 model = Sequential()
 model.add(Dense(64, activation="relu"))
 model.add(Dense(64, activation="relu"))

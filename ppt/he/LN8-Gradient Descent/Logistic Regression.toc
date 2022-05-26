@@ -1,0 +1,12 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Basic idea}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Maximum likelihood estimate (MLE)}{8}{0}{1}
+\beamer@subsectionintoc {1}{3}{Maximum a Posteriori (MAP) Estimate}{14}{0}{1}
+\beamer@subsectionintoc {1}{4}{Summary}{15}{0}{1}
+\beamer@sectionintoc {2}{Further Discussion}{17}{0}{2}
+\beamer@subsectionintoc {2}{1}{The Function}{18}{0}{2}
+\beamer@subsectionintoc {2}{2}{Loss Function}{19}{0}{2}
+\beamer@subsectionintoc {2}{3}{Regularization}{20}{0}{2}
+\beamer@subsectionintoc {2}{4}{Weights Learning of LR}{23}{0}{2}
+\beamer@sectionintoc {3}{Logistic Regression vs Naive Bayes}{25}{0}{3}
+\beamer@subsectionintoc {3}{1}{Comparison}{26}{0}{3}

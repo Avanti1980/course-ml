@@ -1,0 +1,18 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Why Gradient Descent?}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Gradient Descent}{5}{0}{1}
+\beamer@sectionintoc {2}{Batch Gradient Descent(BGD)}{8}{0}{2}
+\beamer@subsectionintoc {2}{1}{Batch Gradient Descent(BGD)}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Example}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{Summary}{11}{0}{2}
+\beamer@sectionintoc {3}{Stochastic Gradient Descent(SGD)}{13}{0}{3}
+\beamer@subsectionintoc {3}{1}{Stochastic Gradient Descent(SGD)}{14}{0}{3}
+\beamer@subsectionintoc {3}{2}{Example}{16}{0}{3}
+\beamer@subsectionintoc {3}{3}{Summary}{19}{0}{3}
+\beamer@sectionintoc {4}{Mini-batch Stochastic Gradient Descent}{21}{0}{4}
+\beamer@subsectionintoc {4}{1}{Mini-batch Stochastic Gradient Descent}{22}{0}{4}
+\beamer@subsectionintoc {4}{2}{Comparison with BGD\&SGD}{24}{0}{4}
+\beamer@subsectionintoc {4}{3}{How to Configure Mini-Batch Gradient Descent}{26}{0}{4}
+\beamer@subsectionintoc {4}{4}{Example}{28}{0}{4}
+\beamer@subsectionintoc {4}{5}{Summary}{29}{0}{4}

@@ -1,0 +1,13 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Review}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Local minimizer}{6}{0}{1}
+\beamer@sectionintoc {2}{Taylor Expansions}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Taylor expansions}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{First and second order Taylor approximations}{10}{0}{2}
+\beamer@sectionintoc {3}{Search Direction Methods}{11}{0}{3}
+\beamer@sectionintoc {4}{Gradient Descent}{14}{0}{4}
+\beamer@sectionintoc {5}{Adagrad}{19}{0}{5}
+\beamer@sectionintoc {6}{Newton's method}{22}{0}{6}
+\beamer@sectionintoc {7}{A Simple Example}{25}{0}{7}
+\beamer@sectionintoc {8}{Best Practices}{30}{0}{8}

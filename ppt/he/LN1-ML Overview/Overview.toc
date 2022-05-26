@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Evaluation}{3}{0}{1}
+\beamer@sectionintoc {2}{Source Materials}{5}{0}{2}
+\beamer@sectionintoc {3}{Introduction}{7}{0}{3}
+\beamer@subsectionintoc {3}{1}{What is Machine Learning?}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Supervised Learning}{11}{0}{3}
+\beamer@subsectionintoc {3}{3}{Unsupervised Learning}{17}{0}{3}
+\beamer@sectionintoc {4}{History of AI}{24}{0}{4}

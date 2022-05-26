@@ -16,7 +16,7 @@ tasks = [
     (X, y_not, 'not'),
 ]
 
-figure = plt.figure(figsize=(11, 4))
+figure = plt.figure(figsize=(12, 4))
 
 with plt.style.context('Solarize_Light2'):
     for index, ds in enumerate(tasks):
@@ -40,9 +40,9 @@ with plt.style.context('Solarize_Light2'):
         score = clf.score(X, y)  # 训练精度
 
         if clf.intercept_[0] < 0:
-            ax.set_title(r"%s: $%d \cdot x_1 + %d \cdot x_2 %d$" % (name, clf.coef_[0, 0], clf.coef_[0, 1], clf.intercept_[0]))
+            ax.set_title(r"%s: $%d \cdot x_1 + %d \cdot x_2 %d$" % (name, clf.coef_[0, 0], clf.coef_[0, 1], clf.intercept_[0]), color="#586e75")
         else:
-            ax.set_title(r"%s: $%d \cdot x_1 + %d \cdot x_2 + %d$" % (name, clf.coef_[0, 0], clf.coef_[0, 1], clf.intercept_[0]))
+            ax.set_title(r"%s: $%d \cdot x_1 + %d \cdot x_2 + %d$" % (name, clf.coef_[0, 0], clf.coef_[0, 1], clf.intercept_[0]), color="#586e75")
 
         Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])
         Z = Z.reshape(xx.shape)
@@ -53,5 +53,5 @@ with plt.style.context('Solarize_Light2'):
         ax.scatter(X[:, 0], X[:, 1], s=50, c=y, edgecolors='#002b36')
         # ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % score).lstrip('0'), size=14, horizontalalignment='center')
 
-plt.tight_layout()
+plt.subplots_adjust(wspace=0.05, hspace=0.05)
 plt.show()

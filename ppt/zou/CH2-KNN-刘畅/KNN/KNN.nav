@@ -1,0 +1,94 @@
+\beamer@endinputifotherversion {3.14pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {1}{The k-NN algorithm}{3}{The k-NN algorithm}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\slideentry {1}{0}{3}{3/3}{}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{4}{Formal definition of k-NN:}}\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\slideentry {1}{1}{1}{4/4}{Formal definition of k-NN:}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{1}{2}{5/5}{Formal definition of k-NN:}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{6}{Example}}\headcommand {\beamer@subsectionpages {4}{5}}
+\headcommand {\slideentry {1}{2}{1}{6/6}{Example}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\sectionentry {2}{Parameter selection}{7}{Parameter selection}{0}}
+\headcommand {\beamer@sectionpages {3}{6}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{0}{2}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{8}{Distance function}}\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {2}{1}{1}{8/8}{Distance function}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{9}{K value}}\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {2}{2}{1}{9/9}{K value}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\sectionentry {3}{Special k-nearest neighbor classifier}{10}{Special k-nearest neighbor classifier}{0}}
+\headcommand {\beamer@sectionpages {7}{9}}
+\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\slideentry {3}{0}{2}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{11}{1-nearest neighbor classifier}}\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {3}{1}{1}{11/11}{1-nearest neighbor classifier}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {3}{1}{2}{12/12}{1-nearest neighbor classifier}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {3}{1}{3}{13/13}{1-nearest neighbor classifier}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {3}{1}{4}{14/14}{1-nearest neighbor classifier}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{15}{*weighted nearest neighbor classifier}}\headcommand {\beamer@subsectionpages {11}{14}}
+\headcommand {\slideentry {3}{2}{1}{15/15}{*weighted nearest neighbor classifier}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {3}{2}{2}{16/16}{*weighted nearest neighbor classifier}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\sectionentry {4}{Curse of Dimensionality}{17}{Curse of Dimensionality}{0}}
+\headcommand {\beamer@sectionpages {10}{16}}
+\headcommand {\beamer@subsectionpages {15}{16}}
+\headcommand {\slideentry {4}{0}{3}{17/17}{}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{18}{Distances between points}}\headcommand {\beamer@subsectionpages {17}{17}}
+\headcommand {\slideentry {4}{1}{1}{18/18}{Distances between points}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\slideentry {4}{1}{2}{19/19}{Distances between points}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {4}{1}{3}{20/20}{Distances between points}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{21}{Distances to hyperplanes}}\headcommand {\beamer@subsectionpages {18}{20}}
+\headcommand {\slideentry {4}{2}{1}{21/21}{Distances to hyperplanes}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\sectionentry {5}{How to solve the curse of dimensionality}{22}{How to solve the curse of dimensionality}{0}}
+\headcommand {\beamer@sectionpages {17}{21}}
+\headcommand {\beamer@subsectionpages {21}{21}}
+\headcommand {\slideentry {5}{0}{2}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{23}{Dimension reduction}}\headcommand {\beamer@subsectionpages {22}{22}}
+\headcommand {\slideentry {5}{1}{1}{23/23}{Dimension reduction}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{24}{Data reduction}}\headcommand {\beamer@subsectionpages {23}{23}}
+\headcommand {\slideentry {5}{2}{1}{24/24}{Data reduction}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {5}{2}{2}{25/25}{Data reduction}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\sectionentry {6}{k-NN summary}{26}{k-NN summary}{0}}
+\headcommand {\beamer@sectionpages {22}{25}}
+\headcommand {\beamer@subsectionpages {24}{25}}
+\headcommand {\slideentry {6}{0}{3}{26/26}{}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@subsectionentry {0}{6}{1}{27}{Quick summary of k-NN}}\headcommand {\beamer@subsectionpages {26}{26}}
+\headcommand {\slideentry {6}{1}{1}{27/27}{Quick summary of k-NN}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@subsectionentry {0}{6}{2}{28}{Pros and cons of k-NN}}\headcommand {\beamer@subsectionpages {27}{27}}
+\headcommand {\slideentry {6}{2}{1}{28/28}{Pros and cons of k-NN}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {6}{2}{2}{29/29}{Pros and cons of k-NN}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\beamer@partpages {1}{29}}
+\headcommand {\beamer@subsectionpages {1}{29}}
+\headcommand {\beamer@sectionpages {1}{29}}
+\headcommand {\beamer@documentpages {29}}
+\headcommand {\def \inserttotalframenumber {29}}

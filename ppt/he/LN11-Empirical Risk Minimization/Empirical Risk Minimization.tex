@@ -1,0 +1,549 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{beamer}
+\usepackage{CJK}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathtools}
+\usepackage{animate}
+\usepackage{array}
+%\usepackage{media9}
+%% A LATEX package for embedding interactive Adobe Flash (SWF) and 3D files (Adobe U3D & PRC) as well as video and sound files or streams (FLV, MP4/H.246, MP3) into PDF documents with Adobe Reader-9/X
+%compatibility.
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   %Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  %UseOutput in the format of Algorithm
+\newcommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+%\mode<presentation>{\usetheme{Madrid}}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+\begin{document}
+\begin{CJK*}{GBK}{kai}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Machine Learning]{Empirical Risk Minimization (ERM)} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Kun He (何琨)} % Your name
+%\logo{%
+%   \includegraphics[scale=.2]{logo.pdf}\hspace*{4.75cm}~%
+%   \includegraphics[scale=.2]{logo.jpg}\hspace*{0.75cm}%
+%   }
+%\pgfdeclareimage[width=1cm]{hust}{logo.pdf}
+%\logo{\pgfuseimage{hust}{\vspace{-10pt}}}
+\titlegraphic{\includegraphics[width=1.3cm]{logo.pdf}}
+\institute[JHL, HUST] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+	Data Mining and Machine Learning Lab\\
+	(John Hopcroft Lab)\\
+	Huazhong University of Science \& Technology \\ % Your institution for the title page
+	\medskip
+	\textit{brooklet60@hust.edu.cn} % Your email address
+}
+
+\date{2022年5月} % Date, can be changed to a custom date
+%====================================================
+\frame{\titlepage}
+
+\frame{\frametitle{Table of Contents}\tableofcontents}
+
+\AtBeginSection[]
+{
+	\begin{frame}{Table of Contents}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+
+%------------------------------------------------
+%------------------------------------------------
+\section{Definition}
+%------------------------------------------------
+\subsection{Recap}
+\begin{frame}
+\frametitle{Recap}
+	Remember the unconstrained SVM Formulation
+\[\min_{\mathbf{w}}\ C\underset{Hinge-Loss}{\underbrace{\sum_{i=1}^{n}\max[1-y_{i}\underset{h({\mathbf{x}_i})}{\underbrace{(w^{\top}{\mathbf{x}_i}+b)}},0]}}+\underset{l_{2}-Regularizer}{\underbrace{\left\Vert w\right\Vert _{z}^{2}}}
+\]	
+The hinge loss is the SVM's error function of choice, whereas the $\ell 2$-regularizer reflects the complexity of the solution, and penalizes complex solutions. This is an example of empirical risk minimization with a loss function $\ell$ and a regularizer $r$,
+\[\min_{\mathbf{w}}\frac{1}{n}\sum_{i=1}^{n}\underset{Loss}{\underbrace{l(h_{\mathbf{w}}({\mathbf{x}_i}),y_{i})}}+\underset{Regularizer}{\underbrace{\lambda r(w)}},\]
+where the loss function is a continuous function which penalizes training error, and the regularizer is a continuous function which penalizes classifier complexity. Here, we define $\lambda $ as $\frac{1}{C}$ from the previous lecture.
+\end{frame}
+%------------------------------------------------	
+\subsection{Background}
+\begin{frame}
+\frametitle{Background}
+	\begin{itemize}
+\item Consider the following situation, a general setting of many supervised learning problems.
+	
+\item  We have two spaces of objects $X$ and $Y$ and would like to learn a function $h: X\rightarrow Y$ which outputs an object $y\in Y$ , given $x\in X$.
+	
+\item To do so, we have at our disposal a training set of $n$ examples $\left(x_1,y_1\right),...,\left(x_n,y_n\right)$ where $x_i\in X$ is an input and $y_i\in Y$ is the corresponding response that we wish to get from $h\left(x_i\right)$.
+
+\item To put it more formally, we assume that there is a \textbf{joint probability distribution} $p\left(x,y\right)$ over $X$ and $Y$, and that the training set consists of $n$ instances $\left(x_1,y_1\right),...,\left(x_n,y_n\right)$  drawn i.i.d. from $p\left(x,y\right)$. 
+
+\item Note that the assumption of a joint probability distribution allows us to model uncertainty in predictions because $y$ is not a deterministic function of $x$, but rather a random variable with conditional distribution $p\left(x\vert y\right)$ for a fixed $x$. 
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Background}
+We also assume that we are given a \textbf{non-negative real-valued loss function} $L\left(\widehat y,y\right)$ which measures how different the prediction $\widehat y$ of a hypothesis is from the true outcome $y$. The risk associated with hypothesis $h\left(x\right)$ is then defined as the expectation of the loss function:
+\begin{center}
+$R\left(h\right)=E\left[L\left(h\left(x\right),y\right)\right]=\int L\left(h\left(x\right),y\right)\operatorname dP\left(x,y\right)$
+
+\end{center}
+
+ \ A loss function commonly used in theory is the 0-1 loss function:\ \ $L\left(\widehat y,y\right)=I\left(\widehat y\neq y\right)$, where $I\left( \cdot \right)$ is the indicator notation.
+
+The ultimate goal of a learning algorithm is to find a hypothesis $h^\ast$ among a fixed class of functions $H$ for which the risk $R\left(h\right)$ is minimal:
+\begin{center}
+$h^\ast=arg\underset{h\in H}{min}R\left(h\right)$.
+\end{center}
+\end{frame}
+
+\subsection{Empirical Risk Minimization}
+\begin{frame}
+\frametitle{Empirical Risk Minimization}
+In general, the risk $R\left(h\right)$ cannot be computed because the distribution $P\left(x,y\right)$ is unknown to the learning algorithm (this situation is referred to as agnostic learning). However, we can compute an approximation, called empirical risk, by averaging the loss function on the training set:\\
+\begin{center}
+$R_{emp}\left(h\right)=\frac1n\sum_{i=1}^nL\left(h\left(x_i\right),y_i\right)$.
+\end{center}
+\qquad The empirical risk minimization principle states that the learning algorithm should choose a hypothesis $\widehat h$ which minimizes the empirical risk:\\
+\begin{center}
+$h^\ast=arg\underset{h\in H}{min}R\left(h\right)$.
+\end{center}
+\qquad Thus \textbf{Empirical Risk Minimization (ERM)} is a principle in statistical learning theory which defines a family of learning algorithms and is used to give theoretical bounds on their performance.\\
+
+\end{frame}
+
+%------------------------------------------------
+\section{Binary Classification Loss Functions}
+%------------------------------------------------
+%\subsection{Distance function}
+\begin{frame}
+\frametitle{Binary Classification Loss Functions}
+Different Machine Learning algorithms use different loss functions
+\begin{table}[t] %开始一个表格environment，表格的位置是h,here。
+{\scriptsize Table 1: Binary Classification Loss Functions,  $\left.y\in\{-1,+1\}\right.$}
+\begin{tabular}{|m{2.4cm}|m{3.7cm}|m{5cm}|} %设置了每一列的宽度，强制转换。
+\hline
+\textbf{Loss} $\ell(h_{\mathbf{w}}(\mathbf{x}_i,y_i))$ & \textbf{Usage} & \textbf{Comments}\\
+\hline %画一个横线，下面的就都是一样了，这里一共有4行内容
+\footnotesize {\textbf{Hinge-Loss:} $\max\left[1-h_{\mathbf{w}}(\mathbf{x}_{i})y_{i},0\right]^{p}$}&
+\begin{itemize}
+    	\item {\footnotesize Standard SVM($\left.p=1\right.$)}
+    	\item {\footnotesize (Differentiable) Squared Hingeless SVM ($\left.p=2\right.$)}
+\end{itemize}&
+{\footnotesize When used for Standard SVM, the loss function denotes the size of the margin between linear separator and its closest points in either class. Only differentiable everywhere with $\left.p=2\right.$.  }
+\\
+\hline
+\footnotesize {\textbf{Log-Loss:} $\left.\log(1+e^{-h_{\mathbf{w}}(\mathbf{x}_{i})y_{i}})\right.$}&
+{\footnotesize Logistic Regression}  &
+{\footnotesize One of the most popular loss functions in Machine Learning, since its outputs are well-calibrated probabilities.  }
+\\
+\hline
+\end{tabular}
+\end{table}
+\centerline{
+	\includegraphics [width=0.35\textwidth]{qz1} 
+}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Binary Classification Loss Functions}
+\begin{table}[t] %开始一个表格environment，表格的位置是h,here。
+{\scriptsize Table 1: Binary Classification Loss Functions,  $\left.y\in\{-1,+1\}\right.$}
+\begin{tabular}{|m{2.6cm}|m{3cm}|m{5cm}|} %设置了每一列的宽度，强制转换。
+\hline
+\textbf{Loss} $\ell(h_{\mathbf{w}}(\mathbf{x}_i,y_i))$ & \textbf{Usage} & \textbf{Comments}\\
+\hline %画一个横线，下面的就都是一样了，这里一共有4行内容
+\footnotesize {\textbf{Exponential\ Loss:} $\left. e^{-h_{\mathbf{w}}(\mathbf{x}_{i})y_{i}}\right.$}&
+{\footnotesize AdaBoost}&
+{\footnotesize This function is very aggressive. The loss of a mis-prediction increases \emph{exponentially} with the value of $-h_{\mathbf{w}}(\mathbf{x}_i)y_i$. This can lead to nice convergence results,  for example in the case of Adaboost,  but it can also cause problems with noisy data. }
+\\
+\hline
+\footnotesize {\textbf{Zero-One\ Loss:} $\left.\delta(\textrm{sign}(h_{\mathbf{w}}(\mathbf{x}_{i}))\neq y_{i})\right.$}&
+{\footnotesize Actual Classification Loss }  &
+{\footnotesize Non-continuous and thus impractical to optimize. }
+\\
+\hline
+\end{tabular}
+\end{table}
+\centerline{
+	\includegraphics [width=0.35\textwidth]{qz1} 
+}
+\end{frame}
+%%------------------------------------------------
+\begin{frame}
+\frametitle{Binary Classification Loss Functions}
+\centerline{\includegraphics [width=0.5\textwidth]{qz1} }
+\centerline{{\scriptsize Figure 1: Plots of Common Classification Loss Functions. x-axis: $\left.h(\mathbf{x}_{i})y_{i}\right.$, or
+ "correctness" of prediction; y-axis: loss value}}
+ \centerline{}
+ %\centerline{
+ 	%\textbf{Quiz:} What do all these loss functions look like with respect to $\left.z=yh(\mathbf{x})\right.$? 
+%} 	
+ \textbf{Quiz:} Which functions are strict upper bounds on the 0/1-loss?
+ 	\\~~\\
+ \textbf{Quiz:} What can you say about the hinge-loss and the log-loss as $\left.z\rightarrow-\infty\right.$?
+ 
+ 
+\end{frame}
+
+%%------------------------------------------------
+\section{Regression Loss Functions}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Regression Loss Functions}
+Loss for regression algorithms (a prediction can lie anywhere on the real-number line):% also have their own host of loss functions:
+\begin{table}[h]
+{\scriptsize Table 2: Regression Loss Functions,   $\left.y\in\mathbb{R}\right.$}
+\begin{tabular}{|m{4cm}|m{7cm}|}
+\hline
+\textbf{Loss} $\ell(h_{\mathbf{w}}(\mathbf{x}_i,y_i))$ & \textbf{Comments} \\
+\hline
+\textbf{Squared Loss:} $\left.(h(\mathbf{x}_{i})-y_{i})^{2}\right.$ &
+\begin{itemize}
+    	\item {\footnotesize Most popular regression loss function}
+        \item {\footnotesize Estimates \underline{Mean} Label}
+        \item {\footnotesize Also known as Ordinary Least Squares (OLS)}
+        \item {\footnotesize DISADVANTAGE: Somewhat sensitive to outliers/noise}
+\end{itemize}\\
+\hline
+\textbf{Absolute Loss:} $\left.|h(\mathbf{x}_{i})-y_{i}|\right.$ &
+\begin{itemize}
+    	\item {\footnotesize Also a very popular loss function}
+        \item {\footnotesize Estimates \underline{Median} Label}
+        \item {\footnotesize ADVANTAGE: Less sensitive to noise}
+        \item {\footnotesize DISADVANTAGE: Not differentiable at $0$}
+\end{itemize}
+\\
+\hline
+\end{tabular}
+\end{table}
+\centerline{\includegraphics [width=0.25\textwidth]{qz2} }
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Regression Loss Functions}
+\begin{table}[h]
+{\scriptsize Table 2:Regression Loss Functions, $\left.y\in\mathbb{R}\right.$}
+\begin{tabular}{|m{4cm}|m{7cm}|}
+\hline
+\textbf{Loss} $\ell(h_{\mathbf{w}}(\mathbf{x}_i,y_i))$ & \textbf{Comments} \\
+\hline
+\textbf{Huber Loss:}
+\begin{itemize}
+    	\item $\left.\frac{1}{2}\left(h(\mathbf{x}_{i})-y_{i}\right)^{2}\right.$ if $|h(\mathbf{x}_{i})-y_{i}|<\delta$,
+        \item otherwise $\left.\delta(|h(\mathbf{x}_{i})-y_{i}|-\frac{\delta}{2})\right.$
+\end{itemize} &
+\begin{itemize}
+    	\item {\small Also known as Smooth Absolute Loss}
+        \item {\small Once-differentiable}
+        \item {\small Takes on behavior of Squared-Loss when loss is small, and Absolute Loss when loss is large.}
+        \item {\small  ADVANTAGE: "Best of Both Worlds" of \underline{Squared} and \underline{Absolute} Loss}
+\end{itemize}\\
+\hline
+\textbf{Log-Cosh Loss:} \\$\left.log(cosh(h(\mathbf{x}_{i})-y_{i}))\right.$, $\left.cosh(x)=\frac{e^{x}+e^{-x}}{2}\right.$ &
+ADVANTAGE: Similar to Huber Loss, but twice differentiable everywhere
+\\
+\hline
+\end{tabular}
+\end{table}
+\centerline{\includegraphics [width=0.35\textwidth]{qz2} }
+\end{frame}
+%---------------------------------
+\begin{frame}
+\frametitle{Regression Loss Functions}
+\centerline{\includegraphics [width=0.5\textwidth]{qz2} }
+\centerline{{\scriptsize Figure 2: Plots of Common Regression Loss Functions - x-axis: $\left.h(\mathbf{x}_{i})y_{i}\right.$, or
+ "error" of prediction; y-axis: loss value}}
+ \centerline{}
+\textbf{Quiz:} What do the loss functions in Table 2 look like with
+respect to $\left.z=h(\mathbf{x}_{i})-y_{i}\right.$?
+
+\end{frame}
+%------------------------------------------------
+\section{Regularizers}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Regularizers}
+\begin{itemize}
+	\item
+In mathematics, statistics, and computer science, particularly in machine learning problems, regularization is the process of adding information in order to solve an ill-posed problem or to prevent overfitting.\\
+\item When  we look at regularizers it helps to change the formulation of the optimization problem to obtain a better geometric intuition.\\
+\item In previous sections, $\left.l_{2}\right.$-regularizer has been introduced as the component in SVM that reflects the complexity of solutions. 
+\end{itemize}
+Besides the $\left.l_{2}\right.$-regularizer, other types of useful regularizers and their properties are listed in the following Table.
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Regularizers}
+\begin{table}[h]
+{\scriptsize Table 3:Types of Regularizers}
+\begin{tabular}{|m{4cm}|m{7cm}|}
+\hline
+\textbf{Regularizer $r(\mathbf{w})$} & \textbf{Properties} \\
+\hline
+$l_{2}$-Regularization $\left.r(\mathbf{w}) = \mathbf{w}^{\top}\mathbf{w} = \|{\mathbf{w}}\|_{2}^{2}\right.$ &
+\begin{itemize}
+    	\item {\small ADVANTAGE: Strictly Convex;Differentiable}
+
+        \item {\small DISADVANTAGE: Uses weights on all features, i.e. relies on all features to some degree (ideally we would like to avoid this) - these are known as \underline{Dense Solutions}.}
+\end{itemize}\\
+\hline
+
+$l_{1}$-Regularization $\left.r(\mathbf{w}) = \|\mathbf{w}\|_{1}\right.$ &
+\begin{itemize}
+	\item {\small  Convex (but not strictly)}
+	\item {\small  DISADVANTAGE: Not differentiable at $0$ (the point which minimization is intended to bring us to}
+	\item {\small Effect: \underline{Sparse} (i.e. not \underline{Dense}) Solutions}
+\end{itemize}\\
+\hline
+\end{tabular}
+\end{table}
+\centerline{\includegraphics [width=0.35\textwidth]{f3} }
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Regularizers}
+\begin{table}[h]
+{\scriptsize Table 3:Types of Regularizers}
+\begin{tabular}{|m{4cm}|m{7cm}|}
+\hline
+\textbf{Regularizer $r(\mathbf{w})$} & \textbf{Properties} \\
+\hline
+$l_p$-Norm$\left.\|{\mathbf{w}}\|_{p} = (\sum\limits_{i=1}^d v_{i}^{p})^{1/p}\right.$ &
+\begin{itemize}
+	\item {\small (often $0<p\leq1$)}
+	\item {\small Initialization dependent}
+	\item {\small ADVANTAGE: Very sparse solutions}
+	\item {\small  DISADVANTAGE: Non-convex;Not differentiable}
+\end{itemize} \\
+
+\hline
+\textbf{\scriptsize{Elastic Net: }} \scriptsize{$\left.\alpha\|\mathbf{w}\|_{1}+(1-\alpha)\|{\mathbf{w}}\|_{2}^{2}\right.$
+			$\left.\alpha\in[0, 1)\right.$
+}
+
+&
+\begin{itemize}
+    	\item {\scriptsize  ADVANTAGE: Strictly convex (i.e. unique solution)}
+        \item {\scriptsize  ADVANTAGE: Sparsity inducing (good for feature selection);Dual of squared-loss SVM, see \href{http://www.cs.cornell.edu/~kilian/papers/aaai15_sven.pdf}{SVEN}}
+        \item {\scriptsize DISADVANTAGE: Non-differentiable}
+\end{itemize}\\
+\hline
+\end{tabular}
+\end{table}
+\centerline{\includegraphics [width=0.35\textwidth]{f3} }
+\end{frame}
+
+\begin{frame}
+\frametitle{Regularizers}
+\centerline{\includegraphics [width=\textwidth]{f3} }
+\centerline{{\scriptsize Figure 3: Plots of Common Regularizers}}
+\end{frame}
+%%------------------------------------------------
+\section{Famous Special Cases}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Famous Special Cases}
+This section includes several special cases that deal with risk minimization, such as Ordinary Least Squares, Ridge Regression, Lasso, and Logistic Regression. The following blocks provide information on their loss functions, regularizers, as well as solutions.
+\begin{block}{Ordinary Least Squares}
+In statistics, ordinary least squares (OLS) is a type of linear least squares method for estimating the unknown parameters in a linear regression model.\\
+\textbf{goal:} \\
+\qquad $\min_{\mathbf{w}} \frac{1}{n}\sum\limits_{i=1}^n (\mathbf{w}^{\top}x_{i}-y_{i})^{2}$ \\
+\textbf{Comments:} \\
+\begin{itemize}
+    	\item {\small  Squared Loss}
+        \item {\small  No Regularization}
+        \item {\small  Closed form solution: {$\left.\mathbf{w}=(\mathbf{X}\mathbf{X}^\top)^{-1}\mathbf{X}\mathbf{y}^{\top}\right.$,$\left.\mathbf{X}=[\mathbf{x}_{1}, ..., \mathbf{x}_{n}]\right.$,$\left.\mathbf{y}=[y_{1},...,y_{n}]\right.$}}
+        \item There is an interesting connection between OLS and the first principal component of PCA (Principal Component Analysis). PCA also minimizes square loss, but looks at perpendicular loss (the horizontal distance between each point and the regression line) instead.
+        
+\end{itemize}	
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Famous Special Cases}
+\begin{block}{Ridge Regression}
+Tikhonov regularization, is the most commonly used method of regularization of ill-posed problems. In statistics, the method is known as \textbf{ridge regression}.\\
+\textbf{goal:} \\
+\qquad $\min_{\mathbf{w}} \frac{1}{n}\sum\limits_{i=1}^n (\mathbf{w}^{\top}x_{i}-y_{i})^{2}+\lambda\|{w}\|_{2}^{2}$ \\
+\textbf{Comments:} \\
+\begin{itemize}
+    	\item {\small  Squared Loss}
+        \item {\small  $l_{2}$-Regularization}
+        \item {\small $\left.\mathbf{w}=(\mathbf{X}\mathbf{X}^{\top}+\lambda\mathbb{I})^{-1}\mathbf{X}\mathbf{y}^{\top}\right.$}
+        \item {\small  Fast if data isn't too high dimensional}
+        \item {\small  Just 1 line of Julia / Python}
+\end{itemize}	
+\end{block}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Famous Special Cases}
+\begin{block}{Lasso}
+\textbf{LASSO} is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the statistical model it produces.\\
+\textbf{Goal:} \\
+\qquad $\min_{\mathbf{w}} \frac{1}{n}\sum\limits_{i=1}^n (\mathbf{w}^{\top}\mathbf{x}_{i}-{y}_{i})^{2}+\lambda\|\mathbf{w}\|_{1}$ \\
+\textbf{Comments:} \\
+\begin{itemize}
+    	\item {\small  ADVANTAGE sparsity inducing (good for feature selection);Convex}
+        \item {\small DISADVANTAGE Not strictly convex (no unique solution); Not differentiable (at 0)}
+        \item {\small  Solve with (sub)-gradient descent  or \href{http://www.cs.cornell.edu/~kilian/papers/aaai15_sven.pdf}{SVEN} 
+        }
+\end{itemize}	
+\end{block}
+\end{frame}
+
+%----------------------------------------
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Famous Special Cases}
+	\begin{block}{Elastic Net}
+		\textbf{Goal}\\
+		  \[
+		  \min_{\mathbf{w}} \frac{1}{n}\sum\limits_{i=1}^n (\mathbf{w}^{\top}\mathbf{x}_{i}-{y}_{i})^{2}+\left.\alpha\|\mathbf{w}\|_{1}+(1-\alpha)\|{\mathbf{w}}\|_{2}^{2}\right.
+		  \]
+		\[
+			\left.\alpha\in[0, 1)\right.
+		\]
+			\textbf{Comments:} \\
+	\begin{itemize}
+		\item {\small  ADVANTAGE: Strictly convex (i.e. unique solution)}
+		\item {~~~~~~~~~~~~~~~~~~~~+\small Sparsity inducing (good for feature selection)}
+		\item {~~~~~~~~~~~~~~~~~~~~+\small Dual of squared-loss SVM, see \href{http://www.cs.cornell.edu/~kilian/papers/aaai15_sven.pdf}{SVEN} }
+		\item {\small DISADVANTAGE - Non-differentiable}
+		\item {\small  Solve with (sub)-gradient descent  or 
+		\href{http://www.cs.cornell.edu/~kilian/papers/aaai15_sven.pdf}{SVEN}	 
+		}
+	\end{itemize}
+			
+	
+	\end{block}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Famous Special Cases}
+\begin{block}{Logistic Regression}
+In regression analysis, \textbf{logistic regression} is estimating the parameters of a logistic model; it is a form of binomial regression.\\
+\textbf{goal:} \\
+\qquad $\min_{\mathbf{w},b} \frac{1}{n}\sum\limits_{i=1}^n \log{(1+e^{-y_i(\mathbf{w}^{\top}\mathbf{x}_{i}+b)})}$ \\
+\textbf{Comments:} \\
+\begin{itemize}
+    	\item {\small  Often $l_{1}$ or $l_{2}$ regularized}
+        \item {\small Solve with gradient descent.}
+        \item {\small  $\left.\Pr{(y|x)}=\frac{1}{1+e^{-y(\mathbf{w}^{\top}x+b)}}\right.$ }
+\end{itemize}	
+\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Famous Special Cases}
+\begin{block}{Linear Support Vector Machine}
+\textbf{goal:} \\
+\qquad $\min_{\mathbf{w},b} C\sum\limits_{i=1}^n \max[1-y_{i}(\mathbf{w}^\top{\mathbf{x}_i+b}), 0]+\|\mathbf{w}\|_2^2$ \\
+\textbf{Comments:} \\
+\begin{itemize}
+    	\item {\small Typically $l_2$ regularized (sometimes $l_1$).}
+        \item {\small  Quadratic program.}
+        \item {\small  When kernelized leads to \textbf{sparse} solutions. }
+        \item {\small  Kernelized version can be solved very efficiently with specialized algorithms (e.g. \href{https://en.wikipedia.org/wiki/Sequential_minimal_optimization}{SMO}) }
+\end{itemize}	
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+\end{CJK*}
+\end{document}
+%\end{document}
