@@ -29,207 +29,358 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 优化
+##### 应用到机器学习
 
 ---
 
-<div class="threelines head-highlight-1 tr-hover column3-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed column2-border-left-solid column3-border-left-solid row1-column4-border1-left-solid row2-column4-border1-left-solid row3-column1-border1-left-solid row4-column4-border1-left-solid row5-column1-border1-left-solid">
+@import "../dot/ml-nn.dot"
 
-|   模型   |    $\Ycal$    |                                 优化目标                                  |                        $\gv$                        |
-| :------: | :-----------: | :-----------------------------------------------------------------------: | :-------------------------------------------------: |
-| 线性回归 |    $\Rbb$     |               $\min_{\wv} \sum_i (\wv^\top \xv_i - y_i)^2$                |       $2 \sum_i (\wv^\top \xv_i - y_i) \xv_i$       |
-|  感知机  | $\{ \pm 1 \}$ |          $\min_{\wv} \sum_i \max \{ 0, - y_i \wv^\top \xv_i \}$           | $-\sum_i \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
-|    ^     |   $\{1,0\}$   |      $\min_{\wv} \sum_i (\sgn(\wv^\top \xv_i) - y_i) \wv^\top \xv_i$      |     $\sum_i (\sgn(\wv^\top \xv_i) - y_i) \xv_i$     |
-| 对率回归 | $\{ \pm 1 \}$ |         $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$          | $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$ |
-|    ^     |  $\{ 1,0 \}$  | $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$ |    $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$    |
+<div class="top-2"></div>
 
-</div>
+前$L-1$层是复合函数$\psi: \Rbb^d \mapsto \Rbb^{n_{L-1}}$，可看作一种特征变换方法
 
-求极值通常来说只需令梯度$\gv = \zerov$即可，但$\wv$可能会很难求
+最后一层是学习器$\hat{\yv} = g(\psi(\xv); \Wv_L, \bv_L)$，对输入的$\psi(\xv)$进行预测
 
-线性回归：$\sum_i \xv_i \xv_i^\top \wv = \sum_i y_i \xv_i \Longrightarrow \wv^\star = (\sum_i \xv_i \xv_i^\top)^{-1} (\sum_i y_i \xv_i)$
-
-感知机和对率回归对应的$\gv = \zerov$是非线性方程，更难求解
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 梯度下降
-
----
-
-设优化目标函数为$F(\wv)$，用迭代法构造单调递减序列：
-
-$$
-\begin{align*}
-    \qquad F(\wv_0) \ge F(\wv_1) \ge F(\wv_2) \ge F(\wv_3) \ge \cdots
-\end{align*}
-$$
-
-<div class="top-3"></div>
-
-我的启示 {==单调有界序列必收敛==}，若$F$有下界，序列就会收敛到$F(\wv^\star)$
-
-问题：如何实现单调递减？根据泰勒展开式及柯西不等式知
-
-$$
-\begin{align*}
-    -\| \nabla F(\wv)\| ~ \|\uv\| \le \lim_{\eta \rightarrow 0} \frac{F(\wv + \eta \uv) - F(\wv)}{\eta} = \nabla F(\wv)^\top \uv \le \| \nabla F(\wv)\| ~ \|\uv\|
-\end{align*}
-$$
-
-<div class="top-1"></div>
-
-- 只要$\uv$与$\nabla F(\wv)$夹角为钝角，就可以使得目标函数值下降
-- 左边取等号条件是$\uv = -k \cdot \nabla F(\wv)$，{==负梯度是瞬时下降最快的方向==}
+- 若$y \in \{ \pm 1 \} \text{ or } \{ 1,0 \}$，最后一层只需$1$个神经元，采用对率激活函数
+- 若$y \in [c]$，最后一层需$c$个神经元，采用 Softmax 激活函数
 
 <div class="top2"></div>
 
-梯度下降 (<u>g</u>radient <u>d</u>escent, GD)：$\wv_{t+1} \leftarrow \wv_t - \eta_t \nabla F(\wv_t)$
+我的批注 对率回归也可看作只有一层(没有隐藏层)的神经网络
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 梯度下降解线性回归
+##### 深度学习
 
 ---
 
-@import "../python/gradient-descent.svg" {.center .top6 .width90 title="用梯度下降求解 R 上的最小二乘"}
+传统机器学习：特征工程和模型学习两阶段分开进行
 
-<!-- slide data-notes="" -->
-
-##### 优化 损失函数的和
-
----
-
-<div class="threelines head-highlight-1 tr-hover column3-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed column2-border-left-solid column3-border-left-solid row1-column4-border1-left-solid row2-column4-border1-left-solid row3-column1-border1-left-solid row4-column4-border1-left-solid row5-column1-border1-left-solid bottom-2">
-
-|   模型   |    $\Ycal$    |                                 优化目标                                  |                        $\gv$                        |
-| :------: | :-----------: | :-----------------------------------------------------------------------: | :-------------------------------------------------: |
-| 线性回归 |    $\Rbb$     |               $\min_{\wv} \sum_i (\wv^\top \xv_i - y_i)^2$                |       $2 \sum_i (\wv^\top \xv_i - y_i) \xv_i$       |
-|  感知机  | $\{ \pm 1 \}$ |          $\min_{\wv} \sum_i \max \{ 0, - y_i \wv^\top \xv_i \}$           | $-\sum_i \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
-|    ^     |   $\{1,0\}$   |      $\min_{\wv} \sum_i (\sgn(\wv^\top \xv_i) - y_i) \wv^\top \xv_i$      |     $\sum_i (\sgn(\wv^\top \xv_i) - y_i) \xv_i$     |
-| 对率回归 | $\{ \pm 1 \}$ |         $\min_{\wv} \sum_i \ln (1 + \exp(- y_i \wv^\top \xv_i))$          | $\sum_i (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$ |
-|    ^     |  $\{ 1,0 \}$  | $\min_{\wv} \sum_i (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$ |    $\sum_i (\sigma(\wv^\top \xv_i) - y_i) \xv_i$    |
-
-</div>
-
-许多机器学习模型的优化目标为{==最小化每个样本的损失的和==}
-
-$$
-\begin{align*}
-    \qquad \min_{\wv} F(\wv) = \frac{1}{m} \sum_{i \in [m]} \ell(y_i, f(\xv_i;\wv))
-\end{align*}
-$$
-
-<div class="top-3"></div>
-
-- 线性回归，平方损失$\ell = (y_i - \wv^\top \xv_i)^2$
-- 感知机，$\ell = \max \{ 0, - y_i \wv^\top \xv_i \}$
-- 对率回归，对率损失$\ell = \ln (1 + \exp(- y_i \wv^\top \xv_i))$，更一般的交叉熵损失
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 随机梯度下降
-
----
-
-梯度下降的问题：
-
-- 计算梯度$\nabla F(\wv) = \sum_{i \in [m]} \nabla \ell(y_i, f(\xv_i;\wv)) / m$需遍历所有样本
-- 当样本数$m$很大时，计算开销很大
+@import "../dot/ml-old.dot"
 
 <div class="top2"></div>
 
-批量梯度下降随机采样一个下标子集$\Bcal_t \subseteq [m]$
+深度学习：特征工程和模型学习合二为一，端到端 (end-to-end)
 
-$$
-\begin{align*}
-    \qquad \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla \ell(y_i, f(\xv_i;\wv))
-\end{align*}
-$$
-
-<div class="top-5"></div>
-
-若$|\Bcal_t| = 1$，则为标准的{==随机梯度下降==} (Stochastic GD)
-
-以感知机为例：
-
-- 优化目标$\min_{\wv} \sum_i \max \{ 0, - y_i \wv^\top \xv_i \}$，梯度$-\sum_i \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
-- 随机梯度下降$\wv_{t+1} \leftarrow \wv_t + \eta_t \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### <span style="font-weight:900">GD _vs._ SGD</span>
-
----
-
-更新公式：
-
-$$
-\begin{align*}
-    \qquad & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{m} \sum_{i \in [m]} \nabla \ell(y_i, f(\xv_i;\wv)) \\
-    & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|\Bcal_t|} \sum_{i \in \Bcal_t} \nabla \ell(y_i, f(\xv_i;\wv))
-\end{align*}
-$$
-
-- 当数据集中有冗余样本时，SGD 可以减少重复计算
-- 迭代前期，SGD 更新频率快，较 GD 优势明显
-- 迭代后期，GD 会停止于最优解处，SGD 则只能在最优解附近震荡
-- 越靠近最优解，梯度越接近零，因此 GD 可以用恒定步长
-- 最优解处随机梯度不一定为零，故 SGD 必须用衰减步长
-- SGD 因随机采样带来的噪声若能随着迭代而受到抑制，则可进一步加速，机器学习顶会有大量相关工作，包括 SAG，SAGA，SVRG 等及其衍生变种
+@import "../dot/ml-nn.dot"
 
 <!-- slide data-notes="" -->
 
-##### 加速梯度下降
+##### <span style="font-weight:900">sklearn</span> 中的神经网络
 
 ---
 
-当目标函数的变量尺度不同时，梯度下降效率很低
+```python {.line-numbers .top-1 .left4 highlight=[4,33-41]}
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.neural_network import MLPClassifier
 
-@import "../python/momentum.svg" {.center .width90 .top0 .bottom0}
+np.random.seed(12345)
 
-动量法 (momentum)：$\wv_{t+1} = \wv_t - \eta_t \nabla F(\wv_t) + \class{blue}{\gamma (\wv_t - \wv_{t-1})}$
+X_xor = np.array([[1, 1], [1, 0], [0, 1], [0, 0]])
+y_xor = np.array([0, 1, 1, 0])  # 异或数据集
+cov = [[0.01, 0], [0, 0.01]]
+X, y = X_xor, y_xor
+m = 100
 
-- 相对于梯度下降，多了第三项，上一轮的更新方向
-- 参数$\gamma < 1$，通常取$0.9$
+# 以异或的4个点为中心 从2维高斯分布中各随机采样100个样本
+for (xx, yy) in zip(X_xor, y_xor):
+    x1, x2 = np.random.multivariate_normal(xx, cov, m).T
+    X = np.r_[X, np.column_stack((x1, x2))]
+    y = np.hstack((y, np.ones(m) * yy))
+
+figure = plt.figure(figsize=(16, 8))
+
+with plt.style.context('Solarize_Light2'):
+
+    x_min, x_max = -0.5, 1.5
+    y_min, y_max = -0.5, 1.5
+    h = .01
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+    i = 0
+    col = 4
+
+    for hidden in np.arange(2, 2+col):
+
+        mlp = MLPClassifier(
+            hidden_layer_sizes=(hidden,),  # 隐藏层神经元个数
+            activation='logistic',         # 激活函数
+            max_iter=100,                  # 最大迭代轮数
+            solver='lbfgs',                # 求解器
+            alpha=0,                       # 正则项系数
+            random_state=1,
+            verbose=False
+        )
+
+        clf = mlp.fit(X, y)
+        acc = clf.score(X, y)
+        Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])
+        Z = Z[:, 0].reshape(xx.shape)
+
+        i += 1
+        ax = plt.subplot(2, col, i)
+        ax.set_xlim(xx.min(), xx.max())
+        ax.set_ylim(yy.min(), yy.max())
+        ax.set_xticks(())
+        ax.set_yticks(())
+        ax.contourf(xx, yy, Z, alpha=.8)
+        ax.scatter(X[:, 0], X[:, 1], s=40, c=y, edgecolors='#002b36')
+        ax.text((xx.min()+xx.max())/2, yy.min()+0.05, (r'$%d$ neurons, acc = %.2f' % (hidden, acc)).lstrip('0'), size=14, color='#002b36', horizontalalignment='center')
+
+        ax = plt.subplot(2, col, i+col, projection='3d')
+        ax.plot_surface(xx, yy, Z)
+        ax.set_xticks(np.arange(x_min, x_max+0.1, 0.5))
+        ax.set_yticks(np.arange(y_min, y_max+0.1, 0.5))
+        ax.set_xlabel(r'$x_1$')
+        ax.set_ylabel(r'$x_2$')
+
+plt.tight_layout()
+plt.show()
+```
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 动量法
+##### <span style="font-weight:900">sklearn</span> 中的神经网络
 
 ---
 
+- 以异或 4 个点为中心，从 2 维高斯分布中各采样 100 个样本
+- 单隐藏层，神经元个数分别取 2、3、4、5
+
+@import "../python/mlp-xor.svg" {.center .width92}
+
+<!-- slide data-notes="" -->
+
+##### 用 <span style="font-weight:900">TensorFlow</span> 实现
+
+---
+
+```python {.line-numbers .top-1 .left4 highlight=[2,18,21-27]}
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import SGD
+
+X, y = load_breast_cancer(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+model = Sequential()
+model.add(Dense(64, activation="relu"))
+model.add(Dense(64, activation="relu"))
+model.add(Dense(1, activation="sigmoid"))
+model.compile(optimizer=SGD(0.001),
+              loss="binary_crossentropy",
+              metrics=["accuracy"],
+              )
+
+model.fit(X_train, y_train, epochs=10)
+model.evaluate(X_test, y_test, verbose=2)
+
+Epoch 1/10
+14/14 [================] - 1s 1ms/step - loss: 51.0188 - accuracy: 0.4906
+Epoch 2/10
+14/14 [================] - 0s 1ms/step - loss: 1.0154 - accuracy: 0.7465
+Epoch 3/10
+14/14 [================] - 0s 1ms/step - loss: 0.5027 - accuracy: 0.8146
+Epoch 4/10
+14/14 [================] - 0s 1ms/step - loss: 0.4219 - accuracy: 0.8239
+Epoch 5/10
+14/14 [================] - 0s 1ms/step - loss: 0.4142 - accuracy: 0.8380
+Epoch 6/10
+14/14 [================] - 0s 1ms/step - loss: 0.3101 - accuracy: 0.8779
+Epoch 7/10
+14/14 [================] - 0s 1ms/step - loss: 0.2744 - accuracy: 0.8944
+Epoch 8/10
+14/14 [================] - 0s 1ms/step - loss: 0.2454 - accuracy: 0.9061
+Epoch 9/10
+14/14 [================] - 0s 1ms/step - loss: 0.3001 - accuracy: 0.8897
+Epoch 10/10
+14/14 [================] - 0s 1ms/step - loss: 0.2557 - accuracy: 0.8991
+
+5/5 - 0s - loss: 0.2264 - accuracy: 0.9231
+```
+
+<!-- slide data-notes="" -->
+
+##### 求解参数
+
+设采用交叉熵损失，对样本$(\xv, y)$，损失函数为$\Lcal (\yv, \hat{\yv}) = - \yv \log \hat{\yv}$
+
+优化目标为
+
 $$
 \begin{align*}
-    \qquad \wv_{t+1} - \wv_t & = - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1}) \\
-    \gamma (\wv_t - \wv_{t-1}) & = - \eta_{t-1} \gamma \nabla F(\wv_{t-1}) + \gamma^2 (\wv_{t-1} - \wv_{t-2}) \\
-    & \vdots \\
-    \gamma^{t-1} (\wv_2 - \wv_1) & = - \eta_1 \gamma^{t-1} \nabla F(\wv_1) + \underbrace{\gamma^t (\wv_1 - \wv_0)}_{\wv_1 = \wv_0} \\
-    \Longrightarrow ~ \wv_{t+1} - \wv_t & = - \sum_{i \in [t]} \eta_i \gamma^{t-i} \nabla F(\wv_i)
+    \min_{\Wv, \bv} ~ \frac{1}{2} \| \Wv \|_F^2 + \frac{\lambda}{m} \sum_{i \in [m]} \Lcal (\yv_i, \hat{\yv}_i)
 \end{align*}
 $$
 
-<div class="top-4"></div>
-
-动量法每步更新是历史梯度的加权平均
-
-- 若近期梯度方向不一致，则真实的更新幅度变小，减速，增加稳定性
-- 若近期梯度方向较为一致，则真实的更新幅度变大，加速，加快收敛
-
-Nesterov 加速梯度 (NAG)：改进动量法的第二步
+梯度下降 (标量对某矩阵求导的结果的尺寸与该矩阵呈转置关系)
 
 $$
 \begin{align*}
-    \begin{cases} \widetilde{\wv} = \wv_t + \gamma (\wv_t - \wv_{t-1}) \\ \wv_{t+1} = \widetilde{\wv} - \eta_t \class{yellow}{\nabla F (\wv_t)} \end{cases} ~ \longrightarrow ~ \begin{cases} \widetilde{\wv} = \wv_t + \gamma (\wv_t - \wv_{t-1}) \\ \wv_{t+1} = \widetilde{\wv} - \eta_t \class{yellow}{\nabla F (\widetilde{\wv})} \end{cases}
+    \Wv & ~ \leftarrow ~ \Wv - \eta \left( \frac{\lambda}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \Lcal (\yv_i, \hat{\yv}_i)}{\partial \Wv^\top}} + \Wv \right) \\
+    \bv & ~ \leftarrow ~ \bv - \eta \cdot \frac{\lambda}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \Lcal (\yv_i, \hat{\yv}_i)}{\partial \bv^\top}}
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 求解参数
+
+整个网络：$\xv = \av_0 \xrightarrow{\Wv_1,\bv_1} \zv_1 \xrightarrow{h_1} \av_1 \xrightarrow{\Wv_2,\bv_2} \cdots \xrightarrow{\Wv_L,\bv_L} \zv_L \xrightarrow{h_L} \av_L = \hat{\yv}$
+
+损失$\Lcal (\yv, \hat{\yv})$的计算为<span class="blue">正向传播</span>
+
+- 样本从输入层进入，经隐藏层逐层传播到最后输出层
+- $\hat{\yv} = \av_L = h_L (\zv_L)$是对样本$\xv$的预测，据此计算$\Lcal (\yv, \hat{\yv}) = \Lcal (\yv, h_L (\zv_L))$
+
+先看最后一层$\zv_L = \Wv_L ~ \av_{L-1} + \bv_L$，$\av_L = h_L (\zv_L)$，由<span class="blue">链式法则</span> (?) 有
+
+$$
+\begin{align*}
+    \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \bv_L} & = \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \zv_L} \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \frac{\partial \zv_L}{\partial \bv_L} \\
+    \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \Wv_L} & = \sum_{j \in [n_L]} \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial [\zv_L]_j} \frac{\partial [\zv_L]_j}{\partial \Wv_L} = \sum_{j \in [n_L]} [\deltav_L]_j \frac{\partial [\zv_L]_j}{\partial \Wv_L}
+\end{align*}
+$$
+
+其中$\deltav_L^\top = \partial \Lcal (\yv, \hat{\yv}) / \partial \zv_L \in \Rbb^{n_L}$为第$L$层的<span class="blue">误差项</span>，该项可直接求解
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 求解参数 反向传播
+
+整个网络：$\xv = \av_0 \xrightarrow{\Wv_1,\bv_1} \zv_1 \xrightarrow{h_1} \av_1 \xrightarrow{\Wv_2,\bv_2} \cdots \xrightarrow{\Wv_L,\bv_L} \zv_L \xrightarrow{h_L} \av_L = \hat{\yv}$
+
+类似的对第$l$层$\zv_l = \Wv_l \av_{l-1} + \bv_l$，$\av_l = h_l (\zv_l)$，由<span class="blue">链式法则</span> (?) 有
+
+$$
+\begin{align*}
+    \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \bv_l} = \deltav_l^\top \frac{\partial \zv_l}{\partial \bv_l}, \quad \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l}
+\end{align*}
+$$
+
+其中$\deltav_l^\top = \partial \Lcal (\yv, \hat{\yv}) / \partial \zv_l \in \Rbb^{n_l}$为第$l$层的<span class="blue">误差项</span>
+
+误差<span class="blue">反向传播</span> (**b**ack**p**ropagation, BP)：前一层的误差可由后一层得到
+
+$$
+\begin{align*}
+    \deltav_{l-1}^\top = \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \zv_{l-1}} = \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \zv_l} \frac{\partial \zv_l}{\partial \av_{l-1}} \frac{\partial \av_{l-1}}{\partial \zv_{l-1}} = \deltav_l^\top \frac{\partial \zv_l}{\partial \av_{l-1}} \frac{\partial h_{l-1}(\zv_{l-1})}{\partial \zv_{l-1}}
+\end{align*}
+$$
+
+对第$l$层$\zv_l = \Wv_l \av_{l-1} + \bv_l$，如何求$\partial \zv_l / \partial \av_{l-1}$、$\partial \zv_l / \partial \bv_l$、$\partial [\zv_l]_j / \partial \Wv_l$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 求解参数 反向传播
+
+对$\zv = \Wv \av + \bv$，如何求$\partial \zv / \partial \av$、$\partial \zv / \partial \bv$、$\partial z_j / \partial \Wv$
+
+由矩阵求导公式易知
+
+$$
+\begin{align*}
+    \frac{\partial \zv}{\partial \av} = \frac{\partial (\Wv \av)}{\partial \av} = \Wv, \quad \frac{\partial \zv}{\partial \bv} = \frac{\partial \bv}{\partial \bv} = \Iv
+\end{align*}
+$$
+
+注意$z_j = \sum_k w_{jk} a_k + b_k$只与$\Wv$的第$j$行有关，于是
+
+$$
+\begin{align*}
+    \frac{\partial z_j}{\partial \Wv} = \underbrace{\begin{bmatrix} \zerov, \ldots, \av, \ldots, \zerov \end{bmatrix}}_{\text{only }\av\text{ at }j\text{-th column}} = \av \ev_j^\top
+\end{align*}
+$$
+
+从而
+
+$$
+\begin{align*}
+    \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \av_{l-1} \sum_{j \in [n_l]} [\deltav_l]_j \ev_j^\top = \av_{l-1} \deltav_l^\top
 \end{align*}
 $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 动量法 <span style="font-weight:900">_vs._ NAG</span>
+##### 反向传播算法
 
----
+输入：训练集$\Scal$，验证集$\Vcal$，以及相关超参数
 
-第$t$轮迭代示意图：
+1. 随机初始化$\Wv$和$\bv$
+2. repeat
+3. &emsp;&emsp;对训练集$\Scal$中的样本随机重排序
+4. &emsp;&emsp;for $i = 1, \ldots, m$ do
+5. &emsp;&emsp;&emsp;&emsp;获取样本$(\xv_i, y_i)$
+6. &emsp;&emsp;&emsp;&emsp;前向传播，计算每一层的$\zv_l = \Wv_l \av_{l-1} + \bv_l$，直到最后一层
+7. &emsp;&emsp;&emsp;&emsp;反向传播计算每一层的误差项$\deltav_l^\top = \deltav_{l+1}^\top \Wv_{l+1} \diag (h_l'(\zv_l))$
+8. &emsp;&emsp;&emsp;&emsp;计算梯度$\partial \Lcal / \partial \Wv_l = \av_{l-1} \deltav_l^\top$、$\partial \Lcal / \partial \bv_l = \deltav_l^\top$
+9. &emsp;&emsp;&emsp;&emsp;采用梯度下降更新$\Wv_l$和$\bv_l$
+10. &emsp;&emsp;end
+11. until 神经网络模型在验证集$\Vcal$上的错误率不再下降
 
-@import "../tikz/mvsnag.svg" {.center .width90 .top6 .bottom2}
+输出：$\Wv$和$\bv$
+
+<!-- slide data-notes="" -->
+
+##### 梯度消失
+
+神经网络中误差反向传播的迭代公式为
+
+$$
+\begin{align*}
+    \deltav_l^\top = \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \zv_l} = \frac{\partial \Lcal (\yv, \hat{\yv})}{\partial \zv_{l+1}} \frac{\partial \zv_{l+1}}{\partial \av_l} \frac{\partial \av_l}{\partial \zv_l} = \deltav_{l+1}^\top \Wv_{l+1} \diag (h_l'(\zv_l))
+\end{align*}
+$$
+
+对于 Sigmoid 型激活函数
+
+- $\sigma'(z) = \sigma(z) (1 - \sigma(z)) \le \frac{1}{4}$
+- $\tanh'(z) = 4 \sigma(2z) (1 - \sigma(2z)) \le 4 \cdot \frac{1}{4} = 1$
+
+误差每传播一层都会乘以一个小于等于$1$的系数，当网络层数很深时，梯度会不断衰减甚至消失，使得整个网络很难训练
+
+方案：使用导数比较大的激活函数，比如 ReLU
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 残差网络
+
+<img src="../tikz/resnet.svg" class="width75 center top2 bottom2">
+
+残差模块：$\zv_l = \av_{l-1} + \class{yellow}{\Uv_2 \cdot h(\Uv_1 \cdot \av_{l-1} + \cv_1) + \cv_2} = \av_{l-1} + \class{yellow}{f(\av_{l-1})}$
+
+假设$\av_l = \zv_l$，即残差模块输出不使用激活函数，对$\forall t \in [l]$有
+
+$$
+\begin{align*}
+    \av_l & = \av_{l-1} + f(\av_{l-1}) = \av_{l-2} + f(\av_{l-2}) + f(\av_{l-1}) \\
+    & = \cdots = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
+\end{align*}
+$$
+
+低层输入可以<span class="blue">恒等</span>传播到任意高层
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 残差网络
+
+$$
+\begin{align*}
+    \av_l = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
+\end{align*}
+$$
+
+由链式法则有
+
+$$
+\begin{align*}
+    \frac{\partial \Lcal}{\partial \av_{l-t}} & = \frac{\partial \Lcal}{\partial \av_l} \frac{\partial \av_l}{\partial \av_{l-t}} = \frac{\partial \Lcal}{\partial \av_l} \left( \frac{\partial \av_{l-t}}{\partial \av_{l-t}} + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
+    & = \frac{\partial \Lcal}{\partial \av_l} \left( \Iv + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
+    & = \frac{\partial \Lcal}{\partial \av_l} + \frac{\partial \Lcal}{\partial \av_l} \left( \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right)
+\end{align*}
+$$
+
+高层误差可以<span class="blue">恒等</span>传播到任意低层，梯度消失得以缓解
