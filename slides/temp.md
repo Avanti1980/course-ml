@@ -29,14 +29,32 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 当代炼丹术
+##### 从数据中估计概率
 
 ---
 
-@import "../dot/alchemy.dot"
+<div class="top2"></div>
 
-一个优秀丹师的自我修养：
+$$
+\begin{align*}
+    \qquad \Pr(y | \xv) = \Pr(y) \cdot \Pr(x_1 | y) \cdot \Pr(x_2 | y) \cdots \Pr(x_d | y)
+\end{align*}
+$$
 
-- 灵材品质差要会手动增强，旋转、翻转、缩放、平移、加噪声
-- 因材制宜设计灵阵，空间灵材用卷积灵阵，时间灵材用循环灵阵，...
-- 仔细观察丹炉状态，防止爆炉，若仙丹成色不好则改进配置重新来过
+对于先验，记$\alpha_k = \Pr(y = k)$，$\Delta_K$是$K$维单纯形，于是
+
+$$
+\begin{align*}
+    \qquad \Pr(y;\alphav) = \prod_{k \in [c]} \Pr(y = k)^{\Ibb(y=k)} = \prod_{k \in [c]} \alpha_k^{\Ibb(y=k)}
+\end{align*}
+$$
+
+对于似然，记$\theta_{dk}$为第$k$类文本选取$v_d$的概率，$x_d$为$v_d$在文本$\xv$中出现的次数，于是
+
+$$
+\begin{align*}
+    [\theta_{1k}; \theta_{2k}; \ldots; \theta_{Dk}] \in \Delta_D, \quad \Pr(\xv | y = k, \thetav) = \frac{(x_1 + \cdots + x_D)!}{x_1! \cdots x_D!} \prod_{d \in [D]} \theta_{dk}^{x_d}
+\end{align*}
+$$
+
+显然这是一个多项式分布。
