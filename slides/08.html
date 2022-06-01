@@ -1,0 +1,648 @@
+<!DOCTYPE html><html><head>
+      <title>08</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <style>
+      /*!
+* reveal.js 4.0.2
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2020 Hakim El Hattab, https://hakim.se
+*/
+.reveal .r-stretch,.reveal .stretch{max-width:none;max-height:none}.reveal pre.r-stretch code,.reveal pre.stretch code{height:100%;max-height:100%;box-sizing:border-box}.reveal .r-fit-text{display:inline-block;white-space:nowrap}.reveal .r-stack{display:grid}.reveal .r-stack>*{grid-area:1/1;margin:auto}.reveal .r-hstack,.reveal .r-vstack{display:flex}.reveal .r-hstack img,.reveal .r-hstack video,.reveal .r-vstack img,.reveal .r-vstack video{min-width:0;min-height:0;-o-object-fit:contain;object-fit:contain}.reveal .r-vstack{flex-direction:column;align-items:center;justify-content:center}.reveal .r-hstack{flex-direction:row;align-items:center;justify-content:center}.reveal .items-stretch{align-items:stretch}.reveal .items-start{align-items:flex-start}.reveal .items-center{align-items:center}.reveal .items-end{align-items:flex-end}.reveal .justify-between{justify-content:space-between}.reveal .justify-around{justify-content:space-around}.reveal .justify-start{justify-content:flex-start}.reveal .justify-center{justify-content:center}.reveal .justify-end{justify-content:flex-end}html.reveal-full-page{width:100%;height:100%;height:100vh;height:calc(var(--vh,1vh) * 100);overflow:hidden}.reveal-viewport{height:100%;overflow:hidden;position:relative;line-height:1;margin:0;background-color:#fff;color:#000}.reveal .slides section .fragment{opacity:0;visibility:hidden;transition:all .2s ease;will-change:opacity}.reveal .slides section .fragment.visible{opacity:1;visibility:inherit}.reveal .slides section .fragment.disabled{transition:none}.reveal .slides section .fragment.grow{opacity:1;visibility:inherit}.reveal .slides section .fragment.grow.visible{transform:scale(1.3)}.reveal .slides section .fragment.shrink{opacity:1;visibility:inherit}.reveal .slides section .fragment.shrink.visible{transform:scale(.7)}.reveal .slides section .fragment.zoom-in{transform:scale(.1)}.reveal .slides section .fragment.zoom-in.visible{transform:none}.reveal .slides section .fragment.fade-out{opacity:1;visibility:inherit}.reveal .slides section .fragment.fade-out.visible{opacity:0;visibility:hidden}.reveal .slides section .fragment.semi-fade-out{opacity:1;visibility:inherit}.reveal .slides section .fragment.semi-fade-out.visible{opacity:.5;visibility:inherit}.reveal .slides section .fragment.strike{opacity:1;visibility:inherit}.reveal .slides section .fragment.strike.visible{text-decoration:line-through}.reveal .slides section .fragment.fade-up{transform:translate(0,40px)}.reveal .slides section .fragment.fade-up.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-down{transform:translate(0,-40px)}.reveal .slides section .fragment.fade-down.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-right{transform:translate(-40px,0)}.reveal .slides section .fragment.fade-right.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-left{transform:translate(40px,0)}.reveal .slides section .fragment.fade-left.visible{transform:translate(0,0)}.reveal .slides section .fragment.current-visible,.reveal .slides section .fragment.fade-in-then-out{opacity:0;visibility:hidden}.reveal .slides section .fragment.current-visible.current-fragment,.reveal .slides section .fragment.fade-in-then-out.current-fragment{opacity:1;visibility:inherit}.reveal .slides section .fragment.fade-in-then-semi-out{opacity:0;visibility:hidden}.reveal .slides section .fragment.fade-in-then-semi-out.visible{opacity:.5;visibility:inherit}.reveal .slides section .fragment.fade-in-then-semi-out.current-fragment{opacity:1;visibility:inherit}.reveal .slides section .fragment.highlight-blue,.reveal .slides section .fragment.highlight-current-blue,.reveal .slides section .fragment.highlight-current-green,.reveal .slides section .fragment.highlight-current-red,.reveal .slides section .fragment.highlight-green,.reveal .slides section .fragment.highlight-red{opacity:1;visibility:inherit}.reveal .slides section .fragment.highlight-red.visible{color:#ff2c2d}.reveal .slides section .fragment.highlight-green.visible{color:#17ff2e}.reveal .slides section .fragment.highlight-blue.visible{color:#1b91ff}.reveal .slides section .fragment.highlight-current-red.current-fragment{color:#ff2c2d}.reveal .slides section .fragment.highlight-current-green.current-fragment{color:#17ff2e}.reveal .slides section .fragment.highlight-current-blue.current-fragment{color:#1b91ff}.reveal:after{content:'';font-style:italic}.reveal iframe{z-index:1}.reveal a{position:relative}@keyframes bounce-right{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(10px)}30%{transform:translateX(-5px)}}@keyframes bounce-left{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(-10px)}30%{transform:translateX(5px)}}@keyframes bounce-down{0%,10%,25%,40%,50%{transform:translateY(0)}20%{transform:translateY(10px)}30%{transform:translateY(-5px)}}.reveal .controls{display:none;position:absolute;top:auto;bottom:12px;right:12px;left:auto;z-index:11;color:#000;pointer-events:none;font-size:10px}.reveal .controls button{position:absolute;padding:0;background-color:transparent;border:0;outline:0;cursor:pointer;color:currentColor;transform:scale(.9999);transition:color .2s ease,opacity .2s ease,transform .2s ease;z-index:2;pointer-events:auto;font-size:inherit;visibility:hidden;opacity:0;-webkit-appearance:none;-webkit-tap-highlight-color:transparent}.reveal .controls .controls-arrow:after,.reveal .controls .controls-arrow:before{content:'';position:absolute;top:0;left:0;width:2.6em;height:.5em;border-radius:.25em;background-color:currentColor;transition:all .15s ease,background-color .8s ease;transform-origin:.2em 50%;will-change:transform}.reveal .controls .controls-arrow{position:relative;width:3.6em;height:3.6em}.reveal .controls .controls-arrow:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal .controls .controls-arrow:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}.reveal .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(40deg)}.reveal .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-40deg)}.reveal .controls .controls-arrow:active:before{transform:translateX(.5em) translateY(1.55em) rotate(36deg)}.reveal .controls .controls-arrow:active:after{transform:translateX(.5em) translateY(1.55em) rotate(-36deg)}.reveal .controls .navigate-left{right:6.4em;bottom:3.2em;transform:translateX(-10px)}.reveal .controls .navigate-left.highlight{animation:bounce-left 2s 50 both ease-out}.reveal .controls .navigate-right{right:0;bottom:3.2em;transform:translateX(10px)}.reveal .controls .navigate-right .controls-arrow{transform:rotate(180deg)}.reveal .controls .navigate-right.highlight{animation:bounce-right 2s 50 both ease-out}.reveal .controls .navigate-up{right:3.2em;bottom:6.4em;transform:translateY(-10px)}.reveal .controls .navigate-up .controls-arrow{transform:rotate(90deg)}.reveal .controls .navigate-down{right:3.2em;bottom:-1.4em;padding-bottom:1.4em;transform:translateY(10px)}.reveal .controls .navigate-down .controls-arrow{transform:rotate(-90deg)}.reveal .controls .navigate-down.highlight{animation:bounce-down 2s 50 both ease-out}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled{opacity:.3}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled:hover{opacity:1}.reveal .controls[data-controls-back-arrows=hidden] .navigate-up.enabled{opacity:0;visibility:hidden}.reveal .controls .enabled{visibility:visible;opacity:.9;cursor:pointer;transform:none}.reveal .controls .enabled.fragmented{opacity:.5}.reveal .controls .enabled.fragmented:hover,.reveal .controls .enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled{opacity:.3}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=hidden] .navigate-left.enabled{opacity:0;visibility:hidden}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled{opacity:.3}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled:hover{opacity:1}.reveal.rtl .controls[data-controls-back-arrows=hidden] .navigate-right.enabled{opacity:0;visibility:hidden}.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-down,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-up{display:none}.reveal:not(.has-vertical-slides) .controls .navigate-left,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-left{bottom:1.4em;right:5.5em}.reveal:not(.has-vertical-slides) .controls .navigate-right,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-right{bottom:1.4em;right:.5em}.reveal:not(.has-horizontal-slides) .controls .navigate-up{right:1.4em;bottom:5em}.reveal:not(.has-horizontal-slides) .controls .navigate-down{right:1.4em;bottom:.5em}.reveal.has-dark-background .controls{color:#fff}.reveal.has-light-background .controls{color:#000}.reveal.no-hover .controls .controls-arrow:active:before,.reveal.no-hover .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal.no-hover .controls .controls-arrow:active:after,.reveal.no-hover .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}@media screen and (min-width:500px){.reveal .controls[data-controls-layout=edges]{top:0;right:0;bottom:0;left:0}.reveal .controls[data-controls-layout=edges] .navigate-down,.reveal .controls[data-controls-layout=edges] .navigate-left,.reveal .controls[data-controls-layout=edges] .navigate-right,.reveal .controls[data-controls-layout=edges] .navigate-up{bottom:auto;right:auto}.reveal .controls[data-controls-layout=edges] .navigate-left{top:50%;left:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-right{top:50%;right:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-up{top:.8em;left:50%;margin-left:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-down{bottom:-.3em;left:50%;margin-left:-1.8em}}.reveal .progress{position:absolute;display:none;height:3px;width:100%;bottom:0;left:0;z-index:10;background-color:rgba(0,0,0,.2);color:#fff}.reveal .progress:after{content:'';display:block;position:absolute;height:10px;width:100%;top:-10px}.reveal .progress span{display:block;height:100%;width:100%;background-color:currentColor;transition:transform .8s cubic-bezier(.26,.86,.44,.985);transform-origin:0 0;transform:scaleX(0)}.reveal .slide-number{position:absolute;display:block;right:8px;bottom:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px}.reveal .slide-number a{color:currentColor}.reveal .slide-number-delimiter{margin:0 3px}.reveal{position:relative;width:100%;height:100%;overflow:hidden;touch-action:pinch-zoom}.reveal.embedded{touch-action:pan-y}.reveal .slides{position:absolute;width:100%;height:100%;top:0;right:0;bottom:0;left:0;margin:auto;pointer-events:none;overflow:visible;z-index:1;text-align:center;perspective:600px;perspective-origin:50% 40%}.reveal .slides>section{perspective:600px}.reveal .slides>section,.reveal .slides>section>section{display:none;position:absolute;width:100%;pointer-events:auto;z-index:10;transform-style:flat;transition:transform-origin .8s cubic-bezier(.26,.86,.44,.985),transform .8s cubic-bezier(.26,.86,.44,.985),visibility .8s cubic-bezier(.26,.86,.44,.985),opacity .8s cubic-bezier(.26,.86,.44,.985)}.reveal[data-transition-speed=fast] .slides section{transition-duration:.4s}.reveal[data-transition-speed=slow] .slides section{transition-duration:1.2s}.reveal .slides section[data-transition-speed=fast]{transition-duration:.4s}.reveal .slides section[data-transition-speed=slow]{transition-duration:1.2s}.reveal .slides>section.stack{padding-top:0;padding-bottom:0;pointer-events:none;height:100%}.reveal .slides>section.present,.reveal .slides>section>section.present{display:block;z-index:11;opacity:1}.reveal .slides>section:empty,.reveal .slides>section>section:empty,.reveal .slides>section>section[data-background-interactive],.reveal .slides>section[data-background-interactive]{pointer-events:none}.reveal.center,.reveal.center .slides,.reveal.center .slides section{min-height:0!important}.reveal .slides>section:not(.present),.reveal .slides>section>section:not(.present){pointer-events:none}.reveal.overview .slides>section,.reveal.overview .slides>section>section{pointer-events:auto}.reveal .slides>section.future,.reveal .slides>section.past,.reveal .slides>section>section.future,.reveal .slides>section>section.past{opacity:0}.reveal.slide section{-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .slides>section[data-transition=slide].past,.reveal .slides>section[data-transition~=slide-out].past,.reveal.slide .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=slide].future,.reveal .slides>section[data-transition~=slide-in].future,.reveal.slide .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=slide].past,.reveal .slides>section>section[data-transition~=slide-out].past,.reveal.slide .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=slide].future,.reveal .slides>section>section[data-transition~=slide-in].future,.reveal.slide .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal.linear section{-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .slides>section[data-transition=linear].past,.reveal .slides>section[data-transition~=linear-out].past,.reveal.linear .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=linear].future,.reveal .slides>section[data-transition~=linear-in].future,.reveal.linear .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=linear].past,.reveal .slides>section>section[data-transition~=linear-out].past,.reveal.linear .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=linear].future,.reveal .slides>section>section[data-transition~=linear-in].future,.reveal.linear .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides section[data-transition=default].stack,.reveal.default .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=default].past,.reveal .slides>section[data-transition~=default-out].past,.reveal.default .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=default].future,.reveal .slides>section[data-transition~=default-in].future,.reveal.default .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=default].past,.reveal .slides>section>section[data-transition~=default-out].past,.reveal.default .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=default].future,.reveal .slides>section>section[data-transition~=default-in].future,.reveal.default .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=convex].stack,.reveal.convex .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=convex].past,.reveal .slides>section[data-transition~=convex-out].past,.reveal.convex .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=convex].future,.reveal .slides>section[data-transition~=convex-in].future,.reveal.convex .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=convex].past,.reveal .slides>section>section[data-transition~=convex-out].past,.reveal.convex .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=convex].future,.reveal .slides>section>section[data-transition~=convex-in].future,.reveal.convex .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=concave].stack,.reveal.concave .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=concave].past,.reveal .slides>section[data-transition~=concave-out].past,.reveal.concave .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=concave].future,.reveal .slides>section[data-transition~=concave-in].future,.reveal.concave .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=concave].past,.reveal .slides>section>section[data-transition~=concave-out].past,.reveal.concave .slides>section>section:not([data-transition]).past{transform:translate3d(0,-80%,0) rotateX(-70deg) translate3d(0,-80%,0)}.reveal .slides>section>section[data-transition=concave].future,.reveal .slides>section>section[data-transition~=concave-in].future,.reveal.concave .slides>section>section:not([data-transition]).future{transform:translate3d(0,80%,0) rotateX(70deg) translate3d(0,80%,0)}.reveal .slides section[data-transition=zoom],.reveal.zoom .slides section:not([data-transition]){transition-timing-function:ease}.reveal .slides>section[data-transition=zoom].past,.reveal .slides>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section:not([data-transition]).past{visibility:hidden;transform:scale(16)}.reveal .slides>section[data-transition=zoom].future,.reveal .slides>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section:not([data-transition]).future{visibility:hidden;transform:scale(.2)}.reveal .slides>section>section[data-transition=zoom].past,.reveal .slides>section>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section>section:not([data-transition]).past{transform:scale(16)}.reveal .slides>section>section[data-transition=zoom].future,.reveal .slides>section>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section>section:not([data-transition]).future{transform:scale(.2)}.reveal.cube .slides{perspective:1300px}.reveal.cube .slides section{padding:30px;min-height:700px;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-sizing:border-box;transform-style:preserve-3d}.reveal.center.cube .slides section{min-height:0}.reveal.cube .slides section:not(.stack):before{content:'';position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);border-radius:4px;transform:translateZ(-20px)}.reveal.cube .slides section:not(.stack):after{content:'';position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);transform:translateZ(-90px) rotateX(65deg)}.reveal.cube .slides>section.stack{padding:0;background:0 0}.reveal.cube .slides>section.past{transform-origin:100% 0;transform:translate3d(-100%,0,0) rotateY(-90deg)}.reveal.cube .slides>section.future{transform-origin:0 0;transform:translate3d(100%,0,0) rotateY(90deg)}.reveal.cube .slides>section>section.past{transform-origin:0 100%;transform:translate3d(0,-100%,0) rotateX(90deg)}.reveal.cube .slides>section>section.future{transform-origin:0 0;transform:translate3d(0,100%,0) rotateX(-90deg)}.reveal.page .slides{perspective-origin:0 50%;perspective:3000px}.reveal.page .slides section{padding:30px;min-height:700px;box-sizing:border-box;transform-style:preserve-3d}.reveal.page .slides section.past{z-index:12}.reveal.page .slides section:not(.stack):before{content:'';position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);transform:translateZ(-20px)}.reveal.page .slides section:not(.stack):after{content:'';position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);-webkit-transform:translateZ(-90px) rotateX(65deg)}.reveal.page .slides>section.stack{padding:0;background:0 0}.reveal.page .slides>section.past{transform-origin:0 0;transform:translate3d(-40%,0,0) rotateY(-80deg)}.reveal.page .slides>section.future{transform-origin:100% 0;transform:translate3d(0,0,0)}.reveal.page .slides>section>section.past{transform-origin:0 0;transform:translate3d(0,-40%,0) rotateX(80deg)}.reveal.page .slides>section>section.future{transform-origin:0 100%;transform:translate3d(0,0,0)}.reveal .slides section[data-transition=fade],.reveal.fade .slides section:not([data-transition]),.reveal.fade .slides>section>section:not([data-transition]){transform:none;transition:opacity .5s}.reveal.fade.overview .slides section,.reveal.fade.overview .slides>section>section{transition:none}.reveal .slides section[data-transition=none],.reveal.none .slides section:not([data-transition]){transform:none;transition:none}.reveal .pause-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;visibility:hidden;opacity:0;z-index:100;transition:all 1s ease}.reveal .pause-overlay .resume-button{position:absolute;bottom:20px;right:20px;color:#ccc;border-radius:2px;padding:6px 14px;border:2px solid #ccc;font-size:16px;background:0 0;cursor:pointer}.reveal .pause-overlay .resume-button:hover{color:#fff;border-color:#fff}.reveal.paused .pause-overlay{visibility:visible;opacity:1}.reveal .no-transition,.reveal .no-transition *,.reveal .slides.disable-slide-transitions section{transition:none!important}.reveal .slides.disable-slide-transitions section{transform:none!important}.reveal .backgrounds{position:absolute;width:100%;height:100%;top:0;left:0;perspective:600px}.reveal .slide-background{display:none;position:absolute;width:100%;height:100%;opacity:0;visibility:hidden;overflow:hidden;background-color:rgba(0,0,0,0);transition:all .8s cubic-bezier(.26,.86,.44,.985)}.reveal .slide-background-content{position:absolute;width:100%;height:100%;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}.reveal .slide-background.stack{display:block}.reveal .slide-background.present{opacity:1;visibility:visible;z-index:2}.print-pdf .reveal .slide-background{opacity:1!important;visibility:visible!important}.reveal .slide-background video{position:absolute;width:100%;height:100%;max-width:none;max-height:none;top:0;left:0;-o-object-fit:cover;object-fit:cover}.reveal .slide-background[data-background-size=contain] video{-o-object-fit:contain;object-fit:contain}.reveal>.backgrounds .slide-background[data-background-transition=none],.reveal[data-background-transition=none]>.backgrounds .slide-background{transition:none}.reveal>.backgrounds .slide-background[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background{opacity:1;-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal>.backgrounds .slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.past{transform:translate(-100%,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.future{transform:translate(100%,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.past{transform:translate(0,-100%)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.future{transform:translate(0,100%)}.reveal>.backgrounds .slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.past{opacity:0;transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.future{opacity:0;transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.past{opacity:0;transform:translate3d(0,-100%,0) rotateX(90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.future{opacity:0;transform:translate3d(0,100%,0) rotateX(-90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.past{opacity:0;transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.future{opacity:0;transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.past{opacity:0;transform:translate3d(0,-100%,0) rotateX(-90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.future{opacity:0;transform:translate3d(0,100%,0) rotateX(90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background{transition-timing-function:ease}.reveal>.backgrounds .slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.past{opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.future{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.past{opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.future{opacity:0;visibility:hidden;transform:scale(.2)}.reveal[data-transition-speed=fast]>.backgrounds .slide-background{transition-duration:.4s}.reveal[data-transition-speed=slow]>.backgrounds .slide-background{transition-duration:1.2s}.reveal [data-auto-animate-target^=unmatched]{will-change:opacity}.reveal section[data-auto-animate]:not(.stack):not([data-auto-animate=running]) [data-auto-animate-target^=unmatched]{opacity:0}.reveal.overview{perspective-origin:50% 50%;perspective:700px}.reveal.overview .slides{-moz-transform-style:preserve-3d}.reveal.overview .slides section{height:100%;top:0!important;opacity:1!important;overflow:hidden;visibility:visible!important;cursor:pointer;box-sizing:border-box}.reveal.overview .slides section.present,.reveal.overview .slides section:hover{outline:10px solid rgba(150,150,150,.4);outline-offset:10px}.reveal.overview .slides section .fragment{opacity:1;transition:none}.reveal.overview .slides section:after,.reveal.overview .slides section:before{display:none!important}.reveal.overview .slides>section.stack{padding:0;top:0!important;background:0 0;outline:0;overflow:visible}.reveal.overview .backgrounds{perspective:inherit;-moz-transform-style:preserve-3d}.reveal.overview .backgrounds .slide-background{opacity:1;visibility:visible;outline:10px solid rgba(150,150,150,.1);outline-offset:10px}.reveal.overview .backgrounds .slide-background.stack{overflow:visible}.reveal.overview .slides section,.reveal.overview-deactivating .slides section{transition:none}.reveal.overview .backgrounds .slide-background,.reveal.overview-deactivating .backgrounds .slide-background{transition:none}.reveal.rtl .slides,.reveal.rtl .slides h1,.reveal.rtl .slides h2,.reveal.rtl .slides h3,.reveal.rtl .slides h4,.reveal.rtl .slides h5,.reveal.rtl .slides h6{direction:rtl;font-family:sans-serif}.reveal.rtl code,.reveal.rtl pre{direction:ltr}.reveal.rtl ol,.reveal.rtl ul{text-align:right}.reveal.rtl .progress span{transform-origin:100% 0}.reveal.has-parallax-background .backgrounds{transition:all .8s ease}.reveal.has-parallax-background[data-transition-speed=fast] .backgrounds{transition-duration:.4s}.reveal.has-parallax-background[data-transition-speed=slow] .backgrounds{transition-duration:1.2s}.reveal>.overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,.9);transition:all .3s ease}.reveal>.overlay .spinner{position:absolute;display:block;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;z-index:10;background-image:url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);visibility:visible;opacity:.6;transition:all .3s ease}.reveal>.overlay header{position:absolute;left:0;top:0;width:100%;padding:5px;z-index:2;box-sizing:border-box}.reveal>.overlay header a{display:inline-block;width:40px;height:40px;line-height:36px;padding:0 10px;float:right;opacity:.6;box-sizing:border-box}.reveal>.overlay header a:hover{opacity:1}.reveal>.overlay header a .icon{display:inline-block;width:20px;height:20px;background-position:50% 50%;background-size:100%;background-repeat:no-repeat}.reveal>.overlay header a.close .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC)}.reveal>.overlay header a.external .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==)}.reveal>.overlay .viewport{position:absolute;display:flex;top:50px;right:0;bottom:0;left:0}.reveal>.overlay.overlay-preview .viewport iframe{width:100%;height:100%;max-width:100%;max-height:100%;border:0;opacity:0;visibility:hidden;transition:all .3s ease}.reveal>.overlay.overlay-preview.loaded .viewport iframe{opacity:1;visibility:visible}.reveal>.overlay.overlay-preview.loaded .viewport-inner{position:absolute;z-index:-1;left:0;top:45%;width:100%;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-preview .x-frame-error{opacity:0;transition:opacity .3s ease .3s}.reveal>.overlay.overlay-preview.loaded .x-frame-error{opacity:1}.reveal>.overlay.overlay-preview.loaded .spinner{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.overlay.overlay-help .viewport{overflow:auto;color:#fff}.reveal>.overlay.overlay-help .viewport .viewport-inner{width:600px;margin:auto;padding:20px 20px 80px 20px;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-help .viewport .viewport-inner .title{font-size:20px}.reveal>.overlay.overlay-help .viewport .viewport-inner table{border:1px solid #fff;border-collapse:collapse;font-size:16px}.reveal>.overlay.overlay-help .viewport .viewport-inner table td,.reveal>.overlay.overlay-help .viewport .viewport-inner table th{width:200px;padding:14px;border:1px solid #fff;vertical-align:middle}.reveal>.overlay.overlay-help .viewport .viewport-inner table th{padding-top:20px;padding-bottom:20px}.reveal .playback{position:absolute;left:15px;bottom:20px;z-index:30;cursor:pointer;transition:all .4s ease;-webkit-tap-highlight-color:transparent}.reveal.overview .playback{opacity:0;visibility:hidden}.reveal .hljs{min-height:100%}.reveal .hljs table{margin:initial}.reveal .hljs-ln-code,.reveal .hljs-ln-numbers{padding:0;border:0}.reveal .hljs-ln-numbers{opacity:.6;padding-right:.75em;text-align:right;vertical-align:top}.reveal .hljs.has-highlights tr:not(.highlight-line){opacity:.4}.reveal .hljs:not(:first-child).fragment{position:absolute;top:0;left:0;width:100%;box-sizing:border-box}.reveal pre[data-auto-animate-target]{overflow:hidden}.reveal pre[data-auto-animate-target] code{height:100%}.reveal .roll{display:inline-block;line-height:1.2;overflow:hidden;vertical-align:top;perspective:400px;perspective-origin:50% 50%}.reveal .roll:hover{background:0 0;text-shadow:none}.reveal .roll span{display:block;position:relative;padding:0 2px;pointer-events:none;transition:all .4s ease;transform-origin:50% 0;transform-style:preserve-3d;-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .roll:hover span{background:rgba(0,0,0,.5);transform:translate3d(0,0,-45px) rotateX(90deg)}.reveal .roll span:after{content:attr(data-title);display:block;position:absolute;left:0;top:0;padding:0 2px;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform-origin:50% 0;transform:translate3d(0,110%,0) rotateX(-90deg)}.reveal aside.notes{display:none}.reveal .speaker-notes{display:none;position:absolute;width:33.33333%;height:100%;top:0;left:100%;padding:14px 18px 14px 18px;z-index:1;font-size:18px;line-height:1.4;border:1px solid rgba(0,0,0,.05);color:#222;background-color:#f5f5f5;overflow:auto;box-sizing:border-box;text-align:left;font-family:Helvetica,sans-serif;-webkit-overflow-scrolling:touch}.reveal .speaker-notes .notes-placeholder{color:#ccc;font-style:italic}.reveal .speaker-notes:focus{outline:0}.reveal .speaker-notes:before{content:'Speaker notes';display:block;margin-bottom:10px;opacity:.5}.reveal.show-notes{max-width:75%;overflow:visible}.reveal.show-notes .speaker-notes{display:block}@media screen and (min-width:1600px){.reveal .speaker-notes{font-size:20px}}@media screen and (max-width:1024px){.reveal.show-notes{border-left:0;max-width:none;max-height:70%;max-height:70vh;overflow:visible}.reveal.show-notes .speaker-notes{top:100%;left:0;width:100%;height:42.85714%;height:30vh;border:0}}@media screen and (max-width:600px){.reveal.show-notes{max-height:60%;max-height:60vh}.reveal.show-notes .speaker-notes{top:100%;height:66.66667%;height:40vh}.reveal .speaker-notes{font-size:14px}}.zoomed .reveal *,.zoomed .reveal :after,.zoomed .reveal :before{-webkit-backface-visibility:visible!important;backface-visibility:visible!important}.zoomed .reveal .controls,.zoomed .reveal .progress{opacity:0}.zoomed .reveal .roll span{background:0 0}.zoomed .reveal .roll span:after{visibility:hidden}html.print-pdf *{-webkit-print-color-adjust:exact}html.print-pdf{width:100%;height:100%;overflow:visible}html.print-pdf body{margin:0 auto!important;border:0;padding:0;float:none!important;overflow:visible}html.print-pdf .nestedarrow,html.print-pdf .reveal .controls,html.print-pdf .reveal .playback,html.print-pdf .reveal .progress,html.print-pdf .reveal.overview,html.print-pdf .state-background{display:none!important}html.print-pdf .reveal pre code{overflow:hidden!important;font-family:Courier,'Courier New',monospace!important}html.print-pdf .reveal{width:auto!important;height:auto!important;overflow:hidden!important}html.print-pdf .reveal .slides{position:static;width:100%!important;height:auto!important;zoom:1!important;pointer-events:initial;left:auto;top:auto;margin:0!important;padding:0!important;overflow:visible;display:block;perspective:none;perspective-origin:50% 50%}html.print-pdf .reveal .slides .pdf-page{position:relative;overflow:hidden;z-index:1;page-break-after:always}html.print-pdf .reveal .slides section{visibility:visible!important;display:block!important;position:absolute!important;margin:0!important;padding:0!important;box-sizing:border-box!important;min-height:1px;opacity:1!important;transform-style:flat!important;transform:none!important}html.print-pdf .reveal section.stack{position:relative!important;margin:0!important;padding:0!important;page-break-after:avoid!important;height:auto!important;min-height:auto!important}html.print-pdf .reveal img{box-shadow:none}html.print-pdf .reveal .backgrounds{display:none}html.print-pdf .reveal .slide-background{display:block!important;position:absolute;top:0;left:0;width:100%;height:100%;z-index:auto!important}html.print-pdf .reveal.show-notes{max-width:none;max-height:none}html.print-pdf .reveal .speaker-notes-pdf{display:block;width:100%;height:auto;max-height:none;top:auto;right:auto;bottom:auto;left:auto;z-index:100}html.print-pdf .reveal .speaker-notes-pdf[data-layout=separate-page]{position:relative;color:inherit;background-color:transparent;padding:20px;page-break-after:always;border:0}html.print-pdf .reveal .slide-number-pdf{display:block;position:absolute;font-size:14px}html.print-pdf .aria-status{display:none}@media print{html:not(.print-pdf){background:#fff;width:auto;height:auto;overflow:visible}html:not(.print-pdf) body{background:#fff;font-size:20pt;width:auto;height:auto;border:0;margin:0 5%;padding:0;overflow:visible;float:none!important}html:not(.print-pdf) .controls,html:not(.print-pdf) .fork-reveal,html:not(.print-pdf) .nestedarrow,html:not(.print-pdf) .reveal .backgrounds,html:not(.print-pdf) .reveal .progress,html:not(.print-pdf) .reveal .slide-number,html:not(.print-pdf) .share-reveal,html:not(.print-pdf) .state-background{display:none!important}html:not(.print-pdf) body,html:not(.print-pdf) li,html:not(.print-pdf) p,html:not(.print-pdf) td{font-size:20pt!important;color:#000}html:not(.print-pdf) h1,html:not(.print-pdf) h2,html:not(.print-pdf) h3,html:not(.print-pdf) h4,html:not(.print-pdf) h5,html:not(.print-pdf) h6{color:#000!important;height:auto;line-height:normal;text-align:left;letter-spacing:normal}html:not(.print-pdf) h1{font-size:28pt!important}html:not(.print-pdf) h2{font-size:24pt!important}html:not(.print-pdf) h3{font-size:22pt!important}html:not(.print-pdf) h4{font-size:22pt!important;font-variant:small-caps}html:not(.print-pdf) h5{font-size:21pt!important}html:not(.print-pdf) h6{font-size:20pt!important;font-style:italic}html:not(.print-pdf) a:link,html:not(.print-pdf) a:visited{color:#000!important;font-weight:700;text-decoration:underline}html:not(.print-pdf) div,html:not(.print-pdf) ol,html:not(.print-pdf) p,html:not(.print-pdf) ul{visibility:visible;position:static;width:auto;height:auto;display:block;overflow:visible;margin:0;text-align:left!important}html:not(.print-pdf) .reveal pre,html:not(.print-pdf) .reveal table{margin-left:0;margin-right:0}html:not(.print-pdf) .reveal pre code{padding:20px}html:not(.print-pdf) .reveal blockquote{margin:20px 0}html:not(.print-pdf) .reveal .slides{position:static!important;width:auto!important;height:auto!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:0!important;zoom:1!important;transform:none!important;overflow:visible!important;display:block!important;text-align:left!important;perspective:none;perspective-origin:50% 50%}html:not(.print-pdf) .reveal .slides section{visibility:visible!important;position:static!important;width:auto!important;height:auto!important;display:block!important;overflow:visible!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:60px 20px!important;z-index:auto!important;opacity:1!important;page-break-after:always!important;transform-style:flat!important;transform:none!important;transition:none!important}html:not(.print-pdf) .reveal .slides section.stack{padding:0!important}html:not(.print-pdf) .reveal section:last-of-type{page-break-after:avoid!important}html:not(.print-pdf) .reveal section .fragment{opacity:1!important;visibility:visible!important;transform:none!important}html:not(.print-pdf) .reveal section img{display:block;margin:15px 0;background:#fff;border:1px solid #666;box-shadow:none}html:not(.print-pdf) .reveal section small{font-size:.8em}html:not(.print-pdf) .reveal .hljs{max-height:100%;white-space:pre-wrap;word-wrap:break-word;word-break:break-word;font-size:15pt}html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers{white-space:nowrap}html:not(.print-pdf) .reveal .hljs td{font-size:inherit!important;color:inherit!important}}
+      
+      </style>
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"skipTags":["script","noscript","style","textarea","pre","code"]},"displayAlign":"left","TeX":{"equationNumbers":{"autoNumber":"none","useLabelIds":true},"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js","action.js","cancel.js","enclose.js","mhchem.js","extpfeil.js"],"Macros":{"zerov":"{\\boldsymbol 0}","onev":"{\\boldsymbol 1}","av":"{\\boldsymbol a}","bv":"{\\boldsymbol b}","cv":"{\\boldsymbol c}","dv":"{\\boldsymbol d}","ev":"{\\boldsymbol e}","fv":"{\\boldsymbol f}","gv":"{\\boldsymbol g}","hv":"{\\boldsymbol h}","iv":"{\\boldsymbol i}","jv":"{\\boldsymbol j}","kv":"{\\boldsymbol k}","lv":"{\\boldsymbol l}","mv":"{\\boldsymbol m}","nv":"{\\boldsymbol n}","ov":"{\\boldsymbol o}","pv":"{\\boldsymbol p}","qv":"{\\boldsymbol q}","rv":"{\\boldsymbol r}","sv":"{\\boldsymbol s}","tv":"{\\boldsymbol t}","uv":"{\\boldsymbol u}","vv":"{\\boldsymbol v}","wv":"{\\boldsymbol w}","xv":"{\\boldsymbol x}","yv":"{\\boldsymbol y}","zv":"{\\boldsymbol z}","Av":"{\\mathbf A}","Bv":"{\\mathbf B}","Cv":"{\\mathbf C}","Dv":"{\\mathbf D}","Ev":"{\\mathbf E}","Fv":"{\\mathbf F}","Gv":"{\\mathbf G}","Hv":"{\\mathbf H}","Iv":"{\\mathbf I}","Jv":"{\\mathbf J}","Kv":"{\\mathbf K}","Lv":"{\\mathbf L}","Mv":"{\\mathbf M}","Nv":"{\\mathbf N}","Ov":"{\\mathbf O}","Pv":"{\\mathbf P}","Qv":"{\\mathbf Q}","Rv":"{\\mathbf R}","Sv":"{\\mathbf S}","Tv":"{\\mathbf T}","Uv":"{\\mathbf U}","Vv":"{\\mathbf V}","Wv":"{\\mathbf W}","Xv":"{\\mathbf X}","Yv":"{\\mathbf Y}","Zv":"{\\mathbf Z}","alphav":"{\\boldsymbol {\\alpha}}","betav":"{\\boldsymbol {\\beta}}","lambdav":"{\\boldsymbol {\\lambda}}","muv":"{\\boldsymbol {\\mu}}","thetav":"{\\boldsymbol {\\theta}}","phiv":"{\\boldsymbol {\\phi}}","zetav":"{\\boldsymbol {\\zeta}}","deltav":"{\\boldsymbol {\\delta}}","Sigmav":"{\\boldsymbol {\\Sigma}}","Phiv":"{\\boldsymbol {\\Phi}}","Lambdav":"{\\boldsymbol {\\Lambda}}","Omegav":"{\\boldsymbol {\\Omega}}","Cbb":"{\\mathbb C}","Ebb":"{\\mathbb E}","Fbb":"{\\mathbb F}","Hbb":"{\\mathbb H}","Ibb":"{\\mathbb I}","Nbb":"{\\mathbb N}","Pbb":"{\\mathbb P}","Qbb":"{\\mathbb Q}","Rbb":"{\\mathbb R}","Zbb":"{\\mathbb Z}","Acal":"{\\mathcal A}","Bcal":"{\\mathcal B}","Ccal":"{\\mathcal C}","Dcal":"{\\mathcal D}","Ecal":"{\\mathcal E}","Fcal":"{\\mathcal F}","Gcal":"{\\mathcal G}","Hcal":"{\\mathcal H}","Ical":"{\\mathcal I}","Lcal":"{\\mathcal L}","Mcal":"{\\mathcal M}","Ncal":"{\\mathcal N}","Pcal":"{\\mathcal P}","Rcal":"{\\mathcal R}","Scal":"{\\mathcal S}","Ucal":"{\\mathcal U}","Vcal":"{\\mathcal V}","Wcal":"{\\mathcal W}","Xcal":"{\\mathcal X}","Ycal":"{\\mathcal Y}","fhat":"{\\hat f}","yhat":"{\\hat y}","yvhat":"{\\hat {\\yv}}","Xvhat":"{\\hat {\\Xv}}","wvt":"{\\tilde {\\wv}}","xvt":"{\\tilde {\\xv}}","yvt":"{\\tilde {\\yv}}","Kvt":"{\\tilde {\\Kv}}","xbar":"{\\bar {x}}","ybar":"{\\bar {y}}","yvbar":"{\\bar {\\yv}}","Ffrak":"{\\mathfrak F}","sup":["{{(#1)}}",1],"acc":"{\\mathrm {acc}}","bias":"{\\mathrm {bias}}","variance":"{\\mathrm {variance}}","noise":"{\\mathrm {noise}}","diff":"{\\mathrm {d}}","diag":"{\\mathrm {diag}}","span":"{\\mathrm {span}}","sign":"{\\mathrm {sign}}","sgn":"{\\mathrm {sgn}}","st":"{\\mathrm {s.t.}}","VC":"{\\mathrm {VC}}","Pr":"{\\mathrm {Pr}}","tanh":"{\\mathrm {tanh}}","logistic":"{\\mathrm {logistic}}","relu":"{\\mathrm {ReLU}}","lrelu":"{\\mathrm {LeakyReLU}}","prelu":"{\\mathrm {PReLU}}","elu":"{\\mathrm {ELU}}","softplus":"{\\mathrm {Softplus}}","swish":"{\\mathrm {Swish}}","maxout":"{\\mathrm {Maxout}}","const":"{\\mathrm {const}}","cov":"{\\mathrm {cov}}","grad":"{\\mathrm {grad}}","div":"{\\mathrm {div}}","var":"{\\mathrm {var}}","softmax":"{\\mathrm {softmax}}","att":"{\\mathrm {att}}","cut":"{\\mathrm {cut}}","rcut":"{\\mathrm {RatioCut}}","ncut":"{\\mathrm {NCut}}","tr":"{\\mathrm {tr}}","vol":"{\\mathrm {vol}}","mlp":"{\\mathrm {MLP}}","update":"{\\mathrm {Update}}","aggregate":"{\\mathrm {Aggregate}}","self":"{\\mathrm {self}}","set":"{\\mathrm {set}}","neigh":"{\\mathrm {neigh}}","base":"{\\mathrm {base}}","NULL":"{\\mathrm {NULL}}","new":"{\\mathrm {new}}","gru":"{\\mathrm {GRU}}","lstm":"{\\mathrm {LSTM}}","edge":"{\\mathrm {edge}}","node":"{\\mathrm {node}}","graph":"{\\mathrm {graph}}","train":"{\\mathrm {train}}","dec":"{\\mathrm {Dec}}","sym":"{\\mathrm {sym}}","modd":"{\\mathrm {mod} ~ }","hp":"{\\mathrm {hp}}","gen":"{\\mathrm {gen}}","ow":"{\\mathrm {o.w.}}","rot":"{\\mathbf {rot180}}","up":"{\\mathbf {up}}","cen":"{\\mathrm {cen}}","con":"{\\mathrm {con}}","TG":"{\\mathrm {TreeGenerate}}","TP":"{\\mathrm {TP}}","FP":"{\\mathrm {FP}}","TN":"{\\mathrm {TN}}","FN":"{\\mathrm {FN}}","SSE":"{\\mathrm {SSE}}","SSB":"{\\mathrm {SSB}}","gain":"{\\mathrm {Gain}}","gini":"{\\mathrm {Gini}}","argmin":"{\\mathop{\\arg \\min}}","argmax":"{\\mathop{\\mathrm{argmax}}}"}},"HTML-CSS":{"linebreaks":{"automatic":false},"scale":100,"styles":{".MathJax_Display":{"margin-top":"0.6rem !important","margin-bottom":"1rem !important","border-radius":"0px !important","font-size":"1.8rem !important","color":"#d33682","text-align":"left !important"},".MathJax":{"margin-left":"0.2rem !important","margin-right":"0.2rem !important","border":"0px solid #ccc !important","color":"#d33682"}},"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="../plugin/MathJax-2.7.9/MathJax.js" charset="UTF-8"></script>
+        
+      
+      <link rel="stylesheet" href="file:////home/avanti/.local/bin/mpe2html-deps/node_modules/@shd101wyy/mume/dependencies/font-awesome/css/font-awesome.min.css">
+      
+        <script src="../js/head.min.js"></script>
+        <script src="../js/reveal.js"></script>
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#657b83;background-color:#fbedc6 !important;border:#f8de97;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#93a1a1;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#93a1a1}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.property,pre[class*="language-"] .token.property{color:#859900}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#d33682}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#268bd2}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#859900}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#657b83}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{color:#2aa198}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#cb4b16}code[class*="language-"] .token.builtin,pre[class*="language-"] .token.builtin{color:#859900}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{color:#268bd2}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#93a1a1}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#859900}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#268bd2}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#268bd2}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#268bd2}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#dc322f}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export" data-presentation-mode>
+      <div class="mume markdown-preview  " data-presentation-mode>
+      
+    <div style="display:none;"><link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="../css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="../css/logo.css">
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/color.css">
+<link rel="stylesheet" href="../css/margin.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript" src="../plugin/zoom/zoom.js"></script>
+<script type="text/javascript" src="../plugin/customcontrols/plugin.js"></script>
+<link rel="stylesheet" href="../plugin/customcontrols/style.css">
+<script type="text/javascript" src="../plugin/chalkboard/plugin.js"></script>
+<link rel="stylesheet" href="../plugin/chalkboard/style.css">
+<script type="text/javascript" src="../plugin/menu/menu.js"></script>
+<script type="text/javascript" src="../js/anychart/anychart-core.min.js"></script>
+<script type="text/javascript" src="../js/anychart/anychart-venn.min.js"></script>
+<script type="text/javascript" src="../js/anychart/pastel.min.js"></script>
+<script type="text/javascript" src="../js/anychart/venn-ml.js"></script>
+</div>
+    <div class="reveal">
+      <div class="slides">
+        <section><section data-notes lineno="29" class="slide " data-line="29" data-h="0" data-v="0">
+<div class="bottom20"></div>
+<h1 class="mume-header" id="%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">&#x673A;&#x5668;&#x5B66;&#x4E60;</h1>
+
+<hr class="width50 center">
+<h2 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</h2>
+
+<div class="bottom8"></div>
+<h3 class="mume-header" id="%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2-nbspnbsp-%E5%BC%A0%E8%85%BE">&#x8BA1;&#x7B97;&#x673A;&#x5B66;&#x9662; &#xA0;&#xA0; &#x5F20;&#x817E;</h3>
+
+<h4 class="mume-header" id="_tengzhanghusteducn_"><em><a href="mailto:tengzhang@hust.edu.cn">tengzhang@hust.edu.cn</a></em></h4>
+
+</section><section vertical="true" data-notes lineno="45" class="slide " data-line="45" data-h="0" data-v="1">
+<h5 class="mume-header" id="%E5%A4%A7%E7%BA%B2">&#x5927;&#x7EB2;</h5>
+
+<hr>
+<p as="vega" class="top-2"><!--?xml version="1.0" encoding="utf-8"?-->
+
+<svg class="marks" width="891" height="572" viewBox="0 0 891 572" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink"><g transform="translate(103,26)"><g class="mark-group role-frame root"><g transform="translate(0,0)"><path class="background" d="M0,0h750v520h-750Z" style="fill: none;"/><g><g class="mark-path role-mark"><path transform="translate(0,0)" d="M0,205C81.25,205 81.25,165 162.5,165" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M0,205C81.25,205 81.25,205 162.5,205" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M0,205C81.25,205 81.25,245 162.5,245" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M162.5,245C243.75,245 243.75,120 325,120" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M162.5,245C243.75,245 243.75,370 325,370" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,120C406.25,120 406.25,60 487.5,60" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,120C406.25,120 406.25,120 487.5,120" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,120C406.25,120 406.25,180 487.5,180" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,370C406.25,370 406.25,260 487.5,260" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,370C406.25,370 406.25,340 487.5,340" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,370C406.25,370 406.25,420 487.5,420" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M325,370C406.25,370 406.25,480 487.5,480" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,60C568.75,60 568.75,20 650,20" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,60C568.75,60 568.75,60 650,60" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,60C568.75,60 568.75,100 650,100" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,180C568.75,180 568.75,140 650,140" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,180C568.75,180 568.75,180 650,180" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,180C568.75,180 568.75,220 650,220" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,260C568.75,260 568.75,260 650,260" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,340C568.75,340 568.75,300 650,300" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,340C568.75,340 568.75,340 650,340" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,340C568.75,340 568.75,380 650,380" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,420C568.75,420 568.75,420 650,420" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,480C568.75,480 568.75,460 650,460" style="fill: none; stroke: #586e75;"/><path transform="translate(0,0)" d="M487.5,480C568.75,480 568.75,500 650,500" style="fill: none; stroke: #586e75;"/></g><g class="mark-symbol role-mark"><path transform="translate(0,205)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(0, 0, 4); stroke: #fff;"/><path transform="translate(162.5,165)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(81, 19, 124); stroke: #fff;"/><path transform="translate(162.5,205)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(81, 19, 124); stroke: #fff;"/><path transform="translate(162.5,245)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(81, 19, 124); stroke: #fff;"/><path transform="translate(325,120)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(182, 55, 122); stroke: #fff;"/><path transform="translate(325,370)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(182, 55, 122); stroke: #fff;"/><path transform="translate(487.5,60)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(487.5,120)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(487.5,180)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(650,20)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,60)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,100)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,140)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,180)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,220)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(487.5,260)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(487.5,340)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(487.5,420)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(487.5,480)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(251, 135, 98); stroke: #fff;"/><path transform="translate(650,260)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,300)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,340)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,380)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,420)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,460)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/><path transform="translate(650,500)" d="M5,0A5,5,0,1,1,-5,0A5,5,0,1,1,5,0" style="fill: rgb(252, 253, 191); stroke: #fff;"/></g><g class="mark-text role-mark"><text text-anchor="end" transform="translate(-7,212)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x4EBA;&#x5DE5;&#x667A;&#x80FD;</text><text text-anchor="start" transform="translate(169.5,172)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x903B;&#x8F91;&#x63A8;&#x7406;</text><text text-anchor="start" transform="translate(169.5,212)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x77E5;&#x8BC6;&#x5DE5;&#x7A0B;</text><text text-anchor="end" transform="translate(155.5,252)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x673A;&#x5668;&#x5B66;&#x4E60;</text><text text-anchor="end" transform="translate(318,127)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x4EFB;&#x52A1;&#x7C7B;&#x578B;</text><text text-anchor="end" transform="translate(318,377)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x6A21;&#x578B;&#x65B9;&#x6CD5;</text><text text-anchor="end" transform="translate(480.5,67)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x76D1;&#x7763;&#x5B66;&#x4E60;</text><text text-anchor="start" transform="translate(494.5,127)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x534A;&#x76D1;&#x7763;&#x5B66;&#x4E60;</text><text text-anchor="end" transform="translate(480.5,187)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x65E0;&#x76D1;&#x7763;&#x5B66;&#x4E60;</text><text text-anchor="start" transform="translate(657,27)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x5206;&#x7C7B;</text><text text-anchor="start" transform="translate(657,67)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x56DE;&#x5F52;</text><text text-anchor="start" transform="translate(657,107)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x6392;&#x5E8F;</text><text text-anchor="start" transform="translate(657,147)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x805A;&#x7C7B;</text><text text-anchor="start" transform="translate(657,187)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x964D;&#x7EF4;</text><text text-anchor="start" transform="translate(657,227)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x5BC6;&#x5EA6;&#x4F30;&#x8BA1;</text><text text-anchor="end" transform="translate(480.5,267)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x7B26;&#x53F7;&#x5B66;&#x6D3E;</text><text text-anchor="end" transform="translate(480.5,347)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x8FDE;&#x63A5;&#x5B66;&#x6D3E;</text><text text-anchor="end" transform="translate(480.5,427)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x7EDF;&#x8BA1;&#x5B66;&#x6D3E;</text><text text-anchor="end" transform="translate(480.5,487)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x7C7B;&#x63A8;&#x5B66;&#x6D3E;</text><text text-anchor="start" transform="translate(657,267)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x51B3;&#x7B56;&#x6811;</text><text text-anchor="start" transform="translate(657,307)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x611F;&#x77E5;&#x673A;</text><text text-anchor="start" transform="translate(657,347)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x5BF9;&#x6570;&#x51E0;&#x7387;&#x56DE;&#x5F52;</text><text text-anchor="start" transform="translate(657,387)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</text><text text-anchor="start" transform="translate(657,427)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</text><text text-anchor="start" transform="translate(657,467)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">k-&#x8FD1;&#x90BB;</text><text text-anchor="start" transform="translate(657,507)" style="font-family: LXGWWenKai; font-size: 22px; font-weight: 900; fill: #b58900; opacity: 1;">&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</text></g></g><path class="foreground" d="" style="display: none; fill: none;"/></g></g></g></svg></p></section></section><section><section data-notes lineno="53" class="slide " data-line="53" data-h="1" data-v="0">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%86%B3%E7%AD%96%E8%AE%BA">&#x8D1D;&#x53F6;&#x65AF;&#x51B3;&#x7B56;&#x8BBA;</h5>
+
+<hr>
+<ul>
+<li>&#x6837;&#x672C;&#x7A7A;&#x95F4;<span class="mathjax-exps">$\Xcal \subseteq \Fbb^d$</span>&#xFF0C;&#x7C7B;&#x522B;&#x6807;&#x8BB0;&#x7A7A;&#x95F4;&#x4E3A;<span class="mathjax-exps">$\Ycal$</span></li>
+<li><span class="mathjax-exps">$\Dcal$</span>&#x662F;<span class="mathjax-exps">$\Xcal \times \Ycal$</span>&#x4E0A;&#x7684;&#x672A;&#x77E5;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF0C;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x51FD;&#x6570;&#x4E3A;<span class="mathjax-exps">$\Pr(\xv, y)$</span></li>
+<li>&#x635F;&#x5931;&#x51FD;&#x6570;<span class="mathjax-exps">$\ell: \Ycal \times \Ycal \mapsto \Rbb$</span></li>
+</ul>
+<p>&#x5B66;&#x4E60;&#x5668;<span class="mathjax-exps">$h: \Xcal \mapsto \Ycal$</span>&#x7684;&#x6CDB;&#x5316;&#x98CE;&#x9669;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad R_{\Dcal} (h) &amp; = \Ebb_{(\xv,y) \sim \Dcal} [\ell(y, h(\xv))] = \iint \ell(y, h(\xv)) \Pr(\xv, y) \diff \xv \diff y \\
+    &amp; = \int \left( \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y \right) \Pr(\xv) \diff \xv \\
+    &amp; = \Ebb_{\xv} \left[ \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y \right] = \Ebb_{\xv} [ \Ebb_y [\ell(y, h(\xv)) | \xv]]
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x6700;&#x5C0F;&#x6CDB;&#x5316;&#x98CE;&#x9669;&#x79F0;&#x4E3A;<mark>&#x8D1D;&#x53F6;&#x65AF;&#x98CE;&#x9669;</mark>&#xFF0C;&#x5BF9;&#x5E94;&#x7684;<span class="mathjax-exps">$h^\star$</span>&#x5373;<mark>&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x5B66;&#x4E60;&#x5668;</mark></p>
+<p>
+
+$$
+\begin{align*}
+    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="91" class="slide " data-line="91" data-h="1" data-v="1">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%9C%80%E4%BC%98%E5%AD%A6%E4%B9%A0%E5%99%A8">&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x5B66;&#x4E60;&#x5668;</h5>
+
+<hr>
+<div class="top2"></div>
+<p>
+
+$$
+\begin{align*}
+    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x56DE;&#x5F52;&#x95EE;&#x9898;&#x901A;&#x5E38;&#x91C7;&#x7528;&#x5E73;&#x65B9;&#x635F;&#x5931;<span class="mathjax-exps">$\ell(y, h(\xv)) = (y - h(\xv))^2$</span></p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \nabla_{h(\xv)} \left( \int (y - h(\xv))^2 \Pr(y|\xv) \diff y \right) &amp; = 2 \int (h(\xv) - y) \Pr(y|\xv) \diff y \\
+    &amp; = 2 h(\xv) - 2 \int y \Pr(y|\xv) \diff y \\
+    &amp; = 2 h(\xv) - 2 \Ebb[y|\xv]
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x5373;&#x56DE;&#x5F52;&#x95EE;&#x9898;&#x7684;&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x6A21;&#x578B;<span class="mathjax-exps">$h^\star(\xv) = \Ebb[y|\xv]$</span></p>
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x5728;&#x504F;&#x5DEE;&#x65B9;&#x5DEE;&#x5206;&#x89E3;&#x4E2D;&#x6211;&#x4EEC;&#x66FE;&#x5F97;&#x5230;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x8BBA;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \Ebb_{(\xv,y) \sim \Dcal} [(y - h(\xv))^2] = \Ebb_{\xv} [(h(\xv) - \Ebb [y|\xv])^2] + \noise
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="141" class="slide " data-line="141" data-h="1" data-v="2">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%9C%80%E4%BC%98%E5%AD%A6%E4%B9%A0%E5%99%A8-1">&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x5B66;&#x4E60;&#x5668;</h5>
+
+<hr>
+<div class="top2"></div>
+<p>
+
+$$
+\begin{align*}
+    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x5BF9;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;&#x8BBE;<span class="mathjax-exps">$\Ycal = [c]$</span>&#xFF0C;<span class="mathjax-exps">$\ell(y, h(\xv)) = \Ibb(y \ne h(\xv))$</span>&#xFF0C;&#x5219;</p>
+<div class="top1"></div>
+<p>
+
+$$
+\begin{align*}
+    \qquad h^\star(\xv) &amp; = \mathop{\arg\min}_{\yhat \in [c]} \sum_{y \in [c]} \Ibb(y \ne \yhat) \Pr(y|\xv) \\[4pt]
+    &amp; = \mathop{\arg\min}_{\yhat \in [c]} ~ (1 - \Pr(\yhat|\xv)) \\[4pt]
+    &amp; = \mathop{\arg\max}_{\yhat \in [c]} ~ \Pr(\yhat|\xv)
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x5373;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x6A21;&#x578B;<span class="mathjax-exps">$h^\star(\xv) = \mathop{\arg\max}_{\yhat \in [c]} \Pr(\yhat|\xv)$</span></p>
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;<mark>&#x6CDB;&#x5316;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;</mark>&#x7B49;&#x4EF7;&#x4E8E;<mark>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;</mark></p>
+</section></section><section><section data-notes lineno="183" class="slide " data-line="183" data-h="2" data-v="0">
+<h5 class="mume-header" id="%E5%88%A4%E5%88%AB%E5%BC%8F-_vs_-%E7%94%9F%E6%88%90%E5%BC%8F">&#x5224;&#x522B;&#x5F0F; <em>vs.</em> &#x751F;&#x6210;&#x5F0F;</h5>
+
+<hr>
+<p>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;&#x7684;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF1A;&#x5224;&#x522B;&#x5F0F;&#x65B9;&#x6CD5;&#x3001;&#x751F;&#x6210;&#x5F0F;&#x65B9;&#x6CD5;</p>
+<p>&#x5224;&#x522B;&#x5F0F;&#x65B9;&#x6CD5;&#xFF1A;&#x76F4;&#x63A5;&#x7528;&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5F0F;&#x62DF;&#x5408;&#x540E;&#x9A8C;&#x6982;&#x7387;&#xFF0C;&#x5982;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad [\Pr(y=1|\xv), \ldots, \Pr(y=c|\xv)] = \softmax (\wv_1^\top \xv, \ldots, \wv_c^\top \xv)
+\end{align*}
+$$
+</p>
+
+<p>&#x751F;&#x6210;&#x5F0F;&#x65B9;&#x6CD5;&#xFF1A;&#x66F2;&#x7EBF;&#x8FC2;&#x56DE;&#xFF0C;&#x4ECE;&#x6570;&#x636E;&#x7684;&#x751F;&#x6210;&#x673A;&#x5236;&#x5165;&#x624B;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \overbrace{\Pr(y|\xv)}^{\text{&#x540E;&#x9A8C;}} &amp; = \frac{\overbrace{\class{yellow}{\Pr(y)}}^{\text{&#x5148;&#x9A8C;}} \times \overbrace{\class{blue}{\Pr(\xv|y)}}^{\text{&#x4F3C;&#x7136;}}}{\Pr(\xv)}
+    \Longrightarrow \begin{cases} \Pr(y = 1 | \xv) \propto \class{yellow}{\Pr(y=1)} \class{blue}{\Pr(\xv|y=1)} \\
+    \qquad \vdots \\
+    \Pr(y = c | \xv) \propto \class{yellow}{\Pr(y=c)} \class{blue}{\Pr(\xv|y=c)} \end{cases} \\[10pt]
+    &amp; \Longrightarrow \mathop{\arg \max}_{y \in [c]} \Pr(y|\xv) = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(\xv | y)
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="219" class="slide " data-line="219" data-h="2" data-v="1">
+<h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF-1">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</h5>
+
+<hr>
+<div class="top2"></div>
+<p>
+
+$$
+\begin{align*}
+    \qquad \mathop{\arg \max}_{y \in [c]} \Pr(y|\xv) = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(\xv | y)
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\xv = [x_1; x_2; \ldots; x_d]$</span>&#xFF0C;&#x4E8E;&#x662F;&#x4F3C;&#x7136;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \Pr(\xv | y) = \Pr(x_1 | y) \cdot \Pr(x_2 | x_1, y) \cdots \Pr(x_d | x_{d-1}, \ldots, x_2, x_1, y)
+\end{align*}
+$$
+</p>
+
+<div class="top-3"></div>
+<p>&#x5F53;&#x7279;&#x5F81;&#x6570;<span class="mathjax-exps">$d$</span>&#x5F88;&#x5927;&#x65F6;&#x4F3C;&#x7136;&#x4F1A;&#x5F88;&#x96BE;&#x8BA1;&#x7B97; (&#x8981;&#x8003;&#x8651;&#x6240;&#x6709;&#x7279;&#x5F81;&#x7684;&#x6240;&#x6709;&#x53D6;&#x503C;)</p>
+<div class="top4"></div>
+<p>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF; (<u>n</u>a&#xEF;ve <u>B</u>ayes, NB) &#x5F15;&#x5165;<mark>&#x6761;&#x4EF6;&#x72EC;&#x7ACB;&#x6027;&#x5047;&#x8BBE;</mark>&#xFF1A;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \Pr(\xv | y) = \Pr(x_1 | y) \cdot \Pr(x_2 | y) \cdots \Pr(x_d | y) = \prod_{j \in [d]} \Pr(x_j | y)
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7528;&#x6570;&#x636E;&#x96C6;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Pr(y), ~ \Pr(x_1 | y), ~ \Pr(x_2 | y), ~ \ldots, ~ \Pr(x_d | y)$</span></p>
+</section></section><section><section data-notes lineno="273" class="slide " data-line="273" data-h="3" data-v="0">
+<h5 class="mume-header" id="%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0">&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x4F30;&#x8BA1;&#x53C2;&#x6570;</h5>
+
+<hr>
+<div class="top2"></div>
+<p>
+
+$$
+\begin{align*}
+    \qquad \Pr(y | \xv) = \Pr(y) \cdot \Pr(x_1 | y) \cdot \Pr(x_2 | y) \cdots \Pr(x_d | y)
+\end{align*}
+$$
+</p>
+
+<p>&#x5BF9;&#x4E8E;&#x5148;&#x9A8C;&#xFF0C;&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\alpha_k = \Pr(y = k)$</span>&#xFF0C;&#x4E8E;&#x662F;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \Pr(y | \alpha_k) = \prod_{k \in [c]} \Pr(y = k)^{\Ibb(y=k)} = \prod_{k \in [c]} \alpha_k^{\Ibb(y=k)}
+\end{align*}
+$$
+</p>
+
+<p>&#x5BF9;&#x4E8E;&#x4F3C;&#x7136;&#xFF0C;&#x8BBE;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x5171;&#x6709;<span class="mathjax-exps">$n_j$</span>&#x79CD;&#x4E0D;&#x540C;&#x53D6;&#x503C;<span class="mathjax-exps">$v_1^{(j)}, \ldots, v_{n_j}^{(j)}$</span></p>
+<div class="top-2"></div>
+<p>&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\theta_{jlk} = \Pr( x_j = v_l^{(j)} | y=k)$</span>&#xFF0C;&#x4E8E;&#x662F;&#x5BF9;<span class="mathjax-exps">$\forall j \in [d]$</span>&#x548C;<span class="mathjax-exps">$\forall k \in [c]$</span>&#x6709;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \Pr(x_j | y = k, \theta_{jlk}) &amp; = \prod_{l \in [n_j]} \Pr( x_j = v_l^{(j)} | y=k)^{\Ibb(x_j = v_l^{(j)})} = \prod_{l \in [n_j]} \theta_{jlk}^{\Ibb(x_j = v_l^{(j)})} \\
+    \sum_{l \in [n_j]} \theta_{jlk} &amp; = 1
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="320" class="slide " data-line="320" data-h="3" data-v="1">
+<h5 class="mume-header" id="%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0-1">&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x4F30;&#x8BA1;&#x53C2;&#x6570;</h5>
+
+<hr>
+<p>&#x8BBE;&#x6570;&#x636E;&#x96C6;<span class="mathjax-exps">$D = \{ (\xv^{(i)}, y^{(i)}) \}_{i \in [m]}$</span>&#xFF0C;&#x5BF9;&#x6570;&#x4F3C;&#x7136;&#x51FD;&#x6570;&#xFF1A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad &amp; \log \Pr(D | \alphav, \thetav) = \sum_{i \in [m]} \log \Pr(\xv^{(i)}, y^{(i)} | \alphav, \thetav) \\
+    &amp; = \sum_{i \in [m]} \log \prod_{k \in [c]} \Pr(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav)^{\Ibb(y^{(i)}=k)} \\
+    &amp; = \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav) \\
+    &amp; = \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pr(y^{(i)} = k | \alphav) \\ &amp; \qquad \qquad + \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)} | y^{(i)} = k, \thetav) \\[4pt]
+    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \underbrace{\Ibb(y^{(i)}=k) \log \alpha_k}_{\alphav~\text{&#x76F8;&#x5173;&#x7684;&#x9879;}\qquad} + \sum_{k \in [c]} \sum_{i \in [m]} \underbrace{\Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)} | y^{(i)} = k, \thetav)}_{\thetav~\text{&#x76F8;&#x5173;&#x7684;&#x9879;}\qquad}
+\end{align*}
+$$
+</p>
+
+</section></section><section><section data-notes lineno="342" class="slide " data-line="342" data-h="4" data-v="0">
+<h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
+
+<hr>
+<p>&#x8BB0;<span class="mathjax-exps">$A_k = \sum_{i \in [M]} \Ibb(y^{(i)} = k)$</span>&#x4E3A;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x6570;</p>
+<p><span class="mathjax-exps">$\alphav$</span>&#x76F8;&#x5173;&#x7684;&#x9879;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \max_{\alpha_k} \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \log \alpha_k = \sum_{k \in [c]} A_k \log \alpha_k, \quad \st \sum_{k \in [c]} \alpha_k = 1
+\end{align*}
+$$
+</p>
+
+<p>&#x4EE4;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;<span class="mathjax-exps">$L = \sum \limits_{k \in [c]} A_k \log \alpha_k - \lambda ( \sum \limits_{k \in [c]} \alpha_k - 1 )$</span></p>
+<p>
+
+$$
+\begin{align*}
+    \quad \nabla_{\alpha_k} L  = \frac{A_k}{\alpha_k} - \lambda = 0 &amp; \Longrightarrow \sum_{k \in [c]} A_k = \lambda \sum_{k \in [c]} \alpha_k = \lambda \\
+    &amp; \Longrightarrow \alpha_k = \frac{A_k}{\sum_{j \in [c]} A_j} = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}~~~}{\text{&#x603B;&#x6837;&#x672C;&#x6570;}}
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="375" class="slide " data-line="375" data-h="4" data-v="1">
+<h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
+
+<hr>
+<p><span class="mathjax-exps">$\thetav$</span>&#x76F8;&#x5173;&#x7684;&#x9879;</p>
+<p>
+
+$$
+\begin{align*}
+    &amp; \quad \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)} | y^{(i)} = k, \thetav) \\
+    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \sum_{j \in [d]} \Ibb(y^{(i)}=k) \log \Pr(x_j^{(i)} | y^{(i)} = k, \thetav) \\
+    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \sum_{j \in [d]} \Ibb(y^{(i)}=k) \log \prod_{l \in [n_j]} \Pr( x_j^{(i)} = v_l^{(j)} | y=k)^{\Ibb(x_j^{(i)} = v_l^{(j)})} \\
+    &amp; = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{l \in [n_j]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \Ibb(x_j^{(i)} = v_l^{(j)}) \log \theta_{jlk} \\
+    &amp; = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{l \in [n_j]} B_{jlk} \log \theta_{jlk}
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$B_{jlk}$</span>&#x662F;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;<span class="mathjax-exps">$v_l^{(j)}$</span>&#x7684;&#x6837;&#x672C;&#x6570;</p>
+</section><section vertical="true" data-notes lineno="401" class="slide " data-line="401" data-h="4" data-v="2">
+<h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-2">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
+
+<hr>
+<p>&#x5BF9;&#x4EFB;&#x610F;&#x7ED9;&#x5B9A;&#x7684;&#x7C7B;&#x522B;<span class="mathjax-exps">$k$</span>&#x548C;&#x7279;&#x5F81;<span class="mathjax-exps">$j$</span>&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8003;&#x8651;</p>
+<p>
+
+$$
+\begin{align*}
+    \qquad \max_{\theta_{jlk}} \sum_{l \in [n_j]} B_{jlk} \log \theta_{jlk}, \quad \st \sum_{l \in [n_j]} \theta_{jlk} = 1
+\end{align*}
+$$
+</p>
+
+<p>&#x4EE4;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;<span class="mathjax-exps">$L = \sum \limits_{l \in [n_j]} B_{jlk} \log \theta_{jlk} - \lambda ( \sum \limits_{l \in [n_j]} \theta_{jlk} - 1 )$</span></p>
+<p>
+
+$$
+\begin{align*}
+    \quad &amp; \nabla_{\theta_{jlk}} L  = \frac{B_{jlk}}{\theta_{jlk}} - \lambda = 0 \Longrightarrow \sum_{l \in [n_j]} B_{jlk} = \lambda \sum_{l \in [n_j]} \theta_{jlk} = \lambda \\
+    &amp; \Longrightarrow \theta_{jlk} = \frac{B_{jlk}}{\sum_{l \in [n_j]} B_{jlk}} = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;}j\text{&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;}v_l^{(j)}\text{&#x7684;&#x6837;&#x672C;&#x6570;}\qquad}{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}}
+\end{align*}
+$$
+</p>
+
+</section></section><section><section data-notes lineno="432" class="slide " data-line="432" data-h="5" data-v="0">
+<h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x7B97;&#x6CD5;</h5>
+
+<hr>
+<p>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;&#xFF1A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \mathop{\arg \max}_{y \in [c]} \Pr(y|\xv) &amp; = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(\xv | y) \\
+    &amp; = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(x_1 | y) \Pr(x_2 | y) \cdots \Pr(x_d | y)
+\end{align*}
+$$
+</p>
+
+<p>&#x6839;&#x636E;&#x6570;&#x636E;&#x96C6;&#x6C42;</p>
+<p>
+
+$$
+\begin{align*}
+    &amp; \qquad \Pr(y = k) = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}~~~}{\text{&#x603B;&#x6837;&#x672C;&#x6570;}} \\
+    &amp; \qquad \Pr( x_j = v_l^{(j)} | y=k) = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;}j\text{&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;}v_l^{(j)}\text{&#x7684;&#x6837;&#x672C;&#x6570;}\qquad}{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}}
+\end{align*}
+$$
+</p>
+
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x5C31;&#x662F;&#x6570;&#x6570;&#xFF01;</p>
+</section><section vertical="true" data-notes lineno="466" class="slide " data-line="466" data-h="5" data-v="1">
+<h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E9%A2%84%E6%B5%8B%E7%BA%A6%E4%BC%9A">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x9884;&#x6D4B;&#x7EA6;&#x4F1A;</h5>
+
+<hr>
+<div class="threelines column7-border-right-solid head-highlight-1 tr-hover row9-border-top-dashed row18-border-top-solid top-3 fs10 left4 righta">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6B21;&#x5E8F;</th>
+<th style="text-align:center">&#x65F6;&#x95F4;</th>
+<th style="text-align:center">&#x65B9;&#x5F0F;</th>
+<th style="text-align:center">&#x5929;&#x6C14;</th>
+<th style="text-align:center">&#x8BFE;&#x4E1A;</th>
+<th style="text-align:center">&#x75AB;&#x60C5;</th>
+<th style="text-align:center">&#x7535;&#x89C6;</th>
+<th style="text-align:center">&#x7EA6;&#x4F1A;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">&#x5468;&#x65E5;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x9634;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">&#x5468;&#x65E5;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x9634;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">&#x5468;&#x95F4;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x5E73;&#x7F13;</td>
+<td style="text-align:center">&#x65E0;&#x804A;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">&#x5468;&#x65E5;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x9002;&#x4E2D;</td>
+<td style="text-align:center">&#x5E73;&#x7F13;</td>
+<td style="text-align:center">&#x65E0;&#x804A;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">&#x5468;&#x65E5;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x5E73;&#x7F13;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x662F;</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">&#x5468;&#x65E5;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x9634;&#x5929;</td>
+<td style="text-align:center">&#x9002;&#x4E2D;</td>
+<td style="text-align:center">&#x5E73;&#x7F13;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x5B66;&#x4E60;</td>
+<td style="text-align:center">&#x96E8;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x4E25;&#x5CFB;</td>
+<td style="text-align:center">&#x65E0;&#x804A;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">&#x5468;&#x95F4;</td>
+<td style="text-align:center">&#x5B66;&#x4E60;</td>
+<td style="text-align:center">&#x96E8;&#x5929;</td>
+<td style="text-align:center">&#x7E41;&#x91CD;</td>
+<td style="text-align:center">&#x4E25;&#x5CFB;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">&#x5468;&#x95F4;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x7E41;&#x91CD;</td>
+<td style="text-align:center">&#x4E25;&#x5CFB;</td>
+<td style="text-align:center">&#x65E0;&#x804A;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x9002;&#x4E2D;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">&#x5468;&#x95F4;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x9634;&#x5929;</td>
+<td style="text-align:center">&#x9002;&#x4E2D;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">&#x5468;&#x65E5;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x8F7B;&#x677E;</td>
+<td style="text-align:center">&#x5E73;&#x7F13;</td>
+<td style="text-align:center">&#x65E0;&#x804A;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:center">&#x5468;&#x95F4;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x6674;&#x5929;</td>
+<td style="text-align:center">&#x7E41;&#x91CD;</td>
+<td style="text-align:center">&#x4E25;&#x5CFB;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x5403;&#x996D;</td>
+<td style="text-align:center">&#x9634;&#x5929;</td>
+<td style="text-align:center">&#x9002;&#x4E2D;</td>
+<td style="text-align:center">&#x5E73;&#x7F13;</td>
+<td style="text-align:center">&#x7CBE;&#x5F69;</td>
+<td style="text-align:center">&#x5426;</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">&#x5468;&#x516D;</td>
+<td style="text-align:center">&#x901B;&#x8857;</td>
+<td style="text-align:center">&#x9634;&#x5929;</td>
+<td style="text-align:center">&#x9002;&#x4E2D;</td>
+<td style="text-align:center">&#x6E05;&#x96F6;</td>
+<td style="text-align:center">&#x65E0;&#x804A;</td>
+<td style="text-align:center">&#xFF1F;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="top-64per left58per fs16">
+<p><span class="mathjax-exps">$\Pr(\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=8/17$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x65F6;&#x95F4;}=\text{&#x5468;&#x516D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=3/8$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x65B9;&#x5F0F;}=\text{&#x901B;&#x8857;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=3/8$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x5929;&#x6C14;}=\text{&#x9634;&#x5929;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=2/8$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x8BFE;&#x4E1A;}=\text{&#x9002;&#x4E2D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=1/8$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x75AB;&#x60C5;}=\text{&#x6E05;&#x96F6;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=5/8$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x7535;&#x89C6;}=\text{&#x65E0;&#x804A;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=2/8$</span></p>
+<p><span class="mathjax-exps">$\Pr(\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=9/17$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x65F6;&#x95F4;}=\text{&#x5468;&#x516D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=3/9$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x65B9;&#x5F0F;}=\text{&#x901B;&#x8857;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=4/9$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x5929;&#x6C14;}=\text{&#x9634;&#x5929;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=3/9$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x8BFE;&#x4E1A;}=\text{&#x9002;&#x4E2D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=4/9$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x75AB;&#x60C5;}=\text{&#x6E05;&#x96F6;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=2/9$</span><br>
+<span class="mathjax-exps">$\Pr(\text{&#x7535;&#x89C6;}=\text{&#x65E0;&#x804A;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=3/9$</span></p>
+<div class="top4"></div>
+<p><span class="mathjax-exps">$\Large \frac{8}{17} \frac{3}{8} \frac{3}{8} \frac{2}{8} \frac{1}{8} \frac{5}{8}  \frac{2}{8} &lt; \frac{9}{17} \frac{3}{9} \frac{4}{9} \frac{3}{9} \frac{4}{9} \frac{2}{9} \frac{3}{9}$</span></p>
+<p>&#x9884;&#x6D4B;&#x7ED3;&#x679C;&#x4E3A;&#x201C;&#x7EA6;&#x4F1A;=&#x5426;&#x201D;</p>
+</div>
+</section></section>
+      </div>
+    </div>
+    
+      </div>
+      
+      
+    
+    
+      <script>
+        Reveal.initialize({"margin":0,"center":false,"transition":"convex","enableSpeakerNotes":true,"slideNumber":"c/t","navigationMode":"linear","dependencies":[{"src":"../plugin/notes/notes.js","async":true}],chalkboard:{boardmarkerWidth:3,chalkWidth:7,chalkEffect:1.0,storage:null,src:null,readOnly:undefined,transition:800,theme:"chalkboard",background:['rgba(127,127,127,.1)',path+'img/blackboard.png'],grid:{color:'rgb(50,50,10,0.5)',distance:80,width:2},eraser:{src:path+'img/sponge.png',radius:20},boardmarkers:[{color:'rgba(100,100,100,1)',cursor:'url('+path+'img/boardmarker-black.png),auto'},{color:'rgba(30,144,255,1)',cursor:'url('+path+'img/boardmarker-blue.png),auto'},{color:'rgba(220,20,60,1)',cursor:'url('+path+'img/boardmarker-red.png),auto'},{color:'rgba(50,205,50,1)',cursor:'url('+path+'img/boardmarker-green.png),auto'},{color:'rgba(255,140,0,1)',cursor:'url('+path+'img/boardmarker-orange.png),auto'},{color:'rgba(150,0,20150,1)',cursor:'url('+path+'img/boardmarker-purple.png),auto'},{color:'rgba(255,220,0,1)',cursor:'url('+path+'img/boardmarker-yellow.png),auto'}],chalks:[{color:'rgba(255,255,255,0.5)',cursor:'url('+path+'img/chalk-white.png),auto'},{color:'rgba(96,154,244,0.5)',cursor:'url('+path+'img/chalk-blue.png),auto'},{color:'rgba(237,20,28,0.5)',cursor:'url('+path+'img/chalk-red.png),auto'},{color:'rgba(20,237,28,0.5)',cursor:'url('+path+'img/chalk-green.png),auto'},{color:'rgba(220,133,41,0.5)',cursor:'url('+path+'img/chalk-orange.png),auto'},{color:'rgba(220,0,220,0.5)',cursor:'url('+path+'img/chalk-purple.png),auto'},{color:'rgba(255,220,0,0.5)',cursor:'url('+path+'img/chalk-yellow.png),auto'}]},customcontrols:{controls:[{icon:'<iclass="fafa-pen-square"></i>',title:'Togglechalkboard(B)',action:'RevealChalkboard.toggleChalkboard();'},{icon:'<iclass="fafa-pen"></i>',title:'Togglenotescanvas(C)',action:'RevealChalkboard.toggleNotesCanvas();'}]},menu:{side:'left',width:'normal',numbers:'h.v',titleSelector:'h1,h2,h3,h4,h5,h6',useTextContentForMissingTitles:false,hideMissingTitles:false,markers:true,custom:[{title:'关于',icon:'<i class="fa fa-info">',content:'<p>本课件由 <b>张腾</b> 制作</p><br><p>欢迎发送问题至tengzhang@hust.edu.cn</p>'}],themes:true,themesPath:'../css/theme/',transitions:true,openButton:true,openSlideNumber:false,keyboard:true,sticky:false,autoOpen:true,delayInit:false,openOnInit:false,loadIcons:true},plugins:[RevealZoom,RevealChalkboard,RevealCustomControls,RevealMenu]})
+      </script>
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
