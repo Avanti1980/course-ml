@@ -27,18 +27,3 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-ml.js"
 
-<!-- slide data-notes="" -->
-
-##### 神经网络的变种
-
----
-
-神经网络已被扩展到多种类型的数据上
-
-@import "../dot/grid-sequence.dot" {class="left10 top2 bottom1"}
-
-@import "../dot/graph.dot" {engine="neato" class="left64per top-24per"}
-
-- 网格数据，如图片，卷积神经网络
-- 序列数据，如文本，循环神经网络
-- 图数据，如药物分子，图神经网络
