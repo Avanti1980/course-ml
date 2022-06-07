@@ -86,7 +86,7 @@
 <hr>
 <ul>
 <li>&#x6837;&#x672C;&#x7A7A;&#x95F4;<span class="mathjax-exps">$\Xcal \subseteq \Fbb^d$</span>&#xFF0C;&#x7C7B;&#x522B;&#x6807;&#x8BB0;&#x7A7A;&#x95F4;&#x4E3A;<span class="mathjax-exps">$\Ycal$</span></li>
-<li><span class="mathjax-exps">$\Dcal$</span>&#x662F;<span class="mathjax-exps">$\Xcal \times \Ycal$</span>&#x4E0A;&#x7684;&#x672A;&#x77E5;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF0C;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x51FD;&#x6570;&#x4E3A;<span class="mathjax-exps">$\Pr(\xv, y)$</span></li>
+<li><span class="mathjax-exps">$\Dcal$</span>&#x662F;<span class="mathjax-exps">$\Xcal \times \Ycal$</span>&#x4E0A;&#x7684;&#x672A;&#x77E5;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF0C;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x51FD;&#x6570;&#x4E3A;<span class="mathjax-exps">$\Pbb(\xv, y)$</span></li>
 <li>&#x635F;&#x5931;&#x51FD;&#x6570;<span class="mathjax-exps">$\ell: \Ycal \times \Ycal \mapsto \Rbb$</span></li>
 </ul>
 <p>&#x5B66;&#x4E60;&#x5668;<span class="mathjax-exps">$h: \Xcal \mapsto \Ycal$</span>&#x7684;&#x6CDB;&#x5316;&#x98CE;&#x9669;&#x4E3A;</p>
@@ -94,9 +94,9 @@
 
 $$
 \begin{align*}
-    \qquad R_{\Dcal} (h) &amp; = \Ebb_{(\xv,y) \sim \Dcal} [\ell(y, h(\xv))] = \iint \ell(y, h(\xv)) \Pr(\xv, y) \diff \xv \diff y \\
-    &amp; = \int \left( \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y \right) \Pr(\xv) \diff \xv \\
-    &amp; = \Ebb_{\xv} \left[ \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y \right] = \Ebb_{\xv} [ \Ebb_y [\ell(y, h(\xv)) | \xv]]
+    \qquad R_{\Dcal} (h) &amp; = \Ebb_{(\xv,y) \sim \Dcal} [\ell(y, h(\xv))] = \iint \ell(y, h(\xv)) \Pbb(\xv, y) \diff \xv \diff y \\
+    &amp; = \int \left( \int \ell(y, h(\xv)) \Pbb(y|\xv) \diff y \right) \Pbb(\xv) \diff \xv \\
+    &amp; = \Ebb_{\xv} \left[ \int \ell(y, h(\xv)) \Pbb(y|\xv) \diff y \right] = \Ebb_{\xv} [ \Ebb_y [\ell(y, h(\xv)) | \xv]]
 \end{align*}
 $$
 </p>
@@ -107,7 +107,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y
+    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pbb(y|\xv) \diff y
 \end{align*}
 $$
 </p>
@@ -121,7 +121,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y
+    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pbb(y|\xv) \diff y
 \end{align*}
 $$
 </p>
@@ -132,8 +132,8 @@ $$
 
 $$
 \begin{align*}
-    \qquad \nabla_{h(\xv)} \left( \int (y - h(\xv))^2 \Pr(y|\xv) \diff y \right) &amp; = 2 \int (h(\xv) - y) \Pr(y|\xv) \diff y \\
-    &amp; = 2 h(\xv) - 2 \int y \Pr(y|\xv) \diff y \\
+    \qquad \nabla_{h(\xv)} \left( \int (y - h(\xv))^2 \Pbb(y|\xv) \diff y \right) &amp; = 2 \int (h(\xv) - y) \Pbb(y|\xv) \diff y \\
+    &amp; = 2 h(\xv) - 2 \int y \Pbb(y|\xv) \diff y \\
     &amp; = 2 h(\xv) - 2 \Ebb[y|\xv]
 \end{align*}
 $$
@@ -160,7 +160,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pr(y|\xv) \diff y
+    \qquad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) \Pbb(y|\xv) \diff y
 \end{align*}
 $$
 </p>
@@ -172,15 +172,15 @@ $$
 
 $$
 \begin{align*}
-    \qquad h^\star(\xv) &amp; = \mathop{\arg\min}_{\yhat \in [c]} \sum_{y \in [c]} \Ibb(y \ne \yhat) \Pr(y|\xv) \\[4pt]
-    &amp; = \mathop{\arg\min}_{\yhat \in [c]} ~ (1 - \Pr(\yhat|\xv)) \\[4pt]
-    &amp; = \mathop{\arg\max}_{\yhat \in [c]} ~ \Pr(\yhat|\xv)
+    \qquad h^\star(\xv) &amp; = \mathop{\arg\min}_{\yhat \in [c]} \sum_{y \in [c]} \Ibb(y \ne \yhat) \Pbb(y|\xv) \\[4pt]
+    &amp; = \mathop{\arg\min}_{\yhat \in [c]} ~ (1 - \Pbb(\yhat|\xv)) \\[4pt]
+    &amp; = \mathop{\arg\max}_{\yhat \in [c]} ~ \Pbb(\yhat|\xv)
 \end{align*}
 $$
 </p>
 
 <div class="top-4"></div>
-<p>&#x5373;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x6A21;&#x578B;<span class="mathjax-exps">$h^\star(\xv) = \mathop{\arg\max}_{\yhat \in [c]} \Pr(\yhat|\xv)$</span></p>
+<p>&#x5373;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x6A21;&#x578B;<span class="mathjax-exps">$h^\star(\xv) = \mathop{\arg\max}_{\yhat \in [c]} \Pbb(\yhat|\xv)$</span></p>
 <p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;<mark>&#x6CDB;&#x5316;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;</mark>&#x7B49;&#x4EF7;&#x4E8E;<mark>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;</mark></p>
 </section></section><section><section data-notes lineno="183" class="slide " data-line="183" data-h="2" data-v="0">
 <h5 class="mume-header" id="%E5%88%A4%E5%88%AB%E5%BC%8F-_vs_-%E7%94%9F%E6%88%90%E5%BC%8F">&#x5224;&#x522B;&#x5F0F; <em>vs.</em> &#x751F;&#x6210;&#x5F0F;</h5>
@@ -192,7 +192,7 @@ $$
 
 $$
 \begin{align*}
-    \quad [\Pr(y=1|\xv), \ldots, \Pr(y=c|\xv)] = \softmax (\wv_1^\top \xv, \ldots, \wv_c^\top \xv)
+    \quad [\Pbb(y=1|\xv), \ldots, \Pbb(y=c|\xv)] = \softmax (\wv_1^\top \xv, \ldots, \wv_c^\top \xv)
 \end{align*}
 $$
 </p>
@@ -202,11 +202,11 @@ $$
 
 $$
 \begin{align*}
-    \quad \overbrace{\Pr(y|\xv)}^{\text{&#x540E;&#x9A8C;}} &amp; = \frac{\overbrace{\class{yellow}{\Pr(y)}}^{\text{&#x5148;&#x9A8C;}} \times \overbrace{\class{blue}{\Pr(\xv|y)}}^{\text{&#x4F3C;&#x7136;}}}{\Pr(\xv)}
-    \Longrightarrow \begin{cases} \Pr(y = 1 | \xv) \propto \class{yellow}{\Pr(y=1)} \class{blue}{\Pr(\xv|y=1)} \\
+    \quad \overbrace{\Pbb(y|\xv)}^{\text{&#x540E;&#x9A8C;}} &amp; = \frac{\overbrace{\class{yellow}{\Pbb(y)}}^{\text{&#x5148;&#x9A8C;}} \times \overbrace{\class{blue}{\Pbb(\xv|y)}}^{\text{&#x4F3C;&#x7136;}}}{\Pbb(\xv)}
+    \Longrightarrow \begin{cases} \Pbb(y = 1 | \xv) \propto \class{yellow}{\Pbb(y=1)} \class{blue}{\Pbb(\xv|y=1)} \\
     \qquad \vdots \\
-    \Pr(y = c | \xv) \propto \class{yellow}{\Pr(y=c)} \class{blue}{\Pr(\xv|y=c)} \end{cases} \\[10pt]
-    &amp; \Longrightarrow \mathop{\arg \max}_{y \in [c]} \Pr(y|\xv) = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(\xv | y)
+    \Pbb(y = c | \xv) \propto \class{yellow}{\Pbb(y=c)} \class{blue}{\Pbb(\xv|y=c)} \end{cases} \\[10pt]
+    &amp; \Longrightarrow \mathop{\arg \max}_{y \in [c]} \Pbb(y|\xv) = \mathop{\arg \max}_{y \in [c]} \Pbb(y) \Pbb(\xv | y)
 \end{align*}
 $$
 </p>
@@ -220,7 +220,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \mathop{\arg \max}_{y \in [c]} \Pr(y|\xv) = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(\xv | y)
+    \qquad \mathop{\arg \max}_{y \in [c]} \Pbb(y|\xv) = \mathop{\arg \max}_{y \in [c]} \Pbb(y) \Pbb(\xv | y)
 \end{align*}
 $$
 </p>
@@ -231,7 +231,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \Pr(\xv | y) = \Pr(x_1 | y) \cdot \Pr(x_2 | x_1, y) \cdots \Pr(x_d | x_{d-1}, \ldots, x_2, x_1, y)
+    \qquad \Pbb(\xv | y) = \Pbb(x_1 | y) \cdot \Pbb(x_2 | x_1, y) \cdots \Pbb(x_d | x_{d-1}, \ldots, x_2, x_1, y)
 \end{align*}
 $$
 </p>
@@ -244,13 +244,13 @@ $$
 
 $$
 \begin{align*}
-    \qquad \Pr(\xv | y) = \Pr(x_1 | y) \cdot \Pr(x_2 | y) \cdots \Pr(x_d | y) = \prod_{j \in [d]} \Pr(x_j | y)
+    \qquad \Pbb(\xv | y) = \Pbb(x_1 | y) \cdot \Pbb(x_2 | y) \cdots \Pbb(x_d | y) = \prod_{j \in [d]} \Pbb(x_j | y)
 \end{align*}
 $$
 </p>
 
 <div class="top-2"></div>
-<p>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7528;&#x6570;&#x636E;&#x96C6;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Pr(y), ~ \Pr(x_1 | y), ~ \Pr(x_2 | y), ~ \ldots, ~ \Pr(x_d | y)$</span></p>
+<p>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7528;&#x6570;&#x636E;&#x96C6;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Pbb(y), ~ \Pbb(x_1 | y), ~ \Pbb(x_2 | y), ~ \ldots, ~ \Pbb(x_d | y)$</span></p>
 </section></section><section><section data-notes lineno="273" class="slide " data-line="273" data-h="3" data-v="0">
 <h5 class="mume-header" id="%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0">&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x4F30;&#x8BA1;&#x53C2;&#x6570;</h5>
 
@@ -260,29 +260,29 @@ $$
 
 $$
 \begin{align*}
-    \qquad \Pr(y | \xv) = \Pr(y) \cdot \Pr(x_1 | y) \cdot \Pr(x_2 | y) \cdots \Pr(x_d | y)
+    \qquad \Pbb(y | \xv) = \Pbb(y) \cdot \Pbb(x_1 | y) \cdot \Pbb(x_2 | y) \cdots \Pbb(x_d | y)
 \end{align*}
 $$
 </p>
 
-<p>&#x5BF9;&#x4E8E;&#x5148;&#x9A8C;&#xFF0C;&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\alpha_k = \Pr(y = k)$</span>&#xFF0C;&#x4E8E;&#x662F;</p>
+<p>&#x5BF9;&#x4E8E;&#x5148;&#x9A8C;&#xFF0C;&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\alpha_k = \Pbb(y = k)$</span>&#xFF0C;&#x4E8E;&#x662F;</p>
 <p>
 
 $$
 \begin{align*}
-    \qquad \Pr(y | \alpha_k) = \prod_{k \in [c]} \Pr(y = k)^{\Ibb(y=k)} = \prod_{k \in [c]} \alpha_k^{\Ibb(y=k)}
+    \qquad \Pbb(y | \alpha_k) = \prod_{k \in [c]} \Pbb(y = k)^{\Ibb(y=k)} = \prod_{k \in [c]} \alpha_k^{\Ibb(y=k)}
 \end{align*}
 $$
 </p>
 
 <p>&#x5BF9;&#x4E8E;&#x4F3C;&#x7136;&#xFF0C;&#x8BBE;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x5171;&#x6709;<span class="mathjax-exps">$n_j$</span>&#x79CD;&#x4E0D;&#x540C;&#x53D6;&#x503C;<span class="mathjax-exps">$v_1^{(j)}, \ldots, v_{n_j}^{(j)}$</span></p>
 <div class="top-2"></div>
-<p>&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\theta_{jlk} = \Pr( x_j = v_l^{(j)} | y=k)$</span>&#xFF0C;&#x4E8E;&#x662F;&#x5BF9;<span class="mathjax-exps">$\forall j \in [d]$</span>&#x548C;<span class="mathjax-exps">$\forall k \in [c]$</span>&#x6709;</p>
+<p>&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\theta_{jlk} = \Pbb( x_j = v_l^{(j)} | y=k)$</span>&#xFF0C;&#x4E8E;&#x662F;&#x5BF9;<span class="mathjax-exps">$\forall j \in [d]$</span>&#x548C;<span class="mathjax-exps">$\forall k \in [c]$</span>&#x6709;</p>
 <p>
 
 $$
 \begin{align*}
-    \qquad \Pr(x_j | y = k, \theta_{jlk}) &amp; = \prod_{l \in [n_j]} \Pr( x_j = v_l^{(j)} | y=k)^{\Ibb(x_j = v_l^{(j)})} = \prod_{l \in [n_j]} \theta_{jlk}^{\Ibb(x_j = v_l^{(j)})} \\
+    \qquad \Pbb(x_j | y = k, \theta_{jlk}) &amp; = \prod_{l \in [n_j]} \Pbb( x_j = v_l^{(j)} | y=k)^{\Ibb(x_j = v_l^{(j)})} = \prod_{l \in [n_j]} \theta_{jlk}^{\Ibb(x_j = v_l^{(j)})} \\
     \sum_{l \in [n_j]} \theta_{jlk} &amp; = 1
 \end{align*}
 $$
@@ -297,335 +297,26 @@ $$
 
 $$
 \begin{align*}
-    \quad &amp; \log \Pr(D | \alphav, \thetav) = \sum_{i \in [m]} \log \Pr(\xv^{(i)}, y^{(i)} | \alphav, \thetav) \\
-    &amp; = \sum_{i \in [m]} \log \prod_{k \in [c]} \Pr(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav)^{\Ibb(y^{(i)}=k)} \\
-    &amp; = \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav) \\
-    &amp; = \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pr(y^{(i)} = k | \alphav) \\ &amp; \qquad \qquad + \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)} | y^{(i)} = k, \thetav) \\[4pt]
-    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \underbrace{\Ibb(y^{(i)}=k) \log \alpha_k}_{\alphav~\text{&#x76F8;&#x5173;&#x7684;&#x9879;}\qquad} + \sum_{k \in [c]} \sum_{i \in [m]} \underbrace{\Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)} | y^{(i)} = k, \thetav)}_{\thetav~\text{&#x76F8;&#x5173;&#x7684;&#x9879;}\qquad}
+    \quad &amp; \log \Pbb(D | \alphav, \thetav) = \sum_{i \in [m]} \log \Pbb(\xv^{(i)}, y^{(i)} | \alphav, \thetav) \\
+    &amp; = \sum_{i \in [m]} \log \prod_{k \in [c]} \Pbb(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav)^{\Ibb(y^{(i)}=k)} \\
+    &amp; = \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pbb(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav) \\
+    &amp; = \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pbb(y^{(i)} = k | \alphav) \\ &amp; \qquad \qquad + \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y^{(i)}=k) \log \Pbb(\xv^{(i)} | y^{(i)} = k, \thetav) \\[4pt]
+    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \underbrace{\Ibb(y^{(i)}=k) \log \alpha_k}_{\alphav~\text{&#x76F8;&#x5173;&#x7684;&#x9879;}\qquad} + \sum_{k \in [c]} \sum_{i \in [m]} \underbrace{\Ibb(y^{(i)}=k) \log \Pbb(\xv^{(i)} | y^{(i)} = k, \thetav)}_{\thetav~\text{&#x76F8;&#x5173;&#x7684;&#x9879;}\qquad}
 \end{align*}
 $$
 </p>
 
-</section></section><section><section data-notes lineno="342" class="slide " data-line="342" data-h="4" data-v="0">
+</section></section><section data-notes lineno="342" class="slide " data-line="342" data-h="4" data-v="0">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
 
 <hr>
 <p>&#x8BB0;<span class="mathjax-exps">$A_k = \sum_{i \in [M]} \Ibb(y^{(i)} = k)$</span>&#x4E3A;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x6570;</p>
 <p><span class="mathjax-exps">$\alphav$</span>&#x76F8;&#x5173;&#x7684;&#x9879;</p>
-<p>
-
-$$
-\begin{align*}
-    \qquad \max_{\alpha_k} \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \log \alpha_k = \sum_{k \in [c]} A_k \log \alpha_k, \quad \st \sum_{k \in [c]} \alpha_k = 1
-\end{align*}
-$$
-</p>
-
-<p>&#x4EE4;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;<span class="mathjax-exps">$L = \sum \limits_{k \in [c]} A_k \log \alpha_k - \lambda ( \sum \limits_{k \in [c]} \alpha_k - 1 )$</span></p>
-<p>
-
-$$
-\begin{align*}
-    \quad \nabla_{\alpha_k} L  = \frac{A_k}{\alpha_k} - \lambda = 0 &amp; \Longrightarrow \sum_{k \in [c]} A_k = \lambda \sum_{k \in [c]} \alpha_k = \lambda \\
-    &amp; \Longrightarrow \alpha_k = \frac{A_k}{\sum_{j \in [c]} A_j} = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}~~~}{\text{&#x603B;&#x6837;&#x672C;&#x6570;}}
-\end{align*}
-$$
-</p>
-
-</section><section vertical="true" data-notes lineno="375" class="slide " data-line="375" data-h="4" data-v="1">
-<h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
-
-<hr>
-<p><span class="mathjax-exps">$\thetav$</span>&#x76F8;&#x5173;&#x7684;&#x9879;</p>
-<p>
-
-$$
-\begin{align*}
-    &amp; \quad \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \log \Pr(\xv^{(i)} | y^{(i)} = k, \thetav) \\
-    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \sum_{j \in [d]} \Ibb(y^{(i)}=k) \log \Pr(x_j^{(i)} | y^{(i)} = k, \thetav) \\
-    &amp; = \sum_{k \in [c]} \sum_{i \in [m]} \sum_{j \in [d]} \Ibb(y^{(i)}=k) \log \prod_{l \in [n_j]} \Pr( x_j^{(i)} = v_l^{(j)} | y=k)^{\Ibb(x_j^{(i)} = v_l^{(j)})} \\
-    &amp; = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{l \in [n_j]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \Ibb(x_j^{(i)} = v_l^{(j)}) \log \theta_{jlk} \\
-    &amp; = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{l \in [n_j]} B_{jlk} \log \theta_{jlk}
-\end{align*}
-$$
-</p>
-
-<div class="top-4"></div>
-<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$B_{jlk}$</span>&#x662F;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;<span class="mathjax-exps">$v_l^{(j)}$</span>&#x7684;&#x6837;&#x672C;&#x6570;</p>
-</section><section vertical="true" data-notes lineno="401" class="slide " data-line="401" data-h="4" data-v="2">
-<h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-2">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
-
-<hr>
-<p>&#x5BF9;&#x4EFB;&#x610F;&#x7ED9;&#x5B9A;&#x7684;&#x7C7B;&#x522B;<span class="mathjax-exps">$k$</span>&#x548C;&#x7279;&#x5F81;<span class="mathjax-exps">$j$</span>&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8003;&#x8651;</p>
-<p>
-
-$$
-\begin{align*}
-    \qquad \max_{\theta_{jlk}} \sum_{l \in [n_j]} B_{jlk} \log \theta_{jlk}, \quad \st \sum_{l \in [n_j]} \theta_{jlk} = 1
-\end{align*}
-$$
-</p>
-
-<p>&#x4EE4;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;<span class="mathjax-exps">$L = \sum \limits_{l \in [n_j]} B_{jlk} \log \theta_{jlk} - \lambda ( \sum \limits_{l \in [n_j]} \theta_{jlk} - 1 )$</span></p>
-<p>
-
-$$
-\begin{align*}
-    \quad &amp; \nabla_{\theta_{jlk}} L  = \frac{B_{jlk}}{\theta_{jlk}} - \lambda = 0 \Longrightarrow \sum_{l \in [n_j]} B_{jlk} = \lambda \sum_{l \in [n_j]} \theta_{jlk} = \lambda \\
-    &amp; \Longrightarrow \theta_{jlk} = \frac{B_{jlk}}{\sum_{l \in [n_j]} B_{jlk}} = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;}j\text{&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;}v_l^{(j)}\text{&#x7684;&#x6837;&#x672C;&#x6570;}\qquad}{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}}
-\end{align*}
-$$
-</p>
-
-</section></section><section><section data-notes lineno="432" class="slide " data-line="432" data-h="5" data-v="0">
-<h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x7B97;&#x6CD5;</h5>
-
-<hr>
-<p>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;&#xFF1A;</p>
-<p>
-
-$$
-\begin{align*}
-    \quad \mathop{\arg \max}_{y \in [c]} \Pr(y|\xv) &amp; = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(\xv | y) \\
-    &amp; = \mathop{\arg \max}_{y \in [c]} \Pr(y) \Pr(x_1 | y) \Pr(x_2 | y) \cdots \Pr(x_d | y)
-\end{align*}
-$$
-</p>
-
-<p>&#x6839;&#x636E;&#x6570;&#x636E;&#x96C6;&#x6C42;</p>
-<p>
-
-$$
-\begin{align*}
-    &amp; \qquad \Pr(y = k) = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}~~~}{\text{&#x603B;&#x6837;&#x672C;&#x6570;}} \\
-    &amp; \qquad \Pr( x_j = v_l^{(j)} | y=k) = \frac{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;}j\text{&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;}v_l^{(j)}\text{&#x7684;&#x6837;&#x672C;&#x6570;}\qquad}{\text{&#x7B2C;}k\text{&#x7C7B;&#x6837;&#x672C;&#x6570;}}
-\end{align*}
-$$
-</p>
-
-<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x5C31;&#x662F;&#x6570;&#x6570;&#xFF01;</p>
-</section><section vertical="true" data-notes lineno="466" class="slide " data-line="466" data-h="5" data-v="1">
-<h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E9%A2%84%E6%B5%8B%E7%BA%A6%E4%BC%9A">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x9884;&#x6D4B;&#x7EA6;&#x4F1A;</h5>
-
-<hr>
-<div class="threelines column7-border-right-solid head-highlight-1 tr-hover row9-border-top-dashed row18-border-top-solid top-3 fs10 left4 righta">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">&#x6B21;&#x5E8F;</th>
-<th style="text-align:center">&#x65F6;&#x95F4;</th>
-<th style="text-align:center">&#x65B9;&#x5F0F;</th>
-<th style="text-align:center">&#x5929;&#x6C14;</th>
-<th style="text-align:center">&#x8BFE;&#x4E1A;</th>
-<th style="text-align:center">&#x75AB;&#x60C5;</th>
-<th style="text-align:center">&#x7535;&#x89C6;</th>
-<th style="text-align:center">&#x7EA6;&#x4F1A;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">&#x5468;&#x65E5;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x9634;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">&#x5468;&#x65E5;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x9634;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">5</td>
-<td style="text-align:center">&#x5468;&#x95F4;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">6</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x5E73;&#x7F13;</td>
-<td style="text-align:center">&#x65E0;&#x804A;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">7</td>
-<td style="text-align:center">&#x5468;&#x65E5;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x5E73;&#x7F13;</td>
-<td style="text-align:center">&#x65E0;&#x804A;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">8</td>
-<td style="text-align:center">&#x5468;&#x65E5;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x5E73;&#x7F13;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x662F;</td>
-</tr>
-<tr>
-<td style="text-align:center">9</td>
-<td style="text-align:center">&#x5468;&#x65E5;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x9634;&#x5929;</td>
-<td style="text-align:center">&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x5E73;&#x7F13;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">10</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x5B66;&#x4E60;</td>
-<td style="text-align:center">&#x96E8;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x4E25;&#x5CFB;</td>
-<td style="text-align:center">&#x65E0;&#x804A;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">11</td>
-<td style="text-align:center">&#x5468;&#x95F4;</td>
-<td style="text-align:center">&#x5B66;&#x4E60;</td>
-<td style="text-align:center">&#x96E8;&#x5929;</td>
-<td style="text-align:center">&#x7E41;&#x91CD;</td>
-<td style="text-align:center">&#x4E25;&#x5CFB;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">12</td>
-<td style="text-align:center">&#x5468;&#x95F4;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x7E41;&#x91CD;</td>
-<td style="text-align:center">&#x4E25;&#x5CFB;</td>
-<td style="text-align:center">&#x65E0;&#x804A;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">13</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">14</td>
-<td style="text-align:center">&#x5468;&#x95F4;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x9634;&#x5929;</td>
-<td style="text-align:center">&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">15</td>
-<td style="text-align:center">&#x5468;&#x65E5;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x8F7B;&#x677E;</td>
-<td style="text-align:center">&#x5E73;&#x7F13;</td>
-<td style="text-align:center">&#x65E0;&#x804A;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">16</td>
-<td style="text-align:center">&#x5468;&#x95F4;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x6674;&#x5929;</td>
-<td style="text-align:center">&#x7E41;&#x91CD;</td>
-<td style="text-align:center">&#x4E25;&#x5CFB;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">17</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x5403;&#x996D;</td>
-<td style="text-align:center">&#x9634;&#x5929;</td>
-<td style="text-align:center">&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x5E73;&#x7F13;</td>
-<td style="text-align:center">&#x7CBE;&#x5F69;</td>
-<td style="text-align:center">&#x5426;</td>
-</tr>
-<tr>
-<td style="text-align:center">18</td>
-<td style="text-align:center">&#x5468;&#x516D;</td>
-<td style="text-align:center">&#x901B;&#x8857;</td>
-<td style="text-align:center">&#x9634;&#x5929;</td>
-<td style="text-align:center">&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x6E05;&#x96F6;</td>
-<td style="text-align:center">&#x65E0;&#x804A;</td>
-<td style="text-align:center">&#xFF1F;</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="top-64per left58per fs16">
-<p><span class="mathjax-exps">$\Pr(\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=8/17$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x65F6;&#x95F4;}=\text{&#x5468;&#x516D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=3/8$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x65B9;&#x5F0F;}=\text{&#x901B;&#x8857;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=3/8$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x5929;&#x6C14;}=\text{&#x9634;&#x5929;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=2/8$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x8BFE;&#x4E1A;}=\text{&#x9002;&#x4E2D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=1/8$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x75AB;&#x60C5;}=\text{&#x6E05;&#x96F6;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=5/8$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x7535;&#x89C6;}=\text{&#x65E0;&#x804A;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x662F;})=2/8$</span></p>
-<p><span class="mathjax-exps">$\Pr(\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=9/17$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x65F6;&#x95F4;}=\text{&#x5468;&#x516D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=3/9$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x65B9;&#x5F0F;}=\text{&#x901B;&#x8857;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=4/9$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x5929;&#x6C14;}=\text{&#x9634;&#x5929;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=3/9$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x8BFE;&#x4E1A;}=\text{&#x9002;&#x4E2D;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=4/9$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x75AB;&#x60C5;}=\text{&#x6E05;&#x96F6;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=2/9$</span><br>
-<span class="mathjax-exps">$\Pr(\text{&#x7535;&#x89C6;}=\text{&#x65E0;&#x804A;}|\text{&#x7EA6;&#x4F1A;}=\text{&#x5426;})=3/9$</span></p>
-<div class="top4"></div>
-<p><span class="mathjax-exps">$\Large \frac{8}{17} \frac{3}{8} \frac{3}{8} \frac{2}{8} \frac{1}{8} \frac{5}{8}  \frac{2}{8} &lt; \frac{9}{17} \frac{3}{9} \frac{4}{9} \frac{3}{9} \frac{4}{9} \frac{2}{9} \frac{3}{9}$</span></p>
-<p>&#x9884;&#x6D4B;&#x7ED3;&#x679C;&#x4E3A;&#x201C;&#x7EA6;&#x4F1A;=&#x5426;&#x201D;</p>
-</div>
-</section></section>
+<p>$$<br>
+\begin{align*}<br>
+\qquad \max_{\alpha_k} \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \log \alpha_k = \sum_{k \in [c]} A_k \log \alpha_k, \quad \st \sum_{k \in [c]} \alpha_k = 1<br>
+\end{align*}</p>
+</section>
       </div>
     </div>
     
@@ -635,7 +326,7 @@ $$
     
     
       <script>
-        Reveal.initialize({"margin":0,"center":false,"transition":"convex","enableSpeakerNotes":true,"slideNumber":"c/t","navigationMode":"linear","dependencies":[{"src":"../plugin/notes/notes.js","async":true}],chalkboard:{boardmarkerWidth:3,chalkWidth:7,chalkEffect:1.0,storage:null,src:null,readOnly:undefined,transition:800,theme:"chalkboard",background:['rgba(127,127,127,.1)',path+'img/blackboard.png'],grid:{color:'rgb(50,50,10,0.5)',distance:80,width:2},eraser:{src:path+'img/sponge.png',radius:20},boardmarkers:[{color:'rgba(100,100,100,1)',cursor:'url('+path+'img/boardmarker-black.png),auto'},{color:'rgba(30,144,255,1)',cursor:'url('+path+'img/boardmarker-blue.png),auto'},{color:'rgba(220,20,60,1)',cursor:'url('+path+'img/boardmarker-red.png),auto'},{color:'rgba(50,205,50,1)',cursor:'url('+path+'img/boardmarker-green.png),auto'},{color:'rgba(255,140,0,1)',cursor:'url('+path+'img/boardmarker-orange.png),auto'},{color:'rgba(150,0,20150,1)',cursor:'url('+path+'img/boardmarker-purple.png),auto'},{color:'rgba(255,220,0,1)',cursor:'url('+path+'img/boardmarker-yellow.png),auto'}],chalks:[{color:'rgba(255,255,255,0.5)',cursor:'url('+path+'img/chalk-white.png),auto'},{color:'rgba(96,154,244,0.5)',cursor:'url('+path+'img/chalk-blue.png),auto'},{color:'rgba(237,20,28,0.5)',cursor:'url('+path+'img/chalk-red.png),auto'},{color:'rgba(20,237,28,0.5)',cursor:'url('+path+'img/chalk-green.png),auto'},{color:'rgba(220,133,41,0.5)',cursor:'url('+path+'img/chalk-orange.png),auto'},{color:'rgba(220,0,220,0.5)',cursor:'url('+path+'img/chalk-purple.png),auto'},{color:'rgba(255,220,0,0.5)',cursor:'url('+path+'img/chalk-yellow.png),auto'}]},customcontrols:{controls:[{icon:'<iclass="fafa-pen-square"></i>',title:'Togglechalkboard(B)',action:'RevealChalkboard.toggleChalkboard();'},{icon:'<iclass="fafa-pen"></i>',title:'Togglenotescanvas(C)',action:'RevealChalkboard.toggleNotesCanvas();'}]},menu:{side:'left',width:'normal',numbers:'h.v',titleSelector:'h1,h2,h3,h4,h5,h6',useTextContentForMissingTitles:false,hideMissingTitles:false,markers:true,custom:[{title:'关于',icon:'<i class="fa fa-info">',content:'<p>本课件由 <b>张腾</b> 制作</p><br><p>欢迎发送问题至tengzhang@hust.edu.cn</p>'}],themes:true,themesPath:'../css/theme/',transitions:true,openButton:true,openSlideNumber:false,keyboard:true,sticky:false,autoOpen:true,delayInit:false,openOnInit:false,loadIcons:true},plugins:[RevealZoom,RevealChalkboard,RevealCustomControls,RevealMenu]})
+        Reveal.initialize({"margin":0,"center":false,"transition":"convex","enableSpeakerNotes":true,"slideNumber":"c/t","navigationMode":"linear","dependencies":[{"src":"../plugin/notes/notes.js","async":true}],chalkboard:{boardmarkerWidth:3,chalkWidth:7,chalkEffect:1.0,storage:null,src:null,readOnly:undefined,transition:800,theme:"chalkboard",background:['rgba(127,127,127,.1)',path+'img/blackboard.png'],grid:{color:'rgb(50,50,10,0.5)',distance:80,width:2},eraser:{src:path+'img/sponge.png',radius:20},boardmarkers:[{color:'rgba(100,100,100,1)',cursor:'url('+path+'img/boardmarker-black.png),auto'},{color:'rgba(30,144,255,1)',cursor:'url('+path+'img/boardmarker-blue.png),auto'},{color:'rgba(220,20,60,1)',cursor:'url('+path+'img/boardmarker-red.png),auto'},{color:'rgba(50,205,50,1)',cursor:'url('+path+'img/boardmarker-green.png),auto'},{color:'rgba(255,140,0,1)',cursor:'url('+path+'img/boardmarker-orange.png),auto'},{color:'rgba(150,0,20150,1)',cursor:'url('+path+'img/boardmarker-purple.png),auto'},{color:'rgba(255,220,0,1)',cursor:'url('+path+'img/boardmarker-yellow.png),auto'}],chalks:[{color:'rgba(255,255,255,0.5)',cursor:'url('+path+'img/chalk-white.png),auto'},{color:'rgba(96,154,244,0.5)',cursor:'url('+path+'img/chalk-blue.png),auto'},{color:'rgba(237,20,28,0.5)',cursor:'url('+path+'img/chalk-red.png),auto'},{color:'rgba(20,237,28,0.5)',cursor:'url('+path+'img/chalk-green.png),auto'},{color:'rgba(220,133,41,0.5)',cursor:'url('+path+'img/chalk-orange.png),auto'},{color:'rgba(220,0,220,0.5)',cursor:'url('+path+'img/chalk-purple.png),auto'},{color:'rgba(255,220,0,0.5)',cursor:'url('+path+'img/chalk-yellow.png),auto'}]},customcontrols:{controls:[{icon:'<iclass="fafa-pen-square"></i>',title:'Togglechalkboard(B)',action:'RevealChalkboard.toggleChalkboard();'},{icon:'<iclass="fafa-pen"></i>',title:'Togglenotescanvas(C)',action:'RevealChalkboard.toggleNotesCanvas();'}]},menu:{side:'left',width:'normal',numbers:'h.v',titleSelector:'h1,h2,h3,h4,h5,h6',useTextContentForMissingTitles:false,hideMissingTitles:false,markers:true,custom:[{title:'关于',icon:'<i class="fa fa-info">',content:'<p>本课件由 <b>张腾</b> 制作</p><br><p>欢迎发送问题至 <i><a href="mailto:tengzhang@hust.edu.cn">tengzhang@hust.edu.cn</a></i></p>'}],themes:true,themesPath:'../css/theme/',transitions:true,openButton:true,openSlideNumber:false,keyboard:true,sticky:false,autoOpen:true,delayInit:false,openOnInit:false,loadIcons:true},plugins:[RevealZoom,RevealChalkboard,RevealCustomControls,RevealMenu]})
       </script>
       
     
