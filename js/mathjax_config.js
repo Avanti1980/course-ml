@@ -195,6 +195,8 @@ module.exports = {
       hp: "{\\mathrm {hp}}",
       gen: "{\\mathrm {gen}}",
       ow: "{\\mathrm {o.w.}}",
+      BetaDist: "{\\mathrm {Beta}}",
+      BetaFunc: "{\\mathrm {B}}",
       rot: "{\\mathbf {rot180}}",
       up: "{\\mathbf {up}}",
       cen: "{\\mathrm {cen}}",
