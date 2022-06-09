@@ -29,47 +29,29 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 再看对率回归
+##### 再看感知机
 
 ---
 
-设训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，似然函数为
+设训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，若
 
-$$
-\begin{align*}
-    \quad \Pbb(D | \wv) \propto \prod_{i \in [m]} \Pbb(y_i | \xv_i, \wv) = \prod_{i \in [m]} \sigma(y_i \wv^\top \xv_i) = \prod_{i \in [m]} \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)}
-\end{align*}
-$$
+1. 存在$r > 0$对$\forall i \in [m]$有$\|\xv_i\| \le r$，即{==$D \subseteq B(\zerov, r)$==}
+2. 存在$\rho>0$和$\|\vv\|=1$对$\forall i \in [m]$有$y_i \vv^\top \xv_i \ge \rho$，即以{==间隔==}$\rho$线性可分
 
-取先验分布$\Pbb(\wv) = \Ncal(\wv | \zerov, \alpha^{-1} \Iv)$，则
-
-$$
-\begin{align*}
-    \quad \Pbb(\wv | D) & \propto \exp \left( -\frac{\alpha}{2} \wv^\top \wv \right) \prod_{i \in [m]} \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)}
-\end{align*}
-$$
-
-最大后验估计$\wv$只需求解优化问题
-
-$$
-\begin{align*}
-    \quad \min_{\wv} ~ \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) + \frac{\alpha}{2} \| \wv \|_2^2
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 再看对率回归
-
----
+则感知机更新次数$M \le r^2/\rho^2$
 
 <div class="top2"></div>
 
-目前待估计的参数是$\wv$和$\beta$，似然为
+间隔$\rho$刻画了问题的难度 (犯错次数)
 
-$$
-\begin{align*}
-    \qquad \Pbb (D | \wv, \beta) & = \prod_{i \in [m]} \Pbb (\xv_i, y_i | \wv, \beta) = \prod_{i \in [m]} \Pbb (\xv_i) \Pbb (y_i | \xv_i, \wv, \beta) \\
-    & \propto \prod_{i \in [m]} \Pbb (y_i | \xv_i, \wv, \beta) = \prod_{i \in [m]} \Ncal(\wv^\top \xv_i,\beta^{-1})
-\end{align*}
-$$
+- $\rho$越大，两类离得越远，问题越容易
+- $\rho$越下，两类贴得越近，问题越困难
+
+<div class="top2"></div>
+
+如果多个超平面能将两类分开，选哪个？
+
+- 感知机最终给出的超平面的间隔可能很小
+- 直觉上越靠正中、离两类越远的超平面越好
+
+@import "../tikz/Novikoff.svg" {.left60per .top-38per .width35}
