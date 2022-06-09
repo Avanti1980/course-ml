@@ -29,48 +29,71 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 频率 _vs._ 贝叶斯
+##### 再看线性回归
 
 ---
 
-在机器学习中体现出的区别：是否考虑先验
+特征空间$\Xcal \subset \Rbb^d$，标记空间$\Ycal$，$\Xcal \times \Ycal$上的{==未知==}概率分布$\Dcal$
 
-当观测数据量很大时，先验 (伪数据) 就无足轻重了，两种做法不会有太大差别
+<div class="top-2"></div>
 
-当观测数据量不大时，先验对模型性能有显著影响 (归纳偏好)
+训练数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，其中$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \Dcal$
 
-- 先验是主观的，纯人为选取，没有标准
-- 抛硬币问题选贝塔分布做先验就是图计算方便
-- 利用共轭先验可以不用积分显式地求$\Pbb(X)$，肉眼就能看出结果
+假设数据的生成方式 (归纳偏好) 为
+
+- 先在特征空间$\Xcal$中随机选取$\xv_i$
+- 计算$y_i = \wv^\top \xv_i + \epsilon_i$，其中$\epsilon_i \sim \Ncal(0,\sigma^2)$
 
 <div class="top2"></div>
 
-先验需有适当的自由度，通过调参数灵活表示领域知识
+目前待估计的参数是$\wv$和$\sigma^2$，似然为
 
-<!-- slide data-notes="" -->
+$$
+\begin{align*}
+    \qquad \Pbb (D | \wv, \sigma^2) & = \prod_{i \in [m]} \Pbb (\xv_i, y_i | \wv, \sigma^2) = \prod_{i \in [m]} \Pbb (\xv_i) \Pbb (y_i | \xv_i, \wv, \sigma^2) \\
+    & \propto \prod_{i \in [m]} \Pbb (y_i | \xv_i, \wv, \sigma^2) = \prod_{i \in [m]} \Ncal(\wv^\top \xv_i,\sigma^2)
+\end{align*}
+$$
 
-##### 再看朴素贝叶斯
+<!-- slide vertical=true data-notes="" -->
+
+##### 线性回归 极大似然
 
 ---
 
-朴素贝叶斯引入{==条件独立性假设==}，将似然分解为
+对数似然为
 
 $$
 \begin{align*}
-    \qquad \Pbb(\xv | y) = \Pbb(x_1 | y) \Pbb(x_2 | y) \cdots \Pbb(x_d | y) = \prod_{j \in [d]} \Pbb(x_j | y)
+    \qquad \log \Pbb (D | \wv, \sigma^2) & = \const + \sum_{i \in [m]} \log \Ncal(\wv^\top \xv_i,\sigma^2) \\
+    & = \const - \sum_{i \in [m]} \left( \frac{(y_i - \wv^\top \xv_i)^2}{2 \sigma^2} + \log \sigma \right)
 \end{align*}
 $$
 
-<div class="top-4"></div>
-
-通过极大似然估计$\Pbb(y), ~ \Pbb(x_1 | y), ~ \Pbb(x_2 | y), ~ \ldots, ~ \Pbb(x_d | y)$
-
-根据贝叶斯公式有
+极大似然估计$\wv$对应的优化问题为
 
 $$
 \begin{align*}
-    \argmax_{\Theta} p(\Theta | \Scal) = \argmax_{\Theta} \frac{p(\Scal | \Theta) p(\Theta)}{p(\Scal)} = \argmax_{\Theta} p(\Scal | \Theta) p(\Theta)
+    \qquad \min_{\wv} ~ \sum_{i \in [m]} (y_i - \wv^\top \xv_i)^2 = \| \Xv \wv - \yv \|^2
 \end{align*}
 $$
 
-因此相对于极大似然估计，最大后验概率估计就是将先验$p(\Theta)$也考虑了进来
+我的批注 在上页的假设下，{==极大似然估计等价于最小二乘回归==}
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 线性回归 贝叶斯视角
+
+---
+
+假设$\wv$的先验分布$\Pbb(\wv) = \Ncal(\wv | \mv_0, \Sv_0)$
+
+根据贝叶斯公式，后验为
+
+$$
+\begin{align*}
+    \quad \Pbb(\wv | D) & \propto \Pbb(\wv) \Pbb(D | \wv) \\
+    & \propto \exp \left( -\frac{1}{2} (\wv - \mv_0)^\top \Sv_0^{-1} (\wv - \mv_0) \right) \prod_{i \in [m]} \exp \left( - \frac{(y_i - \wv^\top \xv_i)^2}{2 \sigma^2} \right) \\
+    & = \exp \left( -\frac{1}{2} (\wv - \mv_0)^\top \Sv_0^{-1} (\wv - \mv_0) - \frac{\| \Xv \wv - \yv \|^2}{2 \sigma^2} \right)
+\end{align*}
+$$

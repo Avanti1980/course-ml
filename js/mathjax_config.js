@@ -198,6 +198,7 @@ module.exports = {
       ow: "{\\mathrm {o.w.}}",
       BetaDist: "{\\mathrm {Beta}}",
       BetaFunc: "{\\mathrm {B}}",
+      Dir: "{\\mathrm {Dir}}",
       rot: "{\\mathbf {rot180}}",
       up: "{\\mathbf {up}}",
       cen: "{\\mathrm {cen}}",
