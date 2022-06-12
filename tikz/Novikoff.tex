@@ -5,18 +5,17 @@
 
  % define the plot style and the axis style
 \tikzset{font=\Huge}
-\tikzset{base/.style={smooth,ultra thick,Solarized-base01}}
-\tikzset{arrow/.style={->,-{Stealth[scale=1.2]},base}}
-\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{base/.style={smooth, very thick, Solarized-base01}}
+\tikzset{arrow/.style={->, -{Stealth[scale=1.0]}, base}}
 
 \begin{document}
 
 \begin{tikzpicture}
 
-    \pgfmathtruncatemacro{\range}{6};
-    \pgfmathtruncatemacro{\margin}{2};
-    \pgfmathtruncatemacro{\l}{6};
-    \pgfmathtruncatemacro{\r}{5};
+    \pgfmathsetmacro{\range}{6};
+    \pgfmathsetmacro{\margin}{2};
+    \pgfmathsetmacro{\l}{6};
+    \pgfmathsetmacro{\r}{5};
 
     % 两个坐标轴
     \draw [arrow] (-\range,0) -- (\range,0);
@@ -63,9 +62,6 @@
     \fill [Solarized-red,opacity=0.6] (P11) -- (P12) -- (P14) -- (P13) -- cycle;
     \fill [Solarized-blue,opacity=0.6] (P21) -- (P22) -- (P24) -- (P23) -- cycle;
 
-    %\fill [Solarized-red,opacity=0.5, even odd rule] (-1.5,-1.5) rectangle ++(3,3) {(0,0) circle (1)};
-
 \end{tikzpicture}
-
 
 \end{document}

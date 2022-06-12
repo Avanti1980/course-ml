@@ -1,11 +1,11 @@
 digraph g {
+    bgcolor=transparent
     graph [nodesep=0.6, ranksep=0.6]
-    bgcolor="transparent"
-    node [shape=box color="#586e75" fontcolor="#b58900" fontsize=18 fontname="Ysabeau,LXGWWenKai"]
-    edge [color="#586e75" fontcolor="#268bd2" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowhead=none]
+    node [shape=box, color="#586e75", fontcolor="#b58900", fontsize=18, fontname="LXGWWenKai"]
+    edge [arrowhead=none, color="#586e75", fontcolor="#268bd2", fontsize=16, fontname="LXGWWenKai"]
 
     "课业=？" -> "D1" [xlabel="轻松"]
-    "课业=？" -> "D2" [headlabel="适中" labeldistance=2]
+    "课业=？" -> "D2" [headlabel="适中", labeldistance=2]
 
     node [shape=ellipse]
     "课业=？" -> "否" [xlabel="繁重"]

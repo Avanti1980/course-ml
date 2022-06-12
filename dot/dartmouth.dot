@@ -1,11 +1,11 @@
 digraph g {
-    size = 9;
+    size = 9
+    bgcolor=transparent
     graph [nodesep=0.5, ranksep=0.6]
-    node [shape=box color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#b58900" fontsize=20]
-    edge [color="#586e75" fontname="Ysabeau,LXGWWenKai" fontcolor="#268bd2" fontsize=18 arrowsize=0.5 dir=none]
-    bgcolor="transparent"
+    node [shape=box, color="#586e75", fontname="LXGWWenKai", fontcolor="#b58900", fontsize=20]
+    edge [dir=none, color="#586e75", fontname="LXGWWenKai", fontcolor="#268bd2", fontsize=18]
 
-    丘奇 -> {克门尼,图灵} [label=" 导师"]
+    丘奇 -> {克门尼, 图灵} [label=" 导师"]
 
     爱因斯坦 -> 克门尼 [label=" 助理"]
 
@@ -21,7 +21,7 @@ digraph g {
 
     香农 -> 图灵 [label=" 交流"]
 
-    莱夫谢茨 -> {麦卡锡,塔克} [label=" 导师"]
+    莱夫谢茨 -> {麦卡锡, 塔克} [label=" 导师"]
 
     塔克 -> 纳什 [label=" 导师"]
 
@@ -47,9 +47,9 @@ digraph g {
 
     西蒙 -> 纽厄尔 [label=" 导师"]
 
-    香农 -> {麦卡锡,明斯基} [label=" 老板"]
+    香农 -> {麦卡锡, 明斯基} [label=" 老板"]
 
     赛弗里奇 -> 西蒙 [label=" 交流"]
 
-    {克门尼,麦卡锡,明斯基,纽厄尔} -> 普林斯顿数学系 [label=" 母校"]
+    {克门尼, 麦卡锡, 明斯基, 纽厄尔} -> 普林斯顿数学系 [label=" 母校"]
 }

@@ -3,19 +3,18 @@
 \everymath{\color{Solarized-magenta}}
 \pagestyle{empty} % 没有页眉和页脚
 
- % define the plot style and the axis style
-\tikzset{base/.style={smooth,thick,Solarized-base01}}
-\tikzset{arrow/.style={->,>=stealth,base}}
-\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{font=\Large}
+\tikzset{base/.style={smooth, very thick, Solarized-base01}}
+\tikzset{arrow/.style={->, -{Stealth[scale=1.0]}, base}}
 
 \begin{document}
 
 \begin{tikzpicture}
 
-    \pgfmathtruncatemacro{\range}{2};
-    \pgfmathtruncatemacro{\len}{4};
-    \pgfmathtruncatemacro{\gap}{1};
-    \pgfmathtruncatemacro{\o}{\range+\len+2*\gap};
+    \pgfmathsetmacro{\range}{2};
+    \pgfmathsetmacro{\len}{5.4};
+    \pgfmathsetmacro{\gap}{0.5};
+    \pgfmathsetmacro{\o}{\range+\len+2*\gap};
 
     \draw [arrow] (-\range,0) -- (\range,0);
     \draw [arrow] (0,-\range) -- (0,\range);
@@ -23,7 +22,7 @@
     \fill [Solarized-blue,opacity=0.5] (0,0) circle (1);
     \fill [Solarized-red,opacity=0.5, even odd rule] (-1.5,-1.5) rectangle ++(3,3) {(0,0) circle (1)};
 
-    \draw [arrow] (\range+\gap,0) -- (\range+\len+\gap,0) node [midway,above] {$\phi: [x_1,x_2] \mapsto [x_1^2,x_2^2]$};
+    \draw [arrow] (\range+\gap,0) -- (\range+\len+\gap,0) node [midway,above] {$\phi: [x_1;x_2] \mapsto [x_1^2;x_2^2]$};
 
     \draw [arrow] (\o+0.5,-\range) -- (\o+0.5,\range);
     \draw [arrow] (\o,0.5-\range) -- (\o+2*\range,0.5-\range);
@@ -33,6 +32,5 @@
     \fill [Solarized-red,opacity=0.5] (\o+2.1,0.5-\range) -- (\o+0.5,2.1-\range) -- (\o+0.5,3.5-\range) -- (\o+3.5,3.5-\range) -- (\o+3.5,0.5-\range) -- cycle;
 
 \end{tikzpicture}
-
 
 \end{document}

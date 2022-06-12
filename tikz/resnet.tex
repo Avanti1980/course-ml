@@ -4,17 +4,15 @@
 \pagestyle{empty} % 没有页眉和页脚
 
 \tikzset{font=\Large}
-
-\tikzset{base/.style = {smooth, thick, draw=Solarized-base01}}
-\tikzset{nc/.style = {circle, minimum size=48, base}}
-\tikzset{label/.style = {Solarized-base01, right}}
+\tikzset{base/.style = {smooth, very thick, draw=Solarized-base01}}
 \tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{nc/.style = {circle, minimum size=48, base}}
 
 \begin{document}
 
 \begin{tikzpicture}
 
-    \pgfmathtruncatemacro{\v}{-2};
+    \pgfmathsetmacro{\v}{-2};
 
     % 第一行的五个圆
     \node [draw=none] (zlm1) at (-2.4,0) {};

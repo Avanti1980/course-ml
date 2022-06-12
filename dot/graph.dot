@@ -1,9 +1,9 @@
 digraph g {
+    bgcolor=transparent
     graph [nodesep=0.35, ranksep=0.35]
     rankdir=TB
-    node [shape=circle color="#586e75" fontcolor="#b58900" fontsize=2 label="" width=0.2 margin=0]
-    edge [arrowhead=none color="#586e75" fontcolor="#268bd2" fontsize=2 arrowsize=0.5]
-    bgcolor="transparent"
+    node [shape=circle, color="#586e75", fontcolor="#b58900", fontsize=2, label="", width=0.2, margin=0]
+    edge [arrowhead=none, color="#586e75", fontcolor="#268bd2", fontsize=2]
 
-    1 -> {2,3,4,5，6};
+    1 -> {2, 3, 4, 5, 6};
 }

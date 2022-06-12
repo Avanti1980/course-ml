@@ -1,18 +1,18 @@
 digraph g {
+    bgcolor=transparent
     graph [nodesep=0.4, ranksep=0.5]
-    bgcolor="transparent"
-    node [shape=box color="#586e75" fontcolor="#b58900" fontsize=18 fontname="Ysabeau,LXGWWenKai"]
-    edge [color="#586e75" fontcolor="#268bd2" fontsize=16 fontname="Ysabeau,LXGWWenKai" arrowhead=none]
+    node [shape=box, color="#586e75", fontcolor="#b58900", fontsize=18, fontname="LXGWWenKai"]
+    edge [arrowhead=none, color="#586e75", fontcolor="#268bd2", fontsize=16, fontname="LXGWWenKai"]
 
     "课业=？" -> "D1" [xlabel="轻松"]
     "课业=？" -> "电视=？" [label="适中"]
 
     node [shape=ellipse]
 
-    "课业=？" -> "否" [headlabel="繁重" labeldistance=4]
+    "课业=？" -> "否" [headlabel="繁重", labeldistance=4]
 
     "电视=？" -> "是" [label="无聊"]
 
     n2 [label="否"]
-    "电视=？" -> n2 [xlabel="精彩" labeldistance=3]
+    "电视=？" -> n2 [xlabel="精彩", labeldistance=3]
 }

@@ -93,7 +93,7 @@
     <img src="../img/svm/Corinna Cortes.jpg" title="Corinna Cortes" width="380px" class="left4">
 </div>
 </section></section><section><section data-notes lineno="71" class="slide " data-line="71" data-h="1" data-v="0">
-<h5 class="mume-header" id="%E7%BA%A2%E4%B8%8E%E9%BB%91">&#x7EA2;&#x4E0E;&#x9ED1;</h5>
+<h5 class="mume-header" id="%E6%A5%9A%E6%B2%B3%E6%B1%89%E7%95%8C-%E9%97%B4%E9%9A%94">&#x695A;&#x6CB3;&#x6C49;&#x754C; &#x95F4;&#x9694;</h5>
 
 <hr>
 <div id="board2" class="center" style="width:420px"></div>
@@ -114,7 +114,7 @@
 
 $$
 \begin{align*}
-    \qquad &amp; \max_{\wv,b} ~ \gamma, \quad \st ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|} \ge \gamma, ~ \forall i \in [m] \\[2pt]
+    \quad &amp; \max_{\wv,b} ~ \gamma, \quad \st ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|} \ge \gamma, ~ \forall i \in [m] \\[2pt]
     &amp; \qquad \qquad \qquad \Updownarrow \\[2pt]
     &amp; \max_{\wv,b} ~ \frac{\hat{\gamma}}{\|\wv\|}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge \hat{\gamma}, ~ \forall i \in [m] \\[2pt]
     &amp; \qquad \qquad \qquad \Updownarrow \\[2pt]
@@ -135,20 +135,21 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
+    \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
 \end{align*}
 $$
 </p>
 
-<p>&#x5206;&#x89E3;<span class="mathjax-exps">$\wv = \sum \limits_{i \in [m]} \alpha_i \xv_i + \vv = \Xv^\top \alphav + \vv$</span>&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$\vv \perp \span \{ \xv_1, \ldots, \xv_m \}$</span></p>
+<div class="top-2"></div>
+<p>&#x5206;&#x89E3;<span class="mathjax-exps">$\wv = \sum_{i \in [m]} \alpha_i \xv_i + \vv = \Xv^\top \alphav + \vv$</span>&#xFF0C;<span class="mathjax-exps">$\vv \perp \span \{ \xv_1, \ldots, \xv_m \}$</span></p>
 <ul>
 <li><span class="mathjax-exps">$\wv^\top \xv_i = \alpha^\top \Xv \xv_i$</span>&#xFF0C;&#x5373;&#x7EA6;&#x675F;&#x4E0E;<span class="mathjax-exps">$\vv$</span>&#x65E0;&#x5173;</li>
 <li><span class="mathjax-exps">$\|\wv\|_2^2 = \alphav^\top \Xv \Xv^\top \alphav + \vv^\top \vv$</span>&#xFF0C;&#x6545;&#x5FC5;&#x6709;<span class="mathjax-exps">$\vv = \zerov$</span></li>
 <li><mark>&#x6700;&#x4F18;&#x7684;$\wv$&#x53EA;&#x7531;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7EBF;&#x6027;&#x8868;&#x51FA;</mark>&#xFF0C;<span class="mathjax-exps">$\wv = \sum_{i \in [m]} \alpha_i \xv_i = \Xv^\top \alphav$</span></li>
-<li>&#x7EBF;&#x6027;&#x8868;&#x51FA;&#x7CFB;&#x6570;&#x975E;&#x96F6;&#x7684;<span class="mathjax-exps">$\alpha_i$</span>&#x5BF9;&#x5E94;&#x7684;&#x6837;&#x672C;&#x79F0;&#x4E3A;<mark>&#x652F;&#x6301;&#x5411;&#x91CF;</mark> (<em><u>s</u>upport <u>v</u>ector</em>, SV)</li>
-<li>&#x6A21;&#x578B;&#x53EA;&#x4E0E;&#x90E8;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x6709;&#x5173;&#xFF0C;&#x6545;&#x540D;&#x4E3A;<mark>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</mark> (<em><u>SV</u> <u>m</u>achine</em>, SVM)</li>
+<li>&#x975E;&#x96F6;&#x7EBF;&#x6027;&#x8868;&#x51FA;&#x7CFB;&#x6570;<span class="mathjax-exps">$\alpha_i$</span>&#x5BF9;&#x5E94;&#x7684;&#x6837;&#x672C;&#x79F0;&#x4E3A;<mark>&#x652F;&#x6301;&#x5411;&#x91CF;</mark> (<u>s</u>upport <u>v</u>ector, SV)</li>
+<li><span class="mathjax-exps">$\wv$</span>&#x53EA;&#x4E0E;&#x90E8;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x6709;&#x5173;&#xFF0C;&#x6545;&#x540D;<mark>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</mark> (<u>SV</u> <u>m</u>achine, SVM)</li>
 </ul>
-</section><section vertical="true" data-notes lineno="142" class="slide " data-line="142" data-h="2" data-v="1">
+</section><section vertical="true" data-notes lineno="144" class="slide " data-line="144" data-h="2" data-v="1">
 <h5 class="mume-header" id="%E6%A0%B8%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA">&#x6838;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</h5>
 
 <hr>
@@ -158,7 +159,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
+    \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
 \end{align*}
 $$
 </p>
@@ -168,7 +169,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m]
+    \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m]
 \end{align*}
 $$
 </p>
@@ -177,7 +178,7 @@ $$
 <p><mark>&#x6700;&#x4F18;&#x7684;$\wv$&#x4F9D;&#x7136;&#x53EA;&#x7531;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7EBF;&#x6027;&#x8868;&#x51FA;</mark>&#xFF1A;<span class="mathjax-exps">$\wv = \sum_{i \in [m]} \alpha_i \phi(\xv_i)$</span></p>
 <div class="top-2"></div>
 <p>&#x56DE;&#x4EE3;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;<span class="mathjax-exps">$\phi(\xv_i)$</span>&#x603B;&#x662F;&#x6210;&#x5BF9;&#x4EE5;&#x5185;&#x79EF;&#x7684;&#x5F62;&#x5F0F;&#x51FA;&#x73B0;&#xFF0C;&#x6545;&#x53EF;&#x7528;&#x6838;&#x51FD;&#x6570;</p>
-</section><section vertical="true" data-notes lineno="182" class="slide " data-line="182" data-h="2" data-v="2">
+</section><section vertical="true" data-notes lineno="184" class="slide " data-line="184" data-h="2" data-v="2">
 <h5 class="mume-header" id="%E6%A0%B8%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-1">&#x6838;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</h5>
 
 <hr>
@@ -187,7 +188,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m]
+    \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m]
 \end{align*}
 $$
 </p>
@@ -199,7 +200,7 @@ $$
 </ul>
 <div class="top2"></div>
 <p>&#x65B9;&#x6848;&#xFF1A;&#x5141;&#x8BB8;&#x7EA6;&#x675F;<span class="mathjax-exps">$y_i (\wv^\top \phi(\xv_i) + b) \ge 1$</span>&#x5BF9;&#x5C11;&#x6570;&#x6837;&#x672C;&#x4E0D;&#x6210;&#x7ACB;</p>
-</section></section><section><section data-notes lineno="211" class="slide " data-line="211" data-h="3" data-v="0">
+</section></section><section><section data-notes lineno="213" class="slide " data-line="213" data-h="3" data-v="0">
 <h5 class="mume-header" id="%E8%BD%AF%E9%97%B4%E9%9A%94%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA">&#x8F6F;&#x95F4;&#x9694;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</h5>
 
 <hr>
@@ -209,7 +210,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m]
+    \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m]
 \end{align*}
 $$
 </p>
@@ -219,14 +220,14 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{\lambda}{2} \|\wv\|_2^2 + \frac{1}{m} \underbrace{\sum_{i \in [m]} \Ibb(y_i (\wv^\top \phi(\xv_i) + b) &lt; 1) }_{\text{&#x7834;&#x574F;&#x7EA6;&#x675F;&#x7684;&#x6837;&#x672C;&#x4E2A;&#x6570;}}
+    \quad \min_{\wv,b} ~ \frac{\lambda}{2} \|\wv\|_2^2 + \frac{1}{m} \underbrace{\sum_{i \in [m]} \Ibb(y_i (\wv^\top \phi(\xv_i) + b) &lt; 1) }_{\text{&#x7834;&#x574F;&#x7EA6;&#x675F;&#x7684;&#x6837;&#x672C;&#x4E2A;&#x6570;}}
 \end{align*}
 $$
 </p>
 
 <div class="top-2"></div>
 <p>&#x96BE;&#x70B9;&#xFF1A;&#x6307;&#x793A;&#x51FD;&#x6570;<span class="mathjax-exps">$\Ibb(\cdot)$</span><span class="blue">&#x975E;&#x51F8;&#x975E;&#x8FDE;&#x7EED;</span>&#xFF0C;&#x5BFC;&#x81F4;&#x95EE;&#x9898;&#x5F88;&#x96BE;&#x6C42;&#x89E3;</p>
-</section><section vertical="true" data-notes lineno="247" class="slide " data-line="247" data-h="3" data-v="1">
+</section><section vertical="true" data-notes lineno="249" class="slide " data-line="249" data-h="3" data-v="1">
 <h5 class="mume-header" id="%E8%BD%AF%E9%97%B4%E9%9A%94%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-1">&#x8F6F;&#x95F4;&#x9694;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</h5>
 
 <hr>
@@ -236,7 +237,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{\lambda}{2} \|\wv\|_2^2 + \frac{1}{m} \sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}
+    \quad \min_{\wv,b} ~ \frac{\lambda}{2} \|\wv\|_2^2 + \frac{1}{m} \sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}
 \end{align*}
 $$
 </p>
@@ -248,15 +249,15 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} &amp; ~ \frac{\lambda}{2} \|\wv\|_2^2 + \frac{1}{m} \sum_{i \in [m]} \epsilon_i \\[2pt]
+    \quad \min_{\wv,b} &amp; ~ \frac{\lambda}{2} \|\wv\|_2^2 + \frac{1}{m} \sum_{i \in [m]} \epsilon_i \\[2pt]
     \st &amp; ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m]
 \end{align*}
 $$
 </p>
 
 <p>&#x5BF9;&#x6BD4;&#x524D;&#x9762;&#x7684;<mark>&#x786C;&#x95F4;&#x9694;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</mark>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5C31;&#x591A;&#x4E86;<span class="mathjax-exps">$\epsilon_i$</span></p>
-<p><span class="mathjax-exps">$\epsilon_i$</span>&#x4E5F;&#x53EB;<mark>&#x677E;&#x5F1B;&#x53D8;&#x91CF;</mark> (<em>slack variable</em>)&#xFF0C;&#x523B;&#x753B;&#x4E86;&#x7EA6;&#x675F;&#x88AB;&#x7834;&#x574F;&#x7684;&#x7A0B;&#x5EA6;</p>
-</section></section><section><section data-notes lineno="288" class="slide " data-line="288" data-h="4" data-v="0">
+<p><span class="mathjax-exps">$\epsilon_i$</span>&#x4E5F;&#x53EB;<mark>&#x677E;&#x5F1B;&#x53D8;&#x91CF;</mark> (slack variable)&#xFF0C;&#x523B;&#x753B;&#x4E86;&#x7EA6;&#x675F;&#x88AB;&#x7834;&#x574F;&#x7684;&#x7A0B;&#x5EA6;</p>
+</section></section><section><section data-notes lineno="290" class="slide " data-line="290" data-h="4" data-v="0">
 <h5 class="mume-header" id="%E6%AD%A3%E5%88%99%E5%8C%96%E9%A1%B9-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0">&#x6B63;&#x5219;&#x5316;&#x9879; + &#x635F;&#x5931;&#x51FD;&#x6570;</h5>
 
 <hr>
@@ -265,7 +266,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{\lambda}{2} \underbrace{\|\wv\|_2^2}_{\text{&#x6B63;&#x5219;&#x5316;&#x9879;}} + \frac{1}{m} \sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{&#x635F;&#x5931;&#x51FD;&#x6570;}}
+    \quad \min_{\wv,b} ~ \frac{\lambda}{2} \underbrace{\|\wv\|_2^2}_{\text{&#x6B63;&#x5219;&#x5316;&#x9879;}} + \frac{1}{m} \sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{&#x635F;&#x5931;&#x51FD;&#x6570;}}
 \end{align*}
 $$
 </p>
@@ -279,7 +280,7 @@ $$
 <li>&#x5F39;&#x6027;&#x7F51;&#xFF1A;<span class="mathjax-exps">$\ell_1$</span>&#x6B63;&#x5219;&#x548C;<span class="mathjax-exps">$\ell_2$</span>&#x6B63;&#x5219;&#x7684;&#x7EBF;&#x6027;&#x7EC4;&#x5408;</li>
 <li>OSCAR&#xFF1A;<span class="mathjax-exps">$\ell_1$</span>&#x6B63;&#x5219;&#x548C;&#x6210;&#x5BF9;<span class="mathjax-exps">$\ell_\infty$</span>&#x6B63;&#x5219;&#x7684;&#x7EBF;&#x6027;&#x7EC4;&#x5408;</li>
 </ul>
-</section><section vertical="true" data-notes lineno="314" class="slide " data-line="314" data-h="4" data-v="1">
+</section><section vertical="true" data-notes lineno="316" class="slide " data-line="316" data-h="4" data-v="1">
 <h5 class="mume-header" id="%E6%AD%A3%E5%88%99%E5%8C%96%E9%A1%B9-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-1">&#x6B63;&#x5219;&#x5316;&#x9879; + &#x635F;&#x5931;&#x51FD;&#x6570;</h5>
 
 <hr>
@@ -288,7 +289,7 @@ $$
 
 $$
 \begin{align*}
-    \qquad \min_{\wv,b} ~ \frac{\lambda}{2} \underbrace{\|\wv\|_2^2}_{\text{&#x6B63;&#x5219;&#x5316;&#x9879;}} + \frac{1}{m} \sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{&#x635F;&#x5931;&#x51FD;&#x6570;}}
+    \quad \min_{\wv,b} ~ \frac{\lambda}{2} \underbrace{\|\wv\|_2^2}_{\text{&#x6B63;&#x5219;&#x5316;&#x9879;}} + \frac{1}{m} \sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{&#x635F;&#x5931;&#x51FD;&#x6570;}}
 \end{align*}
 $$
 </p>
@@ -301,7 +302,7 @@ $$
 <li>&#x6307;&#x6570;&#x635F;&#x5931;&#xFF1A;<span class="mathjax-exps">$l(y, f(\xv)) = \exp (- y f(\xv))$</span></li>
 <li>&#x5BF9;&#x7387;&#x635F;&#x5931;&#xFF1A;<span class="mathjax-exps">$l(y, f(\xv)) = \log (1 + \exp (- y f(\xv)))$</span>&#xFF0C;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</li>
 </ul>
-</section><section vertical="true" data-notes lineno="339" class="slide " data-line="339" data-h="4" data-v="2">
+</section><section vertical="true" data-notes lineno="341" class="slide " data-line="341" data-h="4" data-v="2">
 <h5 class="mume-header" id="%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0">&#x635F;&#x5931;&#x51FD;&#x6570;</h5>
 
 <hr>

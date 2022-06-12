@@ -1,56 +1,49 @@
 \documentclass{ctexart}
 \usepackage{avanti}
-
-\begin{document}
-\title{}
-\author{}
-\date{}
-\maketitle
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
 
 \tikzset{font=\Large}
-\tikzset{base/.style = {smooth, thick, draw=Solarized-base01, text=Solarized-magenta}}
+\tikzset{base/.style = {smooth, very thick, draw=Solarized-base01, text=Solarized-magenta}}
+\tikzset{arrow/.style={->,-{Stealth[scale=1.0]},base}}
 \tikzset{nc/.style = {circle, inner sep=8pt, outer sep=0pt, base}}
-\tikzset{arrow/.style={->,>=stealth,base}}
 
-\begin{figure}[ht]
-    \centering
+\begin{document}
 
-    \begin{tikzpicture} [scale=1]
+\begin{tikzpicture} [scale=1]
 
-        \pgfmathsetmacro{\r}{0.45};
+    \pgfmathsetmacro{\r}{0.45};
 
-        \draw [base,dashed] (-0.5,0.5) -- (5.3,0.5) -- (5.3,-0.5) -- (-0.5,-0.5) -- cycle;
+    \draw [base,dashed] (-0.5,0.5) -- (5.3,0.5) -- (5.3,-0.5) -- (-0.5,-0.5) -- cycle;
 
-        \path [base] (0,\r) node[above] () {$x_1$};
-        \node [nc] (x1) at (0,0) {};
+    \path [base] (0,\r) node[above] () {$x_1$};
+    \node [nc] (x1) at (0,0) {};
 
-        \path [base] (1.6,\r) node[above] () {$x_2$};
-        \node [nc] (x2) at (1.6,0) {};
+    \path [base] (1.6,\r) node[above] () {$x_2$};
+    \node [nc] (x2) at (1.6,0) {};
 
-        \node [draw=none] (a) at (3.2,0) {$\cdots$};
+    \node [draw=none] (a) at (3.2,0) {$\cdots$};
 
-        \path [base] (4.8,\r) node[above] () {$x_d$};
-        \node [nc] (xd) at (4.8,0) {};
+    \path [base] (4.8,\r) node[above] () {$x_d$};
+    \node [nc] (xd) at (4.8,0) {};
 
-        \path [base] (6.5,0) node[] () {输入层};
+    \path [base] (6.5,0) node[] () {输入层};
 
-        \node [nc] (sum) at (2.4,-1.8) {};
+    \node [nc] (sum) at (2.4,-1.8) {};
 
-        \draw [base,dashed] (-0.5,-1.3) -- (5.3,-1.3) -- (5.3,-2.3) -- (-0.5,-2.3) -- cycle;
+    \draw [base,dashed] (-0.5,-1.3) -- (5.3,-1.3) -- (5.3,-2.3) -- (-0.5,-2.3) -- cycle;
 
-        \path [base] (6.5,-1.8) node[] () {输出层};
+    \path [base] (6.5,-1.8) node[] () {输出层};
 
-        \node [draw=none] (y) at (2.4,-3.6) {};
+    \node [draw=none] (y) at (2.4,-3.6) {};
 
-        \draw [arrow] (x1) -- node [left] {$w_1$} (sum);
-        \draw [arrow] (x2) -- node [right] {$w_2$} (sum);
-        \draw [arrow] (xd) -- node [right] {$w_d$} (sum);
-        \draw [arrow] (sum) -- (y);
+    \draw [arrow] (x1) -- node [left=0.1cm] {$w_1$} (sum);
+    \draw [arrow] (x2) -- node [right] {$w_2$} (sum);
+    \draw [arrow] (xd) -- node [right=0.2cm] {$w_d$} (sum);
+    \draw [arrow] (sum) -- (y);
 
-        \path [base] (2.5,-3.0) node[right] () {$y = \sign(\cdots)$};
+    \path [base] (2.5,-3.0) node[right] () {$y = h(\cdots)$};
 
-    \end{tikzpicture}
-\end{figure}
-
+\end{tikzpicture}
 
 \end{document}

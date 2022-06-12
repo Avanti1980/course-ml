@@ -1,7 +1,7 @@
 @import "css/theme/solarized.css"
 @import "css/index.css"
 
-## 机器学习 课堂二 2022 春
+## 机器学习 课堂二 <span style="font-weight:900">2022</span> 春
 
 ---
 
