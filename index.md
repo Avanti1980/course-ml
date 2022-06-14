@@ -70,7 +70,7 @@
 
 #### 补充
 
-[矩阵求导](slides/supp-matrix-calculus.html)，[AdaBoost](notes/adaboost.pdf)
+[矩阵求导](notes/matrix-calculus.pdf)，[AdaBoost](notes/adaboost.pdf)
 
 #### 资料
 
