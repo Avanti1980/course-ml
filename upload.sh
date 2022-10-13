@@ -1,7 +1,7 @@
 cp ~/.mume/parser.js js/
 cp ~/.mume/mathjax_config.js js/
 cp ~/Notes/ML/AdaBoost/adaboost.pdf notes/
-cp ~/Notes/Math/Matrix-calculus/matrix-calculus.pdf notes/
+cp ~/Notes/Math/Matrix-Theory/Matrix-Derivative/matrix-derivative.pdf notes/
 
 git add *
 git commit -m $1
