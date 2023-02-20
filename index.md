@@ -1,7 +1,7 @@
 @import "css/theme/solarized.css"
 @import "css/index.css"
 
-## 机器学习 课堂二 <span style="font-weight:900">2022</span> 春
+## 机器学习 课堂二 <span style="font-weight:900">2023</span> 春
 
 ---
 
@@ -9,8 +9,8 @@
 
 授课：张腾 _tengzhang@hust.edu.cn_
 
-- 28 学时理论，周三 7 ~ 8 节课、周五 1 ~ 2 节课 (第 10 ~ 16 周)
-- 12 学时实验，周四 9 ~ 12 节课 (第 12、15 ~ 16 周，在线)
+- 28 学时理论，周二 7 ~ 8 节课、周五 5 ~ 6 节课 (第 2 ~ 8 周)
+- 12 学时实验，线上
 
 <div class="top-2"></div>
 
