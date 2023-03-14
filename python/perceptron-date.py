@@ -36,4 +36,9 @@ X_train, X_test, y_train, y_test = X[train_index, :], X[test_index, :], y[train_
 
 clf = Perceptron(eta0=0.5, verbose=True)  # 步长=0.5 输出日志
 clf.fit(X_train, y_train)
-clf.score(X_test, y_test)
+
+print(clf.score(X_test, y_test))
+# 0.7142857142857143
+
+print(clf.predict(X_test))
+# [1 1 0 0 0 0 1]
