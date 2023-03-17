@@ -37,5 +37,17 @@ X_train, X_test, y_train, y_test = X[train_index, :], X[test_index, :], y[train_
 clf = LogisticRegression(penalty='none', verbose=True)  # 无正则项 输出日志
 clf.fit(X_train, y_train)
 print(clf.score(X_test, y_test))
+# 0.7142857142857143
 
-print(y_test, clf.predict_proba(X_test))
+print(y_test)
+# [1 1 1 0 0 0 0]
+
+print(clf.predict(X_test), clf.predict_proba(X_test))
+# [1 1 0 0 0 0 1]
+# [[3.19744231e-14 1.00000000e+00]
+# [3.45002693e-10 1.00000000e+00]
+# [9.99999999e-01 8.41179268e-10]
+# [1.00000000e+00 4.23642522e-19]
+# [1.00000000e+00 2.94646658e-47]
+# [1.00000000e+00 5.95930974e-17]
+# [0.00000000e+00 1.00000000e+00]]
