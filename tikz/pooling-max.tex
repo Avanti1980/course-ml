@@ -1,0 +1,72 @@
+\documentclass{ctexart}
+\usepackage{avanti}
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+\tikzset{font=\Large}
+
+% define the plot style and the axis style
+\tikzset{base/.style={smooth,thick,draw=Solarized-base01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{nc/.style={circle, base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \draw [fill=Solarized-base2] (0,2) -- (2,2) -- (2,4) -- (0,4) -- (0,2);
+    \draw [fill=Solarized-base1] (2,2) -- (4,2) -- (4,4) -- (2,4) -- (2,2);
+    \draw [fill=Solarized-cyan] (0,0) -- (2,0) -- (2,2) -- (0,2) -- (0,0);
+    \draw [fill=Solarized-base2] (9,2) -- (10,2) -- (10,3) -- (9,3) -- (9,2);
+    \draw [fill=Solarized-base1] (10,2) -- (11,2) -- (11,3) -- (10,3) -- (10,2);
+    \draw [fill=Solarized-cyan] (9,1) -- (10,1) -- (10,2) -- (9,2) -- (9,1);
+
+    \foreach \i in {0,...,4}
+        {
+            \draw [base] (\i,0) -- (\i,4);
+            \draw [base] (0,\i) -- (4,\i);
+        }
+
+    \node at (0.5,0.5) {$0$};
+    \node at (1.5,0.5) {$0$};
+    \node at (2.5,0.5) {$1$};
+    \node at (3.5,0.5) {$1$};
+
+    \node at (0.5,1.5) {$0$};
+    \node at (1.5,1.5) {$0$};
+    \node at (2.5,1.5) {$1$};
+    \node at (3.5,1.5) {$3$};
+
+    \node at (0.5,2.5) {$0$};
+    \node at (1.5,2.5) {$1$};
+    \node at (2.5,2.5) {$1$};
+    \node at (3.5,2.5) {$2$};
+
+    \node at (0.5,3.5) {$1$};
+    \node at (1.5,3.5) {$1$};
+    \node at (2.5,3.5) {$2$};
+    \node at (3.5,3.5) {$0$};
+
+    \draw [arrow] (5,2) -- (8,2) node [midway, above, Solarized-base01] {最大汇聚};
+
+    \foreach \i in {9,...,11}
+        {
+            \draw [base] (\i,1) -- (\i,3);
+            \draw [base] (9,\i-8) -- (11,\i-8);
+        }
+
+    \node at (9.5,1.5) {$0$};
+    \node at (10.5,1.5) {$3$};
+
+    \node at (9.5,2.5) {$1$};
+    \node at (10.5,2.5) {$2$};
+
+
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

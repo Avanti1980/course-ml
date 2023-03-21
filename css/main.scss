@@ -72,6 +72,11 @@
   margin-right: auto;
 }
 
+.reveal .multi_column {
+  display: flex;
+  flex-direction: row;
+}
+
 .reveal p .center {
   text-align: center !important;
 }
