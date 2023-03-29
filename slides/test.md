@@ -29,203 +29,331 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 卷积神经网络
+##### 数值型特征 
 
 ---
 
-图像数据集 [ImageNet](https://image-net.org/index.php)：
+以文本分类为例
 
-- 共有 14,197,122 训练图片、50,000 验证图片、100,000 测试图片
-- 共有 1,000 个类别，通过众包进行标注
-- 图片分辨率：256 × 256、224 × 224、299 × 299
+- 词汇表$\Vcal = \{ v_j \}_{j \in [d]}$，文本$\xv$，$d$维特征$[x_1; x_2; \ldots; x_d]$
+- 特征$x_j$对应词$v_j$，取值的三种情形：$\{0,1\}$、$\Nbb$、$\Rbb$
 
 <div class="top2"></div>
 
-用全连接网络训练 ImageNet
+$x_j = \Ibb(v_j\text{出现在文本}\xv\text{中}) \in \{0,1\}$，$\theta_{kj} = \Pbb (x_j = 1 | y = k)$
 
-- 图片全部裁减到 224 × 224，输入层神经元个数为 50,176
-- 共有 1,000 个类别，输出层神经元个数为 1,000
-- 假设只有一个隐藏层，神经元个数取个折中 10,000
+<div class="top1"></div>
+
+$$
+\begin{align*}
+    \quad \Pbb (\xv | y = k, \thetav) = \prod_{j \in [d]} \Pbb (x_j | y = k, \thetav) = \prod_{j \in [d]} \theta_{kj}^{x_j} (1 - \theta_{kj})^{1 - x_j}
+\end{align*}
+$$
+
+<div class="top-4"></div>
+
+这是$d$个独立的伯努利分布的乘积
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 数值型特征 
+
+---
+
+以文本分类为例
+
+- 词汇表$\Vcal = \{ v_j \}_{j \in [d]}$，文本$\xv$，$d$维特征$[x_1; x_2; \ldots; x_d]$
+- 特征$x_j$对应词$v_j$，取值的三种情形：$\{0,1\}$、$\Nbb$、$\Rbb$
 
 <div class="top2"></div>
 
-总参数量为 (50,176 + 1,000) × 10,000 = 511,760,000
+$x_j = \text{词}v_j\text{在文本}\xv\text{中出现的次数} \in \Nbb$
 
-- 训练效率非常低
-- 很容易出现过拟合
+<div class="top-2"></div>
 
-<!-- slide vertical=true data-notes="" -->
+$\theta_{kj}$为第$k$类文本选取词$v_j$的概率
 
-##### 局部连接 权值共享
 
----
+$\Fbb = \Nbb$，词袋模型，文本的每个词依次从词汇表中随机选取生成
 
-@import "../dot/dense-vs-cnn.dot"
+- $x_j$为词$v_j$在文本$\xv$中出现的次数
+- $\theta_{kj}$为第$k$类文本选取词$v_j$的概率
 
-<div class="top0"></div>
-
-局部连接：每个神经元只与前一层确定数量的 (远小于总数) 神经元相连
-
-权值共享：确定数量的神经元均采用相同的输入权重系数
-
-限制神经元的输入权重个数，降低参数规模，降低模型复杂度
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 局部连接 权值共享
-
----
-
-<img src="../tikz/convolution1d.svg" class="center width75 top4 bottom4">
+<div class="top1"></div>
 
 $$
 \begin{align*}
-    \qquad \qquad \qquad \qquad a_1 & = x_1 \times w_1 + x_2 \times w_2 + x_3 \times w_3 \\
-    a_2 & = x_2 \times w_1 + x_3 \times w_2 + x_4 \times w_3 \\
-    a_3 & = x_3 \times w_1 + x_4 \times w_2 + x_5 \times w_3 \\
-    a_4 & = x_4 \times w_1 + x_5 \times w_2 + x_6 \times w_3
+    \quad [\theta_{k1}; \ldots; \theta_{kj}; \ldots; \theta_{kd}] \in \Delta_d, ~ \Pbb (\xv | y = k, \thetav) = \frac{(x_1 + \cdots + x_d)!}{x_1! \cdots x_d!} \prod_{j \in [d]} \theta_{kj}^{x_j}
 \end{align*}
 $$
 
-### 卷积神经网络：局部连接，权值共享
+<div class="top-7"></div>
 
-<!-- slide data-notes="" -->
+注意这是{==多项式分布==}
 
-##### 一维卷积
+<!-- slide vertical=true data-notes="" -->
+
+##### 其它特征种类
 
 ---
 
-<div class="top2"></div>
+$\Fbb = \Rbb$，tf - idf 模型，第$k$类样本的第$j$个特征$\sim \Ncal(\mu_{kj}, \sigma_{kj}^2)$
 
 $$
 \begin{align*}
-    \quad (f \otimes g) [n] = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m]
+    \quad \Pbb (\xv | y = k, \muv, \sigmav) = \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j - \mu_{kj})^2}{2 \sigma_{kj}^2} \right)
 \end{align*}
 $$
 
-<img src="../tikz/convolution1d.svg" class="center width75 top2 bottom4">
+<div class="top-2"></div>
 
-取$f[i] = x_i$，$g[-2] = w_3$，$g[-1] = w_2$，$g[0] = w_1$，其余为零
+注意这是$d$个独立的高斯分布的乘积
+
+剩下只需用极大似然估计$\thetav, \muv, \sigmav$
+
+<!-- slide data-notes="" -->
+
+##### 极大似然估计 情形 <span style="font-weight:900">1</span>
+
+---
+
+$\Fbb = \{0,1\}$，$x_j = \Ibb(v_j\text{出现在文本}\xv\text{中})$，$\theta_{kj} = \Pbb (x_j = 1 | y = k)$
+
+<div class="top1"></div>
 
 $$
 \begin{align*}
-    \quad a_n = x_n w_1 + x_{n+1} w_2 + x_{n+2} w_3 = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m] = (f \otimes g) [n]
+    \quad \Pbb (\xv | y = k, \thetav) = \prod_{j \in [d]} \Pbb (x_j | y = k, \thetav) = \prod_{j \in [d]} \theta_{kj}^{x_j} (1 - \theta_{kj})^{1 - x_j}
+\end{align*}
+$$
+
+对数似然函数中$\thetav$相关的项为
+
+$$
+\begin{align*}
+    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \Pbb (\xv^{(i)} | y^{(i)} = k, \thetav) \\
+    & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \prod_{j \in [d]} \theta_{kj}^{x_j^{(i)}} (1 - \theta_{kj})^{1 - x_j^{(i)}}        \\
+    & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
+    & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) )
 \end{align*}
 $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 二维卷积
+##### 极大似然估计 情形 <span style="font-weight:900">1</span>
 
 ---
 
-针对输入是矩阵的情形
+对数似然函数中$\thetav$相关的项为
 
-<img src="../tikz/convolution2d.svg" class="center width75 top3 bottom4">
+$$
+\begin{align*}
+    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
+    & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) )
+\end{align*}
+$$
 
-参与卷积的深色区域称为对应输出神经元的<span class="blue">感受野</span> (receptive field)
+<div class="top-4"></div>
 
-<!-- slide data-notes="" -->
+其中
 
-##### 二维卷积 图像滤波
-
----
-
-平滑去噪
-
-<div class="multi_column top6 left6" style="height:280px">
-    <img src="../img/tj/tj.jpg" class="height100 left4" >
-    <div style="display:flex;align-items:center;height:100%">
-        <p class="left2">
-            $\otimes ~ \begin{bmatrix}
-                \frac{1}{9} & \frac{1}{9} & \frac{1}{9} \\ \frac{1}{9} & \frac{1}{9} & \frac{1}{9} \\ \frac{1}{9} & \frac{1}{9} & \frac{1}{9}
-            \end{bmatrix} ~ =$ 
-        </p>
-    </div>
-    <img src="../img/tj/tj1.jpg" class="left-2 height100">
-</div>
+$$
+\begin{align*}
+    \quad B_{kj} & = \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} = \text{第}k\text{类文本中包含词}v_j\text{的文本数} \\
+    \Bbar_{kj} & = \sum_{i \in [m]} \Ibb(y^{(i)}=k) (1 - x_j^{(i)}) = \text{第}k\text{类文本中不包含词}v_j\text{的文本数}
+\end{align*}
+$$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 二维卷积 图像滤波
+##### 极大似然估计 情形 <span style="font-weight:900">1</span>
 
 ---
 
-边缘提取
+对数似然函数中$\thetav$相关的项为
 
-<div class="multi_column top6 left6" style="height:280px">
-    <img src="../img/tj/tj.jpg" class="height100 left4" >
-    <div style="display:flex;align-items:center;height:100%">
-        <p class="left2">
-            $\otimes ~ \begin{bmatrix}
-                0 & 1 & 1 \\ -1 & 0 & 1 \\ -1 & -1 & 0
-            \end{bmatrix} ~ = $ 
-        </p>
-    </div>
-    <img src="../img/tj/tj3.jpg" class="left-2 height100">
-</div>
+$$
+\begin{align*}
+    \quad & \mathrm{LL} (\thetav) = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) ) \\
+    & B_{kj} = \text{第}k\text{类文本中包含词}v_j\text{的文本数} \\
+    & \Bbar_{kj} = \text{第}k\text{类文本中不包含词}v_j\text{的文本数}
+\end{align*}
+$$
+
+对某个固定的$k$和$j$，估计$\theta_{kj}$只需求解优化问题
+
+$$
+\begin{align*}
+    \quad \max_{\theta_{kj}} ~ \{ B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) \}
+\end{align*}
+$$
+
+<div class="top-4"></div>
+
+令关于$\theta_{kj}$的导数为零可得
+
+$$
+\begin{align*}
+    \quad \theta_{kj} = \frac{B_{kj}}{B_{kj} + \Bbar_{kj}} = \frac{\text{第}k\text{类文本中包含词}v_j\text{的文本数}\quad ~~~}{\text{第}k\text{类文本数}}
+\end{align*}
+$$
 
 <!-- slide data-notes="" -->
 
-##### 汇聚
+##### 极大似然估计 情形 <span style="font-weight:900">2</span>
 
 ---
 
-汇聚 (pooling) 层也叫子采样 (subsampling) 层
+$\Fbb = \Nbb$，词袋模型，文本的每个词依次从词汇表中随机选取生成
 
-- 最大汇聚 (maximum pooling)：取区域内神经元最大值，<span class="blue">拥有一定的平移不变性</span>
+- $x_j$为词$v_j$在文本$\xv$中出现的次数
+- $\theta_{kj}$为第$k$类文本选取词$v_j$的概率
 
-<img src="../tikz/pooling-max.svg" class="center width50 top3 bottom3">
+<div class="top1"></div>
 
-- 平均汇聚 (mean pooling)：取区域内神经元平均值
+$$
+\begin{align*}
+    \quad [\theta_{k1}; \ldots; \theta_{kj}; \ldots; \theta_{kd}] \in \Delta_d, ~ \Pbb (\xv | y = k, \thetav) = \frac{(x_1 + \cdots + x_d)!}{x_1! \cdots x_d!} \prod_{j \in [d]} \theta_{kj}^{x_j}
+\end{align*}
+$$
 
-<br>
+<div class="top-4"></div>
 
-我的批注 将区域下采样为一个值，减少网络参数，降低模型复杂度
+对数似然函数中$\thetav$相关的项为
 
-<!-- slide data-notes="" -->
-
-##### 卷积神经网络
-
----
-
-卷积神经网络由卷积层、汇聚层、全连接层交叉堆叠而成
-
-@import "../dot/cnn.dot"
-
-<div class="top0"></div>
-
-趋势
-
-- 更小的卷积核，比如 3 × 3
-- 更深的结构，比如层数大于 50
-- 汇聚层的作用可由卷积步长代替，使用比例逐渐降低，趋向于全卷积网络
-
-<!-- slide data-notes="" -->
-
-##### 经典网络 <span style="font-weight:900">LeNet-5</span>
-
----
-
-<img src="../tikz/lenet.svg" class="center width90 top10">
+$$
+\begin{align*}
+    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \Pbb (\xv^{(i)} | y^{(i)} = k, \thetav) \\
+    & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \left\{ \frac{(x_1^{(i)} + \cdots + x_d^{(i)})!}{x_1^{(i)}! \cdots x_d^{(i)}!} \prod_{j \in [d]} \theta_{kj}^{x_j^{(i)}} \right\} \\
+    & = \const + \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj}
+\end{align*}
+$$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">LeNet-5</span> 手写数字识别
+##### 极大似然估计 情形 <span style="font-weight:900">2</span>
 
 ---
 
-@import "../python/tf-mnist.py" {.line-numbers .top-1}
+对数似然函数中$\thetav$相关的项为
 
+$$
+\begin{align*}
+    \quad & \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj} = \sum_{k \in [c]} \sum_{j \in [d]} B_{kj} \ln \theta_{kj} \\
+    & B_{kj} = \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} = \text{第}k\text{类文本中词}v_j\text{出现总次数}
+\end{align*}
+$$
+
+对某个固定的$k$，估计$\theta_{kj}$只需求解优化问题
+
+$$
+\begin{align*}
+    \quad \max_{\theta_{kj}} ~ \sum_{j \in [d]} B_{kj} \ln \theta_{kj}, \quad \st ~ \sum_{j \in [d]} \theta_{kj} = 1
+\end{align*}
+$$
+
+<div class="top-4"></div>
+
+拉格朗日函数$L = \sum_{j \in [d]} B_{kj} \ln \theta_{kj} - \lambda ( \sum_{j \in [d]} \theta_{kj} - 1 )$
+
+$$
+\begin{align*}
+    \quad \frac{\partial L}{\partial \theta_{kj}} = \frac{B_{kj}}{\theta_{kj}} - \lambda = 0 \Longrightarrow \theta_{kj} = \frac{\text{第}k\text{类文本中词}v_j\text{出现总次数}\quad~~~}{\text{第}k\text{类文本的总词数}}
+\end{align*}
+$$
 
 <!-- slide data-notes="" -->
 
-##### 经典网络复用
+##### 极大似然估计 情形 <span style="font-weight:900">3</span>
 
 ---
 
-使用在 ImageNet 训练好的残差网络 ResNet50 进行图像分类
+$\Fbb = \Rbb$，tf - idf 模型，第$k$类样本的第$j$个特征$\sim \Ncal(\mu_{kj}, \sigma_{kj}^2)$
 
-@import "../python/resnet50.py" {.line-numbers .top-1}
+$$
+\begin{align*}
+    \quad \Pbb (\xv | y = k, \muv, \sigmav) = \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j - \mu_{kj})^2}{2 \sigma_{kj}^2} \right)
+\end{align*}
+$$
 
-<img src="../img/tj/tj.jpg" style="height:250px;width:250px;margin-left:auto;margin-right:2.5rem;margin-top:-26%">
+<div class="top-2"></div>
+
+对数似然函数中$\muv, \sigmav$相关的项为
+
+$$
+\begin{align*}
+    \quad \mathrm{LL} & (\muv, \sigmav) = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \Pbb (\xv^{(i)} | y^{(i)} = k, \muv, \sigmav) \\
+    & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} \right) \\
+    & = \const + \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 极大似然估计 情形 <span style="font-weight:900">3</span>
+
+---
+
+对数似然函数中$\muv, \sigmav$相关的项为
+
+$$
+\begin{align*}
+    \quad \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
+\end{align*}
+$$
+
+<div class="top-3"></div>
+
+对某个固定的$k$和$j$，估计$\mu_{kj}$只需求解优化问题
+
+$$
+\begin{align*}
+    \quad \min_{\mu_{kj}} ~ \sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} - \mu_{kj})^2
+\end{align*}
+$$
+
+<div class="top-5"></div>
+
+令关于$\mu_{kj}$的导数为零
+
+$$
+\begin{align*}
+    \quad \mu_{kj} & = \frac{\sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)}}{\sum_{i \in [m]} \Ibb(y^{(i)}=k)} = \frac{\text{第}k\text{类文本第}j\text{个特征的和}\quad~}{\text{第}k\text{类文本数}} \\[4pt]
+    & = \text{第}k\text{类文本第}j\text{个特征的均值}
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 极大似然估计 情形 <span style="font-weight:900">3</span>
+
+---
+
+对数似然函数中$\muv, \sigmav$相关的项为
+
+$$
+\begin{align*}
+    \quad \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
+\end{align*}
+$$
+
+<div class="top-3"></div>
+
+对某个固定的$k$和$j$，估计$\sigma_{kj}$只需求解优化问题
+
+$$
+\begin{align*}
+    \quad \min_{\sigma_{kj}} ~ \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} + \ln \sigma_{kj} \right)
+\end{align*}
+$$
+
+<div class="top-5"></div>
+
+令关于$\sigma_{kj}$的导数为零
+
+$$
+\begin{align*}
+    \quad \sigma_{kj} & = \sqrt{\frac{\sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} - \mu_{kj})^2}{\sum_{i \in [m]} \Ibb(y^{(i)}=k)}} \\
+    & = \text{第}k\text{类文本第}j\text{个特征的标准差}
+\end{align*}
+$$

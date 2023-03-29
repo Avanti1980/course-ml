@@ -181,22 +181,17 @@ $$
 
 <div class="top-4"></div>
 <p>&#x5373;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x8D1D;&#x53F6;&#x65AF;&#x6700;&#x4F18;&#x6A21;&#x578B;<span class="mathjax-exps">$h^\star(\xv) = \mathop{\arg\max}_{\yhat \in [c]} \Pbb(\yhat|\xv)$</span></p>
-<p><span class="blue"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span> &#x5BF9;&#x4E8E;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;<mark>&#x6CDB;&#x5316;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;</mark>&#x7B49;&#x4EF7;&#x4E8E;<mark>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;</mark></p>
-</section></section><section><section data-notes lineno="183" class="slide " data-line="183" data-h="2" data-v="0">
+</section></section><section><section data-notes lineno="181" class="slide " data-line="181" data-h="2" data-v="0">
 <h5 class="mume-header" id="%E5%88%A4%E5%88%AB%E5%BC%8F-span-stylefont-weight900_vs_span-%E7%94%9F%E6%88%90%E5%BC%8F">&#x5224;&#x522B;&#x5F0F; <span style="font-weight:900"><em>vs.</em></span> &#x751F;&#x6210;&#x5F0F;</h5>
 
 <hr>
-<p>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;&#x7684;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF1A;&#x5224;&#x522B;&#x5F0F;&#x65B9;&#x6CD5;&#x3001;&#x751F;&#x6210;&#x5F0F;&#x65B9;&#x6CD5;</p>
-<p>&#x5224;&#x522B;&#x5F0F;&#x65B9;&#x6CD5;&#xFF1A;&#x76F4;&#x63A5;&#x7528;&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5F0F;&#x62DF;&#x5408;&#x540E;&#x9A8C;&#x6982;&#x7387;&#xFF0C;&#x5982;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</p>
-<p>
-
-$$
-\begin{align*}
-    \quad [\Pbb(y=1|\xv), \ldots, \Pbb(y=c|\xv)] = \softmax (\wv_1^\top \xv, \ldots, \wv_c^\top \xv)
-\end{align*}
-$$
-</p>
-
+<p><span class="mathjax-exps">$\mathop{\arg\max}_{y \in [c]} \Pbb(y|\xv)$</span>&#x7684;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF1A;&#x5224;&#x522B;&#x5F0F;&#x65B9;&#x6CD5;&#x3001;&#x751F;&#x6210;&#x5F0F;&#x65B9;&#x6CD5;</p>
+<p>&#x5224;&#x522B;&#x5F0F;&#x65B9;&#x6CD5;&#xFF1A;&#x76F4;&#x63A5;&#x7528;&#x7EBF;&#x6027;&#x5224;&#x522B;&#x5F0F;&#x62DF;&#x5408;<span class="mathjax-exps">$\Pbb(y|\xv)$</span>&#xFF0C;&#x5982;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</p>
+<ul>
+<li>&#x4E8C;&#x5206;&#x7C7B;&#xFF1A;<span class="mathjax-exps">$\Pbb(y=1|\xv) = \sigma(\wv^\top \xv)$</span></li>
+<li>&#x591A;&#x5206;&#x7C7B;&#xFF1A;<span class="mathjax-exps">$[\Pbb(y=1|\xv), \ldots, \Pbb(y=c|\xv)] = \softmax (\wv_1^\top \xv, \ldots, \wv_c^\top \xv)$</span></li>
+</ul>
+<div class="top2"></div>
 <p>&#x751F;&#x6210;&#x5F0F;&#x65B9;&#x6CD5;&#xFF1A;&#x8FC2;&#x56DE;&#x7B56;&#x7565;&#xFF0C;&#x7528;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#x4ECE;&#x6570;&#x636E;&#x7684;&#x751F;&#x6210;&#x673A;&#x5236;&#x5165;&#x624B;</p>
 <p>
 
@@ -211,7 +206,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="219" class="slide " data-line="219" data-h="2" data-v="1">
+</section><section vertical="true" data-notes lineno="212" class="slide " data-line="212" data-h="2" data-v="1">
 <h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF-1">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</h5>
 
 <hr>
@@ -226,7 +221,7 @@ $$
 </p>
 
 <div class="top-4"></div>
-<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\xv = [x_1; x_2; \ldots; x_d]$</span>&#xFF0C;&#x4E8E;&#x662F;&#x4F3C;&#x7136;</p>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\xv = [x_1; x_2; \ldots; x_d]$</span>&#xFF0C;&#x4E8E;&#x662F;&#x6709;&#x5206;&#x89E3;</p>
 <p>
 
 $$
@@ -237,7 +232,7 @@ $$
 </p>
 
 <div class="top-3"></div>
-<p>&#x5F53;&#x7279;&#x5F81;&#x6570;<span class="mathjax-exps">$d$</span>&#x5F88;&#x5927;&#x65F6;<span class="mathjax-exps">$\Pbb(\xv | y)$</span>&#x4F1A;&#x5F88;&#x96BE;&#x7B97;&#xFF0C;&#x8981;&#x8003;&#x8651;&#x6240;&#x6709;&#x7279;&#x5F81;&#x7684;&#x6240;&#x6709;&#x53D6;&#x503C;</p>
+<p>&#x4E0A;&#x5F0F;&#x5F88;&#x96BE;&#x7B97;&#xFF0C;&#x8981;&#x8003;&#x8651;&#x6240;&#x6709;&#x7279;&#x5F81;&#x7684;&#x6240;&#x6709;&#x53D6;&#x503C;&#xFF0C;&#x6307;&#x6570;&#x7206;&#x70B8;&#xFF01;</p>
 <div class="top4"></div>
 <p>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF; (<u>n</u>a&#xEF;ve <u>B</u>ayes, NB) &#x5F15;&#x5165;<mark>&#x6761;&#x4EF6;&#x72EC;&#x7ACB;&#x6027;&#x5047;&#x8BBE;</mark>&#xFF1A;</p>
 <p>
@@ -250,8 +245,8 @@ $$
 </p>
 
 <div class="top-2"></div>
-<p>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7528;&#x6570;&#x636E;&#x96C6;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Pbb(y), ~ \Pbb(x_1 | y), ~ \Pbb(x_2 | y), ~ \ldots, ~ \Pbb(x_d | y)$</span></p>
-</section></section><section><section data-notes lineno="273" class="slide " data-line="273" data-h="3" data-v="0">
+<p>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7528;&#x8BAD;&#x7EC3;&#x96C6;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Pbb(y), ~ \Pbb(x_1 | y), ~ \Pbb(x_2 | y), ~ \ldots, ~ \Pbb(x_d | y)$</span>&#xFF1F;</p>
+</section></section><section><section data-notes lineno="266" class="slide " data-line="266" data-h="3" data-v="0">
 <h5 class="mume-header" id="%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0">&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x4F30;&#x8BA1;&#x53C2;&#x6570;</h5>
 
 <hr>
@@ -275,7 +270,7 @@ $$
 $$
 </p>
 
-<p>&#x5BF9;&#x4E8E;<span class="mathjax-exps">$\Pbb(y | \xv)$</span>&#xFF0C;&#x8BBE;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x5171;&#x6709;<span class="mathjax-exps">$n_j$</span>&#x79CD;&#x4E0D;&#x540C;&#x53D6;&#x503C;<span class="mathjax-exps">$v_1^{(j)}, \ldots, v_{n_j}^{(j)}$</span></p>
+<p>&#x5BF9;&#x4E8E;<span class="mathjax-exps">$\Pbb(\xv | y)$</span>&#xFF0C;&#x8BBE;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x5171;&#x6709;<span class="mathjax-exps">$n_j$</span>&#x79CD;&#x4E0D;&#x540C;&#x53D6;&#x503C;<span class="mathjax-exps">$v_1^{(j)}, \ldots, v_{n_j}^{(j)}$</span></p>
 <div class="top-2"></div>
 <p>&#x8BB0;&#x53C2;&#x6570;<span class="mathjax-exps">$\theta_{kjl} = \Pbb( x_j = v_l^{(j)} | y=k)$</span>&#xFF0C;&#x4E8E;&#x662F;&#x5BF9;<span class="mathjax-exps">$\forall k \in [c]$</span>&#x548C;<span class="mathjax-exps">$\forall j \in [d]$</span>&#x6709;</p>
 <p>
@@ -287,7 +282,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="319" class="slide " data-line="319" data-h="3" data-v="1">
+</section><section vertical="true" data-notes lineno="312" class="slide " data-line="312" data-h="3" data-v="1">
 <h5 class="mume-header" id="%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0-1">&#x4ECE;&#x6570;&#x636E;&#x4E2D;&#x4F30;&#x8BA1;&#x53C2;&#x6570;</h5>
 
 <hr>
@@ -305,7 +300,7 @@ $$
 $$
 </p>
 
-</section></section><section><section data-notes lineno="341" class="slide " data-line="341" data-h="4" data-v="0">
+</section></section><section><section data-notes lineno="334" class="slide " data-line="334" data-h="4" data-v="0">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
 
 <hr>
@@ -334,7 +329,7 @@ $$
 
 <div class="top-2"></div>
 <p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x6839;&#x636E;&#x4EA4;&#x53C9;&#x71B5;&#x7684;&#x7ED3;&#x8BBA;&#x4E5F;&#x53EF;&#x5F97;&#x5230;&#x8BE5;&#x7ED3;&#x679C;</p>
-</section><section vertical="true" data-notes lineno="380" class="slide " data-line="380" data-h="4" data-v="1">
+</section><section vertical="true" data-notes lineno="373" class="slide " data-line="373" data-h="4" data-v="1">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
 
 <hr>
@@ -353,8 +348,8 @@ $$
 </p>
 
 <div class="top-4"></div>
-<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$B_{kjl}$</span>&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;<span class="mathjax-exps">$v_l^{(j)}$</span>&#x7684;&#x6837;&#x672C;&#x6570;</p>
-</section><section vertical="true" data-notes lineno="406" class="slide " data-line="406" data-h="4" data-v="2">
+<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$B_{kjl} = \sum_{i \in [m]} \Ibb(y^{(i)}=k) \Ibb(x_j^{(i)} = v_l^{(j)})$</span>&#x4E3A;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x4E2D;&#x7B2C;<span class="mathjax-exps">$j$</span>&#x4E2A;&#x7279;&#x5F81;&#x53D6;&#x503C;<span class="mathjax-exps">$v_l^{(j)}$</span>&#x7684;&#x6837;&#x672C;&#x6570;</p>
+</section><section vertical="true" data-notes lineno="399" class="slide " data-line="399" data-h="4" data-v="2">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-2">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</h5>
 
 <hr>
@@ -379,11 +374,11 @@ $$
 $$
 </p>
 
-</section></section><section><section data-notes lineno="437" class="slide " data-line="437" data-h="5" data-v="0">
+</section></section><section><section data-notes lineno="430" class="slide " data-line="430" data-h="5" data-v="0">
 <h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%AE%97%E6%B3%95">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x7B97;&#x6CD5;</h5>
 
 <hr>
-<p>&#x540E;&#x9A8C;&#x6982;&#x7387;&#x6700;&#x5927;&#x5316;&#xFF1A;</p>
+<p>&#x6839;&#x636E;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#x548C;&#x6761;&#x4EF6;&#x72EC;&#x7ACB;&#x6027;&#x5047;&#x8BBE;</p>
 <p>
 
 $$
@@ -406,7 +401,7 @@ $$
 </p>
 
 <p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x5C31;&#x662F;&#x6570;&#x6570;&#xFF01;</p>
-</section><section vertical="true" data-notes lineno="471" class="slide " data-line="471" data-h="5" data-v="1">
+</section><section vertical="true" data-notes lineno="464" class="slide " data-line="464" data-h="5" data-v="1">
 <h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E9%A2%84%E6%B5%8B%E7%BA%A6%E4%BC%9A">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x9884;&#x6D4B;&#x7EA6;&#x4F1A;</h5>
 
 <hr>
@@ -627,7 +622,7 @@ $$
 <p><span class="mathjax-exps">$\Large \frac{8}{17} \frac{3}{8} \frac{3}{8} \frac{2}{8} \frac{1}{8} \frac{5}{8}  \frac{2}{8} &lt; \frac{9}{17} \frac{3}{9} \frac{4}{9} \frac{3}{9} \frac{4}{9} \frac{2}{9} \frac{3}{9}$</span></p>
 <p>&#x9884;&#x6D4B;&#x7ED3;&#x679C;&#x4E3A;&#x201C;&#x7EA6;&#x4F1A;=&#x5426;&#x201D;</p>
 </div>
-</section></section><section><section data-notes lineno="528" class="slide " data-line="528" data-h="6" data-v="0">
+</section></section><section><section data-notes lineno="521" class="slide " data-line="521" data-h="6" data-v="0">
 <h5 class="mume-header" id="%E5%85%B6%E5%AE%83%E7%89%B9%E5%BE%81%E7%A7%8D%E7%B1%BB">&#x5176;&#x5B83;&#x7279;&#x5F81;&#x79CD;&#x7C7B;</h5>
 
 <hr>
@@ -664,7 +659,7 @@ $$
 
 <div class="top-7"></div>
 <p>&#x6CE8;&#x610F;&#x8FD9;&#x662F;<mark>&#x591A;&#x9879;&#x5F0F;&#x5206;&#x5E03;</mark></p>
-</section><section vertical="true" data-notes lineno="579" class="slide " data-line="579" data-h="6" data-v="1">
+</section><section vertical="true" data-notes lineno="572" class="slide " data-line="572" data-h="6" data-v="1">
 <h5 class="mume-header" id="%E5%85%B6%E5%AE%83%E7%89%B9%E5%BE%81%E7%A7%8D%E7%B1%BB-1">&#x5176;&#x5B83;&#x7279;&#x5F81;&#x79CD;&#x7C7B;</h5>
 
 <hr>
@@ -681,7 +676,7 @@ $$
 <div class="top-2"></div>
 <p>&#x6CE8;&#x610F;&#x8FD9;&#x662F;<span class="mathjax-exps">$d$</span>&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x9AD8;&#x65AF;&#x5206;&#x5E03;&#x7684;&#x4E58;&#x79EF;</p>
 <p>&#x5269;&#x4E0B;&#x53EA;&#x9700;&#x7528;&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\thetav, \muv, \sigmav$</span></p>
-</section></section><section><section data-notes lineno="603" class="slide " data-line="603" data-h="7" data-v="0">
+</section></section><section><section data-notes lineno="596" class="slide " data-line="596" data-h="7" data-v="0">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9001span">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">1</span></h5>
 
 <hr>
@@ -709,7 +704,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="638" class="slide " data-line="638" data-h="7" data-v="1">
+</section><section vertical="true" data-notes lineno="631" class="slide " data-line="631" data-h="7" data-v="1">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9001span-1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">1</span></h5>
 
 <hr>
@@ -736,7 +731,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="672" class="slide " data-line="672" data-h="7" data-v="2">
+</section><section vertical="true" data-notes lineno="665" class="slide " data-line="665" data-h="7" data-v="2">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9001span-2">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">1</span></h5>
 
 <hr>
@@ -773,7 +768,7 @@ $$
 $$
 </p>
 
-</section></section><section><section data-notes lineno="718" class="slide " data-line="718" data-h="8" data-v="0">
+</section></section><section><section data-notes lineno="711" class="slide " data-line="711" data-h="8" data-v="0">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9002span">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">2</span></h5>
 
 <hr>
@@ -805,7 +800,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="757" class="slide " data-line="757" data-h="8" data-v="1">
+</section><section vertical="true" data-notes lineno="750" class="slide " data-line="750" data-h="8" data-v="1">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9002span-1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">2</span></h5>
 
 <hr>
@@ -841,7 +836,7 @@ $$
 $$
 </p>
 
-</section></section><section><section data-notes lineno="802" class="slide " data-line="802" data-h="9" data-v="0">
+</section></section><section><section data-notes lineno="795" class="slide " data-line="795" data-h="9" data-v="0">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9003span">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">3</span></h5>
 
 <hr>
@@ -868,7 +863,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="836" class="slide " data-line="836" data-h="9" data-v="1">
+</section><section vertical="true" data-notes lineno="829" class="slide " data-line="829" data-h="9" data-v="1">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9003span-1">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">3</span></h5>
 
 <hr>
@@ -905,7 +900,7 @@ $$
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="883" class="slide " data-line="883" data-h="9" data-v="2">
+</section><section vertical="true" data-notes lineno="876" class="slide " data-line="876" data-h="9" data-v="2">
 <h5 class="mume-header" id="%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1-%E6%83%85%E5%BD%A2-span-stylefont-weight9003span-2">&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1; &#x60C5;&#x5F62; <span style="font-weight:900">3</span></h5>
 
 <hr>
@@ -942,7 +937,7 @@ $$
 $$
 </p>
 
-</section></section><section><section data-notes lineno="930" class="slide " data-line="930" data-h="10" data-v="0">
+</section></section><section><section data-notes lineno="923" class="slide " data-line="923" data-h="10" data-v="0">
 <h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E9%A2%84%E6%B5%8B%E7%BA%A6%E4%BC%9A-1">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x9884;&#x6D4B;&#x7EA6;&#x4F1A;</h5>
 
 <hr>
@@ -1150,7 +1145,7 @@ $$
 <p>&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x65E0;&#x8D1F;&#x6837;&#x672C;</p>
 <p>&#x6A21;&#x578B;&#x65E0;&#x8111;&#x9884;&#x6D4B;&#x201C;&#x7EA6;&#x4F1A;=&#x662F;&#x201D;</p>
 </div>
-</section><section vertical="true" data-notes lineno="973" class="slide " data-line="973" data-h="10" data-v="1">
+</section><section vertical="true" data-notes lineno="966" class="slide " data-line="966" data-h="10" data-v="1">
 <h5 class="mume-header" id="%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E9%A2%84%E6%B5%8B%E7%BA%A6%E4%BC%9A-2">&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x9884;&#x6D4B;&#x7EA6;&#x4F1A;</h5>
 
 <hr>
@@ -1365,7 +1360,7 @@ $$
 <p>&#x6B63;&#x6837;&#x672C;&#x4E2D;&#x65E0;&#x201C;&#x5929;&#x6C14;=&#x96E8;&#x5929;&#x201D;&#x7684;&#x6837;&#x672C;</p>
 <p>&#x4F3C;&#x7136;&#x4E58;&#x79EF;&#x4E3A;&#x96F6;&#xFF0C;&#x5176;&#x5B83;&#x7279;&#x5F81;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;</p>
 </div>
-</section><section vertical="true" data-notes lineno="1024" class="slide " data-line="1024" data-h="10" data-v="2">
+</section><section vertical="true" data-notes lineno="1017" class="slide " data-line="1017" data-h="10" data-v="2">
 <h5 class="mume-header" id="%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%B9%B3%E6%BB%91">&#x62C9;&#x666E;&#x62C9;&#x65AF;&#x5E73;&#x6ED1;</h5>
 
 <hr>
