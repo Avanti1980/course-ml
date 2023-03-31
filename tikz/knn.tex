@@ -1,0 +1,80 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+%\usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+\tikzset{font=\normalsize}
+
+ % define the plot style and the axis style
+\tikzset{base/.style={smooth,thick,draw=Solarized-base01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{nc/.style={circle, base}}
+
+\begin{document}
+\begin{tikzpicture}[scale = 2]
+  % 8 regions
+  \coordinate (A) at (0.27,1.17);
+  \fill (A) circle (0.5pt) ;
+  \coordinate (B) at (0.95,1.63);
+  \fill (B) circle (0.5pt) [red];
+  \coordinate (C) at (1.31,1.49);
+  \fill (C) circle (0.5pt) [red];
+  \coordinate (D) at (0.61,0.69);
+  \fill (D) circle (0.5pt);
+  \coordinate (E) at (1.59,0.53);
+  \fill (E) circle (0.5pt);
+  \coordinate (F) at (1.36,0.01);
+  \fill (F) circle (0.5pt);
+  \coordinate (G) at (1.72,0.18);
+  \fill (G) circle (0.5pt) [red];
+  \coordinate (H) at (1.85,0.11);
+  \fill (H) circle (0.5pt) [red];
+
+  % ridge_vertices
+  \coordinate (AB) at (0.35,1.79);
+  \coordinate (BC) at (1.22,1.79);
+  \coordinate (ABD) at (0.76,1.17);
+  \coordinate (BCD) at (0.95,1.1);
+  \coordinate (CE) at (2,1.18);
+  \coordinate (CDE) at (1.15,0.93);
+  \coordinate (AD) at (0,0.7);
+  \coordinate (DEF) at (1.07,0.455);
+  \coordinate (EFG) at (1.45,0.28);
+  \coordinate (EGH) at (1.96,0.48);
+  \coordinate (EH) at (2,0.505);
+  \coordinate (DF) at (0.525,-0.14);
+  \coordinate (FGH) at (1.64,-0.11);
+  \coordinate (FH) at (1.64,-0.14);
+
+  % ridges
+  \draw [base] (AB) -- (ABD);
+  \draw [base] (BC) -- (BCD);
+  \draw [base] (ABD) -- (BCD);
+  \draw [base] (ABD) -- (AD);
+  \draw [base] (BCD) -- (CDE);
+  \draw [base] (CE) -- (CDE);
+  \draw [base] (CDE) -- (DEF);
+  \draw [base] (DEF) -- (EFG);
+  \draw [base] (DEF) -- (DF);
+  \draw [base] (EFG) -- (EGH);
+  \draw [base] (EFG) -- (FGH);
+  \draw [base] (EGH) -- (EH);
+  \draw [base] (EGH) -- (FGH);
+  \draw [base] (FGH) -- (FH);
+
+  \draw [arrow] (0,-0.14) -- (0,1.9) node () [left] {$x_2$};
+  \draw [arrow] (0,-0.14) -- (2.1,-0.14) node () [below] {$x_1$};
+
+  % fill positive regions
+  \filldraw [Solarized-base02, opacity=0.2] (AB) -- (ABD) -- (BCD) -- (BC);
+  \filldraw [Solarized-base02, opacity=0.2] (BC) -- (BCD) -- (CDE) -- (CE) -- (2,1.8);
+  \filldraw [Solarized-base02, opacity=0.2] (EFG) -- (EGH) -- (FGH);
+  \filldraw [Solarized-base02, opacity=0.2] (EH) -- (EGH) -- (FGH) -- (FH) -- (2,-0.14);
+\end{tikzpicture}
+
+\end{document}
