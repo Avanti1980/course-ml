@@ -27,335 +27,304 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-ml.js"
 
+
+
 <!-- slide data-notes="" -->
 
-##### 数值型特征 
+##### 理论分析 <span style="font-weight:900">1-</span>近邻法
 
 ---
 
-以文本分类为例
+定理：设$(\Xcal, \dist(\cdot, \cdot))$是{==可分==}度量空间，标记集合$\Ycal = \{ 1, -1 \}$，贝叶斯最优分类器$h^\star(\xv) = \mathop{\arg\max}_{y \in \Ycal} \Pbb(y|\xv)$的错误率为$R^\star$，训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Xcal \times \Ycal)^m$，1-近邻法的错误率为$R_m$，记$R = \lim_{m \rightarrow \infty} R_m$，则$R^\star \le R \le 2 R^\star (1 - R^\star)${==以概率 1 成立==}
 
-- 词汇表$\Vcal = \{ v_j \}_{j \in [d]}$，文本$\xv$，$d$维特征$[x_1; x_2; \ldots; x_d]$
-- 特征$x_j$对应词$v_j$，取值的三种情形：$\{0,1\}$、$\Nbb$、$\Rbb$
-
-<div class="top2"></div>
-
-$x_j = \Ibb(v_j\text{出现在文本}\xv\text{中}) \in \{0,1\}$，$\theta_{kj} = \Pbb (x_j = 1 | y = k)$
+证明思路：在空间可分的条件下，1-近邻序列$\xvhat_n \overset{\text{a.s.}}{\rightarrow} \xv$，从而1-近邻的错误率 $\overset{\text{a.s.}}{\rightarrow}$ 在$\xv$处采样两次标记不同的概率
 
 <div class="top1"></div>
 
 $$
 \begin{align*}
-    \quad \Pbb (\xv | y = k, \thetav) = \prod_{j \in [d]} \Pbb (x_j | y = k, \thetav) = \prod_{j \in [d]} \theta_{kj}^{x_j} (1 - \theta_{kj})^{1 - x_j}
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-这是$d$个独立的伯努利分布的乘积
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 数值型特征 
-
----
-
-以文本分类为例
-
-- 词汇表$\Vcal = \{ v_j \}_{j \in [d]}$，文本$\xv$，$d$维特征$[x_1; x_2; \ldots; x_d]$
-- 特征$x_j$对应词$v_j$，取值的三种情形：$\{0,1\}$、$\Nbb$、$\Rbb$
-
-<div class="top2"></div>
-
-$x_j = \text{词}v_j\text{在文本}\xv\text{中出现的次数} \in \Nbb$，文本总词数$x_1 + \cdots + x_d$
-
-第$k$类文本的每个词从词汇表中依概率$[\theta_{k1}; \ldots; \theta_{kj}; \ldots; \theta_{kd}]$选取
-
-<div class="top-2"></div>
-
-$\theta_{kj}$为第$k$类文本选取词$v_j$的概率，$\sum_{j \in [d]} \theta_{kj} = 1$
-
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad \Pbb (\xv | y = k, \thetav) = \frac{(x_1 + \cdots + x_d)!}{x_1! \cdots x_d!} \prod_{j \in [d]} \theta_{kj}^{x_j}
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-这是{==多项式分布==}，特别的，$d=2$即为二项式分布
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 数值型特征 
-
----
-
-以文本分类为例
-
-- 词汇表$\Vcal = \{ v_j \}_{j \in [d]}$，文本$\xv$，$d$维特征$[x_1; x_2; \ldots; x_d]$
-- 特征$x_j$对应词$v_j$，取值的三种情形：$\{0,1\}$、$\Nbb$、$\Rbb$
-
-<div class="top2"></div>
-
-$x_j \sim \Ncal(\mu_j, \sigma_j^2) \in \Rbb$，假设实数特征 (e.g., tf - idf) 服从高斯分布
-
-$$
-\begin{align*}
-    \quad \Pbb (\xv | y = k, \muv, \sigmav) = \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j - \mu_{kj})^2}{2 \sigma_{kj}^2} \right)
-\end{align*}
-$$
-
-<div class="top-2"></div>
-
-这是$d$个独立的高斯分布的乘积
-
-<!-- slide data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">1</span>
-
----
-
-$x_j = \Ibb(v_j\text{出现在文本}\xv\text{中}) \in \{0,1\}$，$\theta_{kj} = \Pbb (x_j = 1 | y = k)$
-
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad \Pbb (\xv | y = k, \thetav) = \prod_{j \in [d]} \Pbb (x_j | y = k, \thetav) = \prod_{j \in [d]} \theta_{kj}^{x_j} (1 - \theta_{kj})^{1 - x_j}
-\end{align*}
-$$
-
-对数似然函数中$\thetav$相关的项为
-
-$$
-\begin{align*}
-    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \Pbb (\xv^{(i)} | y^{(i)} = k, \thetav) \\
-    & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \prod_{j \in [d]} \theta_{kj}^{x_j^{(i)}} (1 - \theta_{kj})^{1 - x_j^{(i)}}        \\
-    & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
-    & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) )
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">1</span>
-
----
-
-对数似然函数中$\thetav$相关的项为
-
-$$
-\begin{align*}
-    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
-    & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) )
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-其中
-
-$$
-\begin{align*}
-    \quad B_{kj} & = \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} = \text{第}k\text{类文本中包含词}v_j\text{的文本数} \\
-    \Bbar_{kj} & = \sum_{i \in [m]} \Ibb(y^{(i)}=k) (1 - x_j^{(i)}) = \text{第}k\text{类文本中不包含词}v_j\text{的文本数}
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">1</span>
-
----
-
-对数似然函数中$\thetav$相关的项为
-
-$$
-\begin{align*}
-    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) ) \\
-    B_{kj} & = \text{第}k\text{类文本中包含词}v_j\text{的文本数} \\
-    \Bbar_{kj} & = \text{第}k\text{类文本中不包含词}v_j\text{的文本数}
-\end{align*}
-$$
-
-对某个固定的$k$和$j$，估计$\theta_{kj}$只需求解优化问题
-
-$$
-\begin{align*}
-    \quad \max_{\theta_{kj}} ~ \{ B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) \}
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-令关于$\theta_{kj}$的导数为零可得
-
-$$
-\begin{align*}
-    \quad \theta_{kj} = \frac{B_{kj}}{B_{kj} + \Bbar_{kj}} = \frac{\text{第}k\text{类文本中包含词}v_j\text{的文本数}\quad ~~~}{\text{第}k\text{类文本数}}
-\end{align*}
-$$
-
-<!-- slide data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">2</span>
-
----
-
-$x_j = \text{词}v_j\text{在文本}\xv\text{中出现的次数} \in \Nbb$
-
-<div class="top-2"></div>
-
-$\theta_{kj}$为第$k$类文本选取词$v_j$的概率，$\sum_{j \in [d]} \theta_{kj} = 1$
-
-<div class="top0"></div>
-
-$$
-\begin{align*}
-    \quad \Pbb (\xv | y = k, \thetav) = \frac{(x_1 + \cdots + x_d)!}{x_1! \cdots x_d!} \prod_{j \in [d]} \theta_{kj}^{x_j}
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-对数似然函数中$\thetav$相关的项为
-
-$$
-\begin{align*}
-    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \Pbb (\xv^{(i)} | y^{(i)} = k, \thetav) \\
-    & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \left\{ \frac{(x_1^{(i)} + \cdots + x_d^{(i)})!}{x_1^{(i)}! \cdots x_d^{(i)}!} \prod_{j \in [d]} \theta_{kj}^{x_j^{(i)}} \right\} \\
-    & = \const + \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj}
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">2</span>
-
----
-
-对数似然函数中$\thetav$相关的项为
-
-$$
-\begin{align*}
-    \quad \mathrm{LL} (\thetav) & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj} = \sum_{k \in [c]} \sum_{j \in [d]} B_{kj} \ln \theta_{kj} \\
-    B_{kj} & = \sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)} = \text{第}k\text{类文本中词}v_j\text{出现总次数}
-\end{align*}
-$$
-
-对某个固定的$k$，估计$\theta_{kj}$只需求解优化问题
-
-$$
-\begin{align*}
-    \quad \max_{\theta_{kj}} ~ \sum_{j \in [d]} B_{kj} \ln \theta_{kj}, \quad \st ~ \sum_{j \in [d]} \theta_{kj} = 1
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-拉格朗日函数$L = \sum_{j \in [d]} B_{kj} \ln \theta_{kj} - \lambda ( \sum_{j \in [d]} \theta_{kj} - 1 )$
-
-$$
-\begin{align*}
-    \quad \frac{\partial L}{\partial \theta_{kj}} = \frac{B_{kj}}{\theta_{kj}} - \lambda = 0 \Longrightarrow \theta_{kj} = \frac{\text{第}k\text{类文本中词}v_j\text{出现总次数}\quad~~~}{\text{第}k\text{类文本的总词数}}
-\end{align*}
-$$
-
-<!-- slide data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">3</span>
-
----
-
-$x_j \sim \Ncal(\mu_j, \sigma_j^2) \in \Rbb$，假设实数特征 (e.g., tf - idf) 服从高斯分布
-
-$$
-\begin{align*}
-    \quad \Pbb (\xv | y = k, \muv, \sigmav) = \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j - \mu_{kj})^2}{2 \sigma_{kj}^2} \right)
-\end{align*}
-$$
-
-<div class="top-2"></div>
-
-对数似然函数中$\muv, \sigmav$相关的项为
-
-$$
-\begin{align*}
-    \quad \mathrm{LL} & (\muv, \sigmav) = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \Pbb (\xv^{(i)} | y^{(i)} = k, \muv, \sigmav) \\
-    & = \sum_{k \in [c]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \ln \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} \right) \\
-    & = \const + \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 极大似然估计 情形 <span style="font-weight:900">3</span>
-
----
-
-对数似然函数中$\muv, \sigmav$相关的项为
-
-$$
-\begin{align*}
-    \quad \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
+    \quad \Pbb(e) & = \Pbb(y=1|\xv)\Pbb(y=-1|\xv) + \Pbb(y=-1|\xv)\Pbb(y=1|\xv) \\
+    & = 2 \Pbb(y=1|\xv) \Pbb(y=-1|\xv) \\
+    & = 2 \underbrace{\Pbb(y=h^\star(\xv)|\xv)}_{h^\star(\xv)\text{的正确率}\qquad} \underbrace{(1 - \Pbb(y=h^\star(\xv)|\xv))}_{h^\star(\xv)\text{的错误率}\qquad}
 \end{align*}
 $$
 
 <div class="top-3"></div>
 
-对某个固定的$k$和$j$，估计$\mu_{kj}$只需求解优化问题
+接近右边的形式了，再对$\xv$求期望即可
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 理论分析 <span style="font-weight:900">1-</span>近邻法
+
+---
+
+设贝叶斯最优分类器$h^\star(\xv) = \mathop{\arg\max}_{y \in \Ycal} \Pbb(y|\xv)$的错误率为$R^\star$
 
 $$
 \begin{align*}
-    \quad \min_{\mu_{kj}} ~ \sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} - \mu_{kj})^2
+    \quad R^\star = \int \underbrace{(1 - \Pbb(h^\star(\xv) | \xv))}_{h^\star(\xv)\text{出错的概率}\qquad} \Pbb(\xv) \diff \xv = \int \Pbb (e^\star | \xv) \Pbb(\xv) \diff \xv
 \end{align*}
 $$
 
-<div class="top-5"></div>
+<div class="top-2"></div>
 
-令关于$\mu_{kj}$的导数为零
+设 1-近邻法的错误率为$R_m$，其中下标$m$表示样本数，则
 
 $$
 \begin{align*}
-    \quad \mu_{kj} & = \frac{\sum_{i \in [m]} \Ibb(y^{(i)}=k) x_j^{(i)}}{\sum_{i \in [m]} \Ibb(y^{(i)}=k)} = \frac{\text{第}k\text{类文本第}j\text{个特征的和}\quad~}{\text{第}k\text{类文本数}} \\[4pt]
-    & = \text{第}k\text{类文本第}j\text{个特征的均值}
+    \quad R^\star \le R = \lim_{m \rightarrow \infty} R_m \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right) \overset{c=2}{=} 2 R^\star (1 - R^\star)
+\end{align*}
+$$
+
+对二分类问题，易知当$R^\star \in \{ 0, 1/2 \}$时，界是紧的
+
+下界是显然的，下面考虑上界
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 理论分析
+
+---
+
+设 1-近邻法的错误率为$R_m$，其中下标$m$表示样本数，则
+
+$$
+\begin{align*}
+    \quad R^\star & = \int \underbrace{(1 - \Pbb(h^\star(\xv) | \xv))}_{h^\star(\xv)\text{出错的概率}\qquad} \Pbb(\xv) \diff \xv = \int \Pbb (e^\star | \xv) \Pbb(\xv) \diff \xv \\
+    R^\star & \le R = \lim_{m \rightarrow \infty} R_m \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right) \overset{c=2}{=} 2 R^\star (1 - R^\star)
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+预测出错的概率为$\Pbb(e|\xv) = 1 - \sum_{j \in [c]} \Pbb(y=j|\xv) \Pbb(\yhat=j|\xvhat)$，当$m \rightarrow \infty$时有$\xvhat \rightarrow \xv$，从而$\Pbb(e|\xv) = 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2$，于是
+
+$$
+\begin{align*}
+    \quad R = \int \Pbb(e|\xv) \Pbb(\xv) \diff \xv = \int \left( 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2 \right) \Pbb(\xv) \diff \xv
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+欲证$R$的上界，需考虑$\sum_{j \in [c]} \Pbb(j|\xv)^2$的下界
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 理论分析
+
+---
+
+<div class="top1"></div>
+
+$$
+\begin{align*}
+    \quad R = \int \Pbb(e|\xv) \Pbb(\xv) \diff \xv = \int \left( 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2 \right) \Pbb(\xv) \diff \xv
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+下面考虑$\sum_{j \in [c]} \Pbb(j|\xv)^2$的下界，由柯西不等式有
+
+$$
+\begin{align*}
+    \quad \sum_{j \neq h^\star(\xv)} & \Pbb(j|\xv)^2 \geq \frac{( \sum_{j \neq h^\star(\xv)} \Pbb(j|\xv) )^2}{c-1}  = \frac{(1 - \Pbb(h^\star(\xv)|\xv))^2}{c-1} = \frac{\Pbb(e^\star|\xv)^2}{c-1} \\[5pt]
+    \Longrightarrow 1 & - \sum_{j \in [c]} \Pbb(j|\xv)^2 = 1 - \Pbb(h^\star(\xv)|\xv)^2 - \sum_{j \neq h^\star(\xv)} \Pbb(j|\xv)^2 \\
+    & \le 1 - (1 - \Pbb(e^\star|\xv))^2 - \frac{\Pbb(e^\star|\xv)^2}{c-1} \\
+    & = 2 \Pbb(e^\star|\xv) - \Pbb(e^\star|\xv)^2 - \frac{\Pbb(e^\star|\xv)^2}{c-1} = 2 \Pbb(e^\star|\xv) - \frac{c}{c-1} \Pbb(e^\star|\xv)^2
 \end{align*}
 $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 极大似然估计 情形 <span style="font-weight:900">3</span>
+##### <span style="font-weight:900">1-</span>近邻法 理论分析
 
 ---
 
-对数似然函数中$\muv, \sigmav$相关的项为
+将$\sum_{j \in [c]} \Pbb(j|\xv)^2$的下界回代有
 
 $$
 \begin{align*}
-    \quad \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
+    \quad R & = \int \Pbb(e|\xv) \Pbb(\xv) \diff \xv = \int \left( 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2 \right) \Pbb(\xv) \diff \xv \\
+    & \le \int \left( 2 \Pbb(e^\star|\xv) - \frac{c}{c-1} \Pbb(e^\star|\xv)^2 \right) \Pbb(\xv) \diff \xv \\
+    & = 2 R^\star - \frac{c}{c-1} \int \Pbb(e^\star|\xv)^2 \Pbb(\xv) \diff \xv \quad \longleftarrow \text{第二项是二阶矩} \\
+    & = 2 R^\star - \frac{c}{c-1} ({R^\star}^2 + \text{方差}) \\
+    & \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right)
 \end{align*}
 $$
+
+<!-- slide data-notes="" -->
+
+##### <span style="font-weight:900">k-</span>近邻法
+
+---
+
+输入：$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Xcal \times \Ycal)^m$，待预测样本$\xv$
 
 <div class="top-3"></div>
 
-对某个固定的$k$和$j$，估计$\sigma_{kj}$只需求解优化问题
+输出：$\xv$的类别$y$
+
+1. 根据选定的距离度量，记$D$中与$\xv$最近的$k$个样本构成的集合为$N_k(\xv)$
+2. 在$N_k(\xv)$中根据{==多数表决==}确定$\xv$的类别$y$
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
-    \quad \min_{\sigma_{kj}} ~ \sum_{i \in [m]} \Ibb(y^{(i)}=k) \left( \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} + \ln \sigma_{kj} \right)
+    \qquad y = \mathop{\arg \max}_{\yhat \in [c]} \sum_{\xv_i \in N_k(\xv)} \Ibb(y_i = \yhat)
 \end{align*}
 $$
 
-<div class="top-5"></div>
+一些说明：
 
-令关于$\sigma_{kj}$的导数为零
+- $k$选择奇数，避免出现打平的情况，中央政治局常委也都是奇数位
+- 当$m \rightarrow \infty$时有$R^\star \le \cdots \le R^{(5)} \le R^{(3)} \le R^{(1)} \le 2 R^\star (1 - R^\star)$
+- 在$m$有限的情况下，$k$并不是越大越好，取$k = m$往往欠拟合
+- 一些改进的变种：加权多数表决，带拒绝的多数表决
+
+
+
+
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 理论分析 <span style="font-weight:900">1-</span>近邻法
+
+---
+
+设贝叶斯最优分类器$h^\star(\xv) = \mathop{\arg\max}_{y \in \Ycal} \Pbb(y|\xv)$的错误率为$R^\star$
 
 $$
 \begin{align*}
-    \quad \sigma_{kj}^2 & = \frac{\sum_{i \in [m]} \Ibb(y^{(i)}=k) (x_j^{(i)} - \mu_{kj})^2}{\sum_{i \in [m]} \Ibb(y^{(i)}=k)} \\
-    & = \text{第}k\text{类文本第}j\text{个特征的方差}
+    \quad R^\star = \int \underbrace{(1 - \Pbb(h^\star(\xv) | \xv))}_{h^\star(\xv)\text{出错的概率}\qquad} \Pbb(\xv) \diff \xv = \int \Pbb (e^\star | \xv) \Pbb(\xv) \diff \xv
 \end{align*}
 $$
+
+<div class="top-2"></div>
+
+设 1-近邻法的错误率为$R_m$，其中下标$m$表示样本数，则
+
+$$
+\begin{align*}
+    \quad R^\star \le R = \lim_{m \rightarrow \infty} R_m \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right) \overset{c=2}{=} 2 R^\star (1 - R^\star)
+\end{align*}
+$$
+
+对二分类问题，易知当$R^\star \in \{ 0, 1/2 \}$时，界是紧的
+
+下界是显然的，下面考虑上界
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 理论分析
+
+---
+
+设 1-近邻法的错误率为$R_m$，其中下标$m$表示样本数，则
+
+$$
+\begin{align*}
+    \quad R^\star & = \int \underbrace{(1 - \Pbb(h^\star(\xv) | \xv))}_{h^\star(\xv)\text{出错的概率}\qquad} \Pbb(\xv) \diff \xv = \int \Pbb (e^\star | \xv) \Pbb(\xv) \diff \xv \\
+    R^\star & \le R = \lim_{m \rightarrow \infty} R_m \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right) \overset{c=2}{=} 2 R^\star (1 - R^\star)
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+预测出错的概率为$\Pbb(e|\xv) = 1 - \sum_{j \in [c]} \Pbb(y=j|\xv) \Pbb(\yhat=j|\xvhat)$，当$m \rightarrow \infty$时有$\xvhat \rightarrow \xv$，从而$\Pbb(e|\xv) = 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2$，于是
+
+$$
+\begin{align*}
+    \quad R = \int \Pbb(e|\xv) \Pbb(\xv) \diff \xv = \int \left( 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2 \right) \Pbb(\xv) \diff \xv
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+欲证$R$的上界，需考虑$\sum_{j \in [c]} \Pbb(j|\xv)^2$的下界
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 理论分析
+
+---
+
+<div class="top1"></div>
+
+$$
+\begin{align*}
+    \quad R = \int \Pbb(e|\xv) \Pbb(\xv) \diff \xv = \int \left( 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2 \right) \Pbb(\xv) \diff \xv
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+下面考虑$\sum_{j \in [c]} \Pbb(j|\xv)^2$的下界，由柯西不等式有
+
+$$
+\begin{align*}
+    \quad \sum_{j \neq h^\star(\xv)} & \Pbb(j|\xv)^2 \geq \frac{( \sum_{j \neq h^\star(\xv)} \Pbb(j|\xv) )^2}{c-1}  = \frac{(1 - \Pbb(h^\star(\xv)|\xv))^2}{c-1} = \frac{\Pbb(e^\star|\xv)^2}{c-1} \\[5pt]
+    \Longrightarrow 1 & - \sum_{j \in [c]} \Pbb(j|\xv)^2 = 1 - \Pbb(h^\star(\xv)|\xv)^2 - \sum_{j \neq h^\star(\xv)} \Pbb(j|\xv)^2 \\
+    & \le 1 - (1 - \Pbb(e^\star|\xv))^2 - \frac{\Pbb(e^\star|\xv)^2}{c-1} \\
+    & = 2 \Pbb(e^\star|\xv) - \Pbb(e^\star|\xv)^2 - \frac{\Pbb(e^\star|\xv)^2}{c-1} = 2 \Pbb(e^\star|\xv) - \frac{c}{c-1} \Pbb(e^\star|\xv)^2
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 理论分析
+
+---
+
+将$\sum_{j \in [c]} \Pbb(j|\xv)^2$的下界回代有
+
+$$
+\begin{align*}
+    \quad R & = \int \Pbb(e|\xv) \Pbb(\xv) \diff \xv = \int \left( 1 - \sum_{j \in [c]} \Pbb(j|\xv)^2 \right) \Pbb(\xv) \diff \xv \\
+    & \le \int \left( 2 \Pbb(e^\star|\xv) - \frac{c}{c-1} \Pbb(e^\star|\xv)^2 \right) \Pbb(\xv) \diff \xv \\
+    & = 2 R^\star - \frac{c}{c-1} \int \Pbb(e^\star|\xv)^2 \Pbb(\xv) \diff \xv \quad \longleftarrow \text{第二项是二阶矩} \\
+    & = 2 R^\star - \frac{c}{c-1} ({R^\star}^2 + \text{方差}) \\
+    & \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right)
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### <span style="font-weight:900">k-</span>近邻法
+
+---
+
+输入：$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Xcal \times \Ycal)^m$，待预测样本$\xv$
+
+<div class="top-3"></div>
+
+输出：$\xv$的类别$y$
+
+1. 根据选定的距离度量，记$D$中与$\xv$最近的$k$个样本构成的集合为$N_k(\xv)$
+2. 在$N_k(\xv)$中根据{==多数表决==}确定$\xv$的类别$y$
+
+<div class="top2"></div>
+
+$$
+\begin{align*}
+    \qquad y = \mathop{\arg \max}_{\yhat \in [c]} \sum_{\xv_i \in N_k(\xv)} \Ibb(y_i = \yhat)
+\end{align*}
+$$
+
+一些说明：
+
+- $k$选择奇数，避免出现打平的情况，中央政治局常委也都是奇数位
+- 当$m \rightarrow \infty$时有$R^\star \le \cdots \le R^{(5)} \le R^{(3)} \le R^{(1)} \le 2 R^\star (1 - R^\star)$
+- 在$m$有限的情况下，$k$并不是越大越好，取$k = m$往往欠拟合
+- 一些改进的变种：加权多数表决，带拒绝的多数表决
+
+<!-- slide data-notes="" -->
+
+##### 维度灾难
+
+---
+
+@import "../python/dimension-curse.svg" {.center .width92 .top4}

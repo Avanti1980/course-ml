@@ -1,0 +1,27 @@
+digraph g {
+    graph [nodesep=0.3, ranksep=0.8]
+    rankdir=LR
+    node [shape=box, color="#586e75", fontcolor="#b58900", fontsize=18, fontname="LXGWWenKai"]
+    edge [arrowhead=vee, color="#586e75", fontcolor="#268bd2", fontsize=16, fontname="LXGWWenKai", arrowsize=0.6]
+    bgcolor="transparent"
+
+    集合 -> {线性空间, 拓扑空间}
+
+    {rank=same; 集合; 拓扑空间}
+
+    拓扑空间 -> 度量空间
+
+    {rank=same; 线性空间; 度量空间}
+
+    线性空间 -> 度量空间 [style=invis]
+
+    {线性空间, 度量空间} -> 赋范空间 -> 内积空间
+
+    {rank=same; 赋范空间; 巴拿赫空间}
+
+    赋范空间 -> 巴拿赫空间 [label="完备化"]
+
+    {rank=same; 内积空间; 希尔伯特空间}
+
+    内积空间 -> 希尔伯特空间 [label="完备化"]
+}
