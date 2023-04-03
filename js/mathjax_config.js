@@ -195,6 +195,7 @@ module.exports = {
       dec: "{\\mathrm {Dec}}",
       sym: "{\\mathrm {sym}}",
       modd: "{\\mathrm {mod} ~ }",
+      mode: "{\\mathrm {mode}}",
       hp: "{\\mathrm {hp}}",
       gen: "{\\mathrm {gen}}",
       ow: "{\\mathrm {o.w.}}",
