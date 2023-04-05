@@ -1,8 +1,8 @@
 digraph g {
-    graph [nodesep=0.3, ranksep=0.8]
+    graph [nodesep=0.25, ranksep=0.6]
     rankdir=LR
-    node [shape=box, color="#586e75", fontcolor="#b58900", fontsize=18, fontname="LXGWWenKai"]
-    edge [arrowhead=vee, color="#586e75", fontcolor="#268bd2", fontsize=16, fontname="LXGWWenKai", arrowsize=0.6]
+    node [shape=box, color="#586e75", fontcolor="#b58900", fontsize=16, fontname="LXGWWenKai"]
+    edge [arrowhead=vee, color="#586e75", fontcolor="#268bd2", fontsize=14, fontname="LXGWWenKai", arrowsize=0.6]
     bgcolor="transparent"
 
     集合 -> {线性空间, 拓扑空间}

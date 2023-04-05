@@ -1,0 +1,52 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+%\usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+ % define the plot style and the axis style
+\tikzset{font=\LARGE}
+\tikzset{base/.style={smooth, very thick, Solarized-base01}}
+\tikzset{arrow/.style={->, -{Stealth[scale=1.0]}, base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \pgfmathsetmacro{\range}{6};
+    \pgfmathsetmacro{\margin}{2};
+    \pgfmathsetmacro{\l}{6};
+    \pgfmathsetmacro{\r}{6};
+
+    \path (0,0) coordinate (O);
+    \fill [base] (O) circle[radius=2pt];
+    \path [base] (O) ++(0.5,0) node () {$\xv$};
+
+    % 画大圆
+    \path (O) ++(160:\r) coordinate (r);
+    \draw [arrow] (O) -- node [below, pos=0.7] {$r$} (r);
+    \path [base] (r) ++(1.2, 0.3) node [] () {$B_\xv (r)$};
+    \draw [base] (O) circle (\r);
+
+    % 画小圆
+    \path (O) ++(80:\r/3) coordinate (r2);
+    \draw [arrow] (O) -- node [left, pos=0.45] {$r/3$} (r2);
+    \path [base] (r2) ++(0,0.6) node [] () {$B_\xv (r/3)$};
+    \draw [base] (O) circle (\r/3);
+
+    \path (O) ++(240:\r/4) coordinate (a);
+    \path [base] (a) ++(0.2,0.4) node () {$\av$};
+    \fill [base] (a) circle[radius=2pt];
+
+    \path (a) ++(290:\r/2) coordinate (r3);
+    \draw [arrow] (a) -- node [right, pos=0.6] {$r/2$} (r3);
+    \path [base] (r3) ++(1.0,-0.5) node [] () {$B_\av (r/2)$};
+    \draw [base, dashed] (a) circle (\r/2);
+
+
+\end{tikzpicture}
+
+\end{document}
