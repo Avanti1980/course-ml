@@ -76,7 +76,7 @@
 
 #### 补充
 
-[矩阵求导](notes/matrix-calculus.pdf)，[AdaBoost](notes/adaboost.pdf)
+[矩阵求导](notes/matrix-calculus.pdf)，[拉格朗日对偶](notes/Lagrange-dual.pdf)，[AdaBoost](notes/adaboost.pdf)
 
 #### 资料
 
