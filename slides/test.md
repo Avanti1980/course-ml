@@ -72,10 +72,11 @@ $$
 
 对$\forall \alphav \ge \zerov$，对偶函数$g(\alphav)$给出了原问题最优值$p^\star$的一个下界
 
-所有下界中最好的下界有多好？即最紧的下界是啥？
+所有下界中最好的下界有多好？即最紧的下界
 
 $$
 \begin{align*}
-    \quad \max_{\alphav} ~ g(\alphav), \quad \st ~ \alphav \ge \zerov
+    \quad \max_{\alphav \ge \zerov} g(\alphav) & = \max_{\alphav \ge \zerov} \min_{\wv,b} L(\wv, b, \alphav) \\
+    & = \max_{\alphav \ge \zerov} \min_{\wv,b} \left\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i (y_i (\wv^\top \xv_i + b) - 1) \right\}
 \end{align*}
 $$
