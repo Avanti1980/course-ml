@@ -357,7 +357,7 @@ $$
 \begin{align*}
     \quad &amp; \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m] \\
     &amp; \max_{\alphav \ge \zerov} ~ \left\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i,\xv_j)} + \sum_{i \in [m]} \alpha_i \right\}, \quad \st ~ \yv^\top \alphav = 0 \\
-    &amp; \text{&#x9884;&#x6D4B;&#xFF1A;} \wv^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \phi(\xv_i)^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \kappa(\xv_i)^\top \phi(\zv) + b
+    &amp; \text{&#x9884;&#x6D4B;&#xFF1A;} \wv^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \phi(\xv_i)^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \kappa(\xv_i, \zv) + b
 \end{align*}
 $$
 </p>
