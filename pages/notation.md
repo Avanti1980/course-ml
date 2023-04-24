@@ -13,11 +13,11 @@
 |               $\onev$、$\zerov$                |                             全$1$向量、全$0$向量                              |
 |                   $\Delta_d$                   |  $d$维单纯形$\{ \xv \in \Rbb^d \mid \xv^\top \onev = 1, ~ \xv \ge \zerov \}$  |
 |                  $B_\av (r)$                   |                         以$\av$为球心、$r$为半径的球                          |
-| $\|\xv\|_p = (\sum_i \vert x_i \vert^p)^{1/p}$ |               向量$\xv$的$\ell_p$范数，$p$缺省时为$\ell_2$范数                |
-|    $\|\xv\|_\Mv = (\xv^\top \Mv \xv)^{1/2}$    |                  向量$\xv$的椭圆范数，其中$\Mv$为半正定矩阵                   |
-|   $\|\Xv\|_F = (\sum_{i,j} x_{ij}^2)^{1/2}$    |                          矩阵$\Xv$的 Frobenius 范数                           |
 |  $[\cdot,\cdot,\cdot]$、$[\cdot;\cdot;\cdot]$  |                                行向量、列向量                                 |
 |                  $\tr[\cdot]$                  |                                      迹                                       |
+| $\|\xv\|_p = (\sum_i \vert x_i \vert^p)^{1/p}$ |               向量$\xv$的$\ell_p$范数，$p$缺省时为$\ell_2$范数                |
+|    $\|\xv\|_\Mv = (\xv^\top \Mv \xv)^{1/2}$    |                  向量$\xv$的椭圆范数，其中$\Mv$为半正定矩阵                   |
+|   $\|\Xv\|_F = (\sum_{i,j} x_{ij}^2)^{1/2}$    |                          矩阵$\Xv$的 Frobenius 范数，也等于$(\tr[\Xv^\top \Xv])^{1/2}$                           |
 |                $\gv = \nabla f$                |                                   $f$的梯度                                   |
 |               $\Hv = \nabla^2 f$               |                                 $f$的海森矩阵                                 |
 |                   $\Ibb(x)$                    |                   指示函数，在$x$为真、假时分别取值$1$、$0$                   |
