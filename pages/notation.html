@@ -1,0 +1,203 @@
+<!DOCTYPE html><html><head>
+      <title>notation</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"skipTags":["script","noscript","style","textarea","pre","code"]},"displayAlign":"left","TeX":{"equationNumbers":{"autoNumber":"none","useLabelIds":true},"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js","action.js","cancel.js","enclose.js","mhchem.js","extpfeil.js"],"Macros":{"zerov":"{\\boldsymbol 0}","onev":"{\\boldsymbol 1}","av":"{\\boldsymbol a}","bv":"{\\boldsymbol b}","cv":"{\\boldsymbol c}","dv":"{\\boldsymbol d}","ev":"{\\boldsymbol e}","fv":"{\\boldsymbol f}","gv":"{\\boldsymbol g}","hv":"{\\boldsymbol h}","iv":"{\\boldsymbol i}","jv":"{\\boldsymbol j}","kv":"{\\boldsymbol k}","lv":"{\\boldsymbol l}","mv":"{\\boldsymbol m}","nv":"{\\boldsymbol n}","ov":"{\\boldsymbol o}","pv":"{\\boldsymbol p}","qv":"{\\boldsymbol q}","rv":"{\\boldsymbol r}","sv":"{\\boldsymbol s}","tv":"{\\boldsymbol t}","uv":"{\\boldsymbol u}","vv":"{\\boldsymbol v}","wv":"{\\boldsymbol w}","xv":"{\\boldsymbol x}","yv":"{\\boldsymbol y}","zv":"{\\boldsymbol z}","Av":"{\\mathbf A}","Bv":"{\\mathbf B}","Cv":"{\\mathbf C}","Dv":"{\\mathbf D}","Ev":"{\\mathbf E}","Fv":"{\\mathbf F}","Gv":"{\\mathbf G}","Hv":"{\\mathbf H}","Iv":"{\\mathbf I}","Jv":"{\\mathbf J}","Kv":"{\\mathbf K}","Lv":"{\\mathbf L}","Mv":"{\\mathbf M}","Nv":"{\\mathbf N}","Ov":"{\\mathbf O}","Pv":"{\\mathbf P}","Qv":"{\\mathbf Q}","Rv":"{\\mathbf R}","Sv":"{\\mathbf S}","Tv":"{\\mathbf T}","Uv":"{\\mathbf U}","Vv":"{\\mathbf V}","Wv":"{\\mathbf W}","Xv":"{\\mathbf X}","Yv":"{\\mathbf Y}","Zv":"{\\mathbf Z}","alphav":"{\\boldsymbol {\\alpha}}","betav":"{\\boldsymbol {\\beta}}","lambdav":"{\\boldsymbol {\\lambda}}","muv":"{\\boldsymbol {\\mu}}","thetav":"{\\boldsymbol {\\theta}}","phiv":"{\\boldsymbol {\\phi}}","zetav":"{\\boldsymbol {\\zeta}}","deltav":"{\\boldsymbol {\\delta}}","sigmav":"{\\boldsymbol {\\sigma}}","Sigmav":"{\\boldsymbol {\\Sigma}}","Phiv":"{\\boldsymbol {\\Phi}}","Lambdav":"{\\boldsymbol {\\Lambda}}","Omegav":"{\\boldsymbol {\\Omega}}","Cbb":"{\\mathbb C}","Ebb":"{\\mathbb E}","Fbb":"{\\mathbb F}","Hbb":"{\\mathbb H}","Ibb":"{\\mathbb I}","Nbb":"{\\mathbb N}","Pbb":"{\\mathbb P}","Qbb":"{\\mathbb Q}","Rbb":"{\\mathbb R}","Zbb":"{\\mathbb Z}","Acal":"{\\mathcal A}","Bcal":"{\\mathcal B}","Ccal":"{\\mathcal C}","Dcal":"{\\mathcal D}","Ecal":"{\\mathcal E}","Fcal":"{\\mathcal F}","Gcal":"{\\mathcal G}","Hcal":"{\\mathcal H}","Ical":"{\\mathcal I}","Lcal":"{\\mathcal L}","Mcal":"{\\mathcal M}","Ncal":"{\\mathcal N}","Pcal":"{\\mathcal P}","Rcal":"{\\mathcal R}","Scal":"{\\mathcal S}","Ucal":"{\\mathcal U}","Vcal":"{\\mathcal V}","Wcal":"{\\mathcal W}","Xcal":"{\\mathcal X}","Ycal":"{\\mathcal Y}","Bbar":"{\\bar B}","fhat":"{\\hat f}","xhat":"{\\hat x}","yhat":"{\\hat y}","xvhat":"{\\hat {\\xv}}","yvhat":"{\\hat {\\yv}}","Xvhat":"{\\hat {\\Xv}}","wvt":"{\\tilde {\\wv}}","xvt":"{\\tilde {\\xv}}","yvt":"{\\tilde {\\yv}}","Kvt":"{\\tilde {\\Kv}}","xbar":"{\\bar {x}}","ybar":"{\\bar {y}}","yvbar":"{\\bar {\\yv}}","Ffrak":"{\\mathfrak F}","sup":["{{(#1)}}",1],"acc":"{\\mathrm {acc}}","bias":"{\\mathrm {bias}}","variance":"{\\mathrm {variance}}","noise":"{\\mathrm {noise}}","diff":"{\\mathrm {d}}","diag":"{\\mathrm {diag}}","dist":"{\\mathrm {dist}}","span":"{\\mathrm {span}}","sign":"{\\mathrm {sign}}","sgn":"{\\mathrm {sgn}}","st":"{\\mathrm {s.t.}}","VC":"{\\mathrm {VC}}","Pr":"{\\mathrm {Pr}}","tanh":"{\\mathrm {tanh}}","logistic":"{\\mathrm {logistic}}","relu":"{\\mathrm {ReLU}}","lrelu":"{\\mathrm {LeakyReLU}}","prelu":"{\\mathrm {PReLU}}","elu":"{\\mathrm {ELU}}","softplus":"{\\mathrm {Softplus}}","swish":"{\\mathrm {Swish}}","maxout":"{\\mathrm {Maxout}}","const":"{\\mathrm {const}}","cov":"{\\mathrm {cov}}","grad":"{\\mathrm {grad}}","div":"{\\mathrm {div}}","var":"{\\mathrm {var}}","softmax":"{\\mathrm {softmax}}","att":"{\\mathrm {att}}","cut":"{\\mathrm {cut}}","rcut":"{\\mathrm {RatioCut}}","ncut":"{\\mathrm {NCut}}","tr":"{\\mathrm {tr}}","vol":"{\\mathrm {vol}}","mlp":"{\\mathrm {MLP}}","update":"{\\mathrm {Update}}","aggregate":"{\\mathrm {Aggregate}}","self":"{\\mathrm {self}}","set":"{\\mathrm {set}}","neigh":"{\\mathrm {neigh}}","base":"{\\mathrm {base}}","NULL":"{\\mathrm {NULL}}","new":"{\\mathrm {new}}","gru":"{\\mathrm {GRU}}","lstm":"{\\mathrm {LSTM}}","edge":"{\\mathrm {edge}}","node":"{\\mathrm {node}}","graph":"{\\mathrm {graph}}","train":"{\\mathrm {train}}","dec":"{\\mathrm {Dec}}","sym":"{\\mathrm {sym}}","modd":"{\\mathrm {mod} ~ }","mode":"{\\mathrm {mode}}","hp":"{\\mathrm {hp}}","gen":"{\\mathrm {gen}}","ow":"{\\mathrm {o.w.}}","BetaDist":"{\\mathrm {Beta}}","BetaFunc":"{\\mathrm {B}}","Dir":"{\\mathrm {Dir}}","rot":"{\\mathbf {rot180}}","up":"{\\mathbf {up}}","cen":"{\\mathrm {cen}}","con":"{\\mathrm {con}}","TG":"{\\mathrm {TreeGenerate}}","TP":"{\\mathrm {TP}}","FP":"{\\mathrm {FP}}","TN":"{\\mathrm {TN}}","FN":"{\\mathrm {FN}}","SSE":"{\\mathrm {SSE}}","SSB":"{\\mathrm {SSB}}","gain":"{\\mathrm {Gain}}","gini":"{\\mathrm {Gini}}","argmin":"{\\mathop{\\mathrm{argmin}}}","argmax":"{\\mathop{\\mathrm{argmax}}}"}},"HTML-CSS":{"linebreaks":{"automatic":false},"scale":100,"styles":{".MathJax_Display":{"margin-top":"0.6rem !important","margin-bottom":"1rem !important","border-radius":"0px !important","font-size":"1.8rem !important","color":"#d33682","text-align":"left !important"},".MathJax":{"margin-left":"0.2rem !important","margin-right":"0.2rem !important","border":"0px solid #ccc !important","color":"#d33682"}},"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="../plugin/MathJax-2.7.9/MathJax.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#657b83;background-color:#fbedc6 !important;border:#f8de97;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#93a1a1;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#93a1a1}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.property,pre[class*="language-"] .token.property{color:#859900}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#d33682}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#268bd2}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#859900}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#657b83}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{color:#2aa198}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#cb4b16}code[class*="language-"] .token.builtin,pre[class*="language-"] .token.builtin{color:#859900}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{color:#268bd2}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#93a1a1}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#859900}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#268bd2}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#268bd2}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#268bd2}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#dc322f}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <pre>Error: ENOENT: no such file or directory, open &apos;/home/avanti/Slides/Courses/ML/pages/css/theme/solarized.css&apos;</pre>  
+<pre>Error: ENOENT: no such file or directory, open &apos;/home/avanti/Slides/Courses/ML/pages/css/index.css&apos;</pre>  
+<h4 class="mume-header" id="%E5%B8%B8%E8%A7%81%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8E">&#x5E38;&#x89C1;&#x7B26;&#x53F7;&#x8BF4;&#x660E;</h4>
+
+<div class="threelines notation head-highlight">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7B26;&#x53F7;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Rbb$</span>&#x3001;<span class="mathjax-exps">$\Zbb$</span>&#x3001;<span class="mathjax-exps">$\Nbb$</span>&#x3001;<span class="mathjax-exps">$\Qbb$</span></td>
+<td style="text-align:center">&#x5B9E;&#x6570;&#x3001;&#x6574;&#x6570;&#x3001;&#x81EA;&#x7136;&#x6570;&#x3001;&#x6709;&#x7406;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$x$</span>&#x3001;<span class="mathjax-exps">$\xv$</span>&#x3001;<span class="mathjax-exps">$\Xv$</span></td>
+<td style="text-align:center">&#x6807;&#x91CF;&#x3001;&#x5411;&#x91CF;&#x3001;&#x77E9;&#x9635;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\ev_i$</span></td>
+<td style="text-align:center">&#x7B2C;<span class="mathjax-exps">$i$</span>&#x4E2A;&#x5206;&#x91CF;&#x4E3A;<span class="mathjax-exps">$1$</span>&#x5176;&#x4F59;&#x5206;&#x91CF;&#x4E3A;<span class="mathjax-exps">$0$</span>&#x7684;&#x5411;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\onev$</span>&#x3001;<span class="mathjax-exps">$\zerov$</span></td>
+<td style="text-align:center">&#x5168;<span class="mathjax-exps">$1$</span>&#x5411;&#x91CF;&#x3001;&#x5168;<span class="mathjax-exps">$0$</span>&#x5411;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Delta_d$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$d$</span>&#x7EF4;&#x5355;&#x7EAF;&#x5F62;<span class="mathjax-exps">$\{ \xv \in \Rbb^d \mid \xv^\top \onev = 1, ~ \xv \ge \zerov \}$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$B_\av (r)$</span></td>
+<td style="text-align:center">&#x4EE5;<span class="mathjax-exps">$\av$</span>&#x4E3A;&#x7403;&#x5FC3;&#x3001;<span class="mathjax-exps">$r$</span>&#x4E3A;&#x534A;&#x5F84;&#x7684;&#x7403;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\|\xv\|_p = (\sum_i \vert x_i \vert^p)^{1/p}$</span></td>
+<td style="text-align:center">&#x5411;&#x91CF;<span class="mathjax-exps">$\xv$</span>&#x7684;<span class="mathjax-exps">$\ell_p$</span>&#x8303;&#x6570;&#xFF0C;<span class="mathjax-exps">$p$</span>&#x7F3A;&#x7701;&#x65F6;&#x4E3A;<span class="mathjax-exps">$\ell_2$</span>&#x8303;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\|\xv\|_\Mv = (\xv^\top \Mv \xv)^{1/2}$</span></td>
+<td style="text-align:center">&#x5411;&#x91CF;<span class="mathjax-exps">$\xv$</span>&#x7684;&#x692D;&#x5706;&#x8303;&#x6570;&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$\Mv$</span>&#x4E3A;&#x534A;&#x6B63;&#x5B9A;&#x77E9;&#x9635;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\|\Xv\|_F = (\sum_{i,j} x_{ij}^2)^{1/2}$</span></td>
+<td style="text-align:center">&#x77E9;&#x9635;<span class="mathjax-exps">$\Xv$</span>&#x7684; Frobenius &#x8303;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$[\cdot,\cdot,\cdot]$</span>&#x3001;<span class="mathjax-exps">$[\cdot;\cdot;\cdot]$</span></td>
+<td style="text-align:center">&#x884C;&#x5411;&#x91CF;&#x3001;&#x5217;&#x5411;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\tr[\cdot]$</span></td>
+<td style="text-align:center">&#x8FF9;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\gv = \nabla f$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$f$</span>&#x7684;&#x68AF;&#x5EA6;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Hv = \nabla^2 f$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$f$</span>&#x7684;&#x6D77;&#x68EE;&#x77E9;&#x9635;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Ibb(x)$</span></td>
+<td style="text-align:center">&#x6307;&#x793A;&#x51FD;&#x6570;&#xFF0C;&#x5728;<span class="mathjax-exps">$x$</span>&#x4E3A;&#x771F;&#x3001;&#x5047;&#x65F6;&#x5206;&#x522B;&#x53D6;&#x503C;<span class="mathjax-exps">$1$</span>&#x3001;<span class="mathjax-exps">$0$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\sign(x)$</span></td>
+<td style="text-align:center">&#x7B26;&#x53F7;&#x51FD;&#x6570;&#xFF0C;&#x5728;<span class="mathjax-exps">$x \ge 0$</span>&#x3001;<span class="mathjax-exps">$x &lt; 0$</span>&#x65F6;&#x5206;&#x522B;&#x53D6;&#x503C;<span class="mathjax-exps">$1$</span>&#x3001;<span class="mathjax-exps">$-1$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\sgn(x)$</span></td>
+<td style="text-align:center">&#x9636;&#x8DC3;&#x51FD;&#x6570;&#xFF0C;&#x5728;<span class="mathjax-exps">$x \ge 0$</span>&#x3001;<span class="mathjax-exps">$x &lt; 0$</span>&#x65F6;&#x5206;&#x522B;&#x53D6;&#x503C;<span class="mathjax-exps">$1$</span>&#x3001;<span class="mathjax-exps">$0$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\sigma(x)$</span></td>
+<td style="text-align:center">&#x5BF9;&#x6570;&#x51E0;&#x7387;&#x51FD;&#x6570;<span class="mathjax-exps">$1 / (1 + \exp(- x))$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$p(\cdot)$</span></td>
+<td style="text-align:center">&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x51FD;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Pbb(E)$</span></td>
+<td style="text-align:center">&#x968F;&#x673A;&#x4E8B;&#x4EF6;<span class="mathjax-exps">$E$</span>&#x53D1;&#x751F;&#x7684;&#x6982;&#x7387;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Ucal(a,b)$</span></td>
+<td style="text-align:center">&#x533A;&#x95F4;<span class="mathjax-exps">$[a,b]$</span>&#x4E0A;&#x7684;&#x5747;&#x5300;&#x5206;&#x5E03;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Ncal(\muv,\Sigmav)$</span></td>
+<td style="text-align:center">&#x5747;&#x503C;&#x4E3A;<span class="mathjax-exps">$\muv$</span>&#x3001;&#x534F;&#x65B9;&#x5DEE;&#x4E3A;<span class="mathjax-exps">$\Sigmav$</span>&#x7684;&#x9AD8;&#x65AF;&#x5206;&#x5E03;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Ebb_{\cdot \sim \Dcal} [f(\cdot)]$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$f(\cdot)$</span>&#x5BF9;<span class="mathjax-exps">$\cdot$</span>&#x670D;&#x4ECE;&#x5206;&#x5E03;<span class="mathjax-exps">$\Dcal$</span>&#x65F6;&#x7684;&#x671F;&#x671B;&#xFF0C;&#x610F;&#x4E49;&#x660E;&#x786E;&#x65F6;&#x7B80;&#x5199;&#x4E3A;<span class="mathjax-exps">$\Ebb [f(\cdot)]$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\var[\cdot]$</span>&#x3001;<span class="mathjax-exps">$\cov[\cdot]$</span></td>
+<td style="text-align:center">&#x65B9;&#x5DEE;&#x3001;&#x534F;&#x65B9;&#x5DEE;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\argmin_x f(x)$</span>&#x3001;<span class="mathjax-exps">$\argmax_x f(x)$</span></td>
+<td style="text-align:center">&#x4F7F;&#x5F97;<span class="mathjax-exps">$f(x)$</span>&#x53D6;&#x6700;&#x5927;&#x503C;&#x3001;&#x6700;&#x5C0F;&#x503C;&#x7684;<span class="mathjax-exps">$x$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\st$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\text{subject to}$</span>&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x7684;&#x7EA6;&#x675F;&#x6761;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Xcal$</span></td>
+<td style="text-align:center">&#x6837;&#x672C;&#x7A7A;&#x95F4;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Ycal$</span></td>
+<td style="text-align:center">&#x7C7B;&#x522B;&#x6807;&#x8BB0;&#x96C6;&#x5408;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Dcal$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\Xcal \times \Ycal$</span>&#x4E0A;&#x7684;&#x672A;&#x77E5;&#x5206;&#x5E03;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Hcal$</span></td>
+<td style="text-align:center">&#x5047;&#x8BBE;&#x7A7A;&#x95F4;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$D$</span></td>
+<td style="text-align:center">&#x72EC;&#x7ACB;&#x540C;&#x5206;&#x5E03;&#x91C7;&#x6837;&#x81EA;&#x5206;&#x5E03;<span class="mathjax-exps">$\Dcal$</span>&#x7684;&#x6570;&#x636E;&#x96C6;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\triangleq$</span></td>
+<td style="text-align:center">&#x5B9A;&#x4E49;&#x4E3A;</td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$[c]$</span></td>
+<td style="text-align:center">&#x96C6;&#x5408;<span class="mathjax-exps">$\{ 1, 2, \ldots, c \}$</span>&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$c$</span>&#x4E3A;&#x6B63;&#x6574;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#%E5%B8%B8%E8%A7%81%E7%AC%A6%E5%8F%B7%E8%AF%B4%E6%98%8E">&#x5E38;&#x89C1;&#x7B26;&#x53F7;&#x8BF4;&#x660E;</a></li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">&#x2261;</a>
+    
+    
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>

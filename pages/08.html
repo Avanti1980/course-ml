@@ -1,0 +1,828 @@
+<!DOCTYPE html><html><head>
+      <title>08</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <style>
+      /*!
+* reveal.js 4.0.2
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2020 Hakim El Hattab, https://hakim.se
+*/
+.reveal .r-stretch,.reveal .stretch{max-width:none;max-height:none}.reveal pre.r-stretch code,.reveal pre.stretch code{height:100%;max-height:100%;box-sizing:border-box}.reveal .r-fit-text{display:inline-block;white-space:nowrap}.reveal .r-stack{display:grid}.reveal .r-stack>*{grid-area:1/1;margin:auto}.reveal .r-hstack,.reveal .r-vstack{display:flex}.reveal .r-hstack img,.reveal .r-hstack video,.reveal .r-vstack img,.reveal .r-vstack video{min-width:0;min-height:0;-o-object-fit:contain;object-fit:contain}.reveal .r-vstack{flex-direction:column;align-items:center;justify-content:center}.reveal .r-hstack{flex-direction:row;align-items:center;justify-content:center}.reveal .items-stretch{align-items:stretch}.reveal .items-start{align-items:flex-start}.reveal .items-center{align-items:center}.reveal .items-end{align-items:flex-end}.reveal .justify-between{justify-content:space-between}.reveal .justify-around{justify-content:space-around}.reveal .justify-start{justify-content:flex-start}.reveal .justify-center{justify-content:center}.reveal .justify-end{justify-content:flex-end}html.reveal-full-page{width:100%;height:100%;height:100vh;height:calc(var(--vh,1vh) * 100);overflow:hidden}.reveal-viewport{height:100%;overflow:hidden;position:relative;line-height:1;margin:0;background-color:#fff;color:#000}.reveal .slides section .fragment{opacity:0;visibility:hidden;transition:all .2s ease;will-change:opacity}.reveal .slides section .fragment.visible{opacity:1;visibility:inherit}.reveal .slides section .fragment.disabled{transition:none}.reveal .slides section .fragment.grow{opacity:1;visibility:inherit}.reveal .slides section .fragment.grow.visible{transform:scale(1.3)}.reveal .slides section .fragment.shrink{opacity:1;visibility:inherit}.reveal .slides section .fragment.shrink.visible{transform:scale(.7)}.reveal .slides section .fragment.zoom-in{transform:scale(.1)}.reveal .slides section .fragment.zoom-in.visible{transform:none}.reveal .slides section .fragment.fade-out{opacity:1;visibility:inherit}.reveal .slides section .fragment.fade-out.visible{opacity:0;visibility:hidden}.reveal .slides section .fragment.semi-fade-out{opacity:1;visibility:inherit}.reveal .slides section .fragment.semi-fade-out.visible{opacity:.5;visibility:inherit}.reveal .slides section .fragment.strike{opacity:1;visibility:inherit}.reveal .slides section .fragment.strike.visible{text-decoration:line-through}.reveal .slides section .fragment.fade-up{transform:translate(0,40px)}.reveal .slides section .fragment.fade-up.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-down{transform:translate(0,-40px)}.reveal .slides section .fragment.fade-down.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-right{transform:translate(-40px,0)}.reveal .slides section .fragment.fade-right.visible{transform:translate(0,0)}.reveal .slides section .fragment.fade-left{transform:translate(40px,0)}.reveal .slides section .fragment.fade-left.visible{transform:translate(0,0)}.reveal .slides section .fragment.current-visible,.reveal .slides section .fragment.fade-in-then-out{opacity:0;visibility:hidden}.reveal .slides section .fragment.current-visible.current-fragment,.reveal .slides section .fragment.fade-in-then-out.current-fragment{opacity:1;visibility:inherit}.reveal .slides section .fragment.fade-in-then-semi-out{opacity:0;visibility:hidden}.reveal .slides section .fragment.fade-in-then-semi-out.visible{opacity:.5;visibility:inherit}.reveal .slides section .fragment.fade-in-then-semi-out.current-fragment{opacity:1;visibility:inherit}.reveal .slides section .fragment.highlight-blue,.reveal .slides section .fragment.highlight-current-blue,.reveal .slides section .fragment.highlight-current-green,.reveal .slides section .fragment.highlight-current-red,.reveal .slides section .fragment.highlight-green,.reveal .slides section .fragment.highlight-red{opacity:1;visibility:inherit}.reveal .slides section .fragment.highlight-red.visible{color:#ff2c2d}.reveal .slides section .fragment.highlight-green.visible{color:#17ff2e}.reveal .slides section .fragment.highlight-blue.visible{color:#1b91ff}.reveal .slides section .fragment.highlight-current-red.current-fragment{color:#ff2c2d}.reveal .slides section .fragment.highlight-current-green.current-fragment{color:#17ff2e}.reveal .slides section .fragment.highlight-current-blue.current-fragment{color:#1b91ff}.reveal:after{content:'';font-style:italic}.reveal iframe{z-index:1}.reveal a{position:relative}@keyframes bounce-right{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(10px)}30%{transform:translateX(-5px)}}@keyframes bounce-left{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(-10px)}30%{transform:translateX(5px)}}@keyframes bounce-down{0%,10%,25%,40%,50%{transform:translateY(0)}20%{transform:translateY(10px)}30%{transform:translateY(-5px)}}.reveal .controls{display:none;position:absolute;top:auto;bottom:12px;right:12px;left:auto;z-index:11;color:#000;pointer-events:none;font-size:10px}.reveal .controls button{position:absolute;padding:0;background-color:transparent;border:0;outline:0;cursor:pointer;color:currentColor;transform:scale(.9999);transition:color .2s ease,opacity .2s ease,transform .2s ease;z-index:2;pointer-events:auto;font-size:inherit;visibility:hidden;opacity:0;-webkit-appearance:none;-webkit-tap-highlight-color:transparent}.reveal .controls .controls-arrow:after,.reveal .controls .controls-arrow:before{content:'';position:absolute;top:0;left:0;width:2.6em;height:.5em;border-radius:.25em;background-color:currentColor;transition:all .15s ease,background-color .8s ease;transform-origin:.2em 50%;will-change:transform}.reveal .controls .controls-arrow{position:relative;width:3.6em;height:3.6em}.reveal .controls .controls-arrow:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal .controls .controls-arrow:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}.reveal .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(40deg)}.reveal .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-40deg)}.reveal .controls .controls-arrow:active:before{transform:translateX(.5em) translateY(1.55em) rotate(36deg)}.reveal .controls .controls-arrow:active:after{transform:translateX(.5em) translateY(1.55em) rotate(-36deg)}.reveal .controls .navigate-left{right:6.4em;bottom:3.2em;transform:translateX(-10px)}.reveal .controls .navigate-left.highlight{animation:bounce-left 2s 50 both ease-out}.reveal .controls .navigate-right{right:0;bottom:3.2em;transform:translateX(10px)}.reveal .controls .navigate-right .controls-arrow{transform:rotate(180deg)}.reveal .controls .navigate-right.highlight{animation:bounce-right 2s 50 both ease-out}.reveal .controls .navigate-up{right:3.2em;bottom:6.4em;transform:translateY(-10px)}.reveal .controls .navigate-up .controls-arrow{transform:rotate(90deg)}.reveal .controls .navigate-down{right:3.2em;bottom:-1.4em;padding-bottom:1.4em;transform:translateY(10px)}.reveal .controls .navigate-down .controls-arrow{transform:rotate(-90deg)}.reveal .controls .navigate-down.highlight{animation:bounce-down 2s 50 both ease-out}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled{opacity:.3}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled:hover{opacity:1}.reveal .controls[data-controls-back-arrows=hidden] .navigate-up.enabled{opacity:0;visibility:hidden}.reveal .controls .enabled{visibility:visible;opacity:.9;cursor:pointer;transform:none}.reveal .controls .enabled.fragmented{opacity:.5}.reveal .controls .enabled.fragmented:hover,.reveal .controls .enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled{opacity:.3}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=hidden] .navigate-left.enabled{opacity:0;visibility:hidden}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled{opacity:.3}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled:hover{opacity:1}.reveal.rtl .controls[data-controls-back-arrows=hidden] .navigate-right.enabled{opacity:0;visibility:hidden}.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-down,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-up{display:none}.reveal:not(.has-vertical-slides) .controls .navigate-left,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-left{bottom:1.4em;right:5.5em}.reveal:not(.has-vertical-slides) .controls .navigate-right,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-right{bottom:1.4em;right:.5em}.reveal:not(.has-horizontal-slides) .controls .navigate-up{right:1.4em;bottom:5em}.reveal:not(.has-horizontal-slides) .controls .navigate-down{right:1.4em;bottom:.5em}.reveal.has-dark-background .controls{color:#fff}.reveal.has-light-background .controls{color:#000}.reveal.no-hover .controls .controls-arrow:active:before,.reveal.no-hover .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal.no-hover .controls .controls-arrow:active:after,.reveal.no-hover .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}@media screen and (min-width:500px){.reveal .controls[data-controls-layout=edges]{top:0;right:0;bottom:0;left:0}.reveal .controls[data-controls-layout=edges] .navigate-down,.reveal .controls[data-controls-layout=edges] .navigate-left,.reveal .controls[data-controls-layout=edges] .navigate-right,.reveal .controls[data-controls-layout=edges] .navigate-up{bottom:auto;right:auto}.reveal .controls[data-controls-layout=edges] .navigate-left{top:50%;left:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-right{top:50%;right:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-up{top:.8em;left:50%;margin-left:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-down{bottom:-.3em;left:50%;margin-left:-1.8em}}.reveal .progress{position:absolute;display:none;height:3px;width:100%;bottom:0;left:0;z-index:10;background-color:rgba(0,0,0,.2);color:#fff}.reveal .progress:after{content:'';display:block;position:absolute;height:10px;width:100%;top:-10px}.reveal .progress span{display:block;height:100%;width:100%;background-color:currentColor;transition:transform .8s cubic-bezier(.26,.86,.44,.985);transform-origin:0 0;transform:scaleX(0)}.reveal .slide-number{position:absolute;display:block;right:8px;bottom:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px}.reveal .slide-number a{color:currentColor}.reveal .slide-number-delimiter{margin:0 3px}.reveal{position:relative;width:100%;height:100%;overflow:hidden;touch-action:pinch-zoom}.reveal.embedded{touch-action:pan-y}.reveal .slides{position:absolute;width:100%;height:100%;top:0;right:0;bottom:0;left:0;margin:auto;pointer-events:none;overflow:visible;z-index:1;text-align:center;perspective:600px;perspective-origin:50% 40%}.reveal .slides>section{perspective:600px}.reveal .slides>section,.reveal .slides>section>section{display:none;position:absolute;width:100%;pointer-events:auto;z-index:10;transform-style:flat;transition:transform-origin .8s cubic-bezier(.26,.86,.44,.985),transform .8s cubic-bezier(.26,.86,.44,.985),visibility .8s cubic-bezier(.26,.86,.44,.985),opacity .8s cubic-bezier(.26,.86,.44,.985)}.reveal[data-transition-speed=fast] .slides section{transition-duration:.4s}.reveal[data-transition-speed=slow] .slides section{transition-duration:1.2s}.reveal .slides section[data-transition-speed=fast]{transition-duration:.4s}.reveal .slides section[data-transition-speed=slow]{transition-duration:1.2s}.reveal .slides>section.stack{padding-top:0;padding-bottom:0;pointer-events:none;height:100%}.reveal .slides>section.present,.reveal .slides>section>section.present{display:block;z-index:11;opacity:1}.reveal .slides>section:empty,.reveal .slides>section>section:empty,.reveal .slides>section>section[data-background-interactive],.reveal .slides>section[data-background-interactive]{pointer-events:none}.reveal.center,.reveal.center .slides,.reveal.center .slides section{min-height:0!important}.reveal .slides>section:not(.present),.reveal .slides>section>section:not(.present){pointer-events:none}.reveal.overview .slides>section,.reveal.overview .slides>section>section{pointer-events:auto}.reveal .slides>section.future,.reveal .slides>section.past,.reveal .slides>section>section.future,.reveal .slides>section>section.past{opacity:0}.reveal.slide section{-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .slides>section[data-transition=slide].past,.reveal .slides>section[data-transition~=slide-out].past,.reveal.slide .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=slide].future,.reveal .slides>section[data-transition~=slide-in].future,.reveal.slide .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=slide].past,.reveal .slides>section>section[data-transition~=slide-out].past,.reveal.slide .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=slide].future,.reveal .slides>section>section[data-transition~=slide-in].future,.reveal.slide .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal.linear section{-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .slides>section[data-transition=linear].past,.reveal .slides>section[data-transition~=linear-out].past,.reveal.linear .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=linear].future,.reveal .slides>section[data-transition~=linear-in].future,.reveal.linear .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=linear].past,.reveal .slides>section>section[data-transition~=linear-out].past,.reveal.linear .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=linear].future,.reveal .slides>section>section[data-transition~=linear-in].future,.reveal.linear .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides section[data-transition=default].stack,.reveal.default .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=default].past,.reveal .slides>section[data-transition~=default-out].past,.reveal.default .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=default].future,.reveal .slides>section[data-transition~=default-in].future,.reveal.default .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=default].past,.reveal .slides>section>section[data-transition~=default-out].past,.reveal.default .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=default].future,.reveal .slides>section>section[data-transition~=default-in].future,.reveal.default .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=convex].stack,.reveal.convex .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=convex].past,.reveal .slides>section[data-transition~=convex-out].past,.reveal.convex .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=convex].future,.reveal .slides>section[data-transition~=convex-in].future,.reveal.convex .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=convex].past,.reveal .slides>section>section[data-transition~=convex-out].past,.reveal.convex .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=convex].future,.reveal .slides>section>section[data-transition~=convex-in].future,.reveal.convex .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=concave].stack,.reveal.concave .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=concave].past,.reveal .slides>section[data-transition~=concave-out].past,.reveal.concave .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=concave].future,.reveal .slides>section[data-transition~=concave-in].future,.reveal.concave .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=concave].past,.reveal .slides>section>section[data-transition~=concave-out].past,.reveal.concave .slides>section>section:not([data-transition]).past{transform:translate3d(0,-80%,0) rotateX(-70deg) translate3d(0,-80%,0)}.reveal .slides>section>section[data-transition=concave].future,.reveal .slides>section>section[data-transition~=concave-in].future,.reveal.concave .slides>section>section:not([data-transition]).future{transform:translate3d(0,80%,0) rotateX(70deg) translate3d(0,80%,0)}.reveal .slides section[data-transition=zoom],.reveal.zoom .slides section:not([data-transition]){transition-timing-function:ease}.reveal .slides>section[data-transition=zoom].past,.reveal .slides>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section:not([data-transition]).past{visibility:hidden;transform:scale(16)}.reveal .slides>section[data-transition=zoom].future,.reveal .slides>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section:not([data-transition]).future{visibility:hidden;transform:scale(.2)}.reveal .slides>section>section[data-transition=zoom].past,.reveal .slides>section>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section>section:not([data-transition]).past{transform:scale(16)}.reveal .slides>section>section[data-transition=zoom].future,.reveal .slides>section>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section>section:not([data-transition]).future{transform:scale(.2)}.reveal.cube .slides{perspective:1300px}.reveal.cube .slides section{padding:30px;min-height:700px;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-sizing:border-box;transform-style:preserve-3d}.reveal.center.cube .slides section{min-height:0}.reveal.cube .slides section:not(.stack):before{content:'';position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);border-radius:4px;transform:translateZ(-20px)}.reveal.cube .slides section:not(.stack):after{content:'';position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);transform:translateZ(-90px) rotateX(65deg)}.reveal.cube .slides>section.stack{padding:0;background:0 0}.reveal.cube .slides>section.past{transform-origin:100% 0;transform:translate3d(-100%,0,0) rotateY(-90deg)}.reveal.cube .slides>section.future{transform-origin:0 0;transform:translate3d(100%,0,0) rotateY(90deg)}.reveal.cube .slides>section>section.past{transform-origin:0 100%;transform:translate3d(0,-100%,0) rotateX(90deg)}.reveal.cube .slides>section>section.future{transform-origin:0 0;transform:translate3d(0,100%,0) rotateX(-90deg)}.reveal.page .slides{perspective-origin:0 50%;perspective:3000px}.reveal.page .slides section{padding:30px;min-height:700px;box-sizing:border-box;transform-style:preserve-3d}.reveal.page .slides section.past{z-index:12}.reveal.page .slides section:not(.stack):before{content:'';position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);transform:translateZ(-20px)}.reveal.page .slides section:not(.stack):after{content:'';position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);-webkit-transform:translateZ(-90px) rotateX(65deg)}.reveal.page .slides>section.stack{padding:0;background:0 0}.reveal.page .slides>section.past{transform-origin:0 0;transform:translate3d(-40%,0,0) rotateY(-80deg)}.reveal.page .slides>section.future{transform-origin:100% 0;transform:translate3d(0,0,0)}.reveal.page .slides>section>section.past{transform-origin:0 0;transform:translate3d(0,-40%,0) rotateX(80deg)}.reveal.page .slides>section>section.future{transform-origin:0 100%;transform:translate3d(0,0,0)}.reveal .slides section[data-transition=fade],.reveal.fade .slides section:not([data-transition]),.reveal.fade .slides>section>section:not([data-transition]){transform:none;transition:opacity .5s}.reveal.fade.overview .slides section,.reveal.fade.overview .slides>section>section{transition:none}.reveal .slides section[data-transition=none],.reveal.none .slides section:not([data-transition]){transform:none;transition:none}.reveal .pause-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;visibility:hidden;opacity:0;z-index:100;transition:all 1s ease}.reveal .pause-overlay .resume-button{position:absolute;bottom:20px;right:20px;color:#ccc;border-radius:2px;padding:6px 14px;border:2px solid #ccc;font-size:16px;background:0 0;cursor:pointer}.reveal .pause-overlay .resume-button:hover{color:#fff;border-color:#fff}.reveal.paused .pause-overlay{visibility:visible;opacity:1}.reveal .no-transition,.reveal .no-transition *,.reveal .slides.disable-slide-transitions section{transition:none!important}.reveal .slides.disable-slide-transitions section{transform:none!important}.reveal .backgrounds{position:absolute;width:100%;height:100%;top:0;left:0;perspective:600px}.reveal .slide-background{display:none;position:absolute;width:100%;height:100%;opacity:0;visibility:hidden;overflow:hidden;background-color:rgba(0,0,0,0);transition:all .8s cubic-bezier(.26,.86,.44,.985)}.reveal .slide-background-content{position:absolute;width:100%;height:100%;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}.reveal .slide-background.stack{display:block}.reveal .slide-background.present{opacity:1;visibility:visible;z-index:2}.print-pdf .reveal .slide-background{opacity:1!important;visibility:visible!important}.reveal .slide-background video{position:absolute;width:100%;height:100%;max-width:none;max-height:none;top:0;left:0;-o-object-fit:cover;object-fit:cover}.reveal .slide-background[data-background-size=contain] video{-o-object-fit:contain;object-fit:contain}.reveal>.backgrounds .slide-background[data-background-transition=none],.reveal[data-background-transition=none]>.backgrounds .slide-background{transition:none}.reveal>.backgrounds .slide-background[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background{opacity:1;-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal>.backgrounds .slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.past{transform:translate(-100%,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.future{transform:translate(100%,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.past{transform:translate(0,-100%)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.future{transform:translate(0,100%)}.reveal>.backgrounds .slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.past{opacity:0;transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.future{opacity:0;transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.past{opacity:0;transform:translate3d(0,-100%,0) rotateX(90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.future{opacity:0;transform:translate3d(0,100%,0) rotateX(-90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.past{opacity:0;transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.future{opacity:0;transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.past{opacity:0;transform:translate3d(0,-100%,0) rotateX(-90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.future{opacity:0;transform:translate3d(0,100%,0) rotateX(90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background{transition-timing-function:ease}.reveal>.backgrounds .slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.past{opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.future{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.past{opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.future{opacity:0;visibility:hidden;transform:scale(.2)}.reveal[data-transition-speed=fast]>.backgrounds .slide-background{transition-duration:.4s}.reveal[data-transition-speed=slow]>.backgrounds .slide-background{transition-duration:1.2s}.reveal [data-auto-animate-target^=unmatched]{will-change:opacity}.reveal section[data-auto-animate]:not(.stack):not([data-auto-animate=running]) [data-auto-animate-target^=unmatched]{opacity:0}.reveal.overview{perspective-origin:50% 50%;perspective:700px}.reveal.overview .slides{-moz-transform-style:preserve-3d}.reveal.overview .slides section{height:100%;top:0!important;opacity:1!important;overflow:hidden;visibility:visible!important;cursor:pointer;box-sizing:border-box}.reveal.overview .slides section.present,.reveal.overview .slides section:hover{outline:10px solid rgba(150,150,150,.4);outline-offset:10px}.reveal.overview .slides section .fragment{opacity:1;transition:none}.reveal.overview .slides section:after,.reveal.overview .slides section:before{display:none!important}.reveal.overview .slides>section.stack{padding:0;top:0!important;background:0 0;outline:0;overflow:visible}.reveal.overview .backgrounds{perspective:inherit;-moz-transform-style:preserve-3d}.reveal.overview .backgrounds .slide-background{opacity:1;visibility:visible;outline:10px solid rgba(150,150,150,.1);outline-offset:10px}.reveal.overview .backgrounds .slide-background.stack{overflow:visible}.reveal.overview .slides section,.reveal.overview-deactivating .slides section{transition:none}.reveal.overview .backgrounds .slide-background,.reveal.overview-deactivating .backgrounds .slide-background{transition:none}.reveal.rtl .slides,.reveal.rtl .slides h1,.reveal.rtl .slides h2,.reveal.rtl .slides h3,.reveal.rtl .slides h4,.reveal.rtl .slides h5,.reveal.rtl .slides h6{direction:rtl;font-family:sans-serif}.reveal.rtl code,.reveal.rtl pre{direction:ltr}.reveal.rtl ol,.reveal.rtl ul{text-align:right}.reveal.rtl .progress span{transform-origin:100% 0}.reveal.has-parallax-background .backgrounds{transition:all .8s ease}.reveal.has-parallax-background[data-transition-speed=fast] .backgrounds{transition-duration:.4s}.reveal.has-parallax-background[data-transition-speed=slow] .backgrounds{transition-duration:1.2s}.reveal>.overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,.9);transition:all .3s ease}.reveal>.overlay .spinner{position:absolute;display:block;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;z-index:10;background-image:url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);visibility:visible;opacity:.6;transition:all .3s ease}.reveal>.overlay header{position:absolute;left:0;top:0;width:100%;padding:5px;z-index:2;box-sizing:border-box}.reveal>.overlay header a{display:inline-block;width:40px;height:40px;line-height:36px;padding:0 10px;float:right;opacity:.6;box-sizing:border-box}.reveal>.overlay header a:hover{opacity:1}.reveal>.overlay header a .icon{display:inline-block;width:20px;height:20px;background-position:50% 50%;background-size:100%;background-repeat:no-repeat}.reveal>.overlay header a.close .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC)}.reveal>.overlay header a.external .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==)}.reveal>.overlay .viewport{position:absolute;display:flex;top:50px;right:0;bottom:0;left:0}.reveal>.overlay.overlay-preview .viewport iframe{width:100%;height:100%;max-width:100%;max-height:100%;border:0;opacity:0;visibility:hidden;transition:all .3s ease}.reveal>.overlay.overlay-preview.loaded .viewport iframe{opacity:1;visibility:visible}.reveal>.overlay.overlay-preview.loaded .viewport-inner{position:absolute;z-index:-1;left:0;top:45%;width:100%;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-preview .x-frame-error{opacity:0;transition:opacity .3s ease .3s}.reveal>.overlay.overlay-preview.loaded .x-frame-error{opacity:1}.reveal>.overlay.overlay-preview.loaded .spinner{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.overlay.overlay-help .viewport{overflow:auto;color:#fff}.reveal>.overlay.overlay-help .viewport .viewport-inner{width:600px;margin:auto;padding:20px 20px 80px 20px;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-help .viewport .viewport-inner .title{font-size:20px}.reveal>.overlay.overlay-help .viewport .viewport-inner table{border:1px solid #fff;border-collapse:collapse;font-size:16px}.reveal>.overlay.overlay-help .viewport .viewport-inner table td,.reveal>.overlay.overlay-help .viewport .viewport-inner table th{width:200px;padding:14px;border:1px solid #fff;vertical-align:middle}.reveal>.overlay.overlay-help .viewport .viewport-inner table th{padding-top:20px;padding-bottom:20px}.reveal .playback{position:absolute;left:15px;bottom:20px;z-index:30;cursor:pointer;transition:all .4s ease;-webkit-tap-highlight-color:transparent}.reveal.overview .playback{opacity:0;visibility:hidden}.reveal .hljs{min-height:100%}.reveal .hljs table{margin:initial}.reveal .hljs-ln-code,.reveal .hljs-ln-numbers{padding:0;border:0}.reveal .hljs-ln-numbers{opacity:.6;padding-right:.75em;text-align:right;vertical-align:top}.reveal .hljs.has-highlights tr:not(.highlight-line){opacity:.4}.reveal .hljs:not(:first-child).fragment{position:absolute;top:0;left:0;width:100%;box-sizing:border-box}.reveal pre[data-auto-animate-target]{overflow:hidden}.reveal pre[data-auto-animate-target] code{height:100%}.reveal .roll{display:inline-block;line-height:1.2;overflow:hidden;vertical-align:top;perspective:400px;perspective-origin:50% 50%}.reveal .roll:hover{background:0 0;text-shadow:none}.reveal .roll span{display:block;position:relative;padding:0 2px;pointer-events:none;transition:all .4s ease;transform-origin:50% 0;transform-style:preserve-3d;-webkit-backface-visibility:hidden;backface-visibility:hidden}.reveal .roll:hover span{background:rgba(0,0,0,.5);transform:translate3d(0,0,-45px) rotateX(90deg)}.reveal .roll span:after{content:attr(data-title);display:block;position:absolute;left:0;top:0;padding:0 2px;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform-origin:50% 0;transform:translate3d(0,110%,0) rotateX(-90deg)}.reveal aside.notes{display:none}.reveal .speaker-notes{display:none;position:absolute;width:33.33333%;height:100%;top:0;left:100%;padding:14px 18px 14px 18px;z-index:1;font-size:18px;line-height:1.4;border:1px solid rgba(0,0,0,.05);color:#222;background-color:#f5f5f5;overflow:auto;box-sizing:border-box;text-align:left;font-family:Helvetica,sans-serif;-webkit-overflow-scrolling:touch}.reveal .speaker-notes .notes-placeholder{color:#ccc;font-style:italic}.reveal .speaker-notes:focus{outline:0}.reveal .speaker-notes:before{content:'Speaker notes';display:block;margin-bottom:10px;opacity:.5}.reveal.show-notes{max-width:75%;overflow:visible}.reveal.show-notes .speaker-notes{display:block}@media screen and (min-width:1600px){.reveal .speaker-notes{font-size:20px}}@media screen and (max-width:1024px){.reveal.show-notes{border-left:0;max-width:none;max-height:70%;max-height:70vh;overflow:visible}.reveal.show-notes .speaker-notes{top:100%;left:0;width:100%;height:42.85714%;height:30vh;border:0}}@media screen and (max-width:600px){.reveal.show-notes{max-height:60%;max-height:60vh}.reveal.show-notes .speaker-notes{top:100%;height:66.66667%;height:40vh}.reveal .speaker-notes{font-size:14px}}.zoomed .reveal *,.zoomed .reveal :after,.zoomed .reveal :before{-webkit-backface-visibility:visible!important;backface-visibility:visible!important}.zoomed .reveal .controls,.zoomed .reveal .progress{opacity:0}.zoomed .reveal .roll span{background:0 0}.zoomed .reveal .roll span:after{visibility:hidden}html.print-pdf *{-webkit-print-color-adjust:exact}html.print-pdf{width:100%;height:100%;overflow:visible}html.print-pdf body{margin:0 auto!important;border:0;padding:0;float:none!important;overflow:visible}html.print-pdf .nestedarrow,html.print-pdf .reveal .controls,html.print-pdf .reveal .playback,html.print-pdf .reveal .progress,html.print-pdf .reveal.overview,html.print-pdf .state-background{display:none!important}html.print-pdf .reveal pre code{overflow:hidden!important;font-family:Courier,'Courier New',monospace!important}html.print-pdf .reveal{width:auto!important;height:auto!important;overflow:hidden!important}html.print-pdf .reveal .slides{position:static;width:100%!important;height:auto!important;zoom:1!important;pointer-events:initial;left:auto;top:auto;margin:0!important;padding:0!important;overflow:visible;display:block;perspective:none;perspective-origin:50% 50%}html.print-pdf .reveal .slides .pdf-page{position:relative;overflow:hidden;z-index:1;page-break-after:always}html.print-pdf .reveal .slides section{visibility:visible!important;display:block!important;position:absolute!important;margin:0!important;padding:0!important;box-sizing:border-box!important;min-height:1px;opacity:1!important;transform-style:flat!important;transform:none!important}html.print-pdf .reveal section.stack{position:relative!important;margin:0!important;padding:0!important;page-break-after:avoid!important;height:auto!important;min-height:auto!important}html.print-pdf .reveal img{box-shadow:none}html.print-pdf .reveal .backgrounds{display:none}html.print-pdf .reveal .slide-background{display:block!important;position:absolute;top:0;left:0;width:100%;height:100%;z-index:auto!important}html.print-pdf .reveal.show-notes{max-width:none;max-height:none}html.print-pdf .reveal .speaker-notes-pdf{display:block;width:100%;height:auto;max-height:none;top:auto;right:auto;bottom:auto;left:auto;z-index:100}html.print-pdf .reveal .speaker-notes-pdf[data-layout=separate-page]{position:relative;color:inherit;background-color:transparent;padding:20px;page-break-after:always;border:0}html.print-pdf .reveal .slide-number-pdf{display:block;position:absolute;font-size:14px}html.print-pdf .aria-status{display:none}@media print{html:not(.print-pdf){background:#fff;width:auto;height:auto;overflow:visible}html:not(.print-pdf) body{background:#fff;font-size:20pt;width:auto;height:auto;border:0;margin:0 5%;padding:0;overflow:visible;float:none!important}html:not(.print-pdf) .controls,html:not(.print-pdf) .fork-reveal,html:not(.print-pdf) .nestedarrow,html:not(.print-pdf) .reveal .backgrounds,html:not(.print-pdf) .reveal .progress,html:not(.print-pdf) .reveal .slide-number,html:not(.print-pdf) .share-reveal,html:not(.print-pdf) .state-background{display:none!important}html:not(.print-pdf) body,html:not(.print-pdf) li,html:not(.print-pdf) p,html:not(.print-pdf) td{font-size:20pt!important;color:#000}html:not(.print-pdf) h1,html:not(.print-pdf) h2,html:not(.print-pdf) h3,html:not(.print-pdf) h4,html:not(.print-pdf) h5,html:not(.print-pdf) h6{color:#000!important;height:auto;line-height:normal;text-align:left;letter-spacing:normal}html:not(.print-pdf) h1{font-size:28pt!important}html:not(.print-pdf) h2{font-size:24pt!important}html:not(.print-pdf) h3{font-size:22pt!important}html:not(.print-pdf) h4{font-size:22pt!important;font-variant:small-caps}html:not(.print-pdf) h5{font-size:21pt!important}html:not(.print-pdf) h6{font-size:20pt!important;font-style:italic}html:not(.print-pdf) a:link,html:not(.print-pdf) a:visited{color:#000!important;font-weight:700;text-decoration:underline}html:not(.print-pdf) div,html:not(.print-pdf) ol,html:not(.print-pdf) p,html:not(.print-pdf) ul{visibility:visible;position:static;width:auto;height:auto;display:block;overflow:visible;margin:0;text-align:left!important}html:not(.print-pdf) .reveal pre,html:not(.print-pdf) .reveal table{margin-left:0;margin-right:0}html:not(.print-pdf) .reveal pre code{padding:20px}html:not(.print-pdf) .reveal blockquote{margin:20px 0}html:not(.print-pdf) .reveal .slides{position:static!important;width:auto!important;height:auto!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:0!important;zoom:1!important;transform:none!important;overflow:visible!important;display:block!important;text-align:left!important;perspective:none;perspective-origin:50% 50%}html:not(.print-pdf) .reveal .slides section{visibility:visible!important;position:static!important;width:auto!important;height:auto!important;display:block!important;overflow:visible!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:60px 20px!important;z-index:auto!important;opacity:1!important;page-break-after:always!important;transform-style:flat!important;transform:none!important;transition:none!important}html:not(.print-pdf) .reveal .slides section.stack{padding:0!important}html:not(.print-pdf) .reveal section:last-of-type{page-break-after:avoid!important}html:not(.print-pdf) .reveal section .fragment{opacity:1!important;visibility:visible!important;transform:none!important}html:not(.print-pdf) .reveal section img{display:block;margin:15px 0;background:#fff;border:1px solid #666;box-shadow:none}html:not(.print-pdf) .reveal section small{font-size:.8em}html:not(.print-pdf) .reveal .hljs{max-height:100%;white-space:pre-wrap;word-wrap:break-word;word-break:break-word;font-size:15pt}html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers{white-space:nowrap}html:not(.print-pdf) .reveal .hljs td{font-size:inherit!important;color:inherit!important}}
+      
+      </style>
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"skipTags":["script","noscript","style","textarea","pre","code"]},"displayAlign":"left","TeX":{"equationNumbers":{"autoNumber":"none","useLabelIds":true},"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js","action.js","cancel.js","enclose.js","mhchem.js","extpfeil.js"],"Macros":{"zerov":"{\\boldsymbol 0}","onev":"{\\boldsymbol 1}","av":"{\\boldsymbol a}","bv":"{\\boldsymbol b}","cv":"{\\boldsymbol c}","dv":"{\\boldsymbol d}","ev":"{\\boldsymbol e}","fv":"{\\boldsymbol f}","gv":"{\\boldsymbol g}","hv":"{\\boldsymbol h}","iv":"{\\boldsymbol i}","jv":"{\\boldsymbol j}","kv":"{\\boldsymbol k}","lv":"{\\boldsymbol l}","mv":"{\\boldsymbol m}","nv":"{\\boldsymbol n}","ov":"{\\boldsymbol o}","pv":"{\\boldsymbol p}","qv":"{\\boldsymbol q}","rv":"{\\boldsymbol r}","sv":"{\\boldsymbol s}","tv":"{\\boldsymbol t}","uv":"{\\boldsymbol u}","vv":"{\\boldsymbol v}","wv":"{\\boldsymbol w}","xv":"{\\boldsymbol x}","yv":"{\\boldsymbol y}","zv":"{\\boldsymbol z}","Av":"{\\mathbf A}","Bv":"{\\mathbf B}","Cv":"{\\mathbf C}","Dv":"{\\mathbf D}","Ev":"{\\mathbf E}","Fv":"{\\mathbf F}","Gv":"{\\mathbf G}","Hv":"{\\mathbf H}","Iv":"{\\mathbf I}","Jv":"{\\mathbf J}","Kv":"{\\mathbf K}","Lv":"{\\mathbf L}","Mv":"{\\mathbf M}","Nv":"{\\mathbf N}","Ov":"{\\mathbf O}","Pv":"{\\mathbf P}","Qv":"{\\mathbf Q}","Rv":"{\\mathbf R}","Sv":"{\\mathbf S}","Tv":"{\\mathbf T}","Uv":"{\\mathbf U}","Vv":"{\\mathbf V}","Wv":"{\\mathbf W}","Xv":"{\\mathbf X}","Yv":"{\\mathbf Y}","Zv":"{\\mathbf Z}","alphav":"{\\boldsymbol {\\alpha}}","betav":"{\\boldsymbol {\\beta}}","lambdav":"{\\boldsymbol {\\lambda}}","muv":"{\\boldsymbol {\\mu}}","thetav":"{\\boldsymbol {\\theta}}","phiv":"{\\boldsymbol {\\phi}}","zetav":"{\\boldsymbol {\\zeta}}","deltav":"{\\boldsymbol {\\delta}}","sigmav":"{\\boldsymbol {\\sigma}}","Sigmav":"{\\boldsymbol {\\Sigma}}","Phiv":"{\\boldsymbol {\\Phi}}","Lambdav":"{\\boldsymbol {\\Lambda}}","Omegav":"{\\boldsymbol {\\Omega}}","Cbb":"{\\mathbb C}","Ebb":"{\\mathbb E}","Fbb":"{\\mathbb F}","Hbb":"{\\mathbb H}","Ibb":"{\\mathbb I}","Nbb":"{\\mathbb N}","Pbb":"{\\mathbb P}","Qbb":"{\\mathbb Q}","Rbb":"{\\mathbb R}","Zbb":"{\\mathbb Z}","Acal":"{\\mathcal A}","Bcal":"{\\mathcal B}","Ccal":"{\\mathcal C}","Dcal":"{\\mathcal D}","Ecal":"{\\mathcal E}","Fcal":"{\\mathcal F}","Gcal":"{\\mathcal G}","Hcal":"{\\mathcal H}","Ical":"{\\mathcal I}","Lcal":"{\\mathcal L}","Mcal":"{\\mathcal M}","Ncal":"{\\mathcal N}","Pcal":"{\\mathcal P}","Rcal":"{\\mathcal R}","Scal":"{\\mathcal S}","Ucal":"{\\mathcal U}","Vcal":"{\\mathcal V}","Wcal":"{\\mathcal W}","Xcal":"{\\mathcal X}","Ycal":"{\\mathcal Y}","Bbar":"{\\bar B}","fhat":"{\\hat f}","xhat":"{\\hat x}","yhat":"{\\hat y}","xvhat":"{\\hat {\\xv}}","yvhat":"{\\hat {\\yv}}","Xvhat":"{\\hat {\\Xv}}","wvt":"{\\tilde {\\wv}}","xvt":"{\\tilde {\\xv}}","yvt":"{\\tilde {\\yv}}","Kvt":"{\\tilde {\\Kv}}","xbar":"{\\bar {x}}","ybar":"{\\bar {y}}","yvbar":"{\\bar {\\yv}}","Ffrak":"{\\mathfrak F}","sup":["{{(#1)}}",1],"acc":"{\\mathrm {acc}}","bias":"{\\mathrm {bias}}","variance":"{\\mathrm {variance}}","noise":"{\\mathrm {noise}}","diff":"{\\mathrm {d}}","diag":"{\\mathrm {diag}}","dist":"{\\mathrm {dist}}","span":"{\\mathrm {span}}","sign":"{\\mathrm {sign}}","sgn":"{\\mathrm {sgn}}","st":"{\\mathrm {s.t.}}","VC":"{\\mathrm {VC}}","Pr":"{\\mathrm {Pr}}","tanh":"{\\mathrm {tanh}}","logistic":"{\\mathrm {logistic}}","relu":"{\\mathrm {ReLU}}","lrelu":"{\\mathrm {LeakyReLU}}","prelu":"{\\mathrm {PReLU}}","elu":"{\\mathrm {ELU}}","softplus":"{\\mathrm {Softplus}}","swish":"{\\mathrm {Swish}}","maxout":"{\\mathrm {Maxout}}","const":"{\\mathrm {const}}","cov":"{\\mathrm {cov}}","grad":"{\\mathrm {grad}}","div":"{\\mathrm {div}}","var":"{\\mathrm {var}}","softmax":"{\\mathrm {softmax}}","att":"{\\mathrm {att}}","cut":"{\\mathrm {cut}}","rcut":"{\\mathrm {RatioCut}}","ncut":"{\\mathrm {NCut}}","tr":"{\\mathrm {tr}}","vol":"{\\mathrm {vol}}","mlp":"{\\mathrm {MLP}}","update":"{\\mathrm {Update}}","aggregate":"{\\mathrm {Aggregate}}","self":"{\\mathrm {self}}","set":"{\\mathrm {set}}","neigh":"{\\mathrm {neigh}}","base":"{\\mathrm {base}}","NULL":"{\\mathrm {NULL}}","new":"{\\mathrm {new}}","gru":"{\\mathrm {GRU}}","lstm":"{\\mathrm {LSTM}}","edge":"{\\mathrm {edge}}","node":"{\\mathrm {node}}","graph":"{\\mathrm {graph}}","train":"{\\mathrm {train}}","dec":"{\\mathrm {Dec}}","sym":"{\\mathrm {sym}}","modd":"{\\mathrm {mod} ~ }","mode":"{\\mathrm {mode}}","hp":"{\\mathrm {hp}}","gen":"{\\mathrm {gen}}","ow":"{\\mathrm {o.w.}}","BetaDist":"{\\mathrm {Beta}}","BetaFunc":"{\\mathrm {B}}","Dir":"{\\mathrm {Dir}}","rot":"{\\mathbf {rot180}}","up":"{\\mathbf {up}}","cen":"{\\mathrm {cen}}","con":"{\\mathrm {con}}","TG":"{\\mathrm {TreeGenerate}}","TP":"{\\mathrm {TP}}","FP":"{\\mathrm {FP}}","TN":"{\\mathrm {TN}}","FN":"{\\mathrm {FN}}","SSE":"{\\mathrm {SSE}}","SSB":"{\\mathrm {SSB}}","gain":"{\\mathrm {Gain}}","gini":"{\\mathrm {Gini}}","argmin":"{\\mathop{\\arg \\min}}","argmax":"{\\mathop{\\mathrm{argmax}}}"}},"HTML-CSS":{"linebreaks":{"automatic":false},"scale":100,"styles":{".MathJax_Display":{"margin-top":"0.6rem !important","margin-bottom":"1rem !important","border-radius":"0px !important","font-size":"1.8rem !important","color":"#d33682","text-align":"left !important"},".MathJax":{"margin-left":"0.2rem !important","margin-right":"0.2rem !important","border":"0px solid #ccc !important","color":"#d33682"}},"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="../plugin/MathJax-2.7.9/MathJax.js" charset="UTF-8"></script>
+        
+      
+      <link rel="stylesheet" href="file:////home/avanti/.local/bin/mpe2html-deps/node_modules/@shd101wyy/mume/dependencies/font-awesome/css/font-awesome.min.css">
+      
+        <script src="../js/head.min.js"></script>
+        <script src="../js/reveal.js"></script>
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#657b83;background-color:#fbedc6 !important;border:#f8de97;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#93a1a1;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#93a1a1}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.property,pre[class*="language-"] .token.property{color:#859900}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#d33682}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#268bd2}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#859900}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#657b83}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{color:#2aa198}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#cb4b16}code[class*="language-"] .token.builtin,pre[class*="language-"] .token.builtin{color:#859900}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{color:#268bd2}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#93a1a1}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#859900}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#268bd2}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#268bd2}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#268bd2}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#dc322f}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export" data-presentation-mode>
+      <div class="mume markdown-preview  " data-presentation-mode>
+      
+    <div style="display:none;"><link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="../css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="../css/logo.css">
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/color.css">
+<link rel="stylesheet" href="../css/margin.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript" src="../plugin/zoom/zoom.js"></script>
+<script type="text/javascript" src="../plugin/customcontrols/plugin.js"></script>
+<link rel="stylesheet" href="../plugin/customcontrols/style.css">
+<script type="text/javascript" src="../plugin/chalkboard/plugin.js"></script>
+<link rel="stylesheet" href="../plugin/chalkboard/style.css">
+<script type="text/javascript" src="../plugin/menu/menu.js"></script>
+<script type="text/javascript" src="../js/anychart/anychart-core.min.js"></script>
+<script type="text/javascript" src="../js/anychart/anychart-venn.min.js"></script>
+<script type="text/javascript" src="../js/anychart/pastel.min.js"></script>
+<script type="text/javascript" src="../js/anychart/venn-ml.js"></script>
+</div>
+    <div class="reveal">
+      <div class="slides">
+        <section data-notes lineno="29" class="slide " data-line="29" data-h="0" data-v="0">
+<div class="bottom20"></div>
+<h1 class="mume-header" id="%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">&#x673A;&#x5668;&#x5B66;&#x4E60;</h1>
+
+<hr class="width50 center">
+<h2 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A6%82%E7%8E%87">&#x8D1D;&#x53F6;&#x65AF;&#x6982;&#x7387;</h2>
+
+<div class="bottom8"></div>
+<h3 class="mume-header" id="%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E9%99%A2-nbspnbsp-%E5%BC%A0%E8%85%BE">&#x8BA1;&#x7B97;&#x673A;&#x5B66;&#x9662; &#xA0;&#xA0; &#x5F20;&#x817E;</h3>
+
+<h4 class="mume-header" id="_tengzhanghusteducn_"><em><a href="mailto:tengzhang@hust.edu.cn">tengzhang@hust.edu.cn</a></em></h4>
+
+</section><section><section data-notes lineno="45" class="slide " data-line="45" data-h="1" data-v="0">
+<h5 class="mume-header" id="%E9%A2%84%E6%B5%8B%E5%BC%A0%E8%80%81%E5%B8%88%E7%A7%91%E7%A0%94%E6%B0%B4%E5%B9%B3">&#x9884;&#x6D4B;&#x5F20;&#x8001;&#x5E08;&#x79D1;&#x7814;&#x6C34;&#x5E73;</h5>
+
+<hr>
+<ul>
+<li>&#x534E;&#x79D1;&#x6709;<span class="mathjax-exps">$80\%$</span>&#x79D1;&#x7814;&#x6C34;&#x5E73;&#x9AD8;&#x7684;&#x8001;&#x5E08;</li>
+<li>&#x8BB2;&#x8BFE;&#x6C34;&#x5E73;&#x548C;&#x79D1;&#x7814;&#x6C34;&#x5E73;&#x5339;&#x914D;&#x7684;&#x6982;&#x7387;&#x662F;<span class="mathjax-exps">$90\%$</span></li>
+<li>&#x5F20;&#x8001;&#x5E08;&#x7684;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x8BFE;&#x8BB2;&#x5F97;&#x6709;&#x70B9;&#x6B21;</li>
+<li>&#x5F20;&#x8001;&#x5E08;&#x79D1;&#x7814;&#x6C34;&#x5E73;&#x9AD8;&#x7684;&#x6982;&#x7387;&#x662F;&#x591A;&#x5C11;&#xFF1F;</li>
+</ul>
+<p>&#x4E24;&#x4E2A;&#x968F;&#x673A;&#x53D8;&#x91CF;&#xFF1A;<span class="mathjax-exps">$\Theta$</span>&#x4E3A;&#x5F20;&#x8001;&#x5E08;&#x79D1;&#x7814;&#x6C34;&#x5E73;&#x9AD8;&#xFF0C;<span class="mathjax-exps">$X$</span>&#x4E3A;&#x5F20;&#x8001;&#x5E08;&#x8BB2;&#x8BFE;&#x6C34;&#x5E73;&#x6B21;</p>
+<p>&#x6839;&#x636E;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\Theta|X) &amp; = \frac{\Pbb(X|\Theta) \Pbb(\Theta)}{\Pbb(X)} = \frac{\Pbb(X|\Theta) \Pbb(\Theta)}{\Pbb(X|\Theta) \Pbb(\Theta) + \Pbb(X|\neg\Theta) \Pbb(\neg\Theta)} \\
+    &amp; = \frac{0.1 \times 0.8}{0.1 \times 0.8 + 0.9 \times 0.2} \approx 0.308
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x5982;&#x679C;&#x4E4B;&#x524D;&#x6CA1;&#x4E0A;&#x8FC7;&#x5F20;&#x8001;&#x5E08;&#x7684;&#x8BFE;&#xFF0C;&#x53EA;&#x80FD;&#x6839;&#x636E;&#x7ECF;&#x9A8C;&#x76F2;&#x731C;<span class="mathjax-exps">$80\%$</span></li>
+<li>&#x5728;&#x89C2;&#x6D4B;&#x5230;&#x5F20;&#x8001;&#x5E08;&#x8BB2;&#x8BFE;&#x6B21;&#x8FD9;&#x4E00;&#x4E8B;&#x5B9E;&#x540E;&#xFF0C;&#x6982;&#x7387;&#x4FEE;&#x6B63;&#x4E3A;<span class="mathjax-exps">$30.8\%$</span></li>
+</ul>
+</section><section vertical="true" data-notes lineno="74" class="slide " data-line="74" data-h="1" data-v="1">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3">&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#x7684;&#x7406;&#x89E3;</h5>
+
+<hr>
+<p>
+
+$$
+\begin{align*}
+    \quad \underbrace{\Pbb(\Theta|X)}_{\text{&#x540E;&#x9A8C;}} &amp; = \frac{\overbrace{\Pbb(X|\Theta)}^{\text{&#x4F3C;&#x7136;}} \overbrace{\Pbb(\Theta)}^{\text{&#x5148;&#x9A8C;}}}{\underbrace{\Pbb(X)}_{\text{&#x8BC1;&#x636E;}}} = \Pbb(X|\Theta) \Pbb(\Theta) \Big/ \int \Pbb(X|\Theta) \Pbb(\Theta) \diff \Theta
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x5148;&#x9A8C;&#xFF1A;&#x5BF9;&#x5F20;&#x8001;&#x5E08;&#x79D1;&#x7814;&#x6C34;&#x5E73;&#x7684;&#x521D;&#x59CB;<mark>&#x4FE1;&#x5FF5;</mark></li>
+<li>&#x4F3C;&#x7136;&#xFF1A;<mark>&#x53EF;&#x89C2;&#x6D4B;</mark>&#x7684;&#x8BB2;&#x8BFE;&#x6C34;&#x5E73;&#x4E0E;<mark>&#x4E0D;&#x53EF;&#x89C2;&#x6D4B;</mark>&#x7684;&#x79D1;&#x7814;&#x6C34;&#x5E73;&#x5339;&#x914D;&#x7684;&#x53EF;&#x80FD;&#x6027;</li>
+<li>&#x8BC1;&#x636E;&#xFF1A;&#x8BB2;&#x8BFE;&#x6C34;&#x5E73;&#x53EF;&#x89C2;&#x6D4B;&#xFF0C;&#x56E0;&#x6B64;&#x53EB;&#x8BC1;&#x636E; (evidence)&#xFF0C;&#x4E5F;&#x6709;&#x4EBA;&#x8BD1;&#x4F5C;&#x4E8B;&#x5B9E;</li>
+<li>&#x540E;&#x9A8C;&#xFF1A;&#x5728;&#x5F97;&#x5230;&#x89C2;&#x6D4B;&#x6570;&#x636E;<span class="mathjax-exps">$X$</span>&#x540E;&#xFF0C;&#x5BF9;&#x521D;&#x59CB;&#x4FE1;&#x5FF5;&#x7684;&#x4FEE;&#x6B63;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x6982;&#x7387;&#x662F;&#x7528;&#x6765;&#x523B;&#x753B;&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#x7684;&#x5DE5;&#x5177;</p>
+<ul>
+<li>&#x9891;&#x7387;&#x4E3B;&#x4E49;&#xFF1A;&#x6982;&#x7387;&#x662F;<mark>&#x72EC;&#x7ACB;&#x91CD;&#x590D;&#x8BD5;&#x9A8C;</mark>&#x4E2D;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;<mark>&#x9891;&#x7387;</mark>&#x7684;&#x6781;&#x9650;</li>
+<li>&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;&#xFF1A;&#x6982;&#x7387;&#x662F;&#x89C2;&#x6D4B;&#x8005;&#x5BF9;&#x4E8B;&#x4EF6;&#x4E3A;&#x771F;&#x7684;<mark>&#x4E3B;&#x89C2;&#x4FE1;&#x5FF5;</mark></li>
+</ul>
+<div class="top1"></div>
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728;&#x7528;&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;&#x7684;&#x8BF4;&#x6CD5;&#x4E86;</p>
+</section></section><section data-notes lineno="106" class="slide " data-line="106" data-h="2" data-v="0">
+<h5 class="mume-header" id="%E9%A2%91%E7%8E%87%E4%B8%BB%E4%B9%89">&#x9891;&#x7387;&#x4E3B;&#x4E49;</h5>
+
+<hr>
+<p><mark>&#x4E0D;&#x786E;&#x5B9A;&#x6027;</mark>&#x6765;&#x81EA;&#x4E8B;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;&#x4E8B;&#x4EF6;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x968F;&#x673A;&#x7684;</p>
+<ul>
+<li><mark>&#x6982;&#x7387;</mark>&#x662F;<mark>&#x72EC;&#x7ACB;&#x91CD;&#x590D;&#x8BD5;&#x9A8C;</mark>&#x4E2D;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;<mark>&#x9891;&#x7387;</mark>&#x7684;&#x6781;&#x9650;</li>
+<li>&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x6709;&#x4E00;&#x4E9B;<mark>&#x56FA;&#x6709;&#x7684;&#x672A;&#x77E5;&#x53C2;&#x6570;</mark>&#xFF0C;&#x5F71;&#x54CD;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x7684;&#x751F;&#x6210;</li>
+<li>&#x6709;&#x4E86;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;<mark>&#x6781;&#x5927;&#x4F3C;&#x7136;</mark>&#x4F30;&#x8BA1;&#x53C2;&#x6570;</li>
+<li>&#x4EC5;&#x51ED;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4F30;&#x8BA1;&#x4EA7;&#x751F;&#x7684;&#x8BEF;&#x5DEE;&#x901A;&#x8FC7;<mark>&#x7F6E;&#x4FE1;&#x533A;&#x95F4;</mark>&#x6765;&#x523B;&#x753B;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x4EE5;&#x629B;&#x786C;&#x5E01;&#x4E3A;&#x4F8B;</p>
+<ul>
+<li>&#x672A;&#x77E5;&#x53C2;&#x6570;<span class="mathjax-exps">$\theta = \Pbb(\text{&#x6B63;&#x9762;})$</span>&#xFF0C;&#x662F;&#x786C;&#x5E01;&#x56FA;&#x6709;&#x7684;</li>
+<li>&#x89C2;&#x6D4B;&#x6570;&#x636E;<span class="mathjax-exps">$X$</span>&#xFF1A;<span class="mathjax-exps">$t$</span>&#x6B21;&#x629B;&#x63B7;&#x4E2D;&#x6709;<span class="mathjax-exps">$k$</span>&#x6B21;&#x6B63;&#x9762;</li>
+<li>&#x4F3C;&#x7136;&#x4E3A;&#x4E8C;&#x9879;&#x5F0F;&#x5206;&#x5E03;<span class="mathjax-exps">$\Pbb(X | \theta) = \binom{t}{k} \theta^k (1 - \theta)^{t-k}$</span></li>
+<li>&#x5047;&#x8BBE;&#x67D0;&#x6B21;&#x89C2;&#x6D4B;<span class="mathjax-exps">$X$</span>&#x662F;&#x629B;&#x4E86;<span class="mathjax-exps">$10$</span>&#x6B21;&#x5168;&#x4E3A;&#x6B63;&#x9762;&#xFF0C;&#x6839;&#x636E;&#x6781;&#x5927;&#x4F3C;&#x7136;&#x53EF;&#x77E5;<span class="mathjax-exps">$\theta^{\text{ML}} = 1$</span></li>
+<li>&#x9884;&#x6D4B;&#xFF1A;&#x7B2C;<span class="mathjax-exps">$11$</span>&#x6B21;&#x629B;&#x63B7;<span class="mathjax-exps">$100\%$</span>&#x662F;&#x6B63;&#x9762;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x7F3A;&#x70B9;&#xFF1A;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x4E00;&#x6B21;&#x6027;&#x4E8B;&#x4EF6;</p>
+</section><section><section data-notes lineno="133" class="slide " data-line="133" data-h="3" data-v="0">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%BB%E4%B9%89">&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;</h5>
+
+<hr>
+<p><mark>&#x4E0D;&#x786E;&#x5B9A;&#x6027;</mark>&#x6765;&#x81EA;&#x89C2;&#x6D4B;&#x8005;&#xFF0C;&#x56E0;&#x4E3A;<mark>&#x89C2;&#x6D4B;&#x8005;&#x7684;&#x4FE1;&#x606F;&#x4E0D;&#x5B8C;&#x5168;</mark></p>
+<p>&#x4EE5;&#x629B;&#x786C;&#x5E01;&#x4E3A;&#x4F8B;</p>
+<ul>
+<li><span class="mathjax-exps">$\theta = \Pbb(\text{&#x6B63;&#x9762;})$</span>&#x4E0D;&#x518D;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#xFF0C;&#x800C;&#x662F;<span class="mathjax-exps">$[0,1]$</span>&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x53D8;&#x91CF; (&#x5206;&#x5E03;)</li>
+<li><span class="mathjax-exps">$\theta$</span>&#x7684;&#x5148;&#x9A8C;&#x662F;&#x89C2;&#x6D4B;&#x8005;&#x5728;&#x629B;&#x63B7;&#x524D;&#x5BF9;&#x629B;&#x51FA;&#x6B63;&#x9762;&#x7684;&#x521D;&#x59CB;&#x4FE1;&#x5FF5;</li>
+<li><span class="mathjax-exps">$\theta$</span>&#x7684;&#x540E;&#x9A8C;&#x662F;&#x89C2;&#x6D4B;&#x8005;&#x5F97;&#x5230;&#x6570;&#x636E; (&#x4FE1;&#x606F;) &#x540E;&#x5BF9;&#x5148;&#x9A8C;&#x7684;&#x4FEE;&#x6B63;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x4F18;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x8BA8;&#x8BBA;&#x4E00;&#x6B21;&#x6027;&#x4E8B;&#x4EF6;&#x7684;&#x6982;&#x7387;&#x4E86;</li>
+<li>&#x5148;&#x9A8C;&#x4E3A;&#x5F15;&#x5165;<mark>&#x9886;&#x57DF;&#x77E5;&#x8BC6;</mark>&#x63D0;&#x4F9B;&#x4E86;&#x9014;&#x5F84;</li>
+<li>&#x65B9;&#x4FBF;&#x52A8;&#x6001;&#x5730;&#x5904;&#x7406;&#x6570;&#x636E;&#xFF0C;&#x4E0A;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x540E;&#x9A8C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x5148;&#x9A8C;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x7F3A;&#x70B9;&#xFF1A;&#x6982;&#x7387;&#x4F9D;&#x8D56;&#x4E8E;&#x89C2;&#x6D4B;&#x8005;&#xFF0C;&#x662F;&#x89C2;&#x6D4B;&#x8005;&#x7684;&#x4E3B;&#x89C2;&#x4FE1;&#x5FF5;&#xFF0C;&#x552F;&#x5FC3;&#x4E3B;&#x4E49;&#xFF1F;</p>
+</section><section vertical="true" data-notes lineno="159" class="slide " data-line="159" data-h="3" data-v="1">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%BB%E4%B9%89-1">&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;</h5>
+
+<hr>
+<p>&#x6570;&#x636E;<span class="mathjax-exps">$X$</span>&#xFF1A;<span class="mathjax-exps">$t$</span>&#x6B21;&#x629B;&#x63B7;&#x4E2D;&#x6709;<span class="mathjax-exps">$k$</span>&#x6B21;&#x6B63;&#x9762;&#xFF0C;&#x4F3C;&#x7136;&#x662F;<mark>&#x4E8C;&#x9879;&#x5F0F;&#x5206;&#x5E03;</mark></p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(X | \theta) = \binom{t}{k} \theta^k (1 - \theta)^{t-k}
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x4E0D;&#x59A8;&#x8BBE;<span class="mathjax-exps">$\theta$</span>&#x7684;&#x5148;&#x9A8C;&#x662F;&#x53C2;&#x6570;&#x4E3A;<span class="mathjax-exps">$(\alpha,\beta)$</span>&#x7684;<mark>&#x8D1D;&#x5854;&#x5206;&#x5E03;</mark>&#xFF1A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\theta) = \BetaDist(\theta|\alpha,\beta) = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta} = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\BetaFunc(\alpha,\beta)}
+\end{align*}
+$$
+</p>
+
+<div class="top-4"></div>
+<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$\BetaFunc(\alpha,\beta) = \int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta$</span>&#x662F;&#x7B2C;&#x4E00;&#x7C7B;&#x6B27;&#x62C9;&#x79EF;&#x5206;&#xFF0C;&#x5F52;&#x4E00;&#x5316;&#x7528;</p>
+<p>&#x6839;&#x636E;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\theta|X) = \frac{\Pbb(\theta) \Pbb(X|\theta)}{\Pbb(X)} = \Pbb(\theta) \Pbb(X|\theta) \Big/ \int_0^1 \Pbb(\theta) \Pbb(X|\theta) \diff \theta
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="207" class="slide " data-line="207" data-h="3" data-v="2">
+<h5 class="mume-header" id="%E5%85%B1%E8%BD%AD%E5%85%88%E9%AA%8C">&#x5171;&#x8F6D;&#x5148;&#x9A8C;</h5>
+
+<hr>
+<p>&#x8BC1;&#x636E;&#x548C;&#x540E;&#x9A8C;&#x5206;&#x522B;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(X) &amp; = \int_0^1 \Pbb(\theta) \Pbb(X|\theta) \diff \theta = \binom{t}{k} \frac{1}{\BetaFunc(\alpha,\beta)} \int_0^1  \theta^{\alpha + k - 1} (1 - \theta)^{\beta + t-k-1} \diff \theta \\
+    &amp; = \binom{t}{k} \frac{\BetaFunc(\alpha+k,\beta+t-k)}{\BetaFunc(\alpha,\beta)} \\[4pt]
+    \Pbb(\theta|X) &amp; = \frac{\Pbb(\theta) \Pbb(X|\theta)}{\Pbb(X)} = \frac{\theta^{\alpha + k - 1} (1-\theta)^{\beta + t - k - 1}}{\BetaFunc(\alpha+k,\beta+t-k)} = \BetaDist(\theta|\alpha+k,\beta+t-k)
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x4F3C;&#x7136;<span class="mathjax-exps">$\Pbb(X | \theta)$</span>&#x662F;&#x4E8C;&#x9879;&#x5F0F;&#x5206;&#x5E03;&#xFF0C;&#x5148;&#x9A8C;&#x4E5F;<mark>&#x51D1;</mark><span class="mathjax-exps">$\theta^\spadesuit (1-\theta)^\heartsuit$</span>&#x7684;&#x5F62;&#x5F0F;&#xFF0C;<mark>&#x9009;</mark>&#x8D1D;&#x5854;&#x5206;&#x5E03;</li>
+<li>&#x82E5;&#x4E0E;&#x4F3C;&#x7136;&#x76F8;&#x4E58;&#x540E;&#xFF0C;&#x540E;&#x9A8C;&#x4E0E;&#x5148;&#x9A8C;&#x5C5E;&#x540C;&#x4E00;&#x5206;&#x5E03;&#x65CF;&#xFF0C;&#x4EC5;&#x53C2;&#x6570;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x5219;&#x8BE5;&#x5148;&#x9A8C;&#x79F0;&#x4E3A;&#x8BE5;&#x4F3C;&#x7136;&#x7684;<mark>&#x5171;&#x8F6D;&#x5148;&#x9A8C;</mark> (conjugate prior)</li>
+<li>&#x8D1D;&#x5854;&#x5206;&#x5E03;&#x662F;&#x4E8C;&#x9879;&#x5F0F;&#x5206;&#x5E03;&#x7684;&#x5171;&#x8F6D;&#x5148;&#x9A8C;</li>
+<li>&#x5148;&#x9A8C;&#x5206;&#x5E03;&#x7684;&#x53C2;&#x6570;<span class="mathjax-exps">$(\alpha,\beta)$</span>&#x7531;&#x89C2;&#x6D4B;&#x8005;&#x81EA;&#x5DF1;&#x9009;&#xFF0C;&#x53EF;&#x89C6;&#x4E3A;&#x89C2;&#x6D4B;&#x8005;&#x7684;&#x9886;&#x57DF;&#x77E5;&#x8BC6;&#xFF1B;&#x4E5F;&#x53EF;&#x89C6;&#x4E3A;<mark>&#x4F2A;&#x6570;&#x636E;</mark>&#xFF1A;&#x5728;<span class="mathjax-exps">$X$</span>&#x524D;&#x8FD8;&#x89C2;&#x6D4B;&#x8FC7;<span class="mathjax-exps">$\alpha+\beta$</span>&#x6B21;&#x629B;&#x63B7;&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$\alpha$</span>&#x6B21;&#x6B63;&#x9762;</li>
+</ul>
+</section></section><section><section data-notes lineno="232" class="slide " data-line="232" data-h="4" data-v="0">
+<h5 class="mume-header" id="%E5%BA%94%E7%94%A8%E5%88%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">&#x5E94;&#x7528;&#x5230;&#x673A;&#x5668;&#x5B66;&#x4E60;</h5>
+
+<hr>
+<p>
+
+$$
+\begin{align*}
+    \quad \underbrace{\Pbb(\Theta|X)}_{\text{&#x540E;&#x9A8C;}} &amp; = \frac{\overbrace{\Pbb(X|\Theta)}^{\text{&#x4F3C;&#x7136;}} \overbrace{\Pbb(\Theta)}^{\text{&#x5148;&#x9A8C;}}}{\underbrace{\Pbb(X)}_{\text{&#x8BC1;&#x636E;}}} = \Pbb(X|\Theta) \Pbb(\Theta) \Big/ \int \Pbb(X|\Theta) \Pbb(\Theta) \diff \Theta
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x5047;&#x8BBE;&#x6709;&#x4E00;&#x4E2A;&#x4EE5;<span class="mathjax-exps">$\Theta$</span>&#x4E3A;&#x53C2;&#x6570;&#x7684; (&#x751F;&#x6210;&#x5F0F;) &#x6A21;&#x578B;</li>
+<li>&#x5148;&#x9A8C;&#xFF1A;&#x89C2;&#x6D4B;&#x8005;&#x5BF9;&#x8BE5;&#x6A21;&#x578B;&#x4E3A;&#x771F;&#x5B9E;&#x6A21;&#x578B;&#x7684;&#x521D;&#x59CB;&#x4FE1;&#x5FF5;</li>
+<li>&#x4F3C;&#x7136;&#xFF1A;&#x5728;&#x8BE5;&#x6A21;&#x578B;&#x4E3A;&#x771F;&#x5B9E;&#x6A21;&#x578B;&#x7684;&#x6761;&#x4EF6;&#x4E0B;&#xFF0C;&#x89C2;&#x6D4B;&#x5230;&#x6570;&#x636E;<span class="mathjax-exps">$X$</span>&#x7684;&#x53EF;&#x80FD;&#x6027;</li>
+<li>&#x540E;&#x9A8C;&#xFF1A;&#x5728;&#x5F97;&#x5230;&#x89C2;&#x6D4B;&#x6570;&#x636E;<span class="mathjax-exps">$X$</span>&#x540E;&#xFF0C;&#x5BF9;&#x6A21;&#x578B;&#x4FE1;&#x5FF5;&#x7684;&#x4FEE;&#x6B63;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x6839;&#x636E;&#x662F;&#x5426;&#x5229;&#x7528;&#x5148;&#x9A8C;&#xFF0C;&#x6709;&#x4E24;&#x79CD;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Theta$</span>&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x6781;&#x5927;&#x4F3C;&#x7136; (<u>m</u>aximum <u>l</u>ikelihood, ML)&#xFF0C;<span class="mathjax-exps">$\Theta^{\text{ML}} = \mathop{\arg \max}_\Theta \Pbb(X|\Theta)$</span></li>
+<li>&#x6700;&#x5927;&#x540E;&#x9A8C; (<u>m</u>aximum <u>a</u> <u>p</u>osterior, MAP)&#xFF0C;<span class="mathjax-exps">$\Theta^{\text{MAP}} = \mathop{\arg \max}_\Theta \Pbb(\Theta|X)$</span></li>
+</ul>
+<div class="top2"></div>
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x524D;&#x8005;&#x4E3A;&#x9891;&#x7387;&#x4E3B;&#x4E49;&#x8005;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x540E;&#x8005;&#x4E3A;&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;&#x8005;&#x7684;&#x505A;&#x6CD5;</p>
+</section><section vertical="true" data-notes lineno="264" class="slide " data-line="264" data-h="4" data-v="1">
+<h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%90%8E%E9%AA%8C-%E5%85%A8%E8%B4%9D%E5%8F%B6%E6%96%AF">&#x6700;&#x5927;&#x540E;&#x9A8C; &#x5168;&#x8D1D;&#x53F6;&#x65AF;</h5>
+
+<hr>
+<p>&#x4EE5;&#x629B;&#x786C;&#x5E01;&#x4E3A;&#x4F8B;&#xFF0C;&#x540E;&#x9A8C;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\theta|X) = \frac{\theta^{\alpha + k - 1} (1-\theta)^{\beta + t - k - 1}}{\BetaFunc(\alpha+k,\beta+t-k)} = \BetaDist(\theta|\alpha+k,\beta+t-k)
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x82E5;&#x76EE;&#x6807;&#x5C31;&#x662F;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\theta$</span>&#xFF0C;&#x91C7;&#x7528; MAP &#x4F30;&#x8BA1;&#xFF1A;<span class="mathjax-exps">$\theta^{\text{MAP}} = \mathrm{\arg \max}_{\theta} ~ \Pbb(\theta|X)$</span></p>
+<ul>
+<li>&#x7531;&#x4E8E;&#x5148;&#x9A8C; (&#x4F2A;&#x6570;&#x636E;) &#x7684;&#x5B58;&#x5728;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x9891;&#x7387;&#x4E3B;&#x4E49;&#x4E2D;<span class="mathjax-exps">$\theta^{\text{ML}} = 1$</span>&#x7684;&#x60C5;&#x51B5;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x82E5;&#x76EE;&#x6807;&#x662F;&#x5BF9;&#x672A;&#x77E5;&#x6837;&#x672C;<span class="mathjax-exps">$\xhat$</span>&#x505A;&#x9884;&#x6D4B;&#xFF0C;&#x6709;&#x4E24;&#x79CD;&#x505A;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x5148;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\theta^{\text{MAP}}$</span>&#x518D;&#x8BA1;&#x7B97;<span class="mathjax-exps">$\Pbb(\xhat|\theta^{\text{MAP}})$</span>&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x5FFD;&#x7565;&#x4E86;<span class="mathjax-exps">$\theta$</span>&#x7684;&#x968F;&#x673A;&#x6027;&#xFF0C;&#x5C24;&#x5176;&#x5F53;&#x540E;&#x9A8C;<span class="mathjax-exps">$\Pbb(\theta|X)$</span>&#x662F;&#x4E2A;<mark>&#x8F83;&#x5747;&#x5300;</mark>&#x7684;&#x5206;&#x5E03;&#x65F6;&#xFF0C;&#x53EA;&#x53D6;&#x4E00;&#x4E2A;&#x70B9;&#x6765;&#x505A;&#x51B3;&#x7B56;&#x98CE;&#x9669;&#x5F88;&#x5927;</li>
+<li><mark>&#x5168;&#x8D1D;&#x53F6;&#x65AF;</mark> (fully Bayesian)&#xFF1A;&#x8003;&#x8651;&#x6240;&#x6709;&#x7684;<span class="mathjax-exps">$\theta$</span>&#xFF0C;&#x6839;&#x636E;&#x540E;&#x9A8C;&#x505A;&#x52A0;&#x6743;&#x5E73;&#x5747;</li>
+</ul>
+<div class="top2"></div>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\xhat|X) = \int \Pbb(\xhat|\theta) \Pbb(\theta|X) \diff \theta
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="307" class="slide " data-line="307" data-h="4" data-v="2">
+<h5 class="mume-header" id="%E5%B0%8F%E7%BB%93-%E9%A2%91%E7%8E%87-span-stylefont-weight900_vs_span-%E8%B4%9D%E5%8F%B6%E6%96%AF">&#x5C0F;&#x7ED3; &#x9891;&#x7387; <span style="font-weight:900"><em>vs.</em></span> &#x8D1D;&#x53F6;&#x65AF;</h5>
+
+<hr>
+<p>&#x5728;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4E2D;&#x7684;&#x533A;&#x522B;&#xFF1A;&#x662F;&#x5426;&#x8003;&#x8651;&#x5148;&#x9A8C;</p>
+<p>&#x5F53;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x91CF;&#x5F88;&#x5927;&#x65F6;&#xFF0C;&#x5148;&#x9A8C; (&#x4F2A;&#x6570;&#x636E;) &#x5C31;&#x65E0;&#x8DB3;&#x8F7B;&#x91CD;&#x4E86;&#xFF0C;&#x4E24;&#x79CD;&#x505A;&#x6CD5;&#x4E0D;&#x4F1A;&#x6709;&#x592A;&#x5927;&#x5DEE;&#x522B;</p>
+<p>&#x5F53;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x91CF;&#x4E0D;&#x5927;&#x65F6;&#xFF0C;&#x5148;&#x9A8C;&#x5BF9;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x6709;&#x663E;&#x8457;&#x5F71;&#x54CD; (&#x5F52;&#x7EB3;&#x504F;&#x597D;)</p>
+<ul>
+<li>&#x5148;&#x9A8C;&#x662F;&#x4E3B;&#x89C2;&#x7684;&#xFF0C;&#x7EAF;&#x4EBA;&#x4E3A;&#x9009;&#x53D6;&#xFF0C;&#x6CA1;&#x6709;&#x6807;&#x51C6;</li>
+<li>&#x629B;&#x786C;&#x5E01;&#x95EE;&#x9898;&#x9009;&#x8D1D;&#x5854;&#x5206;&#x5E03;&#x505A;&#x5148;&#x9A8C;&#x5C31;&#x662F;&#x56FE;&#x8BA1;&#x7B97;&#x65B9;&#x4FBF;</li>
+<li>&#x5229;&#x7528;&#x5171;&#x8F6D;&#x5148;&#x9A8C;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x663E;&#x5F0F;&#x5730;&#x79EF;&#x5206;&#x6C42;<span class="mathjax-exps">$\Pbb(X)$</span>&#xFF0C;&#x8089;&#x773C;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#x7ED3;&#x679C;</li>
+</ul>
+<div class="top2"></div>
+<p>&#x5148;&#x9A8C;&#x9700;&#x6709;&#x9002;&#x5F53;&#x7684;&#x81EA;&#x7531;&#x5EA6;&#xFF0C;&#x80FD;&#x901A;&#x8FC7;&#x8C03;&#x6574;&#x53C2;&#x6570;&#x7075;&#x6D3B;&#x8868;&#x793A;&#x9886;&#x57DF;&#x77E5;&#x8BC6;</p>
+</section></section><section><section data-notes lineno="327" class="slide " data-line="327" data-h="5" data-v="0">
+<h5 class="mume-header" id="%E5%86%8D%E7%9C%8B%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF">&#x518D;&#x770B;&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</h5>
+
+<hr>
+<p>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x901A;&#x8FC7;&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\Pbb(y), ~ \Pbb(x_1 | y), ~ \ldots, ~ \Pbb(x_d | y)$</span></p>
+<div class="top-2"></div>
+<p>&#x8BB0;<span class="mathjax-exps">$\alpha_k = \Pbb(y = k)$</span>&#xFF0C;&#x4E8E;&#x662F;<span class="mathjax-exps">$\sum_{k \in [c]} \alpha_k = 1$</span>&#x4E14;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(y | \alpha_k) = \prod_{k \in [c]} \Pbb(y = k)^{\Ibb(y=k)} = \prod_{k \in [c]} \alpha_k^{\Ibb(y=k)}
+\end{align*}
+$$
+</p>
+
+<div class="top-5"></div>
+<p>&#x662F;<mark>&#x5206;&#x7C7B;&#x5206;&#x5E03;</mark>&#xFF0C;&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;&#x7684;&#x591A;&#x5143;&#x6269;&#x5C55;&#xFF0C;<span class="mathjax-exps">$c=2$</span>&#x5373;&#x4E3A;&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;</p>
+<div class="top1"></div>
+<p>&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;&#x5448;<span class="mathjax-exps">$\theta^\spadesuit (1-\theta)^\heartsuit$</span>&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5171;&#x8F6D;&#x5148;&#x9A8C;&#x662F;&#x8D1D;&#x5854;&#x5206;&#x5E03;</p>
+<div class="top1"></div>
+<p>
+
+$$
+\begin{align*}
+    \quad \BetaDist(\theta|\alpha,\beta) = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta} = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\BetaFunc(\alpha,\beta)}
+\end{align*}
+$$
+</p>
+
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x5206;&#x7C7B;&#x5206;&#x5E03;&#x7684;&#x5171;&#x8F6D;&#x5148;&#x9A8C;&#x662F;&#x8D1D;&#x5854;&#x5206;&#x5E03;&#x7684;&#x591A;&#x5143;&#x6269;&#x5C55;&#xFF1F;</p>
+</section><section vertical="true" data-notes lineno="371" class="slide " data-line="371" data-h="5" data-v="1">
+<h5 class="mume-header" id="%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%88%86%E5%B8%83">&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;</h5>
+
+<hr>
+<p>&#x4F3D;&#x739B;&#x51FD;&#x6570; (&#x7B2C;&#x4E8C;&#x7C7B;&#x6B27;&#x62C9;&#x79EF;&#x5206;) &#x548C;&#x8D1D;&#x5854;&#x51FD;&#x6570; (&#x7B2C;&#x4E00;&#x7C7B;&#x6B27;&#x62C9;&#x79EF;&#x5206;)&#xFF1A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Gamma(m) &amp; = \int_0^\infty \theta^{m - 1} \exp(- \theta) \diff \theta \\
+    \BetaFunc(\alpha,\beta) &amp; = \int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x7531;&#x8D1D;&#x5854;&#x51FD;&#x6570;&#x53EF;&#x5BFC;&#x51FA;&#x8D1D;&#x5854;&#x5206;&#x5E03;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \BetaDist(\theta|\alpha,\beta) = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\BetaFunc(\alpha,\beta)} = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} \theta^{\alpha - 1} (1-\theta)^{\beta - 1}
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x8D1D;&#x5854;&#x5206;&#x5E03;&#x7684;&#x591A;&#x5143;&#x6269;&#x5C55;&#x4E3A;&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Dir(\alphav | \mv) = \frac{\Gamma(m_1 + \cdots + m_c)}{\Gamma(m_1) \cdots \Gamma(m_c)} \prod_{k \in [c]} \alpha_k^{m_k - 1}, \quad \sum_{k \in [c]} \alpha_k = 1
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="418" class="slide " data-line="418" data-h="5" data-v="2">
+<h5 class="mume-header" id="%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%88%86%E5%B8%83%E5%85%88%E9%AA%8C">&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;&#x5148;&#x9A8C;</h5>
+
+<hr>
+<p class="left10per"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: g Pages: 1 -->
+<svg width="382pt" height="135pt" viewBox="0.00 0.00 381.84 134.86" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 130.8607)">
+<title>g</title>
+<!-- 分类分布 -->
+<g id="node1" class="node">
+<title>&#x5206;&#x7C7B;&#x5206;&#x5E03;</title>
+<ellipse fill="none" stroke="#586e75" cx="76.0301" cy="-20.9304" rx="56.8333" ry="20.861"/>
+<text text-anchor="middle" x="76.0301" y="-15.5304" font-family="LXGWWenKai" font-size="18.00" fill="#b58900">&#x5206;&#x7C7B;&#x5206;&#x5E03;</text>
+</g>
+<!-- 伯努利分布 -->
+<g id="node2" class="node">
+<title>&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;</title>
+<ellipse fill="none" stroke="#586e75" cx="298.7227" cy="-20.9304" rx="75.2276" ry="20.861"/>
+<text text-anchor="middle" x="298.7227" y="-15.5304" font-family="LXGWWenKai" font-size="18.00" fill="#b58900">&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;</text>
+</g>
+<!-- 分类分布&#45;&gt;伯努利分布 -->
+<g id="edge1" class="edge">
+<title>&#x5206;&#x7C7B;&#x5206;&#x5E03;-&gt;&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;</title>
+<path fill="none" stroke="#586e75" d="M133.0898,-20.9304C158.6088,-20.9304 189.1646,-20.9304 217.0438,-20.9304"/>
+<polygon fill="#586e75" stroke="#586e75" points="223.32,-20.9304 217.3201,-23.6305 220.32,-20.9304 217.32,-20.9305 217.32,-20.9305 217.32,-20.9305 220.32,-20.9304 217.32,-18.2305 223.32,-20.9304 223.32,-20.9304"/>
+<text text-anchor="middle" x="187.8346" y="-25.7304" font-family="LXGWWenKai" font-size="16.00" fill="#268bd2">&#x591A;&#x5143;&#x6269;&#x5C55;</text>
+</g>
+<!-- 狄利克雷分布 -->
+<g id="node3" class="node">
+<title>&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;</title>
+<ellipse fill="none" stroke="#586e75" cx="76.0301" cy="-105.9304" rx="76.0602" ry="20.861"/>
+<text text-anchor="middle" x="76.0301" y="-100.5304" font-family="LXGWWenKai" font-size="18.00" fill="#b58900">&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;</text>
+</g>
+<!-- 狄利克雷分布&#45;&gt;分类分布 -->
+<g id="edge4" class="edge">
+<title>&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;-&gt;&#x5206;&#x7C7B;&#x5206;&#x5E03;</title>
+<path fill="none" stroke="#586e75" stroke-dasharray="5,2" d="M76.0301,-84.8662C76.0301,-73.7218 76.0301,-59.9135 76.0301,-47.9844"/>
+<polygon fill="#586e75" stroke="#586e75" points="76.0301,-41.9416 78.7302,-47.9416 76.0302,-44.9416 76.0302,-47.9416 76.0302,-47.9416 76.0302,-47.9416 76.0302,-44.9416 73.3302,-47.9416 76.0301,-41.9416 76.0301,-41.9416"/>
+<text text-anchor="middle" x="63.4301" y="-58.6304" font-family="LXGWWenKai" font-size="16.00" fill="#268bd2">&#xFF1F;</text>
+</g>
+<!-- 贝塔分布 -->
+<g id="node4" class="node">
+<title>&#x8D1D;&#x5854;&#x5206;&#x5E03;</title>
+<ellipse fill="none" stroke="#586e75" cx="298.7227" cy="-105.9304" rx="56.4033" ry="20.861"/>
+<text text-anchor="middle" x="298.7227" y="-100.5304" font-family="LXGWWenKai" font-size="18.00" fill="#b58900">&#x8D1D;&#x5854;&#x5206;&#x5E03;</text>
+</g>
+<!-- 狄利克雷分布&#45;&gt;贝塔分布 -->
+<g id="edge2" class="edge">
+<title>&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;-&gt;&#x8D1D;&#x5854;&#x5206;&#x5E03;</title>
+<path fill="none" stroke="#586e75" d="M152.3567,-105.9304C179.6326,-105.9304 210.0298,-105.9304 236.0241,-105.9304"/>
+<polygon fill="#586e75" stroke="#586e75" points="242.1872,-105.9304 236.1872,-108.6305 239.1872,-105.9304 236.1872,-105.9305 236.1872,-105.9305 236.1872,-105.9305 239.1872,-105.9304 236.1871,-103.2305 242.1872,-105.9304 242.1872,-105.9304"/>
+<text text-anchor="middle" x="187.8346" y="-110.7304" font-family="LXGWWenKai" font-size="16.00" fill="#268bd2">&#x591A;&#x5143;&#x6269;&#x5C55;</text>
+</g>
+<!-- 贝塔分布&#45;&gt;伯努利分布 -->
+<g id="edge3" class="edge">
+<title>&#x8D1D;&#x5854;&#x5206;&#x5E03;-&gt;&#x4F2F;&#x52AA;&#x5229;&#x5206;&#x5E03;</title>
+<path fill="none" stroke="#586e75" d="M298.7227,-84.8662C298.7227,-73.7218 298.7227,-59.9135 298.7227,-47.9844"/>
+<polygon fill="#586e75" stroke="#586e75" points="298.7227,-41.9416 301.4228,-47.9416 298.7227,-44.9416 298.7228,-47.9416 298.7228,-47.9416 298.7228,-47.9416 298.7227,-44.9416 296.0228,-47.9416 298.7227,-41.9416 298.7227,-41.9416"/>
+<text text-anchor="middle" x="286.1227" y="-58.6304" font-family="LXGWWenKai" font-size="16.00" fill="#268bd2">&#x5171;&#x8F6D;&#x5148;&#x9A8C;</text>
+</g>
+</g>
+</svg>
+</p><div class="top1"></div>
+<p>&#x8BB0;<span class="mathjax-exps">$\alpha_k = \Pbb(y = k)$</span>&#xFF0C;&#x4E8E;&#x662F;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(y | \alphav) = \prod_{k \in [c]} \Pbb(y = k)^{\Ibb(y=k)} = \prod_{k \in [c]} \alpha_k^{\Ibb(y=k)}, \quad \sum_{k \in [c]} \alpha_k = 1
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x8BBE;<span class="mathjax-exps">$\alphav$</span>&#x670D;&#x4ECE;&#x53C2;&#x6570;&#x4E3A;<span class="mathjax-exps">$\mv$</span>&#x7684;&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;&#xFF1A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\alphav) = \Dir(\alphav | \mv) = \frac{\Gamma(m_1 + \cdots + m_c)}{\Gamma(m_1) \cdots \Gamma(m_c)} \prod_{k \in [c]} \alpha_k^{m_k - 1}, \quad \sum_{k \in [c]} \alpha_k = 1
+\end{align*}
+$$
+</p>
+
+</section></section><section><section data-notes lineno="454" class="slide " data-line="454" data-h="6" data-v="0">
+<h5 class="mume-header" id="%E7%8B%84%E5%88%A9%E5%85%8B%E9%9B%B7%E5%88%86%E5%B8%83%E5%90%8E%E9%AA%8C">&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;&#x540E;&#x9A8C;</h5>
+
+<hr>
+<p>&#x6839;&#x636E;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#xFF0C;&#x540E;&#x9A8C;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\alphav | \yv) &amp; \propto \Pbb(\alphav) \Pbb(\yv|\alphav) \\
+    &amp; = \left( \frac{\Gamma(m_1 + \cdots + m_c)}{\Gamma(m_1) \cdots \Gamma(m_c)} \prod_{k \in [c]} \alpha_k^{m_k - 1} \right) \left( \prod_{i \in [m]} \prod_{k \in [c]} \alpha_k^{\Ibb(y^{(i)}=k)} \right) \\
+    &amp; = \frac{\Gamma(m_1 + \cdots + m_c)}{\Gamma(m_1) \cdots \Gamma(m_c)} \prod_{k \in [c]} \alpha_k^{m_k - 1} \alpha_k^{\sum_{i \in [m]} \Ibb(y^{(i)}=k)}                                                  \\
+    &amp; = \frac{\Gamma(m_1 + \cdots + m_c)}{\Gamma(m_1) \cdots \Gamma(m_c)} \prod_{k \in [c]} \alpha_k^{A_k + m_k - 1}                                                                                        \\
+    &amp; \propto \Dir(\alphav | A_1 + m_1, \ldots, A_c + m_c)
+\end{align*}
+$$
+</p>
+
+<div class="top-3"></div>
+<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$A_k = \sum_{i \in [m]} \Ibb(y^{(i)} = k)$</span>&#x4E3A;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x6570;</p>
+<p>&#x8FD9;&#x5C31;&#x9A8C;&#x8BC1;&#x4E86;&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;&#x662F;&#x5206;&#x7C7B;&#x5206;&#x5E03;&#x7684;&#x5171;&#x8F6D;&#x5148;&#x9A8C;</p>
+</section><section vertical="true" data-notes lineno="482" class="slide " data-line="482" data-h="6" data-v="1">
+<h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%90%8E%E9%AA%8C%E4%BC%B0%E8%AE%A1">&#x6700;&#x5927;&#x540E;&#x9A8C;&#x4F30;&#x8BA1;</h5>
+
+<hr>
+<p>&#x8BB0;<span class="mathjax-exps">$A_k = \sum_{i \in [m]} \Ibb(y^{(i)} = k)$</span>&#x4E3A;&#x7B2C;<span class="mathjax-exps">$k$</span>&#x7C7B;&#x6837;&#x672C;&#x6570;&#xFF0C;&#x540E;&#x9A8C;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\alphav | \yv) \propto \frac{\Gamma(m_1 + \cdots + m_c)}{\Gamma(m_1) \cdots \Gamma(m_c)} \prod_{k \in [c]} \alpha_k^{A_k + m_k - 1}
+\end{align*}
+$$
+</p>
+
+<div class="top-2"></div>
+<p>&#x6700;&#x5927;&#x540E;&#x9A8C;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\alpha_k$</span>&#x53EA;&#x9700;&#x6C42;&#x89E3;&#x4F18;&#x5316;&#x95EE;&#x9898;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad &amp; \max_{\alpha_k} ~ \sum_{k \in [c]} (A_k + m_k - 1) \ln \alpha_k, \quad \st ~ \sum_{k \in [c]} \alpha_k = 1 \\[4pt]
+    &amp; \alpha_k^{\text{MAP}} = \frac{A_k + m_k - 1}{\lambda} = \frac{A_k + m_k - 1}{\lambda \sum_{j \in [c]} \alpha_j} = \frac{A_k + m_k - 1}{\sum_{j \in [c]} (A_j + m_j - 1)}
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x53D6;<span class="mathjax-exps">$\mv = \onev$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\alpha_k^{\text{MAP}} = \alpha_k^{\text{ML}}$</span>&#xFF0C;&#x6B64;&#x65F6;&#x72C4;&#x5229;&#x514B;&#x96F7;&#x5206;&#x5E03;&#x9000;&#x5316;&#x4E3A;&#x5747;&#x5300;&#x5206;&#x5E03;&#xFF0C;&#x5148;&#x9A8C;&#x4E0D;&#x5305;&#x542B;&#x89C2;&#x6D4B;&#x8005;&#x7684;&#x4EFB;&#x4F55;&#x504F;&#x597D;&#xFF0C;&#x6700;&#x5927;&#x540E;&#x9A8C;&#x4F30;&#x8BA1;&#x9000;&#x5316;&#x4E3A;&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;</li>
+<li>&#x53D6;<span class="mathjax-exps">$\mv = \boldsymbol{2}$</span>&#x5F97;&#x5230;&#x62C9;&#x666E;&#x62C9;&#x65AF;&#x5E73;&#x6ED1;&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x624D;&#x662F;&#x771F;&#xB7;&#x8D1D;&#x53F6;&#x65AF;</li>
+</ul>
+</section><section vertical="true" data-notes lineno="518" class="slide " data-line="518" data-h="6" data-v="2">
+<h5 class="mume-header" id="%E7%9C%9F%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF-%E5%B0%8F%E7%BB%93">&#x771F;&#xB7;&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF; &#x5C0F;&#x7ED3;</h5>
+
+<hr>
+<div class="threelines column1-border-right-solid">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7C7B;&#x522B;</th>
+<th style="text-align:center">&#x4F3C;&#x7136;</th>
+<th style="text-align:center">&#x5171;&#x8F6D;&#x5148;&#x9A8C;</th>
+<th style="text-align:center">&#x540E;&#x9A8C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x679A;&#x4E3E;&#x578B;</td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Cate}(\yv \right\arrowvert \alphav)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Dir}(\alphav \right\arrowvert \mv)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Dir}(\alphav \right\arrowvert m_1 + A_1, \ldots, m_c + A_c)$</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="threelines column1-border-right-solid">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7279;&#x5F81;</th>
+<th style="text-align:center">&#x4F3C;&#x7136;</th>
+<th style="text-align:center">&#x5171;&#x8F6D;&#x5148;&#x9A8C;</th>
+<th style="text-align:center">&#x540E;&#x9A8C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x679A;&#x4E3E;&#x578B;</td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Cate}(\xv \right\arrowvert \thetav)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Dir}(\thetav \right\arrowvert \mv)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Dir}(\thetav \right\arrowvert m_1 + A_1, \ldots, m_c + A_c)$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\{ 0,1 \}$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Bern}(x_j \right\arrowvert \theta_{kj})$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \BetaDist(\theta_{kj} \right\arrowvert m,n)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \BetaDist(\theta_{kj} \right\arrowvert m + B_{kj},n+\bar{B}_{kj})$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Nbb$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Mult}(\xv \right\arrowvert \thetav)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Dir}(\thetav \right\arrowvert \mv)$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \mathrm{Dir}(\thetav \right\arrowvert m_1 + A_1, \ldots, m_c + A_c)$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$\Rbb$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\left. \Ncal(x_{kj} \right\arrowvert \mu_{kj}, \sigma_{kj}^2)$</span></td>
+<td style="text-align:center" colspan="2">&#x5747;&#x503C;&#x4E0D;&#x56FA;&#x5B9A;&#x3001;&#x7CBE;&#x5EA6;&#x56FA;&#x5B9A;&#x65F6;&#xFF0C;&#x4E3A;&#x9AD8;&#x65AF;&#x5206;&#x5E03;</td>
+
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center" colspan="2">&#x5747;&#x503C;&#x56FA;&#x5B9A;&#x3001;&#x7CBE;&#x5EA6;&#x4E0D;&#x56FA;&#x5B9A;&#x65F6;&#xFF0C;&#x4E3A;&#x5A01;&#x6C99;&#x7279;&#x5206;&#x5E03;</td>
+
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center" colspan="2">&#x5747;&#x503C;&#x3001;&#x7CBE;&#x5EA6;&#x90FD;&#x4E0D;&#x56FA;&#x5B9A;&#x65F6;&#xFF0C;&#x4E3A;&#x9AD8;&#x65AF;-&#x5A01;&#x6C99;&#x7279;&#x5206;&#x5E03;</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="yellow"><i class="fa fa-weixin" aria-hidden="true"></i></span> &#x5171;&#x8F6D;&#x5148;&#x9A8C;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x62C9;&#x666E;&#x62C9;&#x65AF;&#x5E73;&#x6ED1;&#x4E2D;&#x7684;&#x7CFB;&#x6570;</p>
+</section></section><section><section data-notes lineno="547" class="slide " data-line="547" data-h="7" data-v="0">
+<h5 class="mume-header" id="%E5%86%8D%E7%9C%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92">&#x518D;&#x770B;&#x7EBF;&#x6027;&#x56DE;&#x5F52;</h5>
+
+<hr>
+<p>&#x7279;&#x5F81;&#x7A7A;&#x95F4;<span class="mathjax-exps">$\Xcal \subset \Rbb^d$</span>&#xFF0C;&#x6807;&#x8BB0;&#x7A7A;&#x95F4;<span class="mathjax-exps">$\Ycal$</span>&#xFF0C;<span class="mathjax-exps">$\Xcal \times \Ycal$</span>&#x4E0A;&#x7684;<mark>&#x672A;&#x77E5;</mark>&#x6982;&#x7387;&#x5206;&#x5E03;<span class="mathjax-exps">$\Dcal$</span></p>
+<div class="top-2"></div>
+<p>&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;<span class="mathjax-exps">$D = \{ (\xv_i, y_i) \}_{i \in [m]}$</span>&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \Dcal$</span></p>
+<p>&#x5047;&#x8BBE;&#x6570;&#x636E;&#x7684;&#x751F;&#x6210;&#x65B9;&#x5F0F; (&#x5F52;&#x7EB3;&#x504F;&#x597D;) &#x4E3A;</p>
+<ul>
+<li>&#x5148;&#x5728;&#x7279;&#x5F81;&#x7A7A;&#x95F4;<span class="mathjax-exps">$\Xcal$</span>&#x4E2D;&#x968F;&#x673A;&#x9009;&#x53D6;<span class="mathjax-exps">$\xv_i$</span></li>
+<li>&#x8BA1;&#x7B97;<span class="mathjax-exps">$y_i = \wv^\top \xv_i + \epsilon_i$</span>&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$\epsilon_i \sim \Ncal(0,\beta^{-1})$</span></li>
+</ul>
+<div class="top2"></div>
+<p>&#x5F85;&#x4F30;&#x8BA1;&#x53C2;&#x6570;&#x662F;<span class="mathjax-exps">$\wv$</span>&#x548C;<span class="mathjax-exps">$\beta$</span>&#xFF0C;&#x4F3C;&#x7136;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb (D | \wv, \beta) &amp; = \prod_{i \in [m]} \Pbb (\xv_i, y_i | \wv, \beta) = \prod_{i \in [m]} \Pbb (\xv_i) \Pbb (y_i | \xv_i, \wv, \beta) \\
+    &amp; \propto \prod_{i \in [m]} \Pbb (y_i | \xv_i, \wv, \beta) = \prod_{i \in [m]} \Ncal(\wv^\top \xv_i,\beta^{-1})
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="579" class="slide " data-line="579" data-h="7" data-v="1">
+<h5 class="mume-header" id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6">&#x7EBF;&#x6027;&#x56DE;&#x5F52; &#x6781;&#x5927;&#x4F3C;&#x7136;</h5>
+
+<hr>
+<p>&#x5BF9;&#x6570;&#x4F3C;&#x7136;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \ln \Pbb (D | \wv, \beta) &amp; = \const + \sum_{i \in [m]} \ln \Ncal(\wv^\top \xv_i,\beta^{-1}) \\
+    &amp; = \const + \frac{\ln \beta}{2} - \frac{\beta}{2} \sum_{i \in [m]}  (y_i - \wv^\top \xv_i)^2
+\end{align*}
+$$
+</p>
+
+<p>&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\wv$</span>&#x5BF9;&#x5E94;&#x7684;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \min_{\wv} ~ \frac{\beta}{2} \sum_{i \in [m]} (y_i - \wv^\top \xv_i)^2 = \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2
+\end{align*}
+$$
+</p>
+
+<p><span class="blue"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></span> &#x5728;&#x4E0A;&#x9875;&#x7684;&#x5047;&#x8BBE;&#x4E0B;&#xFF0C;<mark>&#x6781;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;&#x7B49;&#x4EF7;&#x4E8E;&#x6700;&#x5C0F;&#x4E8C;&#x4E58;&#x56DE;&#x5F52;</mark></p>
+</section></section><section><section data-notes lineno="612" class="slide " data-line="612" data-h="8" data-v="0">
+<h5 class="mume-header" id="%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-%E8%B4%9D%E5%8F%B6%E6%96%AF%E8%A7%86%E8%A7%92">&#x7EBF;&#x6027;&#x56DE;&#x5F52; &#x8D1D;&#x53F6;&#x65AF;&#x89C6;&#x89D2;</h5>
+
+<hr>
+<p>&#x53D6;&#x5148;&#x9A8C;&#x5206;&#x5E03;<span class="mathjax-exps">$\Pbb(\wv) = \Ncal(\wv | \muv_0, \Sigmav_0)$</span></p>
+<p>&#x6839;&#x636E;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#xFF0C;&#x540E;&#x9A8C;&#x4E3A;</p>
+<div class="top1"></div>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb &amp; (\wv | D) \propto \Pbb(\wv) \Pbb(D | \wv) \\
+    &amp; \propto \exp \left( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) \right) \prod_{i \in [m]} \exp \left( - \frac{\beta}{2} (y_i - \wv^\top \xv_i)^2 \right) \\
+    &amp; = \exp \left( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right) \\
+    &amp; \propto \exp \bigg( -\frac{1}{2} \wv^\top (\underbrace{\Sigmav_0^{-1} + \beta \Xv^\top \Xv}_{\Sigmav_m^{-1}}) \wv + \wv^\top (\underbrace{\Sigmav_0^{-1} \muv_0 + \beta \Xv^\top \yv}_{\Sigmav_m^{-1} \muv_m} )\bigg) \\
+    &amp; \propto \exp \left( -\frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m) \right) \propto \Ncal(\wv | \muv_m, \Sigmav_m)
+\end{align*}
+$$
+</p>
+
+</section><section vertical="true" data-notes lineno="638" class="slide " data-line="638" data-h="8" data-v="1">
+<h5 class="mume-header" id="%E5%B2%AD%E5%9B%9E%E5%BD%92">&#x5CAD;&#x56DE;&#x5F52;</h5>
+
+<hr>
+<p>&#x7279;&#x522B;&#x7684;&#xFF0C;&#x53D6;<span class="mathjax-exps">$\muv_0 = \zerov$</span>&#x3001;<span class="mathjax-exps">$\Sigmav_0 = \alpha^{-1} \Iv$</span>&#xFF0C;&#x5219;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\wv | D) &amp; \propto \exp \left( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right) \\
+    &amp; = \exp \left( -\frac{\alpha}{2} \wv^\top \wv - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right)
+\end{align*}
+$$
+</p>
+
+<p>&#x6700;&#x5927;&#x540E;&#x9A8C;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\wv$</span>&#x53EA;&#x9700;&#x6C42;&#x89E3;&#x4F18;&#x5316;&#x95EE;&#x9898;</p>
+<div class="top1"></div>
+<p>
+
+$$
+\begin{align*}
+    \quad \min_{\wv} ~ \bigg\{ \underbrace{\frac{\beta}{2} \| \Xv \wv - \yv \|_2^2}_{\text{&#x6765;&#x81EA;&#x6781;&#x5927;&#x4F3C;&#x7136;}~~~} + \underbrace{\frac{\alpha}{2} \|\wv\|_2^2}_{\text{&#x6765;&#x81EA;&#x5148;&#x9A8C;}~~} \bigg\}
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x5728;&#x539F;&#x672C;&#x6700;&#x5C0F;&#x4E8C;&#x4E58;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;<span class="mathjax-exps">$\wv$</span>&#x7684;<span class="mathjax-exps">$\ell_2$</span>&#x8303;&#x6570;&#x9879;</li>
+<li>&#x5E73;&#x65B9;&#x635F;&#x5931; + <span class="mathjax-exps">$\ell_2$</span>&#x8303;&#x6570; = <mark>&#x5CAD;&#x56DE;&#x5F52;</mark> (ridge regression)</li>
+</ul>
+</section><section vertical="true" data-notes lineno="674" class="slide " data-line="674" data-h="8" data-v="2">
+<h5 class="mume-header" id="span-stylefont-weight900lassospan"><span style="font-weight:900">LASSO</span></h5>
+
+<hr>
+<p>&#x53D6;&#x5148;&#x9A8C;&#x5206;&#x5E03;<span class="mathjax-exps">$\Pbb(\wv) = \mathrm{Lap}(\wv | \muv_0, \alpha^{-1}) = \frac{\alpha}{2} \exp (- \alpha \| \wv - \muv_0 \|_1)$</span></p>
+<p>&#x6839;&#x636E;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb (\wv | D) \propto \Pbb(\wv) \Pbb(D | \wv) = \exp \left( - \alpha \| \wv - \muv_0 \|_1 - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right)
+\end{align*}
+$$
+</p>
+
+<div class="top-3"></div>
+<p>&#x7279;&#x522B;&#x7684;&#xFF0C;&#x53D6;<span class="mathjax-exps">$\muv_0 = \zerov$</span>&#xFF0C;&#x6700;&#x5927;&#x540E;&#x9A8C;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\wv$</span>&#x53EA;&#x9700;&#x6C42;&#x89E3;&#x4F18;&#x5316;&#x95EE;&#x9898;</p>
+<div class="top1"></div>
+<p>
+
+$$
+\begin{align*}
+    \quad \min_{\wv} ~ \bigg\{ \underbrace{\frac{\beta}{2} \| \Xv \wv - \yv \|_2^2}_{\text{&#x6765;&#x81EA;&#x6781;&#x5927;&#x4F3C;&#x7136;}~~~} + \underbrace{\alpha \| \wv \|_1}_{\text{&#x6765;&#x81EA;&#x5148;&#x9A8C;}~~} \bigg\}
+\end{align*}
+$$
+</p>
+
+<ul>
+<li>&#x5728;&#x539F;&#x672C;&#x6700;&#x5C0F;&#x4E8C;&#x4E58;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;<span class="mathjax-exps">$\wv$</span>&#x7684;<span class="mathjax-exps">$\ell_1$</span>&#x8303;&#x6570;&#x9879;</li>
+<li>&#x5E73;&#x65B9;&#x635F;&#x5931; + <span class="mathjax-exps">$\ell_1$</span>&#x8303;&#x6570; = &#x6700;&#x5C0F;&#x7EDD;&#x5BF9;&#x503C;&#x6536;&#x655B;&#x548C;&#x9009;&#x62E9;&#x7B97;&#x5B50; (<u>l</u>east <u>a</u>bsolute <u>s</u>hrinkage and <u>s</u>election <u>o</u>perator, <mark>LASSO</mark>)</li>
+</ul>
+</section><section vertical="true" data-notes lineno="713" class="slide " data-line="713" data-h="8" data-v="3">
+<h5 class="mume-header" id="%E5%90%84%E7%A7%8D%E5%9B%9E%E5%BD%92">&#x5404;&#x79CD;&#x56DE;&#x5F52;</h5>
+
+<hr>
+<div class="threelines column1-border-right-solid">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6A21;&#x578B;</th>
+<th style="text-align:center">&#x7EBF;&#x6027;&#x56DE;&#x5F52;</th>
+<th style="text-align:center">&#x5CAD;&#x56DE;&#x5F52;</th>
+<th style="text-align:center">LASSO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x6570;&#x636E;</td>
+
+
+<td style="text-align:center" colspan="3">&#x5148;&#x968F;&#x673A;&#x9009;&#x53D6;<span class="mathjax-exps">$\xv_i$</span>&#xFF0C;&#x518D;&#x8BA1;&#x7B97;<span class="mathjax-exps">$y_i = \wv^\top \xv_i + \epsilon_i$</span>&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$\epsilon_i \sim \Ncal(0,\beta^{-1})$</span></td>
+</tr>
+<tr>
+<td style="text-align:center">&#x5148;&#x9A8C;</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">&#x9AD8;&#x65AF;&#x5206;&#x5E03;</td>
+<td style="text-align:center">&#x62C9;&#x666E;&#x62C9;&#x65AF;&#x5206;&#x5E03;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x4F30;&#x8BA1;</td>
+<td style="text-align:center">&#x6781;&#x5927;&#x4F3C;&#x7136;</td>
+<td style="text-align:center">&#x6700;&#x5927;&#x540E;&#x9A8C;</td>
+<td style="text-align:center">&#x6700;&#x5927;&#x540E;&#x9A8C;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x4F18;&#x5316;</td>
+<td style="text-align:center"><span class="mathjax-exps">$\min_{\wv} \| \Xv \wv - \yv \|_2^2$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\min_{\wv} \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_2^2$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\min_{\wv} \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_1$</span></td>
+</tr>
+<tr>
+<td style="text-align:center">&#x5F62;&#x5F0F;</td>
+<td style="text-align:center">&#x5E73;&#x65B9;&#x635F;&#x5931;</td>
+<td style="text-align:center">&#x5E73;&#x65B9;&#x635F;&#x5931; + <span class="mathjax-exps">$\ell_2$</span>&#x8303;&#x6570;</td>
+<td style="text-align:center">&#x5E73;&#x65B9;&#x635F;&#x5931; + <span class="mathjax-exps">$\ell_1$</span>&#x8303;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x89E3;&#x6790;&#x89E3;</td>
+<td style="text-align:center"><span class="mathjax-exps">$\wv = (\Xv^\top \Xv)^{-1} \Xv \yv$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\wv = (\Xv^\top \Xv + \lambda \Iv)^{-1} \Xv \yv$</span></td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section></section><section data-notes lineno="732" class="slide " data-line="732" data-h="9" data-v="0">
+<h5 class="mume-header" id="%E5%86%8D%E7%9C%8B%E5%AF%B9%E7%8E%87%E5%9B%9E%E5%BD%92">&#x518D;&#x770B;&#x5BF9;&#x7387;&#x56DE;&#x5F52;</h5>
+
+<hr>
+<p>&#x8BBE;&#x8BAD;&#x7EC3;&#x96C6;<span class="mathjax-exps">$D = \{ (\xv_i, y_i) \}_{i \in [m]}$</span>&#xFF0C;&#x4F3C;&#x7136;&#x4E3A;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(D | \wv) \propto \prod_{i \in [m]} \Pbb(y_i | \xv_i, \wv) = \prod_{i \in [m]} \sigma(y_i \wv^\top \xv_i) = \prod_{i \in [m]} \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)}
+\end{align*}
+$$
+</p>
+
+<p>&#x53D6;&#x5148;&#x9A8C;&#x5206;&#x5E03;<span class="mathjax-exps">$\Pbb(\wv) = \Ncal(\wv | \zerov, \alpha^{-1} \Iv)$</span>&#xFF0C;&#x5219;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \Pbb(\wv | D) &amp; \propto \exp \left( -\frac{\alpha}{2} \wv^\top \wv \right) \prod_{i \in [m]} \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)}
+\end{align*}
+$$
+</p>
+
+<p>&#x6700;&#x5927;&#x540E;&#x9A8C;&#x4F30;&#x8BA1;<span class="mathjax-exps">$\wv$</span>&#x53EA;&#x9700;&#x6C42;&#x89E3;&#x4F18;&#x5316;&#x95EE;&#x9898;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) + \frac{\alpha}{2} \| \wv \|_2^2
+\end{align*}
+$$
+</p>
+
+</section>
+      </div>
+    </div>
+    
+      </div>
+      
+      
+    
+    
+      <script>
+        Reveal.initialize({"margin":0,"center":false,"transition":"convex","enableSpeakerNotes":true,"slideNumber":"c/t","navigationMode":"linear","dependencies":[{"src":"../plugin/notes/notes.js","async":true}],chalkboard:{boardmarkerWidth:3,chalkWidth:7,chalkEffect:1.0,storage:null,src:null,readOnly:undefined,transition:800,theme:"chalkboard",background:['rgba(127,127,127,.1)',path+'img/blackboard.png'],grid:{color:'rgb(50,50,10,0.5)',distance:80,width:2},eraser:{src:path+'img/sponge.png',radius:20},boardmarkers:[{color:'rgba(100,100,100,1)',cursor:'url('+path+'img/boardmarker-black.png),auto'},{color:'rgba(30,144,255,1)',cursor:'url('+path+'img/boardmarker-blue.png),auto'},{color:'rgba(220,20,60,1)',cursor:'url('+path+'img/boardmarker-red.png),auto'},{color:'rgba(50,205,50,1)',cursor:'url('+path+'img/boardmarker-green.png),auto'},{color:'rgba(255,140,0,1)',cursor:'url('+path+'img/boardmarker-orange.png),auto'},{color:'rgba(150,0,20150,1)',cursor:'url('+path+'img/boardmarker-purple.png),auto'},{color:'rgba(255,220,0,1)',cursor:'url('+path+'img/boardmarker-yellow.png),auto'}],chalks:[{color:'rgba(255,255,255,0.5)',cursor:'url('+path+'img/chalk-white.png),auto'},{color:'rgba(96,154,244,0.5)',cursor:'url('+path+'img/chalk-blue.png),auto'},{color:'rgba(237,20,28,0.5)',cursor:'url('+path+'img/chalk-red.png),auto'},{color:'rgba(20,237,28,0.5)',cursor:'url('+path+'img/chalk-green.png),auto'},{color:'rgba(220,133,41,0.5)',cursor:'url('+path+'img/chalk-orange.png),auto'},{color:'rgba(220,0,220,0.5)',cursor:'url('+path+'img/chalk-purple.png),auto'},{color:'rgba(255,220,0,0.5)',cursor:'url('+path+'img/chalk-yellow.png),auto'}]},customcontrols:{controls:[{icon:'<iclass="fafa-pen-square"></i>',title:'Togglechalkboard(B)',action:'RevealChalkboard.toggleChalkboard();'},{icon:'<iclass="fafa-pen"></i>',title:'Togglenotescanvas(C)',action:'RevealChalkboard.toggleNotesCanvas();'}]},menu:{side:'left',width:'normal',numbers:'h.v',titleSelector:'h1,h2,h3,h4,h5,h6',useTextContentForMissingTitles:false,hideMissingTitles:false,markers:true,custom:[{title:'关于',icon:'<i class="fa fa-info">',content:'<p>本课件由 <b>张腾</b> 制作</p><br><p>欢迎发送问题至tengzhang@hust.edu.cn</p>'}],themes:true,themesPath:'../css/theme/',transitions:true,openButton:true,openSlideNumber:false,keyboard:true,sticky:false,autoOpen:true,delayInit:false,openOnInit:false,loadIcons:true},plugins:[RevealZoom,RevealChalkboard,RevealCustomControls,RevealMenu]})
+      </script>
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
