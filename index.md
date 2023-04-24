@@ -20,7 +20,7 @@
 
 #### 课件
 
-在线浏览，Space 翻页，Esc 导航，可能需{==科学上网==}才能打开
+推荐用火狐在线浏览，Space 翻页，Esc 导航，可能需科学上网，[常见符号表](notation.html)
 
 <div class="threelines outline head-highlight">
 

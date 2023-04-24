@@ -179,18 +179,6 @@ table {
   td {
     padding: 0.5rem 1rem 0.1rem 1rem;
   }
-  td:nth-last-child(1) {
-    padding-left: 2rem;
-  }
-  th:first-of-type {
-    width: 4rem;
-  }
-  th:nth-of-type(2) {
-    width: 12rem;
-  }
-  th:nth-of-type(3) {
-    width: 32rem;
-  }
 }
 
 .tr-hover > table {
@@ -216,6 +204,18 @@ table {
 }
 
 .outline > table {
+  td:nth-last-child(1) {
+    padding-left: 2rem;
+  }
+  th:first-of-type {
+    width: 4rem;
+  }
+  th:nth-of-type(2) {
+    width: 12rem;
+  }
+  th:nth-of-type(3) {
+    width: 32rem;
+  }
   th:nth-last-child(1) {
     text-align: center !important;
   }
@@ -235,5 +235,17 @@ table {
     td:nth-last-child(1) {
       text-align: center !important;
     }
+  }
+}
+
+.notation > table {
+  th:first-of-type {
+    width: 15rem;
+  }
+  th:nth-of-type(2) {
+    width: 32rem;
+  }
+  th, td {
+    text-align: left !important;
   }
 }

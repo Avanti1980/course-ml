@@ -215,7 +215,7 @@ module.exports = {
       SSB: "{\\mathrm {SSB}}",
       gain: "{\\mathrm {Gain}}",
       gini: "{\\mathrm {Gini}}",
-      argmin: "{\\mathop{\\arg \\min}}",
+      argmin: "{\\mathop{\\mathrm{argmin}}}",
       argmax: "{\\mathop{\\mathrm{argmax}}}",
     },
   },
