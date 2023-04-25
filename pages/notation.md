@@ -17,7 +17,7 @@
 |                  $\tr[\cdot]$                  |                                      迹                                       |
 | $\|\xv\|_p = (\sum_i \vert x_i \vert^p)^{1/p}$ |               向量$\xv$的$\ell_p$范数，$p$缺省时为$\ell_2$范数                |
 |    $\|\xv\|_\Mv = (\xv^\top \Mv \xv)^{1/2}$    |                  向量$\xv$的椭圆范数，其中$\Mv$为半正定矩阵                   |
-|   $\|\Xv\|_F = (\sum_{i,j} x_{ij}^2)^{1/2}$    |                          矩阵$\Xv$的 Frobenius 范数，也等于$(\tr[\Xv^\top \Xv])^{1/2}$                           |
+|   $\|\Xv\|_F = (\sum_{i,j} x_{ij}^2)^{1/2}$    |         矩阵$\Xv$的 Frobenius 范数，也等于$(\tr[\Xv^\top \Xv])^{1/2}$         |
 |                $\gv = \nabla f$                |                                   $f$的梯度                                   |
 |               $\Hv = \nabla^2 f$               |                                 $f$的海森矩阵                                 |
 |                   $\Ibb(x)$                    |                   指示函数，在$x$为真、假时分别取值$1$、$0$                   |
@@ -30,7 +30,8 @@
 |             $\Ncal(\muv,\Sigmav)$              |                   均值为$\muv$、协方差为$\Sigmav$的高斯分布                   |
 |      $\Ebb_{\cdot \sim \Dcal} [f(\cdot)]$      | $f(\cdot)$对$\cdot$服从分布$\Dcal$时的期望，意义明确时简写为$\Ebb [f(\cdot)]$ |
 |          $\var[\cdot]$、$\cov[\cdot]$          |                                 方差、协方差                                  |
-|       $\argmin_x f(x)$、$\argmax_x f(x)$       |                        使得$f(x)$取最大值、最小值的$x$                        |
+|                $\argmin_x f(x)$                |                            使得$f(x)$取最小值的$x$                            |
+|                $\argmax_x f(x)$                |                            使得$f(x)$取最大值的$x$                            |
 |                     $\st$                      |                 $\text{subject to}$的缩写，优化问题的约束条件                 |
 |                    $\Xcal$                     |                                   样本空间                                    |
 |                    $\Ycal$                     |                                 类别标记集合                                  |
