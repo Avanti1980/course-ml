@@ -2,8 +2,8 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensorflow.keras.datasets.mnist import load_data
-from tensorflow.keras.layers import (Conv2D, Dense, Dropout,
-                                     Flatten, AveragePooling2D)
+from tensorflow.keras.layers import (AveragePooling2D, Conv2D, Dense, Dropout,
+                                     Flatten)
 from tensorflow.keras.optimizers import Adam
 
 (x_train, y_train), (x_test, y_test) = load_data()
@@ -24,26 +24,26 @@ model.add(Dense(10, activation="softmax"))
 model.summary()
 # Model: "sequential"
 # _________________________________________________________________
-#  Layer (type)                Output Shape              Param #   
+#  Layer (type)                Output Shape              Param #
 # =================================================================
-#  conv2d (Conv2D)             (None, 28, 28, 6)         156       
-#                                                                  
-#  average_pooling2d (AverageP  (None, 14, 14, 6)        0         
-#  ooling2D)                                                       
-#                                                                  
-#  conv2d_1 (Conv2D)           (None, 10, 10, 16)        2416      
-#                                                                  
-#  average_pooling2d_1 (Averag  (None, 5, 5, 16)         0         
-#  ePooling2D)                                                     
-#                                                                  
-#  conv2d_2 (Conv2D)           (None, 1, 1, 120)         48120     
-#                                                                  
-#  flatten (Flatten)           (None, 120)               0         
-#                                                                  
-#  dense (Dense)               (None, 84)                10164     
-#                                                                  
-#  dense_1 (Dense)             (None, 10)                850       
-#                                                                  
+#  conv2d (Conv2D)             (None, 28, 28, 6)         156
+#
+#  average_pooling2d (AverageP  (None, 14, 14, 6)        0
+#  ooling2D)
+#
+#  conv2d_1 (Conv2D)           (None, 10, 10, 16)        2416
+#
+#  average_pooling2d_1 (Averag  (None, 5, 5, 16)         0
+#  ePooling2D)
+#
+#  conv2d_2 (Conv2D)           (None, 1, 1, 120)         48120
+#
+#  flatten (Flatten)           (None, 120)               0
+#
+#  dense (Dense)               (None, 84)                10164
+#
+#  dense_1 (Dense)             (None, 10)                850
+#
 # =================================================================
 # Total params: 61,706
 # Trainable params: 61,706
@@ -57,7 +57,7 @@ model.compile(
 
 model.fit(x_train, y_train, epochs=5, verbose=1)
 # Epoch 1/5
-# 1875/1875 [==============================] - 7s 2ms/step - loss: 0.2085 - accuracy: 0.9356 
+# 1875/1875 [==============================] - 7s 2ms/step - loss: 0.2085 - accuracy: 0.9356
 # Epoch 2/5
 # 1875/1875 [==============================] - 4s 2ms/step - loss: 0.0657 - accuracy: 0.9795
 # Epoch 3/5
