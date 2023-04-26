@@ -25,7 +25,6 @@
 |                   $\sgn(x)$                    |               阶跃函数，在$x \ge 0$、$x < 0$时分别取值$1$、$0$                |
 |                  $\sigma(x)$                   |                       对数几率函数$1 / (1 + \exp(- x))$                       |
 |                   $p(\cdot)$                   |                               概率质量/密度函数                               |
-|                   $\Pbb(E)$                    |                             随机事件$E$发生的概率                             |
 |                  $\Ucal(a,b)$                  |                            区间$[a,b]$上的均匀分布                            |
 |             $\Ncal(\muv,\Sigmav)$              |                   均值为$\muv$、协方差为$\Sigmav$的高斯分布                   |
 |      $\Ebb_{\cdot \sim \Dcal} [f(\cdot)]$      | $f(\cdot)$对$\cdot$服从分布$\Dcal$时的期望，意义明确时简写为$\Ebb [f(\cdot)]$ |
