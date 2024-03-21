@@ -2,7 +2,7 @@
 presentation:
   margin: 0
   center: false
-  transition: "convex"
+  transition: "none"
   enableSpeakerNotes: true
   slideNumber: "c/t"
   navigationMode: "linear"
@@ -27,3 +27,26 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-ml.js"
 
+<!-- slide data-notes="" -->
+
+<div class="bottom20"></div>
+
+# 机器学习
+
+<hr class="width50 center">
+
+## 基本概念 上
+
+<div class="bottom8"></div>
+
+### 计算机学院 &nbsp;&nbsp; 张腾
+
+#### _tengzhang@hust.edu.cn_
+
+<!-- slide data-notes="" -->
+
+##### 大纲
+
+---
+
+@import "../vega/outline.json" {as="vega" .top-2}
