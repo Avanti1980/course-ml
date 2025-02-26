@@ -80,11 +80,13 @@
 
 #### 资料
 
-[_Foundations of Machine Learning 2ed_](book/Foundations%20of%20Machine%20Learning%202ed%20-%20Mehryar%20Mohri%2C%20Afshin%20Rostamizadeh%2C%20and%20Ameet%20Talwalkar.pdf) <br>Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar
+[_Machine Learning_](book/Machine%20Learning%20-%20Tom%20M.%20Mitchell.pdf), Tom M. Mitchell
 
-[_Pattern Recognition and Machine Learning_](book/Pattern%20Recognition%20and%20Machine%20Learning%20-%20Christopher%20M.%20Bishop.pdf) <br>Christopher M. Bishop
+[_Foundations of Machine Learning 2ed_](book/Foundations%20of%20Machine%20Learning%202ed%20-%20Mehryar%20Mohri%2C%20Afshin%20Rostamizadeh%2C%20and%20Ameet%20Talwalkar.pdf), Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar
 
-[_Understanding Machine Learning: From Theory to Algorithms_](book/Understanding%20Machine%20Learning%20From%20Theory%20to%20Algorithms%20-%20Shai%20Shalev-Shwartz%2C%20Shai%20Ben-David.pdf) <br>Shai Shalev-Shwartz, Shai Ben-David
+[_Pattern Recognition and Machine Learning_](book/Pattern%20Recognition%20and%20Machine%20Learning%20-%20Christopher%20M.%20Bishop.pdf), Christopher M. Bishop
+
+[_Understanding Machine Learning: From Theory to Algorithms_](book/Understanding%20Machine%20Learning%20From%20Theory%20to%20Algorithms%20-%20Shai%20Shalev-Shwartz%2C%20Shai%20Ben-David.pdf), Shai Shalev-Shwartz, Shai Ben-David
 
 #### 代码
 
