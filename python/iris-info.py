@@ -12,14 +12,14 @@ print(iris.DESCR)
 # :Number of Instances: 150 (50 in each of three classes)
 # :Number of Attributes: 4 numeric, predictive attributes and the class
 # :Attribute Information:
-#     - sepal length in cm
-#     - sepal width in cm
-#     - petal length in cm
-#     - petal width in cm
+#     - sepal length in cm        花萼长度
+#     - sepal width in cm         花萼宽度
+#     - petal length in cm        花瓣长度
+#     - petal width in cm         花瓣宽度
 #     - class:
-#             - Iris-Setosa
-#             - Iris-Versicolour
-#             - Iris-Virginica
+#             - Iris-Setosa       山鸢尾
+#             - Iris-Versicolour  杂色鸢尾
+#             - Iris-Virginica    维吉尼亚鸢尾
 #
 # :Summary Statistics:
 #
