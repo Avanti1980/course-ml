@@ -1,7 +1,7 @@
 from sklearn.datasets import load_breast_cancer
 
-bc = load_breast_cancer()
-print(bc.DESCR)
+breast_cancer = load_breast_cancer()
+print(breast_cancer.DESCR)
 # --------------------
 # **Data Set Characteristics:**
 # 
@@ -27,8 +27,8 @@ print(bc.DESCR)
 #     10 is Radius SE, field 20 is Worst Radius.
 # 
 #     - class:
-#             - WDBC-Malignant
-#             - WDBC-Benign
+#             - WDBC-Malignant  恶性
+#             - WDBC-Benign     良性
 # 
 # :Summary Statistics:
 # 
@@ -80,9 +80,7 @@ print(bc.DESCR)
 # This is a copy of UCI ML Breast Cancer Wisconsin (Diagnostic) datasets.
 # https://goo.gl/U2Uwz2
 # 
-# Features are computed from a digitized image of a fine needle
-# aspirate (FNA) of a breast mass.  They describe
-# characteristics of the cell nuclei present in the image.
+# 
 # 
 # Separating plane described above was obtained using
 # Multisurface Method-Tree (MSM-T) [K. P. Bennett, "Decision Tree

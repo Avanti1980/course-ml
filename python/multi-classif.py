@@ -18,13 +18,13 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 with plt.style.context('Solarize_Light2'):
 
     for i in range(30):
-        ax = plt.subplot(5, 10, i+1)
+        ax = plt.subplot(5, 10, i + 1)
         ax.set_axis_off()
         ax.imshow(digits.images[i], interpolation='nearest')
         ax.set_title('训练: %i' % digits.target[i], fontdict={'fontsize': 12})
 
     for i in range(20):
-        ax = plt.subplot(5, 10, i+31)
+        ax = plt.subplot(5, 10, i + 31)
         ax.set_axis_off()
         ax.imshow(X_test[i].reshape(8, 8), interpolation='nearest')
         ax.set_title('预测: %i' % predicted[i], fontdict={'fontsize': 12})
