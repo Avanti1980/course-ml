@@ -35,6 +35,22 @@ presentation:
 
 给定模型$f$、数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$
 
+- 均方损失：$\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2$
+- 均方根损失：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
+- 平均绝对损失：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$
+- Huber 损失：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} (f(\xv_i) - y_i)^2, & |f(\xv_i) - y_i| \le \delta \\ 2 \delta (|f(\xv_i) - y_i| - \delta/2), & |f(\xv_i) - y_i| > \delta \end{cases}$
+- 支持向量损失：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} 0, & |f(\xv_i) - y_i| \le \delta \\ |f(\xv_i) - y_i| - \delta, & |f(\xv_i) - y_i| > \delta \end{cases}$
+
+@import "../python/model-evaluation-mse.py" {line_end=10 .line-numbers .top2 .left4 highlight=[7,10]}
+
+<!-- slide data-notes="" -->
+
+##### 评估 回归
+
+---
+
+给定模型$f$、数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$
+
 - 均方误差 (<u>m</u>ean <u>s</u>quared <u>e</u>rror, MSE)：$\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2$
 - 均方根误差 (<u>r</u>oot MSE, RMSE)：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
 - 平均绝对误差 (<u>m</u>ean <u>a</u>bsolute <u>e</u>rror, MAE)：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$

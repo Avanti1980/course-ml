@@ -217,6 +217,7 @@ module.exports = {
       gini: "{\\mathrm {Gini}}",
       argmin: "{\\mathop{\\mathrm{argmin}}}",
       argmax: "{\\mathop{\\mathrm{argmax}}}",
+      shu: "{|}",
     },
   },
   "HTML-CSS": {
