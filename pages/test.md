@@ -27,36 +27,61 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-ml.js"
 
-<!-- slide data-notes="" -->
+<!-- slide vertical=true data-notes="" -->
 
-##### 评估 回归
-
----
-
-给定模型$f$、数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$
-
-- 均方损失：$\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2$
-- 均方根损失：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
-- 平均绝对损失：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$
-- Huber 损失：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} (f(\xv_i) - y_i)^2, & |f(\xv_i) - y_i| \le \delta \\ 2 \delta (|f(\xv_i) - y_i| - \delta/2), & |f(\xv_i) - y_i| > \delta \end{cases}$
-- 支持向量损失：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} 0, & |f(\xv_i) - y_i| \le \delta \\ |f(\xv_i) - y_i| - \delta, & |f(\xv_i) - y_i| > \delta \end{cases}$
-
-@import "../python/model-evaluation-mse.py" {line_end=10 .line-numbers .top2 .left4 highlight=[7,10]}
-
-<!-- slide data-notes="" -->
-
-##### 评估 回归
+##### 查准率 查全率 <span style="font-weight:900;">F1</span>
 
 ---
 
-给定模型$f$、数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$
+只看准确率有时不够全面，比如对某种罕见病做预测，数据集中阳性占 1%、阴性占 99%，此时无脑预测阴性也有 99% 的准确率
 
-- 均方误差 (<u>m</u>ean <u>s</u>quared <u>e</u>rror, MSE)：$\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2$
-- 均方根误差 (<u>r</u>oot MSE, RMSE)：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
-- 平均绝对误差 (<u>m</u>ean <u>a</u>bsolute <u>e</u>rror, MAE)：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$
-- Huber 误差：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} (f(\xv_i) - y_i)^2, & |(f(\xv_i) - y_i)^2| \le \delta \\ 2 \delta (|f(\xv_i) - y_i| - \delta), & |(f(\xv_i) - y_i)^2| > \delta \end{cases}$
+二分类结果的{==混淆矩阵==} (confusion matrix)
 
-@import "../python/model-evaluation-mse.py" {line_end=10 .line-numbers .top2 .left4 highlight=[7,10]}
+<div class="threelines row4-border-top-solid column1-border-right-solid column1-bold tr-hover top-1 bottom1 left-20">
+
+|             |  预测 正样本   |  预测 负样本   |
+| :---------: | :------------: | :------------: |
+| 真实 正样本 | $\TP$ (真正例) | $\FN$ (假反例) |
+| 真实 负样本 | $\FP$ (假正例) | $\TN$ (真反例) |
+
+</div>
+
+
+- 准确率：$\frac{\TP + \TN}{\TP + \TN + \FP + \FN}$
+- {==查准率==} (precision)：$\frac{\TP}{\TP + \FP}$，预测的正样本中有多少是正样本
+- {==查全率==} (recall)：$\frac{\TP}{\TP + \FN}$，所有正样本中有多少被预测出来了
+
+<p class="footnote book"> precision、recall 也有人译作精确率、召回率，个人觉得没有查准率、查全率好</p>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 查准率 查全率 <span style="font-weight:900;">F1</span>
+
+---
+
+二分类结果的{==混淆矩阵==} (confusion matrix)
+
+<div class="threelines row4-border-top-solid column1-border-right-solid column1-bold tr-hover top-2 bottom-2 left-20">
+
+|             |  预测 正样本   |  预测 负样本   |
+| :---------: | :------------: | :------------: |
+| 真实 正样本 | $\TP$ (真正例) | $\FN$ (假反例) |
+| 真实 负样本 | $\FP$ (假正例) | $\TN$ (真反例) |
+
+</div>
+
+{==查准率==} (precision)：预测的约会中有多少比例真的约会了
+
+{==查全率==} (recall)：所有的约会中有多少比例被预测出来了
+
+<div class="top3"></div>
+
+$$
+\begin{align*}
+    & \quad \mathrm{precision} = \frac{\TP}{\TP + \FP}, \quad \mathrm{recall} = \frac{\TP}{\TP + \FN} \\[4pt]
+    & \quad \mathrm{F1} = \frac{2 \cdot \mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}} = \frac{2 \cdot \TP}{\text{样本总数} + \TP - \TN \quad}
+\end{align*}
+$$
 
 <!-- slide data-notes="" -->
 
