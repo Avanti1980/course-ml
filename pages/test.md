@@ -27,61 +27,110 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-ml.js"
 
-<!-- slide vertical=true data-notes="" -->
+<!-- slide data-notes="" -->
 
-##### 查准率 查全率 <span style="font-weight:900;">F1</span>
-
----
-
-只看准确率有时不够全面，比如对某种罕见病做预测，数据集中阳性占 1%、阴性占 99%，此时无脑预测阴性也有 99% 的准确率
-
-二分类结果的{==混淆矩阵==} (confusion matrix)
-
-<div class="threelines row4-border-top-solid column1-border-right-solid column1-bold tr-hover top-1 bottom1 left-20">
-
-|             |  预测 正样本   |  预测 负样本   |
-| :---------: | :------------: | :------------: |
-| 真实 正样本 | $\TP$ (真正例) | $\FN$ (假反例) |
-| 真实 负样本 | $\FP$ (假正例) | $\TN$ (真反例) |
-
-</div>
-
-
-- 准确率：$\frac{\TP + \TN}{\TP + \TN + \FP + \FN}$
-- {==查准率==} (precision)：$\frac{\TP}{\TP + \FP}$，预测的正样本中有多少是正样本
-- {==查全率==} (recall)：$\frac{\TP}{\TP + \FN}$，所有正样本中有多少被预测出来了
-
-<p class="footnote book"> precision、recall 也有人译作精确率、召回率，个人觉得没有查准率、查全率好</p>
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 查准率 查全率 <span style="font-weight:900;">F1</span>
+##### 评估 多分类
 
 ---
 
-二分类结果的{==混淆矩阵==} (confusion matrix)
-
-<div class="threelines row4-border-top-solid column1-border-right-solid column1-bold tr-hover top-2 bottom-2 left-20">
-
-|             |  预测 正样本   |  预测 负样本   |
-| :---------: | :------------: | :------------: |
-| 真实 正样本 | $\TP$ (真正例) | $\FN$ (假反例) |
-| 真实 负样本 | $\FP$ (假正例) | $\TN$ (真反例) |
-
-</div>
-
-{==查准率==} (precision)：预测的约会中有多少比例真的约会了
-
-{==查全率==} (recall)：所有的约会中有多少比例被预测出来了
-
-<div class="top3"></div>
+多分类同样有错误率、准确率
 
 $$
 \begin{align*}
-    & \quad \mathrm{precision} = \frac{\TP}{\TP + \FP}, \quad \mathrm{recall} = \frac{\TP}{\TP + \FN} \\[4pt]
-    & \quad \mathrm{F1} = \frac{2 \cdot \mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}} = \frac{2 \cdot \TP}{\text{样本总数} + \TP - \TN \quad}
+    \quad E_D (f) = \frac{1}{m} \sum_{i \in [m]} \Ibb (y_i \ne f(\xv_i)), \quad \text{Acc}_D (f) = 1 - E_D (f)
 \end{align*}
 $$
+
+以及混淆矩阵
+
+<div class="threelines column1-border-right-solid column2-border-right-dashed column3-border-right-dashed column4-border-right-dashed row2-border-top-dashed row3-border-top-dashed row4-border-top-dashed column1-bold top-1 bottom1 center">
+
+|             | 预测第$1$类 | 预测第$2$类 | &emsp;&emsp; ... &emsp;&emsp; | 预测第$c$类 |
+| :---------: | :---------: | :---------: | ----------------------------- | ----------- |
+| 真实第$1$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+| 真实第$2$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+|     ...     |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+| 真实第$c$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+
+</div>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 评估 交叉熵损失
+
+---
+
+错误率 (0-1 损失) 不连续、难优化，通常采用交叉熵损失
+
+设$c$个类别的预测函数分别为$f_1, \ldots, f_c$，则样本$x$的预测结果为
+
+$$
+\begin{align*}
+    \quad \pv = \left[ \frac{e^{f_1(x)}}{\sum_{j \in [c]} e^{f_i(x)}}, \frac{e^{f_2(x)}}{\sum_{j \in [c]} e^{f_i(x)}}, \ldots, \frac{e^{f_c(x)}}{\sum_{j \in [c]} e^{f_i(x)}} \right] \quad \longleftarrow \text{softmax}
+\end{align*}
+$$
+
+<div class="bottom-4"></div>
+
+这是一个$c$维向量，同时也是一个离散概率分布
+
+类标记$y$可转化为独热编码$\ev_y$，这也是一个$c$维离散概率分布
+
+替代损失的要求：关于$\pv$、$\ev_y$连续，且$\pv$、$\ev_y$越接近损失越小
+
+问题：给定离散概率分布$\qv$，如何度量分布$\pv$与它的距离？
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 评估 交叉熵损失
+
+---
+
+交叉熵 (cross-entropy) $H_{\qv} (\pv) \triangleq - \sum_i q_i \ln p_i$
+
+当$\pv = \qv$时交叉熵最小，此时交叉熵$H_{\qv} (\pv)$即为分布$\qv$的熵$H(\qv)$
+
+$$
+\begin{align*}
+    \quad \min_{\pv} H_{\qv} (\pv) = - \sum_i q_i \ln p_i, \quad \st ~ \sum_i p_i = 1
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+拉格朗日函数为$L(p_i, \alpha) = - \sum_i q_i \ln p_i + \alpha (\sum_i p_i - 1)$，于是
+
+$$
+\begin{align*}
+    \quad \nabla_{p_i} L(p_i, \alpha) & = - \frac{q_i}{p_i} + \alpha = 0 \Longrightarrow q_i = \alpha p_i \\
+    & \Longrightarrow \sum_i q_i = \alpha \sum_i p_i \Longrightarrow \alpha = 1 \Longrightarrow \pv = \qv
+\end{align*}
+$$
+
+对$(x,y)$，$y \in [c]$，交叉熵损失为$- \ln \frac{e^{f_y(x)}}{\sum_{j \in [c]} e^{f_i(x)}}$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 评估 交叉熵损失
+
+---
+
+对$(x,y)$，$y \in \{1, -1\}$，$\qv = [(1+y)/2; (1-y)/2]$，交叉熵损失为
+
+$$
+\begin{align*}
+    \quad \text{CE} & = - \frac{1+y}{2} \ln \frac{e^{f_1(x)}}{e^{f_1(x)}+e^{f_2(x)}} - \frac{1-y}{2} \ln \frac{e^{f_2(x)}}{e^{f_1(x)}+e^{f_2(x)}} \\
+    & = - \frac{1+y}{2} \ln \frac{e^{f_1(x)-f_2(x)}}{e^{f_1(x)-f_2(x)}+1} - \frac{1-y}{2} \ln \frac{1}{e^{f_1(x)-f_2(x)}+1} \\
+    & = - \frac{1+y}{2} \ln \frac{e^{w(x)}}{e^{w(x)}+1} - \frac{1-y}{2} \ln \frac{1}{e^{w(x)}+1} \quad \leftarrow w(x) \triangleq f_1(x)-f_2(x) \\
+    & = \begin{cases}
+        \ln (1 + e^{-w(x)}), & y = 1 \\
+        \ln (1 + e^{-w(x)}), & y = -1
+    \end{cases} \\
+    & = \ln (1 + e^{- y w(x)})
+\end{align*}
+$$
+
+由此可见，多分类的交叉熵损失就是二分类的对率损失的拓展
 
 <!-- slide data-notes="" -->
 
