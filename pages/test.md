@@ -29,108 +29,23 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 评估 多分类
+##### 模型选择
 
 ---
 
-多分类同样有错误率、准确率
+终极目标：在{==未知数据==}上表现好，即{==泛化==} (generalization) 好
 
-$$
-\begin{align*}
-    \quad E_D (f) = \frac{1}{m} \sum_{i \in [m]} \Ibb (y_i \ne f(\xv_i)), \quad \text{Acc}_D (f) = 1 - E_D (f)
-\end{align*}
-$$
+样本空间$\Xcal \subseteq \Rbb^d$，标记空间$\Ycal$，$\Xcal \times \Ycal$上的{==未知==}概率分布$\Dcal$
 
-以及混淆矩阵
+给定模型$f$，{==训练==}数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，其中$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \Dcal$
 
-<div class="threelines column1-border-right-solid column2-border-right-dashed column3-border-right-dashed column4-border-right-dashed row2-border-top-dashed row3-border-top-dashed row4-border-top-dashed column1-bold top-1 bottom1 center">
+几点说明：
 
-|             | 预测第$1$类 | 预测第$2$类 | &emsp;&emsp; ... &emsp;&emsp; | 预测第$c$类 |
-| :---------: | :---------: | :---------: | ----------------------------- | ----------- |
-| 真实第$1$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-| 真实第$2$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-|     ...     |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-| 真实第$c$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-
-</div>
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 评估 交叉熵损失
-
----
-
-错误率 (0-1 损失) 不连续、难优化，通常采用交叉熵损失
-
-设$c$个类别的预测函数分别为$f_1, \ldots, f_c$，则样本$x$的预测结果为
-
-$$
-\begin{align*}
-    \quad \pv = \left[ \frac{e^{f_1(x)}}{\sum_{j \in [c]} e^{f_i(x)}}, \frac{e^{f_2(x)}}{\sum_{j \in [c]} e^{f_i(x)}}, \ldots, \frac{e^{f_c(x)}}{\sum_{j \in [c]} e^{f_i(x)}} \right] \quad \longleftarrow \text{softmax}
-\end{align*}
-$$
-
-<div class="bottom-4"></div>
-
-这是一个$c$维向量，同时也是一个离散概率分布
-
-类标记$y$可转化为独热编码$\ev_y$，这也是一个$c$维离散概率分布
-
-替代损失的要求：关于$\pv$、$\ev_y$连续，且$\pv$、$\ev_y$越接近损失越小
-
-问题：给定离散概率分布$\qv$，如何度量分布$\pv$与它的距离？
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 评估 交叉熵损失
-
----
-
-交叉熵 (cross-entropy) $H_{\qv} (\pv) \triangleq - \sum_i q_i \ln p_i$
-
-当$\pv = \qv$时交叉熵最小，此时交叉熵$H_{\qv} (\pv)$即为分布$\qv$的熵$H(\qv)$
-
-$$
-\begin{align*}
-    \quad \min_{\pv} H_{\qv} (\pv) = - \sum_i q_i \ln p_i, \quad \st ~ \sum_i p_i = 1
-\end{align*}
-$$
-
-<div class="top-2"></div>
-
-拉格朗日函数为$L(p_i, \alpha) = - \sum_i q_i \ln p_i + \alpha (\sum_i p_i - 1)$，于是
-
-$$
-\begin{align*}
-    \quad \nabla_{p_i} L(p_i, \alpha) & = - \frac{q_i}{p_i} + \alpha = 0 \Longrightarrow q_i = \alpha p_i \\
-    & \Longrightarrow \sum_i q_i = \alpha \sum_i p_i \Longrightarrow \alpha = 1 \Longrightarrow \pv = \qv
-\end{align*}
-$$
-
-对$(x,y)$，$y \in [c]$，交叉熵损失为$- \ln \frac{e^{f_y(x)}}{\sum_{j \in [c]} e^{f_i(x)}}$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 评估 交叉熵损失
-
----
-
-对$(x,y)$，$y \in \{1, -1\}$，$\qv = [(1+y)/2; (1-y)/2]$，交叉熵损失为
-
-$$
-\begin{align*}
-    \quad \text{CE} & = - \frac{1+y}{2} \ln \frac{e^{f_1(x)}}{e^{f_1(x)}+e^{f_2(x)}} - \frac{1-y}{2} \ln \frac{e^{f_2(x)}}{e^{f_1(x)}+e^{f_2(x)}} \\
-    & = - \frac{1+y}{2} \ln \frac{e^{f_1(x)-f_2(x)}}{e^{f_1(x)-f_2(x)}+1} - \frac{1-y}{2} \ln \frac{1}{e^{f_1(x)-f_2(x)}+1} \\
-    & = - \frac{1+y}{2} \ln \frac{e^{w(x)}}{e^{w(x)}+1} - \frac{1-y}{2} \ln \frac{1}{e^{w(x)}+1} \quad \leftarrow w(x) \triangleq f_1(x)-f_2(x) \\
-    & = \begin{cases}
-        \ln (1 + e^{-w(x)}), & y = 1 \\
-        \ln (1 + e^{-w(x)}), & y = -1
-    \end{cases} \\
-    & = \ln (1 + e^{- y w(x)})
-\end{align*}
-$$
-
-由此可见，多分类的交叉熵损失就是二分类的对率损失的拓展
+- 数据集细分为训练集、测试集，训练集 (training set) 用来学习模型
+- 测试集 (test set) 用来评估模型，在训练时不可见
+- 训练集和测试集中的样本都{==独立同分布==} (iid) 地来自分布$\Dcal$，若无独立同分布假设，无法保证学习效果
+- 分布$\Dcal$定义在$\Xcal \times \Ycal$上，即允许同一样本有多种标记，标记有随机性
+- 若$\Dcal$只定义在$\Xcal$上，样本标记由某未知函数给出，则为确定性情形
 
 <!-- slide data-notes="" -->
 
