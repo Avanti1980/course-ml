@@ -47,10 +47,9 @@
 由于泛化错误率依赖未知分布$P$，不可计算，考虑经验错误率最小化(empirical risk minimization, ERM)算法，其输出$h_\Dcal^\erm = \argmin_{h \in \Hcal} \er_\Dcal (h)$，于是
 \begin{align} \label{eq-estimation-error}
     \begin{split}
-        \er(h_\Dcal^\erm) - \er(h^\star)
-         & = \er(h_\Dcal^\erm) - \er_{\Dcal} (h_\Dcal^\erm) + \er_{\Dcal} (h_\Dcal^\erm) - \er(h^\star)  \\
-         & \le \er(h_\Dcal^\erm) - \er_{\Dcal} (h_\Dcal^\erm) + \er_{\Dcal} (h^\star) - \er(h^\star)     \\
-         & \le |\er_{\Dcal} (h_\Dcal^\erm) - \er(h_\Dcal^\erm)| + |\er_{\Dcal} (h^\star) - \er(h^\star)|
+        \er(h_\Dcal^\erm) - \er(h^\star) & = \er(h_\Dcal^\erm) - \er_{\Dcal} (h_\Dcal^\erm) + \er_{\Dcal} (h_\Dcal^\erm) - \er(h^\star)  \\
+                                         & \le \er(h_\Dcal^\erm) - \er_{\Dcal} (h_\Dcal^\erm) + \er_{\Dcal} (h^\star) - \er(h^\star)     \\
+                                         & \le |\er_{\Dcal} (h_\Dcal^\erm) - \er(h_\Dcal^\erm)| + |\er_{\Dcal} (h^\star) - \er(h^\star)|
     \end{split}
 \end{align}
 因此我们需要一个刻画$|\text{经验错误率} - \text{泛化错误率}|$上界的工具。注意给定$h$，经验错误率
@@ -103,7 +102,7 @@
 \end{align}
 由式\eqref{eq-all-h}不难看出随着$m \rightarrow \infty$，$\Hcal$中所有假设的经验错误率$\rightarrow$泛化错误率，这称为一致收敛。回代入式\eqref{eq-estimation-error}可得
 \begin{align*}
-    \er(h_\Dcal^\erm) - \er(h^\star) & \le |\er_{\Dcal} (h_\Dcal^\erm) - \er(h_\Dcal^\erm)| + |\er_{\Dcal} (h^\star) - \er(h^\star)|  \\
+    \er(h_\Dcal^\erm) - \er(h^\star) & \le |\er_\Dcal (h_\Dcal^\erm) - \er(h_\Dcal^\erm)| + |\er_{\Dcal} (h^\star) - \er(h^\star)|    \\
                                      & \le 2 \max_{h \in \Hcal} |\er_\Dcal (h) - \er (h)|                                             \\
                                      & < \sqrt{\frac{2}{m} \ln \frac{2|\Hcal|}{\delta}} \text{ with probability at least } 1 - \delta
 \end{align*}
@@ -339,14 +338,17 @@
 根据Sauer's引理可得
 
 \begin{corollary}
-    若$\vc(\Hcal) = d$，则对任意正整数$m \ge d$有$\Pi_\Hcal(m) \le ( \nicefrac{em}{d} )^d$。
+    若$\vc(\Hcal) = d$，则对任意正整数$m \ge d$有
+    \begin{align*}
+        \Pi_\Hcal(m) \le ( \nicefrac{em}{d} )^d = O(m^d)
+    \end{align*}
 \end{corollary}
 
 \begin{proof}
     由Sauer's引理有
     \begin{align*}
         \Pi_\Hcal(m) & \le \sum_{i=0}^d \binom{m}{i} \le \sum_{i=0}^d \binom{m}{i} \left( \frac{m}{d} \right)^{d-i} \le \sum_{i=0}^m \binom{m}{i} \left( \frac{m}{d} \right)^{d-i}                                                                         \\
-                     & = \left( \frac{m}{d} \right)^d \sum_{i=0}^m \binom{m}{i} \left( \frac{d}{m} \right)^i = \left( \frac{m}{d} \right)^d \left( 1 + \frac{d}{m} \right)^m \le \left( \frac{m}{d} \right)^d e^d = \left( \frac{em}{d} \right)^d
+                     & = \left( \frac{m}{d} \right)^d \sum_{i=0}^m \binom{m}{i} \left( \frac{d}{m} \right)^i = \left( \frac{m}{d} \right)^d \left( 1 + \frac{d}{m} \right)^m \le \left( \frac{m}{d} \right)^d e^d = \left( \frac{em}{d} \right)^d = O(m^d)
     \end{align*}
 \end{proof}
 
@@ -354,15 +356,23 @@
 \begin{align*}
     P^m \{ \exists h \in \Hcal: |\er_\Dcal (h) - \er (h)| \ge \epsilon \} \le 4 \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} ) \le 4 (\nicefrac{2em}{d})^d \exp ( \nicefrac{-m \epsilon^2}{8} )
 \end{align*}
-令$4 (\nicefrac{2em}{d})^d \exp ( \nicefrac{-m \epsilon^2}{8} ) = \delta$可得$\epsilon = \sqrt{\nicefrac{8}{m} (d \ln \nicefrac{2em}{d} + \ln \nicefrac{4}{\delta})}$，于是有基于VC维的估计误差界：
+令$4 (\nicefrac{2em}{d})^d \exp ( \nicefrac{-m \epsilon^2}{8} ) = \delta$可得$\epsilon = \sqrt{\nicefrac{8}{m} (d \ln \nicefrac{2em}{d} + \ln \nicefrac{4}{\delta})}$，于是有基于VC维的一致收敛界：
 \begin{align*}
     P^m \left\{ \sup_{h \in \Hcal} |\er_\Dcal (h) - \er (h)| < \sqrt{\frac{8}{m} \left(d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right)} \right\} \ge 1 - \delta
 \end{align*}
+和估计误差界：
+\begin{align*}
+    P^m \left\{ \sup_{h \in \Hcal} |\er (h_\Dcal^\erm) - \er (h^\star)| < \sqrt{\frac{32}{m} \left(d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right)} \right\} \ge 1 - \delta
+\end{align*}
+
+\begin{theorem}
+    对$\forall \epsilon, \delta \in (0,1)$和$\forall m \ge \nicefrac{32}{\epsilon^2} (d \ln \nicefrac{2em}{d} + \ln \nicefrac{4}{\delta} )$，任何VC维为$d$的假设空间$\Hcal$对ERM算法都是可学习的。
+\end{theorem}
 
 \section{附录}
 
 \begin{theorem} [Markov's不等式]
-    设非负随机变量$X$具有有限均值$\mu = \Ebb[X]$，则对任意实数$t>0$有
+    设\blue{非负}随机变量$X$具有\blue{有限}均值$\mu = \Ebb[X]$，则对任意实数$t>0$有
     \begin{align*}
         \Pbb (X \ge t) \le \frac{\mu}{t}
     \end{align*}
