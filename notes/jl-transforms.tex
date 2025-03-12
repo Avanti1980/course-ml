@@ -1,0 +1,81 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+\usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+
+\begin{document}
+\title{\textbf{Johnson–Lindenstrauss变换}}
+\author{张腾}
+\date{\today}
+\maketitle
+
+Johnson–Lindenstrauss (JL)变换是一种保距的线性降维方法。
+
+\begin{theorem} [JL变换]
+    给定$\epsilon \in (0,1)$和$m \in \Zbb^+$，设$d \in \Zbb^+$满足$d \ge \nicefrac{4 \ln m}{\nicefrac{\epsilon^2}{2} - \nicefrac{\epsilon^3}{3}}$，则对$\forall \Scal = \{ \xv_1, \ldots, \xv_m \} \subseteq \Rbb^D$，存在可在随机多项式时间内得到的线性映射$f: \Rbb^D \mapsto \Rbb^d$使得对$\forall \xv_i, \xv_j \in \Scal$有
+    \begin{align*}
+        (1 - \epsilon) \| \xv_i - \xv_j \|_2^2 \le \| f(\xv_i) - f(\xv_j) \|_2^2 \le (1 + \epsilon) \| \xv_i - \xv_j \|_2^2
+    \end{align*}
+\end{theorem}
+
+\begin{lemma}
+    设$\Rv = (R_{ij})_{i \in [d], j \in [D]}$为随机矩阵，$R_{ij} \iid \Ncal(0,1)$，$\uv \in \Rbb^D$为任意固定向量，$\vv = \nicefrac{\Rv \uv}{\sqrt{d}} \in \Rbb^d$，则$\Pbb ( \| \vv \|_2^2 \not \in [(1 - \epsilon) \|\uv\|_2^2, (1 + \epsilon) \|\uv\|_2^2]) \le \nicefrac{2}{m^2}$。
+\end{lemma}
+
+\begin{proof}
+    易知有
+    \begin{align*}
+        \Ebb [v_i]   & = \Ebb \left[ \frac{\sum_{j \in [D]} R_{ij} u_j}{\sqrt{d}} \right] = \frac{\sum_{j \in [D]} \Ebb [R_{ij}] u_j}{\sqrt{d}} = 0                                                                                                                                        \\
+        \Ebb [v_i^2] & = \Ebb \left[ \frac{1}{d} \left( \sum_{j \in [D]} R_{ij} u_j \right)^2 \right] = \frac{1}{d} \Ebb \left[ \sum_{j \in [D]} R_{ij}^2 u_j^2 + \sum_{j \ne k} R_{ij} R_{ik} u_j u_k \right] = \frac{1}{d} \sum_{j \in [D]} \Ebb[R_{ij}^2] u_j^2 = \frac{\|\uv\|_2^2}{d}
+    \end{align*}
+    又$v_i$是独立正态rv的和，也服从正态分布，故$v_i \iid \Ncal(0, \nicefrac{\|\uv\|_2^2}{d})$。
+
+    记$\xv = (\nicefrac{\sqrt{d}}{\|\uv\|}) \vv$，显然$x_i \iid \Ncal(0,1)$，易知对$\forall \lambda \ge 0$有
+    \begin{align*}
+        \Pbb ( \| \vv \|_2^2 \ge (1 + \epsilon) \|\uv\|_2^2)
+         & = \Pbb \left( \frac{\|\uv\|_2^2}{d} \| \xv \|_2^2 \ge (1 + \epsilon) \|\uv\|_2^2 \right) = \Pbb (\| \xv \|_2^2 \ge (1 + \epsilon) d)                                                                                                                                                             \\
+         & = \Pbb (e^{\lambda \|\xv \|_2^2} \ge e^{\lambda (1 + \epsilon) d})                                                                                                                                                                                                                               \\
+         & \le \frac{\Ebb [e^{\lambda \|\xv \|_2^2}]}{e^{\lambda (1 + \epsilon) d}} = \frac{\Ebb[e^{\lambda \sum_{i \in [d]} x_i^2}]}{e^{\lambda (1 + \epsilon) d}} = \frac{\Pi_{i \in [d]} \Ebb[e^{\lambda x_i^2}]}{e^{\lambda (1 + \epsilon) d}} = (\sqrt{1 - 2 \lambda} e^{\lambda (1 + \epsilon)})^{-d}
+    \end{align*}
+    其中不等号是根据Markov's不等式，最后一个等号是根据
+    \begin{align*}
+        \Ebb [e^{\lambda x^2}] = \int_\Rbb e^{\lambda x^2} \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} x^2} \diff x = \int_\Rbb \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} (1 - 2\lambda) x^2} \diff x = \frac{1}{\sqrt{1 - 2\lambda}}, \quad \text{if } \lambda \in [0, \nicefrac{1}{2})
+    \end{align*}
+    为了使上界尽可能紧，令$\sqrt{1 - 2 \lambda} e^{\lambda (1 + \epsilon)}$关于$\lambda$的导数为零可得$\lambda = \nicefrac{\epsilon}{2 (1+\epsilon)} \in [0, \nicefrac{1}{2})$，回代可得
+    \begin{align*}
+        \Pbb ( \| \vv \|_2^2 \ge (1 + \epsilon) \|\uv\|_2^2) \le (\sqrt{\nicefrac{1}{1+\epsilon}} e^{\nicefrac{\epsilon}{2}})^{-d} = ( (1 + \epsilon) e^{-\epsilon} )^{\nicefrac{d}{2}}
+    \end{align*}
+    根据$\ln (1 + x) \le x - \nicefrac{x^2}{2} + \nicefrac{x^3}{3}$可得
+    \begin{align*}
+        \Pbb ( \| \vv \|_2^2 \ge (1 + \epsilon) \|\uv\|_2^2) \le ( e^{\ln (1 + \epsilon)} e^{-\epsilon} )^{\nicefrac{d}{2}} \le e^{- (\nicefrac{x^2}{2} - \nicefrac{x^3}{3}) {\nicefrac{d}{2}} } \le e^{-2 \ln m} = \nicefrac{1}{m^2}
+    \end{align*}
+
+
+    同理可得
+    \begin{align*}
+        \Pbb ( \| \vv \|_2^2 \le (1 - \epsilon) \|\uv\|_2^2)
+         & = \Pbb \left( \frac{\|\uv\|_2^2}{d} \| \xv \|_2^2 \le (1 - \epsilon) \|\uv\|_2^2 \right) = \Pbb (\| \xv \|_2^2 \le (1 - \epsilon) d)                                                                                                                                                             \\
+         & = \Pbb (e^{-\lambda \|\xv \|_2^2} \ge e^{-\lambda (1 - \epsilon) d})                                                                                                                                                                                                                               \\
+         & \le \frac{\Ebb [e^{-\lambda \|\xv \|_2^2}]}{e^{-\lambda (1 - \epsilon) d}} = \frac{\Ebb[e^{- \lambda \sum_{i \in [d]} x_i^2}]}{e^{-\lambda (1 - \epsilon) d}} = \frac{\Pi_{i \in [d]} \Ebb[e^{-\lambda x_i^2}]}{e^{-\lambda (1 - \epsilon) d}} = (\sqrt{1 + 2 \lambda} e^{- \lambda (1 - \epsilon)})^{-d} \\
+         & \le ( (1 - \epsilon) e^{\epsilon} )^{\nicefrac{d}{2}} = ( e^{\ln (1 - \epsilon)} e^{\epsilon} )^{\nicefrac{d}{2}} \quad \longleftarrow \lambda = \nicefrac{\epsilon}{2 (1 - \epsilon)} \\
+         & \le ( e^{- \epsilon - \nicefrac{\epsilon^2}{2}} e^{\epsilon} )^{\nicefrac{d}{2}} =  e^{-\nicefrac{d \epsilon^2}{4}} \quad \longleftarrow \ln (1 - \epsilon) \le - \epsilon - \nicefrac{\epsilon^2}{2} \\
+         & \le e^{-2 \ln m} = \nicefrac{1}{m^2}
+    \end{align*}
+
+    综上，根据union bound可得
+    \begin{align*}
+        \Pbb ( \| \vv \|_2^2 \not \in [(1 - \epsilon) \|\uv\|_2^2, (1 + \epsilon) \|\uv\|_2^2]) \le \nicefrac{2}{m^2}
+    \end{align*}
+\end{proof}
+
+\begin{proof} [JL变换的证明]
+    注意$f$是线性映射，因此$f(\xv_i) - f(\xv_j) = f(\xv_i - \xv_j)$，取$\uv = \xv_i - \xv_j$，$f(\uv) = \nicefrac{\Rv \uv}{\sqrt{d}}$，由引理知$\Pbb ( \| f(\uv) \|_2^2 \not \in [(1 - \epsilon) \|\uv\|_2^2, (1 + \epsilon) \|\uv\|_2^2]) \le \nicefrac{2}{m^2}$，共有$\binom{m}{2}$个$(\xv_i, \xv_j)$这样的样本对，存在一对不保距的概率
+    \begin{align*}
+        \Pbb (\cup E_i) \le \sum_i \Pbb (E_i) \le \binom{m}{2} \frac{2}{m^2} = 1 - \frac{1}{m}
+    \end{align*}
+    即所有样本对保距的概率至少为$\nicefrac{1}{m}$，经过$O(m)$次随机投影可将成功的概率提升至任意想要的值。
+\end{proof}
+
+\end{document}
