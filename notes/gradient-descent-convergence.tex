@@ -1,0 +1,297 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+\usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+
+\begin{document}
+\title{\textbf{投影次梯度下降的收敛性分析}}
+\author{张腾}
+\date{}
+\maketitle
+
+设$\Wcal$是闭凸集(closed convex set)，$f(\wv)$是凸函数(convex function)，对于如下的约束凸优化
+\begin{align*}
+    \min_\wv f(\wv), \quad \st ~ \wv \in \Wcal \subseteq \Rbb^n
+\end{align*}
+投影次梯度下降(projected subgradient descent)的第$t$轮更新公式为
+\begin{align*}
+    \wv_{t+1} = \proj_\Wcal (\wv_t - \eta_t \gv_t) \triangleq \argmin_{\wv \in \Wcal} \| \wv - (\wv_t - \eta_t \gv_t) \|_2
+\end{align*}
+其中$\eta_t > 0$是步长，$\gv_t \in \partial f(\wv_t)$是次梯度，即将单步下降后的点投影到可行域$\Wcal$。进一步化简有
+\begin{align*}
+    \wv_{t+1} & = \argmin_{\wv \in \Wcal} \nicefrac{1}{2} \| \wv - \wv_t + \eta_t \gv_t \|_2^2 = \argmin_{\wv \in \Wcal} \{ \eta_t \langle \gv_t, \wv - \wv_t \rangle + \nicefrac{1}{2} \| \wv - \wv_t \|_2^2 \} \\
+              & = \argmin_{\wv \in \Wcal} \{ \eta_t (\underbrace{f(\wv_t) + \langle \gv_t, \wv - \wv_t \rangle}_{f(\wv)在\wv_t处的线性近似}) + \nicefrac{1}{2} \underbrace{\| \wv - \wv_t \|_2^2}_{\wv_t的邻域} \}         \\
+              & = \argmin_{\wv \in \Wcal} \{ \eta_t \langle \gv_t, \wv \rangle + \nicefrac{1}{2} \| \wv - \wv_t \|_2^2 \}
+\end{align*}
+即$\wv_{t+1}$是在$\wv_t$的某个邻域内最小化$f(\wv)$在$\wv_t$处的线性近似。
+
+\begin{remark}
+    若可行域$\Wcal = \Rbb^n$，则无需做投影，若$f$可微，则次梯度即为梯度。
+\end{remark}
+
+\begin{lemma}
+    记$\phi(\wv) = \eta_t \langle \gv_t, \wv \rangle + \nicefrac{1}{2} \| \wv - \wv_t \|_2^2$，$\wv_{t+1} = \argmin_{\wv \in \Wcal} \phi(\wv)$，则
+    \begin{align} \label{eq: upper-bound-inner-product}
+        \eta_t \langle \gv_t, \wv_{t+1} - \wv \rangle \le \nicefrac{1}{2} \| \wv - \wv_t \|_2^2 - \nicefrac{1}{2} \| \wv - \wv_{t+1} \|_2^2 - \nicefrac{1}{2} \| \wv_{t+1} - \wv_t \|_2^2
+    \end{align}
+\end{lemma}
+
+\begin{proof}
+    $\phi(\wv)$是关于$\wv$的二次函数，其等高线$\phi(\wv_{t+1})$与$\Wcal$相切于$\wv_{t+1}$，梯度$\nabla \phi(\wv_{t+1})$与切线垂直，因此对于$\forall \wv \in \Wcal$有
+    \begin{align*}
+        \langle \nabla \phi(\wv_{t+1}), \wv - \wv_{t+1} \rangle \ge 0
+    \end{align*}
+    于是
+    \begin{align*}
+        \eta_t \langle \gv_t, & \wv \rangle + \nicefrac{1}{2} \| \wv - \wv_t \|_2^2 \\
+        & = \eta_t \langle \gv_t, \wv - \wv_{t+1} + \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv - \wv_{t+1} + \wv_{t+1} - \wv_t \|_2^2 \\
+        & = \eta_t \langle \gv_t, \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv_{t+1} - \wv_t \|_2^2 + \eta_t \langle \gv_t, \wv - \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv - \wv_{t+1} \|_2^2 + \langle \wv - \wv_{t+1}, \wv_{t+1} - \wv_t \rangle \\
+        & = \eta_t \langle \gv_t, \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv_{t+1} - \wv_t \|_2^2 + \langle \blue{\eta_t \gv_t + \wv_{t+1} - \wv_t}, \wv - \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv - \wv_{t+1} \|_2^2 \\
+        & = \eta_t \langle \gv_t, \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv_{t+1} - \wv_t \|_2^2 + \langle \blue{\nabla \phi(\wv_{t+1})}, \wv - \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv - \wv_{t+1} \|_2^2 \\
+        & \ge \eta_t \langle \gv_t, \wv_{t+1} \rangle + \nicefrac{1}{2} \| \wv_{t+1} - \wv_t \|_2^2 + \nicefrac{1}{2} \| \wv - \wv_{t+1} \|_2^2
+    \end{align*}
+    移项整理即可。
+\end{proof}
+
+\section{非平滑函数}
+
+假设：
+
+\begin{itemize}
+    \item $f$是$L$-李普希茨连续函数，即对$\forall \wv \in \Wcal$及$\forall \gv \in \partial f(\wv)$有$\|\gv\| \le L$。
+    \item $f$是$\alpha$-强凸函数，对一般凸函数可令$\alpha = 0$。
+\end{itemize}
+
+\begin{lemma}
+    对$\forall \wv \in \Wcal$有
+    \begin{align} \label{eq: one-step-general-convex}
+        f(\wv_t) - f(\wv) \le \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 + \frac{L^2 \eta_t}{2}
+    \end{align}
+\end{lemma}
+
+\begin{proof}
+    分别根据$\alpha$-强凸、式\eqref{eq: upper-bound-inner-product}、柯西不等式、$L$-李普希茨连续、均值不等式有
+    \begin{align*}
+        f(\wv_t) - f(\wv)
+         & \le \langle \gv_t, \wv_t - \wv \rangle - \frac{\alpha}{2} \| \wv - \wv_t \|_2^2                                                                                                                                                                                         \\
+         & = \langle \gv_t, \wv_t - \wv_{t+1} \rangle + \langle \gv_t, \wv_{t+1} - \wv \rangle - \frac{\alpha}{2} \| \wv - \wv_t \|_2^2                                                                                                                                            \\
+         & \overset{\eqref{eq: upper-bound-inner-product}}{\le} \langle \gv_t, \wv_t - \wv_{t+1} \rangle + \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 - \frac{1}{2\eta_t} \| \wv_{t+1} - \wv_t \|_2^2 \\
+         & \le \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 + \|\gv_t\|_2 \|\wv_t - \wv_{t+1}\|_2 - \frac{1}{2\eta_t} \| \wv_{t+1} - \wv_t \|_2^2                                                       \\
+         & \le \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 + L \|\wv_t - \wv_{t+1}\|_2 - \frac{1}{2\eta_t} \| \wv_{t+1} - \wv_t \|_2^2                                                                 \\
+         & \le \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 + \frac{L^2 \eta_t}{2}
+    \end{align*}
+\end{proof}
+
+\subsection{$f$非强凸}
+
+此时$\alpha = 0$，根据式\eqref{eq: one-step-general-convex}，对$\forall \wv \in \Wcal$有
+\begin{align*}
+    f(\wv_t) - f(\wv) \le \frac{1}{2\eta_t} \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 + \frac{L^2 \eta_t}{2}
+\end{align*}
+累加可得
+\begin{align}
+    \sum_{t=s}^r \eta_t f(\wv_t) - \sum_{t=s}^r \eta_t f(\wv)
+     & \le \frac{1}{2} \| \wv - \wv_s \|_2^2 - \frac{1}{2} \| \wv - \wv_{r+1} \|_2^2 + \frac{L^2}{2} \sum_{t=s}^r \eta_t^2 \nonumber \\
+     & \le \frac{1}{2} \| \wv - \wv_s \|_2^2 + \frac{L^2}{2} \sum_{t=s}^r \eta_t^2 \nonumber                                         \\
+    \label{eq: sum-general-convex}
+     & \le R^2 + \frac{L^2}{2} \sum_{t=s}^r \eta_t^2
+\end{align}
+其中$R^2 \triangleq \max_{\uv,\vv \in \Wcal} \|\uv - \vv\|_2^2/2$。
+
+\subsubsection{固定步长}
+
+取$\eta_t = \eta$，$s=1$，$r=T$，由式\eqref{eq: sum-general-convex}有
+\begin{align*}
+    \frac{1}{T} \sum_{t \in [T]} f(\wv_t) - f(\wv) \le \frac{R^2}{\eta T} + \frac{L^2 \eta}{2}
+\end{align*}
+欲使上界最紧，可令
+\begin{align*}
+    \eta = \sqrt{\frac{2 R^2}{T L^2}} \Longrightarrow \frac{1}{T} \sum_{t \in [T]} f(\wv_t) - f(\wv) \le \sqrt{\frac{2 R^2 L^2}{T}}
+\end{align*}
+令$\wvbar = \sum_{t \in [T]} \wv_t / T$、$\wvhat = \argmin_{\wv_t: t \in [T]} f(\wv_t)$，由$f$的凸性有
+\begin{align*}
+    f(\wvbar) - f(\wv) \le \frac{\sqrt{2} R L}{\sqrt{T}}, \quad f(\wvhat) - f(\wv) \le \frac{\sqrt{2} R L}{\sqrt{T}}
+\end{align*}
+
+\subsubsection{递减步长}
+
+\blue{固定步长$\eta$依赖总迭代轮数$T$}，可取递减步长
+\begin{align*}
+    \eta_t = \sqrt{\frac{2 R^2}{t L^2}}
+\end{align*}
+易知
+\begin{align} \label{eq: sum-eta-bound}
+    \begin{split}
+        \sum_{t=\lceil T/2 \rceil}^T \eta_t   & = \sqrt{\frac{2 R^2}{L^2}} \sum_{t=\lceil T/2 \rceil}^T \frac{1}{\sqrt{t}} \ge \sqrt{\frac{2 R^2}{L^2}} \int_{(T+1)/2}^{T+1} \frac{1}{\sqrt{t}} \diff t = 2 \sqrt{\frac{R^2 (T+1)}{L^2}} (\sqrt{2} - 1)               \\
+        \sum_{t=\lceil T/2 \rceil}^T \eta_t^2 & = \frac{2 R^2}{L^2} \sum_{t=\lceil T/2 \rceil}^T \frac{1}{t} \le \frac{2 R^2}{L^2} \int_{\lceil T/2 \rceil-1}^T \frac{1}{t} \diff t = \frac{2 R^2}{L^2} \ln \frac{T}{\lceil T/2 \rceil-1} \le \frac{2 R^2}{L^2} \ln 3
+    \end{split}
+\end{align}
+由$f$的凸性、式\eqref{eq: sum-general-convex}、式\eqref{eq: sum-eta-bound}有
+\begin{align*}
+    f \left( \sum_{t=\lceil T/2 \rceil}^T \frac{\eta_t \wv_t}{\sum_{t'=\lceil T/2 \rceil}^T \eta_{t'}} \right) - f(\wv)
+     & \le \sum_{t=\lceil T/2 \rceil}^T \frac{\eta_t}{\sum_{t'=\lceil T/2 \rceil}^T \eta_{t'}} f(\wv_t) - f(\wv)                      \\
+     & \le \frac{1}{\sum_{t'=\lceil T/2 \rceil}^T \eta_{t'}} \left( R^2 + \frac{L^2}{2} \sum_{t=\lceil T/2 \rceil}^T \eta_t^2 \right) \\
+     & \le \frac{L}{2 (\sqrt{2} - 1) R \sqrt{T+1}} R^2 (1 + \ln 3) = \frac{(1 + \ln 3)RL}{2 (\sqrt{2} - 1) \sqrt{T+1}}
+\end{align*}
+
+\begin{remark}
+    \begin{itemize}
+        \item 所有界都是$\Ocal(RL/\sqrt{T})$，要想误差不超过$\epsilon$，需做$\Ocal(R^2 L^2/\epsilon^2)$轮迭代。
+        \item 所有界都是对$\forall \wv \in \Wcal$成立，不仅仅是$\wv^\star$。
+        \item 界不是关于最后的$\wv_T$的，固定步长是平均和最好的$\wv$，递减步长是后一半$\wv$的加权平均。
+    \end{itemize}
+\end{remark}
+
+\subsection{$f$强凸}
+
+此时$\alpha > 0$，累加式\eqref{eq: one-step-general-convex}可得
+\begin{align*}
+    \sum_{t \in [T]} a_t
+     & f(\wv_t) - \sum_{t \in [T]} a_t f(\wv) \le \sum_{t \in [T]} a_t \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \sum_{t \in [T]} \frac{a_t}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 + \frac{L^2}{2} \sum_{t \in [T]} a_t \eta_t \\
+     & = \sum_{t \in [T]} a_t \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \sum_{t=2}^{T+1} \frac{a_{t-1}}{2\eta_{t-1}} \| \wv - \wv_t \|_2^2 + \frac{L^2}{2} \sum_{t \in [T]} a_t \eta_t                                      \\
+     & = \frac{a_1(1 - \alpha \eta_1)}{2 \eta_1} \| \wv - \wv_1 \|_2^2 + \sum_{t=2}^{T+1} \left( \frac{a_t (1 - \alpha \eta_t)}{2 \eta_t} - \frac{a_{t-1}}{2\eta_{t-1}} \right) \| \wv - \wv_t \|_2^2 + \frac{L^2}{2} \sum_{t \in [T]} a_t \eta_t
+\end{align*}
+取$\eta_t = 2/\alpha t$、$a_t = t$，则
+\begin{align*}
+    \frac{a_t (1 - \alpha \eta_t)}{\eta_t} = \frac{\alpha t^2 (1 - 2/t)}{2} = \frac{\alpha t (t - 2)}{2} \le \frac{\alpha (t - 1)^2}{2} = \frac{a_{t-1}}{\eta_{t-1}}
+\end{align*}
+故不等号右边第二项$\le 0$，将其放掉有
+\begin{align*}
+    \sum_{t \in [T]} t f(\wv_t) - \frac{T(T+1)}{2} f(\wv) \le - \frac{\alpha}{4} \| \wv - \wv_1 \|_2^2 + \frac{L^2 T}{\alpha}
+\end{align*}
+不等号右边第一项也$\le 0$，将其放掉，两边同除以$T(T+1)/2$可得
+\begin{align*}
+    f \left( \sum_{t=1}^T \frac{2t}{T(T+1)} \wv_t \right) - f(\wv) \le \frac{2 L^2}{\alpha (T+1)}
+\end{align*}
+
+\begin{remark}
+    误差界是$\Ocal(L^2/\alpha T)$，要想误差不超过$\epsilon$，需做$\Ocal(L^2/\alpha \epsilon)$轮迭代。
+\end{remark}
+
+\section{$\beta$-平滑函数}
+
+假设
+\begin{itemize}
+    \item $f$是$\beta$-平滑函数，即$f$可微且梯度$\beta$-李普希茨连续，即对于$\forall \wv, \uv \in S$有
+          \begin{align*}
+              \| \nabla f(\wv) - \nabla f(\uv) \|_2 \le \beta \| \wv - \uv \|_2 \Longrightarrow f(\wv) \le f(\uv) + \langle \nabla f(\uv), \wv - \uv \rangle + \frac{\beta}{2} \| \wv - \uv \|_2^2
+          \end{align*}
+    \item $f$是$\alpha$-强凸函数，对一般凸函数可令$\alpha = 0$。
+\end{itemize}
+
+\begin{lemma} [单调性]
+    若步长$\eta_t \le 2 / \beta$，则$f(\wv_{t+1}) \le f(\wv_t)$。
+\end{lemma}
+
+\begin{proof}
+    此时$\gv_t = \nabla f(\wv_t)$就是梯度，式\eqref{eq: upper-bound-inner-product}变成
+    \begin{align} \label{eq: upper-bound-inner-product-smooth}
+        \eta_t \langle \nabla f(\wv_t), \wv_{t+1} - \wv \rangle \le \frac{1}{2} \| \wv - \wv_t \|_2^2 - \frac{1}{2} \| \wv - \wv_{t+1} \|_2^2 - \frac{1}{2} \| \wv_{t+1} - \wv_t \|_2^2, ~ \wv \in \Wcal
+    \end{align}
+    令$\wv = \wv_t$可得$\eta_t \langle \nabla f(\wv_t), \wv_{t+1} - \wv_t \rangle \le - \| \wv_t - \wv_{t+1} \|_2^2$，于是
+    \begin{align*}
+        f(\wv_{t+1}) & \le f(\wv_t) + \langle \nabla f(\wv_t), \wv_{t+1} - \wv_t \rangle + \frac{\beta}{2} \| \wv_{t+1} - \wv_t \|_2^2 \\
+                     & \le f(\wv_t) - \left( \frac{1}{\eta_t} - \frac{\beta}{2} \right) \| \wv_{t+1} - \wv_t \|_2^2                    \\
+                     & \le f(\wv_t)
+    \end{align*}
+\end{proof}
+
+\begin{lemma}
+    若步长$\eta_t \le 1 / \beta$，则
+    \begin{align}  \label{eq: one-step-smooth-convex}
+        f(\wv_{t+1}) \le f(\wv) + \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2, ~ \forall \wv \in \Wcal
+    \end{align}
+\end{lemma}
+
+\begin{proof}
+    对$\forall \wv \in \Wcal$，分别根据$\beta$-平滑、$\alpha$-强凸、式\eqref{eq: upper-bound-inner-product-smooth}、$\beta \le 1 / \eta_t$有
+    \begin{align*}
+        f(\wv_{t+1})
+         & \le f(\wv_t) + \langle \nabla f(\wv_t), \wv_{t+1} - \wv_t \rangle + \frac{\beta}{2} \| \wv_{t+1} - \wv_t \|_2^2                                                                                                         \\
+         & = \underbrace{f(\wv_t) + \langle \nabla f(\wv_t), \wv - \wv_t \rangle + \frac{\alpha}{2} \| \wv - \wv_t \|_2^2}_{\le f(\wv)}                                                                                            \\
+         & \qquad \qquad + \underbrace{\langle \nabla f(\wv_t), \wv_{t+1} - \wv \rangle}_{用式\eqref{eq: upper-bound-inner-product-smooth}来放} + \frac{\beta}{2} \| \wv_{t+1} - \wv_t \|_2^2 - \frac{\alpha}{2} \| \wv - \wv_t \|_2^2 \\
+         & \le f(\wv) + \frac{1}{2\eta_t} \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2 - \frac{1}{2\eta_t} \| \wv_{t+1} - \wv_t \|_2^2                                                                      \\
+         & \qquad \qquad + \frac{\beta}{2} \| \wv_{t+1} - \wv_t \|_2^2 - \frac{\alpha}{2} \| \wv - \wv_t \|_2^2                                                                                                                    \\
+         & \le f(\wv) + \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2
+    \end{align*}
+\end{proof}
+
+\subsection{$f$非强凸}
+
+此时$\alpha = 0$，式\eqref{eq: one-step-smooth-convex}变成
+\begin{align*}
+    f(\wv_{t+1}) - f(\wv) \le \frac{1}{2\eta_t} \| \wv - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv - \wv_{t+1} \|_2^2
+\end{align*}
+累加可得
+\begin{align*}
+    \sum_{t \in [T]} f(\wv_{t+1}) - T f(\wv) \le \frac{1}{2\eta_1} \| \wv - \wv_1 \|_2^2 - \frac{1}{2\eta_T} \| \wv - \wv_{T+1} \|_2^2
+\end{align*}
+取$\eta_t = 1 / \beta$，根据单调性有
+\begin{align*}
+    f(\wv_{T+1}) - f(\wv) \le \frac{\beta}{2 T} \| \wv - \wv_1 \|_2^2 - \frac{\beta}{2 T} \| \wv - \wv_{T+1} \|_2^2 \le \frac{\beta R^2}{T}
+\end{align*}
+
+\begin{remark}
+    误差界是$\Ocal(\beta R^2/T)$，要想误差不超过$\epsilon$，需做$\Ocal(\beta R^2/\epsilon)$轮迭代。
+\end{remark}
+
+\begin{remark}
+    有了平滑性，就有了$\{ f(\wv_t) \}$序列的单调性，从而误差界也只跟最后的$\wv$相关了。
+\end{remark}
+
+\subsection{$f$强凸}
+
+此时$\alpha > 0$，对式\eqref{eq: one-step-smooth-convex}令$\wv = \wv^\star$，结合$f(\wv_{t+1}) \ge f(\wv^\star)$可得
+\begin{align*}
+    0 \le \left( \frac{1}{2\eta_t} - \frac{\alpha}{2} \right) \| \wv^\star - \wv_t \|_2^2 - \frac{1}{2\eta_t} \| \wv^\star - \wv_{t+1} \|_2^2
+\end{align*}
+即$\| \wv^\star - \wv_{t+1} \|_2^2 \le (1 - \alpha \eta_t) \| \wv^\star - \wv_t \|_2^2$，取$\eta_t = 1/ \beta$累乘可得
+\begin{align*}
+    \| \wv^\star - \wv_{T+1} \|_2^2 \le \left(1 - \frac{\alpha}{\beta} \right)^T \| \wv^\star - \wv_1 \|_2^2 = \left( 1 - \frac{1}{\kappa} \right)^T \| \wv^\star - \wv_1 \|_2^2 \le \exp \left( -\frac{T}{\kappa} \right) 2 R^2
+\end{align*}
+其中$\kappa = \beta/\alpha$为条件数(condition number)。
+
+\begin{remark}
+    误差界是$\Ocal(R^2 \exp(-T/\kappa))$，要想误差不超过$\epsilon$，需做$\Ocal(\kappa \ln (R^2/\epsilon))$轮迭代。
+\end{remark}
+
+若想得到目标函数值的误差界，对式\eqref{eq: one-step-smooth-convex}令$\wv = \wv^\star$、$\eta_t = 1 / \beta$可得
+\begin{align*}
+    f(\wv_{T+1}) - f(\wv^\star)
+     & \le \left( \frac{\beta}{2} - \frac{\alpha}{2} \right) \| \wv^\star - \wv_T \|_2^2 - \frac{1}{2\eta_t} \| \wv^\star - \wv_{T+1} \|_2^2 \\
+     & \le \frac{\beta - \alpha}{2} \| \wv^\star - \wv_T \|_2^2                                                                              \\
+     & \le \frac{\beta - \alpha}{2} \left( 1 - \frac{\alpha}{\beta} \right)^{T-1} \| \wv^\star - \wv_1 \|_2^2                                \\
+     & = \frac{\beta}{2} \left( 1 - \frac{\alpha}{\beta} \right)^T \| \wv^\star - \wv_1 \|_2^2                                               \\
+     & \le \exp \left( -\frac{T}{\kappa} \right) \beta R^2
+\end{align*}
+
+\begin{remark}
+    误差界是$\Ocal(\beta R^2 \exp(-T/\kappa))$，要想误差不超过$\epsilon$，需做$\Ocal(\kappa \ln (\beta R^2/\epsilon))$轮迭代。
+\end{remark}
+
+\begin{remark}
+    Nesterov在Introductory Lectures on Convex Optimization一书中采用步长$\eta = \frac{2}{\beta+\alpha}$，得到
+    \begin{align*}
+        f(\wv_{T+1}) - f(\wv^\star) \le \frac{\beta}{2} \exp \left( -\frac{4T}{\kappa+1} \right) \| \wv_1 - \wv^\star \|_2^2 \le \exp \left( -\frac{4T}{\kappa+1} \right) \beta R^2
+    \end{align*}
+    要想误差不超过$\epsilon$，需做$\Ocal((\kappa+1) \ln (\beta R^2/\epsilon) / 4)$轮迭代，在常数上有所改进。
+\end{remark}
+
+本文的所有结论总结如下：
+\begin{table}[ht]
+    \centering
+    \caption{4种不同的情况下投影次梯度下降的收敛率}
+    \begin{tabular}{ccccc}
+        \hline \hline \noalign{\smallskip}
+               & $L$-李普希茨连续                  & $\alpha$-强凸、$L$-李普希茨连续       & $\beta$-平滑                    & $\beta$-平滑、$\alpha$-强凸                   \\
+        \noalign{\smallskip} \hline \noalign{\smallskip}
+        $T$轮误差 & $\Ocal(RL/\sqrt{T})$        & $\Ocal(L^2/\alpha T)$        & $\Ocal(\beta R^2/T)$          & $\Ocal(\beta R^2 \exp(-T/\kappa))$       \\
+        迭代轮数   & $\Ocal(R^2 L^2/\epsilon^2)$ & $\Ocal(L^2/\alpha \epsilon)$ & $\Ocal(\beta R^2 / \epsilon)$ & $\Ocal(\kappa \ln (\beta R^2/\epsilon))$ \\
+        \noalign{\smallskip} \hline \hline
+    \end{tabular}
+\end{table}
+
+
+\end{document}
