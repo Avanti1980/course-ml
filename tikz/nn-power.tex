@@ -1,0 +1,47 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+\usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+
+\tikzset{font=\normalsize}
+
+ % define the plot style and the axis style
+\tikzset{base/.style={smooth,thick,draw=Solarized-base01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{nc/.style={circle, base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \draw [fill=Solarized-base2] (1,1) -- (1.5,4) -- (3,6) -- (6,4) -- (5,1.5) -- cycle;
+
+    \draw [fill=Solarized-base2] (9.5,5) -- ++(0.5,0.5) -- ++(0.5,-0.5) -- ++(-0.5,-0.5) -- cycle;
+
+    \draw [fill=Solarized-base2] (12.5,5) -- ++(0.5,0.5) -- ++(0.5,-0.5) -- ++(-0.5,-0.5) -- cycle;
+
+    \draw [fill=Solarized-base2] (11.5,4) -- ++(-0.5,-0.5) -- ++(1,0) --  cycle;
+
+    \draw [fill=Solarized-base2] (9.5,2.5) -- ++(3.5,0) -- ++(-2,-1) --  cycle;
+
+    \pgfmathsetmacro{\g}{7}
+
+    \foreach \i in {0,0.5,...,\g}
+        {
+            \draw [base,dotted] (\i,0) -- (\i,\g);
+            \draw [base,dotted] (0,\i) -- (\g,\i);
+        }
+
+    \foreach \i in {0,0.5,...,\g}
+        {
+            \draw [base,dotted] (\i+\g+1,0) -- (\i+\g+1,\g);
+            \draw [base,dotted] (\g+1,\i) -- (2*\g+1,\i);
+        }
+
+\end{tikzpicture}
+
+
+\end{document}

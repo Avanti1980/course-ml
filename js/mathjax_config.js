@@ -120,6 +120,7 @@ module.exports = {
       Lcal: "{\\mathcal L}",
       Mcal: "{\\mathcal M}",
       Ncal: "{\\mathcal N}",
+      Ocal: "{\\mathcal O}",
       Pcal: "{\\mathcal P}",
       Rcal: "{\\mathcal R}",
       Scal: "{\\mathcal S}",
