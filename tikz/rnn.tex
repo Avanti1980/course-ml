@@ -1,0 +1,46 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+\usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+\tikzset{font=\large}
+
+ % define the plot style and the axis style
+\tikzset{base/.style={smooth,thick,Solarized-base01,draw=Solarized-base01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{nc/.style={base,circle}}
+\tikzset{box/.style={base,rectangle,minimum size=20}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \node [box,fill=Solarized-base2] (o) at (0,4) {输出层};
+
+    \node [box] (a) at (0,2) {隐藏层};
+    \node [box] (d) at (4,2) {延迟器};
+
+    \node [box,fill=Solarized-base2] (i) at (0,0) {输入层};
+
+    \draw [arrow] (i) -- (a) node [midway, draw=none, left] {$\xv_t$};
+    \draw [arrow] (a) -- (o) node [midway, draw=none, left] {$\av_t$};
+
+    \draw [arrow] (a) to [out=45,in=135] (d);
+    \node [above] at (2,3.1) {$\av_t$};
+
+    \draw [arrow] (d) to [out=225,in=315] (a);
+    \node [below] at (2,0.9) {$\av_{t-1}$};
+
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

@@ -1,0 +1,53 @@
+digraph g {
+    compound=true;
+    graph [nodesep=0.1 ranksep=0.3]
+    bgcolor=transparent
+    node [margin=0 shape=point height=0.2 color="#586e75" fontsize=10 label=""]
+    edge [color="#586e75" fontcolor="#586e75" fontsize=12 fontname="EBG,fzlz" arrowhead=vee arrowsize=0.6]
+
+    subgraph clusterW1 {
+        color="#586e75"
+        rank=same {w11, w12, w13, w14, w15}
+    }
+
+    subgraph clusterW2 {
+        color="#586e75"
+        rank=same {w21, w22, w23, w24, w25}
+    }
+
+    subgraph clusterW3 {
+        color="#586e75"
+        rank=same {w31, w32, w33, w34, w35}
+    }
+
+    subgraph clusterW4 {
+        color="#586e75"
+        rank=same {w41, w42, w43, w44, w45}
+    }
+
+    subgraph clusterZ {
+        color="#586e75"
+        rank=same {z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13}
+    }
+
+    subgraph clusterA {
+        color="#586e75"
+        rank=same {a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13}
+    }
+
+    w13 -> z6 [ltail=clusterW1, lhead=clusterZ]
+    w23 -> z7 [ltail=clusterW2, lhead=clusterZ]
+    w33 -> z7 [ltail=clusterW3, lhead=clusterZ]
+    w43 -> z8 [ltail=clusterW4, lhead=clusterZ]
+
+    z7 -> a7 [label=" 激活 ", ltail=clusterZ, lhead=clusterA]
+
+    subgraph clusterP {
+        node [margin=0 shape=plain fontname="EBG,fzlz" fontcolor="#586e75" fontsize=16]
+        color="#586e75"
+        style=invis
+        o [label="N 维概率向量：下一个词为词典中每个词的概率"]
+    }
+
+    a7 -> o [label=" Softmax", ltail=clusterA, lhead=clusterP]
+}
