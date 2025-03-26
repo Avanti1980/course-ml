@@ -1,0 +1,85 @@
+\documentclass{ctexart}
+\usepackage{avanti}
+\everymath{\color{Solarized-magenta}}
+\pagestyle{empty} % 没有页眉和页脚
+
+\tikzset{font=\Large}
+
+% define the plot style and the axis style
+\tikzset{base/.style={smooth,thick,Solarized-base01,draw=Solarized-base01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,Solarized-blue}}
+\tikzset{nc/.style={base,circle,minimum width=32,fill=Solarized-base2}}
+\tikzset{box/.style={base,rectangle,minimum height=25,minimum width=50}}
+\tikzset{box2/.style={box,fill=Solarized-base2}}
+
+\begin{document}
+
+\begin{tikzpicture} [scale=0.78]
+
+    \pgfmathtruncatemacro{\r}{-5};
+    \pgfmathtruncatemacro{\z}{0};
+    \pgfmathtruncatemacro{\a}{5};
+
+    \node [box] (r) at (\r,0) {$\rv_t$};
+    \node [box] (z) at (\z,0) {$\zv_t$};
+    \node [box] (a') at (\a,0) {$\widetilde{\av}_t$};
+
+    \node [nc,fill=Solarized-base1] (concatenate1) at (\r-3,-3.5) {$+$};
+    \node [nc] (s1) at (\r,-2) {$\sigma$};
+    \node [nc] (s2) at (\z,-2) {$\sigma$};
+    \node [nc] (t1) at (\a,-2) {\normalsize $\tanh$};
+    \node [nc] (m1) at (\r,2) {$\times$};
+    \node [nc] (m2) at (\a,2) {$\times$};
+    \node [nc] (m3) at (\z,4) {$\times$};
+    \node [nc] (add) at (\a,4) {$+$};
+
+    \draw [arrow] (s1) -- (r);
+    \draw [arrow] (r) -- (m1);
+    \draw [arrow] (concatenate1) ++(3,0) -- (s1);
+    \draw [arrow] (concatenate1) -- ++(8,0) -- (s2);
+    \draw [arrow] (s2) -- (z);
+    \draw [arrow] (z) -- (m3);
+    \draw [arrow] (t1) -- (a');
+    \draw [arrow] (a') -- (m2);
+    \draw [arrow] (m2) -- (add);
+
+    \node [nc] (mo) at (\z+2.3,2) {$\onev -$};
+
+    \draw [arrow] (z) ++(0,2) -- (mo);
+    \draw [arrow] (mo) -- (m2);
+
+    \node [nc,fill=Solarized-base1] (concatenate2) at (\r+2.5,-5) {$+$};
+    \draw [arrow] (concatenate2) -- ++(7.5,0) -- (t1);
+
+    \node [box] (x) at (\r-3,-7.5) {$\xv_t$};
+    \draw [arrow] (x) -- (concatenate1);
+    \draw [arrow] (x) ++ (0,2.5) -- (concatenate2);
+    \draw [arrow,dashed] (m1) -- ++(2.5,0) -- (concatenate2);
+
+    \node [box] (am1) at (\r-6,4) {$\av_{t-1}$};
+    \draw [arrow] (am1) -- (m3);
+    \draw [arrow] (m3) -- (add);
+    \draw [arrow] (am1) ++(0,-2) -- (m1);
+    \draw [arrow] (am1) -- ++(0,-7.5) -- (concatenate1);
+    \draw [arrow] (\r-8,4) -- (am1);
+
+    \node [box] (a) at (\a+3,4) {$\av_t$};
+    \draw [arrow] (a) -- ++(2,0);
+    \draw [arrow] (add) -- (a);
+
+    \draw [dashed,very thick,Solarized-blue] (\r-4.2,-6) -- (\a+4.5,-6) -- (\a+4.5,5) -- (\r-4.2,5) -- cycle;
+
+    \node [nc,label={[inner sep=6pt,Solarized-base01]right:\large 向量元素乘}] at (\r,-7.5) {$\times$};
+
+    \node [nc,fill=Solarized-base2,label={[inner sep=6pt,Solarized-base01]right:\large 向量和}] at (\z,-7.5) {$+$};
+
+    \node [nc,fill=Solarized-base1,label={[inner sep=6pt,Solarized-base01]right:\large 向量拼接}] at (\a-1,-7.5) {$+$};
+
+\end{tikzpicture}
+
+
+
+
+\end{document}
+
