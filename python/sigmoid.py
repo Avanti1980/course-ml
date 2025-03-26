@@ -26,7 +26,9 @@ with plt.style.context('Solarize_Light2'):
     plt.plot(x, logistic, linestyle="-", linewidth=2, label="logistic")
     plt.plot(x, tanh, linestyle="dashed", linewidth=2, label="tanh")
 
-    legend = plt.legend(loc='upper left', prop={'family': 'EB Garamond', 'size': 15})
+    legend = plt.legend(loc='upper left', prop={'family': 'LXGW Bright', 'size': 15})
     plt.setp(legend.get_texts())
+
+    plt.savefig("sigmoid.svg")
 
     plt.show()
