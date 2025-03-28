@@ -20,10 +20,10 @@ model.add(Flatten())
 model.add(Dense(84, activation="relu"))
 model.add(Dense(10, activation="softmax"))
 model.summary()
-# ---------------------------------------------------------------------------
 # Model: "sequential"
-# ===========================================================================
+# ---------------------------------------------------------------------------
 # ┃ Layer (type)                           ┃ Output Shape       ┃ Param # ┃
+# ---------------------------------------------------------------------------
 # │ conv2d (Conv2D)                        │ (None, 28, 28, 6)  │     156 │
 # │ average_pooling2d (AveragePooling2D)   │ (None, 14, 14, 6)  │       0 │
 # │ conv2d_1 (Conv2D)                      │ (None, 10, 10, 16) │   2,416 │
@@ -32,14 +32,13 @@ model.summary()
 # │ flatten (Flatten)                      │ (None, 120)        │       0 │
 # │ dense (Dense)                          │ (None, 84)         │  10,164 │
 # │ dense_1 (Dense)                        │ (None, 10)         │     850 │
-# ===========================================================================
+# ---------------------------------------------------------------------------
 # Total params: 61,706 (241.04 KB)
 # Trainable params: 61,706 (241.04 KB)
 # Non-trainable params: 0 (0.00 B)
 
 model.compile(optimizer=Adam(0.001), loss="sparse_categorical_crossentropy", metrics=["acc"])
 model.fit(x_train, y_train, epochs=5, verbose=1)
-# ------------------------------------------------------------------------------------------
 # Epoch 1/5
 # 1875/1875 ━━━━━━━━━━━━━━━━━━━━ 4s 871us/step - accuracy: 0.8697 - loss: 0.4374
 # Epoch 2/5
@@ -52,5 +51,4 @@ model.fit(x_train, y_train, epochs=5, verbose=1)
 # 1875/1875 ━━━━━━━━━━━━━━━━━━━━ 2s 983us/step - accuracy: 0.9893 - loss: 0.0329
 
 model.evaluate(x_test, y_test, verbose=2)
-# ----------------------------------------------------
 # 313/313 - 1s - 3ms/step - acc: 0.9898 - loss: 0.0330

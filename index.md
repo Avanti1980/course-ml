@@ -102,6 +102,4 @@
 
 对率回归[预测约会](python/lr-date.ipynb)、对率回归[分类鸢尾花](python/lr-iris.ipynb)、[梯度下降](python/gd.ipynb)、[动量法](python/momentum.ipynb)
 
-多层感知机实现异或：[sklearn 实现](python/mlp-xor.ipynb)、[tensorflow 实现](python/dnn-xor.ipynb)
-
-卷积神经网络做 MNIST [手写数字识别](python/lenet-mnist.ipynb)、循环神经网络做 IMDB [影评情感分析](python/rnn-imdb.ipynb) 
+多层感知机实现异或：[sklearn 实现](python/mlp-xor.ipynb)、[tensorflow 实现](python/dnn-xor.ipynb)、卷积神经网络实现 MNIST [手写数字识别](python/lenet-mnist.ipynb)、resnet50 [模型复用](python/resnet50-reuse.ipynb)、循环神经网络实现 IMDB [影评情感分析](python/rnn-imdb.ipynb)

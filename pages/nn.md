@@ -1025,7 +1025,7 @@ $$
 
 使用在 ImageNet 训练好的残差网络 ResNet50 进行图像分类
 
-@import "../python/resnet50.py" {.line-numbers .top-1}
+@import "../python/resnet50-reuse.py" {.line-numbers .top-1}
 
 @import "../img/tj/tj.jpg" {.height25 .width25 .right4 .lefta .top-30per}
 

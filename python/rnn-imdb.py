@@ -18,7 +18,6 @@ for id_, token in enumerate(("<pad>", "<sos>", "<unk>")):
 for i in range(5):
     print(X_train[i][:10])
     print(" ".join([id_to_word[id_] for id_ in X_train[i][:10]]))
-# -----------------------------------------------------------------
 # [1, 14, 22, 16, 43, 530, 973, 1622, 1385, 65]
 # <sos> this film was just brilliant casting location scenery story
 # [1, 194, 1153, 194, 8255, 78, 228, 5, 6, 1463]
@@ -106,7 +105,6 @@ model.add(SimpleRNN(32))
 model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
 model.fit(X_train, y_train, epochs=5, batch_size=128)
-# ----------------------------------------------------------------------------------
 # Epoch 1/5
 # 196/196 ━━━━━━━━━━━━━━━━━━━━ 4s 10ms/step - acc: 0.6020 - loss: 0.6403
 # Epoch 2/5
@@ -119,5 +117,4 @@ model.fit(X_train, y_train, epochs=5, batch_size=128)
 # 196/196 ━━━━━━━━━━━━━━━━━━━━ 1s 7ms/step - acc: 0.9662 - loss: 0.1084
 
 model.evaluate(X_test, y_test, verbose=2)
-# ----------------------------------------------------
 # 782/782 - 2s - 2ms/step - acc: 0.8277 - loss: 0.4840
