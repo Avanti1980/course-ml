@@ -1,5 +1,13 @@
 \documentclass{ctexart}
-\usepackage{avanti}
+\usepackage{avanti-color}
+% \usepackage{avanti-font}
+\usepackage{avanti-math}
+\usepackage{avanti-theorem}
+\usepackage{avanti-others}
+\usepackage{fontspec}
+\xeCJKsetup{CJKmath=true}
+\setCJKmainfont[BoldFont=FZHei-B01,ItalicFont={LXGW Bright Medium}]{LXGW Bright Medium}
+
 \everymath{\color{Solarized-magenta}}
 \pagestyle{empty} % 没有页眉和页脚
 
@@ -37,7 +45,7 @@
     \node (s3) [plain] at (\xarray[2], \yarray[1]) {...};
     \node (s4) [box] at (\xarray[3], \yarray[1]) {$s(\cdot, \cdot)$};
 
-    \node (s) [roundbox] at (-1.5, \yarray[2]) {Softmax};
+    \node (s) [roundbox] at (-1.5, \yarray[2]) {$\mathrm{Softmax}$};
 
     \node (a1) [plain] at (\xarray[0], \yarray[3]) {$\alpha_1$};
     \node (a2) [plain] at (\xarray[1], \yarray[3]) {$\alpha_2$};

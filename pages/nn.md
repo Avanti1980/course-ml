@@ -579,7 +579,7 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 反向传播算法
+##### 神经网络训练
 
 ---
 
@@ -835,21 +835,21 @@ $$
 
 图像数据集 [ImageNet](https://image-net.org/index.php)：
 
-- 共有 14,197,122 训练图片、50,000 验证图片、100,000 测试图片
-- 共有 1,000 个类别，通过众包进行标注
-- 图片分辨率：256 × 256、224 × 224、299 × 299
+- 共有$14,197,122$训练图片、$50,000$验证图片、$100,000$测试图片
+- 共有$1,000$个类别，通过众包进行标注
+- 图片分辨率：$256 \times 256$、$224 \times 224$、$299 \times 299$
 
 <div class="top2"></div>
 
 用全连接网络训练 ImageNet
 
-- 图片全部裁减到 224 × 224，输入层神经元个数为 50,176
-- 共有 1,000 个类别，输出层神经元个数为 1,000
-- 假设只有一个隐藏层，神经元个数取个折中 10,000
+- 图片全部裁减到$224 \times 224$，输入层神经元个数为$50,176$
+- 共有$1,000$个类别，输出层神经元个数为$1,000$
+- 假设只有一个隐藏层，神经元个数取个折中$10,000$
 
 <div class="top2"></div>
 
-总参数量为 (50,176 + 1,000) × 10,000 = 511,760,000
+总参数量为$(50,176 + 1,000) \times 10,000 = 511,760,000$
 
 - 训练效率非常低
 - 很容易出现过拟合
@@ -860,7 +860,7 @@ $$
 
 ---
 
-@import "../dot/dense-vs-cnn.dot"
+@import "../dot/dense-vs-cnn.dot" {.center}
 
 <div class="top0"></div>
 
@@ -876,7 +876,7 @@ $$
 
 ---
 
-<img src="../tikz/convolution1d.svg" class="center width75 top4 bottom4">
+@import "../tikz/convolution1d.svg" {.center .width75 .top4 .bottom4}
 
 $$
 \begin{align*}
@@ -903,7 +903,7 @@ $$
 \end{align*}
 $$
 
-<img src="../tikz/convolution1d.svg" class="center width75 top2 bottom4">
+@import "../tikz/convolution1d.svg" {.center .width75 .top4 .bottom4}
 
 取$f[i] = x_i$，$g[-2] = w_3$，$g[-1] = w_2$，$g[0] = w_1$，其余为零
 
@@ -921,7 +921,7 @@ $$
 
 针对输入是矩阵的情形
 
-<img src="../tikz/convolution2d.svg" class="center width75 top3 bottom4">
+@import "../tikz/convolution2d.svg" {.center .width75 .top3 .bottom4}
 
 深色区域称为对应输出神经元的<span class="blue">感受野</span> (receptive field)
 
@@ -975,7 +975,7 @@ $$
 
 - 最大汇聚 (maximum pooling)：取区域内神经元最大值，<span class="blue">拥有一定的平移不变性</span>
 
-<img src="../tikz/pooling-max.svg" class="center width50 top3 bottom3">
+@import "../tikz/pooling-max.svg" {.center .width50 .top3 .bottom3}
 
 - 平均汇聚 (mean pooling)：取区域内神经元平均值
 
@@ -991,14 +991,14 @@ $$
 
 卷积神经网络由卷积层、汇聚层、全连接层交叉堆叠而成
 
-@import "../dot/cnn.dot"
+@import "../dot/cnn.dot" {.center}
 
 <div class="top0"></div>
 
 趋势
 
-- 更小的卷积核，比如 3 × 3
-- 更深的结构，比如层数大于 50
+- 更小的卷积核，比如$3 \times 3$
+- 更深的结构，比如层数大于$50$
 - 汇聚层的作用可由卷积步长代替，使用逐渐减少，趋向于全卷积网络
 
 <!-- slide data-notes="" -->
@@ -1007,7 +1007,7 @@ $$
 
 ---
 
-<img src="../tikz/lenet.svg" class="center width90 top10">
+@import "../tikz/lenet.svg" {.center .width90 .top10}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1015,7 +1015,7 @@ $$
 
 ---
 
-@import "../python/tf-mnist.py" {.line-numbers .top-1}
+@import "../python/lenet-mnist.py" {.line-numbers .top-1 .left4}
 
 <!-- slide data-notes="" -->
 
@@ -1027,7 +1027,7 @@ $$
 
 @import "../python/resnet50.py" {.line-numbers .top-1}
 
-<img src="../img/tj/tj.jpg" style="height:250px;width:250px;margin-left:auto;margin-right:2.5rem;margin-top:-27%">
+@import "../img/tj/tj.jpg" {.height25 .width25 .right4 .lefta .top-30per}
 
 <!-- slide data-notes="" -->
 
@@ -1037,7 +1037,7 @@ $$
 
 对于给定序列$\xv_1, \ldots, \xv_T$，计算联合概率$p(\xv_T, \ldots, \xv_1)$
 
-- $p(\text{make America great again}) > p(\text{great America make again}) ?$，判别给定序列哪个更像人话
+- $p(\text{make America great again}) > p(\text{great America make again}) ?$，判别哪个序列更像人话
 - 预测下一个词：hello [ world | China | Wuhan | HUST ]？
 
 <div class="bottom4"></div>
@@ -1052,7 +1052,7 @@ $$
 \end{align*}
 $$
 
-引入马尔可夫假设：当前词出现的概率只依赖于前 n - 1 个词
+引入马尔可夫假设：当前词出现的概率只依赖于前$n - 1$个词
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1060,26 +1060,26 @@ $$
 
 ---
 
-当前词出现的概率只依赖于前 n - 1 个词
+当前词出现的概率只依赖于前$n - 1$个词
 
-- n = 1：$p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i)$
-- n = 2：$p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i | \xv_{i-1})$
-- n = 3：$p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i | \xv_{i-1}, \xv_{i-2})$
+- $n = 1: p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i)$
+- $n = 2: p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i | \xv_{i-1})$
+- $n = 3: p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i | \xv_{i-1}, \xv_{i-2})$
 
 <div class="bottom2"></div>
 
 优点：
 
 - 采用极大似然估计，参数易训练 (数数)
-- 完全包含了前 n - 1 个词的全部信息
+- 完全包含了前$n - 1$个词的全部信息
 - 可解释性强，直观易理解
 
 <div class="bottom2"></div>
 
 缺点：
 
-- 不够灵活，只能固定地看前 n - 1 个词
-- 随着 n 的增大，参数空间呈指数增长
+- 不够灵活，只能固定地看前$n - 1$个词
+- 随着$n$的增大，参数空间呈指数增长
 - 单纯的基于统计频次，泛化能力差
 
 <!-- slide vertical=true data-notes="" -->
@@ -1090,9 +1090,9 @@ $$
 
 第一层为嵌入 (embedding) 层
 
-- 设词典里共有 N 个词
-- N 维独热编码 → d 维词向量
-- 可学习参数总个数为 N × d
+- 设词典里共有$N$个词
+- $N$维独热编码 → $d$维词向量
+- 可学习参数总个数为$N \times d$
 
 <div class="threelines width50 lefta right4 top-20per bottom-2 tighttable">
 
@@ -1104,13 +1104,11 @@ $$
 
 </div>
 
-考虑 4 个词的滑动窗口，词向量维度 d = 5，隐藏层神经元 = 13
+$4$个词的滑动窗口，词向量维度$d = 5$，隐藏层神经元个数$13$
 
 @import "../dot/nn4langmodel.dot" {.top-1}
 
-<p class="width28 lefta right6 top-24per bottom-2">
-神经网络的结构必须先固定，因此 n 就得先固定，模型灵活性不够
-</p>
+<p class="width29 lefta right5 top-24per bottom-2">神经网络的结构得先固定，故滑动窗口大小得先固定，模型灵活性不够</p>
 
 <!-- slide data-notes="" -->
 
@@ -1134,9 +1132,9 @@ $$
 
 循环神经网络隐藏层神经元存在自指，时间维度上权值共享
 
-<img src="../tikz/rnn-simple.svg" class="width75 center top2">
+@import "../tikz/rnn-simple.svg" {.center .width75 .top2}
 
-<img src="../tikz/rnn.svg" class="width26 lefta right4 top-56per">
+@import "../tikz/rnn.svg" {.width26 .right4 .lefta .top-56per}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1213,87 +1211,15 @@ $$
 - 序列的最终表示$\av_T$输入给分类器$g$进行分类：$\hat{y} = g(\av_T)$
 - 将整个序列的平均状态$\av$输入给分类器$g$进行分类：$\hat{y} = g(\av)$
 
-<img src="../tikz/seq2class.svg" class="width80 center top6">
+@import "../tikz/seq2class.svg" {.center .width80 .top6}
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">IMDB</span> 情感分析
+##### <span style="font-weight:900">IMDB</span> 影评情感分析
 
 ---
 
-```python {.line-numbers .top0 .left4}
-from keras.datasets import imdb
-from keras.layers import Dense, Embedding, SimpleRNN
-from keras.models import Sequential
-from keras.preprocessing import sequence
-
-vocabulary = 10000 # 只用词典使用频率前10000的单词
-(X_train, y_train), (X_test, y_test) = imdb.load_data(num_words=vocabulary)
-
-# 构建字典 key为id value为单词 +3是因为0、1、2是保留的
-id_to_word = {id_ + 3: word for word, id_ in imdb.get_word_index().items()}
-
-# 0表示填充令牌"<pad>" 1表示序列开始"<sos>" 2表示未知单词"<unk>"
-for id_, token in enumerate(("<pad>", "<sos>", "<unk>")):
-    id_to_word[id_] = token
-
-# 显示前5条评论的前10个单词的id表示和原文
-for i in range(5):
-    print(X_train[i][:10])
-    print(" ".join([id_to_word[id_] for id_ in X_train[i][:10]]))
------------------------------------------------------------------
-[1, 14, 22, 16, 43, 530, 973, 1622, 1385, 65]
-<sos> this film was just brilliant casting location scenery story
-[1, 194, 1153, 194, 8255, 78, 228, 5, 6, 1463]
-<sos> big hair big boobs bad music and a giant
-[1, 14, 47, 8, 30, 31, 7, 4, 249, 108]
-<sos> this has to be one of the worst films
-[1, 4, 2, 2, 33, 2804, 4, 2040, 432, 111]
-<sos> the <unk> <unk> at storytelling the traditional sort many
-[1, 249, 1323, 7, 61, 113, 10, 10, 13, 1637]
-<sos> worst mistake of my life br br i picked
-
-# 每条评论截断或补齐为相同长度
-X_train = sequence.pad_sequences(X_train, maxlen=500)
-X_test = sequence.pad_sequences(X_test, maxlen=500)
-
-model = Sequential()
-model.add(Embedding(vocabulary, 32))
-model.add(SimpleRNN(32))
-model.add(Dense(1, activation='sigmoid'))
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics='acc')
-model.summary()
-
-Model: "sequential"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-embedding (Embedding)        (None, None, 32)          320000
-_________________________________________________________________
-simple_rnn (SimpleRNN)       (None, 32)                2080
-_________________________________________________________________
-dense (Dense)                (None, 1)                 33
-=================================================================
-Total params: 322,113
-Trainable params: 322,113
-Non-trainable params: 0
-
-model.fit(X_train, y_train, epochs=5, batch_size=128)
-model.evaluate(X_test, y_test, verbose=2)
-_________________________________________________________________
-Epoch 1/5
-196/196 [=========] - 33s 163ms/step - loss: 0.5899 - acc: 0.6736
-Epoch 2/5
-196/196 [=========] - 34s 174ms/step - loss: 0.3708 - acc: 0.8447
-Epoch 3/5
-196/196 [=========] - 41s 207ms/step - loss: 0.2868 - acc: 0.8848
-Epoch 4/5
-196/196 [=========] - 40s 205ms/step - loss: 0.1785 - acc: 0.9348
-Epoch 5/5
-196/196 [=========] - 44s 226ms/step - loss: 0.1232 - acc: 0.9579
-
-782/782 - 32s - loss: 0.4597 - acc: 0.8338
-```
+@import "../python/rnn-imdb.py" {.line-numbers .top-1 .left4 highlight=[]}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1311,7 +1237,7 @@ $$
 \end{align*}
 $$
 
-<img src="../tikz/seq2seq-syn.svg" class="width70 center top4">
+@import "../tikz/seq2seq-syn.svg" {.center .width70 .top4}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1331,7 +1257,7 @@ $$
 \end{align*}
 $$
 
-<img src="../tikz/seq2seq-asyn.svg" class="width80 center top-6">
+@import "../tikz/seq2seq-asyn.svg" {.center .width80 .top-6}
 
 <!-- slide data-notes="" -->
 
@@ -1480,7 +1406,7 @@ $$
 
 ---
 
-<img src="../tikz/lstm.svg" class="width80 center top5">
+@import "../tikz/lstm.svg" {.center .width80 .top5}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1568,7 +1494,7 @@ $$
 
 ---
 
-<img src="../tikz/gru.svg" class="width80 center top5">
+@import "../tikz/gru.svg" {.center .width80 .top5}
 
 <!-- slide data-notes="" -->
 
@@ -1580,7 +1506,7 @@ $$
 
 堆叠循环神经网络：将多个循环网络堆叠起来
 
-<img src="../tikz/srnn.svg" class="width60 center top2">
+@import "../tikz/srnn.svg" {.center .width60 .top2}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1594,7 +1520,7 @@ $$
 
 双向循环神经网络：两层循环神经网络信息传递方向不同
 
-<img src="../tikz/birnn.svg" class="width60 center top2">
+@import "../tikz/birnn.svg" {.center .width60 .top2}
 
 <!-- slide data-notes="" -->
 
@@ -1610,9 +1536,7 @@ $$
 \end{align*}
 $$
 
-<img src="../tikz/seq2seq-asyn.svg" class="width80 center top4 bottom4">
-
-<br>
+@import "../tikz/seq2seq-asyn.svg" {.center .width80 .top4 .bottom6}
 
 问题：生成每个目标$\yv_s$时，使用的都是相同的语义编码$\av_{T+1}$
 
@@ -1670,7 +1594,7 @@ $$
 
 ---
 
-<img src="../tikz/attention.svg" class="width75 center top2">
+@import "../tikz/attention.svg" {.center .width75 .top2}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1708,7 +1632,7 @@ $$
 
 ---
 
-<img src="../tikz/attention-kv.svg" class="width75 center top2">
+@import "../tikz/attention-kv.svg" {.center .width75 .top2}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1750,7 +1674,7 @@ $$
 
 指针网络：将注意力分布作为指出相关信息位置的软性指针
 
-<img src="../tikz/pointer.svg" class="width80 center top3">
+@import "../tikz/pointer.svg" {.center .width80 .top3}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1786,7 +1710,7 @@ $$
 
 ---
 
-@import "../dot/alchemy.dot"
+@import "../dot/alchemy.dot" {.center}
 
 <div class="top-1"></div>
 
