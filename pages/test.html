@@ -2199,33 +2199,61 @@ html.print-pdf .aria-status {
 </div>
     <div class="reveal">
       <div class="slides">
-        <section data-notes lineno="29" class="slide " data-line="29" data-h="0" data-v="0">
-<h5 class="mume-header" id="%E7%BB%8F%E5%85%B8%E7%BD%91%E7%BB%9C%E5%A4%8D%E7%94%A8">&#x7ECF;&#x5178;&#x7F51;&#x7EDC;&#x590D;&#x7528;</h5>
+        <section><section data-notes lineno="29" class="slide " data-line="29" data-h="0" data-v="0">
+<h5 class="mume-header" id="%E6%A6%82%E7%8E%87">&#x6982;&#x7387;</h5>
 
 <hr>
-<p>&#x4F7F;&#x7528;&#x5728; ImageNet &#x8BAD;&#x7EC3;&#x597D;&#x7684;&#x6B8B;&#x5DEE;&#x7F51;&#x7EDC; ResNet50 &#x8FDB;&#x884C;&#x56FE;&#x50CF;&#x5206;&#x7C7B;</p>
-<pre data-role="codeBlock" data-info="py class=&quot;line-numbers top-1&quot;" class="language-python line-numbers top-1"><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
-<span class="token keyword keyword-from">from</span> tensorflow<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>applications <span class="token keyword keyword-import">import</span> resnet50
-<span class="token keyword keyword-from">from</span> tensorflow<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>preprocessing <span class="token keyword keyword-import">import</span> image
+<p>&#x6982;&#x7387;&#x662F;&#x7528;&#x6765;&#x523B;&#x753B;&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#x7684;&#x5DE5;&#x5177;</p>
+<p>&#x9891;&#x7387;&#x4E3B;&#x4E49;&#xFF1A;<mark>&#x72EC;&#x7ACB;&#x91CD;&#x590D;&#x8BD5;&#x9A8C;</mark>&#x4E2D;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;<mark>&#x9891;&#x7387;</mark>&#x7684;&#x6781;&#x9650;</p>
+<div class="top4"></div>
+<p>&#x5C40;&#x9650;&#xFF1A;&#x82E5;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x975E;&#x53EF;&#x91CD;&#x590D;&#x600E;&#x4E48;&#x529E;&#xFF1F;</p>
+<p>&#x4E0B;&#x4E00;&#x8F6E;&#x5B66;&#x79D1;&#x8BC4;&#x4F30;&#xFF0C;&#x8BA1;&#x7B97;&#x673A;&#x5F97; A+ &#x7684;&#x6982;&#x7387;&#x6709;&#x591A;&#x5927;&#xFF1F;</p>
+<p>&#x8FD9;&#x4E2A;&#x6708;&#x5927; A &#x80A1;&#x4E0A;&#x6DA8;&#x7684;&#x6982;&#x7387;&#x6709;&#x591A;&#x5927;&#xFF1F;</p>
+<p>&#x4ECA;&#x5E74;&#x7956;&#x56FD;&#x7EDF;&#x4E00;&#x7684;&#x6982;&#x7387;&#x6709;&#x591A;&#x5927;&#xFF1F;</p>
+</section><section vertical="true" data-notes lineno="49" class="slide " data-line="49" data-h="0" data-v="1">
+<h5 class="mume-header" id="%E6%A6%82%E7%8E%87-1">&#x6982;&#x7387;</h5>
 
-model <span class="token operator">=</span> resnet50<span class="token punctuation">.</span>ResNet50<span class="token punctuation">(</span>weights<span class="token operator">=</span><span class="token string">&apos;imagenet&apos;</span><span class="token punctuation">)</span>
-img <span class="token operator">=</span> image<span class="token punctuation">.</span>load_img<span class="token punctuation">(</span><span class="token string">&apos;../img/tj/tj224x224.jpg&apos;</span><span class="token punctuation">,</span> target_size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<hr>
+<p>&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E9B;&#x89C2;&#x6D4B;</p>
+<ul>
+<li>&#x8FD1;&#x4E24;&#x5E74;&#x5B66;&#x9662;&#x5F15;&#x8FDB;&#x4E86;&#x5F88;&#x591A;&#x9AD8;&#x6C34;&#x5E73;&#x7684;&#x9752;&#x5E74;&#x6559;&#x5E08;</li>
+<li>&#x8D44;&#x6DF1;&#x6559;&#x6388;&#x5927;&#x9879;&#x76EE;&#x63A5;&#x8FDE;&#x4E0D;&#x65AD;</li>
+<li>&#x6BD5;&#x4E1A;&#x751F;&#x53BB;&#x5411;&#x8D8A;&#x6765;&#x8D8A;&#x597D;</li>
+</ul>
+<div class="top4"></div>
+<ul>
+<li>&#x5E02;&#x573A;&#x60C5;&#x7EEA;&#x4F4E;&#x8FF7;&#xFF0C;&#x6210;&#x4EA4;&#x91CF;&#x6301;&#x7EED;&#x840E;&#x7F29;</li>
+<li>&#x5B8F;&#x89C2;&#x7ECF;&#x6D4E;&#x6570;&#x636E;&#x4E0D;&#x597D;</li>
+<li>&#x516C;&#x53F8;&#x5E74;&#x62A5;&#x4E1A;&#x7EE9;&#x9891;&#x7E41;&#x7206;&#x96F7;</li>
+</ul>
+<div class="top4"></div>
+<ul>
+<li>&#x89E3;&#x653E;&#x519B;&#x5148;&#x8FDB;&#x88C5;&#x5907;&#x5217;&#x88C5;&#xFF0C;&#x9891;&#x7E41;&#x79C0;&#x808C;&#x8089;</li>
+<li>&#x7F8E;&#x56FD;&#x5B9E;&#x529B;&#x8870;&#x9000;&#xFF0C;&#x6218;&#x7565;&#x6536;&#x7F29;</li>
+</ul>
+<div class="top4"></div>
+<p>&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;&#xFF1A;&#x6982;&#x7387;&#x662F;&#x89C2;&#x6D4B;&#x8005;&#x5BF9;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x4E3B;&#x89C2;&#x4FE1;&#x5FF5;</p>
+</section><section vertical="true" data-notes lineno="76" class="slide " data-line="76" data-h="0" data-v="2">
+<h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3">&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#x7684;&#x7406;&#x89E3;</h5>
 
-<span class="token comment"># &#x589E;&#x52A0;&#x901A;&#x9053;&#x6570; RGB: (224, 224, 3) &#x7070;&#x5EA6;&#x56FE;: (224, 224, 1)</span>
-x <span class="token operator">=</span> image<span class="token punctuation">.</span>img_to_array<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-x <span class="token operator">=</span> np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>x<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># batch_size = 1</span>
-x <span class="token operator">=</span> resnet50<span class="token punctuation">.</span>preprocess_input<span class="token punctuation">(</span>x<span class="token punctuation">)</span>  <span class="token comment"># &#x4E2D;&#x5FC3;&#x5316;</span>
+<hr>
+<div class="top2"></div>
+<p>
 
-preds <span class="token operator">=</span> model<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>resnet50<span class="token punctuation">.</span>decode_predictions<span class="token punctuation">(</span>preds<span class="token punctuation">,</span> top<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+$$
+\begin{align*}
+    \quad \underbrace{p(\Theta|X)}_{\text{&#x540E;&#x9A8C;}} &amp; = \frac{\overbrace{p(X|\Theta)}^{\text{&#x4F3C;&#x7136;}} \overbrace{p(\Theta)}^{\text{&#x5148;&#x9A8C;}}}{\underbrace{p(X)}_{\text{&#x8BC1;&#x636E;}}} = \frac{p(X|\Theta) p(\Theta) }{\int p(X|\Theta) p(\Theta) \diff \Theta}
+\end{align*}
+$$
+</p>
 
-<span class="token comment"># (&apos;n03630383&apos;, &apos;lab_coat&apos;, 0.24623604),     &#x5B9E;&#x9A8C;&#x670D;</span>
-<span class="token comment"># (&apos;n03877472&apos;, &apos;pajama&apos;, 0.17045474),       &#x7761;&#x8863;</span>
-<span class="token comment"># (&apos;n04317175&apos;, &apos;stethoscope&apos;, 0.095500074), &#x542C;&#x8BCA;&#x5668;</span>
-<span class="token comment"># (&apos;n04479046&apos;, &apos;trench_coat&apos;, 0.07988542),  &#x519B;&#x7528;&#x96E8;&#x8863;</span>
-<span class="token comment"># (&apos;n03617480&apos;, &apos;kimono&apos;, 0.055965725),      &#x548C;&#x670D;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><img src="../img/tj/tj.jpg?0.8408035336943718" class="height25 width25 right4 lefta top-30per">
-</section>
+<ul>
+<li>&#x5148;&#x9A8C;&#xFF1A;&#x5BF9;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x521D;&#x59CB;<mark>&#x4FE1;&#x5FF5;</mark></li>
+<li>&#x4F3C;&#x7136;&#xFF1A;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x5BF9;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x652F;&#x6301;</li>
+<li>&#x8BC1;&#x636E;&#xFF1A;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x662F;&#x8D1D;&#x53F6;&#x65AF;&#x4E3B;&#x4E49;&#x8005;&#x505A;&#x63A8;&#x65AD;&#x7684;&#x57FA;&#x7840;</li>
+<li>&#x540E;&#x9A8C;&#xFF1A;&#x5F97;&#x5230;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x89C2;&#x6D4B;&#x8005;&#x5BF9;&#x521D;&#x59CB;&#x4FE1;&#x5FF5;&#x7684;&#x4FEE;&#x6B63;</li>
+</ul>
+</section></section>
       </div>
     </div>
     

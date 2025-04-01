@@ -45,50 +45,28 @@ presentation:
 
 <!-- slide data-notes="" -->
 
-##### 概率
+##### 预测张老师科研水平
 
 ---
 
-概率是用来刻画不确定性的工具
+- 华科有$80\%$科研水平高的老师
+- 讲课水平和科研水平匹配的概率是$90\%$
+- 张老师的机器学习课讲得有点次
+- 张老师科研水平高的概率是多少？
 
-频率主义：{==独立重复试验==}中随机事件发生{==频率==}的极限
+两个随机变量：$\Theta$为张老师科研水平高，$X$为张老师讲课水平次
 
-<div class="top4"></div>
+根据贝叶斯公式
 
-局限：若随机事件非可重复怎么办？
+$$
+\begin{align*}
+    \quad p(\Theta|X) & = \frac{p(X|\Theta) p(\Theta)}{p(X)} = \frac{p(X|\Theta) p(\Theta)}{p(X|\Theta) p(\Theta) + p(X|\neg\Theta) p(\neg\Theta)} \\
+    & = \frac{0.1 \times 0.8}{0.1 \times 0.8 + 0.9 \times 0.2} \approx 0.308
+\end{align*}
+$$
 
-下一轮学科评估，计算机得 A+ 的概率有多大？
-
-这个月大 A 股上涨的概率有多大？
-
-今年祖国统一的概率有多大？
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 概率
-
----
-
-我们有一些观测
-
-- 近两年学院引进了很多高水平的青年教师
-- 资深教授大项目接连不断
-- 毕业生去向越来越好
-
-<div class="top4"></div>
-
-- 市场情绪低迷，成交量持续萎缩
-- 宏观经济数据不好
-- 公司年报业绩频繁爆雷
-
-<div class="top4"></div>
-
-- 解放军先进装备列装，频繁秀肌肉
-- 美国实力衰退，战略收缩
-
-<div class="top4"></div>
-
-贝叶斯主义：概率是观测者对随机事件发生的主观信念
+- 如果之前没上过张老师的课，只能根据经验盲猜$80\%$
+- 在观测到张老师讲课次这一事实后，概率修正为$30.8\%$
 
 <!-- slide vertical=true data-notes="注意在这个例子中 我们已经在用信念来表示概率了" -->
 
@@ -96,18 +74,27 @@ presentation:
 
 ---
 
-随机事件：模型参数$\Theta$取某个值
-
 $$
 \begin{align*}
-    \quad \underbrace{p(\Theta|X)}_{\text{后验}} & = \frac{\overbrace{p(X|\Theta)}^{\text{似然}} \overbrace{p(\Theta)}^{\text{先验}}}{\underbrace{p(X)}_{\text{证据}}} = \frac{p(X|\Theta) p(\Theta) }{\int p(X|\Theta) p(\Theta) \diff \Theta}
+    \quad \underbrace{p(\Theta|X)}_{\text{后验}} & = \frac{\overbrace{p(X|\Theta)}^{\text{似然}} \overbrace{p(\Theta)}^{\text{先验}}}{\underbrace{p(X)}_{\text{证据}}} = p(X|\Theta) p(\Theta) \Big/ \int p(X|\Theta) p(\Theta) \diff \Theta
 \end{align*}
 $$
 
-- 先验：对参数$\Theta$的初始{==信念==}
-- 似然：观测数据$X$对参数$\Theta$的支持
-- 证据：观测数据$X$，它是贝叶斯主义者做推断的基础
-- 后验：得到观测数据$X$后，观测者对初始信念的修正
+- 先验：对张老师科研水平的初始{==信念==}
+- 似然：{==可观测==}的讲课水平与{==不可观测==}的科研水平匹配的可能性
+- 证据：讲课水平可观测，因此叫证据 (evidence)，也有人译作事实
+- 后验：在得到观测数据$X$后，对初始信念的修正
+
+<div class="top2"></div>
+
+概率是用来刻画不确定性的工具
+
+- 频率主义：概率是{==独立重复试验==}中随机事件发生{==频率==}的极限
+- 贝叶斯主义：概率是观测者对事件为真的{==主观信念==}
+
+<div class="top1"></div>
+
+我的批注 在这个例子里，我们已经在用贝叶斯主义的说法了
 
 <!-- slide data-notes="" -->
 
@@ -115,11 +102,12 @@ $$
 
 ---
 
-{==不确定性==}来自观测数据，因为数据是随机采样出来的
+{==不确定性==}来自事件，因为事件的结果是随机的
 
-- $\Theta$是{==固有的未知参数==}，影响观测数据的生成
+- {==概率==}是{==独立重复试验==}中随机事件发生{==频率==}的极限
+- 随机事件有一些{==固有的未知参数==}，影响观测数据的生成
 - 有了观测数据后，可通过{==极大似然==}估计参数
-- 估计的误差可通过{==自举法==} (bootstrap) 来估计
+- 仅凭观测数据进行估计产生的误差通过{==置信区间==}来刻画
 
 <div class="top2"></div>
 
@@ -129,7 +117,11 @@ $$
 - 观测数据$X$：$t$次抛掷中有$k$次正面
 - 似然为二项式分布$p(X | \theta) = \binom{t}{k} \theta^k (1 - \theta)^{t-k}$
 - 假设某次观测$X$是抛了$10$次全为正面，根据极大似然可知$\theta^{\text{ML}} = 1$
-- 预测：该硬币抛掷$100\%$都是正面
+- 预测：第$11$次抛掷$100\%$是正面
+
+<div class="top2"></div>
+
+缺点：无法处理一次性事件
 
 <!-- slide data-notes="" -->
 
@@ -137,7 +129,7 @@ $$
 
 ---
 
-数据是确定的，{==不确定性==}来自观测者，因为他/她的{==信息不完全==}
+{==不确定性==}来自观测者，因为{==观测者的信息不完全==}
 
 以抛硬币为例
 
@@ -150,7 +142,7 @@ $$
 优点：
 
 - 可以讨论一次性事件的概率了
-- 可以通过先验引入{==领域知识==}，避免做出极端推断
+- 先验为引入{==领域知识==}提供了途径
 - 方便动态地处理数据，上一时刻的后验作为下一时刻的先验
 
 <div class="top2"></div>
@@ -189,7 +181,7 @@ $$
 
 $$
 \begin{align*}
-    \quad p(\theta|X) = \frac{p(\theta) p(X|\theta)}{p(X)} = \frac{p(\theta) p(X|\theta)}{\int_0^1 p(\theta) p(X|\theta) \diff \theta}
+    \quad p(\theta|X) = \frac{p(\theta) p(X|\theta)}{p(X)} = p(\theta) p(X|\theta) \Big/ \int_0^1 p(\theta) p(X|\theta) \diff \theta
 \end{align*}
 $$
 
@@ -222,9 +214,16 @@ $$
 
 $$
 \begin{align*}
-    \quad \underbrace{p(\Theta|X)}_{\text{后验}} & = \frac{\overbrace{p(X|\Theta)}^{\text{似然}} \overbrace{p(\Theta)}^{\text{先验}}}{\underbrace{p(X)}_{\text{证据}}} = \frac{p(X|\Theta) p(\Theta) }{\int p(X|\Theta) p(\Theta) \diff \Theta}
+    \quad \underbrace{p(\Theta|X)}_{\text{后验}} & = \frac{\overbrace{p(X|\Theta)}^{\text{似然}} \overbrace{p(\Theta)}^{\text{先验}}}{\underbrace{p(X)}_{\text{证据}}} = p(X|\Theta) p(\Theta) \Big/ \int p(X|\Theta) p(\Theta) \diff \Theta
 \end{align*}
 $$
+
+- 假设有一个以$\Theta$为参数的 (生成式) 模型
+- 先验：观测者对该模型为真实模型的初始信念
+- 似然：在该模型为真实模型的条件下，观测到数据$X$的可能性
+- 后验：在得到观测数据$X$后，对模型信念的修正
+
+<div class="top2"></div>
 
 根据是否利用先验，有两种估计$\Theta$的方式：
 
@@ -233,7 +232,7 @@ $$
 
 <div class="top2"></div>
 
-前者为频率主义者的做法，后者为贝叶斯主义者的做法
+我的批注 前者为频率主义者的做法，后者为贝叶斯主义者的做法
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -272,7 +271,7 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 频率 <span style="font-weight:900">_vs._</span> 贝叶斯
+##### 小结 频率 <span style="font-weight:900">_vs._</span> 贝叶斯
 
 ---
 
@@ -324,7 +323,7 @@ $$
 \end{align*}
 $$
 
-分类分布的共轭先验是贝塔分布的多元扩展？
+我的批注 分类分布的共轭先验是贝塔分布的多元扩展？
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -468,7 +467,7 @@ $$
 
 </div>
 
-共轭先验的参数就是拉普拉斯平滑中的系数
+我的批注 共轭先验的参数就是拉普拉斯平滑中的系数
 
 <!-- slide data-notes="" -->
 
@@ -482,7 +481,7 @@ $$
 
 训练数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，其中$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \Dcal$
 
-假设数据的生成方式为
+假设数据的生成方式 (归纳偏好) 为
 
 - 先在特征空间$\Xcal$中随机选取$\xv_i$
 - 计算$y_i = \wv^\top \xv_i + \epsilon_i$，其中$\epsilon_i \sim \Ncal(0,\beta^{-1})$
@@ -612,14 +611,14 @@ $$
 
 <div class="threelines column1-border-right-solid fs13">
 
-|  模型  |               线性回归               |                              岭回归                              |                                                  LASSO                                                  |
-| :----: | :----------------------------------: | :--------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
-|  数据  |                  >                   |                                >                                 | 先随机选取$\xv_i$，再计算$y_i = \wv^\top \xv_i + \epsilon_i$，其中$\epsilon_i \sim \Ncal(0,\beta^{-1})$ |
-|  先验  |                  -                   |                             高斯分布                             |                                              拉普拉斯分布                                               |
-|  估计  |               极大似然               |                             最大后验                             |                                                最大后验                                                 |
-|  优化  | $\min_{\wv} \| \Xv \wv - \yv \|_2^2$ | $\min_{\wv} \{ \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_2^2 \}$ |                     $\min_{\wv} \{ \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_1 \}$                      |
-|  形式  |               平方损失               |                     平方损失 + $\ell_2$范数                      |                                         平方损失 + $\ell_1$范数                                         |
-| 解析解 | $\wv = (\Xv^\top \Xv)^{-1} \Xv \yv$  |        $\wv = (\Xv^\top \Xv + \lambda \Iv)^{-1} \Xv \yv$         |                                                    -                                                    |
+|  模型  |               线性回归               |                             岭回归                             |                                                  LASSO                                                  |
+| :----: | :----------------------------------: | :------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
+|  数据  |                  >                   |                               >                                | 先随机选取$\xv_i$，再计算$y_i = \wv^\top \xv_i + \epsilon_i$，其中$\epsilon_i \sim \Ncal(0,\beta^{-1})$ |
+|  先验  |                  -                   |                            高斯分布                            |                                              拉普拉斯分布                                               |
+|  估计  |               极大似然               |                            最大后验                            |                                                最大后验                                                 |
+|  优化  | $\min_{\wv} \| \Xv \wv - \yv \|_2^2$ | $\min_{\wv} \{ \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_2^2 \}$ |                      $\min_{\wv} \{ \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_1 \}$                       |
+|  形式  |               平方损失               |                    平方损失 + $\ell_2$范数                     |                                         平方损失 + $\ell_1$范数                                         |
+| 解析解 | $\wv = (\Xv^\top \Xv)^{-1} \Xv \yv$  |       $\wv = (\Xv^\top \Xv + \lambda \Iv)^{-1} \Xv \yv$        |                                                    -                                                    |
 
 </div>
 

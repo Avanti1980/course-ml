@@ -77,7 +77,7 @@ $$
 
 $$
 \begin{align*}
-    \quad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) p(y|\xv) \diff y
+    \quad h^\star(\xv) = \mathop{\mathrm{argmin}}_{h(\xv)} \int \ell(y, h(\xv)) p(y|\xv) \diff y
 \end{align*}
 $$
 
@@ -91,7 +91,7 @@ $$
 
 $$
 \begin{align*}
-    \quad h^\star(\xv) = \mathop{\arg\min}_{h(\xv)} \int \ell(y, h(\xv)) p(y|\xv) \diff y
+    \quad h^\star(\xv) = \mathop{\mathrm{argmin}}_{h(\xv)} \int \ell(y, h(\xv)) p(y|\xv) \diff y
 \end{align*}
 $$
 
@@ -300,10 +300,6 @@ $$
     & \Longrightarrow \alpha_k = \frac{A_k}{\sum_{j \in [c]} A_j} = \frac{\text{第}k\text{类样本数}~~~}{\text{总样本数}}
 \end{align*}
 $$
-
-<div class="top-2"></div>
-
-我的批注 根据交叉熵的结论也可得到该结果
 
 <!-- slide vertical=true data-notes="" -->
 
