@@ -43,6 +43,14 @@ presentation:
 
 #### _tengzhang@hust.edu.cn_
 
+<!-- slide vertical=true data-notes="" -->
+
+##### 大纲
+
+---
+
+@import "../vega/outline.json" {as="vega" .top-2}
+
 <!-- slide data-notes="" -->
 
 ##### 概率
@@ -57,7 +65,7 @@ presentation:
 
 局限：若随机事件非可重复怎么办？
 
-下一轮学科评估，计算机得 A+ 的概率有多大？
+下一轮学科评估，华科计算机得 A+ 的概率有多大？
 
 这个月大 A 股上涨的概率有多大？
 
@@ -83,20 +91,22 @@ presentation:
 
 <div class="top4"></div>
 
-- 解放军先进装备列装，频繁秀肌肉
-- 美国实力衰退，战略收缩
+- 解放军展示先进装备，频繁秀肌肉
+- 美国实力衰退，在亚太地区影响力减弱
 
 <div class="top4"></div>
 
-贝叶斯主义：概率是观测者对随机事件发生的主观信念
+根据这些观测，我们对上页问题的概率会有自己的判断
 
-<!-- slide vertical=true data-notes="注意在这个例子中 我们已经在用信念来表示概率了" -->
+<!-- slide data-notes="注意在这个例子中 我们已经在用信念来表示概率了" -->
 
-##### 贝叶斯公式的理解
+##### 贝叶斯公式
 
 ---
 
-随机事件：模型参数$\Theta$取某个值
+贝叶斯主义：概率是观测者对随机事件发生的主观信念 (belief)
+
+<div class="top2"></div>
 
 $$
 \begin{align*}
@@ -104,66 +114,64 @@ $$
 \end{align*}
 $$
 
-- 先验：对参数$\Theta$的初始{==信念==}
-- 似然：观测数据$X$对参数$\Theta$的支持
-- 证据：观测数据$X$，它是贝叶斯主义者做推断的基础
-- 后验：得到观测数据$X$后，观测者对初始信念的修正
+- {==先验==} (prior) ：对随机事件$\Theta$发生 (评上 A+) 的初始信念
+- {==似然==} (likelihood) ：观测$X$对信念的支持，上轮评上 A+ 的学校有多少大力引才、项目不断
+- {==证据==} (evidence) ：观测$X$，它是贝叶斯主义者做推断的基础
+- {==后验==} (posterior) ：得到观测$X$后，观测者对初始信念的修正
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 应用到机器学习
+
+---
+
+$\Theta$为参数或模型，$X$为训练数据
+
+<div class="top2"></div>
+
+$$
+\begin{align*}
+    \quad \underbrace{p(\Theta|X)}_{\text{后验}} & = \frac{\overbrace{p(X|\Theta)}^{\text{似然}} \overbrace{p(\Theta)}^{\text{先验}}}{\underbrace{p(X)}_{\text{证据}}} = \frac{p(X|\Theta) p(\Theta) }{\int p(X|\Theta) p(\Theta) \diff \Theta}
+\end{align*}
+$$
+
+根据是否利用先验，有两种估计$\Theta$的方式：
+
+- 极大似然 (<u>m</u>aximum <u>l</u>ikelihood, ML)，$\Theta^{\text{ML}} = \argmax_\Theta ~ p(X|\Theta)$
+- 最大后验 (<u>m</u>aximum <u>a</u> <u>p</u>osterior, MAP)，$\Theta^{\text{MAP}} = \argmax_\Theta ~ p(\Theta|X)$
+
+<div class="top2"></div>
+
+前者为频率主义者的做法，后者为贝叶斯主义者的做法
 
 <!-- slide data-notes="" -->
+
+##### 频率 <span style="font-weight:900">_vs._</span> 贝叶斯
+
+---
+
+以抛硬币为例，记$\theta = p(\text{正面})$，观测$X$：$t$次抛掷中有$k$次正面
+
+频率主义：
+
+- $\theta$是{==固定的==}未知参数，有了观测后，通过{==极大似然==}估计$\theta$
+- $\theta$的{==不确定性==}来自观测，不同观测会估计出不同的$\theta$
+- 估计的评估：如果有多个观测，在每个观测上做极大似然，看结果的方差，如果只有一个观测，先通过{==自举法==} (bootstrap) 构造多个不同的观测，在分别做极大似然
+
+<div class="top2"></div>
+
+贝叶斯主义：
+
+- $\theta$不是固定的数，而是$[0,1]$上的随机变量 (硬币空间上的分布)
+- 观测只有一个，是确定的，$\theta$的{==不确定性==}来自观测者，观测者的信息越完全/不完全，不确定性越小/越大，$\theta$的分布越窄/宽
+
+<!-- slide vertical=true data-notes="" -->
 
 ##### 频率主义
 
 ---
 
-{==不确定性==}来自观测数据，因为数据是随机采样出来的
-
-- $\Theta$是{==固有的未知参数==}，影响观测数据的生成
-- 有了观测数据后，可通过{==极大似然==}估计参数
-- 估计的误差可通过{==自举法==} (bootstrap) 来估计
-
-<div class="top2"></div>
-
-以抛硬币为例
-
-- 未知参数$\theta = p(\text{正面})$，是硬币固有的
-- 观测数据$X$：$t$次抛掷中有$k$次正面
-- 似然为二项式分布$p(X | \theta) = \binom{t}{k} \theta^k (1 - \theta)^{t-k}$
-- 假设某次观测$X$是抛了$10$次全为正面，根据极大似然可知$\theta^{\text{ML}} = 1$
-- 预测：该硬币抛掷$100\%$都是正面
-
-<!-- slide data-notes="" -->
-
-##### 贝叶斯主义
-
----
-
-数据是确定的，{==不确定性==}来自观测者，因为他/她的{==信息不完全==}
-
-以抛硬币为例
-
-- $\theta = p(\text{正面})$不再是一个数，而是$[0,1]$上的一个随机变量 (分布)
-- $\theta$的先验是观测者在抛掷前对抛出正面的初始信念
-- $\theta$的后验是观测者得到数据 (信息) 后对先验的修正
-
-<div class="top2"></div>
-
-优点：
-
-- 可以讨论一次性事件的概率了
-- 可以通过先验引入{==领域知识==}，避免做出极端推断
-- 方便动态地处理数据，上一时刻的后验作为下一时刻的先验
-
-<div class="top2"></div>
-
-缺点：概率依赖于观测者，是观测者的主观信念，唯心主义？
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 贝叶斯主义
-
----
-
-数据$X$：$t$次抛掷中有$k$次正面，似然是{==二项式分布==}
+观测$X$：$t$次抛掷中有$k$次正面，似然是{==二项式分布==}
 
 $$
 \begin{align*}
@@ -171,27 +179,35 @@ $$
 \end{align*}
 $$
 
-<div class="top-2"></div>
+假设某次观测抛了$10$次全正，根据极大似然有$\theta^{\text{ML}} = 1$
 
-不妨设$\theta$的先验是参数为$(\alpha,\beta)$的{==贝塔分布==}：
+预测：该硬币抛掷$100\%$都是正面
 
-$$
-\begin{align*}
-    \quad p(\theta) = \BetaDist(\theta|\alpha,\beta) = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta} = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\BetaFunc(\alpha,\beta)}
-\end{align*}
-$$
+<!-- slide data-notes="" -->
 
-<div class="top-4"></div>
+##### 贝叶斯主义
 
-其中$\BetaFunc(\alpha,\beta) = \int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta$是第一类欧拉积分，归一化用
+---
 
-根据贝叶斯公式
+观测$X$：$t$次抛掷中有$k$次正面，似然$p(X | \theta) = \binom{t}{k} \theta^k (1 - \theta)^{t-k}$
+
+先验取参数为$(\alpha,\beta)$的{==贝塔分布==}：
 
 $$
 \begin{align*}
-    \quad p(\theta|X) = \frac{p(\theta) p(X|\theta)}{p(X)} = \frac{p(\theta) p(X|\theta)}{\int_0^1 p(\theta) p(X|\theta) \diff \theta}
+    \quad p(\theta) & = \BetaDist(\theta|\alpha,\beta) \\
+    & = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta} \\
+    & = \frac{\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}{\BetaFunc(\alpha,\beta)}
 \end{align*}
 $$
+
+- $\alpha+\beta-2$次多项式函数
+- 在$[0,1]$上单峰值
+- $\alpha$、$\beta$控制峰值位置
+
+@import "../python/plot-beta-function.svg" {.top-48 .right4 .lefta .width45 .height45}
+
+<p class="footnote book"> 分母$\BetaFunc(\alpha,\beta) = \int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta$是第一类欧拉积分，归一化用</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -209,39 +225,17 @@ $$
 \end{align*}
 $$
 
-- 似然$p(X | \theta)$是二项式分布，先验也{==凑==}$\theta^\spadesuit (1-\theta)^\heartsuit$的形式，{==选==}贝塔分布
-- 若与似然相乘后，后验与先验属同一分布族，仅参数有变化，则该先验称为该似然的{==共轭先验==} (conjugate prior)
-- 贝塔分布是二项式分布的共轭先验
+- 似然$p(X | \theta) = \binom{t}{k} \theta^k (1 - \theta)^{t-k}$，先验也{==呈型==}$\theta^\spadesuit (1-\theta)^\heartsuit$，{==选==}贝塔分布
+- 若先验的选择使得后验与先验同属一个分布族，仅参数有变化，则该先验称为该似然的{==共轭先验==} (conjugate prior)，贝塔分布是二项式分布的共轭先验
 - 先验分布的参数$(\alpha,\beta)$由观测者自己选，可视为观测者的领域知识；也可视为{==伪数据==}：在$X$前还观测过$\alpha+\beta$次抛掷，其中$\alpha$次正面
-
-<!-- slide data-notes="" -->
-
-##### 应用到机器学习
-
----
-
-$$
-\begin{align*}
-    \quad \underbrace{p(\Theta|X)}_{\text{后验}} & = \frac{\overbrace{p(X|\Theta)}^{\text{似然}} \overbrace{p(\Theta)}^{\text{先验}}}{\underbrace{p(X)}_{\text{证据}}} = \frac{p(X|\Theta) p(\Theta) }{\int p(X|\Theta) p(\Theta) \diff \Theta}
-\end{align*}
-$$
-
-根据是否利用先验，有两种估计$\Theta$的方式：
-
-- 极大似然 (<u>m</u>aximum <u>l</u>ikelihood, ML)，$\Theta^{\text{ML}} = \argmax_\Theta ~ p(X|\Theta)$
-- 最大后验 (<u>m</u>aximum <u>a</u> <u>p</u>osterior, MAP)，$\Theta^{\text{MAP}} = \argmax_\Theta ~ p(\Theta|X)$
-
-<div class="top2"></div>
-
-前者为频率主义者的做法，后者为贝叶斯主义者的做法
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 最大后验 全贝叶斯
+##### 最大后验 预测分布
 
 ---
 
-以抛硬币为例，后验为
+后验
 
 $$
 \begin{align*}
@@ -257,10 +251,10 @@ $$
 
 <div class="top2"></div>
 
-若目标是对未知样本$\xhat$做预测，有两种做法：
+若目标是对下次抛硬币的结果$\xhat$做预测，有两种做法：
 
-- 先估计$\theta^{\text{MAP}}$再计算$p(\xhat|\theta^{\text{MAP}})$，这样做忽略了$\theta$的随机性，尤其当后验$p(\theta|X)$是个{==较均匀==}的分布时，只取一个点来做决策风险很大
-- {==全贝叶斯==} (fully Bayesian)：考虑所有的$\theta$，根据后验做加权平均
+- 先估计$\theta^{\text{MAP}}$再计算$p(\xhat|\theta^{\text{MAP}})$，这样做忽略了$\theta$的随机性，尤其当后验$p(\theta|X)$是个{==平坦==}的分布时，只取一个点来做决策风险很大
+- {==预测分布==} (predictive distribution)：根据$\theta$的后验做加权平均
 
 <div class="top2"></div>
 
