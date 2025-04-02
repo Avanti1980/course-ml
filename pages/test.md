@@ -39,6 +39,12 @@ presentation:
 
 贝叶斯主义者
 
+$$
+\begin{align*}
+    \quad p ()
+\end{align*}
+$$
+
 
 <!-- slide data-notes="" -->
 
