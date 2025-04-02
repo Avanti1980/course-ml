@@ -115,7 +115,7 @@ $$
 $$
 
 - {==先验==} (prior) ：对随机事件$\Theta$发生 (评上 A+) 的初始信念
-- {==似然==} (likelihood) ：观测$X$对信念的支持，上轮评上 A+ 的学校有多少大力引才、项目不断
+- {==似然==} (likelihood) ：随机事件$\Theta$与观测$X$的匹配程度，上轮评上 A+ 的学校有多少大力引才、项目不断
 - {==证据==} (evidence) ：观测$X$，它是贝叶斯主义者做推断的基础
 - {==后验==} (posterior) ：得到观测$X$后，观测者对初始信念的修正
 
@@ -264,25 +264,143 @@ $$
 \end{align*}
 $$
 
-<!-- slide vertical=true data-notes="" -->
+<!-- slide data-notes="" -->
 
-##### 频率 <span style="font-weight:900">_vs._</span> 贝叶斯
+##### 模型选择 频率主义
 
 ---
 
-在机器学习中的区别：是否考虑先验
+若有一组模型$\{ \Mcal_i \}_i$，如何选择？
 
-当观测数据量很大时，先验 (伪数据) 就无足轻重了，两种做法不会有太大差别
+频率主义者：$\Dcal = \Dcal_\text{tr} \uplus \Dcal_\text{val}$，$\Mcal_i \xrightarrow[\text{训练}]{\Dcal_\text{tr}} \theta_i \xrightarrow[\text{验证}]{\Dcal_\text{val}} (\Mcal^\star, \theta^\star)$
 
-当观测数据量不大时，先验对模型性能有显著影响 (归纳偏好)
+局限：数据不能全部用来训练模型，数据利用率不高
 
-- 先验是主观的，纯人为选取，没有标准
-- 抛硬币问题选贝塔分布做先验就是图计算方便
-- 利用共轭先验可以不用显式地积分求$p(X)$，肉眼就能看出结果
+<!-- slide vertical=true data-notes="" -->
+
+##### 模型选择 贝叶斯主义
+
+---
+
+贝叶斯主义者
+
+$$
+\begin{align*}
+    \quad p (\Mcal_i | \Dcal) = \frac{p(\Dcal | \Mcal_i) p(\Mcal_i)}{p(\Dcal)} = \frac{p(\Dcal | \Mcal_i) p(\Mcal_i)}{\sum_j p(\Dcal | \Mcal_j) p(\Mcal_j)}
+\end{align*}
+$$
+
+模型选择：最大后验，$\Mcal = \argmax_i p (\Mcal_i | \Dcal)$
+
+模型平均：未知样本$\xhat$的预测分布为
+
+$$
+\begin{align*}
+    \quad p (\xhat | \Dcal) & = \sum_i p (\xhat | \Mcal_i, \Dcal) p (\Mcal_i | \Dcal) \\
+    & = \sum_i \underbrace{\left( \int p (\xhat | \Mcal_i, \theta_i) p (\theta_i | \Mcal_i, \Dcal) \diff \theta_i \right)}_{\text{单个模型的预测分布}} p (\Mcal_i | \Dcal)
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 模型选择 贝叶斯主义
+
+---
+
+贝叶斯主义者
+
+$$
+\begin{align*}
+    \quad p (\Mcal_i | \Dcal) = \frac{p(\Dcal | \Mcal_i) p(\Mcal_i)}{p(\Dcal)} = \frac{p(\Dcal | \Mcal_i) p(\Mcal_i)}{\sum_j p(\Dcal | \Mcal_j) p(\Mcal_j)}
+\end{align*}
+$$
+
+如果对模型没有特别的偏好，先验$p(\Mcal_i)$可以选均匀分布
+
+似然$p(\Dcal | \Mcal_i)$恰是推断参数$\theta_i$时贝叶斯公式的分母，称为{==模型证据==} (model evidence)：在选定参数$\theta_i$的先验后，模型$\Mcal_i$生成数据$\Dcal$的概率
+
+$$
+\begin{align*}
+    \quad p (\theta_i | \Dcal, \Mcal_i) = \frac{p(\Dcal | \theta_i, \Mcal_i) p(\theta_i | \Mcal_i)}{p(\Dcal | \Mcal_i)} = \frac{p(\Dcal | \theta_i, \Mcal_i) p(\theta_i | \Mcal_i)}{\int p(\Dcal | \theta_i, \Mcal_i) p(\theta_i | \Mcal_i) \diff \theta_i}
+\end{align*}
+$$
+
+<p class="footnote comments"> 之前推断参数$\theta_i$的贝叶斯公式中没有将$\Mcal_i$显式写出来，因为它是公式中所有概率的条件变量</p>
+
+<!-- slide data-notes="" -->
+
+##### 贝叶斯因子
+
+---
+
+模型后验几率：先验几率与模型证据比值的乘积，后者也称为{==贝叶斯因子==} (Bayes factor)
+
+$$
+\begin{align*}
+    \quad \frac{p(\Mcal_1 | \Dcal)}{p(\Mcal_2 | \Dcal)} = \frac{p(\Mcal_1) p(\Dcal | \Mcal_1)}{p(\Mcal_2) p(\Dcal | \Mcal_2)} = \frac{p(\Mcal_1) \int p(\Dcal | \theta_1, \Mcal_1) p(\theta_1 | \Mcal_1) \diff \theta_1}{p(\Mcal_2) \int p(\Dcal | \theta_2, \Mcal_2) p(\theta_2 | \Mcal_2) \diff \theta_2}
+\end{align*}
+$$
+
+不同人对模型有不同的偏好，将贝叶斯因子公布，其他人可根据自己的先验几率计算后验几率从而选择模型
+
+优点：只需计算模型证据$p(\Dcal | \Mcal_i)$即可完成模型选择，所有数据都可用于训练，不用再分出一部分作为验证集
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 贝叶斯因子
+
+---
+
+以抛硬币为例
+
+- 数据$\Dcal$为$100$次抛掷中有$60$次正面
+- 模型$\Mcal_1$：正面概率固定为$0.5$，
+- 模型$\Mcal_2$：正面概率固定为未知参数$\theta$，$\theta$先验为$\BetaDist(\theta|2,2)$
+- 模型先验为均匀分布，$p(\Mcal_1) = p(\Mcal_2) = 0.5$
+
+<div class="top4"></div>
+
+$$
+\begin{align*}
+    \quad p(\Dcal | \Mcal_1) & = \binom{100}{60} \frac{1}{2^{100}} \approx 0.010843866711637987 \\
+    p(\Dcal | \Mcal_2) & = \int_0^1 p(\Dcal | \theta, \Mcal_2) p(\theta | \Mcal_2) \diff \theta = \int_0^1 \binom{100}{60} \theta^{60} (1 - \theta)^{40} \frac{\theta (1-\theta)}{\BetaFunc(2,2)} \diff \theta \\
+    & = \binom{100}{60} \frac{\BetaFunc(62,42)}{\BetaFunc(2,2)} \approx 0.014141848222515001
+\end{align*}
+$$
+
+数据给出的证据更利于$\Mcal_2$
+
+<!-- slide data-notes="" -->
+
+##### 模型证据 定性分析
+
+---
 
 <div class="top2"></div>
 
-先验需有适当的自由度，能通过调整参数灵活表示领域知识
+$$
+\begin{align*}
+    \quad \underbrace{p(\Dcal | \Mcal)}_{\text{模型证据}} \underbrace{p(\theta | \Dcal, \Mcal)}_{\text{参数后验}} = \underbrace{p(\Dcal | \theta, \Mcal)}_{\text{参数似然}} \underbrace{p(\theta | \Mcal)}_{\text{参数先验}}
+\end{align*}
+$$
+
+- 设参数先验是个宽度为$\Delta_{\text{prior}}$的平坦分布
+- 设参数后验集中在$\theta^{\text{MAP}}$附近，宽度为$\Delta_{\text{posterior}}$
+
+<div class="top4"></div>
+
+$$
+\begin{align*}
+    \quad p(\Dcal | \Mcal) & \approx p(\Dcal | \theta^{\text{MAP}}, \Mcal) \frac{\Delta_{\text{posterior}}}{\Delta_{\text{prior}}} \\
+    & \Longrightarrow \ln p(\Dcal | \Mcal) \approx \ln p(\Dcal | \theta^{\text{MAP}}, \Mcal) + \ln \frac{\Delta_{\text{posterior}}}{\Delta_{\text{prior}}}
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+- 第一项是最大后验$\theta^{\text{MAP}}$对数据的匹配程度
+- 第二项惩罚模型的复杂度，越复杂的模型解释数据的能力越强，越能使得宽阔平坦的先验变成集中陡峭的后验，$\Delta_{\text{posterior}}/\Delta_{\text{prior}}$越小
+- 最大化模型证据就是在拟合数据和防过拟合之间做权衡，对给定数据应选择复杂度恰好的模型，即{==奥卡姆剃刀准则==} (Occam's razor)
 
 <!-- slide data-notes="" -->
 
@@ -428,7 +546,7 @@ $$
 $$
 \begin{align*}
     \quad & \max_{\alpha_k} ~ \sum_{k \in [c]} (A_k + m_k - 1) \ln \alpha_k, \quad \st ~ \sum_{k \in [c]} \alpha_k = 1 \\[4pt]
-    & \alpha_k^{\text{MAP}} = \frac{A_k + m_k - 1}{\lambda} = \frac{A_k + m_k - 1}{\lambda \sum_{j \in [c]} \alpha_j} = \frac{A_k + m_k - 1}{\sum_{j \in [c]} (A_j + m_j - 1)}
+    & \alpha_k^{\text{MAP}} = \frac{A_k + m_k - 1}{\lambda} = \frac{A_k + m_k - 1}{\lambda \sum_{j \in [c]} \alpha_j^{\text{MAP}}} = \frac{A_k + m_k - 1}{\sum_{j \in [c]} (A_j + m_j - 1)}
 \end{align*}
 $$
 
@@ -470,179 +588,578 @@ $$
 
 ---
 
-特征空间$\Xcal \subseteq \Rbb^d$，标记空间$\Ycal$，$\Xcal \times \Ycal$上的{==未知==}概率分布$\Dcal$
-
-<div class="top-2"></div>
-
-训练数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，其中$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \Dcal$
-
-假设数据的生成方式为
-
-- 先在特征空间$\Xcal$中随机选取$\xv_i$
-- 计算$y_i = \wv^\top \xv_i + \epsilon_i$，其中$\epsilon_i \sim \Ncal(0,\beta^{-1})$
-
-<div class="top2"></div>
-
-待估计参数是$\wv$和$\beta$，似然为
+输入空间$\Rbb^d$，输出空间$\Rbb$，线性回归模型
 
 $$
 \begin{align*}
-    \quad p (D | \wv, \beta) & = \prod_{i \in [m]} p (\xv_i, y_i | \wv, \beta) = \prod_{i \in [m]} p (\xv_i) p (y_i | \xv_i, \wv, \beta) \\
-    & \propto \prod_{i \in [m]} p (y_i | \xv_i, \wv, \beta) = \prod_{i \in [m]} \Ncal(\wv^\top \xv_i,\beta^{-1})
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 线性回归 极大似然
-
----
-
-对数似然为
-
-$$
-\begin{align*}
-    \quad \ln p (D | \wv, \beta) & = \const + \sum_{i \in [m]} \ln \Ncal(\wv^\top \xv_i,\beta^{-1}) \\
-    & = \const + \frac{\ln \beta}{2} - \frac{\beta}{2} \sum_{i \in [m]}  (y_i - \wv^\top \xv_i)^2
-\end{align*}
-$$
-
-极大似然估计$\wv$对应的优化问题为
-
-$$
-\begin{align*}
-    \quad \min_{\wv} ~ \frac{\beta}{2} \sum_{i \in [m]} (y_i - \wv^\top \xv_i)^2 = \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2
-\end{align*}
-$$
-
-我的启示 在上页的假设下，{==极大似然估计等价于最小二乘回归==}
-
-<!-- slide data-notes="" -->
-
-##### 线性回归 贝叶斯视角
-
----
-
-取先验分布$p(\wv) = \Ncal(\wv | \muv_0, \Sigmav_0)$
-
-根据贝叶斯公式，后验为
-
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad p & (\wv | D) \propto p(\wv) p(D | \wv) \\
-    & \propto \exp \left( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) \right) \prod_{i \in [m]} \exp \left( - \frac{\beta}{2} (y_i - \wv^\top \xv_i)^2 \right) \\
-    & = \exp \left( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right) \\
-    & \propto \exp \bigg( -\frac{1}{2} \wv^\top (\underbrace{\Sigmav_0^{-1} + \beta \Xv^\top \Xv}_{\Sigmav_m^{-1}}) \wv + \wv^\top (\underbrace{\Sigmav_0^{-1} \muv_0 + \beta \Xv^\top \yv}_{\Sigmav_m^{-1} \muv_m} )\bigg) \\
-    & \propto \exp \left( -\frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m) \right) \propto \Ncal(\wv | \muv_m, \Sigmav_m)
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 岭回归
-
----
-
-特别的，取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv$，则
-
-$$
-\begin{align*}
-    \quad p(\wv | D) & \propto \exp \left( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right) \\
-    & = \exp \left( -\frac{\alpha}{2} \wv^\top \wv - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right)
-\end{align*}
-$$
-
-最大后验估计$\wv$只需求解优化问题
-
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad \min_{\wv} ~ \bigg\{ \underbrace{\frac{\beta}{2} \| \Xv \wv - \yv \|_2^2}_{\text{来自似然}~~} + \underbrace{\frac{\alpha}{2} \|\wv\|_2^2}_{\text{来自先验}~~} \bigg\}
-\end{align*}
-$$
-
-- 在原本最小二乘的基础上，多了一个关于$\wv$的$\ell_2$范数项
-- 平方损失 + $\ell_2$范数 = {==岭回归==} (ridge regression)
-
-<!-- slide vertical=true data-notes="" -->
-
-##### <span style="font-weight:900">LASSO</span>
-
----
-
-取先验分布$p(\wv) = \mathrm{Lap}(\wv | \muv_0, \alpha^{-1}) = \frac{\alpha}{2} \exp (- \alpha \| \wv - \muv_0 \|_1)$
-
-根据贝叶斯公式
-
-$$
-\begin{align*}
-    \quad p (\wv | D) \propto p(\wv) p(D | \wv) = \exp \left( - \alpha \| \wv - \muv_0 \|_1 - \frac{\beta}{2} \| \Xv \wv - \yv \|_2^2 \right)
+    \quad f(\xv, \wv) = w_0 + w_1 \phi_1(\xv) + \cdots + w_n \phi_{n-1}(\xv)
 \end{align*}
 $$
 
 <div class="top-3"></div>
 
-特别的，取$\muv_0 = \zerov$，最大后验估计$\wv$只需求解优化问题
+其中$w_0$是截距，$\phi_1, \ldots, \phi_{n-1}$是固定的基函数 (basis function)
 
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad \min_{\wv} ~ \bigg\{ \underbrace{\frac{\beta}{2} \| \Xv \wv - \yv \|_2^2}_{\text{来自似然}~~} + \underbrace{\alpha \| \wv \|_1}_{\text{来自先验}~~} \bigg\}
-\end{align*}
-$$
-
-- 在原本最小二乘的基础上，多了一个关于$\wv$的$\ell_1$范数项
-- 平方损失 + $\ell_1$范数 = 最小绝对值收敛和选择算子 (<u>l</u>east <u>a</u>bsolute <u>s</u>hrinkage and <u>s</u>election <u>o</u>perator, {==LASSO==})
+- {==多项式函数==}：若输入空间为$\Rbb$，$\phi_j (x) = x^j$，即为多项式回归
+- {==样条函数==} (spline function)：多项式函数的局限性是它是全局的，$\xv$在输入空间某处的微小变化会引起$f(\xv, \wv)$在整个空间上的变化，若将输入空间分成若干个区域，每个区域用不同的多项式，即为样条函数
+- {==径向基函数==} (RBF)：$\phi_j(x) = \exp (-(x - \mu_j)^2 / (2 \sigma^2))$
+- {==对数几率函数==}、{==双曲正切函数==}
+- {==傅里叶基函数==}：不同频率的正弦函数、余弦函数
+- {==小波==}：与傅里叶基函数的关系类似于样条函数和多项式函数，小波保持空间上的局部性
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 回归总结
+##### 线性回归
 
 ---
 
-<div class="threelines column1-border-right-solid fs13">
+模型：
 
-|  模型  |               线性回归               |                              岭回归                              |                                                  LASSO                                                  |
-| :----: | :----------------------------------: | :--------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
-|  数据  |                  >                   |                                >                                 | 先随机选取$\xv_i$，再计算$y_i = \wv^\top \xv_i + \epsilon_i$，其中$\epsilon_i \sim \Ncal(0,\beta^{-1})$ |
-|  先验  |                  -                   |                             高斯分布                             |                                              拉普拉斯分布                                               |
-|  估计  |               极大似然               |                             最大后验                             |                                                最大后验                                                 |
-|  优化  | $\min_{\wv} \| \Xv \wv - \yv \|_2^2$ | $\min_{\wv} \{ \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_2^2 \}$ |                     $\min_{\wv} \{ \| \Xv \wv - \yv \|_2^2 + \lambda \|\wv\|_1 \}$                      |
-|  形式  |               平方损失               |                     平方损失 + $\ell_2$范数                      |                                         平方损失 + $\ell_1$范数                                         |
-| 解析解 | $\wv = (\Xv^\top \Xv)^{-1} \Xv \yv$  |        $\wv = (\Xv^\top \Xv + \lambda \Iv)^{-1} \Xv \yv$         |                                                    -                                                    |
+- 选定基函数$\phi_0, \ldots, \phi_{n-1}$，其中$\phi_0$为恒取值$1$的基函数
+- 对给定输入$\xv$，输出$y = \phiv (\xv)^\top \wv + \Ncal(\epsilon | 0, \beta^{-1})$，其中$\wv$、$\beta$为参数
 
-</div>
+<div class="top4"></div>
+
+为表示方便，引入设计矩阵 (design matrix)
+
+$$
+\begin{align*}
+    \quad \Phiv & = \begin{bmatrix}
+                \phi_0(\xv_1) & \phi_1(\xv_1) & \cdots & \phi_{n-1}(\xv_1) \\
+                \phi_0(\xv_2) & \phi_1(\xv_2) & \cdots & \phi_{n-1}(\xv_2) \\
+                \vdots        & \vdots        & \ddots & \vdots            \\
+                \phi_0(\xv_m) & \phi_1(\xv_m) & \cdots & \phi_{n-1}(\xv_m)
+            \end{bmatrix} =
+    \begin{bmatrix}
+        \phiv(\xv_1)^\top \\ \phiv(\xv_2)^\top \\ \vdots \\ \phiv(\xv_m)^\top
+    \end{bmatrix} \in \Rbb^{m \times n} \\
+    & = \begin{bmatrix} \varphiv_0 & \varphiv_1 & \cdots & \varphiv_{n-1} \end{bmatrix}
+\end{align*}
+$$
 
 <!-- slide data-notes="" -->
 
-##### 再看对率回归
+##### 极大似然
 
 ---
 
-设训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，似然为
+数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，数据对数似然
 
 $$
 \begin{align*}
-    \quad p(D | \wv) \propto \prod_{i \in [m]} p(y_i | \xv_i, \wv) = \prod_{i \in [m]} \sigma(y_i \wv^\top \xv_i) = \prod_{i \in [m]} \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)}
+    \quad \ln p (\yv | \wv, \beta) & = \ln \prod_{i \in [m]} \Ncal(y_i | \phiv (\xv_i)^\top \wv, \beta^{-1}) \\
+     & = \ln \prod_{i \in [m]} \sqrt{\frac{\beta}{2 \pi}} \exp \left( -\frac{\beta}{2} (y_i - \phiv (\xv_i)^\top \wv)^2 \right) \\
+     & = \frac{m}{2} \ln \beta - \frac{m}{2} \ln (2 \pi) - \beta \cdot \frac{1}{2} \| \yv - \Phiv \wv \|_2^2
 \end{align*}
 $$
 
-取先验分布$p(\wv) = \Ncal(\wv | \zerov, \alpha^{-1} \Iv)$，则
+令关于$\wv$、$\beta$的梯度为零可得极大似然解
+
+- $\wv^{\text{ML}} = (\Phiv^\top \Phiv)^{-1} \Phiv^\top \yv$，其中$(\Phiv^\top \Phiv)^{-1} \Phiv^\top$为 Moore-Penrose 伪逆
+- $1 / \beta^{\text{ML}} = \| \yv - \Phiv \wv^{\text{ML}} \|_2^2 / m$，$\wv^{\text{ML}}$预测的残差的方差的倒数
+
+<p class="footnote comments"> 似然$p (\yv | \wv, \beta)$的条件变量里应该还包含$\xv_1, \ldots, \xv_m$，但贝叶斯线性回归不对特征向量的分布进行建模，因此它们永远作为条件变量出现在$|$的右边，因此就统一省略了</p>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 最小二乘
+
+---
+
+对于$\wv$，显然最大似然 等价于 最小二乘 等价于 列空间投影
 
 $$
 \begin{align*}
-    \quad p(\wv | D) & \propto \exp \left( -\frac{\alpha}{2} \wv^\top \wv \right) \prod_{i \in [m]} \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)}
+    \quad \argmax_\wv \ln p & (\yv | \wv, \beta) \Longleftrightarrow \argmin_\wv \frac{1}{2} \| \yv - \Phiv \wv \|_2^2 \\
+    & \Longleftrightarrow \argmin_{\yv'} \frac{1}{2} \| \yv - \yv' \|_2^2, ~ \st ~ \yv' \in \mathrm{span} \{ \varphiv_0, \ldots, \varphiv_{n-1} \}
 \end{align*}
 $$
 
-最大后验估计$\wv$只需求解优化问题
+根据极大似然解，投影点为
 
 $$
 \begin{align*}
-    \quad \min_{\wv} \left\{ \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) + \frac{\alpha}{2} \| \wv \|_2^2 \right\}
+    \quad \yv' = \Phiv \wv^{\text{ML}} = \Phiv (\Phiv^\top \Phiv)^{-1} \Phiv^\top \yv
+\end{align*}
+$$
+
+<div class="top-2"></div>
+
+因此$\Phiv (\Phiv^\top \Phiv)^{-1} \Phiv^\top$也称为投影矩阵 (projection matrix)
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 列空间投影
+
+---
+
+验证$\yv' = \Phiv \wv^{\text{ML}} = \Phiv (\Phiv^\top \Phiv)^{-1} \Phiv^\top \yv$就是投影点
+
+$\yv'$属于列空间$\mathrm{span} \{ \varphiv_0, \ldots, \varphiv_{n-1} \}$是显然的
+
+$\yv - \yv'$正交于列空间$\mathrm{span} \{ \varphiv_0, \ldots, \varphiv_{n-1} \}$
+
+$$
+\begin{align*}
+    \quad (\yv - \yv')^\top \varphiv_j & = \yv^\top \varphiv_j - \yv^\top \Phiv (\Phiv^\top \Phiv)^{-1} \Phiv^\top \varphiv_j \\
+    & = \yv^\top \varphiv_j - \yv^\top [\Phiv (\Phiv^\top \Phiv)^{-1} \Phiv^\top \Phiv]_j \\
+    & = \yv^\top \varphiv_j - \yv^\top [\Phiv]_j \\
+    & = \yv^\top \varphiv_j - \yv^\top \varphiv_j \\
+    & = 0
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 正则化最小二乘
+
+---
+
+为避免过拟合，约束$\wv$的可行域，问题形式化为
+
+$$
+\begin{align*}
+    \quad \min_\wv \frac{1}{2} \| \yv - \Phiv \wv \|_2^2, \quad \st ~ \frac{1}{2} \| \wv \|_2^2 - \eta \le 0
+\end{align*}
+$$
+
+- 目标函数的等高线是椭圆，可行域是圆，最优解$\wv^\star$在其相切处
+- 椭圆和圆在$\wv^\star$处有共同的切线，因此梯度平行
+
+<div class="top4"></div>
+
+拉格朗日对偶问题为
+
+$$
+\begin{align*}
+    \quad \max_{\lambda \ge 0} \min_{\wv} L(\wv, \lambda) = \frac{1}{2} \| \yv - \Phiv \wv \|_2^2 + \lambda \left( \frac{1}{2} \| \wv \|_2^2 - \eta \right)
+\end{align*}
+$$
+
+- 令关于$\wv$的梯度为零，即是要求梯度平行
+- 关于$\wv$内层优化问题就是正则化最小二乘
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 正则化最小二乘
+
+---
+
+一般形式
+
+$$
+\begin{align*}
+    \quad \min_{\wv} \frac{1}{2} \| \yv - \Phiv \wv \|_2^2 + \lambda \cdot \Omega (\wv)
+\end{align*}
+$$
+
+- $\Omega (\wv) = \|\wv\|_2^2 / 2$，{==岭回归==} (ridge regression)，$\wv^\star = (\Phiv^\top \Phiv + \lambda \Iv)^{-1} \Phiv^\top \yv$
+- $\Omega (\wv) = \|\wv\|_1$，{==最小绝对值收敛和选择算子==} (<u>l</u>east <u>a</u>bsolute <u>s</u>hrinkage and <u>s</u>election <u>o</u>perator, {==LASSO==})，可得到稀疏的解
+
+<div class="top4"></div>
+
+正则项的系数$\lambda$是需要通过验证集去挑选的
+
+<!-- slide data-notes="" -->
+
+##### 贝叶斯线性回归
+
+---
+
+假设$\beta$已知，$\wv$的先验取高斯分布$p (\wv) = \Ncal (\wv | \muv_0, \Sigmav_0)$
+
+$\wv$的后验
+
+$$
+\begin{align*}
+    \quad p & (\wv | \yv) \propto p (\yv | \wv) p (\wv) \\
+     & \propto \exp \bigg( - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 \bigg) \exp \bigg( -\frac{1}{2} (\wv - \muv_0)^\top \Sigmav_0^{-1} (\wv - \muv_0) \bigg) \\
+     & \propto \exp \bigg( - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \Sigmav_0^{-1}}_{\Sigmav_m^{-1}}) \wv + \wv^\top \Sigmav_m^{-1} \underbrace{\Sigmav_m (\beta \Phiv^\top \yv + \Sigmav_0^{-1} \muv_0)}_{\muv_m} \bigg) \\
+     & \propto \exp \bigg( - \frac{1}{2} \wv^\top \Sigmav_m^{-1} \wv + \wv^\top \Sigmav_m^{-1} \muv_m \bigg) \\
+     & \propto \exp \bigg( - \frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m) \bigg) \sim \Ncal (\wv | \muv_m, \Sigmav_m)
+\end{align*}
+$$
+
+<p class="footnote book"> 若$\beta$未知，共轭先验为高斯-伽玛分布$\Ncal (\wv | \muv_0, \beta^{-1} \Sigmav_0) \Gam (\beta | a_0, b_0)$，预测分布为学生 t 分布</p>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 贝叶斯线性回归
+
+---
+
+取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv$，则$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
+
+$$
+\begin{align*}
+    \quad \argmax_\wv \ln p (\wv | \yv)
+     & = \argmin_\wv \frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m) \\
+     & = \argmin_\wv \left\{ \frac{1}{2} \wv^\top \Sigmav_m^{-1} \wv - \wv^\top \Sigmav_m^{-1} \muv_m \right\} \\
+     & = \argmin_\wv \left\{ \frac{1}{2} \wv^\top (\beta \Phiv^\top \Phiv + \alpha \Iv) \wv + \beta \wv^\top \Phiv^\top \yv \right\}                                                       \\
+     & = \argmin_\wv \left\{ \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 + \frac{\alpha}{2} \|\wv\|_2^2 \right\}
+\end{align*}
+$$
+
+岭回归 等价于 高斯先验下的最大后验
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 贝叶斯线性回归
+
+---
+
+更一般的，$\wv$的先验取
+
+$$
+\begin{align*}
+    \quad p (\wv | \muv_0, \alpha) = \left( \frac{q}{2} \left( \frac{\alpha}{2} \frac{1}{\Gamma(1/q)} \right)^{1/q} \right)^n \exp \left( - \frac{\alpha}{2} \| \wv - \muv_0 \|_q^q \right)
+\end{align*}
+$$
+
+$q = 2$即为$(\alpha / (2 \pi))^{n/2} \exp (- (\alpha/2) \| \wv - \muv_0 \|_2^2) = \Ncal(\wv | \muv_0, \alpha^{-1} \Iv)$
+
+$q = 1$即为$(\alpha/4)^n \exp (- (\alpha/2) \| \wv - \muv_0 \|_1) = \mathrm{Lap}(\wv | \muv_0, (\alpha/2)^{-1})$
+
+<div class="top2"></div>
+
+$$
+\begin{align*}
+    \quad p (\wv | \yv) \propto p(\wv) p(\yv | \wv) \propto \exp \left( - \frac{\alpha}{2} \| \wv - \muv_0 \|_1 - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 \right)
+\end{align*}
+$$
+
+<div class="top-3"></div>
+
+取$\muv_0 = \zerov$，LASSO 等价于 拉普拉斯先验下的最大后验
+
+<p class="footnote comments"> 只有$q=2$时为似然的共轭先验</p>
+
+<!-- slide data-notes="" -->
+
+##### 预测分布
+
+---
+
+对任意未知样本$\xv$，其预测$y$的分布为
+
+$$
+\begin{align*}
+    \quad p (y | \yv)
+     & = \int p (y | \wv) p (\wv | \yv) \diff \wv \\
+     & = \int \Ncal (y | \phiv(\xv)^\top \wv, \beta^{-1}) \Ncal (\wv | \muv_m, \Sigmav_m) \diff \wv                                                                                                                       \\
+     & = \int \frac{\beta^{1/2}}{(2 \pi)^{1/2}} \exp \left( -\frac{\beta}{2} (y - \phiv(\xv)^\top \wv)^2 \right) \\
+     & \qquad \cdot \frac{1}{(2 \pi)^{n/2} |\Sigmav_m|^{1/2}} \exp \left( -\frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m) \right) \diff \wv
+\end{align*}
+$$
+
+$\wv$只出现在$\exp(\cdot)$中且是负二次型，服从高斯分布
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 预测分布
+
+---
+
+整理$\wv$的相关项，确定高斯分布的均值、协方差
+
+$$
+\begin{align*}
+    \quad   & - \frac{\beta}{2} (y - \phiv(\xv)^\top \wv)^2 -\frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m)                                                                                                                                                                        \\
+    = & ~ - \frac{1}{2} \wv^\top (\underbrace{\beta \phiv(\xv) \phiv(\xv)^\top + \Sigmav_m^{-1}}_{\Sigmav^{-1}}) \wv + \wv^\top \Sigmav^{-1} \underbrace{\Sigmav (\beta \phiv(\xv) y + \Sigmav_m^{-1} \muv_m)}_{\muv} \\
+    & \qquad \qquad - \frac{\beta}{2} y^2 - \frac{1}{2} \muv_m^\top \Sigmav_m^{-1} \muv_m \\
+    = & ~ - \frac{1}{2} (\wv - \muv)^\top \Sigmav^{-1} (\wv - \muv) - \frac{\beta}{2} y^2 - \frac{1}{2} \muv_m^\top \Sigmav_m^{-1} \muv_m + \frac{1}{2} \muv^\top \Sigmav^{-1} \muv
+\end{align*}
+$$
+
+将$\wv$积分掉可得
+
+$$
+\begin{align*}
+    \quad p (y | \yv) = \frac{\beta^{1/2}}{(2 \pi)^{1/2}} \frac{|\Sigmav|^{1/2}}{|\Sigmav_m|^{1/2}} \exp \left( - \frac{\beta}{2} y^2 - \frac{1}{2} \muv_m^\top \Sigmav_m^{-1} \muv_m + \frac{1}{2} \muv^\top \Sigmav^{-1} \muv \right)
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 预测分布
+
+---
+
+注意$\muv = \Sigmav (\beta \phiv(\xv) y + \Sigmav_m^{-1} \muv_m)$中也有$y$，继续化简
+
+$$
+\begin{align*}
+    \quad \frac{1}{2} & \muv^\top \Sigmav^{-1} \muv = \frac{1}{2} (\beta \phiv(\xv) y + \Sigmav_m^{-1} \muv_m)^\top \Sigmav (\beta \phiv(\xv) y + \Sigmav_m^{-1} \muv_m)                                                                      \\
+     & = \frac{y^2}{2} \beta^2 \phiv(\xv)^\top \Sigmav \phiv(\xv) + y \beta \phiv(\xv)^\top \Sigmav \Sigmav_m^{-1} \muv_m + \frac{1}{2} \muv_m^\top \Sigmav_m^{-1} \Sigmav \Sigmav_m^{-1} \muv_m
+\end{align*}
+$$
+
+注意$\Sigmav^{-1} = \beta \phiv(\xv) \phiv(\xv)^\top + \Sigmav_m^{-1}$，根据 Sherman-Morrison 公式
+
+$$
+\begin{align*}
+    \quad \Sigmav = (\Sigmav_m^{-1} + \beta \phiv(\xv) \phiv(\xv)^\top)^{-1} = \Sigmav_m - \frac{\beta \Sigmav_m \phiv(\xv) \phiv(\xv)^\top \Sigmav_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)}
+\end{align*}
+$$
+
+于是可以对$\phiv(\xv)^\top \Sigmav \phiv(\xv)$、$\phiv(\xv)^\top \Sigmav \Sigmav_m^{-1} \muv_m$继续化简
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 预测分布
+
+---
+
+Sherman-Morrison 公式
+
+$$
+\begin{align*}
+    \quad \Sigmav = (\Sigmav_m^{-1} + \beta \phiv(\xv) \phiv(\xv)^\top)^{-1} = \Sigmav_m - \frac{\beta \Sigmav_m \phiv(\xv) \phiv(\xv)^\top \Sigmav_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)}
+\end{align*}
+$$
+
+$$
+\begin{align*}
+    \quad \phiv(\xv)^\top \Sigmav \phiv(\xv)
+     & = \phiv(\xv)^\top \left( \Sigmav_m - \frac{\beta \Sigmav_m \phiv(\xv) \phiv(\xv)^\top \Sigmav_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} \right) \phiv(\xv) \\
+     & = \frac{\phiv(\xv)^\top \Sigmav_m \phiv(\xv)}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} \\[4pt]
+    \phiv(\xv)^\top \Sigmav \Sigmav_m^{-1} \muv_m
+     & = \phiv(\xv)^\top \left( \Sigmav_m - \frac{\beta \Sigmav_m \phiv(\xv) \phiv(\xv)^\top \Sigmav_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} \right) \Sigmav_m^{-1} \muv_m                                                                                    \\
+     & = \phiv(\xv)^\top \muv_m - \frac{\beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv) \phiv(\xv)^\top \muv_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} \\
+     & = \frac{\phiv(\xv)^\top \muv_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)}
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 预测分布
+
+---
+
+$y$的相关项为负二次函数
+
+$$
+\begin{align*}
+    \quad & - \frac{\beta}{2} y^2 + \frac{1}{2} \muv^\top \Sigmav^{-1} \muv \\
+     = & ~ - \frac{\beta}{2} y^2 + \frac{y^2}{2} \frac{\beta^2 \phiv(\xv)^\top \Sigmav_m \phiv(\xv)}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} + y \frac{\beta \phiv(\xv)^\top \muv_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} + \const \\
+     = & ~ - \frac{y^2}{2} \frac{\beta}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} + y \frac{\beta \phiv(\xv)^\top \muv_m}{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} + \const                                                              \\
+     = & ~ - \frac{1}{2} \frac{\beta }{1 + \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv)} (y - \phiv(\xv)^\top \muv_m)^2 + \const
+\end{align*}
+$$
+
+预测分布$p (y | \yv) = \Ncal ( y | \phiv(\xv)^\top \muv_m, \beta^{-1} + \phiv(\xv)^\top \Sigmav_m \phiv(\xv) )$，其中
+
+$$
+\begin{align*}
+    \quad \muv_m = \Sigmav_m (\beta \Phiv^\top \yv + \Sigmav_0^{-1} \muv_0), \quad \Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \Sigmav_0^{-1}
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 预测分布 均值
+
+---
+
+预测分布$p (y | \yv) = \Ncal ( y | \phiv(\xv)^\top \muv_m, \beta^{-1} + \phiv(\xv)^\top \Sigmav_m \phiv(\xv) )$，其中
+
+$$
+\begin{align*}
+    \quad \muv_m = \Sigmav_m (\beta \Phiv^\top \yv + \Sigmav_0^{-1} \muv_0), \quad \Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \Sigmav_0^{-1}
+\end{align*}
+$$
+
+$\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\text{MAP}}$，故预测分布的均值就是$\wv^{\text{MAP}}$的预测结果
+
+取先验均值$\muv_0$为零，则$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$，于是预测分布的均值
+
+$$
+\begin{align*}
+    \quad \phiv(\xv)^\top \muv_m = \beta \phiv(\xv)^\top \Sigmav_m \Phiv^\top \yv = \sum_{i \in [m]} \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv_i) y_i = \sum_{i \in [m]} \kappa (\xv, \xv_i) y_i
+\end{align*}
+$$
+
+<div class="top-4"></div>
+
+其中$\kappa (\xv, \xv_i) = \beta \phiv(\xv)^\top \Sigmav_m \phiv(\xv_i)$称为{==等效核==} (equivalent kernel)
+
+等效核 -> 某种相似度，最大后验预测与类推学派也是有联系的
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 预测分布 方差
+
+---
+
+预测分布$p (y | \yv) = \Ncal ( y | \phiv(\xv)^\top \muv_m, \beta^{-1} + \phiv(\xv)^\top \Sigmav_m \phiv(\xv) )$，其中
+
+$$
+\begin{align*}
+    \quad \muv_m = \Sigmav_m (\beta \Phiv^\top \yv + \Sigmav_0^{-1} \muv_0), \quad \Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \Sigmav_0^{-1}
+\end{align*}
+$$
+
+方差中的第一项$\beta^{-1}$为模型固有噪声
+
+第二项随样本增多单调递减趋向零，故最终预测的不确定性只剩噪声项，注意$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \Sigmav_0^{-1} = \Sigmav_{m-1}^{-1} + \beta \phiv(\xv_m)^\top \phiv(\xv_m)$
+
+$$
+\begin{align*}
+    \quad \phiv(\xv)^\top \Sigmav_m \phiv(\xv) & = \phiv(\xv)^\top (\Sigmav_{m-1}^{-1} + \beta \phiv(\xv_m)^\top \phiv(\xv_m))^{-1} \phiv(\xv) \\
+    & = \phiv(\xv)^\top \left( \Sigmav_{m-1} - \frac{\beta \Sigmav_{m-1} \phiv(\xv_m) \phiv(\xv_m)^\top \Sigmav_{m-1}}{1 + \beta \phiv(\xv_m)^\top \Sigmav_{m-1} \phiv(\xv_m)} \right) \phiv(\xv) \\
+    & = \phiv(\xv)^\top \Sigmav_{m-1} \phiv(\xv) - \frac{\beta (\phiv(\xv)^\top \Sigmav_{m-1} \phiv(\xv_m))^2}{1 + \beta \phiv(\xv_m)^\top \Sigmav_{m-1} \phiv(\xv_m)} \\
+    & < \phiv(\xv)^\top \Sigmav_{m-1} \phiv(\xv)
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 全贝叶斯
+
+---
+
+取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv$，则$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
+
+预测分布为
+
+$$
+\begin{align*}
+    \quad p (y | \yv) = \Ncal( y | \beta \phiv(\xv)^\top \Sigmav_m \Phiv^\top \yv, \beta^{-1} + \phiv(\xv)^\top (\beta \Phiv^\top \Phiv + \alpha \Iv)^{-1} \phiv(\xv) )
+\end{align*}
+$$
+
+<div class="top2"></div>
+
+{==全贝叶斯==} (fully Bayesian)：$\alpha$、$\beta$都是随机变量，不能当作已知常数，预测分布需要将其积分掉
+
+$$
+\begin{align*}
+    \quad p (y | \yv) = \iiint p(y | \wv, \beta) p (\wv | \yv, \alpha, \beta) p(\alpha, \beta | \yv) \diff \wv \diff \alpha \diff \beta
+\end{align*}
+$$
+
+单独做$\wv$的积分或者$\alpha$、$\beta$的积分都不难，但一起做很难
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 经验贝叶斯
+
+---
+
+预测分布为
+
+$$
+\begin{align*}
+    \quad p (y | \yv) = \iiint p(y | \wv, \beta) p (\wv | \yv, \alpha, \beta) p(\alpha, \beta | \yv) \diff \wv \diff \alpha \diff \beta
+\end{align*}
+$$
+
+{==经验贝叶斯==} (empirical Bayes)：最大化模型证据$p(\yv | \alpha, \beta)$得到特定的$\widehat{\alpha}$、$\widehat{\beta}$
+
+$$
+\begin{align*}
+    \quad p (y | \yv) \approx p (y | \yv, \widehat{\alpha}, \widehat{\beta}) = \int p(y | \wv, \widehat{\beta}) p (\wv | \yv, \widehat{\alpha}, \widehat{\beta}) \diff \wv
+\end{align*}
+$$
+
+该方法也称为第二型极大似然 (type 2 maximum likelihood) 、证据近似 (evidence approximation)
+
+<!-- slide data-notes="" -->
+
+##### 模型证据
+
+---
+
+模型证据
+
+$$
+\begin{align*}
+    \quad p(\yv | & \alpha, \beta) = \int p(\yv | \wv, \beta) p( \wv | \alpha) \diff \wv \\
+    & = \int \frac{\beta^{m/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 \right) \frac{\alpha^{n/2}}{(2 \pi)^{n/2}} \exp \left( -\frac{\alpha}{2} \wv^\top \wv \right) \diff \wv
+\end{align*}
+$$
+
+整理$\wv$的相关项，确定高斯分布的均值、协方差
+
+$$
+\begin{align*}
+    \quad E(\wv) & = - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 - \frac{\alpha}{2} \wv^\top \wv                                                                                                                                                                        \\
+    & = - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \alpha \Iv}_{\Sigmav}) \wv + \wv^\top \Sigmav \underbrace{\Sigmav^{-1} (\beta \Phiv^\top \yv)}_{\muv} - \frac{\beta}{2} \yv^\top \yv \\
+    & = - \frac{1}{2} (\wv - \muv)^\top \Sigmav (\wv - \muv) - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 模型证据
+
+---
+
+将$\wv$积分掉，模型证据
+
+$$
+\begin{align*}
+    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} |\Sigmav^{-1}|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv \right)
+\end{align*}
+$$
+
+进一步整理得
+
+$$
+\begin{align*}
+    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 最大化模型证据
+
+---
+
+对数模型证据
+
+$$
+\begin{align*}
+    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+\end{align*}
+$$
+
+设$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$，则$\Sigmav$的特征值为$\alpha + \lambda_i$，于是
+
+$$
+\begin{align*}
+    \quad \frac{\diff \ln |\Sigmav|}{\diff \alpha} = \frac{\diff }{\diff \alpha} \ln \prod_i (\alpha + \lambda_i) = \sum_i \frac{1}{\alpha + \lambda_i}
+\end{align*}
+$$
+
+对$\alpha$求导并令导数为零可得
+
+$$
+\begin{align*}
+    \quad \frac{n}{2\alpha} - \frac{1}{2} \muv^\top \muv - \frac{1}{2} \sum_i \frac{1}{\alpha + \lambda_i} = 0 & \Longrightarrow \alpha \muv^\top \muv = n - \alpha \sum_i \frac{1}{\alpha + \lambda_i} \\
+    & \Longrightarrow \alpha = \frac{1}{\muv^\top \muv} \sum_i \frac{\lambda_i}{\alpha + \lambda_i} = \frac{1}{\muv^\top \muv} \gamma
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 最大化模型证据
+
+---
+
+对数模型证据
+
+$$
+\begin{align*}
+    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+\end{align*}
+$$
+
+设$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$，则$\Sigmav$的特征值为$\alpha + \lambda_i$，且$\diff \lambda_i / \diff \beta = \lambda_i / \beta$
+
+$$
+\begin{align*}
+    \quad \frac{1}{\beta} = \frac{1}{m - \gamma} \sum_{i \in [m]} (y_i - \mu^\top \phiv(\xv_i))^2
 \end{align*}
 $$
