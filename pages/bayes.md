@@ -788,7 +788,7 @@ $$
 
 ---
 
-取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv_n$，则$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
+取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv_n$，$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
 
 $$
 \begin{align*}
@@ -1018,9 +1018,9 @@ $$
 
 ---
 
-取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv_n$，则$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
+取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv_n$，$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
 
-预测分布为
+在$\alpha$、$\beta$都是已知常数的前提下，预测分布为
 
 $$
 \begin{align*}
@@ -1030,7 +1030,7 @@ $$
 
 <div class="top2"></div>
 
-{==全贝叶斯==} (fully Bayesian)：$\alpha$、$\beta$都是随机变量，不能当作已知常数，预测分布需要将其积分掉
+{==全贝叶斯==} (fully Bayes)：$\alpha$、$\beta$都是随机变量，不能当作已知常数，预测分布需要将其积分掉
 
 $$
 \begin{align*}
@@ -1054,7 +1054,7 @@ $$
 \end{align*}
 $$
 
-{==经验贝叶斯==} (empirical Bayes)：最大化模型证据$p(\yv | \alpha, \beta)$得到特定的$\widehat{\alpha}$、$\widehat{\beta}$
+{==经验贝叶斯==} (empirical Bayes)：用最大化模型证据$p(\yv | \alpha, \beta)$得到的$\widehat{\alpha}$、$\widehat{\beta}$做近似
 
 $$
 \begin{align*}
