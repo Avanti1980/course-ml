@@ -2857,7 +2857,7 @@ $$
 <li>&#x5BF9;&#x7ED9;&#x5B9A;&#x8F93;&#x5165;<span class="mathjax-exps">$\xv$</span>&#xFF0C;&#x8F93;&#x51FA;<span class="mathjax-exps">$y = \phiv (\xv)^\top \wv + \Ncal(\epsilon | 0, \beta^{-1})$</span>&#xFF0C;&#x5176;&#x4E2D;<span class="mathjax-exps">$\wv$</span>&#x3001;<span class="mathjax-exps">$\beta$</span>&#x4E3A;&#x53C2;&#x6570;</li>
 </ul>
 <div class="top4"></div>
-<p>&#x4E3A;&#x8868;&#x793A;&#x65B9;&#x4FBF;&#xFF0C;&#x5F15;&#x5165;&#x8BBE;&#x8BA1;&#x77E9;&#x9635; (design matrix)</p>
+<p>&#x4E3A;&#x8868;&#x793A;&#x65B9;&#x4FBF;&#xFF0C;&#x5F15;&#x5165;<mark>&#x8BBE;&#x8BA1;&#x77E9;&#x9635;</mark> (design matrix)</p>
 <p>
 
 $$
@@ -2993,7 +2993,7 @@ $$
 </p>
 
 <ul>
-<li><span class="mathjax-exps">$\Omega (\wv) = \|\wv\|_2^2 / 2$</span>&#xFF0C;<mark>&#x5CAD;&#x56DE;&#x5F52;</mark> (ridge regression)&#xFF0C;<span class="mathjax-exps">$\wv^\star = (\Phiv^\top \Phiv + \lambda \Iv)^{-1} \Phiv^\top \yv$</span></li>
+<li><span class="mathjax-exps">$\Omega (\wv) = \|\wv\|_2^2 / 2$</span>&#xFF0C;<mark>&#x5CAD;&#x56DE;&#x5F52;</mark> (ridge regression)&#xFF0C;<span class="mathjax-exps">$\wv^\star = (\Phiv^\top \Phiv + \lambda \Iv_n)^{-1} \Phiv^\top \yv$</span></li>
 <li><span class="mathjax-exps">$\Omega (\wv) = \|\wv\|_1$</span>&#xFF0C;<mark>&#x6700;&#x5C0F;&#x7EDD;&#x5BF9;&#x503C;&#x6536;&#x655B;&#x548C;&#x9009;&#x62E9;&#x7B97;&#x5B50;</mark> (<u>l</u>east <u>a</u>bsolute <u>s</u>hrinkage and <u>s</u>election <u>o</u>perator, <mark>LASSO</mark>)&#xFF0C;&#x53EF;&#x5F97;&#x5230;&#x7A00;&#x758F;&#x7684;&#x89E3;</li>
 </ul>
 <div class="top4"></div>
@@ -3022,7 +3022,7 @@ $$
 <h5 class="mume-header" id="%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92-1">&#x8D1D;&#x53F6;&#x65AF;&#x7EBF;&#x6027;&#x56DE;&#x5F52;</h5>
 
 <hr>
-<p>&#x53D6;<span class="mathjax-exps">$\muv_0 = \zerov$</span>&#x3001;<span class="mathjax-exps">$\Sigmav_0 = \alpha^{-1} \Iv$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv$</span>&#x3001;<span class="mathjax-exps">$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$</span></p>
+<p>&#x53D6;<span class="mathjax-exps">$\muv_0 = \zerov$</span>&#x3001;<span class="mathjax-exps">$\Sigmav_0 = \alpha^{-1} \Iv_n$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$</span>&#x3001;<span class="mathjax-exps">$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$</span></p>
 <p>
 
 $$
@@ -3030,7 +3030,7 @@ $$
     \quad \argmax_\wv \ln p (\wv | \yv)
      &amp; = \argmin_\wv \frac{1}{2} (\wv - \muv_m)^\top \Sigmav_m^{-1} (\wv - \muv_m) \\
      &amp; = \argmin_\wv \left\{ \frac{1}{2} \wv^\top \Sigmav_m^{-1} \wv - \wv^\top \Sigmav_m^{-1} \muv_m \right\} \\
-     &amp; = \argmin_\wv \left\{ \frac{1}{2} \wv^\top (\beta \Phiv^\top \Phiv + \alpha \Iv) \wv + \beta \wv^\top \Phiv^\top \yv \right\}                                                       \\
+     &amp; = \argmin_\wv \left\{ \frac{1}{2} \wv^\top (\beta \Phiv^\top \Phiv + \alpha \Iv_n) \wv + \beta \wv^\top \Phiv^\top \yv \right\}                                                       \\
      &amp; = \argmin_\wv \left\{ \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 + \frac{\alpha}{2} \|\wv\|_2^2 \right\}
 \end{align*}
 $$
@@ -3051,7 +3051,7 @@ $$
 $$
 </p>
 
-<p><span class="mathjax-exps">$q = 2$</span>&#x5373;&#x4E3A;<span class="mathjax-exps">$(\alpha / (2 \pi))^{n/2} \exp (- (\alpha/2) \| \wv - \muv_0 \|_2^2) = \Ncal(\wv | \muv_0, \alpha^{-1} \Iv)$</span></p>
+<p><span class="mathjax-exps">$q = 2$</span>&#x5373;&#x4E3A;<span class="mathjax-exps">$(\alpha / (2 \pi))^{n/2} \exp (- (\alpha/2) \| \wv - \muv_0 \|_2^2) = \Ncal(\wv | \muv_0, \alpha^{-1} \Iv_n)$</span></p>
 <p><span class="mathjax-exps">$q = 1$</span>&#x5373;&#x4E3A;<span class="mathjax-exps">$(\alpha/4)^n \exp (- (\alpha/2) \| \wv - \muv_0 \|_1) = \mathrm{Lap}(\wv | \muv_0, (\alpha/2)^{-1})$</span></p>
 <div class="top2"></div>
 <p>
@@ -3254,13 +3254,13 @@ $$
 <h5 class="mume-header" id="%E5%85%A8%E8%B4%9D%E5%8F%B6%E6%96%AF">&#x5168;&#x8D1D;&#x53F6;&#x65AF;</h5>
 
 <hr>
-<p>&#x53D6;<span class="mathjax-exps">$\muv_0 = \zerov$</span>&#x3001;<span class="mathjax-exps">$\Sigmav_0 = \alpha^{-1} \Iv$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv$</span>&#x3001;<span class="mathjax-exps">$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$</span></p>
+<p>&#x53D6;<span class="mathjax-exps">$\muv_0 = \zerov$</span>&#x3001;<span class="mathjax-exps">$\Sigmav_0 = \alpha^{-1} \Iv_n$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$</span>&#x3001;<span class="mathjax-exps">$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$</span></p>
 <p>&#x9884;&#x6D4B;&#x5206;&#x5E03;&#x4E3A;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad p (y | \yv) = \Ncal( y | \beta \phiv(\xv)^\top \Sigmav_m \Phiv^\top \yv, \beta^{-1} + \phiv(\xv)^\top (\beta \Phiv^\top \Phiv + \alpha \Iv)^{-1} \phiv(\xv) )
+    \quad p (y | \yv) = \Ncal( y | \beta \phiv(\xv)^\top \Sigmav_m \Phiv^\top \yv, \beta^{-1} + \phiv(\xv)^\top (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} \phiv(\xv) )
 \end{align*}
 $$
 </p>
@@ -3323,7 +3323,7 @@ $$
 $$
 \begin{align*}
     \quad E(\wv) &amp; = - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 - \frac{\alpha}{2} \wv^\top \wv                                                                                                                                                                        \\
-    &amp; = - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \alpha \Iv}_{\Sigmav}) \wv + \wv^\top \Sigmav \underbrace{\Sigmav^{-1} (\beta \Phiv^\top \yv)}_{\muv} - \frac{\beta}{2} \yv^\top \yv \\
+    &amp; = - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \alpha \Iv_n}_{\Sigmav}) \wv + \wv^\top \Sigmav \underbrace{\Sigmav^{-1} (\beta \Phiv^\top \yv)}_{\muv} - \frac{\beta}{2} \yv^\top \yv \\
     &amp; = - \frac{1}{2} (\wv - \muv)^\top \Sigmav (\wv - \muv) - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv
 \end{align*}
 $$
@@ -3338,80 +3338,93 @@ $$
 
 $$
 \begin{align*}
-    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} |\Sigmav^{-1}|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv \right)
+    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} \alpha^{n/2} |\Sigmav^{-1}|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv \right)
 \end{align*}
 $$
 </p>
 
-<p>&#x8FDB;&#x4E00;&#x6B65;&#x6574;&#x7406;&#x5F97;</p>
+<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$\Sigmav = \beta \Phiv^\top \Phiv + \alpha \Iv_n$</span>&#x3001;<span class="mathjax-exps">$\muv = \Sigmav^{-1} (\beta \Phiv^\top \yv)$</span>&#xFF0C;&#x4EE3;&#x5165;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+    \quad - \frac{\beta}{2} \yv^\top &amp; \yv + \frac{1}{2} \muv^\top \Sigmav \muv = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav \class{blue}{\muv} + \muv^\top \class{green}{\Sigmav} \muv) \\
+    &amp; = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav \class{blue}{\Sigmav^{-1} (\beta \Phiv^\top \yv)} + \muv^\top \class{green}{(\beta \Phiv^\top \Phiv + \alpha \Iv_n)} \muv) \\
+    &amp; = - \frac{1}{2} (\beta \yv^\top \yv - 2 \beta \muv^\top \Phiv^\top \yv + \beta \muv^\top \Phiv^\top \Phiv \muv + \alpha \muv^\top \muv) \\
+    &amp; = - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv
 \end{align*}
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="1349" class="slide " data-line="1349" data-h="17" data-v="2">
+</section></section><section><section data-notes lineno="1352" class="slide " data-line="1352" data-h="18" data-v="0">
 <h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%8C%96%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE">&#x6700;&#x5927;&#x5316;&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
 
 <hr>
-<p>&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$|\Sigmav^{-1}|^{1/2} = |\Sigmav|^{-1/2}$</span>&#xFF0C;&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+    \quad \ln p(\yv | \alpha, \beta) &amp; = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv \\
+    &amp; \qquad - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
 \end{align*}
 $$
 </p>
 
-<p>&#x8BBE;<span class="mathjax-exps">$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav$</span>&#x7684;&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\alpha + \lambda_i$</span>&#xFF0C;&#x4E8E;&#x662F;</p>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\Sigmav = \beta \Phiv^\top \Phiv + \alpha \Iv_n$</span>&#xFF0C;&#x8BBE;<span class="mathjax-exps">$\beta \Phiv^\top \Phiv$</span>&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\{ \lambda_i \}_{i \in [n]}$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav$</span>&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\{ \alpha + \lambda_i \}_{i \in [n]}$</span>&#xFF0C;<span class="mathjax-exps">$\ln |\Sigmav| = \ln \prod_{i \in [n]} (\alpha + \lambda_i) = \sum_{i \in [n]} \ln (\alpha + \lambda_i)$</span></p>
 <p>
 
 $$
 \begin{align*}
-    \quad \frac{\diff \ln |\Sigmav|}{\diff \alpha} = \frac{\diff }{\diff \alpha} \ln \prod_i (\alpha + \lambda_i) = \sum_i \frac{1}{\alpha + \lambda_i}
+    \quad \frac{\diff \ln |\Sigmav|}{\diff \alpha} &amp; = \sum_{i \in [n]} \frac{\diff \ln (\alpha + \lambda_i)}{\diff \alpha} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \\
+    \frac{\diff \ln |\Sigmav|}{\diff \beta} &amp; = \sum_{i \in [n]} \frac{\diff \ln (\alpha + \lambda_i)}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\diff \lambda_i}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\lambda_i}{\beta}
 \end{align*}
 $$
 </p>
 
-<p>&#x5BF9;<span class="mathjax-exps">$\alpha$</span>&#x6C42;&#x5BFC;&#x5E76;&#x4EE4;&#x5BFC;&#x6570;&#x4E3A;&#x96F6;&#x53EF;&#x5F97;</p>
-<p>
-
-$$
-\begin{align*}
-    \quad \frac{n}{2\alpha} - \frac{1}{2} \muv^\top \muv - \frac{1}{2} \sum_i \frac{1}{\alpha + \lambda_i} = 0 &amp; \Longrightarrow \alpha \muv^\top \muv = n - \alpha \sum_i \frac{1}{\alpha + \lambda_i} \\
-    &amp; \Longrightarrow \alpha = \frac{1}{\muv^\top \muv} \sum_i \frac{\lambda_i}{\alpha + \lambda_i} = \frac{1}{\muv^\top \muv} \gamma
-\end{align*}
-$$
-</p>
-
-</section><section vertical="true" data-notes lineno="1392" class="slide " data-line="1392" data-h="17" data-v="3">
+<p class="footnote comments"> &#x6CE8;&#x610F;$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$&#xFF0C;&#x4E24;&#x8005;&#x5448;&#x7EBF;&#x6027;&#x5173;&#x7CFB;&#xFF0C;&#x6545;$\diff \lambda_i / \diff \beta = \lambda_i / \beta$&#x3002;</p>
+</section><section vertical="true" data-notes lineno="1386" class="slide " data-line="1386" data-h="18" data-v="1">
 <h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%8C%96%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE-1">&#x6700;&#x5927;&#x5316;&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
 
 <hr>
-<p>&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
+<p>&#x4EE4;&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;&#x5173;&#x4E8E;<span class="mathjax-exps">$\alpha$</span>&#x7684;&#x5BFC;&#x6570;&#x4E3A;&#x96F6;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \alpha} &amp; = \frac{n}{2\alpha} - \frac{1}{2} \muv^\top \muv - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} = 0 \\
+    &amp; \Longrightarrow \alpha \muv^\top \muv = n - \sum_{i \in [n]} \frac{\alpha}{\alpha + \lambda_i} = \sum_{i \in [n]} \frac{\lambda_i}{\alpha + \lambda_i} \triangleq \gamma \\
+    &amp; \Longrightarrow \alpha = \frac{\gamma}{\muv^\top \muv}
 \end{align*}
 $$
 </p>
 
-<p>&#x8BBE;<span class="mathjax-exps">$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav$</span>&#x7684;&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\alpha + \lambda_i$</span>&#xFF0C;&#x4E14;<span class="mathjax-exps">$\diff \lambda_i / \diff \beta = \lambda_i / \beta$</span></p>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv = (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} (\beta \Phiv^\top \yv)$</span>&#x90FD;&#x4E0E;<span class="mathjax-exps">$\alpha$</span>&#x76F8;&#x5173;&#xFF0C;&#x6545;&#x4EA4;&#x66FF;&#x6C42;&#x89E3;</p>
+<ul>
+<li>&#x6BCF;&#x8F6E;&#x5148;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;<span class="mathjax-exps">$\alpha$</span>&#x8BA1;&#x7B97;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#xFF0C;&#x518D;&#x6839;&#x636E;&#x6700;&#x65B0;&#x7684;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#x66F4;&#x65B0;<span class="mathjax-exps">$\alpha$</span></li>
+<li><span class="mathjax-exps">$\Phiv^\top \Phiv$</span>&#x7684;&#x7279;&#x5F81;&#x503C;&#x53EF;&#x4EE5;&#x4E8B;&#x5148;&#x7B97;&#x597D;&#xFF0C;&#x4E58;&#x4EE5;<span class="mathjax-exps">$\beta$</span>&#x5C31;&#x662F;<span class="mathjax-exps">$\lambda_i$</span></li>
+</ul>
+</section><section vertical="true" data-notes lineno="1411" class="slide " data-line="1411" data-h="18" data-v="2">
+<h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%8C%96%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE-2">&#x6700;&#x5927;&#x5316;&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
+
+<hr>
+<p>&#x4EE4;&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;&#x5173;&#x4E8E;<span class="mathjax-exps">$\beta$</span>&#x7684;&#x5BFC;&#x6570;&#x4E3A;&#x96F6;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad \frac{1}{\beta} = \frac{1}{m - \gamma} \sum_{i \in [m]} (y_i - \mu^\top \phiv(\xv_i))^2
+    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \beta} &amp; = \frac{m}{2\beta} - \frac{1}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\lambda_i}{\beta} = 0 \\
+    &amp; \Longrightarrow \frac{m - \gamma}{\beta} = \| \yv - \Phiv \muv \|_2^2 \\
+    &amp; \Longrightarrow \frac{1}{\beta} = \frac{1}{m - \gamma} \| \yv - \Phiv \muv \|_2^2
 \end{align*}
 $$
 </p>
 
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\muv = (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} (\beta \Phiv^\top \yv)$</span>&#x4E0E;<span class="mathjax-exps">$\beta$</span>&#x76F8;&#x5173;&#xFF0C;&#x6545;&#x4EA4;&#x66FF;&#x6C42;&#x89E3;</p>
+<ul>
+<li><span class="mathjax-exps">$\alpha$</span>&#x3001;<span class="mathjax-exps">$\beta$</span>&#x53EF;&#x4EE5;&#x4E00;&#x8D77;&#x66F4;&#x65B0;</li>
+<li>&#x6BCF;&#x8F6E;&#x5148;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;<span class="mathjax-exps">$\alpha$</span>&#x3001;<span class="mathjax-exps">$\beta$</span>&#x8BA1;&#x7B97;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#xFF0C;&#x518D;&#x6839;&#x636E;&#x6700;&#x65B0;&#x7684;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#x66F4;&#x65B0;<span class="mathjax-exps">$\alpha$</span>&#x3001;<span class="mathjax-exps">$\beta$</span></li>
+</ul>
 </section></section>
       </div>
     </div>

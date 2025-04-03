@@ -2199,35 +2199,8 @@ html.print-pdf .aria-status {
 </div>
     <div class="reveal">
       <div class="slides">
-        <section><section data-notes lineno="29" class="slide " data-line="29" data-h="0" data-v="0">
+        <section vertical="true" data-notes lineno="29" class="slide " data-line="29" data-h="-1" data-v="1">
 <h5 class="mume-header" id="%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE">&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
-
-<hr>
-<p>&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
-<p>
-
-$$
-\begin{align*}
-    \quad p(\yv | &amp; \alpha, \beta) = \int p(\yv | \wv, \beta) p( \wv | \alpha) \diff \wv \\
-    &amp; = \int \frac{\beta^{m/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 \right) \frac{\alpha^{n/2}}{(2 \pi)^{n/2}} \exp \left( -\frac{\alpha}{2} \wv^\top \wv \right) \diff \wv
-\end{align*}
-$$
-</p>
-
-<p>&#x6574;&#x7406;<span class="mathjax-exps">$\wv$</span>&#x7684;&#x76F8;&#x5173;&#x9879;&#xFF0C;&#x786E;&#x5B9A;&#x9AD8;&#x65AF;&#x5206;&#x5E03;&#x7684;&#x5747;&#x503C;&#x3001;&#x534F;&#x65B9;&#x5DEE;</p>
-<p>
-
-$$
-\begin{align*}
-    \quad E(\wv) &amp; = - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 - \frac{\alpha}{2} \wv^\top \wv                                                                                                                                                                        \\
-    &amp; = - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \alpha \Iv}_{\Sigmav}) \wv + \wv^\top \Sigmav \underbrace{\Sigmav^{-1} (\beta \Phiv^\top \yv)}_{\muv} - \frac{\beta}{2} \yv^\top \yv \\
-    &amp; = - \frac{1}{2} (\wv - \muv)^\top \Sigmav (\wv - \muv) - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv
-\end{align*}
-$$
-</p>
-
-</section><section vertical="true" data-notes lineno="62" class="slide " data-line="62" data-h="0" data-v="1">
-<h5 class="mume-header" id="%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE-1">&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
 
 <hr>
 <p>&#x5C06;<span class="mathjax-exps">$\wv$</span>&#x79EF;&#x5206;&#x6389;&#xFF0C;&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
@@ -2235,66 +2208,107 @@ $$
 
 $$
 \begin{align*}
-    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} |\Sigmav^{-1}|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv \right)
+    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} \alpha^{n/2} |\Sigmav^{-1}|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv \right)
 \end{align*}
 $$
 </p>
 
-<p>&#x8FDB;&#x4E00;&#x6B65;&#x6574;&#x7406;&#x5F97;</p>
+<p>&#x5176;&#x4E2D;<span class="mathjax-exps">$\Sigmav = \beta \Phiv^\top \Phiv + \alpha \Iv_n$</span>&#x3001;<span class="mathjax-exps">$\muv = \Sigmav^{-1} (\beta \Phiv^\top \yv)$</span>&#xFF0C;&#x4EE3;&#x5165;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+    \quad - \frac{\beta}{2} \yv^\top &amp; \yv + \frac{1}{2} \muv^\top \Sigmav \muv = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav \class{blue}{\muv} + \muv^\top \class{green}{\Sigmav} \muv) \\
+    &amp; = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav \class{blue}{\Sigmav^{-1} (\beta \Phiv^\top \yv)} + \muv^\top \class{green}{(\beta \Phiv^\top \Phiv + \alpha \Iv_n)} \muv) \\
+    &amp; = - \frac{1}{2} (\beta \yv^\top \yv - 2 \beta \muv^\top \Phiv^\top \yv + \beta \muv^\top \Phiv^\top \Phiv \muv + \alpha \muv^\top \muv) \\
+    &amp; = - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv
 \end{align*}
 $$
 </p>
 
-</section><section vertical="true" data-notes lineno="92" class="slide " data-line="92" data-h="0" data-v="2">
+</section><section><section data-notes lineno="62" class="slide " data-line="62" data-h="0" data-v="0">
 <h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%8C%96%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE">&#x6700;&#x5927;&#x5316;&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
 
 <hr>
-<p>&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$|\Sigmav^{-1}|^{1/2} = |\Sigmav|^{-1/2}$</span>&#xFF0C;&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;</p>
 <p>
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+    \quad \ln p(\yv | \alpha, \beta) &amp; = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv \\
+    &amp; \qquad - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
 \end{align*}
 $$
 </p>
 
-<p>&#x8BBE;<span class="mathjax-exps">$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav$</span>&#x7684;&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\alpha + \lambda_i$</span>&#xFF0C;&#x4E8E;&#x662F;</p>
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\Sigmav = \beta \Phiv^\top \Phiv + \alpha \Iv_n$</span>&#xFF0C;&#x8BBE;<span class="mathjax-exps">$\beta \Phiv^\top \Phiv$</span>&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\{ \lambda_i \}_{i \in [n]}$</span>&#xFF0C;&#x5219;<span class="mathjax-exps">$\Sigmav$</span>&#x7279;&#x5F81;&#x503C;&#x4E3A;<span class="mathjax-exps">$\{ \alpha + \lambda_i \}_{i \in [n]}$</span>&#xFF0C;<span class="mathjax-exps">$\ln |\Sigmav| = \ln \prod_{i \in [n]} (\alpha + \lambda_i) = \sum_{i \in [n]} \ln (\alpha + \lambda_i)$</span></p>
 <p>
 
 $$
 \begin{align*}
-    \quad \frac{\diff \ln |\Sigmav|}{\diff \alpha} = \frac{\diff }{\diff \alpha} \ln \prod_i (\alpha + \lambda_i) = \sum_i \frac{1}{\alpha + \lambda_i}
+    \quad \frac{\diff \ln |\Sigmav|}{\diff \alpha} &amp; = \sum_{i \in [n]} \frac{\diff \ln (\alpha + \lambda_i)}{\diff \alpha} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \\
+    \frac{\diff \ln |\Sigmav|}{\diff \beta} &amp; = \sum_{i \in [n]} \frac{\diff \ln (\alpha + \lambda_i)}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\diff \lambda_i}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\lambda_i}{\beta}
 \end{align*}
 $$
 </p>
 
-<p>&#x5BF9;<span class="mathjax-exps">$\alpha$</span>&#x6C42;&#x5BFC;&#x5E76;&#x4EE4;&#x5BFC;&#x6570;&#x4E3A;&#x96F6;&#x53EF;&#x5F97;</p>
-<p>
-
-$$
-\begin{align*}
-    \quad \frac{n}{2\alpha} - \frac{1}{2} \muv^\top \muv - \frac{1}{2} \sum_i \frac{1}{\alpha + \lambda_i} = 0 \Longrightarrow \alpha \muv^\top \muv = n - \alpha \sum_i \frac{1}{\alpha + \lambda_i}
-\end{align*}
-$$
-</p>
-
-</section></section><section data-notes lineno="134" class="slide " data-line="134" data-h="1" data-v="0">
-<h5 class="mume-header" id="%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9-%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90">&#x6A21;&#x578B;&#x9009;&#x62E9; &#x5B9A;&#x6027;&#x5206;&#x6790;</h5>
+<p class="footnote comments"> &#x6CE8;&#x610F;$\beta \Phiv^\top \Phiv \vv_i = \lambda_i \vv_i$&#xFF0C;&#x4E24;&#x8005;&#x5448;&#x7EBF;&#x6027;&#x5173;&#x7CFB;&#xFF0C;&#x6545;$\diff \lambda_i / \diff \beta = \lambda_i / \beta$&#x3002;</p>
+</section><section vertical="true" data-notes lineno="96" class="slide " data-line="96" data-h="0" data-v="1">
+<h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%8C%96%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE-1">&#x6700;&#x5927;&#x5316;&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
 
 <hr>
+<p>&#x4EE4;&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;&#x5173;&#x4E8E;<span class="mathjax-exps">$\alpha$</span>&#x7684;&#x5BFC;&#x6570;&#x4E3A;&#x96F6;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \alpha} &amp; = \frac{n}{2\alpha} - \frac{1}{2} \muv^\top \muv - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} = 0 \\
+    &amp; \Longrightarrow \alpha \muv^\top \muv = n - \sum_{i \in [n]} \frac{\alpha}{\alpha + \lambda_i} = \sum_{i \in [n]} \frac{\lambda_i}{\alpha + \lambda_i} \triangleq \gamma \\
+    &amp; \Longrightarrow \alpha = \frac{\gamma}{\muv^\top \muv}
+\end{align*}
+$$
+</p>
+
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv = (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} (\beta \Phiv^\top \yv)$</span>&#x90FD;&#x4E0E;<span class="mathjax-exps">$\alpha$</span>&#x76F8;&#x5173;&#xFF0C;&#x6545;&#x4EA4;&#x66FF;&#x6C42;&#x89E3;</p>
 <ul>
-<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5148;&#x9A8C;&#x5F15;&#x5165;<mark>&#x9886;&#x57DF;&#x77E5;&#x8BC6;</mark>&#xFF0C;&#x907F;&#x514D;&#x505A;&#x51FA;&#x6781;&#x7AEF;&#x63A8;&#x65AD;</li>
-<li>&#x65B9;&#x4FBF;&#x52A8;&#x6001;&#x5730;&#x5904;&#x7406;&#x6570;&#x636E;&#xFF0C;&#x4E0A;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x540E;&#x9A8C;&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x5148;&#x9A8C;</li>
+<li>&#x6BCF;&#x8F6E;&#x5148;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;<span class="mathjax-exps">$\alpha$</span>&#x8BA1;&#x7B97;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#xFF0C;&#x518D;&#x6839;&#x636E;&#x6700;&#x65B0;&#x7684;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#x66F4;&#x65B0;<span class="mathjax-exps">$\alpha$</span></li>
+<li><span class="mathjax-exps">$\Phiv^\top \Phiv$</span>&#x7684;&#x7279;&#x5F81;&#x503C;&#x53EF;&#x4EE5;&#x4E8B;&#x5148;&#x7B97;&#x597D;&#xFF0C;&#x4E58;&#x4EE5;<span class="mathjax-exps">$\beta$</span>&#x5C31;&#x662F;<span class="mathjax-exps">$\lambda_i$</span></li>
+</ul>
+</section><section vertical="true" data-notes lineno="121" class="slide " data-line="121" data-h="0" data-v="2">
+<h5 class="mume-header" id="%E6%9C%80%E5%A4%A7%E5%8C%96%E6%A8%A1%E5%9E%8B%E8%AF%81%E6%8D%AE-2">&#x6700;&#x5927;&#x5316;&#x6A21;&#x578B;&#x8BC1;&#x636E;</h5>
+
+<hr>
+<p>&#x4EE4;&#x5BF9;&#x6570;&#x6A21;&#x578B;&#x8BC1;&#x636E;&#x5173;&#x4E8E;<span class="mathjax-exps">$\beta$</span>&#x7684;&#x5BFC;&#x6570;&#x4E3A;&#x96F6;</p>
+<p>
+
+$$
+\begin{align*}
+    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \beta} &amp; = \frac{m}{2\beta} - \frac{1}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\lambda_i}{\beta} = 0 \\
+    &amp; \Longrightarrow \frac{m - \gamma}{\beta} = \| \yv - \Phiv \muv \|_2^2 \\
+    &amp; \Longrightarrow \frac{1}{\beta} = \frac{1}{m - \gamma} \| \yv - \Phiv \muv \|_2^2
+\end{align*}
+$$
+</p>
+
+<p>&#x6CE8;&#x610F;<span class="mathjax-exps">$\muv = (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} (\beta \Phiv^\top \yv)$</span>&#x4E0E;<span class="mathjax-exps">$\beta$</span>&#x76F8;&#x5173;&#xFF0C;&#x6545;&#x4EA4;&#x66FF;&#x6C42;&#x89E3;</p>
+<ul>
+<li><span class="mathjax-exps">$\alpha$</span>&#x3001;<span class="mathjax-exps">$\beta$</span>&#x53EF;&#x4EE5;&#x4E00;&#x8D77;&#x66F4;&#x65B0;</li>
+<li>&#x6BCF;&#x8F6E;&#x5148;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;<span class="mathjax-exps">$\alpha$</span>&#x3001;<span class="mathjax-exps">$\beta$</span>&#x8BA1;&#x7B97;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#xFF0C;&#x518D;&#x6839;&#x636E;&#x6700;&#x65B0;&#x7684;<span class="mathjax-exps">$\gamma$</span>&#x3001;<span class="mathjax-exps">$\muv$</span>&#x66F4;&#x65B0;<span class="mathjax-exps">$\alpha$</span>&#x3001;<span class="mathjax-exps">$\beta$</span></li>
+</ul>
+</section></section><section data-notes lineno="146" class="slide " data-line="146" data-h="1" data-v="0">
+<h5 class="mume-header" id="%E9%A2%91%E7%8E%87-span-stylefont-weight900_vs_span-%E8%B4%9D%E5%8F%B6%E6%96%AF">&#x9891;&#x7387; <span style="font-weight:900"><em>vs.</em></span> &#x8D1D;&#x53F6;&#x65AF;</h5>
+
+<hr>
+<p>&#x5728;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4E2D;&#x7684;&#x533A;&#x522B;&#xFF1A;&#x662F;&#x5426;&#x8003;&#x8651;&#x5148;&#x9A8C;</p>
+<p>&#x5F53;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x91CF;&#x5F88;&#x5927;&#x65F6;&#xFF0C;&#x5148;&#x9A8C; (&#x4F2A;&#x6570;&#x636E;) &#x5C31;&#x65E0;&#x8DB3;&#x8F7B;&#x91CD;&#x4E86;&#xFF0C;&#x4E24;&#x79CD;&#x505A;&#x6CD5;&#x4E0D;&#x4F1A;&#x6709;&#x592A;&#x5927;&#x5DEE;&#x522B;</p>
+<p>&#x5F53;&#x89C2;&#x6D4B;&#x6570;&#x636E;&#x91CF;&#x4E0D;&#x5927;&#x65F6;&#xFF0C;&#x5148;&#x9A8C;&#x5BF9;&#x6A21;&#x578B;&#x6027;&#x80FD;&#x6709;&#x663E;&#x8457;&#x5F71;&#x54CD; (&#x5F52;&#x7EB3;&#x504F;&#x597D;)</p>
+<ul>
+<li>&#x5148;&#x9A8C;&#x662F;&#x4E3B;&#x89C2;&#x7684;&#xFF0C;&#x7EAF;&#x4EBA;&#x4E3A;&#x9009;&#x53D6;&#xFF0C;&#x6CA1;&#x6709;&#x6807;&#x51C6;</li>
+<li>&#x629B;&#x786C;&#x5E01;&#x95EE;&#x9898;&#x9009;&#x8D1D;&#x5854;&#x5206;&#x5E03;&#x505A;&#x5148;&#x9A8C;&#x5C31;&#x662F;&#x56FE;&#x8BA1;&#x7B97;&#x65B9;&#x4FBF;</li>
+<li>&#x5229;&#x7528;&#x5171;&#x8F6D;&#x5148;&#x9A8C;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x663E;&#x5F0F;&#x5730;&#x79EF;&#x5206;&#x6C42;<span class="mathjax-exps">$p(X)$</span>&#xFF0C;&#x8089;&#x773C;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#x7ED3;&#x679C;</li>
 </ul>
 <div class="top2"></div>
-<p>&#x7F3A;&#x70B9;&#xFF1A;&#x6982;&#x7387;&#x4F9D;&#x8D56;&#x4E8E;&#x89C2;&#x6D4B;&#x8005;&#xFF0C;&#x662F;&#x89C2;&#x6D4B;&#x8005;&#x7684;&#x4E3B;&#x89C2;&#x4FE1;&#x5FF5;&#xFF0C;&#x552F;&#x5FC3;&#x4E3B;&#x4E49;&#xFF1F;</p>
-<p><mark>&#x5168;&#x8D1D;&#x53F6;&#x65AF;</mark> (fully Bayesian)&#xFF1A;&#x8003;&#x8651;&#x6240;&#x6709;&#x7684;<span class="mathjax-exps">$\theta$</span>&#xFF0C;&#x6839;&#x636E;&#x540E;&#x9A8C;&#x505A;&#x52A0;&#x6743;&#x5E73;&#x5747;</p>
+<p>&#x5148;&#x9A8C;&#x9700;&#x6709;&#x9002;&#x5F53;&#x7684;&#x81EA;&#x7531;&#x5EA6;&#xFF0C;&#x80FD;&#x901A;&#x8FC7;&#x8C03;&#x6574;&#x53C2;&#x6570;&#x7075;&#x6D3B;&#x8868;&#x793A;&#x9886;&#x57DF;&#x77E5;&#x8BC6;</p>
 </section>
       </div>
     </div>
