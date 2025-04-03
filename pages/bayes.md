@@ -616,7 +616,7 @@ $$
 模型：
 
 - 选定基函数$\phi_0, \ldots, \phi_{n-1}$，其中$\phi_0$为恒取值$1$的基函数
-- 对给定输入$\xv$，输出$y = \phiv (\xv)^\top \wv + \Ncal(\epsilon | 0, \beta^{-1})$，其中$\wv$、$\beta$为参数
+- 对给定输入$\xv$，输出$y = \phiv (\xv)^\top \wv + \Ncal(0, \beta^{-1})$，其中$\wv$、$\beta$为参数
 
 <div class="top4"></div>
 
@@ -718,9 +718,9 @@ $$
 为避免过拟合，约束$\wv$的可行域，问题形式化为
 
 $$
-\begin{align*}
-    \quad \min_\wv \frac{1}{2} \| \yv - \Phiv \wv \|_2^2, \quad \st ~ \frac{1}{2} \| \wv \|_2^2 - \eta \le 0
-\end{align*}
+\begin{align}
+    \quad \min_\wv \frac{1}{2} \| \yv - \Phiv \wv \|_2^2, \quad \st ~ \frac{1}{2} \| \wv \|_2^2 - \eta \le 0 \tag{1}
+\end{align}
 $$
 
 - 目标函数的等高线是椭圆，可行域是圆，最优解$\wv^\star$在其相切处
@@ -736,8 +736,8 @@ $$
 \end{align*}
 $$
 
-- 令关于$\wv$的梯度为零，即是要求梯度平行
-- 关于$\wv$内层优化问题就是正则化最小二乘
+- 令拉格朗日函数$L(\wv, \lambda)$关于$\wv$的梯度为零，即是要求梯度平行
+- 关于$\wv$内层优化问题就是正则化最小二乘，对任意给定$\eta$，都存在一个$\lambda$使其最优解与$(1)$的最优解相同
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -753,12 +753,26 @@ $$
 \end{align*}
 $$
 
-- $\Omega (\wv) = \|\wv\|_2^2 / 2$，{==岭回归==} (ridge regression)，$\wv^\star = (\Phiv^\top \Phiv + \lambda \Iv_n)^{-1} \Phiv^\top \yv$
+- $\Omega (\wv) = \|\wv\|_2^2$，{==岭回归==} (ridge regression)，$\wv^\star = (\Phiv^\top \Phiv + \lambda \Iv_n)^{-1} \Phiv^\top \yv$
 - $\Omega (\wv) = \|\wv\|_1$，{==最小绝对值收敛和选择算子==} (<u>l</u>east <u>a</u>bsolute <u>s</u>hrinkage and <u>s</u>election <u>o</u>perator, {==LASSO==})，可得到稀疏的解
 
 <div class="top4"></div>
 
 正则项的系数$\lambda$是需要通过验证集去挑选的
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 正则化最小二乘
+
+---
+
+数据：20 个样本，$x \sim \Ucal[0,1]$，$y = \cos (3 \pi x  / 2) + \Ncal(0, 1) / 10$
+
+模型：20 阶多项式回归
+
+第一张图无正则项，过拟合，后三张图采用$\ell_2$正则，正则项系数$\lambda$指数递增
+
+@import "../python/linear-regression/linear-regression-regularization.svg" {.center .width90 .top2}
 
 <!-- slide data-notes="" -->
 
