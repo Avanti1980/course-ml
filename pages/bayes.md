@@ -766,13 +766,13 @@ $$
 
 ---
 
-数据：20 个样本，$x \sim \Ucal[0,1]$，$y = \cos (3 \pi x  / 2) + \Ncal(0, 1) / 10$
+数据：$20$个样本，$x \sim \Ucal[0,1]$，$y = \cos (3 \pi x  / 2) + \Ncal(0, 1) / 10$
 
-模型：20 阶多项式回归
+模型：$20$阶多项式基函数，$\ell_2$正则，正则项系数$\lambda$
 
-第一张图无正则项，过拟合，后三张图采用$\ell_2$正则，正则项系数$\lambda$指数递增
+无正则项时过拟合，随着$\lambda$指数递增，抗过拟合越来越好
 
-@import "../python/linear-regression/linear-regression-regularization.svg" {.center .width90 .top2}
+@import "../python/linear-regression/linear-regression-regularization.svg" {.center .width90 .top4}
 
 <!-- slide data-notes="" -->
 
