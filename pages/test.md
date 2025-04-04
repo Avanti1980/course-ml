@@ -29,17 +29,17 @@ presentation:
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 正则化最小二乘
+##### 贝叶斯线性回归
 
 ---
 
-数据：20 个样本，$x \sim \Ucal[0,1]$，$y = \cos (3 \pi x  / 2) + \Ncal(0, 1) / 10$
+数据：$x \sim \Ucal[-1,1]$，$y = x / 2 + \Ncal(0, 0.01)$
 
-模型：20 阶多项式回归
+模型：$f(x) = w_0 + w_1 x$，先验：$(w_0, w_1) \sim \Ncal(\zerov, \Iv / 4)$
 
-第一张图无正则项，过拟合，后三张图采用$\ell_2$正则，正则项系数$\lambda$指数递增
+第一行：$(w_0, w_1)$分布变化，第二行：分布中采样出的 5 条直线
 
-@import "../python/linear-regression/linear-regression-regularization.svg" {.center .width90 .top2}
+@import "../python/linear-regression/plot-prior-post.svg" {.center .width85}
 
 <!-- slide data-notes="" -->
 

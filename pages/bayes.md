@@ -805,6 +805,20 @@ $$
 
 ---
 
+数据：$x \sim \Ucal[-1,1]$，$y = x / 2 + \Ncal(0, 0.01)$
+
+模型：$f(x) = w_0 + w_1 x$，先验：$(w_0, w_1) \sim \Ncal(\zerov, \Iv / 4)$
+
+第一行：$(w_0, w_1)$分布变化，第二行：分布中采样出的 5 条直线
+
+@import "../python/linear-regression/plot-prior-post.svg" {.center .width85}
+
+<!-- slide data-notes="" -->
+
+##### 先验 正则化
+
+---
+
 取$\muv_0 = \zerov$、$\Sigmav_0 = \alpha^{-1} \Iv_n$，$\Sigmav_m^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv_m = \beta \Sigmav_m \Phiv^\top \yv$
 
 $$
@@ -821,7 +835,7 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 贝叶斯线性回归
+##### 先验 正则化
 
 ---
 
