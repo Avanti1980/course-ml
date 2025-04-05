@@ -1171,7 +1171,7 @@ $$
 \end{align*}
 $$
 
-@import "../python/linear-regression/plot-model-evidence.svg" {.center .width80 title="样本数 30，α = 0.05，β = 10，一阶多项式到七阶多项式，对数模型证据在采用三阶多项式时达到最大"}
+@import "../python/linear-regression/plot-model-evidence.svg" {.center .width80 .bottom-4 title="样本数 30，α = 0.05，β = 10，一阶多项式到七阶多项式，对数模型证据在采用三阶多项式时达到最大"}
 
 <!-- slide data-notes="" -->
 
