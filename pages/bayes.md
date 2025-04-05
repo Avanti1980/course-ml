@@ -1157,9 +1157,9 @@ $$
 \end{align*}
 $$
 
-<!-- slide data-notes="" -->
+<!-- slide vertical=true data-notes="" -->
 
-##### 最大化模型证据
+##### 模型证据
 
 ---
 
@@ -1167,8 +1167,23 @@ $$
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) & = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv \\
-    & \qquad - \frac{1}{2} \ln |\Sigmav| - \frac{m}{2} \ln (2 \pi)
+    \quad \ln p(\yv | \alpha, \beta) & = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi)
+\end{align*}
+$$
+
+@import "../python/linear-regression/plot-model-evidence.svg" {.center .width80 title="样本数 30，α = 0.05，β = 10，一阶多项式到七阶多项式，对数模型证据在采用三阶多项式时达到最大"}
+
+<!-- slide data-notes="" -->
+
+##### 最大化模型证据
+
+---
+
+对数模型证据
+
+$$
+\begin{align*}
+    \quad \ln p(\yv | \alpha, \beta) & = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi)
 \end{align*}
 $$
 

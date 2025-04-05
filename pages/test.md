@@ -29,15 +29,19 @@ presentation:
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 预测分布
+##### 模型证据
 
 ---
 
-数据：$x \sim \Ucal[-1,1]$，$y = \sin(\pi x) + \Ncal(0, 0.2)$
+注意$|\Sigmav^{-1}|^{1/2} = |\Sigmav|^{-1/2}$，对数模型证据
 
-模型：四阶多项式，先验：$\wv \sim \Ncal(\zerov, \Iv_5)$
+$$
+\begin{align*}
+    \quad \ln p(\yv | \alpha, \beta) & = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi)
+\end{align*}
+$$
 
-@import "../python/linear-regression/predictive-distribution.svg" {.center .width80}
+@import "../python/linear-regression/plot-model-evidence.svg" {.center .width80 title="样本数 30，α = 0.05，β = 10，一阶多项式到七阶多项式，对数模型证据在采用三阶多项式时达到最大"}
 
 <!-- slide data-notes="" -->
 
