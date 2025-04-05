@@ -1043,6 +1043,18 @@ $$
 \end{align*}
 $$
 
+<!-- slide vertical=true data-notes="" -->
+
+##### 预测分布
+
+---
+
+数据：$x \sim \Ucal[-1,1]$，$y = \sin(\pi x) + \Ncal(0, 0.2)$
+
+模型：四阶多项式，先验：$\wv \sim \Ncal(\zerov, \Iv_5)$
+
+@import "../python/linear-regression/predictive-distribution.svg" {.center .width80}
+
 <!-- slide data-notes="" -->
 
 ##### 全贝叶斯

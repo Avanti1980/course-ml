@@ -29,17 +29,15 @@ presentation:
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 贝叶斯线性回归
+##### 预测分布
 
 ---
 
-数据：$x \sim \Ucal[-1,1]$，$y = x / 2 + \Ncal(0, 0.01)$
+数据：$x \sim \Ucal[-1,1]$，$y = \sin(\pi x) + \Ncal(0, 0.2)$
 
-模型：$f(x) = w_0 + w_1 x$，先验：$(w_0, w_1) \sim \Ncal(\zerov, \Iv / 4)$
+模型：四阶多项式，先验：$\wv \sim \Ncal(\zerov, \Iv_5)$
 
-第一行：$(w_0, w_1)$分布变化，第二行：分布中采样出的 5 条直线
-
-@import "../python/linear-regression/plot-prior-post.svg" {.center .width85}
+@import "../python/linear-regression/predictive-distribution.svg" {.center .width80}
 
 <!-- slide data-notes="" -->
 
