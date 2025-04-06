@@ -1122,17 +1122,21 @@ $$
 \end{align*}
 $$
 
+<div class="top-3"></div>
+
 整理$\wv$的相关项，确定高斯分布的均值、协方差
 
 $$
 \begin{align*}
     \quad E(\wv) & = - \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 - \frac{\alpha}{2} \wv^\top \wv                                                                                                                                                                        \\
-    & = - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \alpha \Iv_n}_{\Sigmav}) \wv + \wv^\top \Sigmav \underbrace{\Sigmav^{-1} (\beta \Phiv^\top \yv)}_{\muv} - \frac{\beta}{2} \yv^\top \yv \\
-    & = - \frac{1}{2} (\wv - \muv)^\top \Sigmav (\wv - \muv) - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv
+    & = - \frac{1}{2} \wv^\top (\underbrace{\beta \Phiv^\top \Phiv + \alpha \Iv_n}_{\Sigmav^{-1}}) \wv + \wv^\top \Sigmav^{-1} \underbrace{\Sigmav (\beta \Phiv^\top \yv)}_{\muv} - \frac{\beta}{2} \yv^\top \yv \\
+    & = - \frac{1}{2} (\wv - \muv)^\top \Sigmav^{-1} (\wv - \muv) - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav^{-1} \muv
 \end{align*}
 $$
 
-<p class="footnote comments"> 对比不难发现，这里的$\muv$就是$\wv$后验的均值，$\Sigmav$是$\wv$后验的精度矩阵</p>
+<div class="top-10"></div>
+
+<p class="footnote comments"> 积分项是似然乘以先验，因此这里的$\muv$、$\Sigmav$就是$\wv$后验的均值、协方差矩阵</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1144,16 +1148,18 @@ $$
 
 $$
 \begin{align*}
-    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} \alpha^{n/2} |\Sigmav^{-1}|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav \muv \right)
+    \quad p(\yv | \alpha, \beta) = \frac{\beta^{m/2} \alpha^{n/2} |\Sigmav|^{1/2}}{(2 \pi)^{m/2}} \exp \left( - \frac{\beta}{2} \yv^\top \yv + \frac{1}{2} \muv^\top \Sigmav^{-1} \muv \right)
 \end{align*}
 $$
 
-其中$\Sigmav = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv = \Sigmav^{-1} (\beta \Phiv^\top \yv)$，代入
+<div class="top-3"></div>
+
+其中$\Sigmav^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$、$\muv = \beta \Sigmav \Phiv^\top \yv$，代入
 
 $$
 \begin{align*}
-    \quad - \frac{\beta}{2} \yv^\top & \yv + \frac{1}{2} \muv^\top \Sigmav \muv = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav \class{blue}{\muv} + \muv^\top \class{green}{\Sigmav} \muv) \\
-    & = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav \class{blue}{\Sigmav^{-1} (\beta \Phiv^\top \yv)} + \muv^\top \class{green}{(\beta \Phiv^\top \Phiv + \alpha \Iv_n)} \muv) \\
+    \quad - \frac{\beta}{2} \yv^\top & \yv + \frac{1}{2} \muv^\top \Sigmav^{-1} \muv = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav^{-1} \class{blue}{\muv} + \muv^\top \class{green}{\Sigmav^{-1}} \muv) \\
+    & = - \frac{1}{2} (\beta \yv^\top \yv - 2 \muv^\top \Sigmav^{-1} \class{blue}{\beta \Sigmav \Phiv^\top \yv} + \muv^\top \class{green}{(\beta \Phiv^\top \Phiv + \alpha \Iv_n)} \muv) \\
     & = - \frac{1}{2} (\beta \yv^\top \yv - 2 \beta \muv^\top \Phiv^\top \yv + \beta \muv^\top \Phiv^\top \Phiv \muv + \alpha \muv^\top \muv) \\
     & = - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv
 \end{align*}
@@ -1165,11 +1171,11 @@ $$
 
 ---
 
-注意$|\Sigmav^{-1}|^{1/2} = |\Sigmav|^{-1/2}$，对数模型证据
+注意$|\Sigmav|^{1/2} = |\Sigmav^{-1}|^{-1/2}$，对数模型证据
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) & = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi)
+    \quad {\small \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav^{-1}| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi) }
 \end{align*}
 $$
 
@@ -1185,16 +1191,19 @@ $$
 
 $$
 \begin{align*}
-    \quad \ln p(\yv | \alpha, \beta) & = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi)
+    \quad {\small \ln p(\yv | \alpha, \beta) = \frac{n}{2} \ln \alpha + \frac{m}{2} \ln \beta - \frac{1}{2} \ln |\Sigmav^{-1}| - \frac{\beta}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{\alpha}{2} \muv^\top \muv - \frac{m}{2} \ln (2 \pi) }
 \end{align*}
 $$
 
-注意$\Sigmav = \beta \Phiv^\top \Phiv + \alpha \Iv_n$，设$\beta \Phiv^\top \Phiv$特征值为$\{ \lambda_i \}_{i \in [n]}$，则$\Sigmav$特征值为$\{ \alpha + \lambda_i \}_{i \in [n]}$，$\ln |\Sigmav| = \ln \prod_{i \in [n]} (\alpha + \lambda_i) = \sum_{i \in [n]} \ln (\alpha + \lambda_i)$
+<div class="top-3"></div>
+
+注意$\Sigmav^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$，设$\beta \Phiv^\top \Phiv$特征值为$\{ \lambda_i \}_{i \in [n]}$，$\Sigmav^{-1}$特征值为$\{ \lambda_i + \alpha \}_{i \in [n]}$
 
 $$
 \begin{align*}
-    \quad \frac{\diff \ln |\Sigmav|}{\diff \alpha} & = \sum_{i \in [n]} \frac{\diff \ln (\alpha + \lambda_i)}{\diff \alpha} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \\
-    \frac{\diff \ln |\Sigmav|}{\diff \beta} & = \sum_{i \in [n]} \frac{\diff \ln (\alpha + \lambda_i)}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\diff \lambda_i}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\lambda_i}{\beta}
+    \quad \ln |\Sigmav^{-1}| & = \ln \prod_{i \in [n]} (\lambda_i + \alpha) = \sum_{i \in [n]} \ln (\lambda_i + \alpha) \\
+    \frac{\diff \ln |\Sigmav^{-1}|}{\diff \alpha} & = \sum_{i \in [n]} \frac{\diff \ln (\lambda_i + \alpha)}{\diff \alpha} = \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} \\
+    \frac{\diff \ln |\Sigmav^{-1}|}{\diff \beta} & = \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} \frac{\diff \lambda_i}{\diff \beta} = \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} \frac{\lambda_i}{\beta}
 \end{align*}
 $$
 
@@ -1210,8 +1219,8 @@ $$
 
 $$
 \begin{align*}
-    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \alpha} & = \frac{n}{2\alpha} - \frac{1}{2} \muv^\top \muv - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} = 0 \\
-    & \Longrightarrow \alpha \muv^\top \muv = n - \sum_{i \in [n]} \frac{\alpha}{\alpha + \lambda_i} = \sum_{i \in [n]} \frac{\lambda_i}{\alpha + \lambda_i} \triangleq \gamma \\
+    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \alpha} & = \frac{n}{2\alpha} - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} - \frac{1}{2} \muv^\top \muv = 0 \\
+    & \Longrightarrow \alpha \muv^\top \muv = n - \sum_{i \in [n]} \frac{\alpha}{\lambda_i + \alpha} = \sum_{i \in [n]} \frac{\lambda_i}{\lambda_i + \alpha} \triangleq \gamma \\
     & \Longrightarrow \alpha = \frac{\gamma}{\muv^\top \muv}
 \end{align*}
 $$
@@ -1231,7 +1240,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \beta} & = \frac{m}{2\beta} - \frac{1}{2} \| \yv - \Phiv \muv \|_2^2 - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\alpha + \lambda_i} \frac{\lambda_i}{\beta} = 0 \\
+    \quad \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \beta} & = \frac{m}{2\beta} - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} \frac{\lambda_i}{\beta} - \frac{1}{2} \| \yv - \Phiv \muv \|_2^2 = 0 \\
     & \Longrightarrow \frac{m - \gamma}{\beta} = \| \yv - \Phiv \muv \|_2^2 \\
     & \Longrightarrow \frac{1}{\beta} = \frac{1}{m - \gamma} \| \yv - \Phiv \muv \|_2^2
 \end{align*}
@@ -1252,8 +1261,8 @@ $$
 
 $$
 \begin{align*}
-    \quad \min_\wv & \frac{1}{2} \| \yv - \Phiv \wv \|_2^2 \Longrightarrow \wv^{\text{ML}} = (\Phiv^\top \Phiv)^{-1} \Phiv^\top \yv \\
-    \min_\wv & \left\{ \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 + \frac{\alpha}{2} \|\wv\|_2^2 \right\} \Longrightarrow \wv^{\text{MAP}} = (\beta \Phiv^\top \Phiv + \alpha \Iv)^{-1} \beta \Phiv^\top \yv
+    \quad \min_\wv & ~ \frac{1}{2} \| \yv - \Phiv \wv \|_2^2 \Longrightarrow \wv^{\text{ML}} = (\Phiv^\top \Phiv)^{-1} \Phiv^\top \yv \\
+    \min_\wv & ~ \left\{ \frac{\beta}{2} \| \yv - \Phiv \wv \|_2^2 + \frac{\alpha}{2} \|\wv\|_2^2 \right\} \Longrightarrow \wv^{\text{MAP}} = (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} \beta \Phiv^\top \yv
 \end{align*}
 $$
 
@@ -1263,7 +1272,7 @@ $$
 \begin{align*}
     \quad \beta \Phiv^\top \Phiv & \underbrace{\begin{bmatrix} \uv_1 & \cdots & \uv_n \end{bmatrix}}_{\Uv} = \underbrace{\begin{bmatrix} \uv_1 & \cdots & \uv_n \end{bmatrix}}_{\Uv} \underbrace{\begin{bmatrix} \lambda_1 \\ & \ddots \\ & & \lambda_n \end{bmatrix}}_{\Lambdav} \\[-4pt]
     \Longrightarrow ~ & \beta \Phiv^\top \Phiv = \Uv \Lambdav \Uv^\top \\
-    & (\beta \Phiv^\top \Phiv)^{-1} = \Uv \Lambdav^{-1} \Uv^\top, ~ (\beta \Phiv^\top \Phiv + \alpha \Iv)^{-1} = \Uv (\Lambdav + \alpha \Iv)^{-1} \Uv^\top
+    & (\beta \Phiv^\top \Phiv)^{-1} = \Uv \Lambdav^{-1} \Uv^\top, ~ (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} = \Uv (\Lambdav + \alpha \Iv_n)^{-1} \Uv^\top
 \end{align*}
 $$
 
@@ -1279,7 +1288,7 @@ $$
 \begin{align*}
     \quad \wv^{\text{ML}} & = (\Phiv^\top \Phiv)^{-1} \Phiv^\top \yv = \Uv \Lambdav^{-1} \Uv^\top \beta \Phiv^\top \yv \\
     & = \begin{bmatrix} \uv_1 & \cdots & \uv_n \end{bmatrix} \begin{bmatrix} \uv_1^\top / \lambda_1 \\ \vdots \\ \uv_n^\top / \lambda_n \end{bmatrix} \beta \Phiv^\top \yv = \sum_{i \in [n]} \uv_i \frac{\beta \uv_i^\top \Phiv^\top \yv}{\lambda_i} \\[4pt]
-    \wv^{\text{MAP}} & = (\beta \Phiv^\top \Phiv + \alpha \Iv)^{-1} \beta \Phiv^\top \yv = \Uv (\Lambdav + \alpha \Iv)^{-1} \Uv^\top \beta \Phiv^\top \yv \\
+    \wv^{\text{MAP}} & = (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} \beta \Phiv^\top \yv = \Uv (\Lambdav + \alpha \Iv_n)^{-1} \Uv^\top \beta \Phiv^\top \yv \\
     & = \begin{bmatrix} \uv_1 & \cdots & \uv_n \end{bmatrix} \begin{bmatrix} \uv_1^\top / (\lambda_1 + \alpha) \\ \vdots \\ \uv_n^\top / (\lambda_n + \alpha) \end{bmatrix} \beta \Phiv^\top \yv = \sum_{i \in [n]} \uv_i \frac{\beta \uv_i^\top \Phiv^\top \yv}{\lambda_i + \alpha}
 \end{align*}
 $$
@@ -1297,8 +1306,8 @@ $$
 在第$i$个轴上，$\wv^{\text{MAP}}$与$\wv^{\text{ML}}$的坐标比值为$\frac{\lambda_i}{\lambda_i + \alpha}$
 
 - 若$\lambda_i \gg \alpha$，则比值接近$1$，$\wv^{\text{MAP}}$很接近于$\wv^{\text{ML}}$，这个方向很重要
-- 若$\lambda_i \ll \alpha$，则比值接近$0$，$\wv^{\text{MAP}}$很接近零，这个方向不重要
-- $\gamma = \sum_{i \in [n]}$表示先验“筛选”出的有效变量个数
+- 若$\lambda_i \ll \alpha$，则比值接近$0$，$\wv^{\text{MAP}}$接近零，这个方向不重要
+- $\gamma = \sum_{i \in [n]} \frac{\lambda_i}{\lambda_i + \alpha}$表示先验“认为”的必要的变量 (有效变量) 个数
 
 <div class="top6"></div>
 
@@ -1308,5 +1317,5 @@ $$
 \end{align*}
 $$
 
-- 类似于极大似然估计高斯分布的方差除以$m$是有偏的，除以$m-1$无偏，因为有一个自由度被用于估计均值和校正极大似然的偏差
-- 贝叶斯线性回归的先验决定用$\gamma$个自由度估计均值和校正极大似然的偏差，因此估计$\beta$除以$m - \gamma$
+- 类似于极大似然估计高斯分布的方差除以$m$是有偏的，除以$m-1$无偏，因为有一个自由度被用于校正极大似然估计均值的偏差
+- 贝叶斯线性回归的先验决定用$\gamma$个自由度校正极大似然估计均值的偏差，因此估计$\beta$除以$m - \gamma$
