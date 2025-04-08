@@ -64,7 +64,7 @@ presentation:
 
 <div class="top2"></div>
 
-输入：$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Xcal \times \Ycal)^m$，近邻数$k$，待预测样本$\xv$
+输入：$D = \{ (\xv_i, y_i) \}_{i \in [m]} \subseteq \Xcal \times \Ycal$，近邻数$k$，待预测样本$\xv$
 
 <div class="top-3"></div>
 
@@ -136,71 +136,77 @@ $$
 
 <!-- slide data-notes="" -->
 
-##### 理论分析 <span style="font-weight:900">1-</span>近邻法
+##### <span style="font-weight:900">1-</span>近邻法 分析
 
 ---
 
-定理：设$(\Xcal, \dist(\cdot, \cdot))$是{==可分度量空间==}，标记集合$\Ycal = \{ 1, -1 \}$，贝叶斯最优分类器$h^\star(\xv) = \argmax_{y \in \Ycal} p(y|\xv)$的错误率为$R^\star$，数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Xcal \times \Ycal)^m$，1-近邻法的泛化错误率为$R_m$，其中下标$m$表示样本数，记$R = \lim_{m \rightarrow \infty} R_m$为渐进泛化错误率，则$R^\star \le R \le 2 R^\star (1 - R^\star)${==几乎必然==}成立
+一些符号：
 
-一些说明：
-
-- 下界是显然的，不可能比贝叶斯最优分类器更好
-- 上界表明 1-近邻法最坏情况下错误率不超过贝叶斯最优分类器的 2 倍
-- 当$R^\star = 0$ (两类完全分开) 或$R^\star = 1/2$ (两类完全重叠) 时，界是{==紧==}的
+- 设输入空间$\Xcal \subseteq \Rbb^n$，类别标记集合$\Ycal = \{ 0, 1\}$
+- 定义在$\Xcal \times \Ycal$上的联合分布$P(X,Y)$，$\Xcal$上的边际分布为$P_\Xcal$
+- 训练集$\Dcal = \{ (\xv_i, y_i) \}_{i \in [m]} \subseteq \Xcal \times \Ycal$，其中每个$(\xv_i, y_i) \overset{\text{iid}}{\sim} P(X,Y)$
+- 记$\eta(\xv) = P(y = 1 | \xv)$，$\Dcal$的生成可以看成先从$P_\Xcal$中独立同分布地采样出$\Dcal_\Xcal = \{ \xv_i \}_{i \in [m]}$，然后对每个$\xv_i$，从$\Bern(\eta(\xv_i))$中采样出$y_i$
+- 贝叶斯最优学习器$h^\star(\xv) = \argmax_{\yhat \in \Ycal} P(\yhat | \xv)$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 名词解释 空间
+##### <span style="font-weight:900">1-</span>近邻法 分析
 
 ---
 
-空间 = 集合 + 结构
+设预测样本为$(\xv, y)$，$\Dcal_\Xcal$按与$\xv$的距离升序排列为$\xv_1, \ldots, \xv_m$，于是 1-近邻的泛化错误率为
 
-- 集合：把需要研究元素放到一起
-- 结构：描述元素必须遵循的规则
+$$
+\begin{align*}
+    \quad \er & (h) = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}, y \sim \Bern(\eta(\xv)), y_1 \sim \Bern(\eta(\xv_1))} [\Ibb(y \ne y_1)] \notag                                                                                                                                     \\
+           & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [\Pbb_{y \sim \Bern(\eta(\xv)), y_1 \sim \Bern(\eta(\xv_1))} (y \ne y_1)] \notag                                                                                                                                   \\
+           & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \eta(\xv) (1 - \eta(\xv_1)) + (1 - \eta(\xv)) \eta(\xv_1) ]                                                                                                                                               \notag \\
+           & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \eta(\xv) (1 - \eta(\xv) + \eta(\xv) - \eta(\xv_1)) \\
+           & \qquad \qquad + (1 - \eta(\xv)) (\eta(\xv) - \eta(\xv) + \eta(\xv_1)) ]       \notag \\
+           & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ 2 \eta(\xv) (1 - \eta(\xv)) + (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ] \notag                                                                                                                               \\
+           & = 2 \Ebb_{\xv \sim P_{\Xcal}} [ \eta(\xv) (1 - \eta(\xv))] + \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ]
+\end{align*}
+$$
 
-<div class="top2"></div>
+其中第一项为在$\xv$处采样 2 次，类别标记不同的概率
 
-代数结构：加法和数乘的 8 条公理，线性空间 (向量空间)
+<!-- slide data-notes="" -->
 
-<div class="top-2"></div>
+##### <span style="font-weight:900">1-</span>近邻法 渐进分析
 
-线性空间无法计算{==元素间的距离==}，从而无法谈{==序列的收敛性==}
+---
 
-引入几何结构刻画元素间的亲疏远近，由弱到强依次有
+随着样本数$m$的增大，$\xv$与 1-近邻的距离单调递减
 
-- 邻域 (开集族)：拓扑空间
-- 距离函数$\dist(\cdot, \cdot): \Xcal \times \Xcal \mapsto \Rbb^+$：度量空间
-- 代数结构 + $\|\cdot\|$：赋范空间，$\dist(\xv, \zv) = \| \xv - \zv \|$
-- 代数结构 + $\langle \cdot, \cdot \rangle$：内积空间，$\| \xv - \zv \|^2 = \langle \xv, \xv \rangle - 2 \langle \xv, \zv \rangle + \langle \zv, \zv \rangle$
-- 范数可通过内积定义，故内积空间也是赋范空间，范数对距离同理
+当$m \rightarrow \infty$时，若$\xv_1 \rightarrow \xv$，则第二项$\rightarrow 0$，只剩第一项
+
+$$
+\begin{align}
+    \quad \er(h) & \rightarrow 2 \Ebb_{\xv \sim P_{\Xcal}} [ \eta(\xv) (1 - \eta(\xv))] \\
+    & = 2 \Ebb_{\xv \sim P_{\Xcal}} [ P(y=1|\xv) P(y=0|\xv) ] \\
+    & = 2 \Ebb_{\xv \sim P_{\Xcal}} [ \underbrace{P(y \ne h^\star(\xv)|\xv)}_{h^\star(\xv)\text{的错误率}\qquad} \underbrace{(1 - P(y \ne h^\star(\xv)|\xv))}_{h^\star(\xv)\text{的准确率}\qquad} ] \\
+    & = 2 \er(h^\star) - 2 \Ebb_{\xv \sim P_{\Xcal}} [P(y \ne h^\star(\xv)|\xv)^2] \\
+    & = 2 \er(h^\star) - 2 \er(h^\star)^2 - \Vbb [P(y \ne h^\star(\xv)|\xv)] \\
+    & \le 2 \er(h^\star) (1 - \er(h^\star))
+\end{align}
+$$
+
+最后只需确定$m \rightarrow \infty$时保证$\xv_1 \rightarrow \xv$的条件
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 名词解释 空间
+##### <span style="font-weight:900">1-</span>近邻法 渐进分析
 
 ---
 
-{==完备性==} (completeness)：对极限运算封闭，柯西序列能收敛
-
-- $\Qbb$不完备，有理数序列$(1 + 1 / n)^n \rightarrow e$，$\Qbb$的完备化是$\Rbb$
-
-<div class="top1"></div>
-
-@import "../dot/space.dot" {.center}
-
-<div class="top-2"></div>
+条件：输入空间是{==可分==}度量空间
 
 {==可分性==} (separability)：具有可数稠密子集
 
 - 若度量空间$\Xcal$的子集$\Mcal$满足对$\forall x \in \Xcal$，$x$的任意邻域与$\Mcal$交集非空，则称$\Mcal$在$\Xcal$中{==稠密==}，$\Qbb$在$\Rbb$中稠密，$\Qbb$可数，因此$\Rbb$可分
 - 可分性限制了空间的复杂度，即便空间中的元素可能是不可数的，但每个元素都可以被一个可数集中的元素无限逼近，而可数集更好处理
 
-<!-- slide vertical=true data-notes="" -->
-
-##### 名词解释 几乎必然
-
----
+<div class="top4"></div>
 
 几乎必然 (almost surely, a.s.) 成立也称{==以概率 1 成立==}
 
@@ -211,57 +217,33 @@ $$
 
 在$[0,1]$上随机挑一个数$x$，$x$几乎必然不等于$0.5$
 
-$$
-\begin{align*}
-    \quad p(x = 0.5) = \int_{0.5}^{0.5} 1 ~ \diff x = 0, \quad p(x \ne 0.5) = 1 - p(x = 0.5) = 1
-\end{align*}
-$$
+<!-- slide vertical=true data-notes="" -->
 
-<div class="top-3"></div>
-
-但$x = 0.5$是有可能的，更强的结论是$p(x \in \Qbb \wedge [0,1]) = 0$
-
-我的批注 用{==测度==} (可粗略理解为集合的大小) 的语言来说，单点集测度为零，有理数集的测度为零 (虽然它有可数无穷个元素)
-
-<!-- slide data-notes="" -->
-
-##### <span style="font-weight:900">1-</span>近邻序列的收敛性
+##### <span style="font-weight:900">1-</span>近邻法 渐进分析
 
 ---
 
-引理：若$(\Xcal, \dist(\cdot, \cdot))$是{==可分==}度量空间，构造数据集序列
-
-$$
-\begin{align*}
-    \quad D_1 = \{ \xv_1 \}, ~ D_2 = \{ \xv_1, \xv_2 \}, ~ \ldots, D_n = \{ \xv_1, \xv_2, \ldots, \xv_n \}, ~ \ldots, ~ \xv_i \overset{\text{iid}}{\sim} \Dcal
-\end{align*}
-$$
-
-<div class="top-3"></div>
-
-对$\forall \xv$，记$\xvhat_n = \mathop{\arg \min}_{\zv \in D_n} \dist (\xv, \zv)$，则 1-近邻序列$\xvhat_n \overset{\text{a.s.}}{\rightarrow} \xv$
+引理：对$\forall \xv \in \Xcal$，设$\{\xvhat_m\}_{m = 1,2, \ldots}$是 1-近邻序列，$\xvhat_m \overset{\text{a.s.}}{\rightarrow} \xv$
 
 证明：记$\xv$的邻域$B_\xv(r)$：以$\xv$为球心、$r$为半径的球
-
-<div class="top-2"></div>
 
 定义空间中的{==好点==}：对$\forall r > 0$有$p(B_\xv(r)) > 0$，于是
 
 $$
 \begin{align*}
-    \quad \lim_{n \rightarrow \infty} p(\dist(\xvhat_n, \xv) > r) = \lim_{n \rightarrow \infty} (1 - p(B_\xv(r)))^n = 0
+    \quad \lim_{m \rightarrow \infty} p(\dist(\xvhat_m, \xv) > r) = \lim_{m \rightarrow \infty} (1 - p(B_\xv(r)))^m = 0
 \end{align*}
 $$
 
 <div class="top-4"></div>
 
-由$r$的任意性知$\lim_{n \rightarrow \infty} p(\dist(\xvhat_n, \xv) = 0) = 1$，从而$\xvhat_n \overset{\text{a.s.}}{\rightarrow} \xv$
+由$r$的任意性知$\lim_{m \rightarrow \infty} p(\dist(\xvhat_m, \xv) = 0) = 1$，从而$\xvhat_m \overset{\text{a.s.}}{\rightarrow} \xv$
 
 已证“好点的 1-近邻序列收敛于自身的概率为 1”，如果“空间中好点的概率也为 1”，则结论成立
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">1-</span>近邻序列的收敛性
+##### <span style="font-weight:900">1-</span>近邻法 渐进分析
 
 ---
 
@@ -283,59 +265,7 @@ $$
 
 <!-- slide data-notes="" -->
 
-##### 理论分析 <span style="font-weight:900">1-</span>近邻法
-
----
-
-定理：设$(\Xcal, \dist(\cdot, \cdot))$是{==可分度量空间==}，标记集合$\Ycal = \{ 1, -1 \}$，贝叶斯最优分类器$h^\star(\xv) = \argmax_{y \in \Ycal} p(y|\xv)$的错误率为$R^\star$，数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Xcal \times \Ycal)^m$，1-近邻法的泛化错误率为$R_m$，其中下标$m$表示样本数，记$R = \lim_{m \rightarrow \infty} R_m$为渐进泛化错误率，则$R^\star \le R \le 2 R^\star (1 - R^\star)${==几乎必然==}成立
-
-思路：在空间可分的条件下，1-近邻序列$\overset{\text{a.s.}}{\rightarrow} \xv$，从而 1-近邻的错误率 $\overset{\text{a.s.}}{\rightarrow}$ 在$\xv$处独立采样两次标记不同的概率
-
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad p(e|\xv) & \overset{\text{a.s.}}{\rightarrow} p(y=1|\xv)p(y=-1|\xv) + p(y=-1|\xv)p(y=1|\xv) \\
-    & = 2 p(y=1|\xv) p(y=-1|\xv) \\
-    & = 2 \underbrace{p(y=h^\star(\xv)|\xv)}_{h^\star(\xv)\text{的正确率}\qquad} \underbrace{(1 - p(y=h^\star(\xv)|\xv))}_{h^\star(\xv)\text{的错误率}\qquad} ~ \longleftarrow \text{接近上界的形式了}
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 理论分析 <span style="font-weight:900">1-</span>近邻法
-
----
-
-证明：记$p (e^\star | \xv) = 1 - p(h^\star(\xv) | \xv)$，则$R^\star = \Ebb_\xv [p (e^\star | \xv)]$
-
-对任意$\xv$，1-近邻法预测出错的概率为
-
-$$
-\begin{align*}
-    \quad p(e|\xv) & = p(y=1|\xv) p(\yhat=-1|\xvhat) + p(y=-1|\xv) p(\yhat=1|\xvhat) \\
-    & \overset{\text{a.s.}}{\rightarrow} 2 p(y=1|\xv) p(y=-1|\xv) = 2 p(e^\star|\xv) (1 - p(e^\star|\xv))
-\end{align*}
-$$
-
-<div class="top-2"></div>
-
-由于$p(e|\xv)$有界，根据勒贝格控制收敛定理
-
-$$
-\begin{align*}
-    \quad p(e) & = \Ebb_\xv [p (e | \xv)] \\
-    & \overset{\text{a.s.}}{\rightarrow} \Ebb_\xv [2 p(e^\star|\xv) (1 - p(e^\star|\xv))] \quad \longleftarrow \text{交换求积分和求极限} \\
-    & = 2 \Ebb_\xv [p (e^\star | \xv)] - 2 \Ebb_\xv [p (e^\star | \xv)^2] \\
-    & = 2 R^\star - 2 ({R^\star}^2 + \var [p (e^\star | \xv)]) \quad \longleftarrow \text{二阶矩 }=\text{ 期望 }^2 + \text{ 方差}  \\
-    & \le 2 R^\star - 2 {R^\star}^2 \\
-    & = 2 R^\star (1 - R^\star)
-\end{align*}
-$$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 理论分析 推广到多类
+##### 推广到多分类
 
 ---
 
@@ -343,11 +273,11 @@ $$
 
 $$
 \begin{align*}
-    \quad p(e|\xv) = 1 - \sum_{j \in [c]} p(j|\xv)^2 = 1 - p(h^\star(\xv)|\xv)^2 - \sum_{j \neq h^\star(\xv)} p(j|\xv)^2
+    \quad p(y \ne h(\xv) | \xv) = 1 - p(y = h^\star(\xv)|\xv)^2 - \sum_{j \neq h^\star(\xv)} p(y = j|\xv)^2
 \end{align*}
 $$
 
-<div class="top-2"></div>
+<div class="top-4"></div>
 
 由柯西不等式
 
@@ -355,71 +285,138 @@ $$
 
 $$
 \begin{align*}
-    \quad \sum_{j \neq h^\star(\xv)} & p(j|\xv)^2 \geq \frac{( \sum_{j \neq h^\star(\xv)} p(j|\xv) )^2}{c-1}  = \frac{(1 - p(h^\star(\xv)|\xv))^2}{c-1} = \frac{p(e^\star|\xv)^2}{c-1}
+    \quad \sum_{j \neq h^\star(\xv)} p(y = j|\xv)^2 \geq \frac{( \sum_{j \neq h^\star(\xv)} p(y = j|\xv) )^2}{c-1}  = \frac{p(y \ne h^\star(\xv)|\xv)^2}{c-1}
 \end{align*}
 $$
 
-<div class="top-2"></div>
+<div class="top-3"></div>
 
-回代有
+回代求期望有
 
-<div class="top-2"></div>
+<div class="top-3"></div>
 
 $$
 \begin{align*}
-    \quad p(e|\xv) & \le 1 - (1 - p(e^\star|\xv))^2 - \frac{p(e^\star|\xv)^2}{c-1} = 2 p(e^\star|\xv) - \frac{c}{c-1} p(e^\star|\xv)^2 \\[4pt]
-    \Longrightarrow R & \le 2 R^\star - \frac{c}{c-1} ({R^\star}^2 + \var [p (e^\star | \xv)]) \le R^\star \left( 2 - \frac{c}{c-1} R^\star \right)
+    \quad p(y \ne h(\xv) | \xv) & \le 1 - (1 - p(y \ne h^\star(\xv)|\xv))^2 - \frac{p(y \ne h^\star(\xv)|\xv)^2}{c-1} = 2 p(e^\star|\xv) - \frac{c}{c-1} p(e^\star|\xv)^2 \\
+    \Longrightarrow \er(h) & \le 2 \er(h^\star) - \frac{c}{c-1} (\er(h^\star)^2 + \Vbb [p (y \ne h^\star(\xv) | \xv)]) \\
+    & \le \er(h^\star) \left( 2 - \frac{c}{c-1} \er(h^\star) \right)
 \end{align*}
 $$
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">k-</span>近邻 vs. <span style="font-weight:900">1-</span>近邻
+##### <span style="font-weight:900">1-</span>近邻法 非渐进分析
 
 ---
 
-当$m \rightarrow \infty$时有$R^\star \le \cdots \le R^{(5)} \le R^{(3)} \le R^{(1)} \le 2 R^\star (1 - R^\star)$
+渐进分析描述的是$m \rightarrow \infty$的情况，实际中只有有限个样本，我们想知道$\er(h)$随着样本数增长以怎样的速度增长
+
+第一项还按前面的方式处理，下面处理第二项
+
+$$
+\begin{align*}
+    \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ]
+\end{align*}
+$$
+
+设$\eta(\cdot)$是$c$-李普希茨连续函数，即$|\eta(\xv) - \eta(\xv_1)| \le c \| \xv - \xv_1 \|_2$，注意$|2 \eta(\xv) - 1| \le 1$，于是
+
+$$
+\begin{align*}
+    \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ] \le c ~ \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \| \xv - \xv_1 \|_2 ]
+\end{align*}
+$$
+
+问题转化为控制$\xv$与其 1-近邻的距离
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 非渐进分析
+
+---
+
+设$\Xcal = [0,1]^n$，将其均匀切分成$r^n$个小立方体$\Ccal_1, \ldots, \Ccal_{r^n}$，若$\xv$、$\xv_1$落在同一个$\Ccal_i$，则其距离$\le \sqrt{n}/r$，否则其距离$\le \sqrt{n}$
+
+记与$\Dcal_{\Xcal}$有交集的小正方体的并集为$\Acal$、与$\Dcal_{\Xcal}$无交集的小正方体的并集为$\Bcal$
+
+$$
+\begin{align*}
+    \quad \Acal = \cup_{i: \Ccal_i \cap \Dcal_{\Xcal} = \emptyset} \Ccal_i, \quad \Bcal = \Xcal \setminus \Acal = \cup_{i: \Ccal_i \cap \Dcal_{\Xcal} \ne \emptyset} \Ccal_i
+\end{align*}
+$$
+
+$\xv \in \Acal$、$\xv \in \Bcal$恰有一个发生，前者代表$\xv$与任何训练样本都不在一个$\Ccal_i$内，后者代表$\xv$与某个训练样本在同一个$\Ccal_i$内，于是
+
+$$
+\begin{align*}
+    \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \| \xv - \xv_1 \|_2 ] \le \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} \left[ \Pbb (\Acal) \sqrt{n} + \Pbb (\Bcal) \frac{\sqrt{n}}{r} \right]
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### <span style="font-weight:900">1-</span>近邻法 非渐进分析
+
+---
+
+对于$\Pbb (\Acal)$有
+
+$$
+\begin{align*}
+    \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} [\Pbb (\Acal)]
+     & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} [\Pbb (\cup_{i: \Ccal_i \cap \Dcal_{\Xcal} = \emptyset} \Ccal_i) ] \\
+     & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} \left[ \sum_{i \in [r^n]} \Pbb (\Ccal_i) \Ibb(\Ccal_i \cap \Dcal_{\Xcal} = \emptyset) \right] \\
+     & = \sum_{i \in [r^n]} \Pbb (\Ccal_i) \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} \left[ \Ibb(\Ccal_i \cap \Dcal_{\Xcal} = \emptyset) \right] \\
+     & = \sum_{i \in [r^n]} \Pbb (\Ccal_i) (1 - \Pbb (\Ccal_i))^m \le \sum_{i \in [r^n]} \Pbb (\Ccal_i) \exp (- \Pbb (\Ccal_i) m) \\
+     & \le r^n \max_{i \in [r^n]} \Pbb (\Ccal_i) \exp (- \Pbb (\Ccal_i) m) \le \frac{r^n}{me}
+\end{align*}
+$$
 
 <div class="top-2"></div>
 
-在$m$有限的情况下，$k$并不是越大越好，越大越欠拟合
+其中第一个不等号是根据$1 - x \le \exp(-x)$、第三个不等号是根据$a \exp (- ma) \le 1/me$
 
-例子：$p(y=1) = p(y=-1) = 1/2$，$p(x | y=1)= \Ucal(99,101)$，$p(x | y=-1) = \Ucal(-101,-99)$
+<!-- slide vertical=true data-notes="" -->
 
-- 1-近邻出错：训练集中只有一类样本而待预测样本为另一类
-- 3-近邻出错：训练集中某一类样本数$\le 1$，且待预测样本也为该类
-- 5-近邻出错：训练集中某一类样本数$\le 2$，且待预测样本也为该类
-
-<div class="top3"></div>
-
-$$
-\begin{align*}
-    \quad & p(e|k=1) = \frac{1}{2} \frac{1}{2^m} + \frac{1}{2} \frac{1}{2^m}, \quad p(e|k=3) = p(e|k=1) + 2 \binom{m}{1} \frac{1}{2} \frac{1}{2^m} \\
-    & p(e|k=5) = p(e|k=1) + p(e|k=3) + 2 \binom{m}{2} \frac{1}{2} \frac{1}{2^m}
-\end{align*}
-$$
-
-<!-- slide data-notes="" -->
-
-##### <span style="font-weight:900">k-</span>近邻法 变种
+##### <span style="font-weight:900">1-</span>近邻法 非渐进分析
 
 ---
 
-{==加权==}多数投票，例如权重取每个近邻到待预测样本距离的倒数
-
-理论上加权没有优势，可以证明：最近邻权重取$1/k + \epsilon$、其它近邻权重取$1/k - \epsilon/(k-1)$时，泛化错误率大于标准的多数投票
-
-<div class="top4"></div>
-
-{==带拒绝的==}多数投票，例如$k$个近邻中至少$l$个近邻都属于同一类时才进行预测，设其错误率为$R^{(k,l)}$，理论上可以证明
+对于$\Pbb (\Bcal)$，直接用其平凡上界$\Pbb (\Bcal) \le 1$，全部回代有
 
 $$
 \begin{align*}
-    \quad R^{(k,k)} \le R^{(k,k-1)} \le \cdots \le R^{(k,\lceil k/2 \rceil+1)} \le R^\star \le R^{(k,\lceil k/2 \rceil)} = R^{(k)}
+    \quad \er(h) \le 2 \er(h^\star) (1-\er(h^\star)) + c \sqrt{n} \left( \frac{r^n}{me} + \frac{1}{r} \right)
 \end{align*}
 $$
 
-我的批注 这里错误率低于贝叶斯最优分类器是因为计算错误率时只统计了预测的样本，难预测的样本都被拒绝了，没算在内
+<div class="top-2"></div>
+
+取$r = m^{\frac{1}{n+1}}$可得
+
+$$
+\begin{align*}
+    \quad \er(h) \le 2 \er(h^\star) (1-\er(h^\star)) + 2 c \sqrt{n} m^{\frac{-1}{n+1}}
+\end{align*}
+$$
+
+令$2 c \sqrt{n} m^{\frac{-1}{n+1}} \le \epsilon$可知$m \ge (\frac{2 c \sqrt{n}}{\epsilon})^{n+1}$，即要想控制$\xv$与 1-近邻的距离，所需样本数关于维度呈指数增长，这称为{==维度灾难==} (curse of dimensionality)
+
+<!-- slide data-notes="" -->
+
+##### <span style="font-weight:900">k-</span>近邻法 非渐进分析
+
+---
+
+对于$k > 1$的情形，可仿照前面的思路证明
+
+$$
+\begin{align*}
+    \quad \er(h) \le \left( 1 + \sqrt{\frac{8}{k}} \right) \er(h^\star) + \left( 2k + \left( 2 + \sqrt{\frac{8}{k}} \right) c \sqrt{n} \right) m^{-\frac{1}{n+1}}
+\end{align*}
+$$
+
+增大$k$可以改善$\er(h^\star)$的系数，但会增加第二项，因此$k$并不是越大越好
 
 <!-- slide data-notes="" -->
 
@@ -453,44 +450,3 @@ $l^d \approx k / m$，则$l \approx \sqrt[d]{k/m}$，取$m=1000$、$k=10$
 
 @import "../python/dimension-curse.svg" {.center .width78 .top2}
 
-<!-- slide data-notes="" -->
-
-##### 维度灾难 超平面模型
-
----
-
-$\av = [a_1; a_2; \ldots]$、$\bv = [b_1; b_2; \ldots]$，$\dist(\av,\bv) = \sqrt{\sum_j (a_j - b_j)^2}$
-
-<div class="top-2"></div>
-
-随着维度$d$增大，参与求和的分量越来越多，距离越来越大
-
-引入超平面$w_1 x_1 + \cdots + w_d x_d + c = 0$
-
-<div class="top-2"></div>
-
-现假设维度$d \rightarrow d+1$，$a_{d+1}, w_{d+1} \overset{\text{iid}}{\sim} \Ucal(0,1)$，点$\av$到超平面距离
-
-$$
-\begin{align*}
-    \quad \frac{|w_1 a_1 + \cdots + w_d a_d + c|}{\sqrt{w_1^2 + \cdots + w_d^2}} \longrightarrow \frac{|w_1 a_1 + \cdots + w_d a_d + \class{blue}{w_{d+1} a_{d+1}} + c|}{\sqrt{w_1^2 + \cdots + w_d^2 + \class{blue}{w_{d+1}^2}}}
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
-点到超平面的距离能相对保持稳定，不受维度增加的影响
-
-我的批注 高维空间中，感知机、对率回归、支持向量机等超平面模型往往效果很好
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 维度灾难 超平面模型
-
----
-
-高维空间中，与点和点之间的距离比，点到超平面的距离很小
-
-当数据集有轻微扰动时，超平面模型也会发生变化，改变对部分样本的预测结果
-
-这种扰动现在流行称为{==对抗样本==} (adversarial sample)，这种现象也通常归因于神经网络的模型复杂性，谬之大矣
