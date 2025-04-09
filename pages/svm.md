@@ -409,17 +409,73 @@ $$
 
 ---
 
-支持向量机：
+训练：
 
 $$
 \begin{align*}
     \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i,\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0 \\
-    & \text{预测：} \wv^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \phi(\xv_i)^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \kappa(\xv_i, \zv) + b
+    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i,\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
 \end{align*}
 $$
 
-<div class="top-4"></div>
+预测：
+
+$$
+\begin{align*}
+    \quad \wv^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \phi(\xv_i)^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \kappa(\xv_i, \zv) + b
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 正定核函数
+
+---
+
+对称函数$\kappa: \Xcal \times \Xcal \mapsto \Rbb$可作为某个希尔伯特空间$\Hbb$的内积函数，当且仅当它是正定 (positive semidefinite) 核，即对任意数据集$\{ \xv_i \}_{i \in [m]} \subseteq \Xcal$，核矩阵$\Kv = [\kappa(\xv_i, \xv_j)]_{i,j \in [m]}$是半正定矩阵
+
+利用已知正定核构造新的正定核，例如$\kappa_1 + \kappa_2$、$\kappa_1 \cdot \kappa_2$等
+
+正向：若$\kappa(\xv_i, \xv_j) = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\Hbb}$、$\kappa(\xv, \xv) = \| \phi(\xv) \|_{\Hbb}^2 \ge 0$
+
+$$
+\begin{align*}
+    \quad \av^\top \Kv \av & = \sum_{i \in [m]} \sum_{j \in [m]} a_i a_j \kappa(\xv_i, \xv_j) = \left\langle \sum_{i \in [m]} a_i \phi(\xv_i), \sum_{j \in [m]} a_j \phi(\xv_j) \right\rangle_{\Hbb} \\
+    & = \left\| \sum_{i \in [m]} a_i \phi(\xv) \right\|_{\Hbb}^2 \ge 0
+\end{align*}
+$$
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 正定核函数
+
+---
+
+反向：考虑$\Xcal \mapsto \Rbb$的所有函数构成的空间$\Rbb^{\Xcal} = \{ f: \Xcal \mapsto \Rbb \}$，对$\forall \xv \in \Xcal$，函数$\kappa(\cdot, \xv) \in \Rbb^{\Xcal}$
+
+考虑所有$\kappa(\cdot, \xv)$张成的线性空间$\Hcal$，定义
+
+$$
+\begin{align*}
+    \quad \left\langle \sum_i a_i \kappa(\cdot, \xv_i), \sum_j b_j \kappa(\cdot, \xv'_j) \right\rangle_{\Hcal} = \sum_{i,j} a_i b_j \kappa(\xv_i, \xv'_j) = \av^\top \Kv \bv
+\end{align*}
+$$
+
+验证内积的条件：加法线性、数乘线性、对称性、非负性
+
+记$\phi: \xv \mapsto \kappa(\cdot, \xv)$，于是
+
+$$
+\begin{align*}
+    \quad \kappa(\xv_i, \xv_j) = \langle \kappa(\cdot, \xv_i), \kappa(\cdot, \xv_j) \rangle_{\Hcal} = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\Hcal}
+\end{align*}
+$$
+
+<!-- slide data-notes="" -->
+
+##### 软间隔支持向量机
+
+---
 
 问题：
 
@@ -429,25 +485,6 @@ $$
 <div class="top2"></div>
 
 方案：允许约束$y_i (\wv^\top \phi(\xv_i) + b) \ge 1$对少数样本不成立
-
-<!-- slide data-notes="" -->
-
-##### 软间隔支持向量机
-
----
-
-支持向量机：
-
-$$
-\begin{align*}
-    \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i,\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
-
-<div class="top-2"></div>
-
-现允许约束$y_i (\wv^\top \phi(\xv_i) + b) \ge 1$对少数样本不成立
 
 $$
 \begin{align*}
@@ -599,11 +636,65 @@ $$
 
 @import "../python/surrogate-loss.svg" {title="各种替代损失函数" .center .top4 .width70}
 
+<!-- slide vertical=true data-notes="" -->
+
+##### 问题核化条件
+
+---
+
+表示定理 (representer theorem)：考虑一般形式的问题
+
+$$
+\begin{align*}
+    \quad \min_{\wv} \left\{ f( \langle \wv, \phi(\xv_1) \rangle, \ldots, \langle \wv, \phi(\xv_m) \rangle ) + \Omega(\| \wv \|) \right\}
+\end{align*}
+$$
+
+<div class="top-4"></div>
+
+其中$f: \Rbb^m \mapsto \Rbb$是任意函数，$\Omega: \Rbb_+ \mapsto \Rbb$是单调增函数，则最优解$\wv^\star$是$\phi(\xv_1), \ldots, \phi(\xv_m)$的线性组合
+
+正交分解：$\wv = \uv + \vv$，其中$\uv \in \span \{ \phi(\xv_i) \}_{i \in [m]}$
+
+- $f( \langle \wv, \phi(\xv_1) \rangle, \ldots, \langle \wv, \phi(\xv_m) \rangle ) = f( \langle \uv, \phi(\xv_1) \rangle, \ldots, \langle \uv, \phi(\xv_m) \rangle )$
+- $\Omega(\| \wv \|) = \Omega(\sqrt{\| \uv \|^2 + \| \vv \|^2 }) \ge \Omega(\sqrt{\| \uv \|^2}) = \Omega(\| \uv \|)$
+
+<div class="top2"></div>
+
+即$\wv \rightarrow \uv$后不改变损失项的值，但可以减少正则项的值
+
 <!-- slide data-notes="" -->
+
+##### 间隔 泛化
+
+---
+
+设$\text{VC}(\Hcal) = d$，ERM 算法至少以$1 - \delta$的概率有
+
+$$
+\begin{align*}
+    \quad R (h_D^{\text{ERM}}) \le R_D (h_D^{\text{ERM}}) + \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}}
+\end{align*}
+$$
+
+设$\Hcal$是$\Rbb^n$中的超平面集合，$\VC$维为$n+1$，若采用高斯核做特征映射，$\VC$维为无穷，上面的泛化界没有意义
+
+支持向量机的$\Hcal$是$\Rbb^n$中的大间隔超平面集合
+
+$$
+\begin{align*}
+    \quad R (h) \le R_D (h) + 4 \sqrt{\frac{r^2}{m \rho^2}} + \sqrt{\frac{\ln \log_2 (2 r / \rho) }{m}} + \sqrt{\frac{\log (2 / \delta)}{2m}}
+\end{align*}
+$$
+
+<div class="top-3"></div>
+
+泛化界不依赖$\VC$维
+
+<!-- slide data-notes="vertical=true " -->
 
 ##### 模型汇总
 
 ---
 
 @import "../python/binary-classif.svg" {title="" .center .top4 .width90}
-
