@@ -390,7 +390,7 @@ $$
 $$
 \begin{align*}
     \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} ~ \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
 \end{align*}
 $$
 
@@ -399,7 +399,7 @@ $$
 $$
 \begin{align*}
     \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \class{blue}{\phi(\xv_i)} + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} ~ \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\phi(\xv_i)^\top \phi(\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\phi(\xv_i)^\top \phi(\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
 \end{align*}
 $$
 
@@ -532,8 +532,8 @@ $$
 
 $$
 \begin{align*}
-    \quad & \min_{\wv,b} ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\} \\
-    \quad & \max_{0 \le \alpha_i \le C} ~ \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \kappa(\xv_i,\xv_j) + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    \quad & \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\} \\
+    \quad & \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \kappa(\xv_i,\xv_j) + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
 \end{align*}
 $$
 
@@ -558,7 +558,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \min_{\wv,b} ~ \Bigg\{ \frac{1}{2} \underbrace{\|\wv\|_2^2}_{\text{正则化项}} + C\sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{损失函数}} \Bigg\}
+    \quad \min_{\wv,b} \Bigg\{ \frac{1}{2} \underbrace{\|\wv\|_2^2}_{\text{正则化项}} + C\sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{损失函数}} \Bigg\}
 \end{align*}
 $$
 
@@ -580,7 +580,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \min_{\wv,b} ~ \Bigg\{ \frac{1}{2} \underbrace{\|\wv\|_2^2}_{\text{正则化项}} + C\sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{损失函数}} \Bigg\}
+    \quad \min_{\wv,b} \Bigg\{ \frac{1}{2} \underbrace{\|\wv\|_2^2}_{\text{正则化项}} + C\sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{损失函数}} \Bigg\}
 \end{align*}
 $$
 
@@ -598,3 +598,12 @@ $$
 ---
 
 @import "../python/surrogate-loss.svg" {title="各种替代损失函数" .center .top4 .width70}
+
+<!-- slide data-notes="" -->
+
+##### 模型汇总
+
+---
+
+@import "../python/binary-classif.svg" {title="" .center .top4 .width90}
+

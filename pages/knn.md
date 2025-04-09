@@ -449,4 +449,3 @@ $l^d \approx k / m$，则$l \approx \sqrt[d]{k/m}$，取$m=1000$、$k=10$
 在各维度下随机生成$1000$对样本，当维度很高时，任意一对样本的距离会集中在很小的范围内，没有比较的意义
 
 @import "../python/dimension-curse.svg" {.center .width78 .top2}
-
