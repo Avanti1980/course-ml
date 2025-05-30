@@ -186,7 +186,7 @@ $$
     & = 2 \Ebb_{\xv \sim P_{\Xcal}} [ P(y=1|\xv) P(y=0|\xv) ] \\
     & = 2 \Ebb_{\xv \sim P_{\Xcal}} [ \underbrace{P(y \ne h^\star(\xv)|\xv)}_{h^\star(\xv)\text{的错误率}\qquad} \underbrace{(1 - P(y \ne h^\star(\xv)|\xv))}_{h^\star(\xv)\text{的准确率}\qquad} ] \\
     & = 2 \er(h^\star) - 2 \Ebb_{\xv \sim P_{\Xcal}} [P(y \ne h^\star(\xv)|\xv)^2] \\
-    & = 2 \er(h^\star) - 2 \er(h^\star)^2 - \Vbb [P(y \ne h^\star(\xv)|\xv)] \\
+    & = 2 \er(h^\star) - 2 \er(h^\star)^2 - 2 \Vbb [P(y \ne h^\star(\xv)|\xv)] \\
     & \le 2 \er(h^\star) (1 - \er(h^\star))
 \end{align}
 $$
@@ -337,7 +337,7 @@ $$
 
 设$\Xcal = [0,1]^n$，将其均匀切分成$r^n$个小立方体$\Ccal_1, \ldots, \Ccal_{r^n}$，若$\xv$、$\xv_1$落在同一个$\Ccal_i$，则其距离$\le \sqrt{n}/r$，否则其距离$\le \sqrt{n}$
 
-记与$\Dcal_{\Xcal}$有交集的小正方体的并集为$\Acal$、与$\Dcal_{\Xcal}$无交集的小正方体的并集为$\Bcal$
+记与$\Dcal_{\Xcal}$无交集的小正方体的并集为$\Acal$、与$\Dcal_{\Xcal}$有交集的小正方体的并集为$\Bcal$
 
 $$
 \begin{align*}

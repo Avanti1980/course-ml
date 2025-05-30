@@ -441,7 +441,7 @@ $$
 $$
 \begin{align*}
     \quad \av^\top \Kv \av & = \sum_{i \in [m]} \sum_{j \in [m]} a_i a_j \kappa(\xv_i, \xv_j) = \left\langle \sum_{i \in [m]} a_i \phi(\xv_i), \sum_{j \in [m]} a_j \phi(\xv_j) \right\rangle_{\Hbb} \\
-    & = \left\| \sum_{i \in [m]} a_i \phi(\xv) \right\|_{\Hbb}^2 \ge 0
+    & = \left\| \sum_{i \in [m]} a_i \phi(\xv_i) \right\|_{\Hbb}^2 \ge 0
 \end{align*}
 $$
 
