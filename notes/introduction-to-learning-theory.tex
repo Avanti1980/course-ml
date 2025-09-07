@@ -14,72 +14,72 @@
 一些符号说明：
 
 \begin{enumerate}
-    \item 输入空间$\Xcal \subseteq \Rbb^n$，类别标记集合$\Ycal = \{ 1, -1\}$
-    \item 未知分布$P$定义在$\Zcal = \Xcal \times \Ycal$上
-    \item 数据集$\Dcal = \{ (x_i, y_i) \}_{i \in [m]} \in \Zcal^m$，其中对$\forall i: (x_i, y_i) \iid P$
-    \item 设学习算法$A$考虑的假设空间为$\Hcal$，则$A: \cup_{m=1}^\infty \Zcal^m \mapsto \Hcal$是任意数据集到$\Hcal$的映射
-    \item 对任意假设$h$，其泛化错误率和在数据集$\Dcal$上的经验错误率为
+    \item 输入空间$\xc \subseteq \rb^n$，类别标记集合$\yc = \{ 1, -1\}$
+    \item 未知分布$P$定义在$\zc = \xc \times \yc$上
+    \item 数据集$\dc = \{ (x_i, y_i) \}_{i \in [m]} \in \zc^m$，其中对$\forall i: (x_i, y_i) \iid P$
+    \item 设学习算法$A$考虑的假设空间为$\hc$，则$A: \cup_{m=1}^\infty \zc^m \mapsto \hc$是任意数据集到$\hc$的映射
+    \item 对任意假设$h$，其泛化错误率和在数据集$\dc$上的经验错误率为
           \begin{align*}
-              \er (h) = P \{ (x, y) \in \Zcal \mid h(x) \ne y \} = \Ebb_{(x, y) \sim P} [\Ibb(h(x) \ne y)], \quad \er_\Dcal (h) = \frac{1}{m} \sum_{i \in [m]} \Ibb(h(x_i) \ne y_i)
+              \er (h) = P \{ (x, y) \in \zc \mid h(x) \ne y \} = \eb_{(x, y) \sim P} [\ib(h(x) \ne y)], \quad \er_\dc (h) = \frac{1}{m} \sum_{i \in [m]} \ib(h(x_i) \ne y_i)
           \end{align*}
-    \item $\Hcal$中泛化错误率最小的假设$h^\star = \argmin_{h \in \Hcal} \er(h)$
+    \item $\hc$中泛化错误率最小的假设$h^\star = \argmin_{h \in \hc} \er(h)$
 \end{enumerate}
 
 \section{学习的形式化定义}
 
 \begin{definition} [可学习]
-    设$\Hcal$是$\Xcal \mapsto \{ 1, -1\}$的函数类，若对任意给定的
+    设$\hc$是$\xc \mapsto \{ 1, -1\}$的函数类，若对任意给定的
     \begin{enumerate}
         \item 准确率参数$\epsilon \in (0,1)$
         \item 置信度参数$\delta \in (0,1)$
     \end{enumerate}
-    存在$m_0 (\epsilon, \delta)$使得对任意$m \ge m_0 (\epsilon, \delta)$和任意分布$P$，数据集$\Dcal \sim P^m$，学习算法$A$以至少$1 - \delta$的概率输出一个$\epsilon$-好的假设，即
+    存在$m_0 (\epsilon, \delta)$使得对任意$m \ge m_0 (\epsilon, \delta)$和任意分布$P$，数据集$\dc \sim P^m$，学习算法$A$以至少$1 - \delta$的概率输出一个$\epsilon$-好的假设，即
     \begin{align*}
-        P^m \{ \Dcal \in \Zcal^m \mid \er(A(\Dcal)) < \er(h^\star) + \epsilon \} \ge 1 - \delta
+        P^m \{ \dc \in \zc^m \mid \er(A(\dc)) < \er(h^\star) + \epsilon \} \ge 1 - \delta
     \end{align*}
-    则称$\Hcal$对于$A$是可学习的。
+    则称$\hc$对于$A$是可学习的。
 \end{definition}
 
 \begin{remark}
-    分布$P^m$定义在$\Zcal^m$上，其输入是$\Zcal^m$的子集(包含$m$个样本的数据集的集合)，输出是其测度。为保持符号系统的简洁，后文省略$\Dcal \in \Zcal^m$。
+    分布$P^m$定义在$\zc^m$上，其输入是$\zc^m$的子集(包含$m$个样本的数据集的集合)，输出是其测度。为保持符号系统的简洁，后文省略$\dc \in \zc^m$。
 \end{remark}
 
-由于泛化错误率依赖未知分布$P$，不可计算，考虑经验错误率最小化(empirical risk minimization, ERM)算法，其输出$h_\Dcal^\erm = \argmin_{h \in \Hcal} \er_\Dcal (h)$，于是
+由于泛化错误率依赖未知分布$P$，不可计算，考虑经验错误率最小化(empirical risk minimization, ERM)算法，其输出$h_\dc^\erm = \argmin_{h \in \hc} \er_\dc (h)$，于是
 \begin{align} \label{eq-estimation-error}
     \begin{split}
-        \er(h_\Dcal^\erm) - \er(h^\star) & = \er(h_\Dcal^\erm) - \er_{\Dcal} (h_\Dcal^\erm) + \er_{\Dcal} (h_\Dcal^\erm) - \er(h^\star)  \\
-                                         & \le \er(h_\Dcal^\erm) - \er_{\Dcal} (h_\Dcal^\erm) + \er_{\Dcal} (h^\star) - \er(h^\star)     \\
-                                         & \le |\er_{\Dcal} (h_\Dcal^\erm) - \er(h_\Dcal^\erm)| + |\er_{\Dcal} (h^\star) - \er(h^\star)|
+        \er(h_\dc^\erm) - \er(h^\star) & = \er(h_\dc^\erm) - \er_{\dc} (h_\dc^\erm) + \er_{\dc} (h_\dc^\erm) - \er(h^\star)  \\
+                                         & \le \er(h_\dc^\erm) - \er_{\dc} (h_\dc^\erm) + \er_{\dc} (h^\star) - \er(h^\star)     \\
+                                         & \le |\er_{\dc} (h_\dc^\erm) - \er(h_\dc^\erm)| + |\er_{\dc} (h^\star) - \er(h^\star)|
     \end{split}
 \end{align}
 因此我们需要一个刻画$|\text{经验错误率} - \text{泛化错误率}|$上界的工具。注意给定$h$，经验错误率
 \begin{align*}
-    \er_\Dcal (h) = \frac{1}{m} \sum_{i \in [m]} \Ibb(h(x_i) \ne y_i) \triangleq \frac{1}{m} \sum_{i \in [m]} X_i
+    \er_\dc (h) = \frac{1}{m} \sum_{i \in [m]} \ib(h(x_i) \ne y_i) \triangleq \frac{1}{m} \sum_{i \in [m]} X_i
 \end{align*}
-其中$X_i = \Ibb(h(x_i) \ne y_i) \iid \Bern(\er(h))$，因此其期望就等于$\er(h)$，故刻画rv偏离其均值程度的集中不等式可以为我们所用：
+其中$X_i = \ib(h(x_i) \ne y_i) \iid \Bern(\er(h))$，因此其期望就等于$\er(h)$，故刻画rv偏离其均值程度的集中不等式可以为我们所用：
 \begin{enumerate}
-    \item 注意$m \cdot \er_\Dcal (h) = \sum_{i \in [m]} X_i \sim \Bin(\er(h), m)$，因此根据Chebyshev's不等式有
+    \item 注意$m \cdot \er_\dc (h) = \sum_{i \in [m]} X_i \sim \Bin(\er(h), m)$，因此根据Chebyshev's不等式有
           \begin{align*}
-              P^m \{ |\er_\Dcal (h) - \er (h)| \ge \epsilon \}
-               & = P^m \{ |m \cdot \er_\Dcal (h) - m \cdot \er (h)|^2 \ge m^2 \epsilon^2 \}                                                     \\
+              P^m \{ |\er_\dc (h) - \er (h)| \ge \epsilon \}
+               & = P^m \{ |m \cdot \er_\dc (h) - m \cdot \er (h)|^2 \ge m^2 \epsilon^2 \}                                                     \\
                & \le \frac{m \cdot \er(h) (1 - \er(h))}{m^2 \epsilon^2} = \frac{\er(h) (1 - \er(h))}{m \epsilon^2} \le \frac{1}{4 m \epsilon^2}
           \end{align*}
     \item 注意$X_i \in [0, 1]$，因此根据Hoeffding's不等式有
           \begin{align*}
-              P^m \{ \er_\Dcal (h) - \er (h) \ge \epsilon \}
-               & = P^m \{ m \cdot \er_\Dcal (h) - m \cdot \er (h) \ge m \epsilon \}                                \\
+              P^m \{ \er_\dc (h) - \er (h) \ge \epsilon \}
+               & = P^m \{ m \cdot \er_\dc (h) - m \cdot \er (h) \ge m \epsilon \}                                \\
                & \le \exp \left(\frac{-2 m^2 \epsilon^2}{\sum_{i \in [m]} (1-0)^2} \right) = \exp(-2 m \epsilon^2)
           \end{align*}
-          对称的有$P^m \{ \er_\Dcal (h) - \er (h) \le -\epsilon \} \le \exp(-2 m \epsilon^2)$，结合union bound有
+          对称的有$P^m \{ \er_\dc (h) - \er (h) \le -\epsilon \} \le \exp(-2 m \epsilon^2)$，结合union bound有
           \begin{align*}
-              P^m \{ |\er_\Dcal (h) - \er (h)| \ge \epsilon \} \le 2 \exp(-2 m \epsilon^2)
+              P^m \{ |\er_\dc (h) - \er (h)| \ge \epsilon \} \le 2 \exp(-2 m \epsilon^2)
           \end{align*}
 \end{enumerate}
 当$m \epsilon^2 \ge 2$时，Hoeffding's不等式更紧。令$2 \exp(-2 m \epsilon^2) = \delta$可得$\epsilon = \sqrt{\nicefrac{1}{2m} \ln \nicefrac{2}{\delta}}$，于是
 \begin{align} \label{eq-single-h}
     \begin{split}
-        P^m \left\{ |\er_\Dcal (h) - \er (h)| \ge \sqrt{\frac{1}{2m} \ln \frac{2}{\delta}} \right\} & \le \delta     \\
-        P^m \left\{ |\er_\Dcal (h) - \er (h)| < \sqrt{\frac{1}{2m} \ln \frac{2}{\delta}} \right\}   & \ge 1 - \delta
+        P^m \left\{ |\er_\dc (h) - \er (h)| \ge \sqrt{\frac{1}{2m} \ln \frac{2}{\delta}} \right\} & \le \delta     \\
+        P^m \left\{ |\er_\dc (h) - \er (h)| < \sqrt{\frac{1}{2m} \ln \frac{2}{\delta}} \right\}   & \ge 1 - \delta
     \end{split}
 \end{align}
 
@@ -87,48 +87,48 @@
     式\eqref{eq-single-h}可以这样理解，在所有包含$m$个样本的数据集构成的空间中，给定$h$，数据集有“好”有“坏”。好数据集上，$h$的经验错误率可以近似泛化错误率，差别不超过$\sqrt{\nicefrac{1}{2m} \ln \nicefrac{2}{\delta}}$，此时ERM算法是靠谱的，而这样的好数据集在整个空间的占比至少为$1- \delta$；在坏数据集上，$h$的经验错误率不是泛化错误率的好近似，最小化它没啥意义，ERM算法会学习失败，失败的概率即坏数据集的占比，不超过$\delta$。此外，$\delta$越小，$m$越大，换言之，随着样本数的增加，好数据集越来越多，坏数据集越来越少。
 \end{remark}
 
-式\eqref{eq-single-h}只能用于$h^\star$、不能用于$h_\Dcal^\erm$，因为式\eqref{eq-single-h}的推导用到了Hoeffding's不等式，其前提“经验错误率的期望等于泛化错误率”只对固定的$h$成立，而$h_\Dcal^\erm$是依$\Dcal$而变化的。对此我们釜底抽薪，注意$h_\Dcal^\erm$来自$\Hcal$，故要求$\Hcal$中的任意假设的坏数据集的占比都不超过$\delta$，一个更强的要求是所有假设的坏数据集占比的和不超过$\delta$，即union bound，这就要求$\Hcal$是有限的，于是
+式\eqref{eq-single-h}只能用于$h^\star$、不能用于$h_\dc^\erm$，因为式\eqref{eq-single-h}的推导用到了Hoeffding's不等式，其前提“经验错误率的期望等于泛化错误率”只对固定的$h$成立，而$h_\dc^\erm$是依$\dc$而变化的。对此我们釜底抽薪，注意$h_\dc^\erm$来自$\hc$，故要求$\hc$中的任意假设的坏数据集的占比都不超过$\delta$，一个更强的要求是所有假设的坏数据集占比的和不超过$\delta$，即union bound，这就要求$\hc$是有限的，于是
 \begin{align} \label{eq-finite-H}
-    P^m \{\exists h \in \Hcal: |\er_\Dcal (h) - \er (h)| \ge \epsilon\}
-    \le \sum_{h \in \Hcal} P^m \{ |\er_\Dcal (h) - \er (h)| \ge \epsilon \} \le |\Hcal| 2 \exp(-2 m \epsilon^2)
+    P^m \{\exists h \in \hc: |\er_\dc (h) - \er (h)| \ge \epsilon\}
+    \le \sum_{h \in \hc} P^m \{ |\er_\dc (h) - \er (h)| \ge \epsilon \} \le |\hc| 2 \exp(-2 m \epsilon^2)
 \end{align}
-令$|\Hcal| 2 \exp(-2 m \epsilon^2) = \delta$可得$\epsilon = \sqrt{\nicefrac{1}{2m} \ln \nicefrac{2|\Hcal|}{\delta}}$，于是
+令$|\hc| 2 \exp(-2 m \epsilon^2) = \delta$可得$\epsilon = \sqrt{\nicefrac{1}{2m} \ln \nicefrac{2|\hc|}{\delta}}$，于是
 \begin{align*}
-    P^m \left\{ \forall h \in \Hcal: |\er_\Dcal (h) - \er (h)| < \sqrt{\frac{1}{2m} \ln \frac{2|\Hcal|}{\delta}} \right\} \ge 1 - \delta
+    P^m \left\{ \forall h \in \hc: |\er_\dc (h) - \er (h)| < \sqrt{\frac{1}{2m} \ln \frac{2|\hc|}{\delta}} \right\} \ge 1 - \delta
 \end{align*}
 显然上式等价于
 \begin{align} \label{eq-all-h}
-    P^m \left\{ \max_{h \in \Hcal} |\er_\Dcal (h) - \er (h)| < \sqrt{\frac{1}{2m} \ln \frac{2|\Hcal|}{\delta}} \right\} \ge 1 - \delta
+    P^m \left\{ \max_{h \in \hc} |\er_\dc (h) - \er (h)| < \sqrt{\frac{1}{2m} \ln \frac{2|\hc|}{\delta}} \right\} \ge 1 - \delta
 \end{align}
-由式\eqref{eq-all-h}不难看出随着$m \rightarrow \infty$，$\Hcal$中所有假设的经验错误率$\rightarrow$泛化错误率，这称为一致收敛。回代入式\eqref{eq-estimation-error}可得
+由式\eqref{eq-all-h}不难看出随着$m \rightarrow \infty$，$\hc$中所有假设的经验错误率$\rightarrow$泛化错误率，这称为一致收敛。回代入式\eqref{eq-estimation-error}可得
 \begin{align*}
-    \er(h_\Dcal^\erm) - \er(h^\star) & \le |\er_\Dcal (h_\Dcal^\erm) - \er(h_\Dcal^\erm)| + |\er_{\Dcal} (h^\star) - \er(h^\star)|    \\
-                                     & \le 2 \max_{h \in \Hcal} |\er_\Dcal (h) - \er (h)|                                             \\
-                                     & < \sqrt{\frac{2}{m} \ln \frac{2|\Hcal|}{\delta}} \text{ with probability at least } 1 - \delta
+    \er(h_\dc^\erm) - \er(h^\star) & \le |\er_\dc (h_\dc^\erm) - \er(h_\dc^\erm)| + |\er_{\dc} (h^\star) - \er(h^\star)|    \\
+                                     & \le 2 \max_{h \in \hc} |\er_\dc (h) - \er (h)|                                             \\
+                                     & < \sqrt{\frac{2}{m} \ln \frac{2|\hc|}{\delta}} \text{ with probability at least } 1 - \delta
 \end{align*}
 上式称为估计误差界(estimation error bound)。
 
 \begin{theorem}
-    对$\forall \epsilon, \delta \in (0,1)$和$\forall m \ge \nicefrac{2}{\epsilon^2} \ln \nicefrac{2|\Hcal|}{\delta}$，任何有限假设空间$\Hcal$对ERM算法都是可学习的。
+    对$\forall \epsilon, \delta \in (0,1)$和$\forall m \ge \nicefrac{2}{\epsilon^2} \ln \nicefrac{2|\hc|}{\delta}$，任何有限假设空间$\hc$对ERM算法都是可学习的。
 \end{theorem}
 
 \subsection{目标函数存在的情形}
 
-前面假设$P$是定义在$\Zcal = \Xcal \times \Ycal$上的任意分布，因此存在同样的$x$对应不同$y$的可能，此时不存在目标函数$t \in \Hcal$使得$y = t(x)$，这称为不可知(agnostic)学习。现对其做些简化，假设存在目标函数$t \in \Hcal$和定义在$\Xcal$上的分布$\mu$，使得对$\Xcal$的任意可测子集$\Acal$有
+前面假设$P$是定义在$\zc = \xc \times \yc$上的任意分布，因此存在同样的$x$对应不同$y$的可能，此时不存在目标函数$t \in \hc$使得$y = t(x)$，这称为不可知(agnostic)学习。现对其做些简化，假设存在目标函数$t \in \hc$和定义在$\xc$上的分布$\mu$，使得对$\xc$的任意可测子集$\ac$有
 \begin{align*}
-    P \{ (x, t(x)) \mid x \in \Acal \} = \mu(\Acal), \quad P \{ (x, y) \mid x \in \Acal, ~ y \ne t(x) \} = 0
+    P \{ (x, t(x)) \mid x \in \ac \} = \mu(\ac), \quad P \{ (x, y) \mid x \in \ac, ~ y \ne t(x) \} = 0
 \end{align*}
-换言之在此设定下，每个$x$有唯一的类别标记$t(x)$，训练数据集$\Dcal = \{ (x_i ,t(x_i)) \}_{i \in [m]}$，假设$h$的泛化错误率为$\er(h,t) = \mu \{ x \in \Xcal \mid h(x) \ne t(x) \}$。
+换言之在此设定下，每个$x$有唯一的类别标记$t(x)$，训练数据集$\dc = \{ (x_i ,t(x_i)) \}_{i \in [m]}$，假设$h$的泛化错误率为$\er(h,t) = \mu \{ x \in \xc \mid h(x) \ne t(x) \}$。
 
-由于$t \in \Hcal$，因此ERM算法必然找到一个经验错误率为零的假设$h$，若$\er(h,t) \ge \epsilon$，则iid采样出$m$个$t$、$h$预测完全一致的样本的概率$\le (1 - \epsilon)^m \le \exp (- \epsilon m)$，故
+由于$t \in \hc$，因此ERM算法必然找到一个经验错误率为零的假设$h$，若$\er(h,t) \ge \epsilon$，则iid采样出$m$个$t$、$h$预测完全一致的样本的概率$\le (1 - \epsilon)^m \le \exp (- \epsilon m)$，故
 \begin{align*}
-    P^m \{\exists h \in \Hcal: \er(h,t) \ge \epsilon\} \le |\Hcal| \exp (- \epsilon m)
+    P^m \{\exists h \in \hc: \er(h,t) \ge \epsilon\} \le |\hc| \exp (- \epsilon m)
 \end{align*}
-令$|\Hcal| \exp (- \epsilon m) = \delta$可得$\epsilon = \nicefrac{1}{m} \ln \nicefrac{|\Hcal|}{\delta}$，于是
+令$|\hc| \exp (- \epsilon m) = \delta$可得$\epsilon = \nicefrac{1}{m} \ln \nicefrac{|\hc|}{\delta}$，于是
 \begin{align*}
-    P^m \left\{ \max_{h \in \Hcal} \er (h,t) < \frac{1}{m} \ln \frac{|\Hcal|}{\delta} \right\} \ge 1 - \delta
+    P^m \left\{ \max_{h \in \hc} \er (h,t) < \frac{1}{m} \ln \frac{|\hc|}{\delta} \right\} \ge 1 - \delta
 \end{align*}
-对$\forall m \ge \nicefrac{1}{\epsilon} \ln \nicefrac{|\Hcal|}{\delta}$，任何有限假设空间$\Hcal$对ERM算法都是可学习的。
+对$\forall m \ge \nicefrac{1}{\epsilon} \ln \nicefrac{|\hc|}{\delta}$，任何有限假设空间$\hc$对ERM算法都是可学习的。
 
 \begin{remark}
     跟不可知学习的结果对比可以发现，此时对样本数的要求从$O(\nicefrac{1}{\epsilon^2})$降到了$O(\nicefrac{1}{\epsilon})$，这也表明该情形比不可知学习要简单。
@@ -136,12 +136,12 @@
 
 \section{增长函数}
 
-通常假设空间是无限的，此时式\eqref{eq-finite-H}中的union bound不能直接用，因为所有假设的坏数据集占比的和是无穷大。我们需要一种将无限归约到有限的工具，将$|\Hcal|$替换掉。注意数据集是有限的，因此定义增长函数(growth function)如下：
+通常假设空间是无限的，此时式\eqref{eq-finite-H}中的union bound不能直接用，因为所有假设的坏数据集占比的和是无穷大。我们需要一种将无限归约到有限的工具，将$|\hc|$替换掉。注意数据集是有限的，因此定义增长函数(growth function)如下：
 
 \begin{definition} \label{defn: growth function}
-    对任意假设空间$\Hcal$，增长函数$\Pi_\Hcal(m)$是其对$m$个样本的最大不同预测结果数
+    对任意假设空间$\hc$，增长函数$\Pi_\hc(m)$是其对$m$个样本的最大不同预测结果数
     \begin{align*}
-        \forall m \in \Zbb^+: \Pi_\Hcal(m) = \max_{ \Dcal \in \Zcal^m } | \{ [ h(x_1), \ldots, h(x_m) ]: h \in \Hcal \} |
+        \forall m \in \zb^+: \Pi_\hc(m) = \max_{ \dc \in \zc^m } | \{ [ h(x_1), \ldots, h(x_m) ]: h \in \hc \} |
     \end{align*}
 \end{definition}
 
@@ -149,39 +149,39 @@
     增长函数是个有限值，最大为$2^m$。
 \end{remark}
 
-通过考虑不同预测结果数，增长函数将无限的假设空间划分成了有限个等价类，每类中的假设对$m$个样本的预测完全一致。1971年，Vapnik证明了对任意假设空间$\Hcal$有
+通过考虑不同预测结果数，增长函数将无限的假设空间划分成了有限个等价类，每类中的假设对$m$个样本的预测完全一致。1971年，Vapnik证明了对任意假设空间$\hc$有
 \begin{align} \label{eq-vapnik}
-    P^m \{ \exists h \in \Hcal: |\er_\Dcal (h) - \er (h)| \ge \epsilon \} \le 4 \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
+    P^m \{ \exists h \in \hc: |\er_\dc (h) - \er (h)| \ge \epsilon \} \le 4 \Pi_\hc (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
 \end{align}
 
 式\eqref{eq-vapnik}的证明比较繁琐，依赖如下三个引理：
 
 \begin{lemma} \label{lem-vapnik-1}
-    定义$\Zcal^m$和$\Zcal^{2m}$的子集
+    定义$\zc^m$和$\zc^{2m}$的子集
     \begin{align*}
-        \Qcal = \{ \Dcal \mid \exists h \in \Hcal: |\er(h) - \er_\Dcal(h)| \ge \epsilon \}, \quad \Rcal = \{ (\Dcal_1, \Dcal_2) \mid \exists h \in \Hcal: |\er_{\Dcal_1} (h) - \er_{\Dcal_2} (h)| \ge \nicefrac{\epsilon}{2} \}
+        \qc = \{ \dc \mid \exists h \in \hc: |\er(h) - \er_\dc(h)| \ge \epsilon \}, \quad \rc = \{ (\dc_1, \dc_2) \mid \exists h \in \hc: |\er_{\dc_1} (h) - \er_{\dc_2} (h)| \ge \nicefrac{\epsilon}{2} \}
     \end{align*}
-    若$m \epsilon^2 \ge 2$，则$P^m (\Qcal) \le 2 P^{2m} (\Rcal)$。
+    若$m \epsilon^2 \ge 2$，则$P^m (\qc) \le 2 P^{2m} (\rc)$。
 \end{lemma}
 
 \begin{proof}
     根据三角不等式有
     \begin{align*}
         \left. \begin{array}{r}
-                   |\er(h) - \er_{\Dcal_1} (h)| \ge \epsilon \\
-                   |\er(h) - \er_{\Dcal_2} (h)| \le \nicefrac{\epsilon}{2}
-               \end{array} \right\} \Longrightarrow |\er_{\Dcal_1} (h) - \er_{\Dcal_2} (h)| \ge \nicefrac{\epsilon}{2}
+                   |\er(h) - \er_{\dc_1} (h)| \ge \epsilon \\
+                   |\er(h) - \er_{\dc_2} (h)| \le \nicefrac{\epsilon}{2}
+               \end{array} \right\} \Longrightarrow |\er_{\dc_1} (h) - \er_{\dc_2} (h)| \ge \nicefrac{\epsilon}{2}
     \end{align*}
     于是
     \begin{align*}
-        P^{2m} (\Rcal) & \ge P^{2m} \{ (\Dcal_1, \Dcal_2) \mid \exists h \in \Hcal: |\er(h) - \er_{\Dcal_1} (h)| \ge \epsilon \wedge |\er(h) - \er_{\Dcal_2} (h)| \le \nicefrac{\epsilon}{2} \}                 \\
-                       & = \int_\Qcal P^m \{\Dcal_2 \mid \exists h \in \Hcal: |\er(h) - \er_{\Dcal_1} (h)| \ge \epsilon \wedge |\er(h) - \er_{\Dcal_2} (h)| \le \nicefrac{\epsilon}{2} \} ~ \diff P^m (\Dcal_1) \\
-                       & \ge \int_\Qcal \frac{1}{2} \diff P^m (\Dcal_1) = \frac{1}{2} P^m (\Qcal)
+        P^{2m} (\rc) & \ge P^{2m} \{ (\dc_1, \dc_2) \mid \exists h \in \hc: |\er(h) - \er_{\dc_1} (h)| \ge \epsilon \wedge |\er(h) - \er_{\dc_2} (h)| \le \nicefrac{\epsilon}{2} \}                 \\
+                       & = \int_\qc P^m \{\dc_2 \mid \exists h \in \hc: |\er(h) - \er_{\dc_1} (h)| \ge \epsilon \wedge |\er(h) - \er_{\dc_2} (h)| \le \nicefrac{\epsilon}{2} \} ~ \diff P^m (\dc_1) \\
+                       & \ge \int_\qc \frac{1}{2} \diff P^m (\dc_1) = \frac{1}{2} P^m (\qc)
     \end{align*}
-    其中第二个不等号是因为对$\forall \Dcal_1 \in \Qcal (\exists h \in \Hcal: |\er(h) - \er_{\Dcal_1} (h)| \ge \epsilon)$，对这样的$h$由Chebyshev's不等式有
+    其中第二个不等号是因为对$\forall \dc_1 \in \qc (\exists h \in \hc: |\er(h) - \er_{\dc_1} (h)| \ge \epsilon)$，对这样的$h$由Chebyshev's不等式有
     \begin{align*}
-        P^m \{ |\er(h) - \er_{\Dcal_2} (h)| \ge \nicefrac{\epsilon}{2} \}
-         & = P^m \{ |m \cdot \er(h) - m \cdot \er_{\Dcal_2} (h)|^2 \ge (\nicefrac{m \epsilon}{2})^2\}                                                                   \\
+        P^m \{ |\er(h) - \er_{\dc_2} (h)| \ge \nicefrac{\epsilon}{2} \}
+         & = P^m \{ |m \cdot \er(h) - m \cdot \er_{\dc_2} (h)|^2 \ge (\nicefrac{m \epsilon}{2})^2\}                                                                   \\
          & \le \frac{m \cdot \er(h) (1 - \er(h))}{(\nicefrac{m \epsilon}{2})^2} = \frac{4 \er(h) (1 - \er(h))}{m \epsilon^2} \le \frac{1}{m \epsilon^2} \le \frac{1}{2}
     \end{align*}
 \end{proof}
@@ -191,93 +191,93 @@
     \item 不变：$\sigma(i) = i$、$\sigma(m+i) = m+i$
     \item 对换：$\sigma(i) = m+i$、$\sigma(m+i) = i$
 \end{enumerate}
-对$\forall \Dcal \in \Zcal^{2m}$，假设其中元素是有顺序的，$\sigma \Dcal$为对前半元素和后半元素的置换，例如$\sigma = (25)(36)$作用到$\Dcal= \{ z_1, z_2, z_3, z_4, z_5, z_6 \}$上为$\sigma \Dcal = \{ z_1, z_5, z_6, z_4, z_2, z_3 \}$。
+对$\forall \dc \in \zc^{2m}$，假设其中元素是有顺序的，$\sigma \dc$为对前半元素和后半元素的置换，例如$\sigma = (25)(36)$作用到$\dc= \{ z_1, z_2, z_3, z_4, z_5, z_6 \}$上为$\sigma \dc = \{ z_1, z_5, z_6, z_4, z_2, z_3 \}$。
 
 \begin{lemma} \label{lem-vapnik-2}
-    对$\forall \Rcal \subseteq \Zcal^{2m}$有$P^{2m} (\Rcal) = \Ebb_{\Dcal \sim P^{2m}} [\Pbb_\sigma (\sigma \Dcal \in \Rcal)] \le \max_{\Dcal \in \Zcal^{2m}} \Pbb_\sigma (\sigma \Dcal \in \Rcal)$，其中$\Pbb_\sigma$表示从$\Gamma_m$中等概率挑选$\sigma$。
+    对$\forall \rc \subseteq \zc^{2m}$有$P^{2m} (\rc) = \eb_{\dc \sim P^{2m}} [\pb_\sigma (\sigma \dc \in \rc)] \le \max_{\dc \in \zc^{2m}} \pb_\sigma (\sigma \dc \in \rc)$，其中$\pb_\sigma$表示从$\Gamma_m$中等概率挑选$\sigma$。
 \end{lemma}
 
 \begin{proof}
-    置换是双射，因此对$\forall \sigma \in \Gamma_m$有$P^{2m} (\Rcal) = P^{2m} \{ \Dcal \mid \sigma \Dcal \in \Rcal \}$，于是
+    置换是双射，因此对$\forall \sigma \in \Gamma_m$有$P^{2m} (\rc) = P^{2m} \{ \dc \mid \sigma \dc \in \rc \}$，于是
     \begin{align*}
-        P^{2m} (\Rcal)
-         & = \frac{1}{|\Gamma_m|} \sum_{\sigma \in \Gamma_m} P^{2m} \{ \Dcal \mid \sigma \Dcal \in \Rcal \} = \frac{1}{|\Gamma_m|} \sum_{\sigma \in \Gamma_m} \int_{\Zcal^{2m}} \Ibb(\sigma \Dcal \in \Rcal) \diff P^{2m} (\Dcal)                                                   \\
-         & = \int_{\Zcal^{2m}} \frac{1}{|\Gamma_m|} \sum_{\sigma \in \Gamma_m} \Ibb(\sigma \Dcal \in \Rcal) \diff P^{2m} (\Dcal) = \int_{\Zcal^{2m}} \Pbb_\sigma (\sigma \Dcal \in \Rcal) \diff P^{2m} (\Dcal) \le \max_{\Dcal \in \Zcal^{2m}} \Pbb_\sigma (\sigma \Dcal \in \Rcal)
+        P^{2m} (\rc)
+         & = \frac{1}{|\Gamma_m|} \sum_{\sigma \in \Gamma_m} P^{2m} \{ \dc \mid \sigma \dc \in \rc \} = \frac{1}{|\Gamma_m|} \sum_{\sigma \in \Gamma_m} \int_{\zc^{2m}} \ib(\sigma \dc \in \rc) \diff P^{2m} (\dc)                                                   \\
+         & = \int_{\zc^{2m}} \frac{1}{|\Gamma_m|} \sum_{\sigma \in \Gamma_m} \ib(\sigma \dc \in \rc) \diff P^{2m} (\dc) = \int_{\zc^{2m}} \pb_\sigma (\sigma \dc \in \rc) \diff P^{2m} (\dc) \le \max_{\dc \in \zc^{2m}} \pb_\sigma (\sigma \dc \in \rc)
     \end{align*}
 \end{proof}
 
 \begin{lemma} \label{lem-vapnik-3}
-    对引理\ref{lem-vapnik-1}中定义的集合$\Rcal = \{ (\Dcal_1, \Dcal_2) \mid \exists h \in \Hcal: |\er_{\Dcal_1} (h) - \er_{\Dcal_2} (h)| \ge \nicefrac{\epsilon}{2} \}  \subseteq \Zcal^{2m}$和从$\Gamma_m$中等概率挑选的$\sigma$有
+    对引理\ref{lem-vapnik-1}中定义的集合$\rc = \{ (\dc_1, \dc_2) \mid \exists h \in \hc: |\er_{\dc_1} (h) - \er_{\dc_2} (h)| \ge \nicefrac{\epsilon}{2} \}  \subseteq \zc^{2m}$和从$\Gamma_m$中等概率挑选的$\sigma$有
     \begin{align*}
-        \max_{\Dcal \in \Zcal^{2m}} \Pbb_\sigma (\sigma \Dcal \in \Rcal) \le 2 \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
+        \max_{\dc \in \zc^{2m}} \pb_\sigma (\sigma \dc \in \rc) \le 2 \Pi_\hc (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
     \end{align*}
 \end{lemma}
 
 \begin{proof}
-    设$\Dcal = \{ (x_1, y_1), (x_2, y_2), \ldots, (x_{2m}, y_{2m}) \}$、$\Scal = \{ x_1, x_2, \ldots, x_{2m} \}$，$\Hcal$在$\Scal$上的不同预测结果数为$t \le \Pi_\Hcal (2m)$，不妨设$h_1, h_2, \ldots, h_t$就是$t$个预测不同的假设，易知$\sigma \Dcal \in \Rcal$等价于
+    设$\dc = \{ (x_1, y_1), (x_2, y_2), \ldots, (x_{2m}, y_{2m}) \}$、$\sc = \{ x_1, x_2, \ldots, x_{2m} \}$，$\hc$在$\sc$上的不同预测结果数为$t \le \Pi_\hc (2m)$，不妨设$h_1, h_2, \ldots, h_t$就是$t$个预测不同的假设，易知$\sigma \dc \in \rc$等价于
     \begin{align*}
-        \exists j \in [t]: \left| \frac{1}{m} \sum_{i \in [m]} \Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \frac{1}{m} \sum_{i \in [m]} \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)}) \right| \ge \frac{\epsilon}{2}
+        \exists j \in [t]: \left| \frac{1}{m} \sum_{i \in [m]} \ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \frac{1}{m} \sum_{i \in [m]} \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)}) \right| \ge \frac{\epsilon}{2}
     \end{align*}
     于是根据union bound有
     \begin{align*}
-        \Pbb_\sigma (\sigma \Dcal \in \Rcal)
-         & = \Pbb_\sigma \left( \exists j \in [t]: \left| \frac{1}{m} \sum_{i \in [m]} (\Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)                \\
-         & \le \sum_{j \in [t]} \Pbb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)                \\
-         & \le t \max_{j \in [t]} \Pbb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)              \\
-         & \le \Pi_\Hcal (2m) \max_{j \in [t]} \Pbb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)
+        \pb_\sigma (\sigma \dc \in \rc)
+         & = \pb_\sigma \left( \exists j \in [t]: \left| \frac{1}{m} \sum_{i \in [m]} (\ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)                \\
+         & \le \sum_{j \in [t]} \pb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)                \\
+         & \le t \max_{j \in [t]} \pb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)              \\
+         & \le \Pi_\hc (2m) \max_{j \in [t]} \pb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)
     \end{align*}
-    注意求和中的$\Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})$是个二值rv且
+    注意求和中的$\ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})$是个二值rv且
     \begin{align*}
         = \begin{cases}
-              \Ibb(h_j (x_i) \ne y_i) - \Ibb(h_j (x_{m+i}) \ne y_{m+i}), & \text{with probability } 0.5 \\
-              \Ibb(h_j (x_{m+i}) \ne y_{m+i}) - \Ibb(h_j (x_i) \ne y_i), & \text{with probability } 0.5
+              \ib(h_j (x_i) \ne y_i) - \ib(h_j (x_{m+i}) \ne y_{m+i}), & \text{with probability } 0.5 \\
+              \ib(h_j (x_{m+i}) \ne y_{m+i}) - \ib(h_j (x_i) \ne y_i), & \text{with probability } 0.5
           \end{cases}
     \end{align*}
     因此其均值为零，取值$\in [-1,1]$，由Hoeffding's不等式有
     \begin{align*}
-        \Pbb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\Ibb(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \Ibb(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)
+        \pb_\sigma \left( \left| \frac{1}{m} \sum_{i \in [m]} (\ib(h_j (x_{\sigma(i)}) \ne y_{\sigma(i)}) - \ib(h_j (x_{\sigma(m+i)}) \ne y_{\sigma(m+i)})) \right| \ge \frac{\epsilon}{2} \right)
          & \le 2 \exp \left( \frac{-2 (\nicefrac{m \epsilon}{2})^2 }{4m} \right) \\
          & = 2 \exp ( \nicefrac{-m \epsilon^2}{8} )
     \end{align*}
-    回代可得$\Pbb_\sigma (\sigma \Dcal \in \Rcal) \le \Pi_\Hcal (2m) \max_{j \in [t]} 2 \exp ( \nicefrac{-m \epsilon^2}{8} ) = 2 \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )$，由$\Dcal$的任意性知结论成立。
+    回代可得$\pb_\sigma (\sigma \dc \in \rc) \le \Pi_\hc (2m) \max_{j \in [t]} 2 \exp ( \nicefrac{-m \epsilon^2}{8} ) = 2 \Pi_\hc (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )$，由$\dc$的任意性知结论成立。
 \end{proof}
 
 \begin{proof} [式\eqref{eq-vapnik}的证明]
     结合引理\ref{lem-vapnik-1}、引理\ref{lem-vapnik-2}、引理\ref{lem-vapnik-3}的结论易知当$m \epsilon^2 \ge 2$时有
     \begin{align*}
-        P^m \{ \exists h \in \Hcal: |\er_\Dcal (h) - \er (h)| \ge \epsilon \} = P^m (\Qcal)
-         & \le 2 P^{2m} (\Rcal) \le 2 \max_{\Dcal \in \Zcal^{2m}} \Pbb_\sigma (\sigma \Dcal \in \Rcal) \\
-         & \le 4 \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
+        P^m \{ \exists h \in \hc: |\er_\dc (h) - \er (h)| \ge \epsilon \} = P^m (\qc)
+         & \le 2 P^{2m} (\rc) \le 2 \max_{\dc \in \zc^{2m}} \pb_\sigma (\sigma \dc \in \rc) \\
+         & \le 4 \Pi_\hc (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
     \end{align*}
     当$m \epsilon^2 < 2$时，式\eqref{eq-vapnik}右边大于$1$，结论显然成立。
 \end{proof}
 
 \begin{remark}
-    引理\ref{lem-vapnik-1}证明的最后若用Hoeffding's不等式则有$P^m \{ |\er(h) - \er_{\Dcal_2} (h)| \ge \nicefrac{\epsilon}{2} \} \le 2 \exp( \nicefrac{-m\epsilon^2}{2})$，该式在$m \epsilon^2 > 2 \ln 2$时有意义，在$m \epsilon^2 \ge 5$时比Chebyshev's不等式的$\nicefrac{1}{m \epsilon^2}$更紧，式\eqref{eq-vapnik}可加强为
+    引理\ref{lem-vapnik-1}证明的最后若用Hoeffding's不等式则有$P^m \{ |\er(h) - \er_{\dc_2} (h)| \ge \nicefrac{\epsilon}{2} \} \le 2 \exp( \nicefrac{-m\epsilon^2}{2})$，该式在$m \epsilon^2 > 2 \ln 2$时有意义，在$m \epsilon^2 \ge 5$时比Chebyshev's不等式的$\nicefrac{1}{m \epsilon^2}$更紧，式\eqref{eq-vapnik}可加强为
     \begin{align*}
-        P^m \{ \exists h \in \Hcal: |\er_\Dcal (h) - \er (h)| \ge \epsilon \} \le \frac{2}{1 - 2 \exp( \nicefrac{-m\epsilon^2}{2})} \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
+        P^m \{ \exists h \in \hc: |\er_\dc (h) - \er (h)| \ge \epsilon \} \le \frac{2}{1 - 2 \exp( \nicefrac{-m\epsilon^2}{2})} \Pi_\hc (2m) \exp ( \nicefrac{-m \epsilon^2}{8} )
     \end{align*}
     但不管$m \epsilon^2$如何增大都有$\nicefrac{2}{1 - 2 \exp( \nicefrac{-m\epsilon^2}{2})} > 2$，因此相对于$4$，只是很小的常数倍改进。
 \end{remark}
 
 \section{VC维}
 
-增长函数$\Pi_\Hcal (m)$与样本数$m$有关，计算起来不太方便，于是Vapnik和Chervonenkis提出了VC维，它是直接刻画$\Hcal$复杂度的标量，与$m$无关，比增长函数容易计算。
+增长函数$\Pi_\hc (m)$与样本数$m$有关，计算起来不太方便，于是Vapnik和Chervonenkis提出了VC维，它是直接刻画$\hc$复杂度的标量，与$m$无关，比增长函数容易计算。
 
 \begin{definition}[VC维] \label{defn: VC dimension}
-    对于包含$m$个样本的数据集$\Dcal = \{ (x_i ,y_i) \}_{i \in [m]}$，如果$\{y_1, \ldots, y_m\}$不管如何取值，都$\exists h \in \Hcal: \er_\Dcal (h) = 0$，则称$\Dcal$可以被$\Hcal$打散(shattering)，即此时$\Pi_\Hcal (m) = 2^m$。
+    对于包含$m$个样本的数据集$\dc = \{ (x_i ,y_i) \}_{i \in [m]}$，如果$\{y_1, \ldots, y_m\}$不管如何取值，都$\exists h \in \hc: \er_\dc (h) = 0$，则称$\dc$可以被$\hc$打散(shattering)，即此时$\Pi_\hc (m) = 2^m$。
 
-    假设空间$\Hcal$的VC维是它能打散的最大数据集中的样本数：
+    假设空间$\hc$的VC维是它能打散的最大数据集中的样本数：
     \begin{align*}
-        \vc(\Hcal) = \max \{ m: \Pi_\Hcal (m) = 2^m \}
+        \vc(\hc) = \max \{ m: \Pi_\hc (m) = 2^m \}
     \end{align*}
 \end{definition}
 
 \begin{remark}
-    $\vc(\Hcal) = m$表示存在(不是任意)一个$m$个样本的数据集可以被$\Hcal$打散，因此要证明某假设空间的VC维为$d$需要做两件事，一是构造一个可以被打散的$d$个样本的数据集，二是证明对于任意$d+1$个样本的数据集都不可能被$\Hcal$打散。
+    $\vc(\hc) = m$表示存在(不是任意)一个$m$个样本的数据集可以被$\hc$打散，因此要证明某假设空间的VC维为$d$需要做两件事，一是构造一个可以被打散的$d$个样本的数据集，二是证明对于任意$d+1$个样本的数据集都不可能被$\hc$打散。
 \end{remark}
 
-\begin{example} [$\Rbb^n$中的超平面集合的VC维为$n+1$]
+\begin{example} [$\rb^n$中的超平面集合的VC维为$n+1$]
     先构造可被打散的$n+1$个样本构成的数据集
     \begin{align*}
         \{(\xv_0 = \zerov, y_0), (\xv_1 = \ev_1, y_1), \ldots (\xv_n = \ev_n, y_n)\}
@@ -290,21 +290,21 @@
 1972年，Sauer用VC维给出了增长函数的上界。
 
 \begin{lemma}[Sauer's引理] \label{lem: Sauer lemma}
-    若$\vc(\Hcal) = d$，则对$\forall m \in \Zbb^+$有
+    若$\vc(\hc) = d$，则对$\forall m \in \zb^+$有
     \begin{align*}
-        \Pi_\Hcal(m) \le \sum_{i=0}^d \binom{m}{i}
+        \Pi_\hc(m) \le \sum_{i=0}^d \binom{m}{i}
     \end{align*}
 \end{lemma}
 
 \begin{proof}
-    若$m \le d$，则存在$m$个样本的数据集被$\Hcal$打散，故
+    若$m \le d$，则存在$m$个样本的数据集被$\hc$打散，故
     \begin{align*}
-        \Pi_\Hcal(m) = 2^m = \sum_{i=0}^m \binom{m}{i} \le \sum_{i=0}^d \binom{m}{i}
+        \Pi_\hc(m) = 2^m = \sum_{i=0}^m \binom{m}{i} \le \sum_{i=0}^d \binom{m}{i}
     \end{align*}
 
-    下面考虑$m > d$的情况，首先若$d = 0$，即对任意将本，$\Hcal$都只有一种预测，则有
+    下面考虑$m > d$的情况，首先若$d = 0$，即对任意将本，$\hc$都只有一种预测，则有
     \begin{align*}
-        \Pi_\Hcal(m) = 1 = \binom{m}{0}
+        \Pi_\hc(m) = 1 = \binom{m}{0}
     \end{align*}
     故引理对$(\forall m \ge 1, d = 0)$都成立。若能用数学归纳法证明
     \begin{align*}
@@ -314,23 +314,23 @@
     \end{align*}
     则由引理对$(\forall m \ge 1, d = 0)$和$(m=1,d=1)$成立，可推得引理对$(\forall m \ge 2, d = 1)$都成立；同理，由引理对$(\forall m \ge 2, d = 0, 1)$和$(m=2,d=2)$成立，可推得引理对$(\forall m \ge 3, d = 2)$都成立，以此类推，可知引理对任意的$m$和$d$都成立。
 
-    假设引理对$(m-1,0), \ldots, (m-1,d)$成立。设$\Scal = \{\xv_1, \ldots, \xv_m\}$并且$\Hcal$对其不同预测结果数达到最大，即$\Pi_\Hcal (m)$。根据对$\Scal$的预测结果不同，$\Hcal$分成$\Pi_\Hcal (m)$个等价类，记该等价类集合为$\Hcal_\Scal$，从每一个等价类中任选一个假设构成集合$\Gcal$，显然$|\Hcal_\Scal| = |\Gcal| = \Pi_\Hcal(m)$。
+    假设引理对$(m-1,0), \ldots, (m-1,d)$成立。设$\sc = \{\xv_1, \ldots, \xv_m\}$并且$\hc$对其不同预测结果数达到最大，即$\Pi_\hc (m)$。根据对$\sc$的预测结果不同，$\hc$分成$\Pi_\hc (m)$个等价类，记该等价类集合为$\hc_\sc$，从每一个等价类中任选一个假设构成集合$\gc$，显然$|\hc_\sc| = |\gc| = \Pi_\hc(m)$。
 
-    设$\Scal' = \{\xv_1, \ldots, \xv_{m-1}\}$，同样根据对$\Scal'$的预测结果不同可以得到$\Hcal$在$\Scal'$上的等价类集合$\Hcal_{\Scal'}$，从每一个等价类中任选一个假设构成集合$\Gcal'$。对于$\Hcal_{\Scal'}$中每一个等价类，若其中所有假设对$\xv_m$的预测一致，则它们还会作为一个等价类出现在$\Hcal_\Scal$中；否则则会一分为二作为两个等价类出现在$\Hcal_\Scal$中，设$\Hcal_{\Scal'}$中被一分为二的等价类集合为$\Hcal_{\Scal''}$，从其每一个等价类中任选一个假设构成集合$\Gcal''$，于是有
+    设$\sc' = \{\xv_1, \ldots, \xv_{m-1}\}$，同样根据对$\sc'$的预测结果不同可以得到$\hc$在$\sc'$上的等价类集合$\hc_{\sc'}$，从每一个等价类中任选一个假设构成集合$\gc'$。对于$\hc_{\sc'}$中每一个等价类，若其中所有假设对$\xv_m$的预测一致，则它们还会作为一个等价类出现在$\hc_\sc$中；否则则会一分为二作为两个等价类出现在$\hc_\sc$中，设$\hc_{\sc'}$中被一分为二的等价类集合为$\hc_{\sc''}$，从其每一个等价类中任选一个假设构成集合$\gc''$，于是有
     \begin{align*}
-        |\Gcal| = |\Gcal'| + |\Gcal''|
+        |\gc| = |\gc'| + |\gc''|
     \end{align*}
-    显然$\vc(\Gcal') \le d$，于是由增长函数的定义和归纳假设有
+    显然$\vc(\gc') \le d$，于是由增长函数的定义和归纳假设有
     \begin{align*}
-        |\Gcal'| \le \Pi_{\Gcal'} (m-1) \le \sum_{i=0}^{\vc(\Gcal')} \binom{m-1}{i} \le \sum_{i=0}^d \binom{m-1}{i}
+        |\gc'| \le \Pi_{\gc'} (m-1) \le \sum_{i=0}^{\vc(\gc')} \binom{m-1}{i} \le \sum_{i=0}^d \binom{m-1}{i}
     \end{align*}
-    若$\forall \Rcal \subseteq \Scal'$可被$\Gcal''$打散，则$\Rcal \cup \{\xv_m\}$可被$\Gcal$打散，于是$\vc(\Gcal'') \le d-1$，否则$\vc(\Gcal) > d$，由增长函数的定义和归纳假设有
+    若$\forall \rc \subseteq \sc'$可被$\gc''$打散，则$\rc \cup \{\xv_m\}$可被$\gc$打散，于是$\vc(\gc'') \le d-1$，否则$\vc(\gc) > d$，由增长函数的定义和归纳假设有
     \begin{align*}
-        |\Gcal''| \le \Pi_{\Gcal''} (m-1) \le \sum_{i=0}^{\vc(\Gcal'')} \binom{m-1}{i} \le \sum_{i=0}^{d-1} \binom{m-1}{i}
+        |\gc''| \le \Pi_{\gc''} (m-1) \le \sum_{i=0}^{\vc(\gc'')} \binom{m-1}{i} \le \sum_{i=0}^{d-1} \binom{m-1}{i}
     \end{align*}
     回代有
     \begin{align*}
-        |\Gcal| \le \sum_{i=0}^d \binom{m-1}{i} + \sum_{i=0}^{d-1} \binom{m-1}{i} = 1 + \sum_{i=1}^d \binom{m-1}{i} + \sum_{i=1}^d \binom{m-1}{i-1} = 1 + \sum_{i=1}^d \binom{m}{i} = \sum_{i=0}^d \binom{m}{i}
+        |\gc| \le \sum_{i=0}^d \binom{m-1}{i} + \sum_{i=0}^{d-1} \binom{m-1}{i} = 1 + \sum_{i=1}^d \binom{m-1}{i} + \sum_{i=1}^d \binom{m-1}{i-1} = 1 + \sum_{i=1}^d \binom{m}{i} = \sum_{i=0}^d \binom{m}{i}
     \end{align*}
     故引理对$(m,d)$成立。
 \end{proof}
@@ -338,73 +338,73 @@
 根据Sauer's引理可得
 
 \begin{corollary}
-    若$\vc(\Hcal) = d$，则对任意正整数$m \ge d$有
+    若$\vc(\hc) = d$，则对任意正整数$m \ge d$有
     \begin{align*}
-        \Pi_\Hcal(m) \le ( \nicefrac{em}{d} )^d = O(m^d)
+        \Pi_\hc(m) \le ( \nicefrac{em}{d} )^d = O(m^d)
     \end{align*}
 \end{corollary}
 
 \begin{proof}
     由Sauer's引理有
     \begin{align*}
-        \Pi_\Hcal(m) & \le \sum_{i=0}^d \binom{m}{i} \le \sum_{i=0}^d \binom{m}{i} \left( \frac{m}{d} \right)^{d-i} \le \sum_{i=0}^m \binom{m}{i} \left( \frac{m}{d} \right)^{d-i}                                                                         \\
+        \Pi_\hc(m) & \le \sum_{i=0}^d \binom{m}{i} \le \sum_{i=0}^d \binom{m}{i} \left( \frac{m}{d} \right)^{d-i} \le \sum_{i=0}^m \binom{m}{i} \left( \frac{m}{d} \right)^{d-i}                                                                         \\
                      & = \left( \frac{m}{d} \right)^d \sum_{i=0}^m \binom{m}{i} \left( \frac{d}{m} \right)^i = \left( \frac{m}{d} \right)^d \left( 1 + \frac{d}{m} \right)^m \le \left( \frac{m}{d} \right)^d e^d = \left( \frac{em}{d} \right)^d = O(m^d)
     \end{align*}
 \end{proof}
 
 回代入式\eqref{eq-vapnik}可得
 \begin{align*}
-    P^m \{ \exists h \in \Hcal: |\er_\Dcal (h) - \er (h)| \ge \epsilon \} \le 4 \Pi_\Hcal (2m) \exp ( \nicefrac{-m \epsilon^2}{8} ) \le 4 (\nicefrac{2em}{d})^d \exp ( \nicefrac{-m \epsilon^2}{8} )
+    P^m \{ \exists h \in \hc: |\er_\dc (h) - \er (h)| \ge \epsilon \} \le 4 \Pi_\hc (2m) \exp ( \nicefrac{-m \epsilon^2}{8} ) \le 4 (\nicefrac{2em}{d})^d \exp ( \nicefrac{-m \epsilon^2}{8} )
 \end{align*}
 令$4 (\nicefrac{2em}{d})^d \exp ( \nicefrac{-m \epsilon^2}{8} ) = \delta$可得$\epsilon = \sqrt{\nicefrac{8}{m} (d \ln \nicefrac{2em}{d} + \ln \nicefrac{4}{\delta})}$，于是有基于VC维的一致收敛界：
 \begin{align*}
-    P^m \left\{ \sup_{h \in \Hcal} |\er_\Dcal (h) - \er (h)| < \sqrt{\frac{8}{m} \left(d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right)} \right\} \ge 1 - \delta
+    P^m \left\{ \sup_{h \in \hc} |\er_\dc (h) - \er (h)| < \sqrt{\frac{8}{m} \left(d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right)} \right\} \ge 1 - \delta
 \end{align*}
 和估计误差界：
 \begin{align*}
-    P^m \left\{ \sup_{h \in \Hcal} |\er (h_\Dcal^\erm) - \er (h^\star)| < \sqrt{\frac{32}{m} \left(d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right)} \right\} \ge 1 - \delta
+    P^m \left\{ \sup_{h \in \hc} |\er (h_\dc^\erm) - \er (h^\star)| < \sqrt{\frac{32}{m} \left(d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right)} \right\} \ge 1 - \delta
 \end{align*}
 
 \begin{theorem}
-    对$\forall \epsilon, \delta \in (0,1)$和$\forall m \ge \nicefrac{32}{\epsilon^2} (d \ln \nicefrac{2em}{d} + \ln \nicefrac{4}{\delta} )$，任何VC维为$d$的假设空间$\Hcal$对ERM算法都是可学习的。
+    对$\forall \epsilon, \delta \in (0,1)$和$\forall m \ge \nicefrac{32}{\epsilon^2} (d \ln \nicefrac{2em}{d} + \ln \nicefrac{4}{\delta} )$，任何VC维为$d$的假设空间$\hc$对ERM算法都是可学习的。
 \end{theorem}
 
 \section{附录}
 
 \begin{theorem} [Markov's不等式]
-    设\blue{非负}随机变量$X$具有\blue{有限}均值$\mu = \Ebb[X]$，则对任意实数$t>0$有
+    设\blue{非负}随机变量$X$具有\blue{有限}均值$\mu = \eb[X]$，则对任意实数$t>0$有
     \begin{align*}
-        \Pbb (X \ge t) \le \frac{\mu}{t}
+        \pb (X \ge t) \le \frac{\mu}{t}
     \end{align*}
 \end{theorem}
 
 \begin{proof}
     由于
     \begin{align*}
-        \mu = \int_0^\infty x p(x) \diff x = \int_0^t x p(x) \diff x + \int_t^\infty x p(x) \diff x \ge 0 + t \int_t^\infty p(x) \diff x = t \Pbb (X \ge t)
+        \mu = \int_0^\infty x p(x) \diff x = \int_0^t x p(x) \diff x + \int_t^\infty x p(x) \diff x \ge 0 + t \int_t^\infty p(x) \diff x = t \pb (X \ge t)
     \end{align*}
     两边除以$t$后命题得证。
 \end{proof}
 
-\begin{theorem} [Chebyshev'sv]
+\begin{theorem} [Chebyshev's不等式]
     设随机变量$X$具有有限均值$\mu$和方差$\sigma^2$，则对任意实数$t>0$有
     \begin{align*}
-        \Pbb (|X - \mu| \ge t) \le \frac{\sigma^2}{t^2}
+        \pb (|X - \mu| \ge t) \le \frac{\sigma^2}{t^2}
     \end{align*}
 \end{theorem}
 
 \begin{proof}
     由于$|X - \mu|^2$是非负随机变量，由Markov's不等式可得
     \begin{align*}
-        \Pbb (|X - \mu| \ge t) = \Pbb (|X - \mu|^2 \ge t^2) \le \frac{\Ebb[|X - \mu|^2]}{t^2} = \frac{\sigma^2}{t^2}
+        \pb (|X - \mu| \ge t) = \pb (|X - \mu|^2 \ge t^2) \le \frac{\eb[|X - \mu|^2]}{t^2} = \frac{\sigma^2}{t^2}
     \end{align*}
     故命题得证。
 \end{proof}
 
 \begin{lemma}[Hoeffding's法则]
-    设$X$是随机变量且$\Ebb[X] = 0$，$X \in [a,b]$，则对任意实数$t>0$有
+    设$X$是随机变量且$\eb[X] = 0$，$X \in [a,b]$，则对任意实数$t>0$有
     \begin{align*}
-        \Ebb[\exp(tX)] \le \exp \left( \frac{t^2(b-a)^2}{8} \right)
+        \eb[\exp(tX)] \le \exp \left( \frac{t^2(b-a)^2}{8} \right)
     \end{align*}
 \end{lemma}
 
@@ -413,9 +413,9 @@
     \begin{align*}
         \exp(tX) = \exp \left( \frac{b - x}{b - a} ta + \frac{x - a}{b - a} tb \right) \le \frac{b - x}{b - a} \exp(ta) + \frac{x - a}{b - a} \exp(tb)
     \end{align*}
-    注意$\Ebb[X] = 0$，于是
+    注意$\eb[X] = 0$，于是
     \begin{align*}
-        \Ebb[\exp(tX)] \le \Ebb \left[\frac{b - X}{b - a} \exp(ta) + \frac{X - a}{b - a} \exp(tb)\right] = \frac{b}{b - a} \exp(ta) + \frac{- a}{b - a} \exp(tb) = \exp (\phi(t))
+        \eb[\exp(tX)] \le \eb \left[\frac{b - X}{b - a} \exp(ta) + \frac{X - a}{b - a} \exp(tb)\right] = \frac{b}{b - a} \exp(ta) + \frac{- a}{b - a} \exp(tb) = \exp (\phi(t))
     \end{align*}
     其中
     \begin{align*}
@@ -439,40 +439,40 @@
 \begin{theorem}[Hoeffding's不等式]
     设$X_1, \ldots, X_m$为相互独立的随机变量，且$X_i \in [a_i, b_i], ~ i \in [m]$。记$S_m = \sum_{i \in [m]} X_i$，对任意实数$\epsilon > 0$ 有
     \begin{align*}
-        \Pbb (S_m - \Ebb[S_m] \ge \epsilon) \le \exp \left( \frac{-2 \epsilon^2}{\sum_{i \in [m]} (b_i - a_i)^2} \right), \quad \Pbb (S_m - \Ebb[S_m] \le -\epsilon) \le \left( \frac{-2 \epsilon^2}{\sum_{i \in [m]} (b_i - a_i)^2} \right)
+        \pb (S_m - \eb[S_m] \ge \epsilon) \le \exp \left( \frac{-2 \epsilon^2}{\sum_{i \in [m]} (b_i - a_i)^2} \right), \quad \pb (S_m - \eb[S_m] \le -\epsilon) \le \left( \frac{-2 \epsilon^2}{\sum_{i \in [m]} (b_i - a_i)^2} \right)
     \end{align*}
 \end{theorem}
 
 \begin{proof}
     对任意实数$t>0$，由Markov's不等式和Hoeffding's法则可得
     \begin{align*}
-        \Pbb (S_m - \Ebb[S_m] \ge \epsilon)
-         & = \Pbb (\exp (t(S_m - \Ebb[S_m])) \ge \exp(t\epsilon))                                                                                                             \\
-         & \le \frac{\Ebb[\exp (t(S_m - \Ebb[S_m])]}{\exp(t\epsilon)}                                                                                                         \\
-         & = \frac{\Ebb[\prod_{i \in [m]} \exp (t(X_i - \Ebb[X_i]))]}{\exp(t\epsilon)} = \frac{\prod_{i \in [m]} \Ebb[\exp (t(X_i - \Ebb[X_i]))]}{\exp (t \epsilon)}          \\
+        \pb (S_m - \eb[S_m] \ge \epsilon)
+         & = \pb (\exp (t(S_m - \eb[S_m])) \ge \exp(t\epsilon))                                                                                                             \\
+         & \le \frac{\eb[\exp (t(S_m - \eb[S_m])]}{\exp(t\epsilon)}                                                                                                         \\
+         & = \frac{\eb[\prod_{i \in [m]} \exp (t(X_i - \eb[X_i]))]}{\exp(t\epsilon)} = \frac{\prod_{i \in [m]} \eb[\exp (t(X_i - \eb[X_i]))]}{\exp (t \epsilon)}          \\
          & \le \frac{\prod_{i=1}^m \exp (\nicefrac{t^2 (b_i - a_i)^2}{8})}{\exp (t \epsilon)} = \exp \left( \frac{t^2 \sum_{i \in [m]} (b_i - a_i)^2}{8} - t \epsilon \right)
     \end{align*}
     令$t = \nicefrac{4 \epsilon}{\sum_{i \in [m]} (b_i - a_i)^2}$即可。
 \end{proof}
 
 \begin{theorem}[Radon's定理]
-    $\Rbb^n$中任意$n+2$个点构成的集合$\Dcal$都可以划分成两个子集$\Dcal_1$和$\Dcal_2$使其凸包相交。
+    $\rb^n$中任意$n+2$个点构成的集合$\dc$都可以划分成两个子集$\dc_1$和$\dc_2$使其凸包相交。
 \end{theorem}
 
 \begin{proof}
-    设$\Dcal = \{ \xv_1, \ldots, \xv_{n+2} \} \subseteq \Rbb^n$，考虑
+    设$\dc = \{ \xv_1, \ldots, \xv_{n+2} \} \subseteq \rb^n$，考虑
     \begin{align*}
         \sum_{i \in [n+2]} \alpha_i \xv_i = \zerov, \quad \sum_{i \in [n+2]} \alpha_i = 0
     \end{align*}
     这是包含$n+2$个变量、由$n+1$个方程组成的线性方程组，因此必然有非零解，设$\beta_1, \ldots, \beta_{n+2}$是一组非零解，记
     \begin{align*}
-        \Ical_1 = \{ i \mid \beta_i > 0 \}, \quad \Ical_2 = \{ i \mid \beta_i \le 0 \}, \quad \beta = \sum_{i \in \Ical_1} \beta_i, \quad \Dcal_1 = \{ \xv_i \mid i \in \Ical_1 \}, \quad \Dcal_2 = \{ \xv_i \mid i \in \Ical_2 \}
+        \ic_1 = \{ i \mid \beta_i > 0 \}, \quad \ic_2 = \{ i \mid \beta_i \le 0 \}, \quad \beta = \sum_{i \in \ic_1} \beta_i, \quad \dc_1 = \{ \xv_i \mid i \in \ic_1 \}, \quad \dc_2 = \{ \xv_i \mid i \in \ic_2 \}
     \end{align*}
-    显然$\Dcal_1$与$\Dcal_2$是对$\Dcal$的一个划分，易知
+    显然$\dc_1$与$\dc_2$是对$\dc$的一个划分，易知
     \begin{align*}
-        \sum_{i \in \Ical_1} \beta_i \xv_i + \sum_{i \in \Ical_2} \beta_i \xv_i = \zerov \Longrightarrow \sum_{i \in \Ical_1} \beta_i \xv_i = - \sum_{i \in \Ical_2} \beta_i \xv_i \Longrightarrow \sum_{i \in \Ical_1} \frac{\beta_i}{\beta} \xv_i = \sum_{i \in \Ical_2} \frac{-\beta_i}{\beta} \xv_i
+        \sum_{i \in \ic_1} \beta_i \xv_i + \sum_{i \in \ic_2} \beta_i \xv_i = \zerov \Longrightarrow \sum_{i \in \ic_1} \beta_i \xv_i = - \sum_{i \in \ic_2} \beta_i \xv_i \Longrightarrow \sum_{i \in \ic_1} \frac{\beta_i}{\beta} \xv_i = \sum_{i \in \ic_2} \frac{-\beta_i}{\beta} \xv_i
     \end{align*}
-    注意$\sum_{i \in \Ical_1} \nicefrac{\beta_i}{\beta} = \sum_{i \in \Ical_2} \nicefrac{-\beta_i}{\beta} = 1$，这表明存在一个点既属于$\Dcal_1$的凸包、也属于$\Dcal_2$的凸包。
+    注意$\sum_{i \in \ic_1} \nicefrac{\beta_i}{\beta} = \sum_{i \in \ic_2} \nicefrac{-\beta_i}{\beta} = 1$，这表明存在一个点既属于$\dc_1$的凸包、也属于$\dc_2$的凸包。
 \end{proof}
 
 \begin{remark}
