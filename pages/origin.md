@@ -17,11 +17,12 @@ presentation:
 @import "../css/table.css"
 @import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
+@import "../plugin/notes/notes.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
-@import "../plugin/menu/menu.js"
+@import "../plugin/reveal.js-menu/menu.js"
 @import "../js/anychart/anychart-core.min.js"
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
@@ -39,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -53,8 +54,8 @@ presentation:
 
 时间：40 学时
 
-- 28 学时理论，周二 5 - 6、周四 1 - 2 节课 (2 - 8 周)，西十二 N401
-- 12 学时实验，周二 9 - 12 节课 (5 - 7 周)，南一楼 116
+- 28 学时理论，周一 3 - 4、周三 1 - 2 节课 (2 - 8 周)，西十二 N401
+- 12 学时实验，周二 9 - 12 节课 (5 - 7 周)，计算机大楼 2006A、线上
 
 <div class="top2"></div>
 
@@ -140,7 +141,7 @@ presentation:
 
 <div class="top-2"></div>
 
-我的启示 机器学习算法是一种{==元算法==} (meta algorithm)
+<p class="conclusion"> 机器学习算法是一种<span class="blue">元算法</span> (meta algorithm)</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -150,7 +151,7 @@ presentation:
 
 @import "../img/guichuideng/long.jpg" {.width30 .left10}
 
-<div class="width60 top-58per left38per">
+<div class="width50 top-50per left40per">
 
 > 寻龙分金看缠山，一重缠是一重关，关门如有八重险，不出阴阳八卦形。发丘印，摸金符，搬山卸岭寻龙诀；人点蜡，鬼吹灯，勘舆倒斗觅星峰；水银癍，养明器，龙楼宝殿去无数；窨沉棺，青铜椁，八字不硬莫近前。入口为马，马为离卦；子鼠遇马为坎离；未羊遇马为坤离；戌狗遇马为乾离，上乾下离见生门。
 
@@ -162,14 +163,14 @@ presentation:
 
 ---
 
-@import "../img/guichuideng/shan.jpg" {.center .bottom4}
+<img src="../img/guichuideng/shan.jpg" height=363px class="center bottom4">
 
 - 传统计算机算法 (寻龙诀)：山川地势 → 有无大墓
 - 机器学习算法：(山川地势, 有无大墓) 的成对数据 → 寻龙诀
 
-<div class="bottom2"></div>
+<div class="top2"></div>
 
-我的批注 机器学习算法早已用于分析遥感图像，检测石油矿产等资源
+<p class="comments"> 机器学习算法早已用于分析遥感图像，检测石油矿产等资源</p>
 
 <!-- slide data-notes="" -->
 
@@ -196,8 +197,9 @@ presentation:
 - [scikit-learn](https://scikit-learn.org/stable/)：机器学习库
 - [TensorFlow](https://www.tensorflow.org/?hl=zh-cn)：谷歌开发的神经网络函数库
 - [PyTorch](https://pytorch.org/)：脸书开发的神经网络函数库
+- [huggingface_hub](https://pypi.org/project/huggingface-hub/)：从 Hub 获取预训练模型和数据集
 
-<div class="bottom2"></div>
+<div class="top2"></div>
 
 第三方扩展包之间依赖关系复杂，新手推荐用 [Anaconda](https://www.anaconda.com/download/)
 
@@ -221,16 +223,8 @@ presentation:
 
 《旧唐书·魏徵传》
 
-<div class="top-2"></div>
-
-> 以铜为镜，可以正衣冠；
-
-<div class="top-8"></div>
-
-> 以{==史==}为镜，可以知兴替；
-
-<div class="top-8"></div>
-
+> 以铜为镜，可以正衣冠；<br>
+> 以{==史==}为镜，可以知兴替；<br>
 > 以人为镜，可以明得失。
 
 <!-- slide vertical=true data-notes="" -->
@@ -241,15 +235,12 @@ presentation:
 
 控制论之父<a href="https://en.wikipedia.org/wiki/Norbert_Wiener" targer=_blank>维纳</a>，1948 年出版《控制论》
 
-> 第一次工业革命：用某种机器来减轻甚至代替{==体力==}劳动
-
-<div class="top-8"></div>
-
+> 第一次工业革命：用某种机器来减轻甚至代替{==体力==}劳动<br>
 > 上世纪中叶：用某种新型机器来减轻甚至代替{==脑力==}劳动
 
 关键问题：如何让机器具有人类的智能？
 
-<p class="footnote book"> 维纳，Norbert Wiener，1894.11.26 - 1964.3.18，美国应用数学家，控制论之父</p>
+<p class="footnote book"> 维纳，Norbert Wiener，1894.11.26 ~ 1964.3.18，美国应用数学家，控制论之父</p>
 
 <!-- slide data-notes="" -->
 
@@ -317,7 +308,7 @@ I propose to consider the question, 'can machines think?'
 
 1956 年，人工智能元年，达特茅斯会议，十仙过海
 
-<div class="top-2">
+<div class="top0">
     <img src="../img/birth/John_McCarthy_Stanford.png" title="麦卡锡 1927 - 2011" width=171px height=228px>
     <img src="../img/birth/Marvin_Minsky_at_OLPCb.png" title="明斯基 1927 - 2016" width=171px height=228px>
     <img src="../img/birth/ClaudeShannon_MFO3807.png" title="香农 1916 - 2001" width=171px height=228px>
@@ -339,7 +330,7 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-@import "../dot/dartmouth.dot" {.center}
+@import "../dot/dartmouth.dot" {.center .width90}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -396,7 +387,7 @@ I propose to consider the question, 'can machines think?'
 - 1963 年证明了《数学原理》中的 52 条定理，定理 2.85 的证明更巧妙
 - 西蒙、纽厄尔获得了 1975 年的图灵奖
 
-<div class="bottom2"></div>
+<div class="top2"></div>
 
 衰退：
 
@@ -410,12 +401,14 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
+<div class="top2"></div>
+
 - 1959 年王浩证明了《数学原理》中 150 条一阶逻辑定理和 200 条命题逻辑定理，关于高阶逻辑复杂性的研究启发了学生库克的 NP 理论
 - 1978 年吴文俊给出几何定理自动证明，国际上称为吴方法，吴文俊自称为数学机械化
 
-<div class="top2">
-    <img src="../img/wangwu/1.jpg" title="王浩" width=350px>
-    <img src="../img/wangwu/2.jpg" title="吴文俊" width=350px class="left6">
+<div class="top2 center">
+    <img src="../img/wangwu/1.jpg" title="王浩" width=320px>
+    <img src="../img/wangwu/2.jpg" title="吴文俊" width=320px class="left6">
 </div>
 
 <!-- slide vertical=true data-notes="" -->
@@ -424,24 +417,26 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
+<div class="top2"></div>
+
 - A：B 和 C 都是说谎者
 - B：A 和 C 都是说谎者
 - C：A 和 B 中至少有一个说谎者
 
-<div class="bottom1"></div>
+<div class="top2"></div>
 
 根据 A 说实话与否有 (利用$p \rightarrow q \Longleftrightarrow \neg p \vee q$)
 
 - $A \rightarrow \neg B \wedge \neg C \Longleftrightarrow A \rightarrow \neg B, ~ A \rightarrow \neg C \Longleftrightarrow (1) ~ \neg A \vee \neg B, ~ (2) ~ \neg A \vee \neg C$
 - $\neg A \rightarrow B \vee C \Longleftrightarrow (3) ~ A \vee B \vee C$
 
-<div class="bottom1"></div>
+<div class="bottom2"></div>
 
 根据 B 说实话与否有
 
 - $B \rightarrow \neg A \wedge \neg C \Longleftrightarrow B \rightarrow \neg A, ~ B \rightarrow \neg C \Longleftrightarrow (4)~\neg B \vee \neg C$
 
-<div class="bottom1"></div>
+<div class="bottom2"></div>
 
 根据 C 说实话与否有
 
@@ -462,7 +457,7 @@ I propose to consider the question, 'can machines think?'
 6. $A \vee C$
 7. $B \vee C$
 
-<div class="bottom1"></div>
+<div class="bottom2"></div>
 
 利用归结原理 $p \vee q, ~ \neg p \vee r \Longrightarrow q \vee r$ 消除变量$p$
 
@@ -488,7 +483,7 @@ I propose to consider the question, 'can machines think?'
 - XCON：自动完成订单中计算机部件的选择和布局设计
 - 知识工程之父费根鲍姆获得了 1994 年的图灵奖
 
-<div class="bottom2"></div>
+<div class="top2"></div>
 
 衰退：
 
@@ -501,7 +496,7 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-@import "../dot/reasoning.dot"
+@import "../dot/reasoning.dot" {.center}
 
 <!-- slide data-notes="" -->
 
@@ -511,7 +506,7 @@ I propose to consider the question, 'can machines think?'
 
 我们人类是如何识别这些手写数字的？
 
-@import "../img/number.svg" {.center .width80}
+<img src="../img/number.svg" class="center width80">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -541,6 +536,6 @@ I propose to consider the question, 'can machines think?'
 @import "../js/wavesurfer/wavesurfer.js"
 @import "../js/wavesurfer/play-audio.js"
 
-<div class="top8"></div>
+<div class="top6"></div>
 
 ### <span class="fragment">启示：让{==机器==}从数据中自动{==学习==}得到知识</span>

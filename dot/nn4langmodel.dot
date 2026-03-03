@@ -3,7 +3,7 @@ digraph g {
     graph [nodesep=0.1 ranksep=0.3]
     bgcolor=transparent
     node [margin=0 shape=point height=0.2 color="#586e75" fontsize=10 label=""]
-    edge [color="#586e75" fontcolor="#586e75" fontsize=12 fontname="LXGWWenKai" arrowhead=vee arrowsize=0.6]
+    edge [color="#586e75" fontcolor="#586e75" fontsize=12 fontname="Ysabeau, LXGWSong" arrowhead=vee arrowsize=0.6]
 
     subgraph clusterW1 {
         color="#586e75"
@@ -43,7 +43,7 @@ digraph g {
     z7 -> a7 [label=" 激活 ", ltail=clusterZ, lhead=clusterA]
 
     subgraph clusterP {
-        node [margin=0 shape=plain fontname="LXGWWenKai" fontcolor="#586e75" fontsize=16]
+        node [margin=0 shape=plain fontname="Ysabeau, LXGWSong" fontcolor="#586e75" fontsize=16]
         color="#586e75"
         style=invis
         o [label="N 维概率向量：下一个词为词典中每个词的概率"]

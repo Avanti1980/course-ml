@@ -1,6 +1,7 @@
 .reveal .slides section,
-.reveal .slides section > section {
-  display: flex !important; /* 改为flex布局 */
+.reveal .slides section>section {
+  display: flex !important;
+  /* 改为flex布局 */
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
@@ -37,18 +38,21 @@
   word-wrap: break-word;
 }
 
-.reveal p .MathJax_Display {
-  margin-top: -1rem !important;
-}
-
-.reveal ul > li,
-.reveal ol > li {
+.reveal ul>li,
+.reveal ol>li {
   color: var(--solarized-yellow);
   margin-right: 2rem;
+  text-align: justify;
+  word-wrap: break-word;
 }
 
 .reveal ul {
   list-style-type: "\266b  ";
+}
+
+.reveal ul ul {
+  list-style-type: "\266a  ";
+  margin-left: -1rem;
 }
 
 .reveal pre {
@@ -58,12 +62,14 @@
 }
 
 .reveal .invis {
+
   p,
-  ul > li,
+  ul>li,
   .MathJax_Display,
   .MathJax {
     color: var(--solarized-base1) !important;
   }
+
   color: var(--solarized-base1) !important;
 }
 
@@ -89,9 +95,10 @@
 
 .reveal blockquote {
   width: 90%;
-  margin: var(--r-block-margin) auto;
-  padding: 5px;
+  margin: 0 auto;
+  padding: 0 1rem;
   font-style: italic;
+  text-align: left;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
 }
@@ -133,6 +140,7 @@
 
 #board2 {
   line-height: 1 !important;
+
   .piece-1e8b9 {
     margin: 0 !important;
   }
@@ -140,6 +148,13 @@
 
 .reveal .footnote {
   margin-top: auto;
+  margin-bottom: 0.5rem;
+}
+
+.reveal .hand::before {
+  content: "\f0a4";
+  font-family: FontAwesome;
+  color: var(--solarized-base01);
 }
 
 .reveal .comments::before {
@@ -158,4 +173,38 @@
   content: "\f044";
   font-family: FontAwesome;
   color: var(--solarized-blue);
+}
+
+// 以下用于mathjax4的样式
+// 数学公式统一着色
+.reveal mjx-container[jax="CHTML"] {
+  color: var(--solarized-magenta);
+}
+
+// 行内公式左右间隔
+.reveal .mathjax-exps mjx-container[jax="CHTML"],
+.reveal .fragment mjx-container[jax="CHTML"],
+.reveal .footnote mjx-container[jax="CHTML"] {
+  margin-left: 0.2rem !important;
+  margin-right: 0.2rem !important;
+}
+
+// 行间公式上下间隔
+.reveal mjx-container[display="true"] {
+  margin-top: -1.0rem !important;
+  margin-bottom: -1.0rem !important;
+}
+
+// 数学公式中的文本
+.reveal mjx-mtext {
+  font-weight: 600 !important;
+  font-size: 0.9em !important;
+}
+
+.reveal mjx-xypic mjx-xypic-object {
+  color: var(--solarized-magenta) !important;
+}
+
+.reveal mjx-xypic g {
+  stroke: var(--solarized-magenta) !important;
 }

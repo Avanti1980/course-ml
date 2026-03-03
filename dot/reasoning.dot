@@ -1,13 +1,13 @@
 digraph g {
     bgcolor=transparent
     graph [nodesep=0.3, ranksep=0.2]
-    node [shape=ellipse, color="#586e75", fontcolor="#b58900", fontsize=16, fontname="LXGWWenKai"]
-    edge [arrowhead=vee, color="#586e75", fontcolor="#dc322f", fontsize=16, fontname="LXGWWenKai", arrowsize=0.6]
+    node [shape=ellipse, color="#586e75", fontcolor="#b58900", fontsize=16, fontname="Ysabeau, LXGWSong"]
+    edge [arrowhead=vee, color="#586e75", fontcolor="#dc322f", fontsize=16, fontname="Ysabeau, LXGWSong", arrowsize=0.6]
 
     subgraph cluster_0 {
         label=知识库
         style=dashed
-        fontname="LXGWWenKai"
+        fontname="Ysabeau, LXGWSong"
         color="#586e75"
         fontcolor="#d33682"
 
@@ -28,7 +28,7 @@ digraph g {
     subgraph cluster_1 {
         label=推理
         style=dashed
-        fontname="LXGWWenKai"
+        fontname="Ysabeau, LXGWSong"
         color="#586e75"
         fontcolor="#d33682"
 

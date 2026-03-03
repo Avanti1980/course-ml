@@ -1,12 +1,17 @@
-// Ysabeau     100       200   300         400    500        600      700     800       900
-$weight-array: Hairline, Thin, ExtraLight, Light, SemiLight, Regular, Medium, SemiBold, Bold;
-@for $i from 1 through length($weight-array) {
-  $weight: nth($weight-array, $i);
+@use "sass:list";
+
+// Ysabeau     100        200   300         400    500      600     700       800   900
+$weight-array: ExtraThin, Thin, ExtraLight, Light, Regular, Medium, SemiBold, Bold, ExtraBold;
+
+@for $i from 1 through list.length($weight-array) {
+  $weight: list.nth($weight-array, $i);
+
   @font-face {
     font-family: Ysabeau;
     src: url("../fonts/YsabeauOffice/YsabeauOffice-#{$weight}.otf");
     font-weight: 100 * $i;
   }
+
   @font-face {
     font-family: Ysabeau;
     src: url("../fonts/YsabeauOffice/YsabeauOffice-#{$weight}Italic.otf");
@@ -15,149 +20,137 @@ $weight-array: Hairline, Thin, ExtraLight, Light, SemiLight, Regular, Medium, Se
   }
 }
 
-// Operator    100     300    500   700     900
-$weight-array: XLight, Light, Book, Medium, Bold;
-@for $i from 1 through length($weight-array) {
-  $weight: nth($weight-array, $i);
+// Operator    200     400    600   800    
+$weight-array: XLight, Light, Book, Medium;
+
+@for $i from 1 through list.length($weight-array) {
+  $weight: list.nth($weight-array, $i);
+
   @font-face {
     font-family: Operator;
     src: url("../fonts/Operator/OperatorMono-#{$weight}.otf");
-    font-weight: 100 * (2 * $i - 1);
+    font-weight: 100 * (2 * $i);
   }
+
   @font-face {
     font-family: Operator;
     src: url("../fonts/Operator/OperatorMono-#{$weight}Italic.otf");
     font-style: italic;
-    font-weight: 100 * (2 * $i - 1);
+    font-weight: 100 * (2 * $i);
   }
 }
 
-// LXGW        100        400      700
-$weight-array: SemiLight, Regular, Medium;
-@for $i from 1 through length($weight-array) {
-  $weight: nth($weight-array, $i);
-  @font-face {
-    font-family: LXGWWenKai;
-    src: url("../fonts/LxgwBright-4.158/LXGWBright-#{$weight}.woff2");
-    font-weight: 100 * (3 * $i - 2);
-  }
-  @font-face {
-    font-family: LXGWWenKai;
-    src: url("../fonts/LxgwBright-4.158/LXGWBright-#{$weight}Italic.woff2");
-    font-style: italic;
-    font-weight: 100 * (3 * $i - 2);
-  }
+// 霞鹜新晰黑 屏幕阅读版 26.02.09
+@font-face {
+  font-family: LXGWHei;
+  src: url("../fonts/LXGW/LXGWNeoXiHeiScreenFull.ttf");
+  font-weight: 400;
 }
 
-// NotoSansSC
-$weight-array: Thin, Light, Regular, Medium, Bold, "Black";
-$number-array: 100, 200, 400, 500, 700, 900;
-@for $i from 1 through length($weight-array) {
-  $weight: nth($weight-array, $i);
-  $number: nth($number-array, $i);
-  @font-face {
-    font-family: NotoSansSC;
-    src: url("../fonts/NotoSansSC/NotoSansSC-#{$weight}.otf");
-    font-weight: #{$number};
-  }
+// 霞鹜新致宋 屏幕阅读版 26.02.09
+@font-face {
+  font-family: LXGWSong;
+  src: url("../fonts/LXGW/LXGWNeoZhiSongScreenFull.ttf");
+  font-weight: 600;
 }
 
+.reveal {
+  font-family: Ysabeau, LXGWSong;
+  font-weight: 600;
+}
+
+// h1：用于首页课程名
+// h2：用于首页章节名
+// h3：用于首页单位和姓名
+// h4：用于首页邮箱
+// h5：用于每张片子标题
 .reveal h1,
 .reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
-  font-family: LXGWWenKai, "Noto Sans SC", NotoSansSC;
+.reveal h5 {
+  font-family: Ysabeau, LXGWHei;
   font-weight: 700;
+}
+
+.reveal h3,
+.reveal h4 {
+  font-family: Ysabeau, LXGWSong;
+  font-weight: 600;
 }
 
 .reveal h1 {
-  font-family: Ysabeau, "Noto Sans SC", NotoSansSC;
-  font-size: 2.2em;
+  font-size: 5.0rem;
 }
 
 .reveal h2 {
-  font-size: 1.6em;
+  font-size: 4.0rem;
 }
 
 .reveal h3 {
-  font-size: 1em;
+  font-size: 3.0rem;
 }
 
 .reveal h4 {
-  font-size: 0.8em;
+  font-size: 2.8rem;
 }
 
 .reveal h5 {
-  font-family: Ysabeau, "Noto Sans SC", NotoSansSC;
-  font-size: 1.2em;
-  font-weight: 700;
+  font-size: 3.0rem;
 }
 
 .reveal p {
-  font-family: LXGWWenKai;
-  font-size: 0.8em;
-  font-weight: 700;
+  font-size: 1.8rem;
 }
 
-.reveal ul > li {
-  font-family: LXGWWenKai;
-  font-size: 0.7em;
-  font-weight: 700;
+.reveal ul>li,
+.reveal ol>li {
+  font-size: 1.6rem;
 }
 
-.reveal ol > li {
-  font-family: LXGWWenKai;
-  font-size: 0.65em;
-  font-weight: 700;
+.reveal ul ul>li {
+  font-size: 1.4rem;
 }
 
-.reveal pre {
-  font-family: Operator, LXGWWenKai;
-  font-size: 1.2rem;
-  font-weight: 700;
+.reveal blockquote p {
+  font-size: 1.6rem;
 }
 
 .reveal .footnote {
-  font-family: LXGWWenKai;
-  font-size: 0.5em;
-  font-weight: 700;
+  font-size: 1.2rem;
 }
 
-.MathJax .mtext span {
-  font-family: LXGWWenKai !important;
-  font-weight: 700 !important;
+.reveal pre {
+  font-family: Operator, LXGWSong;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
+.reveal mjx-mtext,
 .mermaid text {
-  font-family: LXGWWenKai !important;
-  font-weight: 700 !important;
+  font-family: LXGWSong !important;
 }
 
-.reveal table,
-.reveal a {
-  font-family: LXGWWenKai;
+.reveal table th,
+.reveal table td {
+  font-size: 1.4rem;
 }
 
-.reveal table {
-  font-family: LXGWWenKai;
-  th,
-  td {
-    font-size: 1.4rem;
-    font-weight: 700;
-  }
+.reveal table th,
+.reveal table td {
+  font-weight: 600 !important;
 }
 
 @for $i from 1 to 50 {
   .reveal .fs#{$i} {
+
     th,
     td {
       font-size: 0.1rem * $i;
     }
-    .MathJax_Display {
-      font-size: 0.1rem * $i !important;
-    }
+
     font-size: 0.1rem * $i;
   }
+}
+
+.reveal .venn-tooltip {
+  font-family: 'Ysabeau, LXGWSong';
 }

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.8.25)  7 SEP 2025 08:57
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2026/dev/Arch Linux) (preloaded format=xelatex 2025.8.25)  7 SEP 2025 10:19
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1294,13 +1294,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `introduction-to-learning-theory.out' has not changed.
 (rerunfilecheck)             Checksum: 4B87AAB7A753EB10B61EEC4E0FFE49D8;501.
  ) 
 Here is how much of TeX's memory you used:
  48745 strings out of 473832
  1181941 string characters out of 5735458
- 1735096 words of memory out of 5000000
+ 1735118 words of memory out of 5000000
  70931 multiletter control sequences out of 15000+600000
  588968 words of font info for 169 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

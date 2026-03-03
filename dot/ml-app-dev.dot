@@ -2,17 +2,17 @@ digraph g {
     bgcolor=transparent
     graph [nodesep=0.2, ranksep=0.5]
     rankdir=LR
-    node [shape=ellipse, color="#586e75", fontcolor="#b58900", fontsize=16, fontname="LXGWWenKai"]
-    edge [color="#586e75", fontcolor="#268bd2", fontsize=16, fontname="LXGWWenKai", arrowsize=0.6]
+    node [shape=ellipse, color="#586e75", fontcolor="#b58900", fontsize=16, fontname="Ysabeau, LXGWSong"]
+    edge [color="#586e75", fontcolor="#268bd2", fontsize=16, fontname="Ysabeau, LXGWSong", arrowsize=0.6]
 
-    机器学习 [shape=box, fontsize=24, fontcolor="#cb4b16"]
+    机器学习 [shape=box, width=1.8, fontsize=24, fontcolor="#cb4b16"]
     {图像识别, 人机博弈, 自动驾驶, 资讯推荐, 文本分类, 机器翻译, 量化交易, 智能导航} -> 机器学习 [label="应用", dir=back]
 
     node [fontcolor="#dc322f"]
 
     subgraph cluster_0 {
         style=dashed
-        fontname="LXGWWenKai"
+        fontname="Ysabeau, LXGWSong"
         label=本课程
         color="#586e75"
         fontcolor="#d33682"

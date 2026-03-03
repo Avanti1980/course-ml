@@ -2,14 +2,14 @@ digraph g {
     bgcolor=transparent
     graph [nodesep=0.4, ranksep=0.7]
     rankdir=LR
-    node [shape=circle, color="#859900", fontcolor="#859900", fontsize=16, fontname="LXGWWenKai", label=""]
-    edge [arrowhead=vee, color="#859900", fontcolor="#839496", fontsize=12, fontname="LXGWWenKai", arrowsize=0.6]
+    node [shape=circle, color="#859900", fontcolor="#859900", fontsize=16, fontname="Ysabeau, LXGWSong", label=""]
+    edge [arrowhead=vee, color="#859900", fontcolor="#839496", fontsize=12, fontname="Ysabeau, LXGWSong", arrowsize=0.6]
 
     subgraph cluster_1 {
         style="dashed"
         label="输入层"
         color="#839496"
-        fontname="LXGWWenKai"
+        fontname="Ysabeau, LXGWSong"
         fontcolor="#268bd2"
 
         11, 12, 13
@@ -19,7 +19,7 @@ digraph g {
         style="dashed"
         label="隐藏层"
         color="#839496"
-        fontname="LXGWWenKai"
+        fontname="Ysabeau, LXGWSong"
         fontcolor="#268bd2"
 
         {11, 12, 13} -> 21
@@ -35,7 +35,7 @@ digraph g {
         style="dashed"
         label="输出层"
         color="#839496"
-        fontname="LXGWWenKai"
+        fontname="Ysabeau, LXGWSong"
         fontcolor="#268bd2"
         node [color="#586e75"]
         edge [color="#586e75"]

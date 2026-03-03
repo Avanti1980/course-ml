@@ -450,7 +450,7 @@
          & = \pb (\exp (t(S_m - \eb[S_m])) \ge \exp(t\epsilon))                                                                                                             \\
          & \le \frac{\eb[\exp (t(S_m - \eb[S_m])]}{\exp(t\epsilon)}                                                                                                         \\
          & = \frac{\eb[\prod_{i \in [m]} \exp (t(X_i - \eb[X_i]))]}{\exp(t\epsilon)} = \frac{\prod_{i \in [m]} \eb[\exp (t(X_i - \eb[X_i]))]}{\exp (t \epsilon)}          \\
-         & \le \frac{\prod_{i=1}^m \exp (\nicefrac{t^2 (b_i - a_i)^2}{8})}{\exp (t \epsilon)} = \exp \left( \frac{t^2 \sum_{i \in [m]} (b_i - a_i)^2}{8} - t \epsilon \right)
+         & \le \frac{\prod_{i \in [m]} \exp (\nicefrac{t^2 (b_i - a_i)^2}{8})}{\exp (t \epsilon)} = \exp \left( \frac{t^2 \sum_{i \in [m]} (b_i - a_i)^2}{8} - t \epsilon \right)
     \end{align*}
     令$t = \nicefrac{4 \epsilon}{\sum_{i \in [m]} (b_i - a_i)^2}$即可。
 \end{proof}
