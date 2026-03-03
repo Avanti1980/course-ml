@@ -99,7 +99,7 @@ anychart.onDocumentReady(function () {
     chart
         .title()
         .enabled(true)
-        .fontFamily('Ysabeau, LXGWSong')
+        .fontFamily('Ysabeau, LXGWSong !important')
         .fontSize(32)
         .padding({ bottom: 0 })
         .text('');
@@ -114,7 +114,7 @@ anychart.onDocumentReady(function () {
         .fontColor('#5e6469')
         .hAlign("center")
         .vAlign("center")
-        .fontFamily('Ysabeau, LXGWSong')
+        .fontFamily('Ysabeau, LXGWSong !important')
         .fontWeight('700')
         .format('{%Name}');
 
@@ -124,7 +124,7 @@ anychart.onDocumentReady(function () {
         .labels()
         .fontStyle('italic')
         .fontColor('#fff')
-        .fontFamily('Ysabeau, LXGWSong')
+        .fontFamily('Ysabeau, LXGWSong !important')
         .format('{%Name}');
 
     // disable legend
@@ -135,7 +135,7 @@ anychart.onDocumentReady(function () {
         .tooltip()
         .titleFormat('{%tooltipTitle}')
         .format("{%tooltipDesc}")
-        .fontFamily('Ysabeau, LXGWSong')
+        .fontFamily('Ysabeau, LXGWSong !important')
         .background().fill("#000 0.5");
 
     // set container id for the chart

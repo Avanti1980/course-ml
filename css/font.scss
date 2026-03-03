@@ -151,6 +151,10 @@ $weight-array: XLight, Light, Book, Medium;
   }
 }
 
+.reveal .puml text {
+  font-family: Ysabeau, LXGWSong !important;
+}
+
 .reveal .venn-tooltip {
-  font-family: 'Ysabeau, LXGWSong';
+  font-family: Ysabeau, LXGWSong !important;
 }

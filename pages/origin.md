@@ -178,7 +178,7 @@ presentation:
 
 ---
 
-<div id="venn-ml" class="center"></div>
+<div id="venn-ml" class="top6 center"></div>
 
 <!-- slide data-notes="" -->
 
