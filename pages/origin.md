@@ -88,7 +88,7 @@ presentation:
 
 ---
 
-@import "../puml/ml.puml" {.center}
+@import "../puml/ml.puml" {.center .top6}
 
 <!-- slide data-menu-title="人脸识别" data-background-video="../videos/facial-recognition.webm" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
 
@@ -178,7 +178,7 @@ presentation:
 
 ---
 
-<div id="venn-ml" class="top6 center"></div>
+<div id="venn-ml" class="center"></div>
 
 <!-- slide data-notes="" -->
 
