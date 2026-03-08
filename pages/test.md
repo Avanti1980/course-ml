@@ -17,34 +17,28 @@ presentation:
 @import "../css/table.css"
 @import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
+@import "../plugin/notes/notes.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
-@import "../plugin/menu/menu.js"
+@import "../plugin/reveal.js-menu/menu.js"
 @import "../js/anychart/anychart-core.min.js"
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-ml.js"
 
+<!-- slide vertical=true data-notes="" -->
 
-
-<!-- slide data-notes="" -->
-
-##### 频率 <span style="font-weight:900">_vs._</span> 贝叶斯
+##### 棋类知识
 
 ---
 
-在机器学习中的区别：是否考虑先验
+我们人类是如何判断红/黑、白/黑哪方优势的？
 
-当观测数据量很大时，先验 (伪数据) 就无足轻重了，两种做法不会有太大差别
+<div class="top2 center bottom2">
+    <img src="../img/data/chess1.jpg" width=320px>
+    <img src="../img/data/chess2.jpg" width=320px class="left6">
+</div>
 
-当观测数据量不大时，先验对模型性能有显著影响 (归纳偏好)
-
-- 先验是主观的，纯人为选取，没有标准
-- 抛硬币问题选贝塔分布做先验就是图计算方便
-- 利用共轭先验可以不用显式地积分求$P(X)$，肉眼就能看出结果
-
-<div class="top2"></div>
-
-先验需有适当的自由度，能通过调整参数灵活表示领域知识
+### <span class="fragment">启示：让{==机器==}从数据中自动{==学习==}得到知识</span>

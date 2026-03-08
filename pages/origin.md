@@ -90,13 +90,11 @@ presentation:
 
 @import "../puml/ml.puml" {.center .top6}
 
-<!-- slide data-menu-title="人脸识别" data-background-video="../videos/facial-recognition.webm" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
-
-<!-- slide data-menu-title="人机对弈" data-background-video="../videos/alphago.mp4" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
+<!-- slide data-menu-title="智能编程" data-background-video="../videos/chatgpt4code.mp4" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
 
 <!-- slide data-menu-title="自动驾驶" data-background-video="../videos/self-driving.mp4" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
 
-<!-- slide data-menu-title="智能编程" data-background-video="../videos/chatgpt4code.mp4" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
+<!-- slide data-menu-title="人机对弈" data-background-video="../videos/alphago.mp4" data-background-video-loop data-background-video-muted vertical=true data-notes="" -->
 
 <!-- slide data-notes="" -->
 
@@ -107,12 +105,12 @@ presentation:
 机器学习接管生活
 
 <div>
-    <img src="../img/app/1.jpg" width=140px>
-    <img src="../img/app/2.jpg" width=140px>
-    <img src="../img/app/3.jpg" width=140px>
-    <img src="../img/app/4.jpg" width=140px>
-    <img src="../img/app/5.jpg" width=140px>
-    <img src="../img/app/6.jpg" width=140px>
+    <img src="../img/app/unlock.jpg" width=140px>
+    <img src="../img/app/call-xiao-ai.jpg" width=140px>
+    <img src="../img/app/sound-to-text.jpg" width=140px>
+    <img src="../img/app/map.jpg" width=140px>
+    <img src="../img/app/spam.jpg" width=140px>
+    <img src="../img/app/recommend.jpg" width=140px>
 </div>
 
 <!-- slide vertical=true data-notes="" -->
@@ -256,13 +254,13 @@ presentation:
 
 <p class="top-50 left50per">
 xx之父
-<ol class="left50per">
-<li>开创性贡献</li>
-<li>持久影响力</li>
-<li>广泛性认可</li>
-<li>系统性工作</li>
-<li>领域奠基人</li>
-</ol>
+    <ol class="left50per">
+        <li>开创性贡献</li>
+        <li>持久影响力</li>
+        <li>广泛性认可</li>
+        <li>系统性工作</li>
+        <li>领域奠基人</li>
+    </ol>
 </p>
 
 <p class="footnote book"> 图灵，Alan Mathison Turing，1912.6.23 - 1954.6.7，英国计算机科学家、数学家、逻辑学家、密码分析学家和理论生物学家，计算机之父</p>
@@ -306,7 +304,7 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-1956 年，人工智能元年，达特茅斯会议，十仙过海
+1956 年，人工智能元年，达特茅斯会议
 
 <div class="top0">
     <img src="../img/birth/John_McCarthy_Stanford.png" title="麦卡锡 1927 - 2011" width=171px height=228px>
@@ -379,7 +377,9 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-机器擅长固定套路的计算 _vs._ 人类擅长妙手偶得的推理
+推理即计算，证明即符号变换
+
+智能可通过严格的形式规则在符号系统中实现
 
 西蒙、纽厄尔设计了{==逻辑理论家==}程序
 
@@ -387,17 +387,9 @@ I propose to consider the question, 'can machines think?'
 - 1963 年证明了《数学原理》中的 52 条定理，定理 2.85 的证明更巧妙
 - 西蒙、纽厄尔获得了 1975 年的图灵奖
 
-<div class="top2"></div>
-
-衰退：
-
-- 并非所有问题都可以转换成逻辑推理问题
-- 十万步内无法证明{==两个连续函数之和还是连续函数==}
-- 数学家不认可机器证明的定理 (可能出于保护自己的饭碗)
-
 <!-- slide vertical=true data-notes="" -->
 
-##### 王浩和吴文俊的工作
+##### 华人的工作
 
 ---
 
@@ -413,58 +405,45 @@ I propose to consider the question, 'can machines think?'
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 谁说了实话
+##### 定理自动证明
 
 ---
 
-<div class="top2"></div>
+公理
 
-- A：B 和 C 都是说谎者
-- B：A 和 C 都是说谎者
-- C：A 和 B 中至少有一个说谎者
+<p>
+\begin{align}
+    \begin{array}{rll}
+    A_1: & P \to (Q \to P) & 肯定前件律 \\
+    A_2: & (P \to (Q \to R)) \to ((P \to Q) \to (P \to R)) & 分配律 \\
+    A_3: & (\neg P \to \neg Q) \to (Q \to P) & 逆否律
+    \end{array}
+\end{align}
+</p>
 
-<div class="top2"></div>
+$\models$ 任何命题蕴含自身$X \to X$
 
-根据 A 说实话与否有 (利用$p \rightarrow q \Longleftrightarrow \neg p \vee q$)
+<div class="top4"></div>
 
-- $A \rightarrow \neg B \wedge \neg C \Longleftrightarrow A \rightarrow \neg B, ~ A \rightarrow \neg C \Longleftrightarrow (1) ~ \neg A \vee \neg B, ~ (2) ~ \neg A \vee \neg C$
-- $\neg A \rightarrow B \vee C \Longleftrightarrow (3) ~ A \vee B \vee C$
-
-<div class="bottom2"></div>
-
-根据 B 说实话与否有
-
-- $B \rightarrow \neg A \wedge \neg C \Longleftrightarrow B \rightarrow \neg A, ~ B \rightarrow \neg C \Longleftrightarrow (4)~\neg B \vee \neg C$
-
-<div class="bottom2"></div>
-
-根据 C 说实话与否有
-
-- $C \rightarrow \neg A \vee \neg B \Longleftrightarrow (5)~\neg A \vee \neg B \vee \neg C$
-- $\neg C \rightarrow A \wedge B \Longleftrightarrow (6)~A \vee C, ~ (7) ~ B \vee C $
+<ol>
+    <li class="fragment">实例化$A_1: P/X, ~ Q/(X \to X)$可得$X \to ((X \to X) \to X)$</li>
+    <li class="fragment">实例化$A_2: P/X, ~ Q/(X \to X), ~ R/X$可得$(X \to ((X \to X) \to X)) \to ((X \to (X \to X)) \to (X \to X))$</li>
+    <li class="fragment">注意 1、2 的结果，根据<span class="blue">肯定前件</span>可得$(X \to (X \to X)) \to (X \to X)$</li>
+    <li class="fragment">实例化$A_1: P/X, ~ Q/X$可得$X \to (X \to X)$</li>
+    <li class="fragment">注意 3、4 的结果，根据<span class="blue">肯定前件</span>可得$X \to X$</li>
+</ol>
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 归结原理
+##### 推理期
 
 ---
 
-1. $\neg A \vee \neg B$
-2. $\neg A \vee \neg C$
-3. $A \vee B \vee C$
-4. $\neg B \vee \neg C$
-5. $\neg A \vee \neg B \vee \neg C$
-6. $A \vee C$
-7. $B \vee C$
+衰退：
 
-<div class="bottom2"></div>
-
-利用归结原理 $p \vee q, ~ \neg p \vee r \Longrightarrow q \vee r$ 消除变量$p$
-
-8. 1 + 7：$\neg A \vee C$
-9. 6 + 8：$C$，C 是老实人
-10. 2 + 8：$\neg A$，A 是说谎者
-11. 4 + 9：$\neg B$，B 是说谎者
+- 并非所有问题都可以转换成逻辑推理问题
+- 十万步内无法证明<span class="blue">两个连续函数之和还是连续函数</span>
+- 数学家不认可机器证明的定理 (可能出于保护自己的饭碗)
 
 <!-- slide data-notes="" -->
 
@@ -472,23 +451,16 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-教训：光会逻辑推理还不够，机器得拥有知识
+光会逻辑推理还不够，机器得拥有知识，{==知识就是力量==}
 
-信仰：{==知识就是力量==}
+专家系统 = 知识库 + 推理机
 
-专家系统 = 知识库 + 推理机，在特定领域内具有专家水平解决问题的能力
+在特定领域内具有专家水平解决问题的能力
 
 - DENDRAL：通过分析化合物质谱与核磁共振数据推测化学结构
 - MYCIN：诊断血液和其他细菌感染并推荐抗生素药物种类和剂量
 - XCON：自动完成订单中计算机部件的选择和布局设计
 - 知识工程之父费根鲍姆获得了 1994 年的图灵奖
-
-<div class="top2"></div>
-
-衰退：
-
-- 人工构建知识库成本太高，专业知识需相关领域的专家来提供
-- 人类的很多智能行为，无法描述其背后的知识
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -496,7 +468,56 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-@import "../dot/reasoning.dot" {.center}
+知识库：if-then 规则集合
+
+<div class="threelines column1-border-right-solid column2-border1-right-solid-head column6-border-right-solid head-highlight-1 tr-hover top-2 fs10">
+
+| 序号 |     >      |     >      |     >      |     >      |    前件    | 结论       |
+| :--: | :--------: | :--------: | :--------: | :--------: | :--------: | ---------- |
+|  1   |   有毛发   |   &emsp;   |   &emsp;   |   &emsp;   |   &emsp;   | 哺乳动物   |
+|  2   |    产奶    |   &emsp;   |   &emsp;   |   &emsp;   |   &emsp;   | 哺乳动物   |
+|  3   |   有羽毛   |   &emsp;   |   &emsp;   |   &emsp;   |   &emsp;   | 鸟类       |
+|  4   |    会飞    |    生蛋    |   &emsp;   |   &emsp;   |   &emsp;   | 鸟类       |
+|  5   |  哺乳动物  |    吃肉    |   &emsp;   |   &emsp;   |   &emsp;   | 食肉动物   |
+|  6   |  哺乳动物  |    有蹄    |   &emsp;   |   &emsp;   |   &emsp;   | 有蹄类动物 |
+|  7   |  食肉动物  |  有黄褐色  |  有暗斑点  |   &emsp;   |   &emsp;   | 猎豹       |
+|  8   |  食肉动物  |  有黄褐色  | 有黑色条纹 |   &emsp;   |   &emsp;   | 老虎       |
+|  9   | 有蹄类动物 |   有长腿   |  有长脖子  |  有暗斑点  |   &emsp;   | 长颈鹿     |
+|  10  | 有蹄类动物 | 有黑白条纹 |   &emsp;   |   &emsp;   |   &emsp;   | 斑马       |
+|  11  |    鸟类    |   不会飞   |   有长腿   |  有长脖子  | 是黑白两色 | 鸵鸟       |
+|  12  |    鸟类    |   不会飞   |   会游泳   | 是黑白两色 |   &emsp;   | 企鹅       |
+|  13  |    鸟类    |    会飞    |   &emsp;   |   &emsp;   |   &emsp;   | 信天翁     |
+
+</div>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 动物识别专家系统
+
+---
+
+问题：该动物产奶、有蹄、有黑白条纹，请问是何动物？
+
+<div class="top2"></div>
+
+初始事实库为：{产奶、有蹄、有黑白条纹}
+
+根据规则 2：产奶$\to$哺乳动物，事实库扩充为：{产奶、有蹄、有黑白条纹、哺乳动物}
+
+根据规则 6：哺乳动物$\wedge$有蹄$\to$有蹄类动物，事实库扩充为：{产奶、有蹄、有黑白条纹、哺乳动物、有蹄类动物}
+
+根据规则 10：有蹄类动物$\wedge$有黑白条纹$\to$斑马，推理完成
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 知识期
+
+---
+
+衰退：
+
+- 人工构建知识库成本太高，专业知识需相关领域的专家来提供
+- 人类的很多智能行为，无法描述其背后的知识
 
 <!-- slide data-notes="" -->
 
@@ -536,6 +557,17 @@ I propose to consider the question, 'can machines think?'
 @import "../js/wavesurfer/wavesurfer.js"
 @import "../js/wavesurfer/play-audio.js"
 
-<div class="top6"></div>
+<!-- slide vertical=true data-notes="" -->
+
+##### 棋类知识
+
+---
+
+我们人类是如何判断红/黑、白/黑哪方优势的？
+
+<div class="top2 center bottom4">
+    <img src="../img/data/chess1.jpg" width=320px>
+    <img src="../img/data/chess2.jpg" width=320px class="left6">
+</div>
 
 ### <span class="fragment">启示：让{==机器==}从数据中自动{==学习==}得到知识</span>
