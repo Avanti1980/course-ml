@@ -34,11 +34,17 @@ presentation:
 
 ---
 
-我们人类是如何判断红/黑、白/黑哪方优势的？
+<div class="threelines head-highlight-1 tr-hover top-2">
 
-<div class="top2 center bottom2">
-    <img src="../img/data/chess1.jpg" width=320px>
-    <img src="../img/data/chess2.jpg" width=320px class="left6">
+| 演绎推理 |   归纳学习 |
+| -------: | ---------: |
+|        1 |     有毛发 |
+|        2 |       产奶 |
+|        3 |     有羽毛 |
+|        4 |       会飞 |
+|        5 |   哺乳动物 |
+|        6 |   哺乳动物 |
+|        7 |   食肉动物 |
+|        8 |   食肉动物 |
+
 </div>
-
-### <span class="fragment">启示：让{==机器==}从数据中自动{==学习==}得到知识</span>

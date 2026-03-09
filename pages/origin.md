@@ -421,7 +421,7 @@ I propose to consider the question, 'can machines think?'
 \end{align}
 </p>
 
-证明：任何命题蕴含自身，即$A_1, A_2, A_,3 \models X \to X$
+证明：任何命题蕴含自身，即$A_1, A_2, A_3 \models X \to X$
 
 <div class="top4"></div>
 
