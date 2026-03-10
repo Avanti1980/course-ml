@@ -91,7 +91,7 @@ presentation:
 
 <div class="threelines column4-border-right-solid head-highlight-1 tr-hover top-2">
 
-| 花萼长度 | 花萼宽度 | 花瓣长度 | 花瓣宽度 |   类别标记   |
+| 花萼长度 | 花萼宽度 | 花瓣长度 | 花瓣宽度 |     标记     |
 | :------: | :------: | :------: | :------: | :----------: |
 |   5.1    |   3.5    |   1.4    |   0.2    |    山鸢尾    |
 |   4.9    |   3.0    |   1.4    |   0.2    |    山鸢尾    |
@@ -102,8 +102,8 @@ presentation:
 
 </div>
 
-- 行：样本 (example, sample) or 示例 (instance)
-- 列：特征 (feature) or 属性 (attribute)，最后一列为类别标记 (label)
+- 行：{==样本==} (example, sample) 或 {==示例==} (instance) 或 {==数据点==} (data point)
+- 列：{==特征==} (feature) 或 {==属性==} (attribute) 或 {==协变量==} (covariate) ，最后一列为{==标记==} (label) 或 {==目标==} (target)
 
 <p class="footnote book"> 该表格取自<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set" target=_blank>鸢尾花数据集</a>，由美国植物学家 <a href="https://en.wikipedia.org/wiki/Edgar_Anderson" target=_blank>Edgar Shannon Anderson</a> 收集，英国统计学家 <a href="https://en.wikipedia.org/wiki/Ronald_Fisher" target=_blank>Ronald Aylmer Fisher</a> 引入到统计分析中，共有 150 个样本、3 个类别，每类 50 个样本</p>
 
@@ -123,7 +123,7 @@ sklearn 集成了该数据集
 
 ---
 
-将样本想象为欧几里得空间中的点
+将样本看成欧几里得空间$\rb^4$中的点
 
 <img src="../python/dt-iris-plot.svg" class="center width75 top1">
 
@@ -133,7 +133,7 @@ sklearn 集成了该数据集
 
 ---
 
-非结构型数据，不限于下面四种
+非结构型数据，包括但不限于
 
 <div class="multi_column left8">
     <div style="display:flex;flex-direction:column;margin-right:4%">
@@ -152,9 +152,9 @@ sklearn 集成了该数据集
         <img src="../img/data/audio2.jpg" width=185px>
     </div>
     <div style="display:flex;flex-direction:column;">
-        <p class="center">棋盘</p>
-        <img src="../img/data/chess1.jpg" width=185px>
-        <img src="../img/data/chess2.jpg" width=185px>
+        <p class="center">基因</p>
+        <img src="../img/data/gene1.png" width=185px>
+        <img src="../img/data/gene2.png" width=185px>
     </div>
 </div>
 
@@ -168,12 +168,12 @@ sklearn 集成了该数据集
 
 <div class="threelines column1-border-right-solid head-highlight-1 tr-hover top-2 bottom-2">
 
-| 原始数据 |   样本/示例    | 属性/特征 | 类别标记 |
-| :------: | :------------: | :-------: | :------: |
-|  $o_1$   | $(\xv_1, y_1)$ |  $\xv_1$  |  $y_1$   |
-|  $o_2$   | $(\xv_2, y_2)$ |  $\xv_2$  |  $y_2$   |
-| $\vdots$ |    $\vdots$    | $\vdots$  | $\vdots$ |
-|  $o_m$   | $(\xv_m, y_m)$ |  $\xv_m$  |  $y_m$   |
+| 原始数据 | 样本/示例/数据点 | 属性/特征/协变量 | 标记/目标 |
+| :------: | :--------------: | :--------------: | :-------: |
+|  $o_1$   |  $(\xv_1, y_1)$  |     $\xv_1$      |   $y_1$   |
+|  $o_2$   |  $(\xv_2, y_2)$  |     $\xv_2$      |   $y_2$   |
+| $\vdots$ |     $\vdots$     |     $\vdots$     | $\vdots$  |
+|  $o_m$   |  $(\xv_m, y_m)$  |     $\xv_m$      |   $y_m$   |
 
 </div>
 
@@ -182,11 +182,11 @@ sklearn 集成了该数据集
 - 二分类 (binary classification)：$y \in \{ 1, -1 \}$或者$y \in \{ 1, 0 \}$
 - 多分类 (multi-class classification)：$y \in [c] \triangleq \{ 1, 2, \ldots, c \}$
 - 回归 (regression)：$y \in \rb$或连续集合
-- 结构预测：$y$是向量、有序列表、序列、句法树、……
+- 结构预测：$y$是向量、序列、句法树、……
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 二分类任务示例
+##### 二分类
 
 ---
 
@@ -198,7 +198,7 @@ sklearn 集成了该数据集
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 二分类任务示例
+##### 二分类
 
 ---
 
@@ -208,7 +208,7 @@ sklearn 集成了该数据集
 
 <!-- slide data-notes="" -->
 
-##### 多分类任务示例
+##### 多分类
 
 ---
 
@@ -221,7 +221,7 @@ sklearn 集成了该数据集
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 多分类任务示例
+##### 多分类
 
 ---
 
@@ -231,7 +231,7 @@ sklearn 中的 digits 数据集就是 UCI 数据集中的测试集
 
 <!-- slide data-notes="" -->
 
-##### 回归任务示例
+##### 回归
 
 ---
 
@@ -250,7 +250,7 @@ sklearn 中的 digits 数据集就是 UCI 数据集中的测试集
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 回归任务示例
+##### 回归
 
 ---
 
@@ -258,26 +258,92 @@ sklearn 集成了该数据集
 
 @import "../python/diabetes-info.py" {line_begin=0 line_end=119 .line-numbers .top0 .bottom1 .left4 highlight=[]}
 
-<!-- slide vertical=true data-notes="" -->
+<!-- slide data-notes="" -->
 
-##### 结构预测任务示例
+##### 结构预测 向量
 
 ---
 
-$y$是向量
+多分类，标量标记经独热编码 (one-hot encoding) 后变成向量
 
-- 多分类，标量$y \in [c]$经独热编码 (one-hot encoding) 后变成长度为$c$的向量
-- 多标记学习 (multi-label learning)，用于图片中的多物体识别任务
+<p>
+\begin{align}
+    0 & \to \ldots 0001 \\
+    1 & \to \ldots 0010 \\
+    2 & \to \ldots 0100 \\
+    3 & \to \ldots 1000 \\
+    \vdots & \to \ldots \ldots
+\end{align}
+</p>
 
 <div class="bottom2"></div>
 
-<p class="fragment" data-fragment-index="1">$y$是有序列表，用于信息检索任务</p>
+多标记学习 (multi-label learning)，用于图片中的多物体识别任务
 
-<p class="fragment" data-fragment-index="2">$y$是序列，用于机器翻译、问答系统等任务</p>
+<p>
+\begin{align}
+    \{ 🐶, 🐱 \} & \to \ldots 00011 \\
+    \{ 🐶, 🐔 \} & \to \ldots 00101 \\
+    \{ 🐱, 🪿 \} & \to \ldots 01010 \\
+    \{ 🐖, 🐔, 🪿 \} & \to \ldots 11100 \\
+    \vdots & \to \ldots \ldots
+\end{align}
+</p>
 
-<p class="fragment" data-fragment-index="3">$y$是句法树，用于对自然语言的句法分析</p>
+<!-- slide vertical=true data-notes="" -->
 
-<img src="../img/tree.png" class="fragment top-15 width22 bottom-10" style="margin-right:6%;margin-left:auto" data-fragment-index="3">
+##### 结构预测 序列
+
+---
+
+机器翻译：平行语料库
+
+<div class="center threelines column1-border-right-solid head-highlight-1 tr-hover width90 top-2 chn2eng">
+
+| 中                               | 英                                                                                                       |
+| :------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| 苟利国家生死以，岂因祸福避趋之。 | Were it to benefit my country, I would lay down my life; What have I to fear when fortune comes or goes? |
+| 我跟他谈笑风生。                 | I was chatting with him in a lively and pleasant manner.                                                 |
+| 撸起袖子加油干。                 | Roll up our sleeves to work harder.                                                                      |
+| 不忘初心，方得始终。             | Never forget why you started, and you can accomplish your mission.                                       |
+
+</div>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 结构预测 序列
+
+---
+
+问答系统：阅读理解、知识竞赛
+
+<div class="center threelines column1-border-right-solid head-highlight-1 tr-hover width90 top-2 chn2eng">
+
+| 问                                                                                                       | 答                                                                                                                                                                                                                                                 |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 《周鼎传》：公讳鼎，字实甫，自为童子时即以言动自持...自是豪强屏息...，文中“自是豪强屏息”中“屏”的意思是？ | 收敛行迹                                                                                                                                                                                                                                           |
+| 什么是基金定投？有什么优缺点？                                                                           | 基金定投是定期定额投资基金的方式。优点包括摊平成本、强制储蓄、享受复利、操作便捷、门槛低；缺点主要是收益慢、可能短期亏损、流动性受限。适合有长期理财需求、不想花太多时间研究市场的投资者，建议选择历史业绩稳健的指数基金或主动管理型基金进行定投。 |
+
+</div>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 结构预测 句法树
+
+---
+
+用于对自然语言的句法分析
+
+- {==S==}：句子
+- {==NP==}：名词短语 (Noun Phrase)
+- {==VP==}：动词短语 (Verb Phrase)
+- {==PP==}：介词短语 (Prepositional Phrase)
+- {==N==}：名词
+- {==V==}：动词
+- {==P==}：介词
+- {==U==}：体标记
+
+<img src="../tikz/syntax-tree/syntax-tree.svg" class="top-40 width40 bottom-10 right6 lefta">
 
 <!-- slide data-notes="" -->
 
@@ -285,18 +351,18 @@ $y$是向量
 
 ---
 
-只有部分样本有标记，常见于标记获许代价很高的场景，关键问题如何利用未标记样本的分布信息辅助对有标记样本的学习？
+只有部分样本有标记，常见于标记获许代价很高的场景，关键问题如何利用未标记样本的分布信息辅助学习？
 
 <div class="threelines column1-border-right-solid row4-border-top-dashed head-highlight-1 tr-hover top-2 bottom-2">
 
-| 原始数据  |    样本/示例     |  属性/特征  | 类别标记 |
-| :-------: | :--------------: | :---------: | :------: |
-|   $o_1$   |  $(\xv_1, y_1)$  |   $\xv_1$   |  $y_1$   |
-| $\vdots$  |     $\vdots$     |  $\vdots$   | $\vdots$ |
-|   $o_l$   |  $(\xv_l, y_l)$  |   $\xv_m$   |  $y_l$   |
-| $o_{l+1}$ | $(\xv_{l+1}, -)$ | $\xv_{l+1}$ |   $-$    |
-| $\vdots$  |     $\vdots$     |  $\vdots$   | $\vdots$ |
-| $o_{l+u}$ | $(\xv_{l+u}, -)$ | $\xv_{l+u}$ |   $-$    |
+| 原始数据  | 样本/示例/数据点 | 属性/特征/协变量 | 标记/目标 |
+| :-------: | :--------------: | :--------------: | :-------: |
+|   $o_1$   |  $(\xv_1, y_1)$  |     $\xv_1$      |   $y_1$   |
+| $\vdots$  |     $\vdots$     |     $\vdots$     | $\vdots$  |
+|   $o_l$   |  $(\xv_l, y_l)$  |     $\xv_m$      |   $y_l$   |
+| $o_{l+1}$ | $(\xv_{l+1}, -)$ |   $\xv_{l+1}$    |    $-$    |
+| $\vdots$  |     $\vdots$     |     $\vdots$     | $\vdots$  |
+| $o_{l+u}$ | $(\xv_{l+u}, -)$ |   $\xv_{l+u}$    |    $-$    |
 
 </div>
 
@@ -315,12 +381,12 @@ $y$是向量
 
 <div class="threelines column1-border-right-solid head-highlight-1 tr-hover top-2 bottom-2">
 
-| 原始数据 |  样本/示例   | 属性/特征 | 类别标记 |
-| :------: | :----------: | :-------: | :------: |
-|  $o_1$   | $(\xv_1, -)$ |  $\xv_1$  |   $-$    |
-|  $o_2$   | $(\xv_2, -)$ |  $\xv_2$  |   $-$    |
-| $\vdots$ |   $\vdots$   | $\vdots$  | $\vdots$ |
-|  $o_m$   | $(\xv_m, -)$ |  $\xv_m$  |   $-$    |
+| 原始数据 | 样本/示例/数据点 | 属性/特征/协变量 | 标记/目标 |
+| :------: | :--------------: | :--------------: | :-------: |
+|  $o_1$   |   $(\xv_1, -)$   |     $\xv_1$      |    $-$    |
+|  $o_2$   |   $(\xv_2, -)$   |     $\xv_2$      |    $-$    |
+| $\vdots$ |     $\vdots$     |     $\vdots$     | $\vdots$  |
+|  $o_m$   |   $(\xv_m, -)$   |     $\xv_m$      |    $-$    |
 
 </div>
 
@@ -397,7 +463,7 @@ $y$是向量
 
 <!-- slide data-notes="" -->
 
-##### 直方图估计
+##### 密度估计 直方图
 
 ---
 
@@ -411,7 +477,7 @@ $y$是向量
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 直方图估计
+##### 密度估计 直方图
 
 ---
 
@@ -442,7 +508,7 @@ $y$是向量
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 核密度估计
+##### 密度估计 核函数
 
 ---
 
@@ -467,7 +533,7 @@ $y$是向量
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 核密度估计
+##### 密度估计 核函数
 
 ---
 

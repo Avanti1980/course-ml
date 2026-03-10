@@ -137,3 +137,15 @@
     padding: 0.4rem 0.2rem 0.2rem 0.2rem;
   }
 }
+
+.chn2eng>table {
+  th:first-of-type {
+    // 第一列宽度
+    width: 20rem;
+  }
+
+  th:nth-of-type(2) {
+    // 第二列宽度
+    width: 30rem;
+  }
+}

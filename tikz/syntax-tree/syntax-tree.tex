@@ -1,0 +1,54 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-tikz4slides}
+\setmainfont[BoldFont=,ItalicFont=]{Ysabeau}
+
+\tikzset{font=\Large}
+\tikzset{base/.style = {smooth,very thick,draw=SolarizedBase01,SolarizedBase01}}
+\tikzset{blue/.style = {base,draw=none,SolarizedBlue}}
+\tikzset{green/.style = {base,draw=none,SolarizedGreen}}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    base,
+    level distance=50,
+    level 1/.style = {sibling distance=140},
+    level 2/.style = {sibling distance=135},
+    level 3/.style = {sibling distance=65},
+    level 4/.style = {sibling distance=35},
+  ]
+  \node (Root) [blue] {S}
+  child {node (Root-1-1) [blue] {NP}
+      child {node (Root-2-1) [blue] {N}
+          child {node (Root-3-1) [green] {老师}}
+        }
+    }
+  child {node (Root-1-2) [blue] {VP}
+      child {node (Root-2-4) [blue] {PP}
+          child {node (Root-3-10) [blue] {P}
+              child {node (Root-4-10) [green] {被}}
+            }
+          child {node (Root-3-11) [blue] {NP}
+              child {node (Root-4-13) [blue] {V}
+                  child {node (Root-5-10) [green] {迟到}}
+                }
+              child {node (Root-4-14) [blue] {U}
+                  child {node (Root-5-11) [green] {的}}
+                }
+              child {node (Root-4-15) [blue] {N}
+                  child {node (Root-5-11) [green] {学生}}
+                }
+            }
+        }
+      child {node (Root-2-5) [blue] {VP}
+          child {node (Root-3-13) [blue] {V}
+              child {node (Root-5-11) [green] {逗乐}}
+            }
+          child {node (Root-3-14) [blue] {U}
+              child {node (Root-5-11) [green] {了}}
+            }
+        }
+    };
+\end{tikzpicture}
+
+\end{document}
