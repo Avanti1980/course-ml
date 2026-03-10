@@ -570,3 +570,21 @@ I propose to consider the question, 'can machines think?'
 </div>
 
 ### <span class="fragment">启示：让{==机器==}从数据中自动{==学习==}得到知识</span>
+
+<!-- slide data-notes="" -->
+
+##### 机器学习 归纳的视角
+
+---
+
+机器学习从数据中总结出知识，也被称为归纳学习 (inductive learning)
+
+<div class="threelines column1-border-right-solid head-highlight-1 tr-hover top-2">
+
+| 演绎推理                         | 归纳学习                           |
+| :------------------------------- | :--------------------------------- |
+| 符号主义，方法为逻辑编程、搜索等 | 连结主义，方法为神经网络等         |
+| 一般到具体，可解释性强，结果精确 | 具体到一般，无可解释性，结果不精确 |
+| 与人的学习过程不相似             | 与人的学习过程更相似               |
+
+</div>

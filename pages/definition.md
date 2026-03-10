@@ -335,9 +335,9 @@ sklearn 集成了该数据集
 用于对自然语言的句法分析
 
 - {==S==}：句子
-- {==NP==}：名词短语 (Noun Phrase)
-- {==VP==}：动词短语 (Verb Phrase)
-- {==PP==}：介词短语 (Prepositional Phrase)
+- {==NP==}：名词短语 (noun phrase)
+- {==VP==}：动词短语 (verb phrase)
+- {==PP==}：介词短语 (prepositional phrase)
 - {==N==}：名词
 - {==V==}：动词
 - {==P==}：介词
@@ -369,7 +369,7 @@ sklearn 集成了该数据集
 任务类型：
 
 - 转导 (transductive) 学习：只需预测$\xv_{l+1}, \ldots, \xv_{l+u}$的标记
-- 归纳 (inductive) 学习：必须有显式模型，能对未知样本进行预测
+- 归纳 (inductive) 学习：必须有显式的模型，能对未见样本进行预测
 
 <!-- slide data-notes="" -->
 
@@ -408,7 +408,10 @@ sklearn 集成了该数据集
 
 优化问题：$\min_{\muv_i} \sum_{i \in [k]} \sum_{\xv \in \cc_i} \| \xv - \muv_i \|_2^2, ~ \st ~ \muv_i = \sum_{\xv \in \cc_i} \xv / |\cc_i|.$
 
-求解算法：随机初始化$k$个簇中心，重复以下两步直至收敛：1) 将每个样本分配到距其最近的簇中心；2) 更新每个簇的中心
+求解算法：随机初始化$k$个簇中心，重复以下两步直至收敛：
+
+1. 将每个样本分配到距其最近的簇中心
+2. 更新每个簇的中心
 
 <p class="footnote book"> $k$-均值的名称由 James MacQueen 于 1967 年首次使用，但其思想可追溯到 1957 年的 Hugo Steinhaus，上述求解算法最初在 1957 年由贝尔实验室的 Stuart Lloyd 作为一种脉冲码调制技术提出，但直到 1982 年才公开发表，最终结果是优化问题的局部最优解 (不是全局最优) 且受簇中心的初始化影响，1965 年Edward W. Forgy 发表了本质上相同的方法，故该算法有时也称为 Lloyd–Forgy 方法</p>
 
