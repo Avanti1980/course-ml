@@ -472,7 +472,7 @@ sklearn 集成了该数据集
 
 选定 bin 的起始点和宽度，统计样本落在每个 bin 中的个数，再归一化就是概率密度
 
-20 个样本，其中 6 个采样自$\nc(0,1)$，14 个采样自$\nc(0,5)$
+20 个样本，其中 6 个采样自$\nc(0,1)$，14 个采样自$\nc(5,1)$
 
 <img src="../python/density-estimation-1.svg" class="center top2 width90" title="">
 
@@ -540,7 +540,7 @@ sklearn 集成了该数据集
 
 ---
 
-100 个样本，其中 30 个采样自$\nc(0,1)$，70 个采样自$\nc(0,5)$
+100 个样本，其中 30 个采样自$\nc(0,1)$，70 个采样自$\nc(5,1)$
 
 <img src="../python/density-estimation-3.svg" class="center top3 width90" title="">
 
