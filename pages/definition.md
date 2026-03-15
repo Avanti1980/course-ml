@@ -351,7 +351,7 @@ sklearn 集成了该数据集
 
 ---
 
-只有部分样本有标记，常见于标记获许代价很高的场景，关键问题如何利用未标记样本的分布信息辅助学习？
+只有部分样本有标记，常见于标记获取代价很高的场景，关键问题如何利用未标记样本的分布信息辅助学习？
 
 <div class="threelines column1-border-right-solid row4-border-top-dashed head-highlight-1 tr-hover top-2 bottom-2">
 

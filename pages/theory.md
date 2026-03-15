@@ -52,11 +52,11 @@ presentation:
 
 NFL 定理的例子表明，在已知数据上表现好不算什么
 
-设$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，$D^+ = \{ \xv_i \mid y_i = 1 \}$、$D^- = \{ \xv_i \mid y_i = -1 \}$
+设$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\dc^+ = \{ \xv_i \mid y_i = 1 \}$、$\dc^- = \{ \xv_i \mid y_i = -1 \}$
 
 <p>
 \begin{align}
-    h(\xv) = - \prod_{i: y_i = 1} \| \xv - \xv_i \| \begin{cases} = 0, & 若 \xv \in D^+ \\ < 0, & 若 \xv \in D^- \end{cases}
+    h(\xv) = - \prod_{i: y_i = 1} \| \xv - \xv_i \| \begin{cases} = 0, & 若 \xv \in \dc^+ \\ < 0, & 若 \xv \in \dc^- \end{cases}
 \end{align}
 </p>
 
@@ -80,18 +80,18 @@ NFL 定理的例子表明，在已知数据上表现好不算什么
 问题形式化
 
 - $\xc$为样本空间，$\yc$为标记集合
-- $\dc$为定义在$\xc \times \yc$上的{==未知==}概率分布
-- $D = \{ (\xv_i, y_i) \}_{i \in [m]}$为{==独立同分布==} (iid) 采样于$\dc$的{==训练==}数据集
+- $\ds$为定义在$\xc \times \yc$上的{==未知==}概率分布
+- $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$为{==独立同分布==} (iid) 采样于$\ds$的{==训练==}数据集
 - $\hc = \{ h: \xc \mapsto \yc \}$是候选模型构成的{==假设空间==}
-- $R(h) = \eb_{(\xv, y) \sim \dc}[\ib (h(\xv) \ne y)]$为模型$h$的{==泛化风险==} (generalization risk)
+- $R(h) = \eb_{(\xv, y) \sim \ds}[\ib (h(\xv) \ne y)]$为模型$h$的{==泛化风险==} (generalization risk)
 - $\min_{h \in \hc} R(h)$就是机器学习的目标：{==泛化风险最小化==}
 
 <div class="top2"></div>
 
 两点说明：
 
-1. 训练样本$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \dc$以及计算泛化风险的$(\xv, y) \sim \dc$是学习的前提
-2. 数据分布$\dc$定义在$\xc \times \yc$上，即允许不同的样本有相同的$\xv$、不同的$y$，这种设定称为{==不可知==} (agnostic) 学习；若$\dc$只定义在$\xc$上，类标记由未知函数$c: \xc \mapsto \yc$给出，则相同的$\xv$必然有相同的$y$，这种设定比前者要简单
+1. 训练样本$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \ds$以及计算泛化风险的$(\xv, y) \sim \ds$是学习的前提
+2. 数据分布$\ds$定义在$\xc \times \yc$上，即允许不同的样本有相同的$\xv$、不同的$y$，这种设定称为{==不可知==} (agnostic) 学习；若$\ds$只定义在$\xc$上，类标记由未知函数$c: \xc \mapsto \yc$给出，则相同的$\xv$必然有相同的$y$，这种设定比前者要简单
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -103,18 +103,18 @@ Q：如何定义“学习成功”？记假设空间$\hc$中的最优模型为
 
 <p>
 \begin{align}
-    h^\star = \argmin_{h \in \hc} R(h) = \argmin_{h \in \hc} \eb_{(\xv, y) \sim \dc}[\ib (h(\xv) \ne y)]
+    h^\star = \argmin_{h \in \hc} R(h) = \argmin_{h \in \hc} \eb_{(\xv, y) \sim \ds}[\ib (h(\xv) \ne y)]
 \end{align}
 </p>
 
 把$h^\star$求出来就算成功了吗？
 
-A：数据分布$\dc$未知，泛化风险无法计算，$h^\star$不可求
+A：数据分布$\ds$未知，泛化风险无法计算，$h^\star$不可求
 
 退而求其次
 
-- 训练数据集$D$只有有限个样本，或许$\hc$中有多个模型与$h^\star$表现相同，算法根本没法区分它们的好坏，因此不要求算法输出$h^\star$，只要输出的模型与$h^\star$差别不大就算学习成功
-- 训练数据集$D$是依未知分布$\dc$有限次采样得到的，不排除采出很差数据集的可能 (例如全是正类)，因此不要求算法每次都能对随机采样的$D$学习成功，只要求失败的概率不大即可
+- 训练数据集$\dc$只有有限个样本，或许$\hc$中有多个模型与$h^\star$表现相同，算法根本没法区分它们的好坏，因此不要求算法输出$h^\star$，只要输出的模型与$h^\star$差别不大就算学习成功
+- 训练数据集$\dc$是依未知分布$\ds$有限次采样得到的，不排除采出很差数据集的可能 (例如全是正类)，因此不要求算法每次都能对随机采样的$\dc$学习成功，只要求失败的概率不大即可
 
 <!-- slide data-notes="" -->
 
@@ -126,13 +126,13 @@ A：数据分布$\dc$未知，泛化风险无法计算，$h^\star$不可求
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [\underbrace{R(h_D) - R(h^\star) \le \epsilon}_{近似正确}] \ge \underbrace{1 - \delta}_{大概率}
+    \pb_{\dc \sim \ds^m} [\underbrace{R(h_\dc) - R(h^\star) \le \epsilon}_{近似正确}] \ge \underbrace{1 - \delta}_{大概率}
 \end{align}
 </p>
 
-Q：给定某个任务，算法能输出满足上式的$h_D$就算学习成功，那如何判断一个任务是“可学习”的？
+Q：给定某个任务，算法能输出满足上式的$h_\dc$就算学习成功，那如何判断一个任务是“可学习”的？
 
-换言之，给定某个任务和任意正数$\epsilon$、$\delta$，如何判断这样的算法存在？数据集$D$、假设空间$\hc$是否需满足一些条件？
+换言之，给定某个任务和任意正数$\epsilon$、$\delta$，如何判断这样的算法存在？数据集$\dc$、假设空间$\hc$是否需满足一些条件？
 
 A：有点复杂，一步步来
 
@@ -150,18 +150,18 @@ A：对任意$h$，能求的只有{==经验风险==} (empirical risk)
 
 <p>
 \begin{align}
-    R_D (h) = \frac{1}{m} \sum_{i \in [m]} \ib(h(\xv_i) \ne y_i)
+    R_\dc (h) = \frac{1}{m} \sum_{i \in [m]} \ib(h(\xv_i) \ne y_i)
 \end{align}
 </p>
 
 Q：经验风险和泛化风险的关系是什么？
 
-A：给定$h$，经验风险是关于$D$的 r.v.，期望是泛化风险
+A：给定$h$，经验风险是关于$\dc$的随机变量，期望是泛化风险
 
 <p>
 \begin{align}
-    \eb_{D \sim \dc^m} [R_D (h)] & = \eb_{(\xv_i ,y_i) \sim \dc} \left[ \frac{1}{m} \sum_{i \in [m]} \ib(h(\xv_i) \ne y_i) \right] \\
-    & = \eb_{(\xv_i ,y_i) \sim \dc} [\ib(h(\xv_i) \ne y_i)] = R(h)
+    \eb_{\dc \sim \ds^m} [R_\dc (h)] & = \eb_{(\xv_i ,y_i) \sim \ds} \left[ \frac{1}{m} \sum_{i \in [m]} \ib(h(\xv_i) \ne y_i) \right] \\
+    & = \eb_{(\xv_i ,y_i) \sim \ds} [\ib(h(\xv_i) \ne y_i)] = R(h)
 \end{align}
 </p>
 
@@ -175,11 +175,11 @@ Q：是否可以用经验风险替代泛化风险？
 
 A：这样做肯定会引入误差，但 PAC 学习框架本来也是允许有误差的，只是误差要可控
 
-Q：是否有刻画 r.v. 偏离期望的数学工具从而可以控制误差？
+Q：是否有刻画随机变量 偏离期望的数学工具从而可以控制误差？
 
 A：<a href="https://en.wikipedia.org/wiki/Concentration_inequality" target=_blank>集中不等式</a> (concentration inequality) 就是这样一类工具
 
-Hoeffding's 不等式：设 r.v. $X_1, \ldots, X_m$相互独立，$X_i \in [a_i, b_i]$，记$S_m = \sum_{i \in [m]} X_i$，对任意$\epsilon > 0$有
+霍弗丁不等式：设随机变量 $X_1, \ldots, X_m$相互独立，$X_i \in [a_i, b_i]$，记$S_m = \sum_{i \in [m]} X_i$，对任意$\epsilon > 0$有
 
 <p>
 \begin{align}
@@ -194,20 +194,20 @@ Hoeffding's 不等式：设 r.v. $X_1, \ldots, X_m$相互独立，$X_i \in [a_i,
 
 ---
 
-给定$h$，经验风险$R_D(h) = \sum_{i \in [m]} \frac{\ib(h(\xv_i) \ne y_i)}{m}$是$m$个相互独立的 r.v. 和，每个$ \in [0, \frac{1}{m}]$，由 Hoeffding's 不等式可得
+给定$h$，经验风险$R_\dc(h) = \sum_{i \in [m]} \frac{\ib(h(\xv_i) \ne y_i)}{m}$是$m$个相互独立的随机变量 和，每个$ \in [0, \frac{1}{m}]$，由霍弗丁不等式可得
 
 <p>
 \begin{align}
-    & \pb_{D \sim \dc^m} [R_D(h) - R(h) \ge \epsilon] \le e^{-2 m \epsilon^2} \\
-    & \pb_{D \sim \dc^m} [R_D(h) - R(h) \le -\epsilon] \le e^{-2 m \epsilon^2}
+    & \pb_{\dc \sim \ds^m} [R_\dc(h) - R(h) \ge \epsilon] \le e^{-2 m \epsilon^2} \\
+    & \pb_{\dc \sim \ds^m} [R_\dc(h) - R(h) \le -\epsilon] \le e^{-2 m \epsilon^2}
 \end{align}
 </p>
 
-根据 union bound：$\pb[A \cup B] \le \pb[A] + \pb[B]$可得
+根据联合界 (union bound)：$\pb[A \cup B] \le \pb[A] + \pb[B]$可得
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [|R_D(h) - R(h)| \ge \epsilon] \le 2 e^{-2 m \epsilon^2}
+    \pb_{\dc \sim \ds^m} [|R_\dc(h) - R(h)| \ge \epsilon] \le 2 e^{-2 m \epsilon^2}
 \end{align}
 </p>
 
@@ -215,7 +215,7 @@ Hoeffding's 不等式：设 r.v. $X_1, \ldots, X_m$相互独立，$X_i \in [a_i,
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} \left[ |R_D(h) - R(h)| \le \sqrt{\frac{\ln (2 / \delta)}{2m}} \right] \ge 1 - \delta \tag {1}
+    (1) \quad \pb_{\dc \sim \ds^m} \left[ |R_\dc(h) - R(h)| \le \sqrt{\frac{\ln (2 / \delta)}{2m}} \right] \ge 1 - \delta
 \end{align}
 </p>
 
@@ -225,24 +225,24 @@ Hoeffding's 不等式：设 r.v. $X_1, \ldots, X_m$相互独立，$X_i \in [a_i,
 
 ---
 
-Q：式$(1)$已经接近 PAC 学习框架的形式了，但式$(1)$中是同一个模型$h$的经验风险、泛化风险相减，而 PAC 学习框架中是输出模型$h_D$和最优模型$h^\star$的泛化风险相减，如何将其联系起来？
+Q：式$(1)$已经接近 PAC 学习框架的形式了，但式$(1)$中是同一个模型$h$的经验风险、泛化风险相减，而 PAC 学习框架中是输出模型$h_\dc$和最优模型$h^\star$的泛化风险相减，如何将其联系起来？
 
-A：尝试引入$R_D(h_D)$作为桥接
+A：尝试引入$R_\dc(h_\dc)$作为桥接
 
 <p>
 \begin{align}
-    R(h_D) - R(h^\star) & = R(h_D) - R_D(h_D) + R_D(h_D) - R(h^\star) \\
-    & \le R(h_D) - R_D(h_D) + R_D(h^\star) - R(h^\star) \tag {2}
+    R(h_\dc) - R(h^\star) & = R(h_\dc) - R_\dc(h_\dc) + R_\dc(h_\dc) - R(h^\star) \\
+    & \le R(h_\dc) - R_\dc(h_\dc) + R_\dc(h^\star) - R(h^\star)
 \end{align}
 </p>
 
-如果式$(2)$能成立，目标就变成了两项之和，都是同一个模型的经验风险、泛化风险相减，式$(1)$或许就可以用起来了
+如果第二行放缩能成立，目标就变成了两项之和，都是同一个模型的经验风险、泛化风险相减，式$(1)$或许就可以用起来了
 
-欲使$R_D(h_D) \le R_D(h^\star)$，只需令$h_D$为经验风险最小化模型
+欲使$R_\dc(h_\dc) \le R_\dc(h^\star)$，只需令$h_\dc$为经验风险最小化模型
 
 <p>
 \begin{align}
-    h_D^\erm = \argmin_{h \in \hc} R_D(h)
+    h_\dc^\erm = \argmin_{h \in \hc} R_\dc(h)
 \end{align}
 </p>
 
@@ -256,20 +256,20 @@ Q：目前已有
 
 <p>
 \begin{align}
-    R(h_D^\erm) - R(h^\star) \le R(h_D^\erm) - R_D(h_D^\erm) + R_D(h^\star) - R(h^\star)
+    R(h_\dc^\erm) - R(h^\star) \le R(h_\dc^\erm) - R_\dc(h_\dc^\erm) + R_\dc(h^\star) - R(h^\star)
 \end{align}
 </p>
 
 是不是再代入两遍式$(1)$就搞定了？
 
-A：$h_D^\erm$依赖于$D$，式$(1)$不可用，$h^\star$独立于$D$，是可以用的
+A：$h_\dc^\erm$依赖于$\dc$，式$(1)$不可用，$h^\star$独立于$\dc$，是可以用的
 
-式$(1)$用了 Hoeffding's 不等式，前提是$\eb_{D \sim \dc^m} [R_D (h)] = R(h)$，注意下面两式的区别
+式$(1)$用了霍弗丁不等式，前提是$\eb_{\dc \sim \ds^m} [R_\dc (h)] = R(h)$，注意下面两式的区别
 
 <p>
 \begin{align}
-    & \eb_{D \sim \dc^m} [R_D (h)] = \pb[D_1] R_{D_1} (h) + \pb[D_2] R_{D_2} (h) + \cdots \\[4pt]
-    & \eb_{D \sim \dc^m} [R_D (h_D^\erm)] = \pb[D_1] R_{D_1} (h_{D_1}^\erm) + \pb[D_2] R_{D_2} (h_{D_2}^\erm) + \cdots
+    & \eb_{\dc \sim \ds^m} [R_\dc (h)] = \pb[\dc_1] R_{\dc_1} (h) + \pb[\dc_2] R_{\dc_2} (h) + \cdots \\[4pt]
+    & \eb_{\dc \sim \ds^m} [R_\dc (h_\dc^\erm)] = \pb[\dc_1] R_{\dc_1} (h_{\dc_1}^\erm) + \pb[\dc_2] R_{\dc_2} (h_{\dc_2}^\erm) + \cdots
 \end{align}
 </p>
 
@@ -279,13 +279,13 @@ A：$h_D^\erm$依赖于$D$，式$(1)$不可用，$h^\star$独立于$D$，是可�
 
 ---
 
-Q：如何让式$(1)$对$h_D^\erm$也能用？
+Q：如何让式$(1)$对$h_\dc^\erm$也能用？
 
-A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足式$(1)$，那问题就解决了，但这对$\hc$的要求就太苛刻了，故将其放松成有限集合，再次根据 union bound 有
+A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足式$(1)$，那问题就解决了，但这对$\hc$的要求就太苛刻了，故将其放松成有限集合，再次根据联合界 有
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [\exists h \in \hc: |R_D(h) - R(h)| \ge \epsilon] & \le \sum_{h \in \hc} \pb_{D \sim \dc^m} [ |R_D(h) - R(h)| \ge \epsilon] \\
+    \pb_{\dc \sim \ds^m} [\exists h \in \hc: |R_\dc(h) - R(h)| \ge \epsilon] & \le \sum_{h \in \hc} \pb_{\dc \sim \ds^m} [ |R_\dc(h) - R(h)| \ge \epsilon] \\
     & \le |\hc| 2 e^{-2 m \epsilon^2}
 \end{align}
 </p>
@@ -294,7 +294,7 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} \left[ |R_D(h) - R(h)| \le \sqrt{\frac{\ln (2 |\hc| / \delta)}{2m}} \right] \ge 1 - \delta \tag {2}
+    (2) \quad \pb_{\dc \sim \ds^m} \left[ |R_\dc(h) - R(h)| \le \sqrt{\frac{\ln (2 |\hc| / \delta)}{2m}} \right] \ge 1 - \delta
 \end{align}
 </p>
 
@@ -304,13 +304,13 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 ---
 
-式$(2)$对$h_D^\erm$、$h^\star$均可用，于是
+式$(2)$对$h_\dc^\erm$、$h^\star$均可用，于是
 
 <p>
 \begin{align}
-    R(h_D^\erm) - R(h^\star) & \le |R(h_D^\erm) - R_D(h_D^\erm)| + |R_D(h^\star) - R(h^\star)| \\
-    & \le 2 \max_{h \in \hc} |R_D(h) - R(h)| \\
-    & \le \sqrt{\frac{2\ln (2 |\hc| / \delta)}{m}} with probability \ge 1 - \delta
+    R(h_\dc^\erm) - R(h^\star) & \le |R(h_\dc^\erm) - R_\dc(h_\dc^\erm)| + |R_\dc(h^\star) - R(h^\star)| \\
+    & \le 2 \max_{h \in \hc} |R_\dc(h) - R(h)| \\
+    & \le \sqrt{\frac{2\ln (2 |\hc| / \delta)}{m}} ~ with ~  probability \ge 1 - \delta
 \end{align}
 </p>
 
@@ -318,7 +318,7 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [R(h_D^\erm) - R(h^\star) \le \epsilon] \ge 1 - \delta
+    \pb_{\dc \sim \ds^m} [R(h_\dc^\erm) - R(h^\star) \le \epsilon] \ge 1 - \delta
 \end{align}
 </p>
 
@@ -330,11 +330,11 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 通常学习任务面临的$\hc$都是无限的
 
-之前用来证明下式的 union bound 不能再用，否则右边是无穷大
+之前用来证明下式的联合界 不能再用，否则右边是无穷大
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [\exists h \in \hc: |R_D(h) - R(h)| \ge \epsilon] \le |\hc| 2 e^{-2 m \epsilon^2}
+    \pb_{\dc \sim \ds^m} [\exists h \in \hc: |R_\dc(h) - R(h)| \ge \epsilon] \le |\hc| 2 e^{-2 m \epsilon^2}
 \end{align}
 </p>
 
@@ -342,7 +342,7 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 <p>
 \begin{align}
-    \Pi_\hc (m) = \max_{D \sim \dc^m} |\{ [h(\xv_1), \ldots, h(\xv_m)] \mid h \in \hc \}|
+    \Pi_\hc (m) = \max_{\dc \sim \ds^m} |\{ [h(\xv_1), \ldots, h(\xv_m)] \mid h \in \hc \}|
 \end{align}
 </p>
 
@@ -358,7 +358,7 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [\exists h \in \hc: |R_D(h) - R(h)| \ge \epsilon] \le 4 \Pi_\hc (2m) e^{-m \epsilon^2 / 8}
+    \pb_{\dc \sim \ds^m} [\exists h \in \hc: |R_\dc(h) - R(h)| \ge \epsilon] \le 4 \Pi_\hc (2m) e^{-m \epsilon^2 / 8}
 \end{align}
 </p>
 
@@ -372,7 +372,7 @@ A：$h_D^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足�
 
 其中$d$为$\hc$的$\vc$维，$\vc (\hc) = \max \{ m: \Pi_\hc (m) = 2^m \}$
 
-$\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的，越大说明$\hc$适应不同任务的能力越强，此外，还有 Rademacher 复杂度、packing number、covering number 等工具，都是类似的作用
+$\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的，越大说明$\hc$适应不同任务的能力越强，此外，还有 <a href="https://en.wikipedia.org/wiki/Rademacher_complexity" target=_blank>Rademacher 复杂度</a>、packing number、<a href="https://en.wikipedia.org/wiki/Covering_number" target=_blank>covering number</a> 等工具，都是类似的作用
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -384,7 +384,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    \pb_{D \sim \dc^m} [\exists h \in \hc: |R_D(h) - R(h)| \ge \epsilon] \le 4 \left( \frac{2em}{d} \right)^d e^{-m \epsilon^2 / 8}
+    \pb_{\dc \sim \ds^m} [\exists h \in \hc: |R_\dc(h) - R(h)| \ge \epsilon] \le 4 \left( \frac{2em}{d} \right)^d e^{-m \epsilon^2 / 8}
 \end{align}
 </p>
 
@@ -392,7 +392,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    \sup_{h \in \hc} |R_D(h) - R(h)| \le \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}}
+    \sup_{h \in \hc} |R_\dc(h) - R(h)| \le \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}}
 \end{align}
 </p>
 
@@ -400,7 +400,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    R(h_D^\erm) - R(h^\star) \le \sqrt{\frac{32 d \ln (2em/d) + 32 \ln (4/\delta)}{m}}
+    R(h_\dc^\erm) - R(h^\star) \le \sqrt{\frac{32 d \ln (2em/d) + 32 \ln (4/\delta)}{m}}
 \end{align}
 </p>
 
@@ -414,8 +414,8 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    & R (h_D^\erm) \le R_D (h_D^\erm) + \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}} \\
-    & R(h_D^\erm) \le R(h^\star) + \sqrt{\frac{32 d \ln (2em/d) + 32 \ln (4/\delta)}{m}}
+    & R (h_\dc^\erm) \le R_\dc (h_\dc^\erm) + \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}} \\
+    & R(h_\dc^\erm) \le R(h^\star) + \sqrt{\frac{32 d \ln (2em/d) + 32 \ln (4/\delta)}{m}}
 \end{align}
 </p>
 
@@ -432,7 +432,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 数据分布：$p(x) = \uc[0,1]$，$y = \cos (3 \pi x  / 2) + \nc(0, 1) / 10$
 
-学习算法：{==$n$阶多项式回归==}
+学习算法：$\class{blue}{n}${==阶多项式回归==}
 
 <p>
 \begin{align}
@@ -500,7 +500,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-以回归问题为例，对任意样本$(\xv,y) \sim \dc$，均方误差可分解为
+以回归问题为例，对任意样本$(\xv,y) \sim \ds$，均方误差可分解为
 
 <p>
 \begin{align}
@@ -513,7 +513,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    \eb_{(\xv,y) \sim \dc} & [(f (\xv) - \eb [y|\xv]) (\eb [y|\xv] - y) ] \\
+    \eb_{(\xv,y) \sim \ds} & [(f (\xv) - \eb [y|\xv]) (\eb [y|\xv] - y) ] \\
     & = \iint (f (\xv) - \eb [y|\xv]) (\eb [y|\xv] - y) p(\xv, y) \diff \xv \diff y \\
     & = \int (f (\xv) - \eb [y|\xv]) \left( \int (\eb [y|\xv] - y) p(\xv, y) \diff y \right) \diff \xv \\
     & = \int (f (\xv) - \eb [y|\xv]) \underbrace{ ( \eb [y|\xv] p(\xv) - p(\xv) \overbrace{ \class{yellow}{\int y \cdot p(y|\xv) \diff y}}^{=~\eb [y|\xv]} )}_{=~0} \diff \xv = 0
@@ -540,12 +540,12 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <div class="top2"></div>
 
-上面的式子是针对给定模型的，算法在不同数据集$D$上得到的模型$f_D$也不同，因此泛化均方误差
+上面的式子是针对给定模型的，算法在不同数据集$\dc$上得到的模型$f_\dc$也不同，因此泛化均方误差
 
 <p>
 \begin{align}
-    E & = \eb_D \eb_{(\xv,y)} [(f_D (\xv) - y)^2] \\
-    & = \eb_\xv \eb_D [(f_D (\xv) - \eb [y|\xv])^2] + 噪声
+    E & = \eb_\dc \eb_{(\xv,y)} [(f_\dc (\xv) - y)^2] \\
+    & = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声
 \end{align}
 </p>
 
@@ -555,24 +555,24 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-泛化均方误差$E = \eb_\xv \eb_D [(f_D (\xv) - \eb [y|\xv])^2] + 噪声$
+泛化均方误差$E = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声$
 
-引入$\xv$的{==期望预测==}$\eb_D [f_D (\xv)]$，易知有分解
+引入$\xv$的{==期望预测==}$\eb_\dc [f_\dc (\xv)]$，易知有分解
 
 <p>
 \begin{align}
-    (f_D (\xv) - \eb [y|\xv])^2 & = (f_D (\xv) - \eb_D [f_D (\xv)] + \eb_D [f_D (\xv)] - \eb [y|\xv])^2 \\
-    & = (f_D (\xv) - \eb_D [f_D (\xv)])^2 + (\eb_D [f_D (\xv)] - \eb [y|\xv])^2 \\
-    & \qquad + 2 (f_D (\xv) - \eb_D [f_D (\xv)]) (\eb_D [f_D (\xv)] - \eb [y|\xv])
+    (f_\dc (\xv) - \eb [y|\xv])^2 & = (f_\dc (\xv) - \eb_\dc [f_\dc (\xv)] + \eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2 \\
+    & = (f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2 + (\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2 \\
+    & \qquad + 2 (f_\dc (\xv) - \eb_\dc [f_\dc (\xv)]) (\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])
 \end{align}
 </p>
 
-{==注意$\eb_D [f_D (\xv)]$与$D$无关==}，对交叉项有
+{==注意$\eb_\dc [f_\dc (\xv)]$与$\dc$无关==}，对交叉项有
 
 <p>
 \begin{align}
-    \eb_D [(f_D (\xv) - \eb_D [& f_D (\xv)]) (\overbrace{\eb_D [f_D (\xv)] - \eb [y|\xv]}^{与D无关})] \\
-    & = (\eb_D [f_D (\xv)] - \eb [y|\xv]) \underbrace{\eb_D [f_D (\xv) - \eb_D [f_D (\xv)]]}_{=~0} = 0
+    \eb_\dc [(f_\dc (\xv) - \eb_\dc [& f_\dc (\xv)]) (\overbrace{\eb_\dc [f_\dc (\xv)] - \eb [y|\xv]}^{与\dc无关})] \\
+    & = (\eb_\dc [f_\dc (\xv)] - \eb [y|\xv]) \underbrace{\eb_\dc [f_\dc (\xv) - \eb_\dc [f_\dc (\xv)]]}_{=~0} = 0
 \end{align}
 </p>
 
@@ -584,15 +584,15 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    E & = \eb_\xv \eb_D [(f_D (\xv) - \eb_D [f_D (\xv)])^2] + \eb_\xv \eb_D [(\overbrace{\eb_D [f_D (\xv)] - \eb [y|\xv]}^{与D无关})^2] + 噪声 \\
-    & = \underbrace{\eb_\xv \eb_D [(f_D (\xv) - \eb_D [f_D (\xv)])^2]}_{方差} + \underbrace{\eb_\xv [(\eb_D [f_D (\xv)] - \eb [y|\xv])^2]}_{偏差^2} + 噪声
+    E & = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2] + \eb_\xv \eb_\dc [(\overbrace{\eb_\dc [f_\dc (\xv)] - \eb [y|\xv]}^{与\dc无关})^2] + 噪声 \\
+    & = \underbrace{\eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2]}_{方差} + \underbrace{\eb_\xv [(\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2]}_{偏差^2} + 噪声
 \end{align}
 </p>
 
 综上，泛化均方误差可分解为$E = 偏差^2 + 方差 + 噪声$
 
-- $偏差^2 = \eb_\xv [(\eb_D [f_D (\xv)] - \eb [y|\xv])^2]$，期望预测与最优模型预测的差别，体现{==学习算法的拟合能力==}，越小拟合能力越强
-- $方差 = \eb_\xv \eb_D [(f_D (\xv) - \eb_D [f_D (\xv)])^2]$，$D$上模型的预测与期望预测的差别，体现{==学习算法对数据集扰动的敏感度==}，越小越不敏感
+- $偏差^2 = \eb_\xv [(\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2]$，期望预测与最优模型预测的差别，体现{==学习算法的拟合能力==}，越小拟合能力越强
+- $方差 = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2]$，$\dc$上模型的预测与期望预测的差别，体现{==学习算法对数据集扰动的敏感度==}，越小越不敏感
 
 <div class="top2"></div>
 
