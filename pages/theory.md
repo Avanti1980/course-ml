@@ -81,7 +81,7 @@ NFL 定理的例子表明，在已知数据上表现好不算什么
 
 - $\xc$为样本空间，$\yc$为标记集合
 - $\ds$为定义在$\xc \times \yc$上的{==未知==}概率分布
-- $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$为{==独立同分布==} (iid) 采样于$\ds$的{==训练==}数据集
+- $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$为{==独立同分布==} (independent and identically distributed, iid) 采样于$\ds$的{==训练==}数据集
 - $\hc = \{ h: \xc \mapsto \yc \}$是候选模型构成的{==假设空间==}
 - $R(h) = \eb_{(\xv, y) \sim \ds}[\ib (h(\xv) \ne y)]$为模型$h$的{==泛化风险==} (generalization risk)
 - $\min_{h \in \hc} R(h)$就是机器学习的目标：{==泛化风险最小化==}
@@ -175,7 +175,7 @@ Q：是否可以用经验风险替代泛化风险？
 
 A：这样做肯定会引入误差，但 PAC 学习框架本来也是允许有误差的，只是误差要可控
 
-Q：是否有刻画随机变量 偏离期望的数学工具从而可以控制误差？
+Q：是否有刻画随机变量偏离期望的数学工具从而可以控制误差？
 
 A：<a href="https://en.wikipedia.org/wiki/Concentration_inequality" target=_blank>集中不等式</a> (concentration inequality) 就是这样一类工具
 
