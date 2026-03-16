@@ -17,15 +17,15 @@ presentation:
 @import "../css/table.css"
 @import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
+@import "../plugin/notes/notes.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
-@import "../plugin/menu/menu.js"
+@import "../plugin/reveal.js-menu/menu.js"
 @import "../js/anychart/anychart-core.min.js"
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
-@import "../js/anychart/venn-ml.js"
 @import "../js/anychart/venn-entropy.js"
 
 <!-- slide data-notes="" -->
@@ -40,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -79,7 +79,7 @@ presentation:
 - 所有文本全部$d$个不同的单词构成词典，每个文本提取$d$个特征
 - 若词典第$i$个词在当前文本中出现过，则其第$i$个特征为$1$，否则为$0$
 
-@import "../python/feat-text-bow1.py" {line_end=12 .line-numbers .top2 .left4 highlight=[4-5]}
+@import "../python/feat-text-bow1.py" {line_end=12 .line-numbers .top-1 .left4 highlight=[4-5]}
 
 <div class="threelines column1-border-right-solid column1-bold head-highlight-1 tr-hover top-4">
 
@@ -101,7 +101,7 @@ presentation:
 - 所有文本全部$d$个不同的单词构成词典，每个文本提取$d$个特征
 - 若词典第$i$个词在当前文本中出现了$k$次，则其第$i$个特征为$k$
 
-@import "../python/feat-text-bow2.py" {line_end=12 .line-numbers .top2 .left4 highlight=[4-5]}
+@import "../python/feat-text-bow2.py" {line_end=12 .line-numbers .top-1 .left4 highlight=[4-5]}
 
 <div class="threelines column1-border-right-solid column1-bold head-highlight-1 tr-hover top-4">
 
@@ -120,13 +120,17 @@ presentation:
 
 {==词频 - 逆文本频率==}：对当前文本重要的单词必然
 
-- 在当前文本中出现的频率高，即词频 (<u>t</u>erm <u>f</u>requency, tf) 高
-- 在其他文本中出现的频率低，即逆文本频率 (<u>i</u>nverse <u>d</u>ocument <u>f</u>requency, idf) 高
+- 在当前文本中出现的频率高，即词频 ({==t==}erm {==f==}requency, tf) 高
+- 在其他文本中出现的频率低，即逆文本频率 ({==i==}nverse {==d==}ocument {==f==}requency, idf) 高
+
+<div class="top2"></div>
 
 tf = 单词在当前文本中出现的次数 / 当前文本的总词数<br>idf = ln ((全部文本数 + C) / (包含该词的总文本数 + C)) + 1</span>
 
 - C = 0，若词典包含从未在任何文本中出现的词，会有分母为零的问题
 - C = 1，sklearn 默认的平滑版本，等于额外有一个包含所有词的文本
+
+<div class="top2"></div>
 
 tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准化
 
@@ -159,7 +163,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-<div class="threelines column7-border-right-solid head-highlight-1 tr-hover">
+<div class="threelines column7-border-right-solid head-highlight-1 tr-hover top-1">
 
 | 次序 | 时间 | 方式 | 天气 | 课业 | 疫情 | 电视 | 约会 |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
@@ -188,7 +192,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-<div class="threelines column9-border-right-solid head-highlight-1 tr-hover">
+<div class="threelines column9-border-right-solid head-highlight-1 tr-hover top-1">
 
 | 次序 | 时间 | 方式 | 天气 | 课业 | 疫情 | 电视 | 温度 | 距离 | 约会 |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
@@ -199,7 +203,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 </div>
 
-我的批注 最简单的方法就是直接删除有特征缺失的样本，信息丢失
+最简单的方法就是直接删除有特征缺失的样本，信息丢失
 
 补全：
 
@@ -213,7 +217,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-@import "../python/feat-missing.py" {line_end=43 .line-numbers .top-1 .left4 highlight=[17-20,24-27,31-34,40-43]}
+@import "../python/feat-missing.py" {line_end=43 .line-numbers .top1 .left4 highlight=[17-20,24-27,31-34,40-43]}
 
 <!-- slide data-notes="" -->
 
@@ -225,27 +229,31 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 离差标准化：将原始特征线性变换到 [0, 1] 区间
 
-$$
-\begin{align*}
-    \quad x \leftarrow \frac{x - x_\min}{x_\max - x_\min} \in [0,1]
-\end{align*}
-$$
+<p>
+\begin{align}
+    x \leftarrow \frac{x - x_\min}{x_\max - x_\min} \in [0,1]
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 最大值标准化：除以该特征的绝对值最大值
 
-$$
-\begin{align*}
-    \quad x \leftarrow \frac{x}{\max_{i \in [m]} |x_i|} \in [-1,1]
-\end{align*}
-$$
+<p>
+\begin{align}
+    x \leftarrow \frac{x}{\max_{i \in [m]} |x_i|} \in [-1,1]
+\end{align}
+</p>
 
-标准差标准化：经过处理的特征近似符合标准正态分布$\Ncal(0,1)$
+<div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad x \leftarrow \frac{x - \mu}{\sigma}, \quad x \leftarrow \frac{x - x_{\text{median}}}{\sum_{i \in [m]} |x_i - x_{\text{median}}| / m}
-\end{align*}
-$$
+标准差标准化：经过处理的特征近似符合标准正态分布$\nc(0,1)$
+
+<p>
+\begin{align}
+    x \leftarrow \frac{x - \mu}{\sigma}, \quad x \leftarrow \frac{x - x_\median}{\sum_{i \in [m]} |x_i - x_\median | / m}
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -275,7 +283,7 @@ $$
 <span class="invis">当特征稀缺时，利用现有特征构造新的特征</span>
 
 <ul>
-    <li class="invis">凭经验显式构造：$[x_1; x_2] \xrightarrow{\Rbb^2 \mapsto \Rbb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$</li>
+    <li class="invis">凭经验显式构造：$[x_1; x_2] \xrightarrow{\rb^2 \mapsto \rb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$</li>
     <li class="invis">利用核函数$\kappa(\xv, \zv) = \phi(\xv)^\top \phi(\zv)$隐式构造，代表性方法为支持向量机</li>
     <li class="invis">利用非线性函数复合$f_n ( f_{n-1} ( \cdots f_2 (f_1 (\xv))))$，代表性方法为神经网络</li>
 </ul>
@@ -296,13 +304,15 @@ $$
 
 设共有$k$个类别，总样本数为$m = \sum_{i \in [k]} m_i$，总体均值为$\xbar$<br>设第$i$类第$j$个样本为$x_{ij}$，第$i$类的均值为$\xbar_i$，则总体偏差
 
-$$
-\begin{align*}
-    \quad \sum_{i \in [k]} & \sum_{j \in [m_i]} (x_{ij} - \xbar)^2 = \sum_{i \in [k]} \sum_{j \in [m_i]} (x_{ij} - \xbar_i + \xbar_i - \xbar)^2 \\
+<p>
+\begin{align}
+    \sum_{i \in [k]} & \sum_{j \in [m_i]} (x_{ij} - \xbar)^2 = \sum_{i \in [k]} \sum_{j \in [m_i]} (x_{ij} - \xbar_i + \xbar_i - \xbar)^2 \\
     & = \sum_{i \in [k]} \sum_{j \in [m_i]} [ (x_{ij} - \xbar_i)^2 + (\xbar_i - \xbar)^2 ] + \sum_{i \in [k]} 2 \underbrace{\sum_{j \in [m_i]} (x_{ij} - \xbar_i)}_{=~0} (\xbar_i - \xbar) \\
     & = \sum_{i \in [k]} \sum_{j \in [m_i]} (x_{ij} - \xbar_i)^2 + \sum_{i \in [k]} m_i (\xbar_i - \xbar)^2 = \SSE + \SSB
-\end{align*}
-$$
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 - $\SSE$为各类样本与均值的偏差，越小说明每个类别各自聚集越紧密
 - $\SSB$为各类均值与总体的偏差，越小说明不同类别的均值差异越小
@@ -345,7 +355,7 @@ $$
 - 正类特征均值$0.5$、偏差$0.5$，负类特征均值$0.5$、偏差$0.5$
 - $\SSE = 0.5 + 0.5 = 1$，$\SSB = 0$，$F = \frac{\SSB/(k-1)}{\SSE/(m-k)} = 0$
 
-@import "../python/feat-selection-va.py" {line_end=17 .line-numbers .top-1 .left4 highlight=[15-17]}
+@import "../python/feat-selection-va.py" {line_end=17 .line-numbers .top0 .bottom-4 .left4 highlight=[15-17]}
 
 <!-- slide data-notes="" -->
 
@@ -353,8 +363,9 @@ $$
 
 ---
 
-- 若随机变量$X$和$Y$独立，则$p(X,Y) = p(X) p(Y)$
-- $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
+若随机变量$X$和$Y$独立，则$p(X,Y) = p(X) p(Y)$
+
+$|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 
 <div class="threelines row4-border-top-solid column1-border-right-solid column3-border-right-solid">
 
@@ -370,13 +381,13 @@ $$
 - $X$是约会方式，$Y$是约会与否，总样本数为$4$
 - 括号前{==观测频数==}$o = 4 \cdot p(X,Y)$，括号内{==期望频数==}$e = 4 \cdot p(X) p(Y)$
 
-<div class="top4"></div>
+<div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad \chi^2 = \sum_{ij} \frac{(o_{ij}-e_{ij})^2}{e_{ij}} = 4 \times \frac{(1 - 0.5)^2}{0.5} = 2
-\end{align*}
-$$
+<p>
+\begin{align}
+    \chi^2 = \sum_{ij} \frac{(o_{ij}-e_{ij})^2}{e_{ij}} = 4 \times \frac{(1 - 0.5)^2}{0.5} = 2
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -396,23 +407,19 @@ $$
 
 熵 (entropy) 可以度量随机变量的{==不确定性==}
 
-$$
-\begin{align*}
-    \quad H(X) = - \sum_{i \in [m]} p(x_i) \log p(x_i) = - \Ebb [\log p(X)], \quad 0 \log 0 \triangleq 0
-\end{align*}
-$$
-
-<div class="top-2"></div>
+<p>
+\begin{align}
+    H(X) = - \sum_{i \in [m]} p(x_i) \log p(x_i) = - \eb [\log p(X)], \quad 0 \log 0 \triangleq 0
+\end{align}
+</p>
 
 设离散随机变量$X \in \{a,b,c,d\}$且
 
-$$
-\begin{align*}
-    \quad p(a) = \frac{1}{2}, ~ p(b) = \frac{1}{4}, ~ p(c) = \frac{1}{8}, ~ p(d) = \frac{1}{8}
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    p(a) = \frac{1}{2}, ~ p(b) = \frac{1}{4}, ~ p(c) = \frac{1}{8}, ~ p(d) = \frac{1}{8}
+\end{align}
+</p>
 
 根据定义$H(X) = \frac{1}{2} \log 2 + \frac{1}{4} \log 4 + \frac{1}{8} \log 8 + \frac{1}{8} \log 8 = \frac{7}{4}$
 
@@ -422,7 +429,7 @@ $$
 
 期望编码长度为$\frac{1}{2} \cdot 1 + \frac{1}{4} \cdot 2 + \frac{1}{8} \cdot 3 + \frac{1}{8} \cdot 3 = \frac{7}{4}$
 
-我的批注 霍夫曼编码是一种熵编码
+<p class="conclusion"> 霍夫曼编码是一种熵编码</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -432,31 +439,29 @@ $$
 
 熵 (entropy) 可以度量随机变量的{==不确定性==}
 
-$$
-\begin{align*}
-    \quad H(X) = - \sum_{i \in [m]} p(x_i) \log p(x_i) = - \Ebb [\log p(X)], \quad 0 \log 0 \triangleq 0
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    H(X) = - \sum_{i \in [m]} p(x_i) \log p(x_i) = - \eb [\log p(X)], \quad 0 \log 0 \triangleq 0
+\end{align}
+</p>
 
 当$p(x_1) = \cdots = p(x_m) = 1/m$时，熵达到{==最大值==}$\log m$
 
 拉格朗日函数$L = - \sum_{i \in [m]} p(x_i) \log p(x_i) - \alpha (\sum_{i \in [m]} p(x_i) - 1)$
 
-$$
-\begin{align*}
-    \quad \nabla_{p(x_i)} L = - \log p(x_i) - 1 - \alpha = 0 ~ \Longrightarrow ~ p(x_i) = \exp(-1-\alpha) = \frac{1}{m}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \nabla_{p(x_i)} L = - \log p(x_i) - 1 - \alpha = 0 ~ \Longrightarrow ~ p(x_i) = \exp(-1-\alpha) = \frac{1}{m}
+\end{align}
+</p>
 
-当某个$p(x_i) = 1$、其余为零时，熵达到{==最小值==}$0$
+当某个$p(x_i) = 1$、其余为$0$时，熵达到{==最小值==}$0$
 
-$$
-\begin{align*}
-    \quad H(X) = \sum_{i \in [m]} p(x_i) \log \frac{1}{p(x_i)} \ge \sum_{i \in [m]} p(x_i) \log 1 = 0
-\end{align*}
-$$
+<p>
+\begin{align}
+    H(X) = \sum_{i \in [m]} p(x_i) \log \frac{1}{p(x_i)} \ge \sum_{i \in [m]} p(x_i) \log 1 = 0
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -466,23 +471,23 @@ $$
 
 联合熵：两个随机变量的联合不确定性
 
-$$
-\begin{align*}
-    \quad H(X,Y) = - \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log p(x_i,y_j) = - \Ebb [\log p(X,Y)]
-\end{align*}
-$$
+<p>
+\begin{align}
+    H(X,Y) = - \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log p(x_i,y_j) = - \eb [\log p(X,Y)]
+\end{align}
+</p>
 
 条件熵：给定一个随机变量，另一个随机变量还具有的不确定性
 
-$$
-\begin{align*}
-    \quad H(X|Y) & = H(X,Y) - H(Y) \\
+<p>
+\begin{align}
+    H(X|Y) & = H(X,Y) - H(Y) \\
     & = - \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log p(x_i,y_j) + \sum_{j \in [n]} \class{blue}{p(y_j)} \log p(y_j) \\
     & = - \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log p(x_i,y_j) + \sum_{j \in [n]} \class{blue}{\sum_{i \in [m]} p(x_i,y_j)} \log p(y_j) \\
     & = - \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log p(x_i|y_j) \\
-    & = - \Ebb [\log p(X|Y)]
-\end{align*}
-$$
+    & = - \eb [\log p(X|Y)]
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -492,17 +497,17 @@ $$
 
 互信息：给定一个随机变量，另一个随机变量不确定性的缩减量
 
-$$
-\begin{align*}
-    \quad I(X; Y) & = H(X) - H(X|Y) \\
+<p>
+\begin{align}
+    I(X; Y) & = H(X) - H(X|Y) \\
     & = - \sum_{i \in [m]} \class{blue}{p(x_i)} \log p(x_i) + \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log p(x_i|y_j) \\
     & = - \sum_{i \in [m]} \class{blue}{\sum_{j \in [n]} p(x_i,y_j)} \log p(x_i) + \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log \frac{p(x_i,y_j)}{p(y_j)} \\
     & = - \sum_{i \in [m]} \sum_{j \in [n]} p(x_i,y_j) \log \frac{p(x_i)p(y_j)}{p(x_i,y_j)} \\
-    & = \Ebb \left[ \log \frac{p(X,Y)}{p(X)p(Y)} \right]
-\end{align*}
-$$
+    & = \eb \left[ \log \frac{p(X,Y)}{p(X)p(Y)} \right]
+\end{align}
+</p>
 
-我的批注 由对称性可知$I(X; Y) = H(Y) - H(Y|X)$
+由对称性可知$I(X; Y) = H(Y) - H(Y|X)$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -512,15 +517,15 @@ $$
 
 互信息 (交集) 与熵、联合熵 (并集)、条件熵 (差集) 的关系为
 
-$$
-\begin{align*}
-    \quad I(X;Y) & = H(X) - H(X|Y) = H(Y) - H(Y|X) \\
+<p>
+\begin{align}
+    I(X;Y) & = H(X) - H(X|Y) = H(Y) - H(Y|X) \\
     & = H(X) + H(Y) - H(X,Y) \\
     & = H(X,Y) - H(X|Y) - H(Y|X)
-\end{align*}
-$$
+\end{align}
+</p>
 
-<div id="venn-entropy" class="center"></div>
+<div id="venn-entropy" class="center top2"></div>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -538,13 +543,11 @@ $$
 
 ---
 
-<div class="top2"></div>
-
-$$
-\begin{align*}
-    \quad \rho_{xy} = \frac{\cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i \in [m]} (x_i - \xbar)(y_i - \ybar)}{\sqrt{\sum_{i \in [m]} (x_i - \xbar)^2} \sqrt{\sum_{i \in [m]} (y_i - \ybar)^2}}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \rho_{xy} = \frac{\cov(x,y)}{\sigma_x \sigma_y} = \frac{\sum_{i \in [m]} (x_i - \xbar)(y_i - \ybar)}{\sqrt{\sum_{i \in [m]} (x_i - \xbar)^2} \sqrt{\sum_{i \in [m]} (y_i - \ybar)^2}}
+\end{align}
+</p>
 
 @import "../python/feat-selection-corrcoef.py" {line_end=14 .line-numbers .top-1 .left4 highlight=[12-14]}
 
@@ -580,18 +583,20 @@ $$
 
 ---
 
-$\Rbb^2$上的 5 个$\ell_p$范数球$\{ \wv \mid \| \wv \|_p \le t \}$
+$\rb^2$上的 5 个$\ell_p$范数球$\{ \wv \mid \| \wv \|_p \le t \}$
 
-@import "../tikz/norm.svg" {.center .top1 .bottom2 .width75 title="二维欧氏空间中的 5 个范数球"}
+<img src="../tikz/norm.svg" class="center top1 bottom2 width75" title="二维欧氏空间中的 5 个范数球">
 
 - 将$\ell_p~(0 \le p \le 1)$范数球作为学习模型的可行域，可导出{==稀疏==}的解
 - 所有$\ell_p~(p \ge 1)$范数球都是{==凸集==}，数学性质好
 
-$\ell_1$唯一既凸且稀疏，将其范数球作为$\Rbb^2$上最小二乘的可行域
+<div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad \min_{w_1, w_2} ~ \left \| \begin{bmatrix}
+$\ell_1$唯一既凸且稀疏，将其范数球作为$\rb^2$上最小二乘的可行域
+
+<p>
+\begin{align}
+    \min_{w_1, w_2} ~ \left \| \begin{bmatrix}
         6.590 & -0.654 \\
         1.498 &  0.413 \\
        -2.550 &  1.682 \\
@@ -605,8 +610,8 @@ $$
         0 \\
         0 \\
     \end{bmatrix} \right\|^2, \quad \st ~ |w_1| + |w_2| \le t
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -614,11 +619,13 @@ $$
 
 ---
 
+<div class="top2"></div>
+
 - 左图中以原点为中心的同心正方形是$\ell_1$范数球的等高线
 - 右图中以原点为中心的同心圆是$\ell_2$范数球的等高线
 - 两图中右边的一系列同心椭圆是$\| \Xv \wv - \yv \|^2$的等高线
 
-@import "../python/sparse-norm.svg" {.center .top4 .bottom2 .width80 title="目标函数的等高线与 l1 范数球必然交于正方形顶点，即最优的 w2 = 0"}
+<img src="../python/sparse-norm.svg" class="center top4 bottom2 width80" title="目标函数的等高线与 l1 范数球必然交于正方形顶点，即最优的 w2 = 0">
 
 椭圆与正方形必然交于正方形的顶点处，即最优的$w_2 = 0$
 
@@ -628,26 +635,26 @@ $$
 
 ---
 
-构造$\Rbb^D$中的标准正交基$\wv_1, \ldots, \wv_d$，将样本投到该$d$维子空间
+构造$\rb^D$中的标准正交基$\wv_1, \ldots, \wv_d$，将样本投到该$d$维子空间
 
-$$
-\begin{align*}
-    \quad \Xv \in \Rbb^{m \times D} \xrightarrow[\text{降维}]{\Wv = [\wv_1, \ldots, \wv_d] \in \Rbb^{D \times d}} \Xv \Wv \in \Rbb^{m \times d} \xrightarrow[\text{重构}]{\Wv^\top \in \Rbb^{d \times D}} \Xv \Wv \Wv^\top
-\end{align*}
-$$
+<p>
+\begin{align}
+    \Xv \in \rb^{m \times D} \xrightarrow[降维]{\Wv = [\wv_1, \ldots, \wv_d] \in \rb^{D \times d}} \Xv \Wv \in \rb^{m \times d} \xrightarrow[重构]{\Wv^\top \in \rb^{d \times D}} \Xv \Wv \Wv^\top
+\end{align}
+</p>
 
 投影到$d ~ (<D)$维子空间存在信息损失，$\Wv$应使得{==重构误差小==}
 
-$$
-\begin{align*}
-    \quad \| \Xv & - \Xv \Wv \Wv^\top \|_F^2 = \tr [(\Xv - \Xv \Wv \Wv^\top) (\Xv - \Xv \Wv \Wv^\top)^\top] \\
+<p>
+\begin{align}
+    \| \Xv & - \Xv \Wv \Wv^\top \|_F^2 = \tr [(\Xv - \Xv \Wv \Wv^\top) (\Xv - \Xv \Wv \Wv^\top)^\top] \\
     & = \tr [\Xv \Xv^\top - 2 \Xv \Wv \Wv^\top \Xv^\top + \Xv \Wv \class{blue}{\Wv^\top \Wv} \Wv^\top \Xv^\top] \\
     & = \tr [\Xv \Xv^\top - \Xv \Wv \Wv^\top \Xv^\top] \qquad \longleftarrow ~ \Wv^\top \Wv = \Iv \\
     & = \const - \tr [\Wv^\top \Xv^\top \Xv \Wv] \qquad \longleftarrow ~ \tr [\Av \Bv] = \tr [\Bv \Av] \\
     & = \const - \wv_1^\top \Xv^\top \Xv \wv_1 - \cdots - \wv_d^\top \Xv^\top \Xv \wv_d \\[5pt]
-    & \Longrightarrow \quad \mathop{\mathrm{argmin}}_{\Wv^\top \Wv = \Iv} \| \Xv - \Xv \Wv \Wv^\top \|_F^2 = \mathop{\mathrm{argmax}}_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
-\end{align*}
-$$
+    & \Longrightarrow \argmin_{\Wv^\top \Wv = \Iv} \| \Xv - \Xv \Wv \Wv^\top \|_F^2 = \argmax_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -657,35 +664,31 @@ $$
 
 <div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad \mathop{\mathrm{argmin}}_{\Wv^\top \Wv = \Iv} \| \Xv & - \Xv \Wv \Wv^\top \|_F^2 = \mathop{\mathrm{argmax}}_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
-\end{align*}
-$$
-
-<div class="top-2"></div>
+<p>
+\begin{align}
+    \argmin_{\Wv^\top \Wv = \Iv} \| \Xv & - \Xv \Wv \Wv^\top \|_F^2 = \argmax_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
+\end{align}
+</p>
 
 假设已平移样本使其中心在原点，即$\onev^\top \Xv = \zerov$
 
 $\Xv \wv_1$是样本在投影方向$\wv_1$上的投影，投影均值$\onev^\top \Xv \wv_1 = 0$
 
-$$
-\begin{align*}
-    \quad \wv_1^\top \Xv^\top \Xv \wv_1 = \sum_{i \in [m]} (\xv_i^\top \wv_1)^2 = \sum_{i \in [m]} (\xv_i^\top \wv_1 - 0)^2 = \var [\xv_i^\top \wv_1]
-\end{align*}
-$$
-
-<div class="top-2"></div>
+<p>
+\begin{align}
+    \wv_1^\top \Xv^\top \Xv \wv_1 = \sum_{i \in [m]} (\xv_i^\top \wv_1)^2 = \sum_{i \in [m]} (\xv_i^\top \wv_1 - 0)^2 = \var [\xv_i^\top \wv_1]
+\end{align}
+</p>
 
 {==最小化重构误差==}等价{==最大化投影方差==}，即投影后样本尽可能散开
 
 拉格朗日函数$L = \wv_1^\top \Xv^\top \Xv \wv_1 - \alpha (\wv_1^\top \wv_1 - 1)$
 
-$$
-\begin{align*}
-    \quad \nabla_{\wv_1} L = 2 \Xv^\top \Xv \wv_1 - 2 \alpha \wv_1 = \zerov \Longrightarrow \mathtip{\wv_1^\top \Xv^\top \Xv \wv_1 = \alpha}{\wv_1应为\Xv^\top \Xv最大特征值对应的特征向量}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \nabla_{\wv_1} L = 2 \Xv^\top \Xv \wv_1 - 2 \alpha \wv_1 = \zerov \Longrightarrow \mathtip{\wv_1^\top \Xv^\top \Xv \wv_1 = \alpha}{\wv_1应为\Xv^\top \Xv最大特征值对应的特征向量}
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -695,7 +698,7 @@ $$
 
 {==主成分分析==} (PCA)：寻找一组投影方向 (成分) 使重构误差最小
 
-@import "../python/pca-plot.svg" {.center .top2 .width80 title="二维高斯分布采样出的 500 个样本"}
+<img src="../python/pca-plot.svg" class="center top2 width80" title="二维高斯分布采样出的 500 个样本">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -713,19 +716,19 @@ $$
 
 ---
 
-_Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m$，设整数$d$满足$d \ge 4 (\epsilon^2/2 - \epsilon^3/3)^{-1} \ln m$，则对$\Rbb^D$中的任意$m$个点组成的集合$\Scal$，存在可在随机多项式时间内得到的线性映射$f: \Rbb^D \mapsto \Rbb^d$使得对$\forall \uv, \vv \in \Scal$有
+_Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m$，设整数$d$满足$d \ge 4 (\epsilon^2/2 - \epsilon^3/3)^{-1} \ln m$，则对$\rb^D$中的任意$m$个点组成的集合$\sc$，存在可在随机多项式时间内得到的线性映射$f: \rb^D \mapsto \rb^d$使得对$\forall \uv, \vv \in \sc$有
 
-$$
-\begin{align*}
-    \quad (1 - \epsilon) \| \uv -\vv \|^2 \le \| f(\uv) - f(\vv) \|^2 \le (1 + \epsilon) \| \uv - \vv \|^2
-\end{align*}
-$$
+<p>
+\begin{align}
+    (1 - \epsilon) \| \uv -\vv \|^2 \le \| f(\uv) - f(\vv) \|^2 \le (1 + \epsilon) \| \uv - \vv \|^2
+\end{align}
+</p>
 
-我的批注 高维空间中的点集可线性映射到低维空间且相对保持距离
+高维空间中的点集可线性映射到低维空间且相对保持距离
 
 投影矩阵通常采用
 
-- 高斯随机矩阵：从高斯分布$\Ncal(0,1/d)$中采样
+- 高斯随机矩阵：从高斯分布$\nc(0,1/d)$中采样
 - 稀疏随机矩阵：以$1/2s$的概率取$\pm \sqrt{s/d}$，以$1-1/s$的概率取$0$
 
 <!-- slide vertical=true data-notes="" -->
@@ -734,7 +737,7 @@ $$
 
 ---
 
-@import "../python/random-projection.py" {line_end=26 .line-numbers .top-1 .left4 highlight=[13,17,22,26]}
+@import "../python/random-projection.py" {line_end=26 .line-numbers .top1 .left4 highlight=[13,17,22,26]}
 
 <!-- slide data-notes="" -->
 
@@ -755,7 +758,7 @@ $$
 
 当特征稀缺时，利用现有特征构造新的特征
 
-- 凭经验显式构造：$[x_1; x_2] \xrightarrow{\Rbb^2 \mapsto \Rbb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$
+- 凭经验显式构造：$[x_1; x_2] \xrightarrow{\rb^2 \mapsto \rb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$
 - 利用核函数$\kappa(\xv, \zv) = \phi(\xv)^\top \phi(\zv)$隐式构造，代表性方法为支持向量机
 - 利用非线性函数复合$f_n ( f_{n-1} ( \cdots f_2 (f_1 (\xv))))$，代表性方法为神经网络
 
@@ -767,24 +770,24 @@ $$
 
 凭经验显式构造映射$\phi$，如二次多项式特征：
 
-$$
-\begin{align*}
-    \quad [x_1; x_2] \xrightarrow{\phi: ~ \Rbb^2 \mapsto \Rbb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]
-\end{align*}
-$$
+<p>
+\begin{align}
+    [x_1; x_2] \xrightarrow{\phi: ~ \rb^2 \mapsto \rb^6} [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]
+\end{align}
+</p>
 
-@import "../tikz/kernel.svg" {.center .top0 .bottom4 .width80}
+<img src="../tikz/kernel.svg" class="center top2 bottom4 width80" title="">
 
 - 圆内是一类样本，圆外是另一类样本，它们无法{==线性可分==}
 - 令$[x_1; x_2] \mapsto [z_1 = x_1^2; z_2 = x_2^2]$，在新的$(z_1,z_2)$空间中就线性可分了
 
-<div class="top3"></div>
+<div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad x_1^2 + x_2^2 \le t ~ \longrightarrow ~ z_1 + z_2 \le t
-\end{align*}
-$$
+<p>
+\begin{align}
+    x_1^2 + x_2^2 \le t ~ \longrightarrow ~ z_1 + z_2 \le t
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -799,16 +802,14 @@ $$
 
 对映射$\phi([x_1;x_2]) = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$和样本$\xv,\zv$有
 
-$$
-\begin{align*}
-    \quad \phi(\xv)^\top \phi(\zv) & = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
+<p>
+\begin{align}
+    \phi(\xv)^\top \phi(\zv) & = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
     & = (x_1 z_1 + x_2 z_2 + 1)^2 \\
     & = (\xv^\top \zv + 1)^2 \\
     & = \kappa (\xv, \zv)
-\end{align*}
-$$
-
-<div class="top-2"></div>
+\end{align}
+</p>
 
 构造新特征有两套方案：
 
@@ -824,21 +825,25 @@ $$
 核函数$\kappa(\cdot, \cdot)$是双变量对称函数，常见的有：
 
 - 线性核$\kappa (\xv, \zv) = \xv^\top \zv$，相当于用了恒等核映射$\phi(\xv) = \xv$
-- 多项式核$\kappa (\xv, \zv) = (\xv^\top \zv + k)^d$，$k = 0$则为齐次多项式核，$d \in \Zbb_+$
+- 多项式核$\kappa (\xv, \zv) = (\xv^\top \zv + k)^d$，$k = 0$则为齐次多项式核，$d \in \zb_+$
 - 高斯核$\kappa (\xv, \zv) = \exp (- \| \xv - \zv \|_2^2 / 2 \sigma^2)$，$\sigma > 0$为高斯核的带宽 (width)
 - 拉普拉斯核$\kappa (\xv, \zv) = \exp (- \| \xv - \zv \|_1 / \sigma)$，$\sigma > 0$
 
+<div class="top4"></div>
+
 将 PCA 中的样本$\xv$用$\phi(\xv)$替代即核 PCA，先升维再降维
 
-<div class="top-2"></div>
-
-$\quad \max_{\|\wv\|_2^2 = 1} \wv^\top \Xv^\top \Xv \wv \overset{\phi}{\longrightarrow} \max_{\|\wv\|_2^2 = 1} \wv^\top \phi(\Xv)^\top \phi(\Xv) \wv$
+<p>
+\begin{align}
+    \max_{\|\wv\|_2^2 = 1} \wv^\top \Xv^\top \Xv \wv \overset{\phi}{\longrightarrow} \max_{\|\wv\|_2^2 = 1} \wv^\top \phi(\Xv)^\top \phi(\Xv) \wv
+\end{align}
+</p>
 
 其中$\Xv = \begin{bmatrix} \xv_1^\top \\ \vdots \\ \xv_m^\top \end{bmatrix}$、$\phi(\Xv) = \begin{bmatrix} \phi(\xv_1)^\top \\ \vdots \\ \phi(\xv_m)^\top \end{bmatrix}$，注意$\wv$的维度不一样
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 特征变换 核 <span style="font-weight:900">PCA</span>
+##### 特征变换 核 PCA
 
 ---
 
@@ -846,31 +851,27 @@ $\quad \max_{\|\wv\|_2^2 = 1} \wv^\top \Xv^\top \Xv \wv \overset{\phi}{\longrigh
 
 对$\wv$做正交分解$\wv = \sum_{i \in [m]} \alpha_i \phi(\xv_i) + \vv = \phi(\Xv)^\top \alphav + \vv$，其中
 
-$$
-\begin{align*}
-    \quad \vv \perp \span \{ \phi(\xv_1), \ldots, \phi(\xv_m) \} ~ \Longrightarrow ~ \phi(\Xv) \vv = \zerov
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    \vv \perp \span \{ \phi(\xv_1), \ldots, \phi(\xv_m) \} ~ \Longrightarrow ~ \phi(\Xv) \vv = \zerov
+\end{align}
+</p>
 
 于是
 
-$$
-\begin{align*}
-    \quad & \|\wv\|_2^2 = \alphav^\top \phi(\Xv) \phi(\Xv)^\top \alphav + \vv^\top \vv = \alphav^\top \Kv \alphav + \vv^\top \vv \\
+<p>
+\begin{align}
+    & \|\wv\|_2^2 = \alphav^\top \phi(\Xv) \phi(\Xv)^\top \alphav + \vv^\top \vv = \alphav^\top \Kv \alphav + \vv^\top \vv \\
     & \phi(\Xv) \wv = \phi(\Xv) (\phi(\Xv)^\top \alphav + \vv) = \phi(\Xv) \phi(\Xv)^\top \alphav = \Kv \alpha \\
     & \Kv = \phi(\Xv) \phi(\Xv)^\top = \begin{bmatrix} \phi(\xv_1)^\top \phi(\xv_1) & \cdots & \phi(\xv_1)^\top \phi(\xv_m) \\ \vdots & \ddots & \vdots \\ \phi(\xv_m)^\top \phi(\xv_1) & \cdots & \phi(\xv_m)^\top \phi(\xv_m) \end{bmatrix}
-\end{align*}
-$$
+\end{align}
+</p>
 
-<div class="top-2"></div>
-
-核 PCA 可重写为 $\max_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$
+核 PCA 可重写为$\max_{\alphav, \vv} ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav + \vv^\top \vv = 1$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 特征变换 核 <span style="font-weight:900">PCA</span>
+##### 特征变换 核 PCA
 
 ---
 
@@ -886,17 +887,15 @@ $$
 
 <div class="top2"></div>
 
-核 PCA 的最终形式为 $\max_\alphav ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav = 1$
+核 PCA 的最终形式为$\max_\alphav ~ \alphav^\top \Kv \Kv \alphav, ~ \st ~ \alphav^\top \Kv \alphav = 1$
 
 通过拉格朗日乘子法求得$\alphav$后，样本$\xv_j$在成分$\wv$上的投影为
 
-$$
-\begin{align*}
-    \quad \wv^\top \phi(\xv_j) = \sum_{i \in [m]} \alpha_i \phi(\xv_i)^\top \phi(\xv_j) = \sum_{i \in [m]} \alpha_i \kappa (\xv_i, \xv_j)
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    \wv^\top \phi(\xv_j) = \sum_{i \in [m]} \alpha_i \phi(\xv_i)^\top \phi(\xv_j) = \sum_{i \in [m]} \alpha_i \kappa (\xv_i, \xv_j)
+\end{align}
+</p>
 
 通过核 PCA 可以看出，全程我们都用不到$\phi(\cdot)$，只需要$\kappa(\cdot, \cdot)$
 
@@ -910,19 +909,18 @@ $$
 
 一个简单的$l$层神经网络：
 
-$$
-\begin{align*}
-    \qquad \hv_1 & = \sigma_1(\Wv_1 \xv + \bv_1) \\
+<p>
+\begin{align}
+    \hv_1 & = \sigma_1(\Wv_1 \xv + \bv_1) \\
     \hv_2 & = \sigma_2(\Wv_2 \hv_1 + \bv_2) \\
     & \vdots \\
-    \hv_{l-1} & = \sigma_{l-1}(\Wv_{l-1} \hv_{l-2} + \bv_{l-1}) \\
-    f(\xv) & = \sigma_l (\Wv_l \hv_{l-1} + \bv_l)
-\end{align*}
-$$
+    \hv_l & = \sigma_l (\Wv_l \hv_{l-1} + \bv_l)
+\end{align}
+</p>
 
-<div class="top-4"></div>
+将非线性复合与 PCA 相结合就是<a href="https://en.wikipedia.org/wiki/Autoencoder" target=_blank>自编码器</a> (autoencoder)
 
-前$l-1$层函数复合可视为特征变换，最后一层为模型学习
+核方法 vs. 神经网络
 
 - 核方法毕其功于一役，难点在于{==如何设计核函数==}
 - 神经网络一步一个小目标，难点在于{==如何设计一系列非线性函数==}

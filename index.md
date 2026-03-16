@@ -7,7 +7,7 @@
 
 ## 概况
 
-授课：张腾 _tengzhang@hust.edu.cn_
+授课：张腾 *tengzhang@hust.edu.cn*
 
 28 学时理论，第 2 ~ 8 周，西十二 N401
 
@@ -43,7 +43,7 @@
 |      ^       |                         ^                          | 3. 模型评估：均方误差，错误率，查准率，查全率，F1   |
 | 学习理论初步 |            [slides](pages/theory.html)             | 1. 泛化：PAC 学习框架，增长函数，VC 维              |
 |      ^       | [notes](notes/introduction-to-learning-theory.pdf) | 2. 模型选择：欠拟合，过拟合，交叉验证，偏差方差分解 |
-|   特征工程   |                       slides                       | 1. 特征提取：词袋模型，tf-idf 特征                  |
+|   特征工程   |            [slides](pages/feature.html)            | 1. 特征提取：词袋模型，tf-idf 特征                  |
 |      ^       |                         ^                          | 2. 特征处理：独热编码，缺失处理，标准化             |
 |      ^       |                         ^                          | 3. 特征选择：方差分析，卡方检验，互信息，相关性分析 |
 |      ^       |                         ^                          | 4. 特征选择：稀疏范数                               |

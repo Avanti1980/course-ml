@@ -34,5 +34,4 @@ presentation:
 
 ---
 
-$\ds$、$\dc$
-
+将非线性复合与PCA相结合
