@@ -783,12 +783,12 @@ Q：哪个算法更好？
 
 <div class="threelines column2-border-right-solid column3-border-right-solid row3-border-top-dashed head-highlight-1 tr-hover top-1 bottom-3">
 
-| $x_1$ | $x_2$ | $y$ |              薛吒              |            薛跋            |                     薛深                     |
-| :---: | :---: | :-: | :----------------------------: | :------------------------: | :------------------------------------------: |
-|   0   |   0   |  0  | $ \sgn(\mathrm{rand}() - 0.5)$ | $ x_1 = 1 \wedge x_2 = 1 $ | $ \sgn(0.7 \cdot x_1 + 0.3 \cdot x_2 - 0.5)$ |
-|   1   |   1   |  1  |               ^                |             ^              |                      ^                       |
-|   1   |   0   |  ?  |               1                |             0              |                      1                       |
-|   0   |   1   |  ?  |               1                |             0              |                      0                       |
+| $x_1$ | $x_2$ | $y$ |              薛吒              |              薛跋              |                     薛深                     |
+| :---: | :---: | :-: | :----------------------------: | :----------------------------: | :------------------------------------------: |
+|   0   |   0   |  0  | $ \sgn(\mathrm{rand}() - 0.5)$ | $ (x_1 = 1) \wedge (x_2 = 1) $ | $ \sgn(0.7 \cdot x_1 + 0.3 \cdot x_2 - 0.5)$ |
+|   1   |   1   |  1  |               ^                |               ^                |                      ^                       |
+|   1   |   0   |  ?  |               1                |               0                |                      1                       |
+|   0   |   1   |  ?  |               1                |               0                |                      0                       |
 
 </div>
 
@@ -815,15 +815,15 @@ Q：哪个算法更好？
 
 前页的结果并非偶然，在对真实模型一无所知 (只能假设等概率出现) 的情况下，所有算法的期望错误率均为$1/2$，与随便猜等同，这称为没有免费的午餐 (no free lunch, NFL) 定理
 
-设数据集$D \subseteq (\xc \times \{0,1\})^m$，其中$\xc$是{==离散==}的，$p(f \mid A, D)$为算法$A$基于$D$产生模型$f$的概率
+设数据集$\dc \subseteq (\xc \times \{0,1\})^m$，其中$\xc$是{==有限==}的，$p(f \mid \as, \dc)$为算法$\as$基于数据集$\dc$产生模型$f$的概率
 
 模型集合$\gc = \{ \xc \mapsto \{0,1\} \}$，易知$|\gc| = 2^{|\xc|}$
 
-给定$g \in \gc$为真实模型，则算法$A$的期望预测错误率为
+给定$g \in \gc$为真实模型，则算法$\as$的期望预测错误率为
 
 <p>
 \begin{align}
-    E (A \mid D, g) = \eb_\xv \int_f \ib(f(\xv) \ne g(\xv)) \cdot p(f \mid A, D) ~ \diff f
+    \err (\as \mid \dc, g) = \eb_\xv \int_f \ib(f(\xv) \ne g(\xv)) \cdot p(f \mid \as, \dc) ~ \diff f
 \end{align}
 </p>
 
@@ -835,17 +835,17 @@ Q：哪个算法更好？
 
 ---
 
-假设$\gc$中模型为真实模型的概率均为$1 / |\gc|$，则算法$A$的期望预测错误率
+假设$\gc$中模型为真实模型的概率均为$1 / |\gc|$，则算法$\as$的期望预测错误率
 
 <p>
 \begin{align}
-    \sum_g \frac{E (A \mid D, g)}{|\gc|} & = \sum_g \frac{1}{|\gc|} \eb_\xv \int_f \ib(f(\xv) \ne g(\xv)) \cdot p(f \mid A, D) ~ \diff f \\
-    & = \eb_\xv \int_f p(f \mid A, D) \frac{1}{|\gc|} \class{blue}{\sum_g \ib(f(\xv) \ne g(\xv))} ~ \diff f \\
-    & = \eb_\xv \int_f \frac{p(f \mid A, D)}{2} ~ \diff f = \eb_\xv \frac{1}{2} = \frac{1}{2}
+    \sum_g \frac{\err (\as \mid \dc, g)}{|\gc|} & = \sum_g \frac{1}{|\gc|} \eb_\xv \int_f \ib(f(\xv) \ne g(\xv)) \cdot p(f \mid \as, \dc) ~ \diff f \\
+    & = \eb_\xv \int_f p(f \mid \as, \dc) \frac{1}{|\gc|} \class{blue}{\sum_g \ib(f(\xv) \ne g(\xv))} ~ \diff f \\
+    & = \eb_\xv \int_f \frac{p(f \mid \as, \dc)}{2} ~ \diff f = \eb_\xv \frac{1}{2} = \frac{1}{2}
 \end{align}
 </p>
 
-其中$\sum_g \ib(f(\xv) \ne g(\xv)) = |\gc| / 2$是因为$\xc$是离散的，对任意$\xv \in \xc$，$\gc$中的$2^{|\xc|}$个模型恰有一半预测$\xv$为正、一半预测$\xv$为负
+其中$\sum_g \ib(f(\xv) \ne g(\xv)) = |\gc| / 2$是因为$\xc$是有限的，对任意$\xv \in \xc$，$\gc$中的$2^{|\xc|}$个模型恰有一半预测$\xv$为正、一半预测$\xv$为负
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -870,15 +870,15 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 
 ---
 
-给定模型$f: \xc \mapsto \rb$、数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，回归任务最常用的评估指标{==均方损失==} ({==m==}ean {==s==}quared {==e==}rror, MSE) 定义为
+给定模型$f: \xc \mapsto \rb$、数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，回归任务最常用的评估指标{==均方损失==} ({==m==}ean {==s==}quared {==e==}rror, MSE) 定义为
 
 <p>
 \begin{align}
-    E_D (f) = \frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2
+    \err_\dc (f) = \frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2
 \end{align}
 </p>
 
-除此之外，以下损失也常用于回归任务
+除此之外，以下损失也会用于回归任务
 
 - 均方根损失 ({==r==}oot {==MSE==}, RMSE)：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
 - 平均绝对损失 ({==m==}ean {==a==}bsolute {==e==}rror, MAE)：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$
@@ -891,22 +891,22 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 
 ---
 
-给定模型$f: \xc \mapsto \rb$、数据集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，$y_i \in \{1,-1\}$，分类任务最常用的评估指标{==错误率==} (error rate) 定义为
+给定模型$f: \xc \mapsto \rb$、数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$y_i \in \{1,-1\}$，分类任务最常用的评估指标{==错误率==} (error rate) 定义为
 
 <p>
 \begin{align}
-    E_D (f) = \frac{1}{m} \sum_{i \in [m]} \ib (y_i f(\xv_i) < 0)
+    \err_\dc (f) = \frac{1}{m} \sum_{i \in [m]} \ib (y_i f(\xv_i) < 0)
 \end{align}
 </p>
 
-此外$\acc_D (f) = 1 - E_D (f)$为{==准确率==} (accuracy)
+此外$\acc_\dc (f) = 1 - \err_\dc (f)$为{==准确率==} (accuracy)
 
-错误率也称为 0-1 损失，不连续、难优化，常用以下替代损失
+$\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以下替代损失
 
-- 对率损失：$\frac{1}{m} \sum_{i \in [m]} \ln (1 + \exp( - y_i f(\xv_i)))$，用于对率损失
-- 指数损失：$\frac{1}{m} \sum_{i \in [m]} \exp (- y_i f(\xv_i))$，用于 AdaBoost
-- 合页 (hinge) 损失：$\frac{1}{m} \sum_{i \in [m]} \max \{ 0, 1 - y_i f(\xv_i) \}$，用于支持向量机
-- 平方合页损失：$\frac{1}{m} \sum_{i \in [m]} (\max \{ 0, 1 - y_i f(\xv_i) \})^2$，用于支持向量机
+- 对率损失：$\ln (1 + \exp( - y_i f(\xv_i)))$，用于对率损失
+- 指数损失：$\exp (- y_i f(\xv_i))$，用于 AdaBoost
+- 合页 (hinge) 损失：$\max \{ 0, 1 - y_i f(\xv_i) \}$，用于支持向量机
+- 平方合页损失：$(\max \{ 0, 1 - y_i f(\xv_i) \})^2$，用于支持向量机
 
 <!-- slide data-notes="" -->
 
@@ -983,7 +983,7 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 - A 的曲线下面积大于 B
 - A 的曲线与$P=R$的交点 (平衡点) 更大
 
-<img src="../python/pr-curve.svg" class="right4 lefta top-20 bottom-20 width35" title="">
+<img src="../python/pr-curve.svg" class="right4 lefta top-20 bottom-20 width35" title="乳腺癌数据上的结果">
 
 <p class="footnote book"> 曲线下面积缩写为 AUC (<span class="blue">a</span>rea <span class="blue">u</span>nder <span class="blue">c</span>urve)</p>
 
@@ -1086,7 +1086,7 @@ ROC 曲线 vs. 查准查全曲线
 
 <p>
 \begin{align}
-    E_D (f) = \frac{1}{m} \sum_{i \in [m]} \ib (y_i \ne f(\xv_i)), \quad \acc_D (f) = 1 - E_D (f)
+    \err_\dc (f) = \frac{1}{m} \sum_{i \in [m]} \ib (y_i \ne f(\xv_i)), \quad \acc_\dc (f) = 1 - \err_\dc (f)
 \end{align}
 </p>
 
@@ -1094,12 +1094,12 @@ ROC 曲线 vs. 查准查全曲线
 
 <div class="threelines column1-border-right-solid column2-border-right-dashed column3-border-right-dashed column4-border-right-dashed row2-border-top-dashed row3-border-top-dashed row4-border-top-dashed column1-bold top-1 bottom1 center">
 
-|             | 预测第$1$类 | 预测第$2$类 | &emsp;&emsp; ... &emsp;&emsp; | 预测第$c$类 |
+|             | 预测 第$1$类 | 预测 第$2$类 | &emsp;&emsp; ... &emsp;&emsp; | 预测 第$c$类 |
 | :---------: | :---------: | :---------: | ----------------------------- | ----------- |
-| 真实第$1$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-| 真实第$2$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+| 真实 第$1$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+| 真实 第$2$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
 |     ...     |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-| 真实第$c$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+| 真实 第$c$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
 
 </div>
 
@@ -1115,7 +1115,7 @@ ROC 曲线 vs. 查准查全曲线
 
 <p>
 \begin{align}
-    \pv = \left[ \frac{e^{f_1(x)}}{\sum_{j \in [c]} e^{f_i(x)}}, \frac{e^{f_2(x)}}{\sum_{j \in [c]} e^{f_i(x)}}, \ldots, \frac{e^{f_c(x)}}{\sum_{j \in [c]} e^{f_i(x)}} \right] \quad \longleftarrow \softmax
+    \pv = \left[ \frac{e^{f_1(x)}}{\sum_{j \in [c]} e^{f_j(x)}}, \frac{e^{f_2(x)}}{\sum_{j \in [c]} e^{f_j(x)}}, \ldots, \frac{e^{f_c(x)}}{\sum_{j \in [c]} e^{f_j(x)}} \right] \quad \longleftarrow \softmax
 \end{align}
 </p>
 
