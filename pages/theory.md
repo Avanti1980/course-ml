@@ -330,7 +330,7 @@ A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足
 
 通常学习任务面临的$\hc$都是无限的
 
-之前用来证明下式的联合界 不能再用，否则右边是无穷大
+之前用来证明下式的联合界不能再用，否则右边是无穷大
 
 <p>
 \begin{align}
@@ -338,6 +338,8 @@ A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足
 \end{align}
 </p>
 
+<div class="top2"></div>
+2
 我们需设法将$\hc$的无穷归约到有穷，注意训练样本是有穷的，因此定义{==增长函数==} (growth function) 为$\hc$对$m$个样本的最大不同预测结果数
 
 <p>
@@ -372,7 +374,7 @@ A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足
 
 其中$d$为$\hc$的$\vc$维，$\vc (\hc) = \max \{ m: \Pi_\hc (m) = 2^m \}$
 
-$\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的，越大说明$\hc$适应不同任务的能力越强，此外，还有 <a href="https://en.wikipedia.org/wiki/Rademacher_complexity" target=_blank>Rademacher 复杂度</a>、packing number、<a href="https://en.wikipedia.org/wiki/Covering_number" target=_blank>covering number</a> 等工具，都是类似的作用
+$\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的，越大说明$\hc$适应不同任务的能力越强，此外还有 <a href="https://en.wikipedia.org/wiki/Rademacher_complexity" target=_blank>Rademacher 复杂度</a>、packing number、<a href="https://en.wikipedia.org/wiki/Covering_number" target=_blank>covering number</a> 等工具，都是类似的作用
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -470,7 +472,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <div class="top-2"></div>
 
-我的启示 选对假设空间至关重要！
+<p class="conclusion"> 选对假设空间至关重要！</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -509,7 +511,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 \end{align}
 </p>
 
-其中{==条件期望$\eb [y|\xv]$与$y$无关==}，对交叉项有
+其中{==条件期望==}$\class{blue}{\eb [y|\xv]}${==与==}$\class{blue}{y}${==无关==}，对交叉项有
 
 <p>
 \begin{align}
@@ -544,8 +546,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    E & = \eb_\dc \eb_{(\xv,y)} [(f_\dc (\xv) - y)^2] \\
-    & = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声
+    E = \eb_\dc \eb_{(\xv,y)} [(f_\dc (\xv) - y)^2] = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声
 \end{align}
 </p>
 
@@ -567,7 +568,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 \end{align}
 </p>
 
-{==注意$\eb_\dc [f_\dc (\xv)]$与$\dc$无关==}，对交叉项有
+{==注意==}$\class{blue}{\eb_\dc [f_\dc (\xv)]}${==与==}$\class{blue}{\dc}${==无关==}，对交叉项有
 
 <p>
 \begin{align}
@@ -596,7 +597,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <div class="top2"></div>
 
-我的启示 我们要选择{==低偏差==}同时{==低方差==}的模型！
+<p class="conclusion"> 我们要选择<span class="blue">低偏差</span>同时<span class="blue">低方差</span>的模型！</p>
 
 <!-- slide data-notes="" -->
 
@@ -617,4 +618,4 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 - 训练不足时，模型还很糙，拟合能力不强，偏差占主导
 - 训练程度加深后，模型开始捕捉数据细节，方差占主导
 
-<img src="../tikz/bias-var-dec.svg" class="center top5 width45" title="很多学习算法都可控制训练程度，例如决策树可控制层数，神经网络可控制训练轮数，集成学习方法可控制基学习器个数">
+<img src="../tikz/bias-var-dec/bias-var-dec.svg" class="center top5 width45" title="很多学习算法都可控制训练程度，例如决策树可控制层数，神经网络可控制训练轮数，集成学习方法可控制基学习器个数">

@@ -1,0 +1,29 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-tikz4slides}
+
+\tikzset{font=\Large}
+\tikzset{base/.style = {smooth, very thick, draw=SolarizedBase01, text=SolarizedMagenta}}
+\tikzset{arrow/.style={->, -{Stealth[scale=1.0]}, base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \draw [arrow] (0.2,0) -- (6.9,0) node[below] {};
+    \draw [arrow] (0.2,0) -- (0.2,5) node[below] {};
+
+    \draw [base,SolarizedBlue,domain=0.5:6.5] plot(\x,{0.08*(\x-0.2)^2+0.2});
+    \draw [base,SolarizedYellow,domain=0.5:6.5] plot(\x,{0.08*(\x-6.8)^2+0.2});
+    \draw [base,SolarizedRed,domain=0.5:6.5] plot(\x,{0.3*(\x-3.5)^2+2});
+
+    \path (6.3, 0.8) node[draw=none,left,SolarizedYellow] () {偏差};
+
+    \path (6.3, 1.9) node[draw=none,left,SolarizedBlue] () {方差};
+
+    \path (6.3, 4.5) node[draw=none,left,SolarizedRed] () {泛化风险};
+
+    \path (3.5, 0) node[draw=none,below,SolarizedBase01] () {训练程度};
+
+\end{tikzpicture}
+
+\end{document}
