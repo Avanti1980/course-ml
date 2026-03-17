@@ -489,12 +489,12 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <div class="top4"></div>
 
-{==交叉验证==} (cross validation)：将训练集平均分为$n$份，第$i$轮
+{==交叉验证==} (cross validation)：将训练集平均分为$k$份，第$i$轮
 
-- 在其中的第$[n] \setminus \{ i \}$份上依次训练$f_1, f_2, \ldots, f_n$
+- 在其中的第$[k] \setminus \{ i \}$份上依次训练$f_1, f_2, \ldots, f_n$
 - 在第$i$份上依次评估$f_1, f_2, \ldots, f_n$
 
-遍历$i \in [n]$取平均作为$f_1, f_2, \ldots, f_n$的性能，从中挑选最好的
+遍历$i \in [k]$取平均作为$f_1, f_2, \ldots, f_n$的性能，从中挑选最好的
 
 <!-- slide data-notes="" -->
 

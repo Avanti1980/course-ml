@@ -347,12 +347,12 @@
 <li>在验证集上依次评估<span class="mathjax-exps">$f_1, f_2, \ldots, f_n$</span></li>
 </ul>
 <div class="top4"></div>
-<p><mark>交叉验证</mark> (cross validation)：将训练集平均分为<span class="mathjax-exps">$n$</span>份，第<span class="mathjax-exps">$i$</span>轮</p>
+<p><mark>交叉验证</mark> (cross validation)：将训练集平均分为<span class="mathjax-exps">$k$</span>份，第<span class="mathjax-exps">$i$</span>轮</p>
 <ul>
-<li>在其中的第<span class="mathjax-exps">$[n] \setminus \{ i \}$</span>份上依次训练<span class="mathjax-exps">$f_1, f_2, \ldots, f_n$</span></li>
+<li>在其中的第<span class="mathjax-exps">$[k] \setminus \{ i \}$</span>份上依次训练<span class="mathjax-exps">$f_1, f_2, \ldots, f_n$</span></li>
 <li>在第<span class="mathjax-exps">$i$</span>份上依次评估<span class="mathjax-exps">$f_1, f_2, \ldots, f_n$</span></li>
 </ul>
-<p>遍历<span class="mathjax-exps">$i \in [n]$</span>取平均作为<span class="mathjax-exps">$f_1, f_2, \ldots, f_n$</span>的性能，从中挑选最好的</p>
+<p>遍历<span class="mathjax-exps">$i \in [k]$</span>取平均作为<span class="mathjax-exps">$f_1, f_2, \ldots, f_n$</span>的性能，从中挑选最好的</p>
 </section></section><section><section data-notes="" lineno="499" class="slide " data-source-line="499" data-h="5" data-v="0"><h5 id="偏差方差分解">偏差方差分解 </h5>
 <hr>
 <p>以回归问题为例，对任意样本<span class="mathjax-exps">$(\xv,y) \sim \ds$</span>，均方误差可分解为</p>
