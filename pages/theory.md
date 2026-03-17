@@ -203,7 +203,7 @@ A：<a href="https://en.wikipedia.org/wiki/Concentration_inequality" target=_bla
 \end{align}
 </p>
 
-根据联合界 (union bound)：$\pb[A \cup B] \le \pb[A] + \pb[B]$可得
+根据联合界 (union bound)：$\pb[A \vee B] \le \pb[A] + \pb[B]$可得
 
 <p>
 \begin{align}
@@ -281,7 +281,7 @@ A：$h_\dc^\erm$依赖于$\dc$，式$(1)$不可用，$h^\star$独立于$\dc$，�
 
 Q：如何让式$(1)$对$h_\dc^\erm$也能用？
 
-A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足式$(1)$，那问题就解决了，但这对$\hc$的要求就太苛刻了，故将其放松成有限集合，再次根据联合界 有
+A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足式$(1)$，那问题就解决了，但这对$\hc$的要求就太苛刻了，故将其放松成有限集合，再次根据联合界有
 
 <p>
 \begin{align}

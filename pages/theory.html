@@ -166,7 +166,7 @@
     &amp; \pb_{\dc \sim \ds^m} [R_\dc(h) - R(h) \le -\epsilon] \le e^{-2 m \epsilon^2}
 \end{align}
 </p>
-<p>根据联合界 (union bound)：<span class="mathjax-exps">$\pb[A \cup B] \le \pb[A] + \pb[B]$</span>可得</p>
+<p>根据联合界 (union bound)：<span class="mathjax-exps">$\pb[A \vee B] \le \pb[A] + \pb[B]$</span>可得</p>
 <p>
 \begin{align}
     \pb_{\dc \sim \ds^m} [|R_\dc(h) - R(h)| \ge \epsilon] \le 2 e^{-2 m \epsilon^2}
@@ -215,7 +215,7 @@
 </section><section vertical="true" data-notes="" lineno="276" class="slide " data-source-line="276" data-h="2" data-v="6"><h5 id="pac-学习框架-6">PAC 学习框架 </h5>
 <hr>
 <p>Q：如何让式<span class="mathjax-exps">$(1)$</span>对<span class="mathjax-exps">$h_\dc^\erm$</span>也能用？</p>
-<p>A：<span class="mathjax-exps">$h_\dc^\erm$</span>是从<span class="mathjax-exps">$\hc$</span>中得到的，如果<span class="mathjax-exps">$\hc$</span>中的所有模型都满足式<span class="mathjax-exps">$(1)$</span>，那问题就解决了，但这对<span class="mathjax-exps">$\hc$</span>的要求就太苛刻了，故将其放松成有限集合，再次根据联合界 有</p>
+<p>A：<span class="mathjax-exps">$h_\dc^\erm$</span>是从<span class="mathjax-exps">$\hc$</span>中得到的，如果<span class="mathjax-exps">$\hc$</span>中的所有模型都满足式<span class="mathjax-exps">$(1)$</span>，那问题就解决了，但这对<span class="mathjax-exps">$\hc$</span>的要求就太苛刻了，故将其放松成有限集合，再次根据联合界有</p>
 <p>
 \begin{align}
     \pb_{\dc \sim \ds^m} [\exists h \in \hc: |R_\dc(h) - R(h)| \ge \epsilon] &amp; \le \sum_{h \in \hc} \pb_{\dc \sim \ds^m} [ |R_\dc(h) - R(h)| \ge \epsilon] \\
