@@ -1094,12 +1094,12 @@ ROC 曲线 vs. 查准查全曲线
 
 <div class="threelines column1-border-right-solid column2-border-right-dashed column3-border-right-dashed column4-border-right-dashed row2-border-top-dashed row3-border-top-dashed row4-border-top-dashed column1-bold top-1 bottom1 center">
 
-|             | 预测 第$1$类 | 预测 第$2$类 | &emsp;&emsp; ... &emsp;&emsp; | 预测 第$c$类 |
-| :---------: | :---------: | :---------: | ----------------------------- | ----------- |
-| 真实 第$1$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-| 真实 第$2$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-|     ...     |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
-| 真实 第$c$类 |   &emsp;    |   &emsp;    | &emsp;                        | &emsp;      |
+|              | 预测 第$1$类 | 预测 第$2$类 | &emsp;&emsp; ... &emsp;&emsp; | 预测 第$c$类 |
+| :----------: | :----------: | :----------: | ----------------------------- | ------------ |
+| 真实 第$1$类 |    &emsp;    |    &emsp;    | &emsp;                        | &emsp;       |
+| 真实 第$2$类 |    &emsp;    |    &emsp;    | &emsp;                        | &emsp;       |
+|     ...      |    &emsp;    |    &emsp;    | &emsp;                        | &emsp;       |
+| 真实 第$c$类 |    &emsp;    |    &emsp;    | &emsp;                        | &emsp;       |
 
 </div>
 
