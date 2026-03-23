@@ -109,5 +109,4 @@ if __name__ == '__main__':
             ax.set_xlabel(r'$x_1$')
             ax.set_ylabel(r'$x_2$')
 
-    plt.subplots_adjust(wspace=0.08, hspace=0.08)
-    plt.show()
+    plt.savefig("perceptron-kernel.svg", transparent=True, bbox_inches="tight")

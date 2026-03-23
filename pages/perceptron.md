@@ -17,15 +17,16 @@ presentation:
 @import "../css/table.css"
 @import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
+@import "../plugin/notes/notes.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
-@import "../plugin/menu/menu.js"
+@import "../plugin/reveal.js-menu/menu.js"
 @import "../js/anychart/anychart-core.min.js"
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
-@import "../js/anychart/venn-ml.js"
+@import "../js/anychart/venn-entropy.js"
 
 <!-- slide data-notes="" -->
 
@@ -39,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -57,17 +58,29 @@ presentation:
 
 ---
 
-符号学派：明确的概念表示
+符号学派：语义清晰的规则
 
-<p class="left6 top0 bottom4">$\text{是} \longleftarrow (\text{天气} = \text{晴天}) \wedge (\text{课业} = \text{轻松})$</p>
+<p>
+\begin{align}
+    是 \gets (天气 = 晴天) \wedge (课业 = 轻松)
+\end{align}
+</p>
 
-连接学派：“黑箱”模型
+<div class="top2"></div>
 
-<p class="left6 top0 bottom6">$\{1,-1\} \longleftarrow \sign(w_0 + w_1 \cdot \text{周六} + w_2 \cdot \text{周日} + w_3 \cdot \text{周间} + \cdots)$</p>
+连接学派：难以解释的“黑箱” (black box)
+
+<p>
+\begin{align}
+    \{1,-1\} \gets \sign(w_0 + w_1 \cdot 周六 + w_2 \cdot 周日 + w_3 \cdot 周间 + \cdots)
+\end{align}
+</p>
+
+<div class="top4"></div>
 
 - 从知识获取的角度来说，连接学派有先天性的缺点
-- 模型训练有高效的{==反向传播==} (<u>b</u>ack<u>p</u>ropagation, BP) 算法，实际挺好用
-- 超参数巨多且设置缺乏理论指导，全靠手工“调参”
+- 模型训练有高效的{==反向传播==} ({==b==}ack{==p==}ropagation, BP) 算法，实际挺好用
+- 超参数多且设置缺乏理论指导，全靠手工“调参”
 - 显著降低使用者门槛，为机器学习技术走向工程实践带来便利
 
 <!-- slide vertical=true data-notes="" -->
@@ -83,11 +96,11 @@ presentation:
 <div class="top-2"></div>
 
 - 八十年代红极一时：x86 系列 CPU 和内存条技术较七十年代显著提高
-- 近十年梅开二度：大数据防止过拟合，显卡等计算设备性能显著提升
+- 近十年梅开二度：大数据防止过拟合，GPU 等计算设备性能显著提升
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">M-P</span>神经元模型
+##### M-P 神经元模型
 
 ---
 
@@ -97,7 +110,7 @@ presentation:
 - 加权输入总和$\sum_{i \in [d]} w_i x_i$与偏置$b$相加
 - 通过{==激活函数==} (activation function) $h(\cdot)$输出
 
-@import "../tikz/neuron.svg" {.width45 .left10per .top5per}
+<img src="../tikz/neuron/neuron.svg" class="width45 left10per top5per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -105,29 +118,41 @@ presentation:
 
 ---
 
-<div class="top2"></div>
-
 阶跃函数：不连续、不光滑
 
-$$
-\begin{align*}
-    \quad \sgn(x) = \begin{cases} 1, & x \ge 0 \\ 0, & x < 0 \end{cases}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \sgn(x) = \begin{cases} 1, & x \ge 0 \\ 0, & x < 0 \end{cases}
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 对(数几)率 (logistic) 函数
 
-$$
-\begin{align*}
-    \quad \sigma(x) = \frac{1}{1 + \exp(-x)}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \sigma(x) = \frac{1}{1 + \exp(-x)}
+\end{align}
+</p>
 
-符号函数$\sign(x) = 2 \cdot \sgn (x) - 1 = \begin{cases} 1, & x \ge 0 \\ -1, & x < 0 \end{cases}$
+<div class="top2"></div>
 
-双曲正切函数$\tanh(x) = 2 \cdot \sigma(2x) - 1 = \frac{\exp(x) - \exp(-x)}{\exp(x) + \exp(-x)}$
+此外还有
 
-@import "../python/sgn-logistic-func-plot.svg" {.width45 .left50per .top-56per}
+<p>
+\begin{align}
+    符号函数: ~ \sign(x) = 2 \cdot \sgn (x) - 1 = \begin{cases} 1, & x \ge 0 \\ -1, & x < 0 \end{cases}
+\end{align}
+</p>
+
+<p>
+\begin{align}
+    双曲正切函数: ~ \tanh(x) = 2 \cdot \sigma(2x) - 1 = \frac{\exp(x) - \exp(-x)}{\exp(x) + \exp(-x)}
+\end{align}
+</p>
+
+<img src="../python/perceptron/sgn-logistic-func-plot.svg" class="width40 left50per top-55per">
 
 <!-- slide data-notes="" -->
 
@@ -137,15 +162,13 @@ $$
 
 由输入层、输出层两层神经元组成
 
-$$
-\begin{align*}
-    \quad y & = \sign (\wv^\top \xv + b) \\
+<p>
+\begin{align}
+    y & = \sign (\wv^\top \xv + b) \\
     & = \sign \left( \begin{bmatrix} \wv \\ b \end{bmatrix}^\top \begin{bmatrix} \xv \\ 1 \end{bmatrix} \right) \\
     & = \sign (\tilde{\wv}^\top \tilde{\xv})
-\end{align*}
-$$
-
-<div class="top-4"></div>
+\end{align}
+</p>
 
 为方便讨论，之后我们省略偏置$b$
 
@@ -153,14 +176,14 @@ $$
 
 几何解释：
 
-- $\wv^\top \xv$是$\Rbb^d$中以$\wv$为法向量的{==超平面==} (hyperplane)，将空间一分为二
+- $\wv^\top \xv$是$\rb^d$中以$\wv$为法向量的{==超平面==} (hyperplane)，将空间一分为二
 - 位于超平面两侧的样本分别被预测为正类和负类
 
 <div class="top2"></div>
 
 我的批注 感知机属于{==线性分类器==} (linear classifier) 的范畴
 
-@import "../tikz/perceptron.svg" {.width40 .left56per .top-52per}
+<img src="../tikz/perceptron/perceptron.svg" class="width40 left56per top-52per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -168,7 +191,7 @@ $$
 
 ---
 
-输入：训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$<br>输出：$\wv$
+输入：训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\rb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$<br>输出：$\wv$
 
 1. 初始化$\wv_0 = \zerov$，更新次数$t = 0$
 2. {==while==} 训练集中存在误分类点 {==do==}
@@ -181,24 +204,23 @@ $$
 
 若样本$(\xv_i, y_i)$被误分类，则更新后对其预测会有所改善
 
-$$
-\begin{align*}
-    \quad y_i \wv_{t+1}^\top \xv_i = y_i (\wv_t + \eta y_i \xv_i)^\top \xv_i = y_i \wv_t^\top \xv_i + \eta \|\xv_i\|_2^2 > y_i \wv_t^\top \xv_i
-\end{align*}
-$$
+<p>
+\begin{align}
+    y_i \wv_{t+1}^\top \xv_i = y_i (\wv_t + \eta y_i \xv_i)^\top \xv_i = y_i \wv_t^\top \xv_i + \eta \|\xv_i\|_2^2 > y_i \wv_t^\top \xv_i
+\end{align}
+</p>
 
-<div class="top-3"></div>
+<div class="top2"></div>
 
-我的批注 再蠢的人多犯几次错误也会记住教训
+我的批注 再笨的人多犯几次错误也会记住教训
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span> 中的感知机
+##### sklearn 中的感知机
 
 ---
 
-@import "../python/perceptron-date.py" {.line-numbers .top-1 .left4 highlight=[2,37,38]}
-
+@import "../python/perceptron/perceptron-date.py" {.line-numbers .top1 .left4 highlight=[2,37,38]}
 
 <!-- slide data-notes="" -->
 
@@ -218,7 +240,7 @@ $$
 
 </div>
 
-这四种逻辑运算均是$\Rbb^2$上$4$样本的二分类问题，注意$\Ycal = \{0,1\}$
+这四种逻辑运算均是$\rb^2$上$4$样本的二分类问题，注意$\yc = \{0,1\}$
 
 - 将$y = 0$看作负类，并将类别标记改成$y = -1$，一旦$\sign(\wv^\top \xv)$可以正确分类，再$(\sign(\wv^\top \xv) + 1) / 2$就可以还原布尔变量$y$
 - 用{==阶跃函数==}做激活函数，更新规则改为$\wv_{t+1} \leftarrow \wv_t + \eta (y_i - \hat{y}_i) \xv_i$，其中$\hat{y}_i = \sgn(\wv_t^\top \xv_i)$，想法和前面一样，{==更新要能改善预测==}
@@ -229,7 +251,7 @@ $$
 
 ---
 
-@import "../python/perceptron-logic.svg" {.center .width90}
+<img src="../python/perceptron/perceptron-logic.svg" class="center width90">
 
 与、或、非都是{==线性可分==}问题，感知机训练精度可以达到$100\%$
 
@@ -239,76 +261,74 @@ Novikoff 定理对此有严格的刻画
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">Novikoff</span> 定理
+##### Novikoff 定理
 
 ---
 
-设训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，若
+设训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\rb^d \times \{ \pm 1 \})^m$，若
 
-1. 存在$r > 0$对$\forall i \in [m]$有$\|\xv_i\| \le r$，即{==$D \subseteq B_\zerov (r)$==}
-2. 存在$\rho>0$和$\|\vv\|=1$对$\forall i \in [m]$有$y_i \vv^\top \xv_i \ge \rho$，即以{==间隔==}$\rho$线性可分
+1. 存在$r > 0$对$\forall i \in [m]$有$\|\xv_i\| \le r$，即$\dc \subseteq \bc_\zerov (r)$
+2. 存在$\rho > 0$和$\| \vv \|=1$对$\forall i \in [m]$有$y_i \vv^\top \xv_i \ge \rho$，即以{==间隔==}$\rho$线性可分
 
 则感知机更新次数$M \le r^2/\rho^2$
 
-<div class="top4 width60">
+<div class="top2 width60">
 
 1. 只要数据线性可分，感知机就会在有限步内中止，否则无限更新
-1. 这个界与维度$d$无关，与学习率$\eta$也无关，因此许多教材直接将其定为$1$
-1. 这个界是{==紧==}的，即存在最坏情况使得感知机的更新次数$M = r^2/\rho^2$
-1. 当$\rho$很小时，收敛可能会很慢，存在部分极端情况使更新次数达到$\Omega(2^m)$
+2. 这个界与维度$d$无关，与学习率$\eta$也无关，因此许多教材直接将其定为$1$
+3. 这个界是{==紧==}的，即存在最坏情况使得感知机的更新次数$M = r^2/\rho^2$
+4. 当$\rho$很小时，收敛可能会很慢，存在部分极端情况使更新次数达到$\Omega(2^m)$
 
 </div>
 
-@import "../tikz/Novikoff.svg" {.left60per .top-36per .width35}
+<img src="../tikz/Novikoff/Novikoff.svg" class="left60per top-34per width35">
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">Novikoff</span> 定理证明
+##### Novikoff 定理证明
 
 ---
 
-证明：设$I = \{ i_1, i_2, \ldots, i_M \}$是感知机更新时的样本下标集合
+证明：设$\ic = \{ i_1, i_2, \ldots, i_M \}$是感知机更新时的样本下标集合
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     M \rho & \overset{(1)}{\le} \sum_{t \in [M]} y_{i_t} \vv^\top \xv_{i_t} \overset{(2)}{\le} \|\vv\| \left\| \sum_{t \in [M]} y_{i_t} \xv_{i_t} \right\| = \left\| \sum_{t \in [M]} \frac{\wv_t - \wv_{t-1}}{\eta} \right\| = \left\| \frac{\wv_M}{\eta} \right\| \\
-    & = \sqrt{\frac{\| \wv_M \|^2}{\eta^2}} = \sqrt{\sum_{t \in [M]} \frac{\| \wv_t \|^2 - \| \wv_{t-1} \|^2}{\eta^2}} \quad \class{blue}{\longleftarrow \wv_t = \wv_{t-1} + \eta y_{i_t} \xv_{i_t}} \\
+    & = \sqrt{\frac{\| \wv_M \|^2}{\eta^2}} = \sqrt{\sum_{t \in [M]} \frac{\| \wv_t \|^2 - \| \wv_{t-1} \|^2}{\eta^2}} \quad \class{blue}{\gets \wv_t = \wv_{t-1} + \eta y_{i_t} \xv_{i_t}} \\
     & = \sqrt{\sum_{t \in [M]} \frac{2 \eta y_{i_t} \wv_{t-1}^\top \xv_{i_t} + \eta^2 \| \xv_{i_t} \|^2}{\eta^2}} \overset{(3)}{\le} \sqrt{\sum_{t \in [M]} \| \xv_{i_t} \|^2} \overset{(4)}{\le} \sqrt{M r^2}
-\end{align*}
-$$
+\end{align}
+</p>
 
-- 不等号$(1)$是根据条件 2，以间隔$\rho$线性可分
-- 不等号$(2)$是根据柯西不等式，$\av^\top \bv \le \|\av\| \cdot \|\bv\|$
-- 不等号$(3)$是根据感知机算法，犯错才更新，故$y_{i_t} \wv_{t-1}^\top \xv_{i_t} \le 0$
-- 不等号$(4)$是根据条件 1，$\| \xv_{i_t} \| \le r$
+<div class="top2"></div>
+
+- $(1)$是根据条件 2，以间隔$\rho$线性可分
+- $(2)$是根据柯西不等式，$\av^\top \bv \le \|\av\| \cdot \|\bv\|$
+- $(3)$是根据感知机算法，犯错才更新，故$y_{i_t} \wv_{t-1}^\top \xv_{i_t} \le 0$
+- $(4)$是根据条件 1，$\| \xv_{i_t} \| \le r$
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">Novikoff</span> 定理的紧性
+##### Novikoff 定理的紧性
 
 ---
 
-设训练集$D = \{ (\ev_i, y_i) \}_{i \in [m]}$，其中$\ev_i$是$\Rbb^m$的第$i$个标准正交基
+设训练集$\dc = \{ (\ev_i, y_i) \}_{i \in [m]}$，其中$\ev_i$是$\rb^m$的第$i$个标准正交基
 
 由归纳法不难证明前$m$轮感知机预测全错，连续更新$m$次后
 
-$$
-\begin{align*}
-    \quad \wv_m = \eta \sum_{t \in [m]} y_t \ev_t
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    \wv_m = \eta \sum_{t \in [m]} y_t \ev_t
+\end{align}
+</p>
 
 由$\ev_i$间的正交性可知
 
-$$
-\begin{align*}
-    \quad \frac{y_i \wv_m^\top \ev_i}{\| \wv_m \|} = \frac{y_i (\eta \sum_{t \in [m]} y_t \ev_t)^\top \ev_i}{\eta \sqrt{m}} = \frac{\| \ev_i \|^2}{\sqrt{m}} = \frac{1}{\sqrt{m}} > 0
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    \frac{y_i \wv_m^\top \ev_i}{\| \wv_m \|} = \frac{y_i (\eta \sum_{t \in [m]} y_t \ev_t)^\top \ev_i}{\eta \sqrt{m}} = \frac{\| \ev_i \|^2}{\sqrt{m}} = \frac{1}{\sqrt{m}} > 0
+\end{align}
+</p>
 
 即超平面$\wv_m^\top \xv$可将所有样本正确分类，间隔$\rho \ge 1 / \sqrt{m}$
 
@@ -320,7 +340,7 @@ $$
 
 ---
 
-设$\Rbb^m$中的$m$个样本序列为
+设$\rb^m$中的$m$个样本序列为
 
 <div class="top-4 bottom-3 fs15">
 
@@ -335,7 +355,7 @@ $$
 
 </div>
 
-易知$y_i \xv_i = [\underbrace{-1, \ldots, -1}_{i-1\text{个}}, 1, 0, \ldots, 0]$，注意$1$只出现在第$i$位上
+易知$y_i \xv_i = [\underbrace{-1, \ldots, -1}_{i-1 个}, 1, 0, \ldots, 0]$，注意$1$只出现在第$i$位上
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -343,23 +363,21 @@ $$
 
 ---
 
-易知$y_i \xv_i = [\underbrace{-1, \ldots, -1}_{i-1\text{个}}, 1, 0, \ldots, 0]$，注意$1$只出现在第$i$位上
-
-<div class="top-1"></div>
+易知$y_i \xv_i = [\underbrace{-1, \ldots, -1}_{i-1 个}, 1, 0, \ldots, 0]$，注意$1$只出现在第$i$位上
 
 - 欲使$\xv_1$分类正确，需有$w_1 > 0$，加一次$\eta y_1 \xv_1$可使$w_1$增大$\eta$
 - 欲使$\xv_2$分类正确，需有$w_2 > 0$，加一次$\eta y_2 \xv_2$可使$w_2$增大$\eta$，但这个操作同时会将$w_1$减小$\eta$，因此还需再补加$\eta y_1 \xv_1$一次
 - 欲使$\xv_3$分类正确，需有$w_3 > 0$，加一次$\eta y_3 \xv_3$可使$w_3$增大$\eta$，但这个操作同时会将$w_1$和$w_2$减小$\eta$，因此还需再补加$\eta y_1 \xv_1$和$\eta y_2 \xv_2$各一次，而加一次$\eta y_2 \xv_2$又得再补加$\eta y_1 \xv_1$一次
 
+<div class="top2"></div>
+
 设使$w_i > 0$且不改变之前$w_j(j < i)$所需的更新次数为$a_i$，则
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     a_1 = 2^0, \quad a_2 = 1 + a_1 = 2^1, \quad a_3 = 1 + a_2 + a_1 = 2^2, \quad \ldots, \quad a_m = 2^{m-1}
-\end{align*}
-$$
-
-<div class="top-3"></div>
+\end{align}
+</p>
 
 光是将$\wv$变为正向量就得更新$2^m$次，而将全部样本正确分类的要求更苛刻，因此所需的更新次数只多不少，所以为$\Omega(2^m)$
 
@@ -379,13 +397,11 @@ $$
 
 现放宽感知机的更新条件：
 
-$$
-\begin{align*}
-    \quad y \wv^\top \xv \le 0 ~ \longrightarrow ~ \frac{y \wv^\top \xv}{\| \wv \|} < \frac{\rho}{2}
-\end{align*}
-$$
-
-<div class="top-3"></div>
+<p>
+\begin{align}
+    y \wv^\top \xv \le 0 ~ \longrightarrow ~ \frac{y \wv^\top \xv}{\| \wv \|} < \frac{\rho}{2}
+\end{align}
+</p>
 
 即原本是犯错才更新，现改为即便预测对只要间隔不够大就更新
 
@@ -401,25 +417,23 @@ $$
 
 取学习率$\eta = 1$，同前面一样有
 
-$$
-\begin{align*}
-    \quad M \rho \le \sum_{t \in [M]} y_{i_t} \vv^\top \xv_{i_t} \le \|\vv\| \left\| \sum_{t \in [M]} y_{i_t} \xv_{i_t} \right\| = \left\| \sum_{t \in [M]} (\wv_t - \wv_{t-1}) \right\| = \| \wv_M \|
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    M \rho \le \sum_{t \in [M]} y_{i_t} \vv^\top \xv_{i_t} \le \|\vv\| \left\| \sum_{t \in [M]} y_{i_t} \xv_{i_t} \right\| = \left\| \sum_{t \in [M]} (\wv_t - \wv_{t-1}) \right\| = \| \wv_M \|
+\end{align}
+</p>
 
 若$\| \wv_M \| < 4 r^2 / \rho$，则$M < 4 r^2 / \rho^2 < 16r^2 / \rho^2$，结论已证
 
 故不妨设$\| \wv_M \| \ge 4 r^2 / \rho$，对$\forall t \in [M]$，由新的更新规则知
 
-$$
-\begin{align*}
-    \quad \| \wv_t \|^2 & = \| \wv_{t-1} + y_{i_t} \xv_{i_t} \|^2 = \| \wv_{t-1} \|^2 + 2 y_{i_t} \wv_{t-1}^\top \xv_{i_t} + \| \xv_{i_t} \|^2 \\
+<p>
+\begin{align}
+    \| \wv_t \|^2 & = \| \wv_{t-1} + y_{i_t} \xv_{i_t} \|^2 = \| \wv_{t-1} \|^2 + 2 y_{i_t} \wv_{t-1}^\top \xv_{i_t} + \| \xv_{i_t} \|^2 \\
     & \le \| \wv_{t-1} \|^2 + \rho \| \wv_{t-1} \| + r^2 \le \left( \| \wv_{t-1} \| + \frac{\rho}{2} \right)^2 + r^2 \\
     & \Longrightarrow \| \wv_t \| - \| \wv_{t-1} \| - \frac{\rho}{2} \le \frac{r^2}{\| \wv_t \| + \| \wv_{t-1} \| + \frac{\rho}{2}}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -427,19 +441,19 @@ $$
 
 ---
 
-$$
-\begin{align*}
-    \quad \| \wv_t \| - \| \wv_{t-1} \| - \frac{\rho}{2} \le \frac{r^2}{\| \wv_t \| + \| \wv_{t-1} \| + \frac{\rho}{2}} \le \frac{r^2}{\| \wv_t \| + \| \wv_{t-1} \|}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \| \wv_t \| - \| \wv_{t-1} \| - \frac{\rho}{2} \le \frac{r^2}{\| \wv_t \| + \| \wv_{t-1} \| + \frac{\rho}{2}} \le \frac{r^2}{\| \wv_t \| + \| \wv_{t-1} \|}
+\end{align}
+</p>
 
 若$\| \wv_t \|$和$\| \wv_{t-1} \|$中至少有一个$\ge 4 r^2 / \rho$，则
 
-$$
-\begin{align*}
-    \quad \| \wv_t \| \le \| \wv_{t-1} \| + \frac{\rho}{2} + \frac{r^2}{4 r^2 / \rho} \le \| \wv_{t-1} \| + \frac{\rho}{2} + \frac{\rho}{4} = \| \wv_{t-1} \| + \frac{3\rho}{4}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \| \wv_t \| \le \| \wv_{t-1} \| + \frac{\rho}{2} + \frac{r^2}{4 r^2 / \rho} \le \| \wv_{t-1} \| + \frac{\rho}{2} + \frac{\rho}{4} = \| \wv_{t-1} \| + \frac{3\rho}{4}
+\end{align}
+</p>
 
 注意$\| \wv_1 \| = \| \wv_0 + y_{i_1} \xv_{i_1} \| \le r$，又$\rho \le y_{i_1} \vv^\top \xv_{i_1} \le \|y_{i_1} \xv_{i_1}\| \le r$，故$\|\wv_1\| \le r \le 4 r^2 / \rho$，但$\| \wv_M \| \ge 4 r^2 / \rho$
 
@@ -453,21 +467,23 @@ $$
 
 故由上面的推导知
 
-$$
-\begin{align*}
-    \quad \| \wv_M \|  & \le \| \wv_{M-1} \| + \frac{3\rho}{4}  \\
+<p>
+\begin{align}
+    \| \wv_M \|  & \le \| \wv_{M-1} \| + \frac{3\rho}{4}  \\
                       & \vdots                                \\
     \| \wv_{t+1} \| & \le \| \wv_t \| + \frac{3\rho}{4}
-\end{align*}
-$$
+\end{align}
+</p>
 
 上面的不等式个数不超过$M$个，故
 
-$$
-\begin{align*}
-    \quad M \rho \le \| \wv_M \| \le \| \wv_t \| + \frac{3 M \rho}{4} \le \frac{4 r^2}{\rho} + \frac{3 M \rho}{4} \Longrightarrow M \le \frac{16r^2}{\rho^2}
-\end{align*}
-$$
+<p>
+\begin{align}
+    M \rho \le \| \wv_M \| \le \| \wv_t \| + \frac{3 M \rho}{4} \le \frac{4 r^2}{\rho} + \frac{3 M \rho}{4} \Longrightarrow M \le \frac{16r^2}{\rho^2}
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 我的批注 以更新次数扩大$16$倍的代价换取间隔$\ge \rho /2$的超平面
 
@@ -480,24 +496,20 @@ $$
 采用特征变换
 
 - 核映射：核感知机 (kernel perceptron)
-- 函数复合：多层感知机 (<u>m</u>ulti-<u>l</u>ayer <u>p</u>erceptron, MLP)，一种神经网络
+- 函数复合：多层感知机 ({==m==}ulti-{==l==}ayer {==p==}erceptron, MLP)，一种神经网络
 
 <div class="top2"></div>
 
 引入映射$\phi: \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} \mapsto \begin{bmatrix} 2 x_1 - 1 \\ 2 x_2 - 1 \\ (2 x_1 - 1)(2 x_2 - 1) \end{bmatrix}$，对异或问题
 
-<div class="top2"></div>
-
-$$
-\begin{align*}
-    \quad \begin{bmatrix} 1 & 1 \\ 1 & 0 \\ 0 & 1 \\ 0 & 0
-    \end{bmatrix} \xrightarrow[\times ~ 2 ~ - ~ 1]{\text{线性变换}~~} \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ -1 & 1 \\ -1 & -1
-    \end{bmatrix} \xrightarrow[\text{添加乘积项}~~~]{\text{非线性变换}~~~} \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1
+<p>
+\begin{align}
+    \begin{bmatrix} 1 & 1 \\ 1 & 0 \\ 0 & 1 \\ 0 & 0
+    \end{bmatrix} \xrightarrow[\times ~ 2 ~ - ~ 1]{线性变换} \begin{bmatrix} 1 & 1 \\ 1 & -1 \\ -1 & 1 \\ -1 & -1
+    \end{bmatrix} \xrightarrow[添加乘积项]{非线性变换} \begin{bmatrix} 1 & 1 & 1 \\ 1 & -1 & -1 \\ -1 & 1 & -1 \\ -1 & -1 & 1
     \end{bmatrix}
-\end{align*}
-$$
-
-<div class="top-2"></div>
+\end{align}
+</p>
 
 显然$(0 \cdot z_1 + 0 \cdot z_2 - 1 \cdot z_3 + 1) / 2 = x_1 + x_2 - 2 x_1 x_2$即可预测$y$
 
@@ -509,29 +521,25 @@ $$
 
 $r,\rho$定义同前，记$s_i = \max \{ 0, \rho - y_i \wv^\top \xv_i \}$及$\delta = \sqrt{\sum_{i \in [m]} s_i^2}$
 
-<div class="top-4"></div>
-
 存在映射使得样本线性可分且感知机更新次数$M \le (r + \delta)^2 / \rho^2$
 
-将$\xv_i$映射到$\Rbb^{d+m}$中：$\xv_i \mapsto \xv'_i = [\xv_i; A \ev_i]$，即原有特征$\xv_i$全部保留，只在后面第$i$位加一个待定参数$A$，其它位为零
+将$\xv_i$映射到$\rb^{d+m}$中：$\xv_i \mapsto \xv'_i = [\xv_i; A \ev_i]$，即原有特征$\xv_i$全部保留，只在后面第$i$位加一个待定参数$A$，其它位为零
 
-$\wv$要与样本做内积，因此也需映射到$\Rbb^{d+m}$中：
+$\wv$要与样本做内积，因此也需映射到$\rb^{d+m}$中：
 
-$$
-\begin{align*}
-    \quad \wv \mapsto \wv' = \left[ \frac{\wv}{Z}; \frac{y_1 s_1}{AZ}; \ldots; \frac{y_m s_m}{AZ} \right]
-\end{align*}
-$$
-
-<div class="top-3"></div>
+<p>
+\begin{align}
+    \wv \mapsto \wv' = \left[ \frac{\wv}{Z}; \frac{y_1 s_1}{AZ}; \ldots; \frac{y_m s_m}{AZ} \right]
+\end{align}
+</p>
 
 其中待定参数$Z$使得$\wv'$依然为单位向量
 
-$$
-\begin{align*}
-    \quad 1 = \| \wv' \|^2 = \frac{\| \wv \|^2}{Z^2} + \sum_{i \in [m]} \frac{s_i^2}{A^2 Z^2} = \frac{1}{Z^2} + \frac{\delta^2}{A^2 Z^2} \Longrightarrow Z^2 = 1 + \frac{\delta^2}{A^2}
-\end{align*}
-$$
+<p>
+\begin{align}
+    1 = \| \wv' \|^2 = \frac{\| \wv \|^2}{Z^2} + \sum_{i \in [m]} \frac{s_i^2}{A^2 Z^2} = \frac{1}{Z^2} + \frac{\delta^2}{A^2 Z^2} \Longrightarrow Z^2 = 1 + \frac{\delta^2}{A^2}
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -539,35 +547,29 @@ $$
 
 ---
 
-$$
-\begin{align*}
-    \quad \xv'_i = [\xv_i; A \ev_i], \quad \wv' = \left[ \frac{\wv}{Z}; \frac{y_1 s_1}{AZ}; \ldots; \frac{y_m s_m}{AZ} \right], \quad Z^2 = 1 + \frac{\delta^2}{A^2}
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    \xv'_i = [\xv_i; A \ev_i], \quad \wv' = \left[ \frac{\wv}{Z}; \frac{y_1 s_1}{AZ}; \ldots; \frac{y_m s_m}{AZ} \right], \quad Z^2 = 1 + \frac{\delta^2}{A^2}
+\end{align}
+</p>
 
 通过如此映射后有
 
-$$
-\begin{align*}
-    \quad y_i {\wv'}^\top \xv'_i = y_i \left( \frac{\wv^\top \xv_i}{Z} + \frac{y_i s_i}{Z} \right) = \frac{y_i \wv^\top \xv_i + s_i}{Z} \ge \frac{\rho}{Z}
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    y_i {\wv'}^\top \xv'_i = y_i \left( \frac{\wv^\top \xv_i}{Z} + \frac{y_i s_i}{Z} \right) = \frac{y_i \wv^\top \xv_i + s_i}{Z} \ge \frac{\rho}{Z}
+\end{align}
+</p>
 
 即所有样本在新空间至少可以间隔$\rho / Z$线性可分
 
 又$\| \xv'_i \|^2 = \| \xv_i \|^2 + A^2 \le r^2 + A^2$，根据 Novikoff 定理可知
 
-$$
-\begin{align*}
-    \quad M \le \frac{r^2 + A^2}{\rho^2 / Z^2} = \frac{(r^2 + A^2) \left( 1 + \frac{\delta^2}{A^2} \right)}{\rho^2} = \frac{r^2 + \delta^2 + A^2 + \frac{r^2 \delta^2}{A^2}}{\rho^2}
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    M \le \frac{r^2 + A^2}{\rho^2 / Z^2} = \frac{(r^2 + A^2) \left( 1 + \frac{\delta^2}{A^2} \right)}{\rho^2} = \frac{r^2 + \delta^2 + A^2 + \frac{r^2 \delta^2}{A^2}}{\rho^2}
+\end{align}
+</p>
 
 由均值不等式取$A^2 = r \delta$可使上界最紧，此时有$M \le (r + \delta)^2 / \rho^2$
 
@@ -579,8 +581,6 @@ $$
 
 引入特征映射$\phi(\cdot)$，感知机算法的更新变为$\wv \leftarrow \wv + \eta y_j \phi(\xv_j)$
 
-<div class="top-2"></div>
-
 由于初始$\wv = \zerov$，因此最终$\wv = \sum_{j \in [m]} \alpha_j \phi(\xv_j)$
 
 - 感知机原始形式维护$\wv$
@@ -588,9 +588,9 @@ $$
 
 <div class="top2"></div>
 
-输入：训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$
+输入：训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\rb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$
 
-<div class="top-4"></div>
+<div class="top-2"></div>
 
 输出：系数向量$\alphav$
 
@@ -606,24 +606,11 @@ $$
 
 ---
 
-对映射$\phi([x_1;x_2]) = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$和样本$\xv,\zv$有
-
-$$
-\begin{align*}
-    \quad \phi(\xv)^\top \phi(\zv) & = x_1^2 z_1^2 + x_2^2 z_2^2 + 2 x_1 x_2 z_1 z_2 + 2 x_1 z_1 + 2 x_2 z_2 + 1 \\
-    & = (x_1 z_1 + x_2 z_2 + 1)^2 = (\xv^\top \zv + 1)^2 = \kappa (\xv, \zv)
-\end{align*}
-$$
-
-<div class="top-4"></div>
-
 若通过核函数$\kappa(\cdot, \cdot)$隐式定义特征映射$\phi(\cdot)$，则得到核感知机
 
+输入：训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\rb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$
+
 <div class="top-2"></div>
-
-输入：训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\Rbb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$
-
-<div class="top-4"></div>
 
 输出：系数向量$\alphav$
 
@@ -641,7 +628,7 @@ $$
 
 ---
 
-@import "../python/perceptron-kernel.py" {.line-numbers .top-1 .left4 highlight=[6,8,13,17,20,29,32,43-44,56,59]}
+@import "../python/perceptron/perceptron-kernel.py" {.line-numbers .top1 .left4 line_begin=5 line_end=60 highlight=[1,3,8,12,15,24,27,38-39,51,54]}
 
 <!-- slide data-menu-title="sklearn中的感知机" data-background-iframe="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html" vertical=true data-background-interactive data-notes="" -->
 
@@ -651,9 +638,7 @@ $$
 
 ---
 
-<div class="top-1"></div>
-
-@import "../python/perceptron-kernel.svg" {.center .width86 title="分别采用 2 阶多项式核、3 阶多项式核、rbf 核 实现异或"}
+<img src="../python/perceptron/perceptron-kernel.svg" class="center width80" title="分别采用 2 阶多项式核、3 阶多项式核、rbf 核 实现异或">
 
 <!-- slide data-notes="" -->
 

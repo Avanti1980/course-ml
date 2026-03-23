@@ -1,0 +1,62 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-tikz4slides}
+
+\tikzset{font=\Large}
+\tikzset{base/.style={smooth, very thick, SolarizedBase01}}
+\tikzset{arrow/.style={->, -{Stealth[scale=0.8]}, base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \pgfmathsetmacro{\range}{3.5};
+    \pgfmathsetmacro{\margin}{1};
+    \pgfmathsetmacro{\l}{3.5};
+    \pgfmathsetmacro{\r}{3};
+
+    % 两个坐标轴
+    \draw [arrow] (-\range,0) -- (\range,0);
+    \draw [arrow] (0,-\range) -- (0,\range);
+
+    \path (0,0) coordinate (O);
+
+    \path (0.5,0.3) coordinate (P);
+    \fill [base] (P) circle[radius=2pt];
+
+    \path (P) ++(150:\l) coordinate (PP1);
+    \path (P) ++(330:\l) coordinate (PP2);
+    \draw [base,SolarizedMagenta] (PP1) -- (PP2);
+
+    \path [base] (PP1) ++(180:0.8) node [above] () {$\vv^\top \xv = 0$};
+
+    \path (P) ++(60:\margin) coordinate (P1);
+    \path (P) ++(240:\margin) coordinate (P2);
+
+    \draw [arrow,SolarizedMagenta] (P) -- (P1) node [below=4pt, pos=0.8] {$\rho$};
+    \draw [arrow,SolarizedMagenta] (P) -- (P2) node [below=4pt, pos=0.1] {$\rho$};
+
+    \path (P1) ++(150:\l) coordinate (P11);
+    \path (P1) ++(330:\l) coordinate (P12);
+    \path (P11) ++(60:4) coordinate (P13);
+    \path (P12) ++(60:4) coordinate (P14);
+
+    \path (P2) ++(150:\l) coordinate (P21);
+    \path (P2) ++(330:\l) coordinate (P22);
+    \path (P21) ++(240:4) coordinate (P23);
+    \path (P22) ++(240:4) coordinate (P24);
+
+    % 画半径
+    \path (O) ++(155:\r) coordinate (r);
+    \draw [arrow,SolarizedYellow] (O) -- node [midway,above] {$\yellow{r}$} (r);
+
+    \path (0.5,0) ++(60:\r) coordinate (Q);
+
+    \draw [base] (O) circle (\r);
+    \clip (O) circle (\r);
+
+    \fill [SolarizedRed,opacity=0.6] (P11) -- (P12) -- (P14) -- (P13) -- cycle;
+    \fill [SolarizedBlue,opacity=0.6] (P21) -- (P22) -- (P24) -- (P23) -- cycle;
+
+\end{tikzpicture}
+
+\end{document}

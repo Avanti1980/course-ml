@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import numpy as np
 
 
@@ -10,13 +11,13 @@ r = 10
 
 x1 = np.arange(-r, -0.04, 0.02)
 x2 = np.arange(0, r, 0.02)
-y1 = sgn(x1).astype(np.int)
-y2 = sgn(x2).astype(np.int)
+y1 = sgn(x1).astype(int)
+y2 = sgn(x2).astype(int)
 
 x = np.arange(-r, r, 0.02)
 logistic = 1 / (1 + np.exp(-x))
 
-plt.axis([-5.1, 5.1, -1.1, 1.1])
+plt.axis([-5.1, 5.1, -0.1, 1.1])
 
 with plt.style.context('Solarize_Light2'):
 
@@ -40,13 +41,13 @@ with plt.style.context('Solarize_Light2'):
 
     sgn_color, logistic_color = "#6c71c4", "#cb4b16"
 
-    plt.plot(x1, y1, linestyle="-", linewidth=4, color=sgn_color, label="sgn")
+    plt.plot(x1, y1, linestyle="-", linewidth=2, color=sgn_color, label="sgn")
     plt.scatter(0, 0, s=40, facecolors='none', linewidth=2, edgecolors=sgn_color)
-    plt.plot(x2, y2, linestyle="-", linewidth=4, color=sgn_color)
+    plt.plot(x2, y2, linestyle="-", linewidth=2, color=sgn_color)
 
-    plt.plot(x, logistic, linestyle="dashed", linewidth=4, color=logistic_color, label="logistic")
+    plt.plot(x, logistic, linestyle="dashed", linewidth=2, color=logistic_color, label="logistic")
 
-    legend = plt.legend(loc='upper left', prop={'family': 'EB Garamond', 'size': 15})
+    legend = plt.legend(loc='best', prop={'family': 'Ysabeau Office', 'size': 16, 'weight': 'medium'})
     plt.setp(legend.get_texts())
 
-    plt.show()
+    plt.savefig(f"sgn-logistic-func-plot.svg", transparent=True, bbox_inches="tight")

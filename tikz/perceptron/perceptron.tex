@@ -1,16 +1,14 @@
-\documentclass{ctexart}
-\usepackage{avanti}
-\everymath{\color{Solarized-magenta}}
-\pagestyle{empty} % 没有页眉和页脚
+\documentclass[tikz]{standalone}
+\usepackage{avanti-tikz4slides}
 
 \tikzset{font=\Large}
-\tikzset{base/.style = {smooth, very thick, draw=Solarized-base01, text=Solarized-magenta}}
-\tikzset{arrow/.style={->,-{Stealth[scale=1.0]},base}}
+\tikzset{base/.style = {smooth, very thick, SolarizedBase01, draw=SolarizedBase01}}
+\tikzset{arrow/.style={->,-{Stealth[scale=0.8]},base}}
 \tikzset{nc/.style = {circle, inner sep=8pt, outer sep=0pt, base}}
 
 \begin{document}
 
-\begin{tikzpicture} [scale=1]
+\begin{tikzpicture}
 
     \pgfmathsetmacro{\r}{0.45};
 
@@ -42,7 +40,7 @@
     \draw [arrow] (xd) -- node [right=0.2cm] {$w_d$} (sum);
     \draw [arrow] (sum) -- (y);
 
-    \path [base] (2.5,-3.0) node[right] () {$y = h(\cdots)$};
+    \path [base] (2.5,-3.0) node[right] () {$y = h(\cdot)$};
 
 \end{tikzpicture}
 

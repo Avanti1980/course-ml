@@ -585,7 +585,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 
 $\rb^2$上的 5 个$\ell_p$范数球$\{ \wv \mid \| \wv \|_p \le t \}$
 
-<img src="../tikz/norm.svg" class="center top1 bottom2 width75" title="二维欧氏空间中的 5 个范数球">
+<img src="../tikz/norm/norm.svg" class="center top1 bottom2 width75" title="二维欧氏空间中的 5 个范数球">
 
 - 将$\ell_p~(0 \le p \le 1)$范数球作为学习模型的可行域，可导出{==稀疏==}的解
 - 所有$\ell_p~(p \ge 1)$范数球都是{==凸集==}，数学性质好
@@ -776,7 +776,7 @@ _Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m
 \end{align}
 </p>
 
-<img src="../tikz/kernel.svg" class="center top2 bottom4 width80" title="">
+<img src="../tikz/kernel/kernel.svg" class="center top2 bottom4 width80" title="">
 
 - 圆内是一类样本，圆外是另一类样本，它们无法{==线性可分==}
 - 令$[x_1; x_2] \mapsto [z_1 = x_1^2; z_2 = x_2^2]$，在新的$(z_1,z_2)$空间中就线性可分了

@@ -12,7 +12,7 @@
 |                        $\ev_i$                         |                    第$i$个分量为$1$其余分量为$0$的向量                     |
 |                   $\onev$、$\zerov$                    |                            全$1$向量、全$0$向量                            |
 |                       $\Delta_d$                       | $d$维单纯形$\{ \xv \in \rb^d \mid \xv^\top \onev = 1, ~ \xv \ge \zerov \}$ |
-|                      $B_\av (r)$                       |                        以$\av$为球心、$r$为半径的球                        |
+|                      $\bc_\av (r)$                       |                        以$\av$为球心、$r$为半径的球                        |
 |      $[\cdot,\cdot,\cdot]$、$[\cdot;\cdot;\cdot]$      |                               行向量、列向量                               |
 |                      $\tr[\cdot]$                      |                                     迹                                     |
 | $\shuu \xv \shuu_p = (\sum_i \vert x_i \vert^p)^{1/p}$ |              向量$\xv$的$\ell_p$范数，$p$缺省时为$\ell_2$范数              |

@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import numpy as np
 from sklearn.linear_model import Perceptron
 
@@ -53,5 +54,5 @@ with plt.style.context('Solarize_Light2'):
         ax.scatter(X[:, 0], X[:, 1], s=50, c=y, edgecolors='#002b36')
         # ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % score).lstrip('0'), size=14, horizontalalignment='center')
 
-plt.subplots_adjust(wspace=0.05, hspace=0.05)
-plt.show()
+plt.savefig("perceptron-logic.svg", transparent=True, bbox_inches="tight")
+
