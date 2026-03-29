@@ -628,7 +628,7 @@ $\wv$要与样本做内积，因此也需映射到$\rb^{d+m}$中：
 
 ---
 
-@import "../python/perceptron/perceptron-kernel.py" {.line-numbers .top1 .left4 line_begin=5 line_end=60 highlight=[1,3,8,12,15,24,27,38-39,51,54]}
+@import "../python/perceptron/perceptron-kernel.py" {.line-numbers .top1 .left4 line_begin=15 line_end=70 highlight=[1,3,8,12,15,24,27,38-39,51,54]}
 
 <!-- slide data-menu-title="sklearn中的感知机" data-background-iframe="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html" vertical=true data-background-interactive data-notes="" -->
 

@@ -1,6 +1,16 @@
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
+
+zhisong = fm.FontEntry(fname="/home/avanti/Fonts/LXGW/LXGWNeoZhiSongScreenFull.ttf", name="LXGW Neo ZhiSong Screen Full")
+fm.fontManager.ttflist.insert(0, zhisong)
+plt.rcParams.update({
+    "font.family": ["LXGW Neo ZhiSong Screen Full"],
+    "mathtext.fontset": "cm",
+    "axes.unicode_minus": True,
+    "font.size": 12
+})
 
 
 class KPerceptron(object):
@@ -24,7 +34,7 @@ class KPerceptron(object):
             Z_norm = (Z[:, np.newaxis]**2).sum(axis=0)  # (|Z|,)
         else:
             Z_norm = (Z**2).sum(axis=1)  # (|Z|,)
-        return np.exp(-self.gamma * (Z_norm.reshape((-1, 1)) - 2*self.linear(Z) + sv_norm))  # 用到了广播机制
+        return np.exp(-self.gamma * (Z_norm.reshape((-1, 1)) - 2 * self.linear(Z) + sv_norm))  # 用到了广播机制
 
     def decision_function(self, Z):  # 对Z的预测值
         return np.dot(self.ker(Z), self.alpha[self.sv_index])
@@ -66,11 +76,11 @@ if __name__ == '__main__':
 
     np.random.seed(1)
 
-    conf = [['poly', 2], ['poly', 3], ['rbf', '']]
+    conf = [['poly', 2, "2阶多项式核"], ['poly', 3, "3阶多项式核"], ['rbf', '', "高斯核"]]
     col = len(conf)
 
     l = 10
-    figure = plt.figure(figsize=(l*col/2, l))
+    figure = plt.figure(figsize=(l * col / 2, l))
 
     with plt.style.context('Solarize_Light2'):
 
@@ -80,7 +90,7 @@ if __name__ == '__main__':
         xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
         i = 0
 
-        for ker, param in conf:
+        for ker, param, name in conf:
 
             i += 1
             ax = plt.subplot(2, col, i)
@@ -96,17 +106,15 @@ if __name__ == '__main__':
             Z = kp.decision_function(np.c_[xx.ravel(), yy.ravel()])
             Z = Z.reshape(xx.shape)
 
-            # ax.contourf(xx, yy, Z, alpha=.8)
             contours = ax.contour(xx, yy, Z, 16, alpha=.8)
-            ax.clabel(contours)
+            ax.clabel(contours, fontsize=12, inline=True)
 
             ax.scatter(X[:, 0], X[:, 1], s=50, c=y, edgecolors='#002b36')
-            ax.set_title('%s %s' % (ker, param), color='#586e75')
-            # ax.text((xx.min()+xx.max())/2, yy.min()+0.05, ('acc = %.2f' % acc).lstrip('0'), size=14, horizontalalignment='center')
+            ax.set_title(f'{name}\n', color='#586e75', fontsize=28, fontweight="medium")
 
-            ax = plt.subplot(2, col, i+col, projection='3d')
+            ax = plt.subplot(2, col, i + col, projection='3d')
             ax.plot_surface(xx, yy, Z)
-            ax.set_xlabel(r'$x_1$')
-            ax.set_ylabel(r'$x_2$')
+            ax.set_xlabel(r'$x_1$', fontsize=20)
+            ax.set_ylabel(r'$x_2$', fontsize=20)
 
     plt.savefig("perceptron-kernel.svg", transparent=True, bbox_inches="tight")

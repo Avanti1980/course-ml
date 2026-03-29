@@ -17,15 +17,16 @@ presentation:
 @import "../css/table.css"
 @import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
+@import "../plugin/notes/notes.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
-@import "../plugin/menu/menu.js"
+@import "../plugin/reveal.js-menu/menu.js"
 @import "../js/anychart/anychart-core.min.js"
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
-@import "../js/anychart/venn-ml.js"
+@import "../js/anychart/venn-entropy.js"
 
 <!-- slide data-notes="" -->
 
@@ -39,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -59,30 +60,30 @@ presentation:
 
 感知机采用符号函数作为激活函数
 
-$$
-\begin{align*}
-    \quad y = \sign(\wv^\top \xv) = \begin{cases} +1, & \wv^\top \xv \ge 0 \\ -1, & \wv^\top \xv < 0 \end{cases}
-\end{align*}
-$$
+<p>
+\begin{align}
+    y = \sign(\wv^\top \xv) = \begin{cases} +1, & \wv^\top \xv \ge 0 \\ -1, & \wv^\top \xv < 0 \end{cases}
+\end{align}
+</p>
 
 常用对(数几)率函数替代符号函数
 
-$$
-\begin{align*}
-    \quad y = \sigma(\wv^\top \xv) = \frac{1}{1 + \exp(-\wv^\top \xv)}
-\end{align*}
-$$
+<p>
+\begin{align}
+    y = \sigma(\wv^\top \xv) = \frac{1}{1 + \exp(-\wv^\top \xv)}
+\end{align}
+</p>
 
 对率函数$\sigma(z)$有很好的数学性质：
 
-$$
-\begin{align*}
-    \quad & \sigma(z) = \frac{1}{1 + \exp(-z)} = \frac{\exp(z)}{1 + \exp(z)} = 1 - \sigma(- z) \quad \class{blue}{\text{关于}(0,0.5)\text{旋转对称}} \\
-    \quad & \nabla_z \sigma(z) = \nabla_z \frac{1}{1 + \exp(-z)} = \frac{1}{1 + \exp(-z)} \frac{\exp(-z)}{1 + \exp(-z)} = \sigma(z) (1 - \sigma(z))
-\end{align*}
-$$
+<p>
+\begin{align}
+    & \sigma(z) = \frac{1}{1 + \exp(-z)} = \frac{\exp(z)}{1 + \exp(z)} = 1 - \sigma(- z) \quad \class{blue}{关于(0,0.5)旋转对称} \\
+    & \nabla_z \sigma(z) = \nabla_z \frac{1}{1 + \exp(-z)} = \frac{1}{1 + \exp(-z)} \frac{\exp(-z)}{1 + \exp(-z)} = \sigma(z) (1 - \sigma(z))
+\end{align}
+</p>
 
-@import "../python/logistic-func-plot.svg" {.width40 .left55per .top-56per}
+<img src="../python/lr/logistic-func-plot.svg" class="width40 left55per top-50per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -90,27 +91,27 @@ $$
 
 ---
 
-{==对率函数输出$[0,1]$==}，可用作对概率$p(y| \xv, \wv)$的估计
+<span class="blue">对率函数输出$[0,1]$</span>，可用作对概率$p(y| \xv, \wv)$的估计
 
-$$
-\begin{align*}
-    \quad & p(1 | \xv, \wv) = \sigma(\wv^\top \xv) = \frac{1}{1 + \exp(-\wv^\top \xv)} \\
+<p>
+\begin{align}
+    & p(1 | \xv, \wv) = \sigma(\wv^\top \xv) = \frac{1}{1 + \exp(-\wv^\top \xv)} \\
     & p(-1 | \xv, \wv) = 1 - \sigma(\wv^\top \xv) = \frac{\exp(-\wv^\top \xv)}{1 + \exp(-\wv^\top \xv)}
-\end{align*}
-$$
+\end{align}
+</p>
 
-<div class="top-4"></div>
+两式相除再取对数可得对(数几)率回归 (<span class="blue">l</span>ogistic <span class="blue">r</span>egression, LR)
 
-两式相除再取对数可得对(数几)率回归 (<u>l</u>ogistic <u>r</u>egression, LR)
+<p>
+\begin{align}
+    \wv^\top \xv = \ln \frac{p(1 | \xv, \wv)}{p(-1 | \xv, \wv)} = \ln \frac{\sigma(\wv^\top \xv)}{1 - \sigma(\wv^\top \xv)}
+\end{align}
+</p>
 
-$$
-\begin{align*}
-    \quad \wv^\top \xv = \ln \frac{p(1 | \xv, \wv)}{p(-1 | \xv, \wv)} = \ln \frac{\sigma(\wv^\top \xv)}{1 - \sigma(\wv^\top \xv)}
-\end{align*}
-$$
+<div class="top2"></div>
 
-- 正类概率与负类概率的比值称为{==几率==} (odds)
-- 对率回归，顾名思义就是{==用线性函数拟合几率的对数==} (logit)
+- 正类概率与负类概率的比值称为<span class="blue">几率</span> (odds)
+- 对率回归，顾名思义就是<span class="blue">用线性函数拟合几率的对数</span> (logit)
 - 有人将其译为逻辑(斯蒂)回归，但逻辑 (logic) 与 (logistic) 相去甚远
 - 虽然名字里有回归，实际是个分类模型
 
@@ -120,34 +121,30 @@ $$
 
 ---
 
-<div class="top2"></div>
-
-$$
-\begin{align*}
-    \quad \begin{cases}
+<p>
+\begin{align}
+    \begin{cases}
     p(1 | \xv, \wv) = \sigma(\wv^\top \xv) \\ p(-1 | \xv, \wv) = 1 - \sigma(\wv^\top \xv) = \sigma(-\wv^\top \xv)
     \end{cases} \Longrightarrow p(y | \xv, \wv) = \sigma(y \wv^\top \xv)
-\end{align*}
-$$
+\end{align}
+</p>
 
-<div class="top-2"></div>
+设训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，则对数似然函数
 
-设训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，则对数似然函数
-
-$$
-\begin{align*}
-    \quad \ln p & (D | \wv) = \ln \prod_{i \in [m]} p( \xv_i, y_i | \wv) = \ln \prod_{i \in [m]} \underbrace{p(y_i | \xv_i, \wv)}_{\sigma(y_i \wv^\top \xv_i)} \underbrace{p(\xv_i | \wv)}_{=~p(\xv_i), ~ \text{与}\wv\text{无关}} \\
-    & = \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i) + \const = \sum_{i \in [m]} \ln \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)} + \const
-\end{align*}
-$$
+<p>
+\begin{align}
+    \ln p & (\dc | \wv) = \ln \prod_{i \in [m]} p( \xv_i, y_i | \wv) = \ln \prod_{i \in [m]} \underbrace{p(y_i | \xv_i, \wv)}_{\sigma(y_i \wv^\top \xv_i)} \underbrace{p(\xv_i | \wv)}_{与 \wv 无关} \\
+    & = \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i) + \ln p(\xv_i) = \sum_{i \in [m]} \ln \frac{1}{1 + \exp(- y_i \wv^\top \xv_i)} + \const
+\end{align}
+</p>
 
 根据极大似然法，对率回归形式化的优化问题为
 
-$$
-\begin{align*}
-    \quad \min_{\wv} ~ \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) = - \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i)
-\end{align*}
-$$
+<p>
+\begin{align}
+    \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) = - \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i)
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -157,28 +154,24 @@ $$
 
 对率回归形式化的优化问题为
 
-$$
-\begin{align*}
-    \quad \min_{\wv} ~ \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) = - \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i)
-\end{align*}
-$$
+<p>
+\begin{align}
+    \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) = - \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i)
+\end{align}
+</p>
 
-<div class="top-2"></div>
+目标函数的<span class="blue">梯度</span> (gradient) 和<span class="blue">海森矩阵</span> (Hessian matrix) 分别为
 
-目标函数的{==梯度==} (gradient) 和{==海森矩阵==} (Hessian matrix) 分别为
-
-$$
-\begin{align*}
-    \quad & \gv = - \sum_{i \in [m]} \frac{\sigma(y_i \wv^\top \xv_i) (1 - \sigma(y_i \wv^\top \xv_i))}{\sigma(y_i \wv^\top \xv_i)} y_i \xv_i = \sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i \\
+<p>
+\begin{align}
+    & \gv = - \sum_{i \in [m]} \frac{\sigma(y_i \wv^\top \xv_i) (1 - \sigma(y_i \wv^\top \xv_i))}{\sigma(y_i \wv^\top \xv_i)} y_i \xv_i = \sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i \\
     & \Hv = \sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top
-\end{align*}
-$$
+\end{align}
+</p>
 
-<div class="top-2"></div>
+有了梯度，就可以用一阶优化算法如<span class="blue">梯度下降法</span>进行求解
 
-有了梯度，就可以用一阶优化算法如{==梯度下降法==}进行求解
-
-有了海森矩阵，就可以用二阶优化算法如{==牛顿法==}进行求解
+有了海森矩阵，就可以用二阶优化算法如<span class="blue">牛顿法</span>进行求解
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -186,23 +179,23 @@ $$
 
 ---
 
-若标记集合$\Ycal = \{ 1,0 \}$，记
+若标记集合$\yc = \{ 1,0 \}$，记
 
 - $p(1 | \xv, \wv) = \sigma(\wv^\top \xv)$
 - $p(0 | \xv, \wv) = 1 - \sigma(\wv^\top \xv) = \sigma(-\wv^\top \xv)$
 
 <div class="top2"></div>
 
-设训练集$D = \{ (\xv_i, y_i) \}_{i \in [m]}$，则对数似然函数
+设训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，则对数似然函数
 
-$$
-\begin{align*}
-    \quad \ln p(D | \wv) & = \ln \prod_{i \in [m]} p(\xv_i, y_i | \wv) = \ln \prod_{i \in [m]} p(y_i | \xv_i, \wv) + \const \\
+<p>
+\begin{align}
+    \ln p(\dc | \wv) & = \ln \prod_{i \in [m]} p(\xv_i, y_i | \wv) = \ln \prod_{i \in [m]} p(y_i | \xv_i, \wv) + \const \\
     & = \sum_{i \in [m]} \ln \class{blue}{\sigma(\wv^\top \xv_i)^{y_i} \sigma(-\wv^\top \xv_i)^{1 - y_i}} + \const \\
     & = \sum_{i \in [m]} \left( y_i \ln \frac{\sigma(\wv^\top \xv_i)}{1 - \sigma(\wv^\top \xv_i)} + \ln \sigma(-\wv^\top \xv_i) \right) + \const \\
     & = \sum_{i \in [m]} (y_i \wv^\top \xv_i + \ln \sigma(-\wv^\top \xv_i)) + \const
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -212,23 +205,21 @@ $$
 
 根据极大似然法，优化问题为
 
-$$
-\begin{align*}
-    \quad \min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)
-\end{align*}
-$$
-
-<div class="top-2"></div>
+<p>
+\begin{align}
+    \min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)
+\end{align}
+</p>
 
 目标函数的梯度和海森矩阵分别为
 
-$$
-\begin{align*}
-    \quad \gv & = \sum_{i \in [m]} \left( - \frac{\sigma(-\wv^\top \xv_i) (1 - \sigma(-\wv^\top \xv_i))}{\sigma(-\wv^\top \xv_i)} (-\xv_i) - y_i \xv_i \right) \\
+<p>
+\begin{align}
+    \gv & = \sum_{i \in [m]} \left( - \frac{\sigma(-\wv^\top \xv_i) (1 - \sigma(-\wv^\top \xv_i))}{\sigma(-\wv^\top \xv_i)} (-\xv_i) - y_i \xv_i \right) \\
     & = \sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i \\[4pt]
     \Hv & = \sum_{i \in [m]} \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -238,21 +229,21 @@ $$
 
 <div class="threelines row1-column2-border1-left-solid row2-column2-border1-left-solid row3-column1-border1-left-solid row4-column2-border1-left-solid row5-column1-border1-left-solid row6-column2-border1-left-solid row7-column2-border1-left-solid row3-column1-border1-right-dashed row5-column1-border1-right-dashed column3-border-left-dashed column1-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed row5-border-bottom-dashed row6-border-bottom-dashed head-highlight-1 tr-hover fs13">
 
-| &emsp;  |                                                 >                                                 |                                        对率回归                                         |
-| :-----: | :-----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
-| $\Ycal$ |                                           $\{ 1,-1 \}$                                            |                                       $\{ 1,0 \}$                                       |
-|  估计   |                       $p(1 \big\arrowvert \xv, \wv) = \sigma(\wv^\top \xv)$                       |                  $p(1 \big\arrowvert \xv, \wv) = \sigma(\wv^\top \xv)$                  |
-|    ^    |                      $p(-1 \big\arrowvert \xv, \wv) = \sigma(-\wv^\top \xv)$                      |                 $p(0 \big\arrowvert \xv, \wv) = \sigma(-\wv^\top \xv)$                  |
-|  优化   |                $\min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i))$                 |   $\min_{\wv} \sum_{i \in [m]} (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$   |
-|    ^    |               $\min_{\wv} \{ - \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i) \}$                |   $\min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)$    |
-|  $\gv$  |                   $\sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$                   |                 $\sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i$                 |
-|  $\Hv$  | $\sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top$ | $\sum_{i \in [m]} \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top$ |
+| &emsp; |                                                 >                                                 |                                        对率回归                                         |
+| :----: | :-----------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
+| $\yc$  |                                           $\{ 1,-1 \}$                                            |                                       $\{ 1,0 \}$                                       |
+|  估计  |                       $p(1 \big\arrowvert \xv, \wv) = \sigma(\wv^\top \xv)$                       |                  $p(1 \big\arrowvert \xv, \wv) = \sigma(\wv^\top \xv)$                  |
+|   ^    |                      $p(-1 \big\arrowvert \xv, \wv) = \sigma(-\wv^\top \xv)$                      |                 $p(0 \big\arrowvert \xv, \wv) = \sigma(-\wv^\top \xv)$                  |
+|  优化  |                $\min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i))$                 |   $\min_{\wv} \sum_{i \in [m]} (\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$   |
+|   ^    |               $\min_{\wv} \{ - \sum_{i \in [m]} \ln \sigma(y_i \wv^\top \xv_i) \}$                |   $\min_{\wv} \sum_{i \in [m]} (- \ln \sigma(-\wv^\top \xv_i) - y_i \wv^\top \xv_i)$    |
+| $\gv$  |                   $\sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$                   |                 $\sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i$                 |
+| $\Hv$  | $\sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i)) (1 - \sigma(y_i \wv^\top \xv_i)) \xv_i \xv_i^\top$ | $\sum_{i \in [m]} \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top$ |
 
 </div>
 
-以上结果是通过{==极大似然法==}导出的
+以上结果是通过<span class="blue">极大似然法</span>导出的
 
-用{==交叉熵==} (cross entropy) 可以导出相同的结果
+用<span class="blue">交叉熵</span> (cross entropy) 可以导出相同的结果
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -266,28 +257,26 @@ $$
 
 当$\pv = \qv$时交叉熵最小，此时交叉熵$H_{\qv} (\pv)$即为分布$\qv$的熵$H(\qv)$
 
-<div class="top1"></div>
+<div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad \min_{\pv} H_{\qv} (\pv) = - \sum_i q_i \ln p_i = \sum_i q_i \ln (1/p_i), \quad \st ~ \sum_i p_i = 1
-\end{align*}
-$$
-
-<div class="top-4"></div>
+<p>
+\begin{align}
+    \min_{\pv} H_{\qv} (\pv) = - \sum_i q_i \ln p_i = \sum_i q_i \ln (1/p_i), \quad \st ~ \sum_i p_i = 1
+\end{align}
+</p>
 
 拉格朗日函数为$L = - \sum_i q_i \ln p_i + \alpha (\sum_i p_i - 1)$，于是
 
-<div class="top1"></div>
+<p>
+\begin{align}
+    \nabla_{p_i} L = - \frac{q_i}{p_i} + \alpha = 0 \Longrightarrow q_i = \alpha p_i \Longrightarrow \sum_i q_i = \alpha \sum_i p_i \Longrightarrow \alpha = 1
+\end{align}
+</p>
 
-$$
-\begin{align*}
-    \quad \nabla_{p_i} L = - \frac{q_i}{p_i} + \alpha = 0 \Longrightarrow q_i = \alpha p_i \Longrightarrow \sum_i q_i = \alpha \sum_i p_i \Longrightarrow \alpha = 1
-\end{align*}
-$$
+<div class="top2"></div>
 
 - 取$\qv$为真实标记在类别上的分布，$\pv$为预测结果在类别上的分布
-- 交叉熵可以看成一种{==损失==} (loss)，越小预测结果和真实标记越接近
+- 交叉熵可以看成一种<span class="blue">损失</span> (loss)，越小预测结果和真实标记越接近
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -295,14 +284,16 @@ $$
 
 ---
 
+<div class="top2"></div>
+
 - 真实标记分布：$\qv_{\{ 1,-1 \}} = [(1+y)/2; (1-y)/2]$，$\qv_{\{ 1,0 \}} = [y; 1-y]$
 - 预测结果分布：$\pv = [\sigma(\wv^\top \xv); \sigma(-\wv^\top \xv)]$
 
-<div class="top4"></div>
+<div class="top2"></div>
 
-$$
-\begin{align*}
-    \quad H_{\qv_{\{ 1,-1 \}}} (\pv) & = - \frac{1+y}{2} \ln \sigma(\wv^\top \xv) - \frac{1-y}{2} \ln \sigma(-\wv^\top \xv) \\
+<p>
+\begin{align}
+    H_{\qv_{\{ 1,-1 \}}} (\pv) & = - \frac{1+y}{2} \ln \sigma(\wv^\top \xv) - \frac{1-y}{2} \ln \sigma(-\wv^\top \xv) \\
     & = \begin{cases}
         - \ln \sigma(\wv^\top \xv), & y = 1 \\
         - \ln \sigma(-\wv^\top \xv), & y = -1
@@ -311,10 +302,10 @@ $$
     H_{\qv_{\{ 1,0 \}}} (\pv) & = - y \ln \sigma(\wv^\top \xv) - (1-y) \ln \sigma(-\wv^\top \xv) \\
     & = -y \ln \frac{\sigma(\wv^\top \xv)}{1 - \sigma(\wv^\top \xv)} - \ln \sigma(-\wv^\top \xv) \\
     & = \ln (1 + \exp(\wv^\top \xv)) - y \wv^\top \xv
-\end{align*}
-$$
+\end{align}
+</p>
 
-我的批注 {==极大似然估计==}和{==最小化交叉熵损失==}取得了一致
+<p class="comments"> <span class="blue">极大似然估计</span>和<span class="blue">最小化交叉熵损失</span>取得了一致</p>
 
 <!-- slide data-notes="" -->
 
@@ -324,16 +315,18 @@ $$
 
 设共有$c$个类，对率回归的预测结果分布为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     p(1|\xv) & = \sigma_1 (\xv) = \frac{\exp(\wv_1^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{\exp((\wv_1 - \wv_c)^\top \xv)}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)} \\
     p(2|\xv) & = \sigma_2 (\xv) = \frac{\exp(\wv_2^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{\exp((\wv_2 - \wv_c)^\top \xv)}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)} \\
     & \vdots \\
     p(c|\xv) & = \sigma_c (\xv) = \frac{\exp(\wv_c^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{1}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)}
-\end{align*}
-$$
+\end{align}
+</p>
 
-- 前一种写法称为 {==softmax==} 变换，二分类 logistic 激活函数的多分类推广
+<div class="top2"></div>
+
+- 前一种写法称为 <span class="blue">softmax</span> 变换，二分类 logistic 激活函数的多分类推广
 - 后一种写法只需$\uv_1 = \wv_1 - \wv_c, \ldots, \uv_{c-1} = \wv_{c-1} - \wv_c$这$c-1$个向量
 - 若$c=2$，则$\wv_1 - \wv_2$就是前面二分类对率回归中要学的$\wv$
 
@@ -343,25 +336,23 @@ $$
 
 ---
 
-概率$p(y|\xv) = \sigma_1(\xv)^{\Ibb(y=1)} \cdots \sigma_c(\xv)^{\Ibb(y=c)}$，根据极大似然估计
+概率$p(y|\xv) = \sigma_1(\xv)^{\ib(y=1)} \cdots \sigma_c(\xv)^{\ib(y=c)}$，根据极大似然估计
 
-<div class="top1"></div>
+<p>
+\begin{align}
+    \max_{\wv_1, \ldots, \wv_c} \sum_{i \in [m]} \ln \left( \sigma_1(\xv_i)^{\ib(y_i=1)} \cdots \sigma_c(\xv_i)^{\ib(y_i=c)} \right) = \sum_{i \in [m]} \ln \sigma_{y_i}(\xv_i)
+\end{align}
+</p>
 
-$$
-\begin{align*}
-    \quad \max_{\wv_1, \ldots, \wv_c} \sum_{i \in [m]} \ln \left( \sigma_1(\xv_i)^{\Ibb(y_i=1)} \cdots \sigma_c(\xv_i)^{\Ibb(y_i=c)} \right) = \sum_{i \in [m]} \ln \sigma_{y_i}(\xv_i)
-\end{align*}
-$$
+真实标记分布为$[\ib(y = 1);\ldots;\ib(y = c)]$，根据最小化交叉熵损失
 
-真实标记分布为$[\Ibb(y = 1);\ldots;\Ibb(y = c)]$，根据最小化交叉熵损失
+<p>
+\begin{align}
+    \min_{\wv_1, \ldots, \wv_c} \sum_{i \in [m]} \sum_{k \in [c]} \ib(y_i = k) \ln \frac{1}{\sigma_k(\xv_i)} = \sum_{i \in [m]} \ln \frac{1}{\sigma_{y_i}(\xv_i)}
+\end{align}
+</p>
 
-$$
-\begin{align*}
-    \quad \min_{\wv_1, \ldots, \wv_c} \sum_{i \in [m]} \sum_{k \in [c]} \Ibb(y_i = k) \ln \frac{1}{\sigma_k(\xv_i)} = \sum_{i \in [m]} \ln \frac{1}{\sigma_{y_i}(\xv_i)}
-\end{align*}
-$$
-
-我的批注 {==极大似然估计==}和{==最小化交叉熵损失==}再次取得了一致
+<p class="comments"> <span class="blue">极大似然估计</span>和<span class="blue">最小化交叉熵损失</span>再次取得了一致</p>
 
 <!-- slide data-notes="" -->
 
@@ -369,25 +360,21 @@ $$
 
 ---
 
-注意
-
-$$
-\begin{align*}
+<p>
+\begin{align}
     ~ \sigma_{y_i} (\xv_i) = \frac{\exp(\wv_{y_i}^\top \xv_i)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv_i)}
-\end{align*}
-$$
-
-<div class="top-4"></div>
+\end{align}
+</p>
 
 于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     ~ \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) & = \frac{\exp(\wv_{y_i}^\top \xv_i) \xv_i \sum_{k \in [c]} \exp(\wv_k^\top \xv_i) - \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_{y_i}^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} \\[4pt]
     & = \sigma_{y_i} (\xv_i) \xv_i - \sigma_{y_i}^2 (\xv_i) \xv_i = \sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i \\[10pt]
     \nabla_{\wv_l} \sigma_{y_i} (\xv_i) & = \frac{- \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_l^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} = - \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i, ~ l \ne y_i
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -395,23 +382,21 @@ $$
 
 ---
 
-<div class="top2"></div>
-
-$$
-\begin{align*}
+<p>
+\begin{align}
     \qquad & \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) = \class{blue}{\sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i} \\
     & \nabla_{\wv_l} \sigma_{y_i} (\xv_i) = \class{yellow}{- \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}, \quad l \ne y_i \\[16pt]
     \quad & \nabla_{\wv_l} \left( \sum_{i \in [m]} \ln \sigma_{y_i}(\xv_i) \right) = \sum_{i \in [m]} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
     = & \sum_{i: y_i = l} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} + \sum_{i: y_i \neq l} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
     = & \sum_{i: y_i = l} \frac{\class{blue}{\sigma_l (\xv_i) (1 - \sigma_l (\xv_i))\xv_i}}{\sigma_l (\xv_i)} + \sum_{i: y_i \neq l} \frac{\class{yellow}{-\sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}}{\sigma_{y_i} (\xv_i)} \\
     = & \sum_{i: y_i = l} (1 - \sigma_l (\xv_i)) \xv_i - \sum_{i: y_i \neq l} \sigma_l (\xv_i) \xv_i = \sum_{i: y_i = l} \xv_i - \sum_{i \in [m]} \sigma_l (\xv_i) \xv_i \\
-    = & \sum_{i \in [m]} (\Ibb(y_i=l) - \sigma_l (\xv_i)) \xv_i
-\end{align*}
-$$
+    = & \sum_{i \in [m]} (\ib(y_i=l) - \sigma_l (\xv_i)) \xv_i
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span>中的对率回归
+##### sklearn中的对率回归
 
 ---
 
@@ -419,7 +404,7 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span>中的对率回归
+##### sklearn中的对率回归
 
 ---
 
@@ -433,13 +418,11 @@ $$
 
 以二分类为例，引入特征映射$\phi(\cdot)$可得原始形式的核对率回归：
 
-<div class="top1"></div>
-
-$$
-\begin{align*}
-    \quad \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) ~ \longrightarrow ~ \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \phi(\xv_i)))
-\end{align*}
-$$
+<p>
+\begin{align}
+    \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \xv_i)) ~ \longrightarrow ~ \min_{\wv} \sum_{i \in [m]} \ln (1 + \exp(- y_i \wv^\top \phi(\xv_i)))
+\end{align}
+</p>
 
 问题：如何让模型中只出现内积$\phi(\xv_i)^\top \phi(\xv_j)$的形式？
 
@@ -447,11 +430,11 @@ $$
 
 注意$\kappa(\xv_j, \xv_i) = \phi(\xv_j)^\top \phi(\xv_i)$，核对率回归的对偶形式为
 
-$$
-\begin{align*}
-    \quad \min_{\alphav} \sum_{i \in [m]} \ln \left( 1 + \exp \left( -y_i \sum_{j \in [m]} \alpha_j \kappa(\xv_j, \xv_i) \right) \right)
-\end{align*}
-$$
+<p>
+\begin{align}
+    \min_{\alphav} \sum_{i \in [m]} \ln \left( 1 + \exp \left( -y_i \sum_{j \in [m]} \alpha_j \kappa(\xv_j, \xv_i) \right) \right)
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -461,10 +444,10 @@ $$
 
 <div class="threelines head-highlight-1 tr-hover column3-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed column2-border-left-solid column3-border-left-solid row1-column4-border1-left-solid row2-column4-border1-left-solid row3-column1-border1-left-solid row4-column4-border1-left-solid row5-column1-border1-left-solid fs12">
 
-|   模型   |   $\Ycal$    |                                      优化目标                                      |                             $\gv$                             |
+|   模型   |    $\yc$     |                                      优化目标                                      |                             $\gv$                             |
 | :------: | :----------: | :--------------------------------------------------------------------------------: | :-----------------------------------------------------------: |
-| 线性回归 |    $\Rbb$    |               $\min_{\wv} \sum_{i \in [m]}(\wv^\top \xv_i - y_i)^2$                |       $2 \sum_{i \in [m]} (\wv^\top \xv_i - y_i) \xv_i$       |
-|  感知机  | $\{ 1,-1 \}$ |          $\min_{\wv} \sum_{i \in [m]}\max \{ 0, - y_i \wv^\top \xv_i \}$           | $-\sum_{i \in [m]} \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
+| 线性回归 |    $\rb$     |               $\min_{\wv} \sum_{i \in [m]}(\wv^\top \xv_i - y_i)^2$                |       $2 \sum_{i \in [m]} (\wv^\top \xv_i - y_i) \xv_i$       |
+|  感知机  | $\{ 1,-1 \}$ |          $\min_{\wv} \sum_{i \in [m]}\max \{ 0, - y_i \wv^\top \xv_i \}$           |  $-\sum_{i \in [m]} \ib(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
 |    ^     |  $\{1,0\}$   |      $\min_{\wv} \sum_{i \in [m]}(\sgn(\wv^\top \xv_i) - y_i) \wv^\top \xv_i$      |     $\sum_{i \in [m]} (\sgn(\wv^\top \xv_i) - y_i) \xv_i$     |
 | 对率回归 | $\{ 1,-1 \}$ |         $\min_{\wv} \sum_{i \in [m]}\ln (1 + \exp(- y_i \wv^\top \xv_i))$          | $\sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$ |
 |    ^     | $\{ 1,0 \}$  | $\min_{\wv} \sum_{i \in [m]}(\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$ |    $\sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i$    |
@@ -484,32 +467,30 @@ $$
 
 设优化目标函数为$F(\wv)$，用迭代法构造单调递减序列：
 
-$$
-\begin{align*}
-    \quad F(\wv_0) \ge F(\wv_1) \ge F(\wv_2) \ge F(\wv_3) \ge \cdots
-\end{align*}
-$$
+<p>
+\begin{align}
+    F(\wv_0) \ge F(\wv_1) \ge F(\wv_2) \ge F(\wv_3) \ge \cdots
+\end{align}
+</p>
 
-<div class="top-3"></div>
-
-我的启示 {==单调有界序列必收敛==}，若$F$有下界，序列就会收敛到$F(\wv^\star)$
+<p class="book"> <span class="blue">单调有界序列必收敛</span>，若$F$有下界，序列就会收敛到$F(\wv^\star)$</p>
 
 问题：如何实现单调递减？根据泰勒展开式及柯西不等式知
 
-$$
-\begin{align*}
-    -\| \nabla F(\wv)\| ~ \|\uv\| \le \lim_{\eta \rightarrow 0} \frac{F(\wv + \eta \uv) - F(\wv)}{\eta} = \nabla F(\wv)^\top \uv \le \| \nabla F(\wv)\| ~ \|\uv\|
-\end{align*}
-$$
-
-<div class="top-1"></div>
-
-- 只要$\uv$与$\nabla F(\wv)$夹角为钝角，就可以使得目标函数值下降
-- 左边取等号条件是$\uv = -k \cdot \nabla F(\wv)$，{==负梯度是瞬时下降最快的方向==}
+<p>
+\begin{align}
+    -\| \nabla F(\wv)\| \cdot \|\uv\| \le \lim_{\eta \rightarrow 0} \frac{F(\wv + \eta \uv) - F(\wv)}{\eta} = \nabla F(\wv)^\top \uv \le \| \nabla F(\wv)\| \cdot \|\uv\|
+\end{align}
+</p>
 
 <div class="top2"></div>
 
-梯度下降 (<u>g</u>radient <u>d</u>escent, GD)：$\wv_{t+1} \leftarrow \wv_t - \eta_t \nabla F(\wv_t)$
+- 只要$\uv$与$\nabla F(\wv)$夹角为钝角，就可以使得目标函数值下降
+- 左边取等号条件是$\uv = -k \cdot \nabla F(\wv)$，<span class="blue">负梯度是瞬时下降最快的方向</span>
+
+<div class="top2"></div>
+
+梯度下降 (<span class="blue">g</span>radient <span class="blue">d</span>escent, GD)：$\wv_{t+1} \leftarrow \wv_t - \eta_t \nabla F(\wv_t)$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -519,7 +500,7 @@ $$
 
 数据：在$y = 0.5x + 2$上随机采样$20$个点
 
-@import "../python/gd.svg" {.center .top2 .width90 title="用梯度下降求解 R 上的最小二乘"}
+<img src="../python/lr/gd.svg" class="center width90 top2" title="用梯度下降求解 R 上的最小二乘">
 
 <!-- slide data-notes="" -->
 
@@ -529,25 +510,25 @@ $$
 
 <div class="threelines head-highlight-1 tr-hover column3-border1-right-solid-head row1-border-bottom-dashed row3-border-bottom-dashed column2-border-left-solid column3-border-left-solid row1-column4-border1-left-solid row2-column4-border1-left-solid row3-column1-border1-left-solid row4-column4-border1-left-solid row5-column1-border1-left-solid bottom-2 fs12">
 
-|   模型   |   $\Ycal$    |                                      优化目标                                      |                             $\gv$                             |
+|   模型   |    $\yc$     |                                      优化目标                                      |                             $\gv$                             |
 | :------: | :----------: | :--------------------------------------------------------------------------------: | :-----------------------------------------------------------: |
-| 线性回归 |    $\Rbb$    |               $\min_{\wv} \sum_{i \in [m]}(\wv^\top \xv_i - y_i)^2$                |       $2 \sum_{i \in [m]} (\wv^\top \xv_i - y_i) \xv_i$       |
-|  感知机  | $\{ 1,-1 \}$ |          $\min_{\wv} \sum_{i \in [m]}\max \{ 0, - y_i \wv^\top \xv_i \}$           | $-\sum_{i \in [m]} \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
+| 线性回归 |    $\rb$     |               $\min_{\wv} \sum_{i \in [m]}(\wv^\top \xv_i - y_i)^2$                |       $2 \sum_{i \in [m]} (\wv^\top \xv_i - y_i) \xv_i$       |
+|  感知机  | $\{ 1,-1 \}$ |          $\min_{\wv} \sum_{i \in [m]}\max \{ 0, - y_i \wv^\top \xv_i \}$           |  $-\sum_{i \in [m]} \ib(y_i \wv^\top \xv_i \le 0) y_i \xv_i$  |
 |    ^     |  $\{1,0\}$   |      $\min_{\wv} \sum_{i \in [m]}(\sgn(\wv^\top \xv_i) - y_i) \wv^\top \xv_i$      |     $\sum_{i \in [m]} (\sgn(\wv^\top \xv_i) - y_i) \xv_i$     |
 | 对率回归 | $\{ 1,-1 \}$ |         $\min_{\wv} \sum_{i \in [m]}\ln (1 + \exp(- y_i \wv^\top \xv_i))$          | $\sum_{i \in [m]} (\sigma(y_i \wv^\top \xv_i) - 1) y_i \xv_i$ |
 |    ^     | $\{ 1,0 \}$  | $\min_{\wv} \sum_{i \in [m]}(\ln (1 + \exp(\wv^\top \xv_i)) - y_i \wv^\top \xv_i)$ |    $\sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i$    |
 
 </div>
 
-许多机器学习模型的优化目标为{==最小化每个样本的损失的和==}
+许多机器学习模型的优化目标为<span class="blue">最小化每个样本的损失的和</span>
 
-$$
-\begin{align*}
-    \quad \min_{\wv} F(\wv) = \frac{1}{m} \sum_{i \in [m]} \ell(y_i, f(\xv_i;\wv))
-\end{align*}
-$$
+<p>
+\begin{align}
+    \min_{\wv} F(\wv) = \frac{1}{m} \sum_{i \in [m]} \ell(y_i, f(\xv_i;\wv))
+\end{align}
+</p>
 
-<div class="top-3"></div>
+<div class="top2"></div>
 
 - 线性回归，平方损失$\ell = (y_i - \wv^\top \xv_i)^2$
 - 感知机，$\ell = \max \{ 0, - y_i \wv^\top \xv_i \}$
@@ -568,38 +549,36 @@ $$
 
 批量梯度下降随机采样一个下标子集$B_t \subseteq [m]$
 
-$$
-\begin{align*}
-    \quad \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|B_t|} \sum_{i \in B_t} \nabla \ell(y_i, f(\xv_i;\wv))
-\end{align*}
-$$
+<p>
+\begin{align}
+    \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|B_t|} \sum_{i \in B_t} \nabla \ell(y_i, f(\xv_i;\wv))
+\end{align}
+</p>
 
-<div class="top-5"></div>
-
-若$|B_t| = 1$，则为标准的{==随机梯度下降==} (<u>s</u>tochastic <u>GD</u>, SGD)
+若$|B_t| = 1$，则为标准的<span class="blue">随机梯度下降</span> (<span class="blue">s</span>tochastic <span class="blue">GD</span>, SGD)
 
 以感知机为例：
 
 - 优化目标为$\min_{\wv} \sum_{i \in [m]} \max \{ 0, - y_i \wv^\top \xv_i \}$
-- 梯度为$\gv = - \sum_{i \in [m]} \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
-- 随机梯度下降$\wv_{t+1} \leftarrow \wv_t + \eta_t \Ibb(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
+- 梯度为$\gv = - \sum_{i \in [m]} \ib(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
+- 随机梯度下降$\wv_{t+1} \leftarrow \wv_t + \eta_t \ib(y_i \wv^\top \xv_i \le 0) y_i \xv_i$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">GD</span> _vs._ <span style="font-weight:900">SGD</span>
+##### GD _vs._ SGD
 
 ---
 
 更新公式：
 
-$$
-\begin{align*}
-    \quad & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{m} \sum_{i \in [m]} \nabla \ell(y_i, f(\xv_i;\wv)) \\
+<p>
+\begin{align}
+    & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{m} \sum_{i \in [m]} \nabla \ell(y_i, f(\xv_i;\wv)) \\
     & \wv_{t+1} \leftarrow \wv_t - \eta_t \frac{1}{|B_t|} \sum_{i \in B_t} \nabla \ell(y_i, f(\xv_i;\wv))
-\end{align*}
-$$
+\end{align}
+</p>
 
-<div class="top-2"></div>
+<div class="top2"></div>
 
 - 当数据集中有冗余样本时，SGD 可以减少重复计算
 - 迭代前期，SGD 更新频率快，较 GD 优势明显
@@ -616,7 +595,7 @@ $$
 
 当目标函数的变量尺度不同时，梯度下降效率很低
 
-@import "../python/momentum.svg" {.center .width90 .top0 .bottom0}
+<img src="../python/lr/momentum.svg" class="center width90 top0 bottom0">
 
 动量法 (momentum)：$\wv_{t+1} = \wv_t - \eta_t \nabla F(\wv_t) + \class{blue}{\gamma (\wv_t - \wv_{t-1})}$
 
@@ -629,17 +608,15 @@ $$
 
 ---
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \qquad \wv_{t+1} - \wv_t & = - \eta_t \nabla F(\wv_t) + \gamma (\wv_t - \wv_{t-1}) \\
     \gamma (\wv_t - \wv_{t-1}) & = - \eta_{t-1} \gamma \nabla F(\wv_{t-1}) + \gamma^2 (\wv_{t-1} - \wv_{t-2}) \\
     & \vdots \\
     \gamma^{t-1} (\wv_2 - \wv_1) & = - \eta_1 \gamma^{t-1} \nabla F(\wv_1) + \underbrace{\gamma^t (\wv_1 - \wv_0)}_{\wv_1 ~ = ~ \wv_0} \\
     \Longrightarrow ~ \wv_{t+1} - \wv_t & = - \sum_{i \in [t]} \eta_i \gamma^{t-i} \nabla F(\wv_i)
-\end{align*}
-$$
-
-<div class="top-4"></div>
+\end{align}
+</p>
 
 动量法每步更新是历史梯度的加权平均
 
@@ -648,21 +625,21 @@ $$
 
 Nesterov 加速梯度 (NAG)：改进动量法的第二步
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \begin{cases} \widetilde{\wv} = \wv_t + \gamma (\wv_t - \wv_{t-1}) \\ \wv_{t+1} = \widetilde{\wv} - \eta_t \class{yellow}{\nabla F (\wv_t)} \end{cases} ~ \longrightarrow ~ \begin{cases} \widetilde{\wv} = \wv_t + \gamma (\wv_t - \wv_{t-1}) \\ \wv_{t+1} = \widetilde{\wv} - \eta_t \class{yellow}{\nabla F (\widetilde{\wv})} \end{cases}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 动量法 <span style="font-weight:900">_vs._ NAG</span>
+##### 动量法 _vs._ NAG
 
 ---
 
 第$t$轮迭代示意图：
 
-@import "../tikz/mvsnag.svg" {.center .width90 .top6 .bottom2}
+<img src="../tikz/mvsnag/mvsnag.svg" class="center width90 top6 bottom2">
 
 <!-- slide data-notes="" -->
 
@@ -670,15 +647,15 @@ $$
 
 ---
 
-对率回归采用{==对率函数==}作为激活函数，输出具有{==概率==}意义
+对率回归采用<span class="blue">对率函数</span>作为激活函数，输出具有<span class="blue">概率</span>意义
 
-对率回归虽名为回归，但实际是个{==线性分类==}模型
+对率回归虽名为回归，但实际是个<span class="blue">线性分类</span>模型
 
-对率回归最终形式化可由{==极大似然法==}或{==最小化交叉熵==}损失得到
+对率回归最终形式化可由<span class="blue">极大似然法</span>或<span class="blue">最小化交叉熵</span>损失得到
 
 对率回归可以很自然地推广到多分类问题上
 
 对率回归的求解
 
-- 一阶优化方法如{==梯度下降法==}及其变种
+- 一阶优化方法如<span class="blue">梯度下降法</span>及其变种
 - 二阶优化方法如牛顿法及其变种
