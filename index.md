@@ -105,10 +105,10 @@
 
 [文本特征提取](python/feat-text.ipynb)、[独热编码](python/feat-one-hot.ipynb)、[缺失特征处理](python/feat-missing.ipynb)、[特征标准化](python/feat-scaler.ipynb)、[特征选择](python/feat-selection.ipynb)、[稀疏范数](python/sparse-norm.ipynb)、[主成分分析](python/pca.ipynb)、[随机投影](python/random-projection.ipynb)
 
-决策树[分类鸢尾花](python/dt-iris.ipynb)
+决策树[分类鸢尾花](python/dt/dt-iris.ipynb)
 
-感知机[预测约会](python/perceptron-date.ipynb)、感知机[实现与或非](python/perceptron-logic.ipynb)、核感知机[实现异或](python/perceptron-kernel.ipynb)
+感知机[预测约会](python/perceptron/perceptron-date.ipynb)、感知机[实现与或非](python/perceptron/perceptron-logic.ipynb)、核感知机[实现异或](python/perceptron/perceptron-kernel.ipynb)
 
-对率回归[预测约会](python/lr-date.ipynb)、对率回归[分类鸢尾花](python/lr-iris.ipynb)、[梯度下降](python/gd.ipynb)、[动量法](python/momentum.ipynb)
+对率回归[预测约会](python/lr/lr-date.ipynb)、对率回归[分类鸢尾花](python/lr/lr-iris.ipynb)、[梯度下降](python/lr/gd.ipynb)、[动量法](python/lr/momentum.ipynb)
 
 多层感知机实现异或：[sklearn 实现](python/mlp-xor.ipynb)、[tensorflow 实现](python/dnn-xor.ipynb)、卷积神经网络实现 MNIST [手写数字识别](python/lenet-mnist.ipynb)、resnet50 [模型复用](python/resnet50-reuse.ipynb)、循环神经网络实现 IMDB [影评情感分析](python/rnn-imdb.ipynb)
