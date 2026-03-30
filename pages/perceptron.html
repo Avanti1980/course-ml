@@ -684,7 +684,7 @@ clf<span class="token punctuation">.</span>fit<span class="token punctuation">(<
 <p>显然<span class="mathjax-exps">$(0 \cdot z_1 + 0 \cdot z_2 - 1 \cdot z_3 + 1) / 2 = x_1 + x_2 - 2 x_1 x_2$</span>即可预测<span class="mathjax-exps">$y$</span></p>
 </section><section vertical="true" data-notes="" lineno="516" class="slide " data-source-line="516" data-h="8" data-v="1"><h5 id="一般性结论">一般性结论 </h5>
 <hr>
-<p><span class="mathjax-exps">$r,\rho$</span>定义同前，记<span class="mathjax-exps">$s_i = \max \{ 0, \rho - y_i \wv^\top \xv_i \}$</span>及<span class="mathjax-exps">$\delta = \sqrt{\sum_{i \in [m]} s_i^2}$</span></p>
+<p>记<span class="mathjax-exps">$s_i = \max \{ 0, \rho - y_i \wv^\top \xv_i \}$</span>及<span class="mathjax-exps">$\delta = \sqrt{\sum_{i \in [m]} s_i^2}$</span></p>
 <p>存在映射使得样本线性可分且感知机更新次数<span class="mathjax-exps">$M \le (r + \delta)^2 / \rho^2$</span></p>
 <p>将<span class="mathjax-exps">$\xv_i$</span>映射到<span class="mathjax-exps">$\rb^{d+m}$</span>中：<span class="mathjax-exps">$\xv_i \mapsto \xv'_i = [\xv_i; A \ev_i]$</span>，即原有特征<span class="mathjax-exps">$\xv_i$</span>全部保留，只在后面第<span class="mathjax-exps">$i$</span>位加一个待定参数<span class="mathjax-exps">$A$</span>，其它位为零</p>
 <p><span class="mathjax-exps">$\wv$</span>要与样本做内积，因此也需映射到<span class="mathjax-exps">$\rb^{d+m}$</span>中：</p>

@@ -519,7 +519,7 @@ Novikoff 定理对此有严格的刻画
 
 ---
 
-$r,\rho$定义同前，记$s_i = \max \{ 0, \rho - y_i \wv^\top \xv_i \}$及$\delta = \sqrt{\sum_{i \in [m]} s_i^2}$
+记$s_i = \max \{ 0, \rho - y_i \wv^\top \xv_i \}$及$\delta = \sqrt{\sum_{i \in [m]} s_i^2}$
 
 存在映射使得样本线性可分且感知机更新次数$M \le (r + \delta)^2 / \rho^2$
 
