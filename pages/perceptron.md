@@ -181,7 +181,7 @@ presentation:
 
 <div class="top2"></div>
 
-我的批注 感知机属于{==线性分类器==} (linear classifier) 的范畴
+<p class="comments"> 感知机属于{==线性分类器==} (linear classifier) 的范畴</p>
 
 <img src="../tikz/perceptron/perceptron.svg" class="width40 left56per top-52per">
 
@@ -212,7 +212,7 @@ presentation:
 
 <div class="top2"></div>
 
-我的批注 再笨的人多犯几次错误也会记住教训
+<p class="comments"> 再笨的人多犯几次错误也会记住教训</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -485,7 +485,7 @@ Novikoff 定理对此有严格的刻画
 
 <div class="top2"></div>
 
-我的批注 以更新次数扩大$16$倍的代价换取间隔$\ge \rho /2$的超平面
+<p class="comments"> 以更新次数扩大$16$倍的代价换取间隔$\ge \rho /2$的超平面</p>
 
 <!-- slide data-notes="" -->
 
