@@ -127,7 +127,7 @@ presentation:
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">Sigmoid</span> 型
+##### Sigmoid 型
 
 ---
 
@@ -141,24 +141,24 @@ presentation:
 
 将$\rb${==挤压==}到$[0,1]$，输出拥有{==概率==}意义：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \sigma(z) = \frac{1}{1 + \exp (-z)} = \begin{cases}
-        1, & z \rightarrow \infty \\
-        0, & z \rightarrow -\infty
+        1, & z \to \infty \\
+        0, & z \to -\infty
     \end{cases}
-\end{align*}
-$$
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 对率函数连续可导，在{==零处导数最大==}
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \nabla \sigma(z) = \sigma(z) (1 - \sigma(z)) \le \left( \frac{\sigma(z) + 1 - \sigma(z)}{2} \right)^2 = \frac{1}{4}
-\end{align*}
-$$
-
-<div class="top-3"></div>
+\end{align}
+</p>
 
 均值不等式等号成立的条件是$\sigma(z) = 1 - \sigma(z)$，即$z = 0$
 
@@ -170,16 +170,16 @@ $$
 
 将$\rb${==挤压==}到$[-1,1]$，{==输出零中心化==}，对率函数的放大平移
 
-$$
-\begin{align*}
-    \tanh(z) & = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)} = \frac{1 - \exp(-2z)}{1 + \exp(-2z)} = 2 \sigma(2z) - 1 \\[2pt]
+<p>
+\begin{align}
+    & \tanh(z) = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)} = \frac{1 - \exp(-2z)}{1 + \exp(-2z)} = 2 \sigma(2z) - 1 \\[2pt]
     & = \begin{cases}
-        1, & z \rightarrow \infty \\
-        -1, & z \rightarrow -\infty
+        1, & z \to \infty \\
+        -1, & z \to -\infty
     \end{cases} \\[10pt]
-    \nabla \tanh(z) & = 4 \sigma(2z) (1 - \sigma(2z)) \le 1
-\end{align*}
-$$
+    & \nabla \tanh(z) = 4 \sigma(2z) (1 - \sigma(2z)) \le 1
+\end{align}
+</p>
 
 双曲正切函数连续可导，在$z = 0$处导数最大
 
@@ -191,17 +191,15 @@ $$
 
 ---
 
-整流线性单元 (<u>re</u>ctified <u>l</u>inear <u>u</u>nit, ReLU)：
+整流线性单元 (<span class="blue">re</span>ctified <span class="blue">l</span>inear <span class="blue">u</span>nit, ReLU)：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \relu(z) = \max \{ 0, z \} = \begin{cases}
         z & z \ge 0 \\ 0 & z < 0
     \end{cases}
-\end{align*}
-$$
-
-<div class="top-2"></div>
+\end{align}
+</p>
 
 优点
 
@@ -218,19 +216,19 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 死亡 <span style="font-weight:900">ReLU</span> 问题
+##### 死亡 ReLU 问题
 
 ---
 
 由链式法则有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \nabla_{\wv} \relu(\wv^\top \xv + b) & = \frac{\partial \relu(\wv^\top \xv + b)}{\partial (\wv^\top \xv + b)} \frac{\partial (\wv^\top \xv + b)}{\partial \wv} \\
     & = \frac{\partial \max \{ 0, \wv^\top \xv + b \}}{\partial (\wv^\top \xv + b)} \xv \\
-    & = \Ibb(\wv^\top \xv + b \ge 0) \xv
-\end{align*}
-$$
+    & = \ib(\wv^\top \xv + b \ge 0) \xv
+\end{align}
+</p>
 
 如果第一个隐藏层中的某个神经元对应的$(\wv,b)$初始化不当，使得对任意$\xv$有$\wv^\top \xv + b < 0$，那么其关于$(\wv,b)$的梯度将为零，在以后的训练过程中永远不会被更新
 
@@ -238,76 +236,76 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">ReLU</span> 变体
+##### ReLU 变体
 
 ---
 
 带泄漏的 ReLU：当$\wv^\top \xv + b < 0$时也有非零梯度
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \lrelu(z) & = \begin{cases}
         z & z \ge 0 \\ \gamma z & z < 0
     \end{cases} \\
     & = \max \{ 0, z \} + \gamma \min \{ 0, z \} \overset{\gamma < 1}{=} \max \{ z, \gamma z \}
-\end{align*}
-$$
-
-<div class="top-3"></div>
+\end{align}
+</p>
 
 其中斜率$\gamma$是一个很小的常数，比如$0.01$
 
+<div class="top2"></div>
+
 带参数的 ReLU：斜率$\gamma_i$可学习
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \prelu(z) & = \begin{cases}
         z & z \ge 0 \\ \gamma_i z & z < 0
     \end{cases} \\[4pt]
     & = \max \{ 0, z \} + \gamma_i \min \{ 0, z \}
-\end{align*}
-$$
-
-<div class="top-3"></div>
+\end{align}
+</p>
 
 可以不同神经元有不同的参数，也可以一组神经元共享一个参数
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">ReLU</span> 变体
+##### ReLU 变体
 
 ---
 
-指数线性单元 (<u>e</u>xponential <u>l</u>inear <u>u</u>nit, ELU)
+指数线性单元 (<span class="blue">e</span>xponential <span class="blue">l</span>inear <span class="blue">u</span>nit, ELU)
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \elu(z) & = \begin{cases}
         z & z \ge 0 \\ \gamma (\exp(z) - 1) & z < 0
     \end{cases} \\[4pt]
     & = \max \{ 0, z \} + \min \{ 0, \gamma (\exp(z) - 1) \}
-\end{align*}
-$$
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 Softplus 函数可以看作 ReLU 的平滑版本：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \softplus(z) = \ln (1 + \exp(z))
-\end{align*}
-$$
+\end{align}
+</p>
 
 其导数为对率函数
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \nabla \softplus(z) = \frac{\exp(z)}{1 + \exp(z)} = \frac{1}{1 + \exp(-z)}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">ReLU</span> 族
+##### ReLU 族
 
 ---
 
@@ -315,19 +313,17 @@ $$
 
 <!-- slide data-notes="自门控的意思是控制自己是否激活的\sigma (\beta z)也跟有关" -->
 
-##### <span style="font-weight:900">Swish</span> 函数
+##### Swish 函数
 
 ---
 
 Swish 函数是一种自门控 (self-gated) 激活函数：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \swish(z) = z \cdot \sigma (\beta z) = \frac{z}{1 + \exp(-\beta z)}
-\end{align*}
-$$
-
-<div class="top-4"></div>
+\end{align}
+</p>
 
 其中$\beta$是一个可学习的参数
 
@@ -336,7 +332,7 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">Swish</span> 函数
+##### Swish 函数
 
 ---
 
@@ -345,30 +341,30 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">Maxout</span> 单元
+##### Maxout 单元
 
 ---
 
 考虑神经网络的第$l$层：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \zv_l & = \Wv_l \av_{l-1} + \bv_l \\
     \av_l & = h_l (\zv_l)
-\end{align*}
-$$
-
-<div class="top-4"></div>
+\end{align}
+</p>
 
 前面提到的激活函数都是$\rb \mapsto \rb$的，即$[\av_l]_i = h_l ([\zv_l]_i), ~ i \in [n_l]$
 
 Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \maxout (\zv) = \max_{k \in [K]} \{ \wv_k^\top \zv + b_k \}
-\end{align*}
-$$
+\end{align}
+</p>
+
+<div class="top2"></div>
 
 - 整体学习输入到输出间的非线性关系
 - $\relu(z) = \max \{ 0, z \}$与$\lrelu(z) \overset{\gamma < 1}{=} \max \{ z, \gamma z \}$都是 Maxout 单元的特例
@@ -422,16 +418,16 @@ $$
 - 边上的权重函数$w: \ec \mapsto \rb$
 - 每个结点对应一个神经元，每个神经元有一个激活函数$\sigma: \rb \mapsto \rb$
 
-<div class="bottom4"></div>
+<div class="bottom2"></div>
 
 若神经网络的
 
-- 激活函数为$\sgn(\cdot)$，则$\text{VC}$维为$\oc (|\ec| \log |\ec|)$
-- 激活函数为$\sigma(\cdot)$，则$\text{VC}$维为$\Omega (|\ec|^2)$、$\oc (|\vc|^2 |\ec|^2)$
+- 激活函数为$\sgn(\cdot)$，则$\VC$维为$\oc (|\ec| \log |\ec|)$
+- 激活函数为$\sigma(\cdot)$，则$\VC$维为$\Omega (|\ec|^2)$、$\oc (|\vc|^2 |\ec|^2)$
 
-<div class="bottom4"></div>
+<div class="bottom2"></div>
 
-若神经网络能表示$\{1,-1\}^n \mapsto \{1,-1\}$的所有布尔函数，则$\text{VC}$维为$2^n$，于是$2^n \le \oc (|\ec| \log |\ec|) \le \oc (|\vc|^3)$，从而$|\vc| \ge \Omega (2^{n/3})$
+若神经网络能表示$\{1,-1\}^n \mapsto \{1,-1\}$的所有布尔函数，则$\VC$维为$2^n$，于是$2^n \le \oc (|\ec| \log |\ec|) \le \oc (|\vc|^3)$，从而$|\vc| \ge \Omega (2^{n/3})$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -468,7 +464,7 @@ $$
 
 <div class="top2"></div>
 
-我的批注 对率回归也可看作只有一层 (没有隐藏层) 的神经网络
+<p class="comments"> 对率回归也可看作只有一层 (没有隐藏层) 的神经网络</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -496,28 +492,26 @@ $$
 
 神经网络的优化目标为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \min_{\Wv, \bv} ~ \frac{1}{m} \sum_{i \in [m]} \ell (\yv_i, \hat{\yv}_i)
-\end{align*}
-$$
-
-<div class="top-5"></div>
+\end{align}
+</p>
 
 其中损失$\ell (\yv, \hat{\yv})$的计算为{==正向传播==}
 
 - 样本从输入层进入，经隐藏层逐层传播到最后输出层
 - $\hat{\yv} = \av_L = h_L (\zv_L)$是对样本$\xv$的预测，据此计算$\ell (\yv, \hat{\yv}) = \ell (\yv, h_L (\zv_L))$
 
-<div class="top4"></div>
+<div class="top2"></div>
 
 梯度下降更新公式为
 
-$$
-\begin{align*}
-    \Wv ~ \leftarrow ~ \Wv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \Wv}}, \quad \bv ~ \leftarrow ~ \bv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \bv}}
-\end{align*}
-$$
+<p>
+\begin{align}
+    \Wv ~ \gets ~ \Wv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \Wv}}, \quad \bv ~ \gets ~ \bv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \bv}}
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -529,28 +523,22 @@ $$
 
 最后一层$\zv_L = \Wv_L ~ \av_{L-1} + \bv_L$，$\av_L = h_L (\zv_L)$，由{==链式法则==}有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial \ell (\yv, \hat{\yv})}{\partial \bv_L} & = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_L} \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \\
     \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_L} & = \sum_{j \in [n_L]} \frac{\partial \ell (\yv, \hat{\yv})}{\partial [\zv_L]_j} \frac{\partial [\zv_L]_j}{\partial \Wv_L} = \sum_{j \in [n_L]} [\deltav_L]_j \frac{\partial [\zv_L]_j}{\partial \Wv_L}
-\end{align*}
-$$
-
-<div class="top-5"></div>
+\end{align}
+</p>
 
 其中$\deltav_L^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_L \in \rb^{n_L}$为第$L$层的{==误差项==}，可直接求解
 
-<div class="top-2"></div>
-
 类似的，对第$l$层$\zv_l = \Wv_l \av_{l-1} + \bv_l$，$\av_l = h_l (\zv_l)$，由{==链式法则==}有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial \ell (\yv, \hat{\yv})}{\partial \bv_l} = \deltav_l^\top, \quad \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l}
-\end{align*}
-$$
-
-<div class="top-5"></div>
+\end{align}
+</p>
 
 其中$\deltav_l^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_l \in \rb^{n_l}$为第$l$层的{==误差项==}
 
@@ -560,24 +548,24 @@ $$
 
 ---
 
-{==反向传播==} (<u>b</u>ack<u>p</u>ropagation, BP)：前一层误差由后一层得到
+{==反向传播==} (<span class="blue">b</span>ack<span class="blue">p</span>ropagation, BP)：前一层误差由后一层得到
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \deltav_{l-1}^\top = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_{l-1}} = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_l} \frac{\partial \zv_l}{\partial \av_{l-1}} \frac{\partial \av_{l-1}}{\partial \zv_{l-1}} = \deltav_l^\top \Wv_l \frac{\partial h_{l-1}(\zv_{l-1})}{\partial \zv_{l-1}}
-\end{align*}
-$$
+\end{align}
+</p>
 
 最后对第$l$层$\zv_l = \Wv_l \av_{l-1} + \bv_l$，如何求$\partial [\zv_l]_j / \partial \Wv_l$？
 
 注意$[\zv_l]_j = \sum_k [\Wv_l]_{jk} [\av_{l-1}]_k + [\bv_l]_j$只与$\Wv_l$的第$j$行有关，于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     & \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \underbrace{\begin{bmatrix} \zerov, \ldots, \av_{l-1}, \ldots, \zerov \end{bmatrix}}_{\text{only }\av_{l-1}\text{ at }j\text{-th column}} = \av_{l-1} \ev_j^\top \\[4pt]
     & \Longrightarrow \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \av_{l-1} \sum_{j \in [n_l]} [\deltav_l]_j \ev_j^\top = \av_{l-1} \deltav_l^\top
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -601,7 +589,7 @@ $$
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span>中的神经网络
+##### sklearn中的神经网络
 
 ---
 
@@ -631,9 +619,11 @@ clf = mlp.fit(X, y)
 acc = clf.score(X, y)
 ```
 
+<div class="top2"></div>
+
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span>中的神经网络
+##### sklearn中的神经网络
 
 ---
 
@@ -644,7 +634,7 @@ acc = clf.score(X, y)
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span>中的神经网络
+##### sklearn中的神经网络
 
 ---
 
@@ -655,7 +645,7 @@ acc = clf.score(X, y)
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">sklearn</span>中的神经网络
+##### sklearn中的神经网络
 
 ---
 
@@ -666,7 +656,7 @@ acc = clf.score(X, y)
 
 <!-- slide data-notes="" -->
 
-##### 用 <span style="font-weight:900">TensorFlow</span> 实现
+##### 用TensorFlow实现
 
 ---
 
@@ -727,7 +717,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 <!-- slide vertical=true data-notes="" -->
 
-##### 用 <span style="font-weight:900">TensorFlow</span> 实现
+##### 用TensorFlow实现
 
 ---
 
@@ -744,11 +734,11 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 神经网络中误差反向传播的迭代公式为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \deltav_l^\top = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_l} = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_{l+1}} \frac{\partial \zv_{l+1}}{\partial \av_l} \frac{\partial \av_l}{\partial \zv_l} = \deltav_{l+1}^\top \Wv_{l+1} \diag (h_l'(\zv_l))
-\end{align*}
-$$
+\end{align}
+</p>
 
 对于 Sigmoid 型激活函数
 
@@ -767,17 +757,17 @@ $$
 
 ---
 
-@import "../tikz/resnet.svg" {.width75 .center .top2 .bottom2}
+<img src="../tikz/resnet.svg" class="top2 bottom2 width75 center">
 
 残差模块 $\zv_l = \av_{l-1} + \class{yellow}{\Uv_2 \cdot h(\Uv_1 \cdot \av_{l-1} + \cv_1) + \cv_2} = \av_{l-1} + \class{yellow}{f(\av_{l-1})}$
 
 假设$\av_l = \zv_l$，即残差模块输出不使用激活函数，对$\forall t \in [l]$有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \av_l = \av_{l-1} + f(\av_{l-1}) = \av_{l-2} + f(\av_{l-2}) + f(\av_{l-1}) = \cdots = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
@@ -791,23 +781,23 @@ $$
 
 低层输入可以{==恒等==}传播到任意高层
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \av_l = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
 由链式法则有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial \ell}{\partial \av_{l-t}} & = \frac{\partial \ell}{\partial \av_l} \frac{\partial \av_l}{\partial \av_{l-t}} = \frac{\partial \ell}{\partial \av_l} \left( \frac{\partial \av_{l-t}}{\partial \av_{l-t}} + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
     & = \frac{\partial \ell}{\partial \av_l} \left( \Iv + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
     & = \frac{\partial \ell}{\partial \av_l} + \frac{\partial \ell}{\partial \av_l} \left( \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
@@ -878,16 +868,16 @@ $$
 
 ---
 
-@import "../tikz/convolution1d.svg" {.center .width75 .top4 .bottom4}
+<img src="../tikz/convolution1d.svg" class="top4 bottom4 width75 center">
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \qquad \qquad \qquad \qquad a_1 & = x_1 \times w_1 + x_2 \times w_2 + x_3 \times w_3 \\
     a_2 & = x_2 \times w_1 + x_3 \times w_2 + x_4 \times w_3 \\
     a_3 & = x_3 \times w_1 + x_4 \times w_2 + x_5 \times w_3 \\
     a_4 & = x_4 \times w_1 + x_5 \times w_2 + x_6 \times w_3
-\end{align*}
-$$
+\end{align}
+</p>
 
 ### 卷积神经网络：局部连接，权值共享
 
@@ -897,23 +887,21 @@ $$
 
 ---
 
-<div class="top2"></div>
-
-$$
-\begin{align*}
+<p>
+\begin{align}
     (f \otimes g) [n] = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m]
-\end{align*}
-$$
+\end{align}
+</p>
 
-@import "../tikz/convolution1d.svg" {.center .width75 .top4 .bottom4}
+<img src="../tikz/convolution1d.svg" class="top4 bottom4 width75 center">
 
 取$f[i] = x_i$，$g[-2] = w_3$，$g[-1] = w_2$，$g[0] = w_1$，其余为零
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     a_n = x_n w_1 + x_{n+1} w_2 + x_{n+2} w_3 = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m] = (f \otimes g) [n]
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -923,7 +911,7 @@ $$
 
 针对输入是矩阵的情形
 
-@import "../tikz/convolution2d.svg" {.center .width75 .top3 .bottom4}
+<img src="../tikz/convolution2d.svg" class="top3 bottom4 width75 center">
 
 深色区域称为对应输出神经元的<span class="blue">感受野</span> (receptive field)
 
@@ -977,7 +965,7 @@ $$
 
 - 最大汇聚 (maximum pooling)：取区域内神经元最大值，<span class="blue">拥有一定的平移不变性</span>
 
-@import "../tikz/pooling-max.svg" {.center .width50 .top3 .bottom3}
+<img src="../tikz/pooling-max.svg" class="top3 bottom3 width50 center">
 
 - 平均汇聚 (mean pooling)：取区域内神经元平均值
 
@@ -1005,15 +993,15 @@ $$
 
 <!-- slide data-notes="" -->
 
-##### 经典网络 <span style="font-weight:900">LeNet-5</span>
+##### 经典网络 LeNet-5
 
 ---
 
-@import "../tikz/lenet.svg" {.center .width90 .top10}
+<img src="../tikz/lenet.svg" class="center width90 top10">
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">LeNet-5</span> 手写数字识别
+##### LeNet-5 手写数字识别
 
 ---
 
@@ -1029,7 +1017,7 @@ $$
 
 @import "../python/resnet50-reuse.py" {.line-numbers .top-1}
 
-@import "../img/tj/tj.jpg" {.height25 .width25 .right4 .lefta .top-30per}
+<img src="../img/tj/tj.jpg" class="height25 width25 right4 lefta top-30per">
 
 <!-- slide data-notes="" -->
 
@@ -1048,17 +1036,17 @@ $$
 
 根据条件概率公式
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     p(\xv_T, \ldots, \xv_1) = p(\xv_T | \xv_{T-1}, \ldots, \xv_1) \cdots p(\xv_3 | \xv_2, \xv_1) ~ p(\xv_2 | \xv_1) ~ p(\xv_1)
-\end{align*}
-$$
+\end{align}
+</p>
 
 引入马尔可夫假设：当前词出现的概率只依赖于前$n - 1$个词
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">n-gram</span> 统计语言模型
+##### n-gram 统计语言模型
 
 ---
 
@@ -1122,11 +1110,11 @@ $4$个词的滑动窗口，词向量维度$d = 5$，隐藏层神经元个数$13$
 
 给定序列$\xv_1, \ldots, \xv_T$，循环神经网络更新为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \av_t = h(\class{yellow}{\Uv \av_{t-1}} + \Wv \xv_t + \bv), ~ \av_0 = \zerov
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="bottom-3"></div>
 
@@ -1134,9 +1122,9 @@ $$
 
 循环神经网络隐藏层神经元存在自指，时间维度上权值共享
 
-@import "../tikz/rnn-simple.svg" {.center .width75 .top2}
+<img src="../tikz/rnn-simple.svg" class="center width75 top2">
 
-@import "../tikz/rnn.svg" {.width26 .right4 .lefta .top-56per}
+<img src="../tikz/rnn.svg" class="width26 right4 lefta top-56per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1144,28 +1132,22 @@ $$
 
 ---
 
-<div class="top2"></div>
-
-$$
-\begin{align*}
+<p>
+\begin{align}
     \zv_t & = \class{yellow}{\Uv \av_{t-1}} + \Wv \xv_t + \bv \\
     \av_t & = h(\zv_t)
-\end{align*}
-$$
-
-<div class="bottom-2"></div>
+\end{align}
+</p>
 
 循环神经网络的更新可以看成一个<span class="blue">动力系统</span>，因此隐藏层的输出$\av_t$在很多文献上也称为<span class="blue">状态</span> (state)
 
 梯度下降就是在用 (前向) 欧拉法离散地求解动力系统
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \wv_{t+1} = \wv_t - \eta f'(\wv_t) \Longrightarrow \frac{\wv_{t+1} - \wv_t}{\eta} = - f'(\wv_t) \Longrightarrow \dot{\wv} = - f'(\wv)
-\end{align*}
-$$
-
-<div class="bottom-2"></div>
+\end{align}
+</p>
 
 Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f'(\wv)$
 
@@ -1181,22 +1163,22 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 引入函数
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \ec(t) & = t (f(\wv) - f^\star) + \frac{1}{2} \| \wv - \wv^\star \|_2^2 \\
     \ec'(t) & = f(\wv) - f^\star + t \dot{\wv}^\top f'(\wv) + \dot{\wv}^\top (\wv - \wv^\star) \\
     & = - \|f'(\wv)\|_2^2 + f(\wv) - f^\star - f'(\wv)^\top (\wv - \wv^\star) \\
     & = - \|f'(\wv)\|_2^2 + f(\wv) + f'(\wv)^\top (\wv^\star - \wv) - f^\star \leq 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 根据$\ec$单调下降可得梯度下降的收敛率
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     f(\wv) - f^\star \leq \frac{\ec(t)}{t} \leq \frac{\ec(0)}{t} = \frac{\| \wv_0 - \wv^\star \|_2^2}{2t} = O \left( \frac{1}{t} \right)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -1213,11 +1195,11 @@ $$
 - 序列的最终表示$\av_T$输入给分类器$g$进行分类：$\hat{y} = g(\av_T)$
 - 将整个序列的平均状态$\av$输入给分类器$g$进行分类：$\hat{y} = g(\av)$
 
-@import "../tikz/seq2class.svg" {.center .width80 .top6}
+<img src="../tikz/seq2class.svg" class="center width80 top6">
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">IMDB</span> 影评情感分析
+##### IMDB 影评情感分析
 
 ---
 
@@ -1233,13 +1215,13 @@ $$
 
 输入$\xv_1, \ldots, \xv_T$，同步输出$\yhat_1, \ldots, \yhat_T$，词性标注、股市预测
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \hat{y}_t = g(\av_t), ~ \forall t \in [T]
-\end{align*}
-$$
+\end{align}
+</p>
 
-@import "../tikz/seq2seq-syn.svg" {.center .width70 .top4}
+<img src="../tikz/seq2seq-syn.svg" class="center width70 top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1251,15 +1233,15 @@ $$
 
 输入$\xv_1, \ldots, \xv_T$，输出$\yvhat_1, \ldots, \yvhat_S$，无需同步输出和保持相同长度，机器翻译、问答系统、图像描述
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \av_t & = h_1 (\av_{t-1}, \xv_t), ~ \forall t \in [T] \\
     \av_{T+t} & = h_2 (\av_{T+t-1}, \yvhat_{t-1}), ~ \forall t \in [S] \\
     \yvhat_t & = g(\av_{T+t}), ~ \forall t \in [S]
-\end{align*}
-$$
+\end{align}
+</p>
 
-@import "../tikz/seq2seq-asyn.svg" {.center .width80 .top-6}
+<img src="../tikz/seq2seq-asyn.svg" class="center width80 top-6">
 
 <!-- slide data-notes="" -->
 
@@ -1269,23 +1251,23 @@ $$
 
 对$\zv = \Wv \av + \bv$有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial z_j}{\partial \Wv} = \av \ev_j^\top, \quad \frac{\partial \zv}{\partial \bv} = \Iv, \quad \frac{\partial \zv}{\partial \av} = \Wv
-\end{align*}
-$$
+\end{align}
+</p>
 
 <br>
 
 同理对$\zv_k = \Uv \av_{k-1} + \Wv \xv_k + \bv$有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
-\end{align*}
-$$
+\end{align}
+</p>
 
-随时间反向传播 (<u>b</u>ack<u>p</u>ropagation <u>t</u>hrough <u>t</u>ime, BPTT)：
+随时间反向传播 (<span class="blue">b</span>ack<span class="blue">p</span>ropagation <span class="blue">t</span>hrough <span class="blue">t</span>ime, BPTT)：
 
 - 循环神经网络可看作展开的多层前馈网络，每层对应每个时刻
 - 所有层参数共享，因此参数的真实梯度是所有“展开层”的梯度之和
@@ -1298,21 +1280,21 @@ $$
 
 对$\zv_k = \Uv \av_{k-1} + \Wv \xv_k + \bv$有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
-\end{align*}
-$$
+\end{align}
+</p>
 
 记时刻$t$损失为$\lc_t$，总损失$\lc = \sum_{t \in [T]} \lc_t$，$\deltav_{t,k}^\top = \partial \lc_t / \partial \zv_k$为时刻$t$的损失对时刻$k \in [t]$隐藏层输入的导数
 
 注意$\av_k = h(\zv_k)$，由链式法则
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \deltav_{t,k}^\top = \frac{\partial \lc_t}{\partial \zv_k} = \frac{\partial \lc_t}{\partial \zv_{k+1}} \frac{\partial \zv_{k+1}}{\partial \av_k} \frac{\partial \av_k}{\partial \zv_k} = \deltav_{t,k+1}^\top \Uv ~  \diag (h'(\zv_k))
-\end{align*}
-$$
+\end{align}
+</p>
 
 依然有反向传播的结构
 
@@ -1324,21 +1306,21 @@ $$
 
 对$\zv_k = \Uv \av_{k-1} + \Wv \xv_k + \bv$有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
-\end{align*}
-$$
+\end{align}
+</p>
 
 记时刻$t$损失为$\lc_t$，总损失$\lc = \sum_{t \in [T]} \lc_t$，$\deltav_{t,k}^\top = \partial \lc_t / \partial \zv_k$为时刻$t$的损失对时刻$k \in [t]$隐藏层输入的导数
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \frac{\partial \lc}{\partial \Uv} & = \sum_{t \in [T]} \sum_{k \in [t]} \sum_j \frac{\partial \lc_t}{\partial [\zv_k]_j} \frac{\partial [\zv_k]_j}{\partial \Uv} = \sum_{t \in [T]} \sum_{k \in [t]} \av_{k-1} \deltav_{t,k}^\top \\
     \frac{\partial \lc}{\partial \Wv} & = \sum_{t \in [T]} \sum_{k \in [t]} \sum_j \frac{\partial \lc_t}{\partial [\zv_k]_j} \frac{\partial [\zv_k]_j}{\partial \Wv} = \sum_{t \in [T]} \sum_{k \in [t]} \xv_k \deltav_{t,k}^\top \\
     \frac{\partial \lc}{\partial \bv} & = \sum_{t \in [T]} \sum_{k \in [t]} \frac{\partial \lc_t}{\partial \zv_k} \frac{\partial \zv_k}{\partial \bv} = \deltav_{t,k}^\top
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -1348,18 +1330,18 @@ $$
 
 设$t > k$，反向传播公式经递推有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \deltav_{t,k}^\top = \deltav_{t,k+1}^\top \Uv ~  \diag (h'(\zv_k))  = \cdots = \deltav_{t,t} ~ \Pi_{\tau=k}^{t-1} \left( \Uv ~ \diag (h'(\zv_\tau)) \right)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
 定义$\gamma = \| \Uv ~ \diag (h'(\zv_\tau)) \|$
 
-- 若$\gamma > 1$，当$t - k \rightarrow \infty$时，出现梯度爆炸
-- 若$\gamma < 1$，当$t - k \rightarrow \infty$时，出现梯度消失
+- 若$\gamma > 1$，当$t - k \to \infty$时，出现梯度爆炸
+- 若$\gamma < 1$，当$t - k \to \infty$时，出现梯度消失
 
 <div class="top2"></div>
 
@@ -1377,23 +1359,23 @@ $$
 
 有选择地加入新信息，同时有选择地遗忘之前累积的信息
 
-- 长短期记忆 (<u>l</u>ong <u>s</u>hort-<u>t</u>erm <u>m</u>emory, LSTM) 网络
-- 门控循环单元 (<u>g</u>ated <u>r</u>ecurrent <u>u</u>nit, GRU) 网络
+- 长短期记忆 (<span class="blue">l</span>ong <span class="blue">s</span>hort-<span class="blue">t</span>erm <span class="blue">m</span>emory, LSTM) 网络
+- 门控循环单元 (<span class="blue">g</span>ated <span class="blue">r</span>ecurrent <span class="blue">u</span>nit, GRU) 网络
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">LSTM</span> 网络
+##### LSTM 网络
 
 ---
 
 引入一个新的内部状态$\cv_t$专门进行线性的循环信息传递，同时输出信息给隐藏层的外部状态$\av_t$
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \cv_t & = \fv_t \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t \\
     \av_t & = \ov_t \odot \tanh(\cv_t)
-\end{align*}
-$$
+\end{align}
+</p>
 
 其中$\odot$为向量元素乘积
 
@@ -1404,22 +1386,22 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">LSTM</span> 网络
+##### LSTM 网络
 
 ---
 
-@import "../tikz/lstm.svg" {.center .width80 .top5}
+<img src="../tikz/lstm.svg" class="center width80 top5">
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">LSTM</span> 网络
+##### LSTM 网络
 
 ---
 
 LSTM 网络的紧凑形式
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \begin{bmatrix}
         \widetilde{\cv}_t \\ \ov_t \\ \iv_t \\ \fv_t
     \end{bmatrix} & = \begin{bmatrix}
@@ -1429,8 +1411,8 @@ $$
     \end{bmatrix} + \bv \right) \\
     \cv_t & = \fv_t \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t \\
     \av_t & = \ov_t \odot \tanh(\cv_t)
-\end{align*}
-$$
+\end{align}
+</p>
 
 循环神经网络中的隐状态$\av$存储了历史信息，可以看作一种记忆，但它每个时刻都会被重写，因此只是一种短期记忆
 
@@ -1438,7 +1420,7 @@ LSTM 中的记忆单元$\cv$可以在某个时刻捕捉到关键信息将其保�
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">LSTM</span> 网络变种
+##### LSTM 网络变种
 
 ---
 
@@ -1448,35 +1430,35 @@ LSTM 中的记忆单元$\cv$可以在某个时刻捕捉到关键信息将其保�
 
 peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状态$\av_{t−1}$，也依赖于上一个时刻的记忆单元$\cv_{t−1}$
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \fv_t & = \sigma(\Wv_f \xv_t + \Uv_f \av_{t−1} + \Vv_f \cv_{t−1} + \bv_f) \\
     \iv_t & = \sigma(\Wv_i \xv_t + \Uv_i \av_{t−1} + \Vv_i \cv_{t−1} + \bv_i) \\
     \ov_t & = \sigma(\Wv_o \xv_t + \Uv_o \av_{t−1} + \Vv_o \cv_{t−1} + \bv_o)
-\end{align*}
-$$
+\end{align}
+</p>
 
 耦合输入门和遗忘门：LSTM 中的输入门和遗忘门有些互补关系，同时用两个门存在冗余
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \cv_t = (\onev - \iv_t) \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
-##### <span style="font-weight:900">GRU</span> 网络
+##### GRU 网络
 
 ---
 
 不引入额外的记忆单元，更新方式为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \av_t = \zv_t \odot \av_{t−1} + (\onev − \zv_t) \odot \widetilde{\av}_t
-\end{align*}
-$$
+\end{align}
+</p>
 
 - $\zv_t = \sigma(\Wv_z \xv_t + \Uv_z \av_{t−1} + \bv_z) \in (0,1)$为更新门
 - $\widetilde{\av}_t = \tanh(\Wv_a \xv_t + \Uv_a (\rv_t \odot \av_{t−1}) + \bv_a)$表示当前时刻的候选状态
@@ -1492,11 +1474,11 @@ $$
 
 <!-- slide vertical=true data-notes="" -->
 
-##### <span style="font-weight:900">GRU</span> 网络
+##### GRU 网络
 
 ---
 
-@import "../tikz/gru.svg" {.center .width80 .top5}
+<img src="../tikz/gru.svg" class="center width80 top5">
 
 <!-- slide data-notes="" -->
 
@@ -1504,11 +1486,11 @@ $$
 
 ---
 
-增加同一时刻网络输入到输出之间的路径$\xv_t \rightarrow \hat{y}_t$，从而增强循环神经网络的能力
+增加同一时刻网络输入到输出之间的路径$\xv_t \to \hat{y}_t$，从而增强循环神经网络的能力
 
 堆叠循环神经网络：将多个循环网络堆叠起来
 
-@import "../tikz/srnn.svg" {.center .width60 .top2}
+<img src="../tikz/srnn.svg" class="center width60 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1516,13 +1498,11 @@ $$
 
 ---
 
-增加同一时刻网络输入到输出之间的路径$\xv_t \rightarrow \hat{y}_t$，从而增强循环神经网络的能力
-
-<br>
+增加同一时刻网络输入到输出之间的路径$\xv_t \to \hat{y}_t$，从而增强循环神经网络的能力
 
 双向循环神经网络：两层循环神经网络信息传递方向不同
 
-@import "../tikz/birnn.svg" {.center .width60 .top2}
+<img src="../tikz/birnn.svg" class="center width60 top2">
 
 <!-- slide data-notes="" -->
 
@@ -1532,13 +1512,13 @@ $$
 
 <span class="blue">编码器-解码器</span> (encoder-decoder) 模型
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \av_{T+1} = f(\xv_1, \ldots, \xv_T), \quad \yv_s = g(\av_{T+1}, \yv_1, \ldots, \yv_{s-1}), ~ s \in [S]
-\end{align*}
-$$
+\end{align}
+</p>
 
-@import "../tikz/seq2seq-asyn.svg" {.center .width80 .top4 .bottom6}
+<img src="../tikz/seq2seq-asyn.svg" class="center width80 top4 bottom6">
 
 问题：生成每个目标$\yv_s$时，使用的都是相同的语义编码$\av_{T+1}$
 
@@ -1552,15 +1532,15 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 
 每次输出，从输入序列中遴选信息，使用不同的语义编码
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \cv_1 & = f_1(\xv_1, \ldots, \xv_T), \quad \yv_1 = g(\cv_1) \\
     \cv_2 & = f_2(\xv_1, \ldots, \xv_T), \quad \yv_2 = g(\cv_2, \yv_1) \\
     \cv_3 & = f_3(\xv_1, \ldots, \xv_T), \quad \yv_3 = g(\cv_3, \yv_1, \yv_2) \\
     & \qquad \vdots \\
     \cv_S & = f_S(\xv_1, \ldots, \xv_T), \quad \yv_S = g(\cv_S, \yv_1, \yv_2, \ldots, \yv_{S-1}) \\
-\end{align*}
-$$
+\end{align}
+</p>
 
 引入一个和当前输出相关的查询$\qv$，通过打分函数$s(\cdot, \cdot)$计算每个输入与查询之间的相关性，即注意力，据此计算语义编码$\cv$
 
@@ -1584,11 +1564,11 @@ $$
 
 计算$\att(\Xv, \qv)$：依据<span class="blue">注意力值</span>加权平均，例如
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \att(\Xv, \qv) = \sum_{t \in [T]} \class{yellow}{\alpha_t} \xv_t, \quad \class{yellow}{\alpha_t} = \softmax (s(\xv_t, \qv)) = \frac{\exp(s(\xv_t, \qv))}{\sum_{i \in [T]} \exp(s(\xv_i, \qv))}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1596,7 +1576,7 @@ $$
 
 ---
 
-@import "../tikz/attention.svg" {.center .width75 .top2}
+<img src="../tikz/attention.svg" class="center width75 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1622,11 +1602,11 @@ $$
 
 <div class="bottom2"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \att((\Kv, \Vv), \qv) = \sum_{t \in [T]} \class{yellow}{\alpha_t} \vv_t, \quad \class{yellow}{\alpha_t} = \frac{\exp(s(\kv_t, \qv))}{\sum_{i \in [T]} \exp(s(\kv_i, \qv))}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1634,7 +1614,7 @@ $$
 
 ---
 
-@import "../tikz/attention-kv.svg" {.center .width75 .top2}
+<img src="../tikz/attention-kv.svg" class="center width75 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1644,11 +1624,11 @@ $$
 
 <span class="blue">多头注意力</span>：多个查询并行$\Qv = [\qv_1, \ldots, \qv_M]$，选取多组信息
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \att((\Kv, \Vv), \Qv) = \mlp(\att((\Kv, \Vv), \qv_1) \oplus \cdots \oplus \att((\Kv, \Vv), \qv_M))
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="bottom-2"></div>
 
@@ -1676,7 +1656,7 @@ $$
 
 指针网络：将注意力分布作为指出相关信息位置的软性指针
 
-@import "../tikz/pointer.svg" {.center .width80 .top3}
+<img src="../tikz/pointer.svg" class="center width80 top3">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1698,13 +1678,13 @@ $$
 
 <div class="bottom2"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \Xv & = [\xv_1, \ldots, \xv_T] \in \rb^{d \times T} \\
     \Qv & = \Wv_Q \Xv, \quad \Kv = \Wv_K \Xv, \quad \Vv = \Wv_V \Xv \\
     \cv_i & = \att((\Kv, \Vv), \qv_i) = \sum_{t \in [T]} \alpha_{it} \vv_t = \sum_{t \in [T]} \softmax(s(\qv_i, \kv_t)) \vv_t
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="灵材：可免费获取的 MNIST 有 10 类，ImageNet 则有上千类，丹师是从药童做起，多模态：混合灵草和妖兽 <br><br> 丹方里最重要的是灵阵，控制如何抽取和凝结灵材中的灵性。灵阵中有若干节点，然后通过回路连接这些节点。灵材沿着回路游走经过每个节点处进行一步一步的提纯 <br><br> 半自动 不用你手动求导 做反向传播 更高端的可以使用多个丹炉同时开火炼制一枚灵丹 tf boy pt boy <br><br> 手中富裕的买 囊中羞涩的租" -->
 
