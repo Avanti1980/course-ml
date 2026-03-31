@@ -12,11 +12,11 @@ digraph g {
         fontname="Ysabeau, LXGWSong"
         label="增强品质"
 
-        灵材
+        图属性 时间属性 空间属性
 
         node [fontcolor="#268bd2"]
 
-        空间属性 时间属性 图属性
+        灵材
     }
 
     subgraph cluster_2 {
@@ -26,11 +26,11 @@ digraph g {
         fontname="Ysabeau, LXGWSong"
         label="设计灵阵"
 
-        丹方
+        图类 循环类 卷积类
 
         node [fontcolor="#268bd2"]
 
-        卷积类 循环类 图类
+        丹方
     }
 
     subgraph cluster_3 {
@@ -40,11 +40,11 @@ digraph g {
         fontname="Ysabeau, LXGWSong"
         label="精通用法"
 
-        丹炉
+        JAX PyTorch TensorFlow
 
         node [fontcolor="#268bd2"]
 
-        TensorFlow PyTorch JAX
+        丹炉
     }
 
     subgraph cluster_4 {
@@ -54,11 +54,11 @@ digraph g {
         fontname="Ysabeau, LXGWSong"
         label="氪金"
 
-        真火
+        "华为 昇腾" "谷歌 TPU" "英伟达 GPU"
 
         node [fontcolor="#268bd2"]
 
-        "售 核弹厂" "租 阿里云" "租 华为云"
+        真火
     }
 
     subgraph cluster_5 {
@@ -68,11 +68,11 @@ digraph g {
         fontname="Ysabeau, LXGWSong"
         label="控制调节"
 
-        炼制
+        提早停止 随机丢弃 层归一化
 
         node [fontcolor="#268bd2"]
 
-        学习率预热 随机丢弃 提早停止
+        炼制
     }
 
     灵材 -> 丹方 -> 丹炉 -> 真火 -> 炼制

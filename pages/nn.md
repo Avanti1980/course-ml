@@ -172,12 +172,17 @@ presentation:
 
 <p>
 \begin{align}
-    & \tanh(z) = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)} = \frac{1 - \exp(-2z)}{1 + \exp(-2z)} = 2 \sigma(2z) - 1 \\[2pt]
+    \tanh(z) & = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)} = \frac{1 - \exp(-2z)}{1 + \exp(-2z)} = 2 \sigma(2z) - 1 \\[2pt]
     & = \begin{cases}
         1, & z \to \infty \\
         -1, & z \to -\infty
-    \end{cases} \\[10pt]
-    & \nabla \tanh(z) = 4 \sigma(2z) (1 - \sigma(2z)) \le 1
+    \end{cases}
+\end{align}
+</p>
+
+<p>
+\begin{align}
+    \nabla \tanh(z) = 4 \sigma(2z) (1 - \sigma(2z)) \le 1
 \end{align}
 </p>
 
@@ -459,7 +464,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 最后一层是学习器$\hat{\yv} = g(\psi(\xv); \Wv_L, \bv_L)$，对输入进行预测
 
-- 若$y \in \{ 1, -1 \} \text{或} \{ 1,0 \}$，最后一层只需$1$个神经元，采用对率激活函数
+- 若$y \in \{ 1, -1 \} 或 \{ 1,0 \}$，最后一层只需$1$个神经元，采用对率激活函数
 - 若$y \in [c]$，最后一层需$c$个神经元，采用 Softmax 激活函数
 
 <div class="top2"></div>
@@ -519,8 +524,6 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 ---
 
-整个网络$\xv = \av_0 \xrightarrow{\Wv_1,\bv_1} \zv_1 \xrightarrow{h_1} \av_1 \xrightarrow{\Wv_2,\bv_2} \cdots \xrightarrow{\Wv_L,\bv_L} \zv_L \xrightarrow{h_L} \av_L = \hat{\yv}$
-
 最后一层$\zv_L = \Wv_L ~ \av_{L-1} + \bv_L$，$\av_L = h_L (\zv_L)$，由<span class="blue">链式法则</span>有
 
 <p>
@@ -562,7 +565,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 <p>
 \begin{align}
-    & \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \underbrace{\begin{bmatrix} \zerov, \ldots, \av_{l-1}, \ldots, \zerov \end{bmatrix}}_{\text{only }\av_{l-1}\text{ at }j\text{-th column}} = \av_{l-1} \ev_j^\top \\[4pt]
+    & \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \underbrace{\begin{bmatrix} \zerov, \ldots, \av_{l-1}, \ldots, \zerov \end{bmatrix}}_{第j列为\av_{l-1}} = \av_{l-1} \ev_j^\top \\[4pt]
     & \Longrightarrow \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \av_{l-1} \sum_{j \in [n_l]} [\deltav_l]_j \ev_j^\top = \av_{l-1} \deltav_l^\top
 \end{align}
 </p>
@@ -787,8 +790,6 @@ loss, acc = model.evaluate(X, y, verbose=2)
 \end{align}
 </p>
 
-<div class="top-4"></div>
-
 由链式法则有
 
 <p>
@@ -877,7 +878,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 \end{align}
 </p>
 
-### 卷积神经网络：局部连接，权值共享
+<p class="center top6">卷积神经网络：局部连接，权值共享</p>
 
 <!-- slide data-notes="" -->
 
@@ -1025,7 +1026,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 对于给定序列$\xv_1, \ldots, \xv_T$，计算联合概率$p(\xv_T, \ldots, \xv_1)$
 
-- $p(\text{make America great again}) > p(\text{great America make again}) ?$，判别哪个序列更像人话
+- $p(\mathrm{make America great again}) > p(\mathrm{great America make again}) ?$，判别哪个序列更像人话
 - 预测下一个词：hello [ world | China | Wuhan | HUST ]？
 
 <div class="bottom4"></div>
@@ -1114,8 +1115,6 @@ $4$个词的滑动窗口，词向量维度$d = 5$，隐藏层神经元个数$13$
 \end{align}
 </p>
 
-<div class="bottom-3"></div>
-
 其中$h$是一个非线性激活函数
 
 循环神经网络隐藏层神经元存在自指，时间维度上权值共享
@@ -1163,7 +1162,12 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 <p>
 \begin{align}
-    \ec(t) & = t (f(\wv) - f^\star) + \frac{1}{2} \| \wv - \wv^\star \|_2^2 \\
+    \ec(t) = t (f(\wv) - f^\star) + \frac{1}{2} \| \wv - \wv^\star \|_2^2
+\end{align}
+</p>
+
+<p>
+\begin{align}
     \ec'(t) & = f(\wv) - f^\star + t \dot{\wv}^\top f'(\wv) + \dot{\wv}^\top (\wv - \wv^\star) \\
     & = - \|f'(\wv)\|_2^2 + f(\wv) - f^\star - f'(\wv)^\top (\wv - \wv^\star) \\
     & = - \|f'(\wv)\|_2^2 + f(\wv) + f'(\wv)^\top (\wv^\star - \wv) - f^\star \leq 0
@@ -1186,7 +1190,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 序列到类别的模式
 
-输入$\xv_1, \ldots, \xv_T$，输出$\yhat \in [c]$，文本分类、情感分析
+输入$\xv_1, \ldots, \xv_T$，输出$\yh \in [c]$，文本分类、情感分析
 
 两种模式：
 
@@ -1211,7 +1215,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 同步的序列到序列模式
 
-输入$\xv_1, \ldots, \xv_T$，同步输出$\yhat_1, \ldots, \yhat_T$，词性标注、股市预测
+输入$\xv_1, \ldots, \xv_T$，同步输出$\yh_1, \ldots, \yh_T$，词性标注、股市预测
 
 <p>
 \begin{align}
@@ -1229,13 +1233,13 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 异步的序列到序列模式，也称为<span class="blue">编码器-解码器</span>模型
 
-输入$\xv_1, \ldots, \xv_T$，输出$\yvhat_1, \ldots, \yvhat_S$，无需同步输出和保持相同长度，机器翻译、问答系统、图像描述
+输入$\xv_1, \ldots, \xv_T$，输出$\yvh_1, \ldots, \yvh_S$，无需同步输出和保持相同长度，机器翻译、问答系统、图像描述
 
 <p>
 \begin{align}
     \av_t & = h_1 (\av_{t-1}, \xv_t), ~ \forall t \in [T] \\
-    \av_{T+t} & = h_2 (\av_{T+t-1}, \yvhat_{t-1}), ~ \forall t \in [S] \\
-    \yvhat_t & = g(\av_{T+t}), ~ \forall t \in [S]
+    \av_{T+t} & = h_2 (\av_{T+t-1}, \yvh_{t-1}), ~ \forall t \in [S] \\
+    \yvh_t & = g(\av_{T+t}), ~ \forall t \in [S]
 \end{align}
 </p>
 
@@ -1334,8 +1338,6 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 \end{align}
 </p>
 
-<div class="top-2"></div>
-
 定义$\gamma = \| \Uv ~ \diag (h'(\zv_\tau)) \|$
 
 - 若$\gamma > 1$，当$t - k \to \infty$时，出现梯度爆炸
@@ -1424,7 +1426,7 @@ LSTM 中的记忆单元$\cv$可以在某个时刻捕捉到关键信息将其保�
 
 无遗忘门的 LSTM 网络：$\cv_t = \fv_t \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t$，记忆饱和
 
-<div class="bottom4"></div>
+<div class="top2"></div>
 
 peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状态$\av_{t−1}$，也依赖于上一个时刻的记忆单元$\cv_{t−1}$
 
@@ -1457,6 +1459,8 @@ peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状�
     \av_t = \zv_t \odot \av_{t−1} + (\onev − \zv_t) \odot \widetilde{\av}_t
 \end{align}
 </p>
+
+<div class="bottom2"></div>
 
 - $\zv_t = \sigma(\Wv_z \xv_t + \Uv_z \av_{t−1} + \bv_z) \in (0,1)$为更新门
 - $\widetilde{\av}_t = \tanh(\Wv_a \xv_t + \Uv_a (\rv_t \odot \av_{t−1}) + \bv_a)$表示当前时刻的候选状态
@@ -1628,8 +1632,6 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 \end{align}
 </p>
 
-<div class="bottom-2"></div>
-
 其中$\oplus$表示向量拼接
 
 <div class="bottom2"></div>
@@ -1696,6 +1698,6 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 
 一个优秀丹师的自我修养：
 
-- 灵材品质差要会手动增强，旋转、翻转、缩放、平移、加噪声
+- 灵材品质差要会自己手搓，旋转、翻转、缩放、平移、加噪声
 - 因材制宜设计灵阵，空间灵材用卷积灵阵，时间灵材用循环灵阵，...
 - 仔细观察丹炉状态，防止爆炉，若仙丹成色不好则改进配置重新来过
