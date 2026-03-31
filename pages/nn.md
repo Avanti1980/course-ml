@@ -139,7 +139,7 @@ presentation:
 
 ---
 
-将$\rb${==挤压==}到$[0,1]$，输出拥有{==概率==}意义：
+将$\rb$<span class="blue">挤压</span>到$[0,1]$，输出拥有<span class="blue">概率</span>意义：
 
 <p>
 \begin{align}
@@ -152,7 +152,7 @@ presentation:
 
 <div class="top2"></div>
 
-对率函数连续可导，在{==零处导数最大==}
+对率函数连续可导，在<span class="blue">零处导数最大</span>
 
 <p>
 \begin{align}
@@ -168,7 +168,7 @@ presentation:
 
 ---
 
-将$\rb${==挤压==}到$[-1,1]$，{==输出零中心化==}，对率函数的放大平移
+将$\rb$<span class="blue">挤压</span>到$[-1,1]$，<span class="blue">输出零中心化</span>，对率函数的放大平移
 
 <p>
 \begin{align}
@@ -205,7 +205,7 @@ presentation:
 
 - 计算只涉及加法、乘法和比较操作，非常高效
 - 生物学解释：单侧抑制，宽兴奋边界，稀疏兴奋
-- 在$z > 0$时导数恒为$1$，缓解了{==梯度消失==}问题
+- 在$z > 0$时导数恒为$1$，缓解了<span class="blue">梯度消失</span>问题
 
 <div class="top2"></div>
 
@@ -327,8 +327,8 @@ Swish 函数是一种自门控 (self-gated) 激活函数：
 
 其中$\beta$是一个可学习的参数
 
-- 当$\sigma (\beta z)$接近于$1$时，门处于{==开==}状态，激活函数的输出近似于$z$本身
-- 当$\sigma (\beta z)$接近于$0$时，门处于{==关==}状态，激活函数的输出近似于$0$
+- 当$\sigma (\beta z)$接近于$1$时，门处于<span class="blue">开</span>状态，激活函数的输出近似于$z$本身
+- 当$\sigma (\beta z)$接近于$0$时，门处于<span class="blue">关</span>状态，激活函数的输出近似于$0$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -498,7 +498,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 \end{align}
 </p>
 
-其中损失$\ell (\yv, \hat{\yv})$的计算为{==正向传播==}
+其中损失$\ell (\yv, \hat{\yv})$的计算为<span class="blue">正向传播</span>
 
 - 样本从输入层进入，经隐藏层逐层传播到最后输出层
 - $\hat{\yv} = \av_L = h_L (\zv_L)$是对样本$\xv$的预测，据此计算$\ell (\yv, \hat{\yv}) = \ell (\yv, h_L (\zv_L))$
@@ -521,7 +521,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 整个网络$\xv = \av_0 \xrightarrow{\Wv_1,\bv_1} \zv_1 \xrightarrow{h_1} \av_1 \xrightarrow{\Wv_2,\bv_2} \cdots \xrightarrow{\Wv_L,\bv_L} \zv_L \xrightarrow{h_L} \av_L = \hat{\yv}$
 
-最后一层$\zv_L = \Wv_L ~ \av_{L-1} + \bv_L$，$\av_L = h_L (\zv_L)$，由{==链式法则==}有
+最后一层$\zv_L = \Wv_L ~ \av_{L-1} + \bv_L$，$\av_L = h_L (\zv_L)$，由<span class="blue">链式法则</span>有
 
 <p>
 \begin{align}
@@ -530,9 +530,9 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 \end{align}
 </p>
 
-其中$\deltav_L^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_L \in \rb^{n_L}$为第$L$层的{==误差项==}，可直接求解
+其中$\deltav_L^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_L \in \rb^{n_L}$为第$L$层的<span class="blue">误差项</span>，可直接求解
 
-类似的，对第$l$层$\zv_l = \Wv_l \av_{l-1} + \bv_l$，$\av_l = h_l (\zv_l)$，由{==链式法则==}有
+类似的，对第$l$层$\zv_l = \Wv_l \av_{l-1} + \bv_l$，$\av_l = h_l (\zv_l)$，由<span class="blue">链式法则</span>有
 
 <p>
 \begin{align}
@@ -540,7 +540,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 \end{align}
 </p>
 
-其中$\deltav_l^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_l \in \rb^{n_l}$为第$l$层的{==误差项==}
+其中$\deltav_l^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_l \in \rb^{n_l}$为第$l$层的<span class="blue">误差项</span>
 
 <!-- slide data-notes="" -->
 
@@ -548,7 +548,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 ---
 
-{==反向传播==} (<span class="blue">b</span>ack<span class="blue">p</span>ropagation, BP)：前一层误差由后一层得到
+<span class="blue">反向传播</span> (<span class="blue">b</span>ack<span class="blue">p</span>ropagation, BP)：前一层误差由后一层得到
 
 <p>
 \begin{align}
@@ -576,9 +576,9 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 输入：训练集，验证集，相关超参数
 
 1. 随机初始化$\Wv$和$\bv$
-2. {==while==} 神经网络在验证集上的精度仍在上升
+2. <span class="blue">while</span> 神经网络在验证集上的精度仍在上升
 3. &emsp;&emsp;对训练集中的样本随机重排序
-4. &emsp;&emsp;{==for==} $i = 1, \ldots, m$ {==do==}
+4. &emsp;&emsp;<span class="blue">for</span> $i = 1, \ldots, m$ <span class="blue">do</span>
 5. &emsp;&emsp;&emsp;&emsp;获取样本$(\xv_i, \yv_i)$
 6. &emsp;&emsp;&emsp;&emsp;正向传播，依次计算$\av_l = h_l(\Wv_l \av_{l-1} + \bv_l)$，最后得到$\ell (\yv_i, \hat{\yv}_i)$
 7. &emsp;&emsp;&emsp;&emsp;反向传播，依次计算误差项$\deltav_l^\top = \deltav_{l+1}^\top \Wv_{l+1} \diag (h_l'(\zv_l))$
@@ -771,9 +771,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 \end{align}
 </p>
 
-<div class="top-4"></div>
-
-我的批注 低层输入可以{==恒等==}传播到任意高层
+<p class="comments"> 低层输入可以<span class="blue">恒等</span>传播到任意高层</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -781,7 +779,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-低层输入可以{==恒等==}传播到任意高层
+低层输入可以<span class="blue">恒等</span>传播到任意高层
 
 <p>
 \begin{align}
@@ -801,9 +799,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 \end{align}
 </p>
 
-<div class="top-4"></div>
-
-我的批注 高层误差可以{==恒等==}传播到任意低层，梯度消失得以缓解
+<p class="comments"> 高层误差可以<span class="blue">恒等</span>传播到任意低层，梯度消失得以缓解</p>
 
 <!-- slide data-notes="" -->
 
@@ -973,7 +969,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 <div class="top4"></div>
 
-我的批注 将区域下采样为一个值，减少网络参数，降低模型复杂度
+<p class="comments"> 将区域下采样为一个值，减少网络参数，降低模型复杂度</p>
 
 <!-- slide data-notes="" -->
 
