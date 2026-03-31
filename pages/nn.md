@@ -715,6 +715,8 @@ loss, acc = model.evaluate(X, y, verbose=2)
 # 32/32 - 0s - loss: 0.0121 - accuracy: 1.0000 - 93ms/epoch - 3ms/step
 ```
 
+<div class="top2"></div>
+
 <!-- slide vertical=true data-notes="" -->
 
 ##### 用TensorFlow实现
