@@ -52,7 +52,7 @@ digraph g {
         fontcolor="#586e75"
         style="dashed"
         fontname="Ysabeau, LXGWSong"
-        label="氪金"
+        label="氪金充值"
 
         "华为 昇腾" "谷歌 TPU" "英伟达 GPU"
 
