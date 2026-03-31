@@ -17,15 +17,16 @@ presentation:
 @import "../css/table.css"
 @import "../css/main.css"
 @import "../plugin/zoom/zoom.js"
+@import "../plugin/notes/notes.js"
 @import "../plugin/customcontrols/plugin.js"
 @import "../plugin/customcontrols/style.css"
 @import "../plugin/chalkboard/plugin.js"
 @import "../plugin/chalkboard/style.css"
-@import "../plugin/menu/menu.js"
+@import "../plugin/reveal.js-menu/menu.js"
 @import "../js/anychart/anychart-core.min.js"
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
-@import "../js/anychart/venn-ml.js"
+@import "../js/anychart/venn-entropy.js"
 
 <!-- slide data-notes="" -->
 
@@ -39,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -91,10 +92,10 @@ presentation:
 - $L$：神经网络的层数
 - $n_l$：第$l$层神经元的个数
 - $h_l(\cdot)$：第$l$层的激活函数
-- $\Wv_l \in \Rbb^{n_l \times n_{l-1}}$：第$l-1$层到第$l$层的权重矩阵
-- $\bv_l \in \Rbb^{n_l}$：第$l$层的偏置 (截距)
-- $\zv_l \in \Rbb^{n_l}$：第$l$层神经元的输入
-- $\av_l \in \Rbb^{n_l}$：第$l$层神经元的输出
+- $\Wv_l \in \rb^{n_l \times n_{l-1}}$：第$l-1$层到第$l$层的权重矩阵
+- $\bv_l \in \rb^{n_l}$：第$l$层的偏置 (截距)
+- $\zv_l \in \rb^{n_l}$：第$l$层神经元的输入
+- $\av_l \in \rb^{n_l}$：第$l$层神经元的输出
 
 <div class="top4"></div>
 
@@ -130,7 +131,7 @@ presentation:
 
 ---
 
-@import "../python/sigmoid.svg" {.width60 .center .top4}
+<img src="../python/sigmoid.svg" class="width60 center top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -138,11 +139,11 @@ presentation:
 
 ---
 
-将$\Rbb${==挤压==}到$[0,1]$，输出拥有{==概率==}意义：
+将$\rb${==挤压==}到$[0,1]$，输出拥有{==概率==}意义：
 
 $$
 \begin{align*}
-    \quad \sigma(z) = \frac{1}{1 + \exp (-z)} = \begin{cases}
+    \sigma(z) = \frac{1}{1 + \exp (-z)} = \begin{cases}
         1, & z \rightarrow \infty \\
         0, & z \rightarrow -\infty
     \end{cases}
@@ -153,7 +154,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \nabla \sigma(z) = \sigma(z) (1 - \sigma(z)) \le \left( \frac{\sigma(z) + 1 - \sigma(z)}{2} \right)^2 = \frac{1}{4}
+    \nabla \sigma(z) = \sigma(z) (1 - \sigma(z)) \le \left( \frac{\sigma(z) + 1 - \sigma(z)}{2} \right)^2 = \frac{1}{4}
 \end{align*}
 $$
 
@@ -167,11 +168,11 @@ $$
 
 ---
 
-将$\Rbb${==挤压==}到$[-1,1]$，{==输出零中心化==}，对率函数的放大平移
+将$\rb${==挤压==}到$[-1,1]$，{==输出零中心化==}，对率函数的放大平移
 
 $$
 \begin{align*}
-    \quad \tanh(z) & = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)} = \frac{1 - \exp(-2z)}{1 + \exp(-2z)} = 2 \sigma(2z) - 1 \\[2pt]
+    \tanh(z) & = \frac{\exp(z) - \exp(-z)}{\exp(z) + \exp(-z)} = \frac{1 - \exp(-2z)}{1 + \exp(-2z)} = 2 \sigma(2z) - 1 \\[2pt]
     & = \begin{cases}
         1, & z \rightarrow \infty \\
         -1, & z \rightarrow -\infty
@@ -194,7 +195,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \relu(z) = \max \{ 0, z \} = \begin{cases}
+    \relu(z) = \max \{ 0, z \} = \begin{cases}
         z & z \ge 0 \\ 0 & z < 0
     \end{cases}
 \end{align*}
@@ -225,7 +226,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \nabla_{\wv} \relu(\wv^\top \xv + b) & = \frac{\partial \relu(\wv^\top \xv + b)}{\partial (\wv^\top \xv + b)} \frac{\partial (\wv^\top \xv + b)}{\partial \wv} \\
+    \nabla_{\wv} \relu(\wv^\top \xv + b) & = \frac{\partial \relu(\wv^\top \xv + b)}{\partial (\wv^\top \xv + b)} \frac{\partial (\wv^\top \xv + b)}{\partial \wv} \\
     & = \frac{\partial \max \{ 0, \wv^\top \xv + b \}}{\partial (\wv^\top \xv + b)} \xv \\
     & = \Ibb(\wv^\top \xv + b \ge 0) \xv
 \end{align*}
@@ -245,7 +246,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \lrelu(z) & = \begin{cases}
+    \lrelu(z) & = \begin{cases}
         z & z \ge 0 \\ \gamma z & z < 0
     \end{cases} \\
     & = \max \{ 0, z \} + \gamma \min \{ 0, z \} \overset{\gamma < 1}{=} \max \{ z, \gamma z \}
@@ -260,7 +261,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \prelu(z) & = \begin{cases}
+    \prelu(z) & = \begin{cases}
         z & z \ge 0 \\ \gamma_i z & z < 0
     \end{cases} \\[4pt]
     & = \max \{ 0, z \} + \gamma_i \min \{ 0, z \}
@@ -281,7 +282,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \elu(z) & = \begin{cases}
+    \elu(z) & = \begin{cases}
         z & z \ge 0 \\ \gamma (\exp(z) - 1) & z < 0
     \end{cases} \\[4pt]
     & = \max \{ 0, z \} + \min \{ 0, \gamma (\exp(z) - 1) \}
@@ -292,7 +293,7 @@ Softplus 函数可以看作 ReLU 的平滑版本：
 
 $$
 \begin{align*}
-    \quad \softplus(z) = \ln (1 + \exp(z))
+    \softplus(z) = \ln (1 + \exp(z))
 \end{align*}
 $$
 
@@ -300,7 +301,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \nabla \softplus(z) = \frac{\exp(z)}{1 + \exp(z)} = \frac{1}{1 + \exp(-z)}
+    \nabla \softplus(z) = \frac{\exp(z)}{1 + \exp(z)} = \frac{1}{1 + \exp(-z)}
 \end{align*}
 $$
 
@@ -310,7 +311,7 @@ $$
 
 ---
 
-@import "../python/relu.svg" {.width60 .center .top4}
+<img src="../python/relu.svg" class="width60 center top4">
 
 <!-- slide data-notes="自门控的意思是控制自己是否激活的\sigma (\beta z)也跟有关" -->
 
@@ -322,7 +323,7 @@ Swish 函数是一种自门控 (self-gated) 激活函数：
 
 $$
 \begin{align*}
-    \quad \swish(z) = z \cdot \sigma (\beta z) = \frac{z}{1 + \exp(-\beta z)}
+    \swish(z) = z \cdot \sigma (\beta z) = \frac{z}{1 + \exp(-\beta z)}
 \end{align*}
 $$
 
@@ -339,7 +340,8 @@ $$
 
 ---
 
-@import "../python/swish.svg" {.width60 .center .top4}
+
+<img src="../python/swish.svg" class="width60 center top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -351,20 +353,20 @@ $$
 
 $$
 \begin{align*}
-    \quad \zv_l & = \Wv_l \av_{l-1} + \bv_l \\
+    \zv_l & = \Wv_l \av_{l-1} + \bv_l \\
     \av_l & = h_l (\zv_l)
 \end{align*}
 $$
 
 <div class="top-4"></div>
 
-前面提到的激活函数都是$\Rbb \mapsto \Rbb$的，即$[\av_l]_i = h_l ([\zv_l]_i), ~ i \in [n_l]$
+前面提到的激活函数都是$\rb \mapsto \rb$的，即$[\av_l]_i = h_l ([\zv_l]_i), ~ i \in [n_l]$
 
-Maxout 单元是$\Rbb^{n_l} \mapsto \Rbb$的，输入就是$\zv_l$，其定义为
+Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 $$
 \begin{align*}
-    \quad \maxout (\zv) = \max_{k \in [K]} \{ \wv_k^\top \zv + b_k \}
+    \maxout (\zv) = \max_{k \in [K]} \{ \wv_k^\top \zv + b_k \}
 \end{align*}
 $$
 
@@ -377,10 +379,10 @@ $$
 
 ---
 
-考虑所有的布尔函数，$\Xcal = \{1,-1\}^n$，$\Ycal = \{1,-1\}$
+考虑所有的布尔函数，$\xc = \{1,-1\}^n$，$\yc = \{1,-1\}$
 
 - 计算机中任意数都是用整数个 (不妨设为$b$) 个比特来表示
-- 任意$f: \Rbb^n \mapsto \Rbb$在计算机中都是$g: \{1,-1\}^{nb} \mapsto \{1,-1\}^b$
+- 任意$f: \rb^n \mapsto \rb$在计算机中都是$g: \{1,-1\}^{nb} \mapsto \{1,-1\}^b$
 
 <div class="bottom4"></div>
 
@@ -400,9 +402,9 @@ $$
 
 ---
 
-考虑$\Rbb^2 \mapsto \{1,-1\}$的函数
+考虑$\rb^2 \mapsto \{1,-1\}$的函数
 
-@import "../tikz/nn-power.svg" {.top2 .bottom4 .width50 .center}
+<img src="../tikz/nn-power.svg" class="top2 bottom4 width50 center">
 
 - 左图，5 个半空间围成的凸多面体，两层神经网络，隐藏层每个神经元对应一个半空间，输出层取 5 个半空间的交
 - 右图，4 个凸多面体，三层神经网络，前两层同左图，第二个隐藏层每个神经元对应一个凸多面体，输出层取 4 个凸多面体的并
@@ -416,20 +418,20 @@ $$
 
 神经网络的抽象化表示
 
-- 有向无环图$\Gcal = (\Vcal, \Ecal)$
-- 边上的权重函数$w: \Ecal \mapsto \Rbb$
-- 每个结点对应一个神经元，每个神经元有一个激活函数$\sigma: \Rbb \mapsto \Rbb$
+- 有向无环图$\gc = (\vc, \ec)$
+- 边上的权重函数$w: \ec \mapsto \rb$
+- 每个结点对应一个神经元，每个神经元有一个激活函数$\sigma: \rb \mapsto \rb$
 
 <div class="bottom4"></div>
 
 若神经网络的
 
-- 激活函数为$\sgn(\cdot)$，则$\text{VC}$维为$\Ocal (|\Ecal| \log |\Ecal|)$
-- 激活函数为$\sigma(\cdot)$，则$\text{VC}$维为$\Omega (|\Ecal|^2)$、$\Ocal (|\Vcal|^2 |\Ecal|^2)$
+- 激活函数为$\sgn(\cdot)$，则$\text{VC}$维为$\oc (|\ec| \log |\ec|)$
+- 激活函数为$\sigma(\cdot)$，则$\text{VC}$维为$\Omega (|\ec|^2)$、$\oc (|\vc|^2 |\ec|^2)$
 
 <div class="bottom4"></div>
 
-若神经网络能表示$\{1,-1\}^n \mapsto \{1,-1\}$的所有布尔函数，则$\text{VC}$维为$2^n$，于是$2^n \le \Ocal (|\Ecal| \log |\Ecal|) \le \Ocal (|\Vcal|^3)$，从而$|\Vcal| \ge \Omega (2^{n/3})$
+若神经网络能表示$\{1,-1\}^n \mapsto \{1,-1\}$的所有布尔函数，则$\text{VC}$维为$2^n$，于是$2^n \le \oc (|\ec| \log |\ec|) \le \oc (|\vc|^3)$，从而$|\vc| \ge \Omega (2^{n/3})$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -437,7 +439,7 @@ $$
 
 ---
 
-设$\Fcal_n$是图灵机在$T(n)$时间内能实现的布尔函数集合，则存在常数$b$、$c$以及神经元数不超过$c T(n)^2 + b$的神经网络能实现$\Fcal_n$
+设$\fc_n$是图灵机在$T(n)$时间内能实现的布尔函数集合，则存在常数$b$、$c$以及神经元数不超过$c T(n)^2 + b$的神经网络能实现$\fc_n$
 
 证明思路：函数 => 门电路 => 阶跃激活函数实现与或非门
 
@@ -457,7 +459,7 @@ $$
 
 <div class="top-2"></div>
 
-前$L-1$层是复合函数$\psi: \Rbb^d \mapsto \Rbb^{n_{L-1}}$，可看作一种特征变换方法
+前$L-1$层是复合函数$\psi: \rb^d \mapsto \rb^{n_{L-1}}$，可看作一种特征变换方法
 
 最后一层是学习器$\hat{\yv} = g(\psi(\xv); \Wv_L, \bv_L)$，对输入进行预测
 
@@ -496,7 +498,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \min_{\Wv, \bv} ~ \frac{1}{m} \sum_{i \in [m]} \ell (\yv_i, \hat{\yv}_i)
+    \min_{\Wv, \bv} ~ \frac{1}{m} \sum_{i \in [m]} \ell (\yv_i, \hat{\yv}_i)
 \end{align*}
 $$
 
@@ -513,7 +515,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \Wv ~ \leftarrow ~ \Wv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \Wv}}, \quad \bv ~ \leftarrow ~ \bv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \bv}}
+    \Wv ~ \leftarrow ~ \Wv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \Wv}}, \quad \bv ~ \leftarrow ~ \bv - \frac{\eta}{m} \sum_{i \in [m]} \class{yellow}{\frac{\partial \ell (\yv_i, \hat{\yv}_i)}{\partial \bv}}
 \end{align*}
 $$
 
@@ -529,14 +531,14 @@ $$
 
 $$
 \begin{align*}
-    \quad \frac{\partial \ell (\yv, \hat{\yv})}{\partial \bv_L} & = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_L} \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \\
+    \frac{\partial \ell (\yv, \hat{\yv})}{\partial \bv_L} & = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_L} \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \frac{\partial \zv_L}{\partial \bv_L} = \deltav_L^\top \\
     \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_L} & = \sum_{j \in [n_L]} \frac{\partial \ell (\yv, \hat{\yv})}{\partial [\zv_L]_j} \frac{\partial [\zv_L]_j}{\partial \Wv_L} = \sum_{j \in [n_L]} [\deltav_L]_j \frac{\partial [\zv_L]_j}{\partial \Wv_L}
 \end{align*}
 $$
 
 <div class="top-5"></div>
 
-其中$\deltav_L^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_L \in \Rbb^{n_L}$为第$L$层的{==误差项==}，可直接求解
+其中$\deltav_L^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_L \in \rb^{n_L}$为第$L$层的{==误差项==}，可直接求解
 
 <div class="top-2"></div>
 
@@ -544,13 +546,13 @@ $$
 
 $$
 \begin{align*}
-    \quad \frac{\partial \ell (\yv, \hat{\yv})}{\partial \bv_l} = \deltav_l^\top, \quad \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l}
+    \frac{\partial \ell (\yv, \hat{\yv})}{\partial \bv_l} = \deltav_l^\top, \quad \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l}
 \end{align*}
 $$
 
 <div class="top-5"></div>
 
-其中$\deltav_l^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_l \in \Rbb^{n_l}$为第$l$层的{==误差项==}
+其中$\deltav_l^\top = \partial \ell (\yv, \hat{\yv}) / \partial \zv_l \in \rb^{n_l}$为第$l$层的{==误差项==}
 
 <!-- slide data-notes="" -->
 
@@ -562,7 +564,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \deltav_{l-1}^\top = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_{l-1}} = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_l} \frac{\partial \zv_l}{\partial \av_{l-1}} \frac{\partial \av_{l-1}}{\partial \zv_{l-1}} = \deltav_l^\top \Wv_l \frac{\partial h_{l-1}(\zv_{l-1})}{\partial \zv_{l-1}}
+    \deltav_{l-1}^\top = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_{l-1}} = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_l} \frac{\partial \zv_l}{\partial \av_{l-1}} \frac{\partial \av_{l-1}}{\partial \zv_{l-1}} = \deltav_l^\top \Wv_l \frac{\partial h_{l-1}(\zv_{l-1})}{\partial \zv_{l-1}}
 \end{align*}
 $$
 
@@ -572,8 +574,8 @@ $$
 
 $$
 \begin{align*}
-    \quad & \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \underbrace{\begin{bmatrix} \zerov, \ldots, \av_{l-1}, \ldots, \zerov \end{bmatrix}}_{\text{only }\av_{l-1}\text{ at }j\text{-th column}} = \av_{l-1} \ev_j^\top \\[4pt]
-    \quad & \Longrightarrow \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \av_{l-1} \sum_{j \in [n_l]} [\deltav_l]_j \ev_j^\top = \av_{l-1} \deltav_l^\top
+    & \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \underbrace{\begin{bmatrix} \zerov, \ldots, \av_{l-1}, \ldots, \zerov \end{bmatrix}}_{\text{only }\av_{l-1}\text{ at }j\text{-th column}} = \av_{l-1} \ev_j^\top \\[4pt]
+    & \Longrightarrow \frac{\partial \ell (\yv, \hat{\yv})}{\partial \Wv_l} = \sum_{j \in [n_l]} [\deltav_l]_j \frac{\partial [\zv_l]_j}{\partial \Wv_l} = \av_{l-1} \sum_{j \in [n_l]} [\deltav_l]_j \ev_j^\top = \av_{l-1} \deltav_l^\top
 \end{align*}
 $$
 
@@ -638,7 +640,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，对率激活函数，lbfgs 求解器
 
-@import "../python/mlp-xor-neuron.svg" {.center .width92}
+<img src="../python/mlp-xor-neuron.svg" class="width92 center">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -649,7 +651,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，3 个神经元，lbfgs 求解器
 
-@import "../python/mlp-xor-activation.svg" {.center .width92}
+<img src="../python/mlp-xor-activation.svg" class="width92 center">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -660,7 +662,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，7 个神经元，ReLU 激活函数
 
-@import "../python/mlp-xor-solver.svg" {.center .width92}
+<img src="../python/mlp-xor-solver.svg" class="width92 center">
 
 <!-- slide data-notes="" -->
 
@@ -732,7 +734,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，对率激活函数，Adam 求解器
 
-@import "../python/dnn-xor.svg" {.center .width92}
+<img src="../python/dnn-xor.svg" class="center width92">
 
 <!-- slide data-notes="" -->
 
@@ -744,7 +746,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 $$
 \begin{align*}
-    \quad \deltav_l^\top = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_l} = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_{l+1}} \frac{\partial \zv_{l+1}}{\partial \av_l} \frac{\partial \av_l}{\partial \zv_l} = \deltav_{l+1}^\top \Wv_{l+1} \diag (h_l'(\zv_l))
+    \deltav_l^\top = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_l} = \frac{\partial \ell (\yv, \hat{\yv})}{\partial \zv_{l+1}} \frac{\partial \zv_{l+1}}{\partial \av_l} \frac{\partial \av_l}{\partial \zv_l} = \deltav_{l+1}^\top \Wv_{l+1} \diag (h_l'(\zv_l))
 \end{align*}
 $$
 
@@ -773,7 +775,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \av_l = \av_{l-1} + f(\av_{l-1}) = \av_{l-2} + f(\av_{l-2}) + f(\av_{l-1}) = \cdots = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
+    \av_l = \av_{l-1} + f(\av_{l-1}) = \av_{l-2} + f(\av_{l-2}) + f(\av_{l-1}) = \cdots = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
 \end{align*}
 $$
 
@@ -791,7 +793,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \av_l = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
+    \av_l = \av_{l-t} + \sum_{i=l-t}^{l-1} f(\av_i)
 \end{align*}
 $$
 
@@ -801,7 +803,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \frac{\partial \ell}{\partial \av_{l-t}} & = \frac{\partial \ell}{\partial \av_l} \frac{\partial \av_l}{\partial \av_{l-t}} = \frac{\partial \ell}{\partial \av_l} \left( \frac{\partial \av_{l-t}}{\partial \av_{l-t}} + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
+    \frac{\partial \ell}{\partial \av_{l-t}} & = \frac{\partial \ell}{\partial \av_l} \frac{\partial \av_l}{\partial \av_{l-t}} = \frac{\partial \ell}{\partial \av_l} \left( \frac{\partial \av_{l-t}}{\partial \av_{l-t}} + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
     & = \frac{\partial \ell}{\partial \av_l} \left( \Iv + \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right) \\
     & = \frac{\partial \ell}{\partial \av_l} + \frac{\partial \ell}{\partial \av_l} \left( \frac{\partial }{\partial \av_{l-t}} \sum_{i=l-t}^{l-1} f(\av_i) \right)
 \end{align*}
@@ -899,7 +901,7 @@ $$
 
 $$
 \begin{align*}
-    \quad (f \otimes g) [n] = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m]
+    (f \otimes g) [n] = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m]
 \end{align*}
 $$
 
@@ -909,7 +911,7 @@ $$
 
 $$
 \begin{align*}
-    \quad a_n = x_n w_1 + x_{n+1} w_2 + x_{n+2} w_3 = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m] = (f \otimes g) [n]
+    a_n = x_n w_1 + x_{n+1} w_2 + x_{n+2} w_3 = \sum_{m = -\infty}^\infty f[m] \cdot g[n-m] = (f \otimes g) [n]
 \end{align*}
 $$
 
@@ -1048,7 +1050,7 @@ $$
 
 $$
 \begin{align*}
-    \quad p(\xv_T, \ldots, \xv_1) = p(\xv_T | \xv_{T-1}, \ldots, \xv_1) \cdots p(\xv_3 | \xv_2, \xv_1) ~ p(\xv_2 | \xv_1) ~ p(\xv_1)
+    p(\xv_T, \ldots, \xv_1) = p(\xv_T | \xv_{T-1}, \ldots, \xv_1) \cdots p(\xv_3 | \xv_2, \xv_1) ~ p(\xv_2 | \xv_1) ~ p(\xv_1)
 \end{align*}
 $$
 
@@ -1122,7 +1124,7 @@ $4$个词的滑动窗口，词向量维度$d = 5$，隐藏层神经元个数$13$
 
 $$
 \begin{align*}
-    \quad \av_t = h(\class{yellow}{\Uv \av_{t-1}} + \Wv \xv_t + \bv), ~ \av_0 = \zerov
+    \av_t = h(\class{yellow}{\Uv \av_{t-1}} + \Wv \xv_t + \bv), ~ \av_0 = \zerov
 \end{align*}
 $$
 
@@ -1146,7 +1148,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \zv_t & = \class{yellow}{\Uv \av_{t-1}} + \Wv \xv_t + \bv \\
+    \zv_t & = \class{yellow}{\Uv \av_{t-1}} + \Wv \xv_t + \bv \\
     \av_t & = h(\zv_t)
 \end{align*}
 $$
@@ -1159,7 +1161,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \wv_{t+1} = \wv_t - \eta f'(\wv_t) \Longrightarrow \frac{\wv_{t+1} - \wv_t}{\eta} = - f'(\wv_t) \Longrightarrow \dot{\wv} = - f'(\wv)
+    \wv_{t+1} = \wv_t - \eta f'(\wv_t) \Longrightarrow \frac{\wv_{t+1} - \wv_t}{\eta} = - f'(\wv_t) \Longrightarrow \dot{\wv} = - f'(\wv)
 \end{align*}
 $$
 
@@ -1181,18 +1183,18 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 $$
 \begin{align*}
-    \quad \Ecal(t) & = t (f(\wv) - f^\star) + \frac{1}{2} \| \wv - \wv^\star \|_2^2 \\
-    \Ecal'(t) & = f(\wv) - f^\star + t \dot{\wv}^\top f'(\wv) + \dot{\wv}^\top (\wv - \wv^\star) \\
+    \ec(t) & = t (f(\wv) - f^\star) + \frac{1}{2} \| \wv - \wv^\star \|_2^2 \\
+    \ec'(t) & = f(\wv) - f^\star + t \dot{\wv}^\top f'(\wv) + \dot{\wv}^\top (\wv - \wv^\star) \\
     & = - \|f'(\wv)\|_2^2 + f(\wv) - f^\star - f'(\wv)^\top (\wv - \wv^\star) \\
     & = - \|f'(\wv)\|_2^2 + f(\wv) + f'(\wv)^\top (\wv^\star - \wv) - f^\star \leq 0
 \end{align*}
 $$
 
-根据$\Ecal$单调下降可得梯度下降的收敛率
+根据$\ec$单调下降可得梯度下降的收敛率
 
 $$
 \begin{align*}
-    \quad f(\wv) - f^\star \leq \frac{\Ecal(t)}{t} \leq \frac{\Ecal(0)}{t} = \frac{\| \wv_0 - \wv^\star \|_2^2}{2t} = O \left( \frac{1}{t} \right)
+    f(\wv) - f^\star \leq \frac{\ec(t)}{t} \leq \frac{\ec(0)}{t} = \frac{\| \wv_0 - \wv^\star \|_2^2}{2t} = O \left( \frac{1}{t} \right)
 \end{align*}
 $$
 
@@ -1233,7 +1235,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \hat{y}_t = g(\av_t), ~ \forall t \in [T]
+    \hat{y}_t = g(\av_t), ~ \forall t \in [T]
 \end{align*}
 $$
 
@@ -1251,7 +1253,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \av_t & = h_1 (\av_{t-1}, \xv_t), ~ \forall t \in [T] \\
+    \av_t & = h_1 (\av_{t-1}, \xv_t), ~ \forall t \in [T] \\
     \av_{T+t} & = h_2 (\av_{T+t-1}, \yvhat_{t-1}), ~ \forall t \in [S] \\
     \yvhat_t & = g(\av_{T+t}), ~ \forall t \in [S]
 \end{align*}
@@ -1269,7 +1271,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \frac{\partial z_j}{\partial \Wv} = \av \ev_j^\top, \quad \frac{\partial \zv}{\partial \bv} = \Iv, \quad \frac{\partial \zv}{\partial \av} = \Wv
+    \frac{\partial z_j}{\partial \Wv} = \av \ev_j^\top, \quad \frac{\partial \zv}{\partial \bv} = \Iv, \quad \frac{\partial \zv}{\partial \av} = \Wv
 \end{align*}
 $$
 
@@ -1279,7 +1281,7 @@ $$
 
 $$
 \begin{align*}
-    \quad\frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
+    \frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
 \end{align*}
 $$
 
@@ -1298,17 +1300,17 @@ $$
 
 $$
 \begin{align*}
-    \quad\frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
+    \frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
 \end{align*}
 $$
 
-记时刻$t$损失为$\Lcal_t$，总损失$\Lcal = \sum_{t \in [T]} \Lcal_t$，$\deltav_{t,k}^\top = \partial \Lcal_t / \partial \zv_k$为时刻$t$的损失对时刻$k \in [t]$隐藏层输入的导数
+记时刻$t$损失为$\lc_t$，总损失$\lc = \sum_{t \in [T]} \lc_t$，$\deltav_{t,k}^\top = \partial \lc_t / \partial \zv_k$为时刻$t$的损失对时刻$k \in [t]$隐藏层输入的导数
 
 注意$\av_k = h(\zv_k)$，由链式法则
 
 $$
 \begin{align*}
-    \quad\deltav_{t,k}^\top = \frac{\partial \Lcal_t}{\partial \zv_k} = \frac{\partial \Lcal_t}{\partial \zv_{k+1}} \frac{\partial \zv_{k+1}}{\partial \av_k} \frac{\partial \av_k}{\partial \zv_k} = \deltav_{t,k+1}^\top \Uv ~  \diag (h'(\zv_k))
+    \deltav_{t,k}^\top = \frac{\partial \lc_t}{\partial \zv_k} = \frac{\partial \lc_t}{\partial \zv_{k+1}} \frac{\partial \zv_{k+1}}{\partial \av_k} \frac{\partial \av_k}{\partial \zv_k} = \deltav_{t,k+1}^\top \Uv ~  \diag (h'(\zv_k))
 \end{align*}
 $$
 
@@ -1324,17 +1326,17 @@ $$
 
 $$
 \begin{align*}
-    \quad\frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
+    \frac{\partial [\zv_k]_j}{\partial \Uv} = \av_{k-1} \ev_j^\top, \quad \frac{\partial [\zv_k]_j}{\partial \Wv} = \xv_k \ev_j^\top, \quad \frac{\partial \zv_k}{\partial \bv} = \Iv, \quad \frac{\partial \zv_k}{\partial \av_{k-1}} = \Uv
 \end{align*}
 $$
 
-记时刻$t$损失为$\Lcal_t$，总损失$\Lcal = \sum_{t \in [T]} \Lcal_t$，$\deltav_{t,k}^\top = \partial \Lcal_t / \partial \zv_k$为时刻$t$的损失对时刻$k \in [t]$隐藏层输入的导数
+记时刻$t$损失为$\lc_t$，总损失$\lc = \sum_{t \in [T]} \lc_t$，$\deltav_{t,k}^\top = \partial \lc_t / \partial \zv_k$为时刻$t$的损失对时刻$k \in [t]$隐藏层输入的导数
 
 $$
 \begin{align*}
-    \quad\frac{\partial \Lcal}{\partial \Uv} & = \sum_{t \in [T]} \sum_{k \in [t]} \sum_j \frac{\partial \Lcal_t}{\partial [\zv_k]_j} \frac{\partial [\zv_k]_j}{\partial \Uv} = \sum_{t \in [T]} \sum_{k \in [t]} \av_{k-1} \deltav_{t,k}^\top \\
-    \frac{\partial \Lcal}{\partial \Wv} & = \sum_{t \in [T]} \sum_{k \in [t]} \sum_j \frac{\partial \Lcal_t}{\partial [\zv_k]_j} \frac{\partial [\zv_k]_j}{\partial \Wv} = \sum_{t \in [T]} \sum_{k \in [t]} \xv_k \deltav_{t,k}^\top \\
-    \frac{\partial \Lcal}{\partial \bv} & = \sum_{t \in [T]} \sum_{k \in [t]} \frac{\partial \Lcal_t}{\partial \zv_k} \frac{\partial \zv_k}{\partial \bv} = \deltav_{t,k}^\top
+    \frac{\partial \lc}{\partial \Uv} & = \sum_{t \in [T]} \sum_{k \in [t]} \sum_j \frac{\partial \lc_t}{\partial [\zv_k]_j} \frac{\partial [\zv_k]_j}{\partial \Uv} = \sum_{t \in [T]} \sum_{k \in [t]} \av_{k-1} \deltav_{t,k}^\top \\
+    \frac{\partial \lc}{\partial \Wv} & = \sum_{t \in [T]} \sum_{k \in [t]} \sum_j \frac{\partial \lc_t}{\partial [\zv_k]_j} \frac{\partial [\zv_k]_j}{\partial \Wv} = \sum_{t \in [T]} \sum_{k \in [t]} \xv_k \deltav_{t,k}^\top \\
+    \frac{\partial \lc}{\partial \bv} & = \sum_{t \in [T]} \sum_{k \in [t]} \frac{\partial \lc_t}{\partial \zv_k} \frac{\partial \zv_k}{\partial \bv} = \deltav_{t,k}^\top
 \end{align*}
 $$
 
@@ -1348,7 +1350,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \deltav_{t,k}^\top = \deltav_{t,k+1}^\top \Uv ~  \diag (h'(\zv_k))  = \cdots = \deltav_{t,t} ~ \Pi_{\tau=k}^{t-1} \left( \Uv ~ \diag (h'(\zv_\tau)) \right)
+    \deltav_{t,k}^\top = \deltav_{t,k+1}^\top \Uv ~  \diag (h'(\zv_k))  = \cdots = \deltav_{t,t} ~ \Pi_{\tau=k}^{t-1} \left( \Uv ~ \diag (h'(\zv_\tau)) \right)
 \end{align*}
 $$
 
@@ -1418,7 +1420,7 @@ LSTM 网络的紧凑形式
 
 $$
 \begin{align*}
-    \quad \begin{bmatrix}
+    \begin{bmatrix}
         \widetilde{\cv}_t \\ \ov_t \\ \iv_t \\ \fv_t
     \end{bmatrix} & = \begin{bmatrix}
         \tanh \\ \sigma \\ \sigma \\ \sigma
@@ -1448,7 +1450,7 @@ peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状�
 
 $$
 \begin{align*}
-    \quad \fv_t & = \sigma(\Wv_f \xv_t + \Uv_f \av_{t−1} + \Vv_f \cv_{t−1} + \bv_f) \\
+    \fv_t & = \sigma(\Wv_f \xv_t + \Uv_f \av_{t−1} + \Vv_f \cv_{t−1} + \bv_f) \\
     \iv_t & = \sigma(\Wv_i \xv_t + \Uv_i \av_{t−1} + \Vv_i \cv_{t−1} + \bv_i) \\
     \ov_t & = \sigma(\Wv_o \xv_t + \Uv_o \av_{t−1} + \Vv_o \cv_{t−1} + \bv_o)
 \end{align*}
@@ -1458,7 +1460,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \cv_t = (\onev - \iv_t) \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t
+    \cv_t = (\onev - \iv_t) \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t
 \end{align*}
 $$
 
@@ -1472,7 +1474,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \av_t = \zv_t \odot \av_{t−1} + (\onev − \zv_t) \odot \widetilde{\av}_t
+    \av_t = \zv_t \odot \av_{t−1} + (\onev − \zv_t) \odot \widetilde{\av}_t
 \end{align*}
 $$
 
@@ -1552,7 +1554,7 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 
 $$
 \begin{align*}
-    \quad \cv_1 & = f_1(\xv_1, \ldots, \xv_T), \quad \yv_1 = g(\cv_1) \\
+    \cv_1 & = f_1(\xv_1, \ldots, \xv_T), \quad \yv_1 = g(\cv_1) \\
     \cv_2 & = f_2(\xv_1, \ldots, \xv_T), \quad \yv_2 = g(\cv_2, \yv_1) \\
     \cv_3 & = f_3(\xv_1, \ldots, \xv_T), \quad \yv_3 = g(\cv_3, \yv_1, \yv_2) \\
     & \qquad \vdots \\
@@ -1584,7 +1586,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \att(\Xv, \qv) = \sum_{t \in [T]} \class{yellow}{\alpha_t} \xv_t, \quad \class{yellow}{\alpha_t} = \softmax (s(\xv_t, \qv)) = \frac{\exp(s(\xv_t, \qv))}{\sum_{i \in [T]} \exp(s(\xv_i, \qv))}
+    \att(\Xv, \qv) = \sum_{t \in [T]} \class{yellow}{\alpha_t} \xv_t, \quad \class{yellow}{\alpha_t} = \softmax (s(\xv_t, \qv)) = \frac{\exp(s(\xv_t, \qv))}{\sum_{i \in [T]} \exp(s(\xv_i, \qv))}
 \end{align*}
 $$
 
@@ -1622,7 +1624,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \att((\Kv, \Vv), \qv) = \sum_{t \in [T]} \class{yellow}{\alpha_t} \vv_t, \quad \class{yellow}{\alpha_t} = \frac{\exp(s(\kv_t, \qv))}{\sum_{i \in [T]} \exp(s(\kv_i, \qv))}
+    \att((\Kv, \Vv), \qv) = \sum_{t \in [T]} \class{yellow}{\alpha_t} \vv_t, \quad \class{yellow}{\alpha_t} = \frac{\exp(s(\kv_t, \qv))}{\sum_{i \in [T]} \exp(s(\kv_i, \qv))}
 \end{align*}
 $$
 
@@ -1644,7 +1646,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \att((\Kv, \Vv), \Qv) = \mlp(\att((\Kv, \Vv), \qv_1) \oplus \cdots \oplus \att((\Kv, \Vv), \qv_M))
+    \att((\Kv, \Vv), \Qv) = \mlp(\att((\Kv, \Vv), \qv_1) \oplus \cdots \oplus \att((\Kv, \Vv), \qv_M))
 \end{align*}
 $$
 
@@ -1698,7 +1700,7 @@ $$
 
 $$
 \begin{align*}
-    \quad \Xv & = [\xv_1, \ldots, \xv_T] \in \Rbb^{d \times T} \\
+    \Xv & = [\xv_1, \ldots, \xv_T] \in \rb^{d \times T} \\
     \Qv & = \Wv_Q \Xv, \quad \Kv = \Wv_K \Xv, \quad \Vv = \Wv_V \Xv \\
     \cv_i & = \att((\Kv, \Vv), \qv_i) = \sum_{t \in [T]} \alpha_{it} \vv_t = \sum_{t \in [T]} \softmax(s(\qv_i, \kv_t)) \vv_t
 \end{align*}
