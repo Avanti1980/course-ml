@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.3.7)  6 APR 2026 15:38
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.6)  8 APR 2026 03:37
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -780,6 +780,6 @@ Here is how much of TeX's memory you used:
  47860 multiletter control sequences out of 15000+600000
  633462 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 101i,10n,121p,456b,682s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,10n,121p,456b,652s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on logistic-regression.pdf (4 pages).
