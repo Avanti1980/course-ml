@@ -1,0 +1,129 @@
+\documentclass{ctexart}
+\usepackage{avanti-color}
+\usepackage{avanti-notes}
+\usepackage{avanti-notations}
+
+\begin{document}
+\title{\textbf{对数几率回归}}
+\author{张腾}
+\date{\today}
+\maketitle
+
+对数几率回归(logisitic regression, LR)虽然名字中包含“回归”二字，但其本质上是一种广泛使用的线性分类模型。它通过非线性变换将线性模型的输出映射到$[0,1]$使结果具有概率意义。
+
+\section{二分类}
+
+对于二分类问题，设标记集合$\yc = \{1,-1\}$。由贝叶斯定理，样本$\xv$属于正类的条件概率为：
+\begin{align} \label{eq-conditional}
+    \pb(y = 1 \mid \xv) = \frac{\pb(\xv, y=1)}{\pb(\xv)} = \frac{\pb(\xv, y=1)}{\pb(\xv, y=1) + \pb(\xv, y=-1)} = \frac{1}{1 + \pb(\xv, y=-1) / \pb(\xv, y=1)}
+\end{align}
+令
+\begin{align*}
+    a = \ln \frac{\pb(\xv, y = 1)}{\pb(\xv, y = -1)} = \ln \frac{\pb(\xv, y = 1)}{1 - \pb(\xv, y = 1)}
+\end{align*}
+为正负类联合概率比值的对数，即对数几率(log-odds)，则式\eqref{eq-conditional}可写为：
+\begin{align*}
+    \pb(y = 1 \mid \xv) = \frac{1}{1 + \exp(-a)} \triangleq \sigma(a)
+\end{align*}
+其中$\sigma: \rb \mapsto (0,1)$为对数几率函数(logisitic function)，其将对数几率映射为正类条件概率。LR的核心假设是：对数几率$a$与输入特征$\xv$呈线性关系，即$a = \wv^\top \xv + b$。因此，模型预测的概率为：
+\begin{align*}
+     & \pb(y = 1 \mid \xv) = \sigma(\wv^\top \xv + b) = \frac{1}{1 + \exp(-(\wv^\top \xv + b))}                                                                                                   \\
+     & \pb(y = -1 \mid \xv) = 1 - \sigma(\wv^\top \xv + b) = \frac{\exp(-(\wv^\top \xv + b))}{1 + \exp(-(\wv^\top \xv + b))} = \frac{1}{1 + \exp(\wv^\top \xv + b)} = \sigma(-(\wv^\top \xv + b))
+\end{align*}
+
+给定数据集$\dc = \{(\xv_i, y_i) \}_{i \in [m]} \subseteq \rb^n \times \{1, -1\}$，我们采用极大似然估计法求解参数$\wv$和$b$：
+\begin{align*}
+    \argmax_{\wv, b} \ln \pb
+     & (\dc \mid \wv, b) = \argmax_{\wv, b} \ln \prod_{i \in [m]} \pb(\xv_i, y_i \mid \wv, b) \tag{IID假设}                                                                  \\
+     & = \argmax_{\wv, b} \sum_{i \in [m]} \ln \pb(\xv_i, y_i \mid \wv, b) \tag{$\ln (a \cdot b) = \ln a + \ln b$}                                                         \\
+     & = \argmax_{\wv, b} \sum_{i \in [m]} (\ln \pb(y_i \mid \xv_i, \wv, b) + \ln \pb(\xv_i \mid \wv, b)) \tag{$\pb(\xv_i, y_i) = \pb(y_i \mid \xv_i) \pb(\xv_i)$}         \\
+     & = \argmax_{\wv, b} \sum_{i \in [m]} \ln \pb(y_i \mid \xv_i, \wv, b) \tag{$\xv_i$不依赖于$\wv$、$b$，故$\pb(\xv_i \mid \wv, b) = \pb(\xv_i)$}                               \\
+     & = \argmax_{\wv, b} \sum_{i \in [m]} \ln \frac{1}{1 + \exp(-y_i (\wv^\top \xv_i + b))} = \argmin_{\wv, b} \sum_{i \in [m]} \ln (1 + \exp(-y_i (\wv^\top \xv_i + b)))
+\end{align*}
+上述目标函数也可以从交叉熵的角度推导：类别标记的独热编码可表示为$[\nicefrac{(1+y)}{2}, \nicefrac{(1-y)}{2}]$，模型预测分布为$[\sigma(\wv^\top \xv + b), \sigma(-(\wv^\top \xv + b))]$，其经验交叉熵损失$\ell_\ce$化简后与上述极大似然形式一致：
+\begin{align*}
+    \ell_\ce
+     & = - \sum_{i \in [m]} \left( \frac{1 + y_i}{2} \ln \sigma(\wv^\top \xv_i + b) + \frac{1 - y_i}{2} \ln \sigma(-(\wv^\top \xv_i + b)) \right)       \\
+     & = \sum_{i \in [m]} \left( \frac{1 + y_i}{2} \ln (1 + \exp(-(\wv^\top \xv_i + b))) + \frac{1 - y_i}{2} \ln (1 + \exp(\wv^\top \xv_i + b)) \right) \\
+     & = \sum_{i \in [m]} \left( \ib(y_i=1) \ln (1 + \exp(-(\wv^\top \xv_i + b))) + \ib(y_i=-1) \ln (1 + \exp(\wv^\top \xv_i + b)) \right)              \\
+     & = \sum_{i \in [m]} \ln (1 + \exp(-y_i (\wv^\top \xv_i + b)))
+\end{align*}
+
+\section{多分类}
+
+对于多分类问题，设标记集合$\yc = [c]$。LR引入$c$个线性判别函数$\wv_j^\top \xv + b_j$，其中$j \in [c]$，并通过Softmax函数将输出转化为概率分布：
+\begin{align} \label{eq-multi-class}
+    \pb (y = k \mid \xv) = \sigma_k (\xv) = \frac{\exp(\wv_k^\top \xv + b_k)}{\sum_{j \in [c]} \exp(\wv_j^\top \xv + b_j)} = \frac{\exp((\wv_k - \wv_c)^\top \xv + b_k - b_c)}{\sum_{j \in [c-1]} \exp((\wv_j - \wv_c)^\top \xv + b_j - b_c) + 1}
+\end{align}
+其中最后一个等号是因为Softmax函数的参数存在冗余性，分子、分母同除以某个$\exp(\wv_j^\top \xv + b_j)$概率值不变，故通常令$\wv_c = \zerov$、$b_c = 0$，即$\exp(\wv_c^\top \xv + b_c) = 1$以消除冗余。当$c=2$时，式\eqref{eq-multi-class}即退化为二分类的对数几率函数：
+\begin{align*}
+    \pb (y = 1 \mid \xv) = \frac{\exp(\wv_1^\top \xv + b_1)}{\exp(\wv_1^\top \xv + b_1) + 1} = \frac{1}{1 + \exp(-(\wv_1^\top \xv + b_1))}
+\end{align*}
+
+给定数据集$\dc = \{(\xv_i, y_i) \}_{i \in [m]} \subseteq \rb^n \times [c]$，极大似然估计的目标是最大化对数似然：
+\begin{align*}
+    \argmax_{\wv_{j \in [c]}, b_{j \in [c]}} \ln \pb(\dc \mid \wv_{j \in [c]}, b_{j \in [c]})
+     & = \argmax_{\wv_{j \in [c]}, b_{j \in [c]}} \ln \prod_{i \in [m]} \pb(\xv_i, y_i \mid \wv_{j \in [c]}, b_{j \in [c]})                                                                                                                            \\
+     & = \argmax_{\wv_{j \in [c]}, b_{j \in [c]}} \sum_{i \in [m]} \ln \pb(\xv_i, y_i \mid \wv_{j \in [c]}, b_{j \in [c]})                                                                                                                             \\
+     & = \argmax_{\wv_{j \in [c]}, b_{j \in [c]}} \sum_{i \in [m]} \ln \pb(y_i \mid \xv_i, \wv_{j \in [c]}, b_{j \in [c]})                                                                                                                             \\
+     & = \argmax_{\wv_{j \in [c]}, b_{j \in [c]}} \sum_{i \in [m]} \ln \frac{\exp(\wv_{y_i}^\top \xv_i + b_{y_i})}{\sum_{j \in [c]} \exp(\wv_j^\top \xv_i + b_j)} = \argmax_{\wv_{j \in [c]}, b_{j \in [c]}} \sum_{i \in [m]} \ln \sigma_{y_i} (\xv_i)
+\end{align*}
+为了求解该优化问题，我们计算其梯度：
+
+\begin{align*}
+    \frac{\partial \sigma_{y_i} (\xv_i)}{\partial \wv_k}
+     & = \frac{\partial}{\partial \wv_k} \left( \frac{\exp(\wv_{y_i}^\top \xv_i + b_{y_i})}{\sum_{j \in [c]} \exp(\wv_j^\top \xv_i + b_j)} \right)                                                                                                  \\
+     & = \frac{ \ib(k = y_i) \exp(\wv_{y_i}^\top \xv_i + b_{y_i}) \xv_i \sum_{j \in [c]} \exp(\wv_j^\top \xv_i + b_j) - \exp(\wv_{y_i}^\top \xv_i + b_{y_i}) \exp(\wv_k^\top \xv_i + b_k) \xv_i}{(\sum_{j \in [c]} \exp(\wv_j^\top \xv_i + b_j))^2} \\
+     & = \ib(k = y_i) \sigma_{y_i} (\xv_i) \xv_i - \sigma_{y_i} (\xv_i) \sigma_k (\xv_i) \xv_i                                                                                                                                                      \\
+     & = \sigma_{y_i} (\xv_i) (\ib(k = y_i) - \sigma_k (\xv_i)) \xv_i
+\end{align*}
+于是对数似然关于$\wv_k$的梯度为
+\begin{align*}
+    \frac{\partial \sum_{i \in [m]} \ln \sigma_{y_i} (\xv_i)}{\partial \wv_k}
+     & = \sum_{i \in [m]} \frac{1}{\sigma_{y_i}(\xv_i)} \frac{\partial \sigma_{y_i} (\xv_i)}{\partial \wv_k} = \sum_{i \in [m]} (\ib(k = y_i) - \sigma_k (\xv_i)) \xv_i
+\end{align*}
+同理可得对数似然关于$b_k$的梯度为
+\begin{align*}
+    \frac{\partial \sum_{i \in [m]} \ln \sigma_{y_i} (\xv_i)}{\partial b_k}
+     & = \sum_{i \in [m]} \frac{1}{\sigma_{y_i}(\xv_i)} \frac{\partial \sigma_{y_i} (\xv_i)}{\partial b_k} = \sum_{i \in [m]} (\ib(k = y_i) - \sigma_k (\xv_i))
+\end{align*}
+令梯度为零，我们得到最优解应满足的平衡方程组：
+\begin{align} \label{eq-balance}
+    \sum_{i \in [m]} \ib(k = y_i) \xv_i = \sum_{i \in [m]} \sigma_k (\xv_i) \xv_i, \quad \sum_{i \in [m]} \ib(k = y_i) = \sum_{i \in [m]} \sigma_k (\xv_i), \quad \forall k \in [c]
+\end{align}
+式\eqref{eq-balance}表明：在最优解处，第$k$类样本的特征之和(及数量)等于所有样本以softmax变换给出的概率为权重的加权和。这与马尔可夫过程中的细致平稳(detailed balance)条件形式相似。
+
+\section{最大熵视角}
+
+最大熵(maximum entropy)原理是概率建模的一个重要准则：在满足已知约束的前提下，应选择熵最大的分布，即对未知信息不做任何额外假设(视为等概率)。例如，对于一个未知骰子，在没有任何信息的情况下，只能假设掷出各数的概率均为$1/6$；若已知掷出1的概率为$1/4$，则掷出其它数的概率应均分剩余的$3/4$。
+
+下面我们证明：对数几率回归实际上是在满足平衡方程组\eqref{eq-balance}约束下的最大熵模型。设$\pi_k (\xv_i)$为模型将样本$\xv_i$预测为第$k$类的概率，最大化所有样本的预测熵之和：
+\begin{align*}
+    \max_{\pi_1, \ldots, \pi_c} ~
+          & \sum_{i \in [m]} \left( - \sum_{k \in [c]} \pi_k (\xv_i) \ln \pi_k (\xv_i) \right)                          \\
+    \st ~ & \pi_k (\xv_i) \ge 0, ~ \forall i \in [m], ~ \forall k \in [c] \tag{概率非负}                                    \\
+          & \sum_{k \in [c]} \pi_k (\xv_i) = 1, ~ \forall i \in [m] \tag{概率归一化}                                         \\
+          & \sum_{i \in [m]} \ib(k = y_i) \xv_i = \sum_{i \in [m]} \pi_k (\xv_i) \xv_i, ~ \forall k \in [c] \tag{特征矩匹配} \\
+          & \sum_{i \in [m]} \ib(k = y_i) = \sum_{i \in [m]} \pi_k (\xv_i), ~ \forall k \in [c] \tag{样本数匹配}
+\end{align*}
+引入拉格朗日乘子：$\alpha_i$对应概率归一化、$\betav_k$对应特征矩匹配、$\gamma_k$对应样本数匹配，构建拉格朗日函数(暂忽略概率非负约束，因其由指数形式自动满足)：
+\begin{align*}
+    L(\pi_k, \alpha_i, \betav_k, \gamma_k) = -
+     & \sum_{i \in [m]} \sum_{k \in [c]} \pi_k (\xv_i) \ln \pi_k (\xv_i) - \sum_{i \in [m]} \alpha_i \left( \sum_{k \in [c]} \pi_k (\xv_i) - 1 \right)                                                  \\
+     & - \sum_{k \in [c]} \betav_k^\top \left( \sum_{i \in [m]} (\ib(k = y_i) - \pi_k (\xv_i)) \xv_i \right) - \sum_{k \in [c]} \gamma_k \left( \sum_{i \in [m]} (\ib(k = y_i) - \pi_k (\xv_i)) \right)
+\end{align*}
+对$\pi_k$求偏导并令其为零：
+\begin{align*}
+    \frac{\partial L}{\partial \pi_k} = - \ln \pi_k (\xv_i) - 1 - \alpha_i + \betav_k^\top \xv_i + \gamma_k = 0
+\end{align*}
+解得：
+\begin{align*}
+    \pi_k (\xv_i) = \exp (- 1 - \alpha_i + \betav_k^\top \xv_i + \gamma_k)
+\end{align*}
+利用归一化约束$\sum_{k \in [c]} \pi_k (\xv_i) = 1$消去$\alpha_i$：
+\begin{align*}
+    \exp(1 + \alpha_i) = \sum_{k \in [c]} \exp(\betav_k^\top \xv_i + \gamma_k) \implies \pi_k (\xv_i) = \frac{\exp (\betav_k^\top \xv_i + \gamma_k)}{\sum_{j \in [c]} \exp (\betav_j^\top \xv_i + \gamma_j)}
+\end{align*}
+这正是 Softmax 函数的形式。
+
+\end{document}

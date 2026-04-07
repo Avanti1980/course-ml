@@ -58,7 +58,7 @@
 |      ^       |                       &nbsp;                       | 4. 感知机的对偶形式，核感知机，实现异或运算                                             |
 | 对数几率回归 |                       &nbsp;                       | 1. 对率回归用线性函数拟合几率的对数，输出后验概率                                       |
 |      ^       |              [slides](pages/lr.html)               | 2. 最终形式由极大似然法或最小化交叉熵损失导出                                           |
-|      ^       |       [notes](notes/logistic-regression.pdf)       | 3. 将对率函数换成 softmax 变换可得多分类对率回归                                        |
+|      ^       |       [notes](notes/Logistic-Regression/logistic-regression.pdf)       | 3. 将对率函数换成 softmax 变换可得多分类对率回归                                        |
 |      ^       |                       &nbsp;                       | 4. [梯度下降](notes/gradient-descent-convergence.pdf)，随机梯度下降，动量法，加速梯度法 |
 |   神经网络   |              [slides](pages/nn.html)               | 1. 激活函数：Sigmoid、ReLU、Swish、Maxout                                               |
 |      ^       |                         ^                          | 2. 反向传播求解参数，梯度消失，残差网络                                                 |

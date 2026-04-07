@@ -1,3 +1,5 @@
+cp -r /home/avanti/Notes/ML/Logistic-Regression/  ./notes/
+
 git add *
 git commit -m $1
 
