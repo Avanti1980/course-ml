@@ -1,0 +1,84 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-color}
+\usepackage{avanti-tikz4slides}
+\usepackage{avanti-notations}
+\setmainfont[BoldFont=,ItalicFont=]{Ysabeau}
+
+\tikzset{font=\large}
+\tikzset{base/.style={smooth,thick,SolarizedBase01,draw=SolarizedBase01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,SolarizedBlue}}
+\tikzset{nc/.style={base,circle}}
+\tikzset{box/.style={base,rectangle,minimum height=0.6cm,minimum width=1.2cm}}
+\tikzset{box2/.style={box,fill=SolarizedBase2}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \node [box2] (x5) at (10,0) {EOS};
+
+    \foreach \i in {2,4,...,16}
+        {
+            \pgfmathtruncatemacro{\index}{\i/2};
+            \pgfmathtruncatemacro{\subscript}{\index};
+            \ifthenelse{\i < 10}
+            {
+                \ifthenelse{\i=6}
+                {
+                    \node [box,draw=none] (a\index) at (\i,1.5) {...};
+                    \node [box,draw=none] (x\index) at (\i,0) {...};
+                }
+                {
+                    \ifthenelse{\i=8}
+                    {
+                        \node [box] (a\index) at (\i,1.5) {$\av_T$};
+                        \node [box2] (x\index) at (\i,0) {$\xv_T$};
+                    }
+                    {
+                        \node [box] (a\index) at (\i,1.5) {$\av_\index$};
+                        \node [box2] (x\index) at (\i,0) {$\xv_\index$};
+                    }
+                    \draw [arrow] (x\index) -- (a\index);
+                }
+            }
+            {
+                \pgfmathtruncatemacro{\subscript}{\index-4};
+                \ifthenelse{\i=14}
+                {
+                    \node[box,draw=none] (a\index) at (\i,1.5) {...};
+                    \node[box,draw=none] (y\index) at (\i,3) {...};
+                }
+                {
+                    \ifthenelse{\i=16}
+                    {
+                        \node [box] (a\index) at (\i,1.5) {$\av_{T+S}$};
+                        \node [box2] (y\index) at (\i,3) {$\yv_S$};
+                    }
+                    {
+                        \node [box] (a\index) at (\i,1.5) {$\av_{T+\subscript}$};
+                        \node [box2] (y\index) at (\i,3) {$\yv_\subscript$};
+                    }
+                    \draw [arrow] (a\index) -- (y\index);
+                }
+            }
+            \ifthenelse{\i > 2}
+            {
+                \pgfmathtruncatemacro{\im}{\index-1};
+                \draw [arrow] (a\im) -- (a\index);
+            }{;}
+            \ifthenelse{\i > 10}
+            {
+                \pgfmathtruncatemacro{\im}{\index-1};
+                \draw [arrow,dashed] (y\im) -- ++(0,0.8) -- ++(1,0) -- ++(0,-3.1) -- ++(1,0) -- (a\index);
+            }{;}
+        }
+
+    \draw [arrow] (x5) -- (a5);
+
+\end{tikzpicture}
+
+
+
+\end{document}
+

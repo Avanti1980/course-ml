@@ -54,7 +54,7 @@ digraph g {
         fontname="Ysabeau, LXGWSong"
         label="氪金充值"
 
-        "华为 昇腾" "谷歌 TPU" "英伟达 GPU"
+        "华为昇腾 NPU" "谷歌 TPU" "英伟达 GPU"
 
         node [fontcolor="#268bd2"]
 

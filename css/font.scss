@@ -124,9 +124,16 @@ $weight-array: XLight, Light, Book, Medium;
   font-weight: 600;
 }
 
-.reveal mjx-mtext,
-.mermaid text {
+.reveal mjx-mtext {
   font-family: LXGWSong !important;
+}
+
+.reveal img[title] {
+  font-family: Ysabeau, LXGWSong !important;
+}
+
+.mermaid text {
+  font-family: Ysabeau, LXGWSong !important;
 }
 
 .reveal table th,

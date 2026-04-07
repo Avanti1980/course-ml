@@ -58,7 +58,7 @@ presentation:
 
 ---
 
-<div class="top-4"></div>
+<div class="top-2"></div>
 
 @import "../mermaid/nn.mermaid"
 
@@ -131,7 +131,7 @@ presentation:
 
 ---
 
-<img src="../python/sigmoid.svg" class="width60 center top4">
+<img src="../python/activation/sigmoid.svg" class="width70 center top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -313,7 +313,7 @@ Softplus 函数可以看作 ReLU 的平滑版本：
 
 ---
 
-<img src="../python/relu.svg" class="width60 center top4">
+<img src="../python/activation/relu.svg" class="width70 center top4">
 
 <!-- slide data-notes="自门控的意思是控制自己是否激活的\sigma (\beta z)也跟有关" -->
 
@@ -340,8 +340,7 @@ Swish 函数是一种自门控 (self-gated) 激活函数：
 
 ---
 
-
-<img src="../python/swish.svg" class="width60 center top4">
+<img src="../python/activation/swish.svg" class="width70 center top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -404,7 +403,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 考虑$\rb^2 \mapsto \{1,-1\}$的函数
 
-<img src="../tikz/nn-power.svg" class="top2 bottom4 width50 center">
+<img src="../tikz/nn-power/nn-power.svg" class="top2 bottom4 width50 center">
 
 - 左图，5 个半空间围成的凸多面体，两层神经网络，隐藏层每个神经元对应一个半空间，输出层取 5 个半空间的交
 - 右图，4 个凸多面体，三层神经网络，前两层同左图，第二个隐藏层每个神经元对应一个凸多面体，输出层取 4 个凸多面体的并
@@ -457,14 +456,14 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 @import "../dot/ml-nn.dot"
 
-<div class="top-2"></div>
+<div class="top0"></div>
 
 前$L-1$层是复合函数$\psi: \rb^d \mapsto \rb^{n_{L-1}}$，可看作一种特征变换方法
 
 最后一层是学习器$\hat{\yv} = g(\psi(\xv); \Wv_L, \bv_L)$，对输入进行预测
 
 - 若$y \in \{ 1, -1 \} 或 \{ 1,0 \}$，最后一层只需$1$个神经元，采用对率激活函数
-- 若$y \in [c]$，最后一层需$c$个神经元，采用 Softmax 激活函数
+- 若$y \in [c]$，最后一层需$c$个神经元，采用 softmax 激活函数
 
 <div class="top2"></div>
 
@@ -476,7 +475,7 @@ Maxout 单元是$\rb^{n_l} \mapsto \rb$的，输入就是$\zv_l$，其定义为
 
 ---
 
-传统机器学习：特征工程和模型学习两阶段分开进行
+经典机器学习：特征工程和模型学习两阶段分开进行
 
 @import "../dot/ml-old.dot"
 
@@ -632,7 +631,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，对率激活函数，lbfgs 求解器
 
-<img src="../python/mlp-xor-neuron.svg" class="width92 center">
+<img src="../python/nn/mlp-xor-neuron.svg" class="width92 center">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -643,7 +642,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，3 个神经元，lbfgs 求解器
 
-<img src="../python/mlp-xor-activation.svg" class="width92 center">
+<img src="../python/nn/mlp-xor-activation.svg" class="width92 center">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -654,7 +653,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，7 个神经元，ReLU 激活函数
 
-<img src="../python/mlp-xor-solver.svg" class="width92 center">
+<img src="../python/nn/mlp-xor-solver.svg" class="width92 center">
 
 <!-- slide data-notes="" -->
 
@@ -728,7 +727,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，对率激活函数，Adam 求解器
 
-<img src="../python/dnn-xor.svg" class="center width92">
+<img src="../python/nn/dnn-xor.svg" class="center width92">
 
 <!-- slide data-notes="" -->
 
@@ -761,7 +760,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-<img src="../tikz/resnet.svg" class="top2 bottom2 width75 center">
+<img src="../tikz/resnet/resnet.svg" class="top2 bottom2 width75 center">
 
 残差模块 $\zv_l = \av_{l-1} + \class{yellow}{\Uv_2 \cdot h(\Uv_1 \cdot \av_{l-1} + \cv_1) + \cv_2} = \av_{l-1} + \class{yellow}{f(\av_{l-1})}$
 
@@ -866,7 +865,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-<img src="../tikz/convolution1d.svg" class="top4 bottom4 width75 center">
+<img src="../tikz/cnn/convolution1d.svg" class="top4 bottom4 width75 center">
 
 <p>
 \begin{align}
@@ -891,7 +890,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 \end{align}
 </p>
 
-<img src="../tikz/convolution1d.svg" class="top4 bottom4 width75 center">
+<img src="../tikz/cnn/convolution1d.svg" class="top4 bottom4 width75 center">
 
 取$f[i] = x_i$，$g[-2] = w_3$，$g[-1] = w_2$，$g[0] = w_1$，其余为零
 
@@ -909,7 +908,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 针对输入是矩阵的情形
 
-<img src="../tikz/convolution2d.svg" class="top3 bottom4 width75 center">
+<img src="../tikz/cnn/convolution2d.svg" class="top3 bottom4 width75 center">
 
 深色区域称为对应输出神经元的<span class="blue">感受野</span> (receptive field)
 
@@ -963,7 +962,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 - 最大汇聚 (maximum pooling)：取区域内神经元最大值，<span class="blue">拥有一定的平移不变性</span>
 
-<img src="../tikz/pooling-max.svg" class="top3 bottom3 width50 center">
+<img src="../tikz/cnn/pooling-max.svg" class="top3 bottom3 width50 center">
 
 - 平均汇聚 (mean pooling)：取区域内神经元平均值
 
@@ -995,7 +994,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-<img src="../tikz/lenet.svg" class="center width90 top10">
+<img src="../tikz/cnn/lenet.svg" class="center width90 top10">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1003,7 +1002,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-@import "../python/lenet-mnist.py" {.line-numbers .top-1 .left4}
+@import "../python/lenet-mnist.py" {.line-numbers .top1 .left4}
 
 <!-- slide data-notes="" -->
 
@@ -1023,9 +1022,9 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-对于给定序列$\xv_1, \ldots, \xv_T$，计算联合概率$p(\xv_T, \ldots, \xv_1)$
+对于给定序列$\xv_1, \ldots, \xv_T$，计算联合概率$\pb(\xv_T, \ldots, \xv_1)$
 
-- $p(\mathrm{make America great again}) > p(\mathrm{great America make again}) ?$，判别哪个序列更像人话
+- $\pb(\mathrm{make ~ America ~ great ~ again}) > \pb(\mathrm{great ~ America ~ make ~ again}) ?$，判别哪个序列更像人话
 - 预测下一个词：hello [ world | China | Wuhan | HUST ]？
 
 <div class="bottom4"></div>
@@ -1036,7 +1035,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 <p>
 \begin{align}
-    p(\xv_T, \ldots, \xv_1) = p(\xv_T | \xv_{T-1}, \ldots, \xv_1) \cdots p(\xv_3 | \xv_2, \xv_1) ~ p(\xv_2 | \xv_1) ~ p(\xv_1)
+    \pb(\xv_T, \ldots, \xv_1) = \pb(\xv_T | \xv_{T-1}, \ldots, \xv_1) \cdots \pb(\xv_3 | \xv_2, \xv_1) ~ \pb(\xv_2 | \xv_1) ~ \pb(\xv_1)
 \end{align}
 </p>
 
@@ -1050,9 +1049,9 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 当前词出现的概率只依赖于前$n - 1$个词
 
-- $n = 1: p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i)$
-- $n = 2: p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i | \xv_{i-1})$
-- $n = 3: p(\xv_i | \xv_{i-1}, \ldots, \xv_1) = p(\xv_i | \xv_{i-1}, \xv_{i-2})$
+- $n = 1: \pb(\xv_i | \xv_{i-1}, \ldots, \xv_1) = \pb(\xv_i)$
+- $n = 2: \pb(\xv_i | \xv_{i-1}, \ldots, \xv_1) = \pb(\xv_i | \xv_{i-1})$
+- $n = 3: \pb(\xv_i | \xv_{i-1}, \ldots, \xv_1) = \pb(\xv_i | \xv_{i-1}, \xv_{i-2})$
 
 <div class="bottom2"></div>
 
@@ -1118,9 +1117,9 @@ $4$个词的滑动窗口，词向量维度$d = 5$，隐藏层神经元个数$13$
 
 循环神经网络隐藏层神经元存在自指，时间维度上权值共享
 
-<img src="../tikz/rnn-simple.svg" class="center width75 top2">
+<img src="../tikz/rnn/rnn-simple.svg" class="center width75 top2">
 
-<img src="../tikz/rnn.svg" class="width26 right4 lefta top-56per">
+<img src="../tikz/rnn/rnn.svg" class="width26 right4 lefta top-56per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1196,7 +1195,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 - 序列的最终表示$\av_T$输入给分类器$g$进行分类：$\hat{y} = g(\av_T)$
 - 将整个序列的平均状态$\av$输入给分类器$g$进行分类：$\hat{y} = g(\av)$
 
-<img src="../tikz/seq2class.svg" class="center width80 top6">
+<img src="../tikz/rnn/seq2class.svg" class="center width80 top6">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1204,7 +1203,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 ---
 
-@import "../python/rnn-imdb.py" {.line-numbers .top-1 .left4 highlight=[]}
+@import "../python/rnn-imdb.py" {.line-numbers .top1 .left4 highlight=[]}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1222,7 +1221,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 \end{align}
 </p>
 
-<img src="../tikz/seq2seq-syn.svg" class="center width70 top4">
+<img src="../tikz/rnn/seq2seq-syn.svg" class="center width70 top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1236,13 +1235,13 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 <p>
 \begin{align}
-    \av_t & = h_1 (\av_{t-1}, \xv_t), ~ \forall t \in [T] \\
-    \av_{T+t} & = h_2 (\av_{T+t-1}, \yvh_{t-1}), ~ \forall t \in [S] \\
-    \yvh_t & = g(\av_{T+t}), ~ \forall t \in [S]
+    & \av_t = h_1 (\av_{t-1}, \xv_t), ~ \forall t \in [T] \\
+    & \av_{T+t} = h_2 (\av_{T+t-1}, \yvh_{t-1}), ~ \forall t \in [S] \\
+    & \yvh_t = g(\av_{T+t}), ~ \forall t \in [S]
 \end{align}
 </p>
 
-<img src="../tikz/seq2seq-asyn.svg" class="center width80 top-6">
+<img src="../tikz/rnn/seq2seq-asyn.svg" class="center width80 top-6">
 
 <!-- slide data-notes="" -->
 
@@ -1389,7 +1388,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 ---
 
-<img src="../tikz/lstm.svg" class="center width80 top5">
+<img src="../tikz/rnn/lstm.svg" class="center width80 top5">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1401,15 +1400,15 @@ LSTM 网络的紧凑形式
 
 <p>
 \begin{align}
-    \begin{bmatrix}
+    & \begin{bmatrix}
         \widetilde{\cv}_t \\ \ov_t \\ \iv_t \\ \fv_t
-    \end{bmatrix} & = \begin{bmatrix}
+    \end{bmatrix} = \begin{bmatrix}
         \tanh \\ \sigma \\ \sigma \\ \sigma
     \end{bmatrix} \left( \Wv \begin{bmatrix}
         \xv_t \\ \av_{t-1}
     \end{bmatrix} + \bv \right) \\
-    \cv_t & = \fv_t \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t \\
-    \av_t & = \ov_t \odot \tanh(\cv_t)
+    & \cv_t = \fv_t \odot \cv_{t-1} + \iv_t \odot \widetilde{\cv}_t \\
+    & \av_t = \ov_t \odot \tanh(\cv_t)
 \end{align}
 </p>
 
@@ -1479,7 +1478,7 @@ peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状�
 
 ---
 
-<img src="../tikz/gru.svg" class="center width80 top5">
+<img src="../tikz/rnn/gru.svg" class="center width80 top5">
 
 <!-- slide data-notes="" -->
 
@@ -1491,7 +1490,7 @@ peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状�
 
 堆叠循环神经网络：将多个循环网络堆叠起来
 
-<img src="../tikz/srnn.svg" class="center width60 top2">
+<img src="../tikz/rnn/srnn.svg" class="center width60 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1503,7 +1502,7 @@ peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状�
 
 双向循环神经网络：两层循环神经网络信息传递方向不同
 
-<img src="../tikz/birnn.svg" class="center width60 top2">
+<img src="../tikz/rnn/birnn.svg" class="center width60 top2">
 
 <!-- slide data-notes="" -->
 
@@ -1519,7 +1518,7 @@ peephole 连接：三个门不但依赖于输入$\xv_t$和上一时刻的隐状�
 \end{align}
 </p>
 
-<img src="../tikz/seq2seq-asyn.svg" class="center width80 top4 bottom6">
+<img src="../tikz/rnn/seq2seq-asyn.svg" class="center width80 top4 bottom6">
 
 问题：生成每个目标$\yv_s$时，使用的都是相同的语义编码$\av_{T+1}$
 
@@ -1577,7 +1576,7 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 
 ---
 
-<img src="../tikz/attention.svg" class="center width75 top2">
+<img src="../tikz/attention/attention.svg" class="center width75 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1615,7 +1614,7 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 
 ---
 
-<img src="../tikz/attention-kv.svg" class="center width75 top2">
+<img src="../tikz/attention/attention-kv.svg" class="center width75 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1655,7 +1654,7 @@ I love you <span class="blue">China</span> → 我爱你 <span class="blue">中�
 
 指针网络：将注意力分布作为指出相关信息位置的软性指针
 
-<img src="../tikz/pointer.svg" class="center width80 top3">
+<img src="../tikz/attention/pointer.svg" class="center width80 top3">
 
 <!-- slide vertical=true data-notes="" -->
 

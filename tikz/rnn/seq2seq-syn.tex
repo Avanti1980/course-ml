@@ -1,0 +1,53 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-color}
+\usepackage{avanti-tikz4slides}
+\usepackage{avanti-notations}
+
+\tikzset{font=\large}
+\tikzset{base/.style={smooth,thick,SolarizedBase01,draw=SolarizedBase01}}
+\tikzset{arrow/.style={->,>=stealth,base}}
+\tikzset{curve/.style={base,SolarizedBlue}}
+\tikzset{nc/.style={base,circle}}
+\tikzset{box/.style={base,rectangle,minimum height=0.6cm,minimum width=1.2cm}}
+\tikzset{box2/.style={box,fill=SolarizedBase2}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \foreach \i in {3,5,...,13}
+        {
+            \pgfmathtruncatemacro{\index}{(\i-1)/2};
+            \ifthenelse{\i=11}
+            {
+                \node [box,draw=none] (y\index) at (\i,3) {...};
+                \node [box,draw=none] (a\index) at (\i,1.5) {...};
+                \node [box,draw=none] (x\index) at (\i,0) {...};
+                \pgfmathtruncatemacro{\im}{\index-1};
+                \draw [arrow] (a\im) -- (a\index);
+            }
+            {
+                \ifthenelse{\i=13}
+                {
+                    \node [box2] (y\index) at (\i,3) {$\hat{y}_T$};
+                    \node [box] (a\index) at (\i,1.5) {$\av_T$};
+                    \node [box2] (x\index) at (\i,0) {$\xv_T$};
+                }
+                {
+                    \node [box2] (y\index) at (\i,3) {$\hat{y}_\index$};
+                    \node [box] (a\index) at (\i,1.5) {$\av_\index$};\node [box2] (x\index) at (\i,0) {$\xv_\index$};
+                }
+                \draw [arrow] (x\index) -- (a\index);
+                \draw [arrow] (a\index) -- (y\index);
+                \ifthenelse{\NOT 3 = \i}
+                {
+                    \pgfmathtruncatemacro{\im}{\index-1};
+                    \draw [arrow] (a\im) -- (a\index);
+                }{;}
+            }
+        }
+
+\end{tikzpicture}
+
+\end{document}
+

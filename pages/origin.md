@@ -199,7 +199,7 @@ presentation:
 
 <div class="top2"></div>
 
-第三方扩展包之间依赖关系复杂，新手推荐用 [Anaconda](https://www.anaconda.com/download/)
+Python 第三方扩展包之间依赖关系复杂，新手推荐用 [Anaconda](https://www.anaconda.com/download/)
 
 开发环境个人偏爱 [VS Code](https://code.visualstudio.com/)
 
@@ -294,7 +294,7 @@ I propose to consider the question, 'can machines think?'
 2. 回应对图灵测试的质疑：优势在于将体力和智力清晰分开
 3. 图灵测试中的机器：限定为“数字计算机”
 4. 数字计算机：存储器、执行器、控制器
-5. 数字计算机的通用性：通过适当的编程可模仿任何其其它“离散状态机”的行为
+5. 数字计算机的通用性：通过适当的编程可模仿任何其它“离散状态机”的行为
 6. 主要问题的争议：批判神学、鸵鸟式、数学等 9 个方面的异议
 7. 学习机器：起点在哪里？抽象的智力活动，如下棋；机器装备传感器，像孩子一样不断学习
 
@@ -369,7 +369,7 @@ I propose to consider the question, 'can machines think?'
 
 ---
 
-@import "../mermaid/ai.mermaid"
+@import "../mermaid/ai.mermaid" {.bottom-4}
 
 <!-- slide data-notes="" -->
 
@@ -414,9 +414,9 @@ I propose to consider the question, 'can machines think?'
 <p>
 \begin{align}
     \begin{array}{rll}
-    A_1: & P \to (Q \to P) & 肯定前件律 \\
-    A_2: & (P \to (Q \to R)) \to ((P \to Q) \to (P \to R)) & 分配律 \\
-    A_3: & (\neg P \to \neg Q) \to (Q \to P) & 逆否律
+    A_1: & P \to (Q \to P) & 弱化 \\
+    A_2: & (P \to (Q \to R)) \to ((P \to Q) \to (P \to R)) & 分配 \\
+    A_3: & (\neg P \to \neg Q) \to (Q \to P) & 逆否
     \end{array}
 \end{align}
 </p>
@@ -526,7 +526,7 @@ I propose to consider the question, 'can machines think?'
 
 我们人类是如何识别这些手写数字的？
 
-<img src="../img/number.svg" class="center width80">
+<img src="../python/data/digit-info-6-10.svg" class="center width80">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -565,8 +565,8 @@ I propose to consider the question, 'can machines think?'
 我们人类是如何判断红/黑、白/黑哪方优势的？
 
 <div class="top2 center bottom4">
-    <img src="../img/data/chess1.jpg" width=320px>
-    <img src="../img/data/chess2.jpg" width=320px class="left6">
+    <img src="../img/chess/chess1.jpg" width=320px>
+    <img src="../img/chess/chess2.jpg" width=320px class="left6">
 </div>
 
 ### <span class="fragment">启示：让{==机器==}从数据中自动{==学习==}得到知识</span>

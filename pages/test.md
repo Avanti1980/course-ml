@@ -28,90 +28,16 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-entropy.js"
 
-<!-- slide data-notes="" -->
+<!-- slide vertical=true data-notes="" -->
 
-##### 路线之争
+##### 降维
 
 ---
 
-```dot
-digraph g {
-    bgcolor=transparent
-    graph [nodesep=0.2, ranksep=0.4]
-    rankdir=LR
-    node [shape=plaintext, color="#586e75", fontname="Ysabeau, LXGWSong", fontcolor="#b58900", fontsize=18]
-    edge [arrowhead=vee, color="#586e75", fontname="Ysabeau, LXGWSong", fontcolor="#268bd2", fontsize=14, arrowsize=0.6]
+<div class="width40">
 
-    subgraph cluster_1 {
-        color="#586e75"
-        fontcolor="#586e75"
-        style="dashed"
-        fontname="Ysabeau, LXGWSong"
-        label="增强品质"
+输入为$\rb^2$中 500 个点，服从正态分布 (等高线为一族椭圆)，$\rb^2 \mapsto \rb$重构误差最小的投影方向 (主成分) 是椭圆的长轴
 
-        图属性 时间属性 空间属性
+</div>
 
-        node [fontcolor="#268bd2"]
-
-        灵材
-    }
-
-    subgraph cluster_2 {
-        color="#586e75"
-        fontcolor="#586e75"
-        style="dashed"
-        fontname="Ysabeau, LXGWSong"
-        label="设计灵阵"
-
-        图类 循环类 卷积类
-
-        node [fontcolor="#268bd2"]
-
-        丹方
-    }
-
-    subgraph cluster_3 {
-        color="#586e75"
-        fontcolor="#586e75"
-        style="dashed"
-        fontname="Ysabeau, LXGWSong"
-        label="精通用法"
-
-        JAX PyTorch TensorFlow
-
-        node [fontcolor="#268bd2"]
-
-        丹炉
-    }
-
-    subgraph cluster_4 {
-        color="#586e75"
-        fontcolor="#586e75"
-        style="dashed"
-        fontname="Ysabeau, LXGWSong"
-        label="氪金"
-
-        "华为 昇腾" "谷歌 TPU" "英伟达 GPU"
-
-        node [fontcolor="#268bd2"]
-
-        真火
-    }
-
-    subgraph cluster_5 {
-        color="#586e75"
-        fontcolor="#586e75"
-        style="dashed"
-        fontname="Ysabeau, LXGWSong"
-        label="控制调节"
-
-        提早停止 随机丢弃 层归一化
-
-        node [fontcolor="#268bd2"]
-
-        炼制
-    }
-
-    灵材 -> 丹方 -> 丹炉 -> 真火 -> 炼制
-}
-```
+<img src="../python/unsupervised-learning/pca-plot.svg" class="lefta right4 top-26 width56" title="成分1是重构误差最小的投影方向">

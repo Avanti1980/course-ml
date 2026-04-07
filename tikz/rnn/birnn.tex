@@ -1,0 +1,74 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-color}
+\usepackage{avanti-tikz4slides}
+\usepackage{avanti-notations}
+
+\tikzset{font=\large}
+\tikzset{minimum-size/.style = {minimum height=0.8cm, minimum width=1.2cm}}
+\tikzset{plain/.style = {draw=none, minimum-size}}
+\tikzset{base/.style={smooth, thick, SolarizedBase01, draw=SolarizedBase01}}
+\tikzset{hidden/.style = {rectangle, minimum-size, base}}
+\tikzset{io/.style = {hidden, fill=SolarizedBase2}}
+\tikzset{add/.style = {circle, minimum height=0.8cm, base, fill=SolarizedBase1}}
+
+\tikzset{arrow/.style={->,>=stealth,base}}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \pgfmathsetmacro{\xinc}{2};
+    \pgfmathsetmacro{\yinc}{1.5};
+
+    \def \indexs {{1, 2, 3, 4, 5, "T"}};
+    \def \names {{"\xv", "\av^{(1)}", "\av^{(2)}", "+", "\hat{y}"}};
+    \def \styles {{"io", "hidden", "hidden", "add", "io"}};
+
+    \foreach \i in {0, ..., 5}{
+
+            \ifthenelse{\NOT \i = 4}{ % 非倒数第二列
+
+                \pgfmathparse{\indexs[\i]};
+                \edef \index {\pgfmathresult}; % 获取下标
+
+                \foreach \j [count=\jj from -1] in {0, ..., 4}
+                    {
+                        \pgfmathparse{\styles[\j]};
+                        \edef \style {\pgfmathresult}; % 获取样式
+
+                        \ifthenelse{\j = 3}{ % 加号那一行不需要下标
+                            \node [{\style}] (\i\j) at (\i*\xinc, \j*\yinc) {$\pgfmathparse{\names[\j]}\pgfmathresult$};
+                        }{
+                            \node [{\style}] (\i\j) at (\i*\xinc, \j*\yinc) {$\pgfmathparse{\names[\j]}\pgfmathresult_\index$};
+                        }
+
+                        \ifthenelse{\NOT \j = 0 \AND \NOT \j = 2}{
+                            \draw [arrow] (\i\jj) -- (\i\j);
+                        }{;}
+
+                        \ifthenelse{\j = 2}{ % 画跳连边
+                            \draw [arrow] (\i0) to [out=135, in=225] (\i2);
+                        }{;}
+
+                        \ifthenelse{\j = 3}{ % 画跳连边
+                            \draw [arrow] (\i1) to [out=45, in=315] (\i3);
+                        }{;}
+                    }
+            }{
+                \foreach \j in {0, ..., 4}{
+                        \node [plain,SolarizedBase01] (\i\j) at (\i*\xinc, \j*\yinc) {...};
+                    }
+            }
+        }
+
+    \foreach \i [count=\ii] in {0, ..., 5}{ % 画横向边
+            \ifthenelse{\i < 5}{
+                \draw [arrow] (\i1) -- (\ii1);
+                \draw [arrow] (\ii2) -- (\i2);
+            }{;}
+        }
+
+\end{tikzpicture}
+
+\end{document}
+

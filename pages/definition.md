@@ -115,7 +115,7 @@ presentation:
 
 sklearn 集成了该数据集
 
-@import "../python/iris-info.py" {line_begin=0 line_end=107 .line-numbers .top0 bottom1 .left4 highlight=[]}
+@import "../python/data/iris-info.py" {line_begin=0 line_end=107 .line-numbers .top0 bottom1 .left4 highlight=[]}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -125,7 +125,7 @@ sklearn 集成了该数据集
 
 将样本看成欧几里得空间$\rb^4$中的点
 
-<img src="../python/dt-iris-plot.svg" class="center width75 top1">
+<img src="../python/data/iris-plot.svg" class="center width85 top1">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -204,7 +204,7 @@ sklearn 集成了该数据集
 
 sklearn 集成了该数据集
 
-@import "../python/cancer-info.py" {line_begin=0 line_end=119 .line-numbers .top0 .bottom1 .left4 highlight=[]}
+@import "../python/data/cancer-info.py" {line_begin=0 line_end=119 .line-numbers .top0 .bottom1 .left4 highlight=[]}
 
 <!-- slide data-notes="" -->
 
@@ -217,7 +217,7 @@ sklearn 集成了该数据集
 - <a href="https://en.wikipedia.org/wiki/MNIST_database" target=_blank>MNIST</a> (Modified NIST) 数据集收集了其中 70000 张图片，其中 60000 张训练、10000 张测试，每张图片为 28 x 28 像素
 - <a href="https://archive.ics.uci.edu/datasets" target=_blank>UCI</a> 数据集收集了其中 5620 张图片，其中 3823 张训练、1797 张测试，每张图片为 8 x 8 像素，下图为测试集中的前 40 张图片
 
-<img src="../img/number.svg" class="center top4 width70" title="">
+<img src="../python/data/digit-info-4-10.svg" class="center top4 width70" title="">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -227,7 +227,7 @@ sklearn 集成了该数据集
 
 sklearn 中的 digits 数据集就是 UCI 数据集中的测试集
 
-@import "../python/digit-info.py" {line_begin=1 line_end=48 .line-numbers .top0 .bottom1 .left4 highlight=[]}
+@import "../python/data/digit-info.py" {line_begin=1 line_end=48 .line-numbers .top0 .bottom1 .left4 highlight=[]}
 
 <!-- slide data-notes="" -->
 
@@ -256,7 +256,7 @@ sklearn 中的 digits 数据集就是 UCI 数据集中的测试集
 
 sklearn 集成了该数据集
 
-@import "../python/diabetes-info.py" {line_begin=0 line_end=119 .line-numbers .top0 .bottom1 .left4 highlight=[]}
+@import "../python/data/diabetes-info.py" {line_begin=0 line_end=119 .line-numbers .top0 .bottom1 .left4 highlight=[]}
 
 <!-- slide data-notes="" -->
 
@@ -394,7 +394,7 @@ sklearn 集成了该数据集
 
 - 聚类 (clustering)：依相似度将数据分成若干个簇 (cluster)
 - 降维 (dimension reduction)：为样本学习更好的特征表示
-- 密度估计 (density estimation)：估计数据所来自的概率分布$p(\xv)$
+- 密度估计 (density estimation)：估计数据所来自的概率分布
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -421,9 +421,12 @@ sklearn 集成了该数据集
 
 ---
 
-从 6 个中心随机生成、各向同性、标准差为 1 的正态分布里各采样 2000 个样本，并指定聚成 4 个簇
+<div class="top2"></div>
 
-<img src="../python/clustering.svg" class="center top2 width60" title="">
+- 左：从$\rb^2$上各向同性、标准差为 1 的正态分布里采样 2000 个样本，并指定聚成 6 个簇
+- 右：从$\rb^2$上两个中心随机生成、各向同性、标准差为 1 的正态分布里各采样 2000 个样本，并指定聚成 6 个簇
+
+<img src="../python/unsupervised-learning/clustering.svg" class="center top2 width80" title="">
 
 <!-- slide data-notes="" -->
 
@@ -448,7 +451,7 @@ sklearn 集成了该数据集
 
 <p>
 \begin{align}
-    \min_{\Wv} \| \Xv - \Xv \Wv \Wv^\top \|_F^2, \quad \st ~ \Wv^\top \Wv = \Iv.
+    \min_{\Wv} \| \Xv - \Xv \Wv \Wv^\top \|_F^2, \quad \st ~ \Wv^\top \Wv = \Iv
 \end{align}
 </p>
 
@@ -460,9 +463,13 @@ sklearn 集成了该数据集
 
 ---
 
+<div class="width40">
+
 输入为$\rb^2$中 500 个点，服从正态分布 (等高线为一族椭圆)，$\rb^2 \mapsto \rb$重构误差最小的投影方向 (主成分) 是椭圆的长轴
 
-<img src="../python/pca-plot.svg" class="center top2 width70" title="Component 0 是重构误差最小的投影方向">
+</div>
+
+<img src="../python/unsupervised-learning/pca-plot.svg" class="lefta right4 top-26 width56" title="成分1是重构误差最小的投影方向">
 
 <!-- slide data-notes="" -->
 
@@ -474,7 +481,7 @@ sklearn 集成了该数据集
 
 20 个样本，其中 6 个采样自$\nc(0,1)$，14 个采样自$\nc(5,1)$
 
-<img src="../python/density-estimation-1.svg" class="center top2 width90" title="">
+<img src="../python/unsupervised-learning/density-estimation-1.svg" class="center top2 width90" title="">
 
 <p class="fragment">由上图可见直方图估计对 bin 的选取很敏感</p>
 
@@ -530,7 +537,7 @@ sklearn 集成了该数据集
 
 </div>
 
-<img src="../python/density-estimation-2.svg" class="top-40 width56 right4 lefta" title="">
+<img src="../python/unsupervised-learning/density-estimation-2.svg" class="top-40 width56 right4 lefta" title="">
 
 <p class="footnote book"> sklearn 提供了上面 6 种核函数，此外$\frac{15}{16} (1 - u^2)^2 \ib(|u| \le 1)$、$\frac{35}{32} (1 - u^2)^3 \ib(|u| \le 1)$也是常用核函数</p>
 
@@ -542,7 +549,7 @@ sklearn 集成了该数据集
 
 100 个样本，其中 30 个采样自$\nc(0,1)$，70 个采样自$\nc(5,1)$
 
-<img src="../python/density-estimation-3.svg" class="center top3 width90" title="">
+<img src="../python/unsupervised-learning/density-estimation-3.svg" class="center top3 width90" title="">
 
 <!-- slide data-notes="" -->
 
@@ -983,7 +990,7 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 - A 的曲线下面积大于 B
 - A 的曲线与$P=R$的交点 (平衡点) 更大
 
-<img src="../python/pr-curve.svg" class="right4 lefta top-20 bottom-20 width35" title="乳腺癌数据上的结果">
+<img src="../python/measure/pr-curve.svg" class="right4 lefta top-20 bottom-20 width35" title="二分类，1000个样本（800训练、200测试），20个特征">
 
 <p class="footnote book"> 曲线下面积缩写为 AUC (<span class="blue">a</span>rea <span class="blue">u</span>nder <span class="blue">c</span>urve)</p>
 
@@ -1044,7 +1051,7 @@ ROC 曲线与查准查全曲线类似，只不过纵横轴不同
 - A 的曲线完全在 B 的左上方
 - A 的曲线下面积大于 B
 
-<img src="../python/roc-curve.svg" class="lefta right6 top-25 width35" title="">
+<img src="../python/measure/roc-curve.svg" class="lefta right6 top-25 width35" title="二分类，1000个样本（800训练、200测试），20个特征">
 
 <p class="footnote book"> ROC (<span class="blue">r</span>eceiver <span class="blue">o</span>perating <span class="blue">c</span>haracteristic) 曲线全称是“受试者工作特征”曲线，源于二战中用于敌机检测的雷达信号分析技术，上世纪六七十年代开始被用于心理学、医学检测中，后被引入机器学习领域</p>
 
@@ -1177,4 +1184,4 @@ ROC 曲线 vs. 查准查全曲线
 
 由此可见，多分类的交叉熵损失就是二分类的对率损失的拓展
 
-<!-- slide data-menu-title="sklearn中的性能度量" data-background-iframe="https://scikit-learn.org/stable/modules/model_evaluation.html" vertical=true data-background-interactive data-notes="" -->
+<!-- slide data-menu-title="sklearn中的性能度量" data-background-iframe="https://scikit-learn.org/stable/modules/model_evaluation.html#string-name-scorers" vertical=true data-background-interactive data-notes="" -->
