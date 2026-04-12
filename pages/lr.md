@@ -362,7 +362,7 @@ presentation:
 
 <p>
 \begin{align}
-    ~ \sigma_{y_i} (\xv_i) = \frac{\exp(\wv_{y_i}^\top \xv_i)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv_i)}
+    \sigma_{y_i} (\xv_i) = \frac{\exp(\wv_{y_i}^\top \xv_i)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv_i)}
 \end{align}
 </p>
 
@@ -370,7 +370,7 @@ presentation:
 
 <p>
 \begin{align}
-    ~ \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) & = \frac{\exp(\wv_{y_i}^\top \xv_i) \xv_i \sum_{k \in [c]} \exp(\wv_k^\top \xv_i) - \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_{y_i}^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} \\[4pt]
+    \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) & = \frac{\exp(\wv_{y_i}^\top \xv_i) \xv_i \sum_{k \in [c]} \exp(\wv_k^\top \xv_i) - \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_{y_i}^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} \\[4pt]
     & = \sigma_{y_i} (\xv_i) \xv_i - \sigma_{y_i}^2 (\xv_i) \xv_i = \sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i \\[10pt]
     \nabla_{\wv_l} \sigma_{y_i} (\xv_i) & = \frac{- \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_l^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} = - \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i, ~ l \ne y_i
 \end{align}
@@ -384,9 +384,9 @@ presentation:
 
 <p>
 \begin{align}
-    \qquad & \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) = \class{blue}{\sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i} \\
-    & \nabla_{\wv_l} \sigma_{y_i} (\xv_i) = \class{yellow}{- \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}, \quad l \ne y_i \\[16pt]
-    \quad & \nabla_{\wv_l} \left( \sum_{i \in [m]} \ln \sigma_{y_i}(\xv_i) \right) = \sum_{i \in [m]} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
+    & \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) = \class{blue}{\sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i} \\
+    & \nabla_{\wv_l} \sigma_{y_i} (\xv_i) = \class{yellow}{- \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}, \quad l \ne y_i \\[15pt]
+    & \nabla_{\wv_l} \left( \sum_{i \in [m]} \ln \sigma_{y_i}(\xv_i) \right) = \sum_{i \in [m]} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
     = & \sum_{i: y_i = l} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} + \sum_{i: y_i \neq l} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
     = & \sum_{i: y_i = l} \frac{\class{blue}{\sigma_l (\xv_i) (1 - \sigma_l (\xv_i))\xv_i}}{\sigma_l (\xv_i)} + \sum_{i: y_i \neq l} \frac{\class{yellow}{-\sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}}{\sigma_{y_i} (\xv_i)} \\
     = & \sum_{i: y_i = l} (1 - \sigma_l (\xv_i)) \xv_i - \sum_{i: y_i \neq l} \sigma_l (\xv_i) \xv_i = \sum_{i: y_i = l} \xv_i - \sum_{i \in [m]} \sigma_l (\xv_i) \xv_i \\
@@ -400,7 +400,7 @@ presentation:
 
 ---
 
-@import "../python/lr-date.py" {line_end=53 .line-numbers .top-1 .left4 highlight=[2]}
+@import "../python/lr/lr-date.py" {line_end=53 .line-numbers .top-1 .left4 highlight=[2]}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -408,7 +408,7 @@ presentation:
 
 ---
 
-@import "../python/lr-iris.py" {line_end=78 .line-numbers .top-1 .left4 highlight=[3]}
+@import "../python/lr/lr-iris.py" {line_end=78 .line-numbers .top-1 .left4 highlight=[3]}
 
 <!-- slide data-notes="" -->
 
@@ -500,7 +500,7 @@ presentation:
 
 数据：在$y = 0.5x + 2$上随机采样$20$个点
 
-<img src="../python/lr/gd.svg" class="center width90 top2" title="用梯度下降求解 R 上的最小二乘">
+<img src="../python/lr/gd.svg" class="center width90 top1 bottom-4" title="用梯度下降求解 R 上的最小二乘">
 
 <!-- slide data-notes="" -->
 

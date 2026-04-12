@@ -1,15 +1,20 @@
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
+import seaborn as sns
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
+from sklearn.linear_model import Perceptron
 
 zhisong = fm.FontEntry(fname="/home/avanti/Fonts/LXGW/LXGWNeoZhiSongScreenFull.ttf", name="LXGW Neo ZhiSong Screen Full")
 fm.fontManager.ttflist.insert(0, zhisong)
 plt.rcParams.update({
-    "font.family": ["LXGW Neo ZhiSong Screen Full"],
-    "mathtext.fontset": "cm",
+    "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
+    "mathtext.fontset": 'cm',
     "axes.unicode_minus": True,
-    "font.size": 12
+    "savefig.bbox": "tight",
+    'legend.fontsize': 14,
+    "xtick.labelsize": 14,
+    "ytick.labelsize": 14,
+    'text.color': '#586e75',
 })
 
 
@@ -70,51 +75,52 @@ class KPerceptron(object):
         return np.sum(self.predict(Z) == y) / float(y.size)
 
 
-if __name__ == '__main__':
-    X = np.array([[1, 1], [1, 0], [0, 1], [0, 0]])
-    y = np.array([-1, 1, 1, -1])
+np.random.seed(1)
 
-    np.random.seed(1)
+X = np.array([[1, 1], [1, 0], [0, 1], [0, 0]])
+y = np.array([-1, 1, 1, -1])
 
-    conf = [['poly', 2, "2阶多项式核"], ['poly', 3, "3阶多项式核"], ['rbf', '', "高斯核"]]
-    col = len(conf)
+conf = [['poly', 2, "2阶多项式核"], ['poly', 3, "3阶多项式核"], ['rbf', None, "高斯核"]]
+col = len(conf)
 
-    l = 10
-    figure = plt.figure(figsize=(l * col / 2, l))
+with plt.style.context('Solarize_Light2'):
 
-    with plt.style.context('Solarize_Light2'):
+    plt.figure(figsize=(18, 12))
 
-        x_min, x_max = -0.2, 1.2
-        y_min, y_max = -0.2, 1.2
-        h = .02
-        xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-        i = 0
+    x_min, x_max = -0.2, 1.2
+    y_min, y_max = -0.2, 1.2
+    h = .02
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 
-        for ker, param, name in conf:
+    for i, (ker, param, name) in enumerate(conf):
 
-            i += 1
-            ax = plt.subplot(2, col, i)
-            ax.set_xlim(xx.min(), xx.max())
-            ax.set_ylim(yy.min(), yy.max())
-            ax.set_xticks(())
-            ax.set_yticks(())
+        ax = plt.subplot(2, col, i + 1)
+        ax.set_aspect('equal')
+        ax.set_xlim(xx.min(), xx.max())
+        ax.set_ylim(yy.min(), yy.max())
+        ax.set_xticks(())
+        ax.set_yticks(())
 
-            kp = KPerceptron(ker=ker, gamma=1, coef0=1, degree=param, eta0=0.5)
-            kp.fit(X, y)
-            acc = kp.score(X, y)
+        kp = KPerceptron(ker=ker, gamma=1, coef0=1, degree=param, eta0=0.5)
+        kp.fit(X, y)
+        acc = kp.score(X, y)
 
-            Z = kp.decision_function(np.c_[xx.ravel(), yy.ravel()])
-            Z = Z.reshape(xx.shape)
+        Z = kp.decision_function(np.c_[xx.ravel(), yy.ravel()])
+        Z = Z.reshape(xx.shape)
 
-            contours = ax.contour(xx, yy, Z, 16, alpha=.8)
-            ax.clabel(contours, fontsize=12, inline=True)
+        sns.scatterplot(x=X[:, 0], y=X[:, 1], s=60, hue=y, palette="inferno", legend=False, ax=ax)
+        contours = ax.contour(xx, yy, Z, 16, cmap="inferno", alpha=.8)
+        ax.clabel(contours, fontsize=14, inline=True)
 
-            ax.scatter(X[:, 0], X[:, 1], s=50, c=y, edgecolors='#002b36')
-            ax.set_title(f'{name}\n', color='#586e75', fontsize=28, fontweight="medium")
+        ax.set_title(f'{name}', color='#586e75', fontsize=28)
 
-            ax = plt.subplot(2, col, i + col, projection='3d')
-            ax.plot_surface(xx, yy, Z)
-            ax.set_xlabel(r'$x_1$', fontsize=20)
-            ax.set_ylabel(r'$x_2$', fontsize=20)
+        ax = plt.subplot(2, col, i + col + 1, projection='3d')
+        ax.plot_surface(xx, yy, Z)
+        inc = 0.5
+        ax.set_xticks(np.arange(x_min, x_max + 0.1, inc))
+        ax.set_yticks(np.arange(y_min, y_max + 0.1, inc))
+        ax.set_xlabel(r'$x_1$', c="#d33682", fontsize=20)
+        ax.set_ylabel(r'$x_2$', c="#d33682", fontsize=20)
 
-    plt.savefig("perceptron-kernel.svg", transparent=True, bbox_inches="tight")
+    plt.subplots_adjust(wspace=0.08, hspace=-0.1)
+    plt.savefig("perceptron-kernel.svg", transparent=True)

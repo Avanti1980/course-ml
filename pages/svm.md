@@ -40,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -100,11 +100,11 @@ $D = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \Xcal \subseteq \Rbb^d$，$y_i
 
 <div class="top2"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \max_{\wv,b} & ~ \gamma \\ \st & ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2} \ge \gamma, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 @import "../tikz/margin-hyperplane.svg" {.lefta .right6 .width40 .top-20per}
 
@@ -116,8 +116,8 @@ $$
 
 $D = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \Xcal \subseteq \Rbb^d$，$y_i \in \{ 1, -1 \}$
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad & \max_{\wv,b} ~ \gamma, \quad \st ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2} \ge \gamma, ~ \forall i \in [m] \\
     & \qquad \qquad \qquad \Updownarrow \\
     & \max_{\wv,b} ~ \frac{\hat{\gamma}}{\|\wv\|_2}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge \hat{\gamma}, ~ \forall i \in [m] \quad \longleftarrow \hat{\gamma} = \gamma \|\wv\|_2 \\
@@ -125,8 +125,8 @@ $$
     & \max_{\wv,b} ~ \frac{1}{\|\wv\|_2}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \quad \longleftarrow \hat{\gamma} = 1 \\
     & \qquad \qquad \qquad \Updownarrow \\
     & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -140,11 +140,11 @@ $\hat{\gamma}$的取值不影响优化，若$(\wv, b, \hat{\gamma})$是最优解
 
 根据最大间隔准则导出支持向量机：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-1"></div>
 
@@ -161,11 +161,11 @@ $$
 
 根据最大间隔准则导出支持向量机：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 该优化问题属于{==二次规划==} (quadratic programming, QP)
 
@@ -188,29 +188,29 @@ $$
 
 支持向量机原问题：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} ~ f(\wv) = \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 引入拉格朗日乘子$\alphav \ge \zerov$，{==拉格朗日函数==}为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad L(\wv, b, \alphav) = \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \underbrace{\alpha_i (y_i (\wv^\top \xv_i + b) - 1)}_{\ge ~ 0}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-3"></div>
 
 定义{==对偶函数==}$g(\alphav) = \min_{\wv,b} L(\wv, b, \alphav)$，于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad g(\alphav) = \min_{\wv,b} L(\wv, b, \alphav) \le L(\wv, b, \alphav) \le f(\wv)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -229,22 +229,22 @@ $$
 
 <div class="top1"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \max_{\alphav \ge \zerov} g(\alphav) & = \max_{\alphav \ge \zerov} \min_{\wv,b} L(\wv, b, \alphav) \\
     & = \max_{\alphav \ge \zerov} \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i (y_i (\wv^\top \xv_i + b) - 1) \Bigg\}
-\end{align*}
-$$
+\end{align}
+</p>
 
 先化简内部优化问题，令$L(\wv, b, \alphav)$关于$\wv$和$b$的偏导为零
 
 <div class="top1"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \wv = \sum_{i \in [m]} \alpha_i y_i \xv_i, \quad \sum_{i \in [m]} \alpha_i y_i = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -254,13 +254,13 @@ $$
 
 $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0$，回代可得
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \max_{\alphav \ge \zerov} g(\alphav) & = \max_{\alphav \ge \zerov} \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i (y_i (\wv^\top \xv_i + b) - 1) \Bigg\} \\
     & = \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\} \\
     & = \max_{\alphav \ge \zerov} \bigg\{ - \frac{1}{2} \alphav^\top \Hv \alphav + \onev^\top \alphav \bigg\} \quad \longleftarrow [\Hv]_{ij} = y_i y_j \xv_i^\top \xv_j
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -278,12 +278,12 @@ $$
 
 支持向量机的原问题和对偶问题分别为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad & \min_{\wv,b} ~ f(\wv) = \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \\
     & \max_{\alphav \ge \zerov} ~ g(\alphav) = - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -304,13 +304,13 @@ $$
 
 根据强对偶性，下式所有不等号只能取等号
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad f(\wv^\star) = g(\alphav^\star) & = \min_{\wv,b} L(\wv, b, \alphav^\star) \\
     & = \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i (\wv^\top \xv_i + b) - 1) \Bigg\} \\
     & \overset{①}{\le} \frac{1}{2} \|\wv^\star\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) \overset{②}{\le} f(\wv^\star)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-3"></div>
 
@@ -318,11 +318,11 @@ $$
 
 <div class="top1"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i, ~ \sum_{i \in [m]} \alpha_i^\star y_i = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -332,27 +332,27 @@ $$
 
 根据强对偶性，下式所有不等号只能取等号
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad f(\wv^\star) = g(\alphav^\star) & = \min_{\wv,b} L(\wv, b, \alphav^\star) \\
     & = \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i (\wv^\top \xv_i + b) - 1) \Bigg\} \\
     & \overset{①}{\le} \frac{1}{2} \|\wv^\star\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) \overset{②}{\le} f(\wv^\star)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-3"></div>
 
 ②：互补松弛条件 (complementary slackness condition)
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \forall i & \in [m] : ~ \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) = 0 \\[4pt]
     & \Longleftrightarrow \begin{cases}
     \alpha_i^\star > 0 \Longrightarrow y_i ({\wv^\star}^\top \xv_i + b^\star) = 1 \Longleftrightarrow {\wv^\star}^\top \xv_i + b^\star = y_i \\
     y_i ({\wv^\star}^\top \xv_i + b^\star) > 1 \Longrightarrow \alpha_i^\star = 0
     \end{cases}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -362,16 +362,16 @@ $$
 
 将前面的结果汇总可得 KKT 条件
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \begin{cases}
     \wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i & \longleftarrow \partial L(\wv, b, \alphav^\star) / \partial \wv = \zerov \\
     \sum_{i \in [m]} \alpha_i^\star y_i = 0 & \longleftarrow \partial L(\wv, b, \alphav^\star) / \partial b = 0 \\
     \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) = 0, ~ \forall i \in [m] & \text{互补松弛条件} \\
     y_i ({\wv^\star}^\top \xv_i + b^\star) \ge 1, ~ \alpha_i^\star \ge 0, ~ \forall i \in [m] & \text{原问题和对偶问题的约束}
     \end{cases}
-\end{align*}
-$$
+\end{align}
+</p>
 
 - $\wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i$：原问题最优解只由训练样本线性表出
 - 若某个$\alpha_i^\star > 0$，则$y_i ({\wv^\star}^\top \xv_i + b^\star) - 1 = 0$，由此可解出$b^\star$
@@ -387,21 +387,21 @@ $$
 
 支持向量机：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \\
     & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 若数据非线性可分怎么办？核支持向量机
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \class{blue}{\phi(\xv_i)} + b) \ge 1, ~ \forall i \in [m] \\
     & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\phi(\xv_i)^\top \phi(\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -411,20 +411,20 @@ $$
 
 训练：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m] \\
     & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i,\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 预测：
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \wv^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \phi(\xv_i)^\top \phi(\zv) + b = \sum_{i \in [m]} \alpha_i y_i \kappa(\xv_i, \zv) + b
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -438,12 +438,12 @@ $$
 
 正向：若$\kappa(\xv_i, \xv_j) = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\Hbb}$、$\kappa(\xv, \xv) = \| \phi(\xv) \|_{\Hbb}^2 \ge 0$
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \av^\top \Kv \av & = \sum_{i \in [m]} \sum_{j \in [m]} a_i a_j \kappa(\xv_i, \xv_j) = \left\langle \sum_{i \in [m]} a_i \phi(\xv_i), \sum_{j \in [m]} a_j \phi(\xv_j) \right\rangle_{\Hbb} \\
     & = \left\| \sum_{i \in [m]} a_i \phi(\xv_i) \right\|_{\Hbb}^2 \ge 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -455,21 +455,21 @@ $$
 
 考虑所有$\kappa(\cdot, \xv)$张成的线性空间$\Hcal$，定义
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \left\langle \sum_i a_i \kappa(\cdot, \xv_i), \sum_j b_j \kappa(\cdot, \xv'_j) \right\rangle_{\Hcal} = \sum_{i,j} a_i b_j \kappa(\xv_i, \xv'_j) = \av^\top \Kv \bv
-\end{align*}
-$$
+\end{align}
+</p>
 
 验证内积的条件：加法线性、数乘线性、对称性、非负性
 
 记$\phi: \xv \mapsto \kappa(\cdot, \xv)$，于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \kappa(\xv_i, \xv_j) = \langle \kappa(\cdot, \xv_i), \kappa(\cdot, \xv_j) \rangle_{\Hcal} = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\Hcal}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -486,11 +486,11 @@ $$
 
 方案：允许约束$y_i (\wv^\top \phi(\xv_i) + b) \ge 1$对少数样本不成立
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} \Bigg\{\frac{1}{2} \|\wv\|_2^2 + C\underbrace{\sum_{i \in [m]} \Ibb(y_i (\wv^\top \phi(\xv_i) + b) < 1) }_{\text{破坏约束的样本个数}} \Bigg\}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -506,11 +506,11 @@ $$
 
 <div class="top1"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
@@ -518,13 +518,13 @@ $$
 
 <div class="top1"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \epsilon_i \Bigg\} \\[2pt]
     \st & ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1 - \epsilon_i \\
     & ~ \epsilon_i \ge 0, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 - $\epsilon_i$称为{==松弛变量==} (slack variable)
 - $\epsilon_i$刻画了约束被破坏的程度
@@ -539,21 +539,21 @@ $$
 
 软间隔支持向量机原问题
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \text{无约束形式：} \min_{\wv,b} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\} \\
     \quad \text{有约束形式：} \min_{\wv,b} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \epsilon_i \Bigg\} \\
     \st & ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m]
-\end{align*}
-$$
+\end{align}
+</p>
 
 软间隔支持向量机对偶问题
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \max_{0 \le \alpha_i \class{blue}{\le C}} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \kappa(\xv_i,\xv_j) + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -567,12 +567,12 @@ $$
 
 <div class="top1"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad & \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\} \\
     \quad & \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \kappa(\xv_i,\xv_j) + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 当采用线性核函数时，原问题、对偶问题择其易解者解之
 
@@ -593,11 +593,11 @@ $$
 
 <div class="top2"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} \Bigg\{ \frac{1}{2} \underbrace{\|\wv\|_2^2}_{\text{正则化项}} + C\sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{损失函数}} \Bigg\}
-\end{align*}
-$$
+\end{align}
+</p>
 
 - $\ell_2$正则$\| \wv \|_2^2$，得到稠密的$\wv$
 - $\ell_1$正则$\| \wv \|_1$，得到稀疏的$\wv$，附带特征选择的作用
@@ -615,11 +615,11 @@ $$
 
 <div class="top2"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv,b} \Bigg\{ \frac{1}{2} \underbrace{\|\wv\|_2^2}_{\text{正则化项}} + C\sum_{i \in [m]} \underbrace{\max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}}_{\text{损失函数}} \Bigg\}
-\end{align*}
-$$
+\end{align}
+</p>
 
 - hinge 损失：$l(y, f(\xv)) = \max \{ 0, 1 - y f(\xv) \}$，软间隔支持向量机
 - 平方 hinge 损失：$l(y, f(\xv)) = [\max \{ 0, 1 - y f(\xv) \}]^2$
@@ -644,11 +644,11 @@ $$
 
 表示定理 (representer theorem)：考虑一般形式的问题
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_{\wv} \left\{ f( \langle \wv, \phi(\xv_1) \rangle, \ldots, \langle \wv, \phi(\xv_m) \rangle ) + \Omega(\| \wv \|) \right\}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
@@ -671,21 +671,21 @@ $$
 
 设$\text{VC}(\Hcal) = d$，ERM 算法至少以$1 - \delta$的概率有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad R (h_D^{\text{ERM}}) \le R_D (h_D^{\text{ERM}}) + \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}}
-\end{align*}
-$$
+\end{align}
+</p>
 
 设$\Hcal$是$\Rbb^n$中的超平面集合，$\VC$维为$n+1$，若采用高斯核做特征映射，$\VC$维为无穷，上面的泛化界没有意义
 
 支持向量机的$\Hcal$是$\Rbb^n$中的大间隔超平面集合
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad R (h) \le R_D (h) + 4 \sqrt{\frac{r^2}{m \rho^2}} + \sqrt{\frac{\ln \log_2 (2 r / \rho) }{m}} + \sqrt{\frac{\log (2 / \delta)}{2m}}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-3"></div>
 

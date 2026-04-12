@@ -602,12 +602,12 @@ mlp = MLPClassifier(
     hidden_layer_sizes=(h),    # 隐藏层神经元个数
     activation='logistic',     # identity, logistic, tanh, relu
     max_iter=100,              # 最大迭代轮数
-    solver='lbfgs',            # 求解器
+    solver='lbfgs',            # 求解器 lbfgs, sgd, adam
     alpha=0,                   # 正则项系数
     batch_size=32,             # 批量大小
     learning_rate='constant',  # constant, invscaling, adaptive
     shuffle=True,              # 每轮是否将样本重新排序,
-    momentum=0.9,              # 动量法系数, sgd only
+    momentum=0.9,              # 动量法系数, 只能用于sgd
     nesterovs_momentum=True,   # 动量法用Nesterov加速
     early_stopping=False,      # 是否提早停止
     warm_start=False,          # 是否开启热启动机制
@@ -620,7 +620,7 @@ clf = mlp.fit(X, y)
 acc = clf.score(X, y)
 ```
 
-<div class="top2"></div>
+<div class="top0"></div>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -631,7 +631,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，对率激活函数，lbfgs 求解器
 
-<img src="../python/nn/mlp-xor-neuron.svg" class="width92 center">
+<img src="../python/nn/sklearn-xor-neuron.svg" class="width92 center">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -642,7 +642,7 @@ acc = clf.score(X, y)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，3 个神经元，lbfgs 求解器
 
-<img src="../python/nn/mlp-xor-activation.svg" class="width92 center">
+<img src="../python/nn/sklearn-xor-activation.svg" class="width92 center">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -651,9 +651,11 @@ acc = clf.score(X, y)
 ---
 
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
-- 单隐藏层，7 个神经元，ReLU 激活函数
+- 单隐藏层，7 个神经元，ReLU 激活函数，最大迭代轮数 200
 
-<img src="../python/nn/mlp-xor-solver.svg" class="width92 center">
+<img src="../python/nn/sklearn-xor-solver.svg" class="width92 center">
+
+<p class="footnote hand"> sgd 后面括号中的数字为动量法系数</p>
 
 <!-- slide data-notes="" -->
 
@@ -661,7 +663,7 @@ acc = clf.score(X, y)
 
 ---
 
-```python {.line-numbers .top-1 .left4 highlight=[10-21,30-49,52]}
+```python {.line-numbers .top1 .left4 highlight=[10-18,27-46,49-50]}
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
@@ -671,52 +673,50 @@ model.add(Dense(units=3, activation="sigmoid", input_shape=(2, )))
 model.add(Dense(units=1, activation='sigmoid'))
 
 model.summary()  # 打印模型
-# _________________________________________________________________
-#  Layer (type)                Output Shape              Param #
-# =================================================================
-#  dense (Dense)               (None, 3)                 9
-#
-#  dense_1 (Dense)             (None, 1)                 4
-#
-# =================================================================
-# Total params: 13
-# Trainable params: 13
-# Non-trainable params: 0
-# _________________________________________________________________
+# --------------------------------------------------------------
+# ┃ Layer (type)             ┃ Output Shape   ┃      Param # ┃
+# --------------------------------------------------------------
+# │ dense_2 (Dense)          │ (None, 3)      │            9 │
+# │ dense_3 (Dense)          │ (None, 1)      │            4 │
+# --------------------------------------------------------------
+# Total params: 13 (52.00 B)
+# Trainable params: 13 (52.00 B)
+# Non-trainable params: 0 (0.00 B)
 
 model.compile(
     optimizer=Adam(0.1),
-    loss="binary_crossentropy",
-    metrics=['accuracy']
+    loss="binary_crossentropy",  # 必须可导 用于训练模型
+    metrics=['accuracy']         # 用于监控训练过程
 )
 
 model.fit(X, y, epochs=10, batch_size=32)
 # Epoch 1/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.6481 - accuracy: 0.6309
+# 32/32 ━━━━━━━━━━ 1s 1ms/step - accuracy: 0.5156 - loss: 0.7011
 # Epoch 2/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.5064 - accuracy: 0.7500
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.6133 - loss: 0.6463
 # Epoch 3/10
-# 32/32 [==============] - 0s 1000us/step - loss: 0.3309 - accuracy: 0.8369
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.8096 - loss: 0.4658
 # Epoch 4/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.1383 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9980 - loss: 0.2861
 # Epoch 5/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.0643 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9990 - loss: 0.1622
 # Epoch 6/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.0395 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9990 - loss: 0.1010
 # Epoch 7/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.0276 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9990 - loss: 0.0705
 # Epoch 8/10
-# 32/32 [==============] - 0s 1ms/step - loss: 0.0208 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9990 - loss: 0.0534
 # Epoch 9/10
-# 32/32 [==============] - 0s 994us/step - loss: 0.0165 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9990 - loss: 0.0424
 # Epoch 10/10
-# 32/32 [==============] - 0s 997us/step - loss: 0.0134 - accuracy: 1.0000
+# 32/32 ━━━━━━━━━━ 0s 1ms/step - accuracy: 0.9990 - loss: 0.0351
 
 loss, acc = model.evaluate(X, y, verbose=2)
-# 32/32 - 0s - loss: 0.0121 - accuracy: 1.0000 - 93ms/epoch - 3ms/step
+# 32/32 - 0s - 4ms/step - accuracy: 0.9990 - loss: 0.0316
+# 1250/1250 ━━━━━━━━━━━━━━━━━━━━ 1s 509us/step
 ```
 
-<div class="top2"></div>
+<div class="top0"></div>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -727,7 +727,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 - 以异或 4 个点为中心，从 2 维高斯分布中各采样 255 个样本
 - 单隐藏层，对率激活函数，Adam 求解器
 
-<img src="../python/nn/dnn-xor.svg" class="center width92">
+<img src="../python/nn/tf-xor-neuron.svg" class="center width92">
 
 <!-- slide data-notes="" -->
 
@@ -1002,7 +1002,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 ---
 
-@import "../python/lenet-mnist.py" {.line-numbers .top1 .left4}
+@import "../python/nn/lenet-mnist.py" {.line-numbers .top1 .left4}
 
 <!-- slide data-notes="" -->
 
@@ -1012,7 +1012,7 @@ loss, acc = model.evaluate(X, y, verbose=2)
 
 使用在 ImageNet 训练好的残差网络 ResNet50 进行图像分类
 
-@import "../python/resnet50-reuse.py" {.line-numbers .top-1}
+@import "../python/nn/resnet50-reuse.py" {.line-numbers .top-1}
 
 <img src="../img/tj/tj.jpg" class="height25 width25 right4 lefta top-30per">
 
@@ -1203,7 +1203,7 @@ Nesterov 加速梯度的动力系统表示：$\ddot{\wv} + (3/t) \dot{\wv} = - f
 
 ---
 
-@import "../python/rnn-imdb.py" {.line-numbers .top1 .left4 highlight=[]}
+@import "../python/nn/rnn-imdb.py" {.line-numbers .top1 .left4 highlight=[]}
 
 <!-- slide vertical=true data-notes="" -->
 

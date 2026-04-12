@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.3.7)  6 APR 2026 17:05
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.6)  11 APR 2026 17:11
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1298,15 +1298,15 @@ e=dflt;"<6.323622-8.9584645>"[NewCMMath-Book.otf]/OT:script=math;language=dflt;
 "
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 13.
+(Font)              `operators' in the math version `normal' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/NewCMMath-Book.otf(1)/m/n on input l
-ine 13.
+ine 14.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 13.
+(Font)              `operators' in the math version `bold' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/NewCMMath-Book.otf(1)/b/n on input 
-line 13.
+line 14.
 
 Package fontspec Info: 
 (fontspec)             NewCMMath-Book scale = 1.0001.
@@ -1352,15 +1352,15 @@ th;language=dflt;"<6.323622-8.9584645>s*[1.0001]"[NewCMMath-Book.otf]/OT:script
 pt=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 13.
+(Font)              `symbols' in the math version `normal' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/cmsy/m/n --> TU/NewCMMath-Book.otf(2)/m/n on input 
-line 13.
+line 14.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 13.
+(Font)              `symbols' in the math version `bold' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> TU/NewCMMath-Book.otf(2)/b/n on input 
-line 13.
+line 14.
 
 Package fontspec Info: 
 (fontspec)             NewCMMath-Book scale = 0.9999.
@@ -1401,52 +1401,54 @@ pt=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-3.
+4.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/m/n on input 
-line 13.
+line 14.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 13.
+(Font)              `largesymbols' in the math version `bold' on input line 14.
 
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/b/n on input 
-line 13.
+line 14.
 ) (/home/avanti/texmf/tex/latex/avanti/avanti-notations.sty)
 
 Package fontspec Info: 
-(fontspec)             Font family 'Ysabeau(0)' created for font 'Ysabeau'
-(fontspec)             with options [Ligatures=TeX,BoldFont=,ItalicFont=].
+(fontspec)             Font family 'YsabeauOffice(0)' created for font
+(fontspec)             'Ysabeau Office' with options
+(fontspec)             [Ligatures=TeX,BoldFont=,ItalicFont=].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"Ysabeau/OT:script=latn;language=dflt;mapping=tex-tex
-t;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"Ysabeau/OT:script=latn;language=dflt;+smcp;mapping=t
-ex-text;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Ysabeau
+(fontspec)             Office/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Ysabeau
+(fontspec)             Office/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
 
 
 Package fontspec Info: 
-(fontspec)             Font family 'Ysabeau(1)' created for font 'Ysabeau'
-(fontspec)             with options [BoldFont=,ItalicFont=].
+(fontspec)             Font family 'YsabeauOffice(1)' created for font
+(fontspec)             'Ysabeau Office' with options [BoldFont=,ItalicFont=].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"Ysabeau/OT:script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"Ysabeau/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Ysabeau
+(fontspec)             Office/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Ysabeau
+(fontspec)             Office/OT:script=latn;language=dflt;+smcp;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  TU/NewCMMath-Book.otf(1)/m/n --> TU/Ysabeau(1)/m/n on i
-nput line 6.
+(Font)                  TU/NewCMMath-Book.otf(1)/m/n --> TU/YsabeauOffice(1)/m/
+n on input line 6.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/Ysabeau(1)/m/it on input line 6.
+(Font)                  OT1/cmr/m/it --> TU/YsabeauOffice(1)/m/it on input line
+ 6.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/Ysabeau(1)/b/n on input line 6.
+(Font)                  OT1/cmr/bx/n --> TU/YsabeauOffice(1)/b/n on input line 
+6.
  (./syntax-tree.aux)
 \openout1 = `syntax-tree.aux'.
 
@@ -1490,7 +1492,7 @@ L3 programming layer <2022/07/14>
  ) 
 Here is how much of TeX's memory you used:
  38464 strings out of 468168
- 977266 string characters out of 5438845
+ 977421 string characters out of 5438845
  1656694 words of memory out of 5000000
  66564 multiletter control sequences out of 15000+600000
  629815 words of font info for 70 fonts, out of 8000000 for 9000

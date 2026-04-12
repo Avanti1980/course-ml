@@ -79,7 +79,7 @@ presentation:
 <div class="top4"></div>
 
 - 从知识获取的角度来说，连接学派有先天性的缺点
-- 模型训练有高效的{==反向传播==} ({==b==}ack{==p==}ropagation, BP) 算法，实际挺好用
+- 模型训练有高效的<span class="blue">反向传播</span> (<span class="blue">b</span>ack<span class="blue">p</span>ropagation, BP) 算法，实际挺好用
 - 超参数多且设置缺乏理论指导，全靠手工“调参”
 - 显著降低使用者门槛，为机器学习技术走向工程实践带来便利
 
@@ -104,11 +104,11 @@ presentation:
 
 ---
 
-感知机的基本结构单元为{==神经元==} (neuron)
+感知机的基本结构单元为<span class="blue">神经元</span> (neuron)
 
 - 接收来自$d$个其它神经元传来的输入信号$x_1, \ldots, x_d$
 - 加权输入总和$\sum_{i \in [d]} w_i x_i$与偏置$b$相加
-- 通过{==激活函数==} (activation function) $h(\cdot)$输出
+- 通过<span class="blue">激活函数</span> (activation function) $h(\cdot)$输出
 
 <img src="../tikz/neuron/neuron.svg" class="width45 left10per top5per">
 
@@ -176,12 +176,12 @@ presentation:
 
 几何解释：
 
-- $\wv^\top \xv$是$\rb^d$中以$\wv$为法向量的{==超平面==} (hyperplane)，将空间一分为二
+- $\wv^\top \xv$是$\rb^d$中以$\wv$为法向量的<span class="blue">超平面</span> (hyperplane)，将空间一分为二
 - 位于超平面两侧的样本分别被预测为正类和负类
 
 <div class="top2"></div>
 
-<p class="comments"> 感知机属于{==线性分类器==} (linear classifier) 的范畴</p>
+<p class="comments"> 感知机属于<span class="blue">线性分类器</span> (linear classifier) 的范畴</p>
 
 <img src="../tikz/perceptron/perceptron.svg" class="width40 left56per top-52per">
 
@@ -194,9 +194,9 @@ presentation:
 输入：训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\rb^d \times \{ \pm 1 \})^m$，学习率$\eta > 0$<br>输出：$\wv$
 
 1. 初始化$\wv_0 = \zerov$，更新次数$t = 0$
-2. {==while==} 训练集中存在误分类点 {==do==}
+2. <span class="blue">while</span> 训练集中存在误分类点 <span class="blue">do</span>
 3. &emsp;&emsp;获取样本$(\xv_i, y_i)$
-4. &emsp;&emsp;{==if==} $(\xv_i, y_i)$被误分类，即$y_i \wv_t^\top \xv_i \le 0$ {==then==}
+4. &emsp;&emsp;<span class="blue">if</span> $(\xv_i, y_i)$被误分类，即$y_i \wv_t^\top \xv_i \le 0$ <span class="blue">then</span>
 5. &emsp;&emsp;&emsp;&emsp;$\wv_{t+1} \leftarrow \wv_t + \eta y_i \xv_i$
 6. &emsp;&emsp;&emsp;&emsp;$t \leftarrow t + 1$
 
@@ -243,7 +243,7 @@ presentation:
 这四种逻辑运算均是$\rb^2$上$4$样本的二分类问题，注意$\yc = \{0,1\}$
 
 - 将$y = 0$看作负类，并将类别标记改成$y = -1$，一旦$\sign(\wv^\top \xv)$可以正确分类，再$(\sign(\wv^\top \xv) + 1) / 2$就可以还原布尔变量$y$
-- 用{==阶跃函数==}做激活函数，更新规则改为$\wv_{t+1} \leftarrow \wv_t + \eta (y_i - \hat{y}_i) \xv_i$，其中$\hat{y}_i = \sgn(\wv_t^\top \xv_i)$，想法和前面一样，{==更新要能改善预测==}
+- 用<span class="blue">阶跃函数</span>做激活函数，更新规则改为$\wv_{t+1} \leftarrow \wv_t + \eta (y_i - \hat{y}_i) \xv_i$，其中$\hat{y}_i = \sgn(\wv_t^\top \xv_i)$，想法和前面一样，<span class="blue">更新要能改善预测</span>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -251,9 +251,9 @@ presentation:
 
 ---
 
-<img src="../python/perceptron/perceptron-logic.svg" class="center width90">
+<img src="../python/perceptron/perceptron-logic.svg" class="center top2 width90">
 
-与、或、非都是{==线性可分==}问题，感知机训练精度可以达到$100\%$
+与、或、非都是<span class="blue">线性可分</span>问题，感知机训练精度可以达到$100\%$
 
 异或问题线性不可分，感知机无法停止 (需设置最大迭代轮数)
 
@@ -268,7 +268,7 @@ Novikoff 定理对此有严格的刻画
 设训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]} \in (\rb^d \times \{ \pm 1 \})^m$，若
 
 1. 存在$r > 0$对$\forall i \in [m]$有$\|\xv_i\| \le r$，即$\dc \subseteq \bc_\zerov (r)$
-2. 存在$\rho > 0$和$\| \vv \|=1$对$\forall i \in [m]$有$y_i \vv^\top \xv_i \ge \rho$，即以{==间隔==}$\rho$线性可分
+2. 存在$\rho > 0$和$\| \vv \|=1$对$\forall i \in [m]$有$y_i \vv^\top \xv_i \ge \rho$，即以<span class="blue">间隔</span>$\rho$线性可分
 
 则感知机更新次数$M \le r^2/\rho^2$
 
@@ -276,7 +276,7 @@ Novikoff 定理对此有严格的刻画
 
 1. 只要数据线性可分，感知机就会在有限步内中止，否则无限更新
 2. 这个界与维度$d$无关，与学习率$\eta$也无关，因此许多教材直接将其定为$1$
-3. 这个界是{==紧==}的，即存在最坏情况使得感知机的更新次数$M = r^2/\rho^2$
+3. 这个界是<span class="blue">紧</span>的，即存在最坏情况使得感知机的更新次数$M = r^2/\rho^2$
 4. 当$\rho$很小时，收敛可能会很慢，存在部分极端情况使更新次数达到$\Omega(2^m)$
 
 </div>
@@ -387,7 +387,7 @@ Novikoff 定理对此有严格的刻画
 
 ---
 
-感知机最终得到的超平面{==不唯一==}，其
+感知机最终得到的超平面<span class="blue">不唯一</span>，其
 
 - 与$\wv$的初始化有关
 - 与迭代过程中误分类点的顺序也有关
@@ -496,7 +496,7 @@ Novikoff 定理对此有严格的刻画
 采用特征变换
 
 - 核映射：核感知机 (kernel perceptron)
-- 函数复合：多层感知机 ({==m==}ulti-{==l==}ayer {==p==}erceptron, MLP)，一种神经网络
+- 函数复合：多层感知机 (<span class="blue">m</span>ulti-<span class="blue">l</span>ayer <span class="blue">p</span>erceptron, MLP)，一种神经网络
 
 <div class="top2"></div>
 
@@ -595,9 +595,9 @@ $\wv$要与样本做内积，因此也需映射到$\rb^{d+m}$中：
 输出：系数向量$\alphav$
 
 1. 初始化$\alphav = \zerov$
-2. {==while==} 训练集中存在误分类点 {==do==}
+2. <span class="blue">while</span> 训练集中存在误分类点 <span class="blue">do</span>
 3. &emsp;&emsp;获取样本$(\xv_i, y_i)$
-4. &emsp;&emsp;{==if==} $(\xv_i, y_i)$被误分类，即$y_i \class{blue}{\sum_{j \in [m]} \alpha_j \phi(\xv_j)}^\top \phi(\xv_i) \le 0$ {==then==}
+4. &emsp;&emsp;<span class="blue">if</span> $(\xv_i, y_i)$被误分类，即$y_i \class{blue}{\sum_{j \in [m]} \alpha_j \phi(\xv_j)}^\top \phi(\xv_i) \le 0$ <span class="blue">then</span>
 5. &emsp;&emsp;&emsp;&emsp;$\alpha_i \leftarrow \alpha_i + \eta y_i$
 
 <!-- slide vertical=true data-notes="" -->
@@ -615,9 +615,9 @@ $\wv$要与样本做内积，因此也需映射到$\rb^{d+m}$中：
 输出：系数向量$\alphav$
 
 1. 初始化$\alphav = \zerov$
-2. {==while==} 训练集中存在误分类点 {==do==}
+2. <span class="blue">while</span> 训练集中存在误分类点 <span class="blue">do</span>
 3. &emsp;&emsp;获取样本$(\xv_i, y_i)$
-4. &emsp;&emsp;{==if==} $(\xv_i, y_i)$被误分类，即$y_i \sum_{j \in [m]} \alpha_j \kappa(\xv_j ,\xv_i) \le 0$ {==then==}
+4. &emsp;&emsp;<span class="blue">if</span> $(\xv_i, y_i)$被误分类，即$y_i \sum_{j \in [m]} \alpha_j \kappa(\xv_j ,\xv_i) \le 0$ <span class="blue">then</span>
 5. &emsp;&emsp;&emsp;&emsp;$\alpha_i \leftarrow \alpha_i + \eta y_i$
 
 预测模型为$f(\zv) = \wv^\top \phi(\zv) = \sum_{j \in [m]} \alpha_j \kappa(\xv_j, \zv)$
@@ -648,14 +648,14 @@ $\wv$要与样本做内积，因此也需映射到$\rb^{d+m}$中：
 
 感知机是连接学派的代表性方法，由两层神经元组成
 
-感知机最终得到一个分类超平面，属于{==线性分类器==}的范畴
+感知机最终得到一个分类超平面，属于<span class="blue">线性分类器</span>的范畴
 
 感知机可以实现与、或、非三种逻辑运算
 
 Novikoff 定理分析了感知机训练过程中的犯错次数
 
-- 犯错次数的上界与包含数据的{==球半径==}和线性可分{==间隔==}有关
-- 间接证明了感知机收敛的条件：{==数据线性可分==}
+- 犯错次数的上界与包含数据的<span class="blue">球半径</span>和线性可分<span class="blue">间隔</span>有关
+- 间接证明了感知机收敛的条件：<span class="blue">数据线性可分</span>
 
 <div class="top2"></div>
 

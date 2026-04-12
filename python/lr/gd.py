@@ -1,11 +1,20 @@
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import matplotlib.ticker as ticker
+import seaborn as sns
 import numpy as np
 
+zhisong = fm.FontEntry(fname="/home/avanti/Fonts/LXGW/LXGWNeoZhiSongScreenFull.ttf", name="LXGW Neo ZhiSong Screen Full")
+fm.fontManager.ttflist.insert(0, zhisong)
 plt.rcParams.update({
-    "font.family": ["Ysabeau Office"],
+    "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
     "mathtext.fontset": "cm",
     "axes.unicode_minus": True,
-    "font.size": 12
+    "savefig.bbox": "tight",
+    'legend.fontsize': 10,
+    "xtick.labelsize": 14,
+    "ytick.labelsize": 14,
+    'text.color': '#586e75',
 })
 
 m = 20
@@ -27,16 +36,16 @@ def hypothesis(x, b, w):
 with plt.style.context('Solarize_Light2'):
 
     fig, ax = plt.subplots(1, 2, figsize=(10, 5))
-    ax[0].scatter(x, y, marker='x', s=40)  # 左图 20个样本
+    sns.scatterplot(x=x, y=y, lw=2, marker='x', legend=False, s=30, ax=ax[0])
 
-    # 右图 等高线
     b_grid = np.arange(-1, 4, 0.1)
     w_grid = np.arange(-5, 5, 0.1)
     J_grid = cost_func(b_grid[np.newaxis, :, np.newaxis], w_grid[:, np.newaxis, np.newaxis])
     X, Y = np.meshgrid(b_grid, w_grid)
-    contours = ax[1].contour(X, Y, J_grid, 20, linewidths=1)
-    ax[1].clabel(contours)
-    ax[1].scatter([b_true] * 2, [w_true] * 2, s=[50, 10])  # 右图 最优解 真实的(b,w)
+    ax[1].clabel(ax[1].contour(X, Y, J_grid, 20, alpha=.8, linewidths=1, cmap='inferno'))
+    # ax[1].scatter([b_true] * 2, [w_true] * 2, s=[50, 10])  # 右图 最优解 真实的(b,w)
+
+    sns.scatterplot(x=[b_true] * 2, y=[w_true] * 2, legend=False, s=[50, 10], ax=ax[1])
 
     N = 5  # 做5轮梯度下降
     alpha = 0.5  # 梯度下降的步长
@@ -54,18 +63,22 @@ with plt.style.context('Solarize_Light2'):
         J.append(cost_func(*this_theta))
 
     for j in range(0, N):  # 左图 每轮(b,w)对应的直线
-        ax[0].plot(x, hypothesis(x, *theta[j]), lw=1, label=r'$b = {:.3f}, w = {:.3f}$'.format(*theta[j]))
+        # ax[0].plot(x, hypothesis(x, *theta[j]), lw=1, label=r'$b = {:.3f}, w = {:.3f}$'.format(*theta[j]))
+        sns.lineplot(x=x, y=hypothesis(x, *theta[j]), lw=1, label=r'$b = {:.3f}, w = {:.3f}$'.format(*theta[j]), ax=ax[0])
 
     for j in range(1, N):  # 右图 相邻两轮(b,w)之间画箭头
         ax[1].annotate('', xy=theta[j], xytext=theta[j - 1], arrowprops={'arrowstyle': '->', 'lw': 1, 'color': '#586e75'}, va='center', ha='center')
 
-    ax[1].scatter(*zip(*theta), s=40, lw=0)  # 右图 所有轮的(b,w)
+    ax[1].scatter(*zip(*theta), s=30, lw=0)  # 右图 所有轮的(b,w)
 
-    ax[1].set_xlabel(r'$b$', color='#586e75', fontsize='20')
-    ax[1].set_ylabel(r'$w$', color='#586e75', fontsize='20')
-    ax[0].set_xlabel(r'$x$', color='#586e75', fontsize='20')
-    ax[0].set_ylabel(r'$y$', color='#586e75', fontsize='20')
+    ax[1].set_xlabel('$b$', color='#d33682', fontsize='18')
+    ax[1].set_ylabel('$w$', color='#d33682', fontsize='18')
+    ax[0].set_xlabel('$x$', color='#d33682', fontsize='18')
+    ax[0].set_ylabel('$y$', color='#d33682', fontsize='18')
     axbox = ax[0].get_position()
-    ax[0].legend(loc=(axbox.x0 + axbox.width, axbox.y0 - 0.05 * axbox.height), labelcolor='#586e75', fontsize='10')
+    ax[0].legend(loc=(axbox.x0 + axbox.width, axbox.y0 - 0.05 * axbox.height), labelcolor='#d33682')
 
-    plt.savefig("gd.svg", transparent=True, bbox_inches="tight")
+    ax[0].set_title('输入样本空间', size=18)
+    ax[1].set_title('模型参数空间', size=18)
+
+    plt.savefig("gd.svg")

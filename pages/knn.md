@@ -40,9 +40,9 @@ presentation:
 
 <div class="bottom8"></div>
 
-### 计算机学院 &nbsp;&nbsp; 张腾
+### 计算机学院&emsp;张腾
 
-#### _tengzhang@hust.edu.cn_
+#### *tengzhang@hust.edu.cn*
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -107,11 +107,11 @@ presentation:
 
 {==度量学习==} (metric learning)：学一个更好的距离函数，以马氏距离为例，记$\Mcal$/$\Ccal$分别为同类/异类样本对构成的集合
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \min_\Mv & \sum_{(\xv_i, \xv_j) \in \Mcal} \dist_\Mv(\xv_i, \xv_j), \quad \st \sum_{(\xv_i, \xv_j) \in \Ccal} \dist_\Mv(\xv_i, \xv_j) \ge 1, ~ \Mv \succeq \zerov
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical data-notes="" -->
 
@@ -156,8 +156,8 @@ $$
 
 设预测样本为$(\xv, y)$，$\Dcal_\Xcal$按与$\xv$的距离升序排列为$\xv_1, \ldots, \xv_m$，于是 1-近邻的泛化错误率为
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \er & (h) = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}, y \sim \Bern(\eta(\xv)), y_1 \sim \Bern(\eta(\xv_1))} [\Ibb(y \ne y_1)] \notag                                                                                                                                     \\
            & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [\Pbb_{y \sim \Bern(\eta(\xv)), y_1 \sim \Bern(\eta(\xv_1))} (y \ne y_1)] \notag                                                                                                                                   \\
            & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \eta(\xv) (1 - \eta(\xv_1)) + (1 - \eta(\xv)) \eta(\xv_1) ]                                                                                                                                               \notag \\
@@ -165,8 +165,8 @@ $$
            & \qquad \qquad + (1 - \eta(\xv)) (\eta(\xv) - \eta(\xv) + \eta(\xv_1)) ]       \notag \\
            & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ 2 \eta(\xv) (1 - \eta(\xv)) + (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ] \notag                                                                                                                               \\
            & = 2 \Ebb_{\xv \sim P_{\Xcal}} [ \eta(\xv) (1 - \eta(\xv))] + \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ]
-\end{align*}
-$$
+\end{align}
+</p>
 
 其中第一项为在$\xv$处采样 2 次，类别标记不同的概率
 
@@ -229,11 +229,11 @@ $$
 
 定义空间中的{==好点==}：对$\forall r > 0$有$p(B_\xv(r)) > 0$，于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \lim_{m \rightarrow \infty} p(\dist(\xvhat_m, \xv) > r) = \lim_{m \rightarrow \infty} (1 - p(B_\xv(r)))^m = 0
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
@@ -271,11 +271,11 @@ $$
 
 设$\Ycal = [c]$，1-近邻的正确率 $\overset{\text{a.s.}}{\rightarrow}$ 在$\xv$处采样两次标记相同的概率
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad p(y \ne h(\xv) | \xv) = 1 - p(y = h^\star(\xv)|\xv)^2 - \sum_{j \neq h^\star(\xv)} p(y = j|\xv)^2
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-4"></div>
 
@@ -283,11 +283,11 @@ $$
 
 <div class="top-2"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \sum_{j \neq h^\star(\xv)} p(y = j|\xv)^2 \geq \frac{( \sum_{j \neq h^\star(\xv)} p(y = j|\xv) )^2}{c-1}  = \frac{p(y \ne h^\star(\xv)|\xv)^2}{c-1}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-3"></div>
 
@@ -295,13 +295,13 @@ $$
 
 <div class="top-3"></div>
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad p(y \ne h(\xv) | \xv) & \le 1 - (1 - p(y \ne h^\star(\xv)|\xv))^2 - \frac{p(y \ne h^\star(\xv)|\xv)^2}{c-1} = 2 p(e^\star|\xv) - \frac{c}{c-1} p(e^\star|\xv)^2 \\
     \Longrightarrow \er(h) & \le 2 \er(h^\star) - \frac{c}{c-1} (\er(h^\star)^2 + \Vbb [p (y \ne h^\star(\xv) | \xv)]) \\
     & \le \er(h^\star) \left( 2 - \frac{c}{c-1} \er(h^\star) \right)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide data-notes="" -->
 
@@ -313,19 +313,19 @@ $$
 
 第一项还按前面的方式处理，下面处理第二项
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ]
-\end{align*}
-$$
+\end{align}
+</p>
 
 设$\eta(\cdot)$是$c$-李普希茨连续函数，即$|\eta(\xv) - \eta(\xv_1)| \le c \| \xv - \xv_1 \|_2$，注意$|2 \eta(\xv) - 1| \le 1$，于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ (\eta(\xv) - \eta(\xv_1)) (2 \eta(\xv) - 1) ] \le c ~ \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \| \xv - \xv_1 \|_2 ]
-\end{align*}
-$$
+\end{align}
+</p>
 
 问题转化为控制$\xv$与其 1-近邻的距离
 
@@ -339,19 +339,19 @@ $$
 
 记与$\Dcal_{\Xcal}$无交集的小正方体的并集为$\Acal$、与$\Dcal_{\Xcal}$有交集的小正方体的并集为$\Bcal$
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \Acal = \cup_{i: \Ccal_i \cap \Dcal_{\Xcal} = \emptyset} \Ccal_i, \quad \Bcal = \Xcal \setminus \Acal = \cup_{i: \Ccal_i \cap \Dcal_{\Xcal} \ne \emptyset} \Ccal_i
-\end{align*}
-$$
+\end{align}
+</p>
 
 $\xv \in \Acal$、$\xv \in \Bcal$恰有一个发生，前者代表$\xv$与任何训练样本都不在一个$\Ccal_i$内，后者代表$\xv$与某个训练样本在同一个$\Ccal_i$内，于是
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m, \xv \sim P_{\Xcal}} [ \| \xv - \xv_1 \|_2 ] \le \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} \left[ \Pbb (\Acal) \sqrt{n} + \Pbb (\Bcal) \frac{\sqrt{n}}{r} \right]
-\end{align*}
-$$
+\end{align}
+</p>
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -361,16 +361,16 @@ $$
 
 对于$\Pbb (\Acal)$有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} [\Pbb (\Acal)]
      & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} [\Pbb (\cup_{i: \Ccal_i \cap \Dcal_{\Xcal} = \emptyset} \Ccal_i) ] \\
      & = \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} \left[ \sum_{i \in [r^n]} \Pbb (\Ccal_i) \Ibb(\Ccal_i \cap \Dcal_{\Xcal} = \emptyset) \right] \\
      & = \sum_{i \in [r^n]} \Pbb (\Ccal_i) \Ebb_{\Dcal_\Xcal \sim P_{\Xcal}^m} \left[ \Ibb(\Ccal_i \cap \Dcal_{\Xcal} = \emptyset) \right] \\
      & = \sum_{i \in [r^n]} \Pbb (\Ccal_i) (1 - \Pbb (\Ccal_i))^m \le \sum_{i \in [r^n]} \Pbb (\Ccal_i) \exp (- \Pbb (\Ccal_i) m) \\
      & \le r^n \max_{i \in [r^n]} \Pbb (\Ccal_i) \exp (- \Pbb (\Ccal_i) m) \le \frac{r^n}{me}
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
@@ -384,21 +384,21 @@ $$
 
 对于$\Pbb (\Bcal)$，直接用其平凡上界$\Pbb (\Bcal) \le 1$，全部回代有
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \er(h) \le 2 \er(h^\star) (1-\er(h^\star)) + c \sqrt{n} \left( \frac{r^n}{me} + \frac{1}{r} \right)
-\end{align*}
-$$
+\end{align}
+</p>
 
 <div class="top-2"></div>
 
 取$r = m^{\frac{1}{n+1}}$可得
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \er(h) \le 2 \er(h^\star) (1-\er(h^\star)) + 2 c \sqrt{n} m^{\frac{-1}{n+1}}
-\end{align*}
-$$
+\end{align}
+</p>
 
 令$2 c \sqrt{n} m^{\frac{-1}{n+1}} \le \epsilon$可知$m \ge (\frac{2 c \sqrt{n}}{\epsilon})^{n+1}$，即要想控制$\xv$与 1-近邻的距离，所需样本数关于维度呈指数增长，这称为{==维度灾难==} (curse of dimensionality)
 
@@ -410,11 +410,11 @@ $$
 
 对于$k > 1$的情形，可仿照前面的思路证明
 
-$$
-\begin{align*}
+<p>
+\begin{align}
     \quad \er(h) \le \left( 1 + \sqrt{\frac{8}{k}} \right) \er(h^\star) + \left( 2k + \left( 2 + \sqrt{\frac{8}{k}} \right) c \sqrt{n} \right) m^{-\frac{1}{n+1}}
-\end{align*}
-$$
+\end{align}
+</p>
 
 增大$k$可以改善$\er(h^\star)$的系数，但会增加第二项，因此$k$并不是越大越好
 
