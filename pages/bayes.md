@@ -68,7 +68,7 @@ presentation:
 
 下一轮学科评估，华科计算机得 A+ 的概率有多大？
 
-这个月大 A 股上涨的概率有多大？
+明天大 A 股上涨的概率有多大？
 
 今年祖国统一的概率有多大？
 
@@ -156,7 +156,7 @@ $\Theta$为参数或模型，$X$为训练数据
 
 - $\theta$是<span class="blue">固定的</span>未知参数，有了观测后，通过<span class="blue">极大似然</span>估计$\theta$
 - $\theta$的<span class="blue">不确定性</span>来自观测，不同观测会估计出不同的$\theta$
-- 估计的评估：如果有多个观测，在每个观测上做极大似然，看结果的方差，如果只有一个观测，先通过<span class="blue">自举法</span> (bootstrap) 构造多个不同的观测，在分别做极大似然
+- 估计的评估：如果有多个观测，在每个观测上做极大似然，看结果的方差，如果只有一个观测，先通过<span class="blue">自举法</span> (bootstrap) 构造多个不同的观测，再分别做极大似然
 
 <div class="top2"></div>
 
