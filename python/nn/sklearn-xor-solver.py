@@ -42,7 +42,7 @@ col = len(solver_array)
 
 with plt.style.context('Solarize_Light2'):
 
-    plt.figure(figsize=(18, 10))
+    fig, ax = plt.subplots(figsize=(18, 10))
 
     for i, (sol, mom) in enumerate(solver_array):
         mlp = MLPClassifier(
@@ -84,5 +84,5 @@ with plt.style.context('Solarize_Light2'):
         ax.set_xlabel(r'$x_1$', color='#d33682')
         ax.set_ylabel(r'$x_2$', color='#d33682')
 
-    plt.subplots_adjust(wspace=0.08, hspace=-0.3)
-    plt.savefig('sklearn-xor-solver.svg')
+    fig.subplots_adjust(wspace=0.08, hspace=-0.3)
+    fig.savefig('sklearn-xor-solver.svg')

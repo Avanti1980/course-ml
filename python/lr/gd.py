@@ -1,11 +1,7 @@
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-import matplotlib.ticker as ticker
 import seaborn as sns
 import numpy as np
 
-zhisong = fm.FontEntry(fname="/home/avanti/Fonts/LXGW/LXGWNeoZhiSongScreenFull.ttf", name="LXGW Neo ZhiSong Screen Full")
-fm.fontManager.ttflist.insert(0, zhisong)
 plt.rcParams.update({
     "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
     "mathtext.fontset": "cm",

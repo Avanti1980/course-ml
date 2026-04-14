@@ -207,7 +207,7 @@ $\Theta$为参数或模型，$X$为训练数据
 - 在$[0,1]$上单峰值
 - $\alpha$、$\beta$控制峰值位置
 
-<img src="../python/plot-beta-function.svg" class="top-48 right4 lefta width45 height45">
+<img src="../python/linear-regression/plot-beta-function.svg" class="top-48 right4 lefta width48">
 
 <p class="footnote book"> 分母$\BetaFunc(\alpha,\beta) = \int_0^1 \theta^{\alpha - 1} (1-\theta)^{\beta - 1} \diff \theta$是第一类欧拉积分，归一化用</p>
 
@@ -772,7 +772,7 @@ $\yv - \yv'$正交于列空间$\mathrm{span} \{ \varphiv_0, \ldots, \varphiv_{n-
 
 无正则项时过拟合，随着$\lambda$指数递增，抗过拟合越来越好
 
-<img src="../python/linear-regression/linear-regression-regularization.svg" class="center width90 top4">
+<img src="../python/linear-regression/linear-regression-regularization.svg" class="center width92 top4">
 
 <!-- slide data-notes="" -->
 
@@ -804,11 +804,9 @@ $\wv$的后验
 
 数据：$x \sim \uc[-1,1]$，$y = x / 2 + \nc(0, 0.01)$
 
-模型：$f(x) = w_0 + w_1 x$，先验：$(w_0, w_1) \sim \nc(\zerov, \Iv / 4)$
+模型：$f(x) = w_0 + w_1 x$，先验：$(w_0, w_1) \sim \nc(\zerov, \Iv_2 / 4)$
 
-第一行：$(w_0, w_1)$分布变化，第二行：分布中采样出的 5 条直线
-
-<img src="../python/linear-regression/plot-prior-post.svg" class="center width85">
+<img src="../python/linear-regression/plot-prior-post.svg" class="center width92">
 
 <!-- slide data-notes="" -->
 
@@ -1051,11 +1049,11 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 
 ---
 
-数据：$x \sim \uc[-1,1]$，$y = \sin(\pi x) + \nc(0, 0.2)$
+数据：$x \sim \uc[-1,1]$，$y = \sin(\pi x) + \nc(0, 0.1)$
 
-模型：四阶多项式，先验：$\wv \sim \nc(\zerov, \Iv_5)$
+模型：$4$阶多项式，先验：$\wv \sim \nc(\zerov, \Iv_5)$
 
-<img src="../python/linear-regression/predictive-distribution.svg" class="center width80">
+<img src="../python/linear-regression/predictive-distribution.svg" class="center width90">
 
 <!-- slide data-notes="" -->
 
@@ -1083,7 +1081,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 \end{align}
 </p>
 
-单独做$\wv$的积分或者$\alpha$、$\beta$的积分都不难，但一起做很难
+单独对$\wv$积分或单独对$\alpha$、$\beta$积分都不难，但一起积分很难，因为$\wv$是受$\alpha$、$\beta$影响的
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1101,7 +1099,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 
 <div class="top4"></div>
 
-<span class="blue">经验贝叶斯</span> (empirical Bayes)：用最大化模型证据$p(\yv | \alpha, \beta)$得到的$\widehat{\alpha}$、$\widehat{\beta}$做近似
+<span class="blue">经验贝叶斯</span> (empirical Bayes)：先最大化模型证据$p(\yv | \alpha, \beta)$得到$\widehat{\alpha}$、$\widehat{\beta}$，再用其做近似预测
 
 <p>
 \begin{align}
@@ -1109,7 +1107,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 \end{align}
 </p>
 
-该方法也称为第二型极大似然 (type 2 maximum likelihood) 、证据近似 (evidence approximation)
+该方法也称为第二型极大似然 (type 2 maximum likelihood)，或证据近似 (evidence approximation)
 
 <!-- slide data-notes="" -->
 
@@ -1177,7 +1175,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 \end{align}
 </p>
 
-<img src="../python/linear-regression/plot-model-evidence.svg" class="center width80 bottom-4" title="样本数 30，α = 0.05，β = 10，一阶多项式到七阶多项式，对数模型证据在采用三阶多项式时达到最大">
+<img src="../python/linear-regression/plot-model-evidence.svg" class="center width84 bottom-4" title="样本数 30，α = 0.05，β = 10，一阶多项式到七阶多项式，对数模型证据在采用三阶多项式时达到最大">
 
 <!-- slide data-notes="" -->
 
@@ -1193,7 +1191,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 \end{align}
 </p>
 
-注意$\Sigmav^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$，设$\beta \Phiv^\top \Phiv$特征值为$\{ \lambda_i \}_{i \in [n]}$，$\Sigmav^{-1}$特征值为$\{ \lambda_i + \alpha \}_{i \in [n]}$
+注意$\Sigmav^{-1} = \beta \Phiv^\top \Phiv + \alpha \Iv_n$，设$\beta \Phiv^\top \Phiv$特征值为$\{ \lambda_i \}_{i \in [n]}$，则$\Sigmav^{-1}$特征值为$\{ \lambda_i + \alpha \}_{i \in [n]}$
 
 <p>
 \begin{align}
@@ -1215,9 +1213,9 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 
 <p>
 \begin{align}
-    \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \alpha} & = \frac{n}{2\alpha} - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} - \frac{1}{2} \muv^\top \muv = 0 \\
-    & \Longrightarrow \alpha \muv^\top \muv = n - \sum_{i \in [n]} \frac{\alpha}{\lambda_i + \alpha} = \sum_{i \in [n]} \frac{\lambda_i}{\lambda_i + \alpha} \triangleq \gamma \\
-    & \Longrightarrow \alpha = \frac{\gamma}{\muv^\top \muv}
+    & \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \alpha} = \frac{n}{2\alpha} - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} - \frac{1}{2} \muv^\top \muv = 0 \\
+    \Longrightarrow ~ & \alpha \muv^\top \muv = n - \sum_{i \in [n]} \frac{\alpha}{\lambda_i + \alpha} = \sum_{i \in [n]} \frac{\lambda_i}{\lambda_i + \alpha} \triangleq \gamma \\
+    \Longrightarrow ~ & \alpha = \frac{\gamma}{\muv^\top \muv}
 \end{align}
 </p>
 
@@ -1236,9 +1234,9 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 
 <p>
 \begin{align}
-    \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \beta} & = \frac{m}{2\beta} - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} \frac{\lambda_i}{\beta} - \frac{1}{2} \| \yv - \Phiv \muv \|_2^2 = 0 \\
-    & \Longrightarrow \frac{m - \gamma}{\beta} = \| \yv - \Phiv \muv \|_2^2 \\
-    & \Longrightarrow \frac{1}{\beta} = \frac{1}{m - \gamma} \| \yv - \Phiv \muv \|_2^2
+    & \frac{\diff \ln p(\yv | \alpha, \beta)}{\diff \beta} = \frac{m}{2\beta} - \frac{1}{2} \sum_{i \in [n]} \frac{1}{\lambda_i + \alpha} \frac{\lambda_i}{\beta} - \frac{1}{2} \| \yv - \Phiv \muv \|_2^2 = 0 \\
+    \Longrightarrow ~ & \frac{m - \gamma}{\beta} = \| \yv - \Phiv \muv \|_2^2 \\
+    \Longrightarrow ~ & \frac{1}{\beta} = \frac{1}{m - \gamma} \| \yv - \Phiv \muv \|_2^2
 \end{align}
 </p>
 
@@ -1253,7 +1251,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 
 ---
 
-极大似然 vs. 最大后验
+极大似然 _vs._ 最大后验
 
 <p>
 \begin{align}
@@ -1273,7 +1271,8 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 <p>
 \begin{align}
     \Longrightarrow ~ & \beta \Phiv^\top \Phiv = \Uv \Lambdav \Uv^\top \\
-    & (\beta \Phiv^\top \Phiv)^{-1} = \Uv \Lambdav^{-1} \Uv^\top, ~ (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} = \Uv (\Lambdav + \alpha \Iv_n)^{-1} \Uv^\top
+    & (\beta \Phiv^\top \Phiv)^{-1} = \Uv \Lambdav^{-1} \Uv^\top \\
+    & (\beta \Phiv^\top \Phiv + \alpha \Iv_n)^{-1} = (\Uv \Lambdav \Uv^\top + \alpha \Iv_n)^{-1} = \Uv (\Lambdav + \alpha \Iv_n)^{-1} \Uv^\top
 \end{align}
 </p>
 
@@ -1283,7 +1282,7 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
 
 ---
 
-极大似然 vs. 最大后验
+极大似然 _vs._ 最大后验
 
 <p>
 \begin{align}
@@ -1291,6 +1290,8 @@ $\muv_m$是$\wv$后验 (高斯分布) 的均值，即$\wv^{\map}$，故预测分
     & = \begin{bmatrix} \uv_1 & \cdots & \uv_n \end{bmatrix} \begin{bmatrix} \uv_1^\top / \lambda_1 \\ \vdots \\ \uv_n^\top / \lambda_n \end{bmatrix} \beta \Phiv^\top \yv = \sum_{i \in [n]} \uv_i \frac{\beta \uv_i^\top \Phiv^\top \yv}{\lambda_i}
 \end{align}
 </p>
+
+<div class="top2"></div>
 
 <p>
 \begin{align}

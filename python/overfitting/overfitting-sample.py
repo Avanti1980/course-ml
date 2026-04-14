@@ -37,4 +37,4 @@ with plt.style.context('Solarize_Light2'):
     ax.legend()
     leg = ax.get_legend()
     leg.texts[0].set_color("#d33682")
-    plt.savefig("overfitting-sample.svg")
+    fig.savefig("overfitting-sample.svg")
