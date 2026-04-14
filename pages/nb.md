@@ -241,7 +241,7 @@ presentation:
 
 <p>
 \begin{align}
-    \ll & = \ln p(\dc | \alphav, \thetav) = \sum_{i \in [m]} \ln p(\xv^{(i)}, y^{(i)} | \alphav, \thetav) \\
+    \LL & = \ln p(\dc | \alphav, \thetav) = \sum_{i \in [m]} \ln p(\xv^{(i)}, y^{(i)} | \alphav, \thetav) \\
     & = \sum_{i \in [m]} \ln \prod_{k \in [c]} p(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav)^{\ib(y^{(i)}=k)} \\
     & = \sum_{i \in [m]} \sum_{k \in [c]} \ib(y^{(i)}=k) \ln p(\xv^{(i)}, y^{(i)} = k | \alphav, \thetav) \\
     & = \sum_{i \in [m]} \sum_{k \in [c]} \ib(y^{(i)}=k) \ln p(y^{(i)} = k | \alphav) \\ & \qquad \qquad \qquad + \sum_{i \in [m]} \sum_{k \in [c]} \ib(y^{(i)}=k) \ln p(\xv^{(i)} | y^{(i)} = k, \thetav) \\[4pt]
@@ -284,7 +284,7 @@ $\thetav$相关的项
 
 <p>
 \begin{align}
-    \ll(\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p(\xv^{(i)} | y^{(i)} = k, \thetav) \\
+    \LL (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p(\xv^{(i)} | y^{(i)} = k, \thetav) \\
     & = \sum_{k \in [c]} \sum_{i \in [m]} \sum_{j \in [d]} \ib(y^{(i)}=k) \ln p(x_j^{(i)} | y^{(i)} = k, \thetav) \quad \longleftarrow 特征独立性 \\
     & = \sum_{k \in [c]} \sum_{i \in [m]} \sum_{j \in [d]} \ib(y^{(i)}=k) \ln \prod_{l \in [n_j]} p( x_j^{(i)} = v_l^{(j)} | y^{(i)}=k)^{\ib(x_j^{(i)} = v_l^{(j)})} \\
     & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{l \in [n_j]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ib(x_j^{(i)} = v_l^{(j)}) \ln \theta_{kjl} \\
@@ -492,7 +492,7 @@ $x_j = \ib(v_j出现在文本\xv中) \in \{0,1\}$，$\theta_{kj} = p (x_j = 1 | 
 
 <p>
 \begin{align}
-    \ll (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p (\xv^{(i)} | y^{(i)} = k, \thetav) \\
+    \LL (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p (\xv^{(i)} | y^{(i)} = k, \thetav) \\
     & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln \prod_{j \in [d]} \theta_{kj}^{x_j^{(i)}} (1 - \theta_{kj})^{1 - x_j^{(i)}}        \\
     & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
     & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) )
@@ -509,7 +509,7 @@ $x_j = \ib(v_j出现在文本\xv中) \in \{0,1\}$，$\theta_{kj} = p (x_j = 1 | 
 
 <p>
 \begin{align}
-    \ll (\thetav) & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
+    \LL (\thetav) & = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) (x_j^{(i)} \ln \theta_{kj} + (1 - x_j^{(i)}) \ln (1 - \theta_{kj}) ) \\
     & = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) )
 \end{align}
 </p>
@@ -533,7 +533,7 @@ $x_j = \ib(v_j出现在文本\xv中) \in \{0,1\}$，$\theta_{kj} = p (x_j = 1 | 
 
 <p>
 \begin{align}
-    & \ll (\thetav) = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) ) \\
+    & \LL (\thetav) = \sum_{k \in [c]} \sum_{j \in [d]} (B_{kj} \ln \theta_{kj} + \Bbar_{kj} \ln (1 - \theta_{kj}) ) \\
     & B_{kj} = 第 k 类文本中包含词v_j的文本数 \\
     & \Bbar_{kj} = 第 k 类文本中不包含词 v_j 的文本数
 \end{align}
@@ -575,7 +575,7 @@ $\theta_{kj}$为第$k$类文本选取词$v_j$的概率，$\sum_{j \in [d]} \thet
 
 <p>
 \begin{align}
-    \ll (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p (\xv^{(i)} | y^{(i)} = k, \thetav) \\
+    \LL (\thetav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p (\xv^{(i)} | y^{(i)} = k, \thetav) \\
     & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln \left\{ \frac{(x_1^{(i)} + \cdots + x_d^{(i)})!}{x_1^{(i)}! \cdots x_d^{(i)}!} \prod_{j \in [d]} \theta_{kj}^{x_j^{(i)}} \right\} \\
     & = 常数 + \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj}
 \end{align}
@@ -591,7 +591,7 @@ $\theta_{kj}$为第$k$类文本选取词$v_j$的概率，$\sum_{j \in [d]} \thet
 
 <p>
 \begin{align}
-    & \ll (\thetav) = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj} = \sum_{k \in [c]} \sum_{j \in [d]} B_{kj} \ln \theta_{kj} \\
+    & \LL (\thetav) = \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) x_j^{(i)} \ln \theta_{kj} = \sum_{k \in [c]} \sum_{j \in [d]} B_{kj} \ln \theta_{kj} \\
     & B_{kj} = \sum_{i \in [m]} \ib(y^{(i)}=k) x_j^{(i)} = 第 k 类文本中词 v_j 出现总次数
 \end{align}
 </p>
@@ -630,7 +630,7 @@ $x_j \sim \nc(\mu_j, \sigma_j^2) \in \rb$，假设实数特征 (e.g., tf - idf) 
 
 <p>
 \begin{align}
-    \ll (\muv, \sigmav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p (\xv^{(i)} | y^{(i)} = k, \muv, \sigmav) \\
+    \LL (\muv, \sigmav) & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln p (\xv^{(i)} | y^{(i)} = k, \muv, \sigmav) \\
     & = \sum_{k \in [c]} \sum_{i \in [m]} \ib(y^{(i)}=k) \ln \prod_{j \in [d]} \frac{1}{\sqrt{2\pi \sigma_{kj}^2}} \exp \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} \right) \\
     & = 常数 + \sum_{k \in [c]} \sum_{j \in [d]} \sum_{i \in [m]} \ib(y^{(i)}=k) \left( - \frac{(x_j^{(i)} - \mu_{kj})^2}{2 \sigma_{kj}^2} - \ln \sigma_{kj} \right)
 \end{align}

@@ -80,18 +80,18 @@ NFL 定理的例子表明，在已知数据上表现好不算什么
 问题形式化
 
 - $\xc$为样本空间，$\yc$为标记集合
-- $\ds$为定义在$\xc \times \yc$上的{==未知==}概率分布
-- $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$为{==独立同分布==} (independent and identically distributed, iid) 采样于$\ds$的{==训练==}数据集
-- $\hc = \{ h: \xc \mapsto \yc \}$是候选模型构成的{==假设空间==}
-- $R(h) = \eb_{(\xv, y) \sim \ds}[\ib (h(\xv) \ne y)]$为模型$h$的{==泛化风险==} (generalization risk)
-- $\min_{h \in \hc} R(h)$就是机器学习的目标：{==泛化风险最小化==}
+- $\ds$为定义在$\xc \times \yc$上的<span class="blue">未知</span>概率分布
+- $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$为<span class="blue">独立同分布</span> (independent and identically distributed, iid) 采样于$\ds$的<span class="blue">训练</span>数据集
+- $\hc = \{ h: \xc \mapsto \yc \}$是候选模型构成的<span class="blue">假设空间</span>
+- $R(h) = \eb_{(\xv, y) \sim \ds}[\ib (h(\xv) \ne y)]$为模型$h$的<span class="blue">泛化风险</span> (generalization risk)
+- $\min_{h \in \hc} R(h)$就是机器学习的目标：<span class="blue">泛化风险最小化</span>
 
 <div class="top2"></div>
 
 两点说明：
 
 1. 训练样本$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \ds$以及计算泛化风险的$(\xv, y) \sim \ds$是学习的前提
-2. 数据分布$\ds$定义在$\xc \times \yc$上，即允许不同的样本有相同的$\xv$、不同的$y$，这种设定称为{==不可知==} (agnostic) 学习；若$\ds$只定义在$\xc$上，类标记由未知函数$c: \xc \mapsto \yc$给出，则相同的$\xv$必然有相同的$y$，这种设定比前者要简单
+2. 数据分布$\ds$定义在$\xc \times \yc$上，即允许不同的样本有相同的$\xv$、不同的$y$，这种设定称为<span class="blue">不可知</span> (agnostic) 学习；若$\ds$只定义在$\xc$上，类标记由未知函数$c: \xc \mapsto \yc$给出，则相同的$\xv$必然有相同的$y$，这种设定比前者要简单
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -122,7 +122,7 @@ A：数据分布$\ds$未知，泛化风险无法计算，$h^\star$不可求
 
 ---
 
-{==概率近似正确==} (probably approximately correct, PAC) 学习框架
+<span class="blue">概率近似正确</span> (probably approximately correct, PAC) 学习框架
 
 <p>
 \begin{align}
@@ -146,7 +146,7 @@ A：有点复杂，一步步来
 
 Q：首先我们能做什么？
 
-A：对任意$h$，能求的只有{==经验风险==} (empirical risk)
+A：对任意$h$，能求的只有<span class="blue">经验风险</span> (empirical risk)
 
 <p>
 \begin{align}
@@ -340,7 +340,7 @@ A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足
 
 <div class="top2"></div>
 
-我们需设法将$\hc$的无穷归约到有穷，注意训练样本是有穷的，因此定义{==增长函数==} (growth function) 为$\hc$对$m$个样本的最大不同预测结果数
+我们需设法将$\hc$的无穷归约到有穷，注意训练样本是有穷的，因此定义<span class="blue">增长函数</span> (growth function) 为$\hc$对$m$个样本的最大不同预测结果数
 
 <p>
 \begin{align}
@@ -434,7 +434,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 数据分布：$p(x) = \uc[0,1]$，$y = \cos (3 \pi x  / 2) + \nc(0, 1) / 10$
 
-学习算法：$\class{blue}{n}${==阶多项式回归==}
+学习算法：$\class{blue}{n}$<span class="blue">阶多项式回归</span>
 
 <p>
 \begin{align}
@@ -450,7 +450,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 - 4 阶多项式
 - 30 阶多项式
 
-<img src="../python/overfitting-sample.svg" class="lefta right8 width40 top-43per" title="训练集">
+<img src="../python/overfitting/overfitting-sample.svg" class="lefta right8 width40 top-43per" title="训练集">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -458,9 +458,9 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-<img src="../python/overfitting.svg" class="center width90 bottom2" title="过拟合">
+<img src="../python/overfitting/overfitting.svg" class="center width90 bottom2" title="过拟合">
 
-左图：1 阶多项式{==欠拟合==} (underfitting)，经验均方误差很大
+左图：1 阶多项式<span class="blue">欠拟合</span> (underfitting)，经验均方误差很大
 
 <div class="top-4"></div>
 
@@ -468,7 +468,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <div class="top-4"></div>
 
-右图：30 阶多项式{==过拟合==} (overfitting)，经验均方误差很小
+右图：30 阶多项式<span class="blue">过拟合</span> (overfitting)，经验均方误差很小
 
 <div class="top-2"></div>
 
@@ -482,14 +482,14 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 事先确定一组候选模型集合$\{ f_1, f_2, \ldots, f_n \}$，从中挑选最好的
 
-从训练集中随机选择一部分样本作为{==验证集==} (validation set)
+从训练集中随机选择一部分样本作为<span class="blue">验证集</span> (validation set)
 
 - 在剩余的训练集上依次训练$f_1, f_2, \ldots, f_n$
 - 在验证集上依次评估$f_1, f_2, \ldots, f_n$
 
 <div class="top4"></div>
 
-{==交叉验证==} (cross validation)：将训练集平均分为$k$份，第$i$轮
+<span class="blue">交叉验证</span> (cross validation)：将训练集平均分为$k$份，第$i$轮
 
 - 在其中的第$[k] \setminus \{ i \}$份上依次训练$f_1, f_2, \ldots, f_n$
 - 在第$i$份上依次评估$f_1, f_2, \ldots, f_n$
@@ -511,7 +511,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 \end{align}
 </p>
 
-其中{==条件期望==}$\class{blue}{\eb [y|\xv]}${==与==}$\class{blue}{y}${==无关==}，对交叉项有
+其中<span class="blue">条件期望</span>$\class{blue}{\eb [y|\xv]}$<span class="blue">与</span>$\class{blue}{y}$<span class="blue">无关</span>，对交叉项有
 
 <p>
 \begin{align}
@@ -538,7 +538,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 <div class="top2"></div>
 
 - 根据第一项，使得泛化均方误差最小的$f^\star (\xv) = \eb [y|\xv]$，但由于真实分布$p(y|\xv)$未知，因此没法计算$\eb [y|\xv]$，$f^\star (\xv)$不可求
-- 第二项{==噪声==}是不可知 (agnostic) 学习固有的，只和真实分布有关，{==与模型无关==}
+- 第二项<span class="blue">噪声</span>是不可知 (agnostic) 学习固有的，只和真实分布有关，<span class="blue">与模型无关</span>
 
 <div class="top2"></div>
 
@@ -558,7 +558,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 泛化均方误差$E = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声$
 
-引入$\xv$的{==期望预测==}$\eb_\dc [f_\dc (\xv)]$，易知有分解
+引入$\xv$的<span class="blue">期望预测</span>$\eb_\dc [f_\dc (\xv)]$，易知有分解
 
 <p>
 \begin{align}
@@ -568,7 +568,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 \end{align}
 </p>
 
-{==注意==}$\class{blue}{\eb_\dc [f_\dc (\xv)]}${==与==}$\class{blue}{\dc}${==无关==}，对交叉项有
+<span class="blue">注意</span>$\class{blue}{\eb_\dc [f_\dc (\xv)]}$<span class="blue">与</span>$\class{blue}{\dc}$<span class="blue">无关</span>，对交叉项有
 
 <p>
 \begin{align}
@@ -592,8 +592,8 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 综上，泛化均方误差可分解为$E = 偏差^2 + 方差 + 噪声$
 
-- $偏差^2 = \eb_\xv [(\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2]$，期望预测与最优模型预测的差别，体现{==学习算法的拟合能力==}，越小拟合能力越强
-- $方差 = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2]$，$\dc$上模型的预测与期望预测的差别，体现{==学习算法对数据集扰动的敏感度==}，越小越不敏感
+- $偏差^2 = \eb_\xv [(\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2]$，期望预测与最优模型预测的差别，体现<span class="blue">学习算法的拟合能力</span>，越小拟合能力越强
+- $方差 = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2]$，$\dc$上模型的预测与期望预测的差别，体现<span class="blue">学习算法对数据集扰动的敏感度</span>，越小越不敏感
 
 <div class="top2"></div>
 
@@ -605,7 +605,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-<img src="../python/bias-var-dec.svg" class="center width82" title="随机生成了 5 个数据集：1 阶多项式高偏差、低方差；11 阶多项式低偏差、高方差；5 阶多项式低偏差、低偏差，是最理想的假设空间">
+<img src="../python/overfitting/bias-var-dec.svg" class="center width90" title="随机生成了 5 个样本集：1 阶多项式高偏差、低方差；10 阶多项式低偏差、高方差；4 阶多项式低偏差、低偏差，是最理想的假设空间">
 
 <!-- slide vertical=true data-notes="" -->
 

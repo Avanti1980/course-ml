@@ -74,12 +74,12 @@ presentation:
 
 ---
 
-{==词袋模型==} (bag-of-words)：文本是单词的集合，单词独立无序
+<span class="blue">词袋模型</span> (bag-of-words)：文本是单词的集合，单词独立无序
 
 - 所有文本全部$d$个不同的单词构成词典，每个文本提取$d$个特征
 - 若词典第$i$个词在当前文本中出现过，则其第$i$个特征为$1$，否则为$0$
 
-@import "../python/feat-text-bow1.py" {line_end=12 .line-numbers .top-1 .left4 highlight=[4-5]}
+@import "../python/feature/feat-text-bow1.py" {line_end=12 .line-numbers .top-1 .left4 highlight=[4-5]}
 
 <div class="threelines column1-border-right-solid column1-bold head-highlight-1 tr-hover top-4">
 
@@ -96,12 +96,12 @@ presentation:
 
 ---
 
-{==词袋模型==} (bag-of-words)：文本是单词的集合，单词独立无序
+<span class="blue">词袋模型</span> (bag-of-words)：文本是单词的集合，单词独立无序
 
 - 所有文本全部$d$个不同的单词构成词典，每个文本提取$d$个特征
 - 若词典第$i$个词在当前文本中出现了$k$次，则其第$i$个特征为$k$
 
-@import "../python/feat-text-bow2.py" {line_end=12 .line-numbers .top-1 .left4 highlight=[4-5]}
+@import "../python/feature/feat-text-bow2.py" {line_end=12 .line-numbers .top-1 .left4 highlight=[4-5]}
 
 <div class="threelines column1-border-right-solid column1-bold head-highlight-1 tr-hover top-4">
 
@@ -118,10 +118,10 @@ presentation:
 
 ---
 
-{==词频 - 逆文本频率==}：对当前文本重要的单词必然
+<span class="blue">词频 - 逆文本频率</span>：对当前文本重要的单词必然
 
-- 在当前文本中出现的频率高，即词频 ({==t==}erm {==f==}requency, tf) 高
-- 在其他文本中出现的频率低，即逆文本频率 ({==i==}nverse {==d==}ocument {==f==}requency, idf) 高
+- 在当前文本中出现的频率高，即词频 (<span class="blue">t</span>erm <span class="blue">f</span>requency, tf) 高
+- 在其他文本中出现的频率低，即逆文本频率 (<span class="blue">i</span>nverse <span class="blue">d</span>ocument <span class="blue">f</span>requency, idf) 高
 
 <div class="top2"></div>
 
@@ -143,7 +143,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-@import "../python/feat-text-tfidf.py" {line_end=13 .line-numbers .top-1 .left4 highlight=[4-5]}
+@import "../python/feature/feat-text-tfidf.py" {line_end=13 .line-numbers .top-1 .left4 highlight=[4-5]}
 
 <div class="threelines row3-border-top-dashed row3-border-bottom-dashed column1-border1-right-dashed-head row1-column1-border1-right-dashed row3-column1-border1-right-dashed row4-column1-border1-right-dashed head-highlight-1 tr-hover top-4 fs12">
 
@@ -174,9 +174,9 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 </div>
 
-- {==序数编码==} (ordinal encoding)：清零 - 0、平缓 - 1、严峻 - 2，需类别特征本身有序，否则若吃饭 - 0、逛街 - 1、学习 - 2，为何 |吃饭 - 学习| > |吃饭 - 逛街| ？
-- {==独热编码==} (one-hot encoding)：吃饭 - 001、逛街 - 010、学习 - 100，一碗水端平，所有取值距离相等，但若取值很多码会很长，且不适应动态出现的新取值
-- {==哈希编码==} (hash encoding)：用哈希函数将任意输入映射到有限整数范围，码长固定，也能适应动态出现的新取值，但可能存在信息丢失
+- <span class="blue">序数编码</span> (ordinal encoding)：清零 - 0、平缓 - 1、严峻 - 2，需类别特征本身有序，否则若吃饭 - 0、逛街 - 1、学习 - 2，为何 |吃饭 - 学习| > |吃饭 - 逛街| ？
+- <span class="blue">独热编码</span> (one-hot encoding)：吃饭 - 001、逛街 - 010、学习 - 100，一碗水端平，所有取值距离相等，但若取值很多码会很长，且不适应动态出现的新取值
+- <span class="blue">哈希编码</span> (hash encoding)：用哈希函数将任意输入映射到有限整数范围，码长固定，也能适应动态出现的新取值，但可能存在信息丢失
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -184,7 +184,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-@import "../python/feat-one-hot.py" {line_end=23 .line-numbers .top-1 .left4 highlight=[12,16-19,22-23]}
+@import "../python/feature/feat-one-hot.py" {line_end=23 .line-numbers .top-1 .left4 highlight=[12,16-19,22-23]}
 
 <!-- slide data-notes="" -->
 
@@ -207,8 +207,8 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 补全：
 
-- 用未缺失该特征的样本计算{==平均数==}、{==中位数==}、{==众数==}填充，引入噪声？
-- 用没有缺失的特征{==学习并预测==}缺失特征的取值，若两者之间无关？
+- 用未缺失该特征的样本计算<span class="blue">平均数</span>、<span class="blue">中位数</span>、<span class="blue">众数</span>填充，引入噪声？
+- 用没有缺失的特征<span class="blue">学习并预测</span>缺失特征的取值，若两者之间无关？
 - 将“缺失”本身作为一种特征取值
 
 <!-- slide vertical=true data-notes="" -->
@@ -217,7 +217,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-@import "../python/feat-missing.py" {line_end=43 .line-numbers .top1 .left4 highlight=[17-20,24-27,31-34,40-43]}
+@import "../python/feature/feat-missing.py" {line_end=43 .line-numbers .top1 .left4 highlight=[17-20,24-27,31-34,40-43]}
 
 <!-- slide data-notes="" -->
 
@@ -225,7 +225,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-也称{==归一化==}，旨在{==消除不同特征间的量纲影响==}
+也称<span class="blue">归一化</span>，旨在<span class="blue">消除不同特征间的量纲影响</span>
 
 离差标准化：将原始特征线性变换到 [0, 1] 区间
 
@@ -261,7 +261,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-@import "../python/feat-scaler.py" {line_end=31 .line-numbers .top-1 .left4 highlight=[12-15,18-21,25-28,31]}
+@import "../python/feature/feat-scaler.py" {line_end=31 .line-numbers .top-1 .left4 highlight=[12-15,18-21,25-28,31]}
 
 <!-- slide data-notes="" -->
 
@@ -294,7 +294,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-@import "../python/feat-selection-vt.py" {line_end=23 .line-numbers .top-1 .left4 highlight=[12,17-20,23]}
+@import "../python/feature/feat-selection-vt.py" {line_end=23 .line-numbers .top-1 .left4 highlight=[12,17-20,23]}
 
 <!-- slide data-notes="" -->
 
@@ -355,7 +355,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 - 正类特征均值$0.5$、偏差$0.5$，负类特征均值$0.5$、偏差$0.5$
 - $\SSE = 0.5 + 0.5 = 1$，$\SSB = 0$，$F = \frac{\SSB/(k-1)}{\SSE/(m-k)} = 0$
 
-@import "../python/feat-selection-va.py" {line_end=17 .line-numbers .top0 .bottom-4 .left4 highlight=[15-17]}
+@import "../python/feature/feat-selection-va.py" {line_end=17 .line-numbers .top0 .bottom-4 .left4 highlight=[15-17]}
 
 <!-- slide data-notes="" -->
 
@@ -379,7 +379,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 </div>
 
 - $X$是约会方式，$Y$是约会与否，总样本数为$4$
-- 括号前{==观测频数==}$o = 4 \cdot p(X,Y)$，括号内{==期望频数==}$e = 4 \cdot p(X) p(Y)$
+- 括号前<span class="blue">观测频数</span>$o = 4 \cdot p(X,Y)$，括号内<span class="blue">期望频数</span>$e = 4 \cdot p(X) p(Y)$
 
 <div class="top2"></div>
 
@@ -395,7 +395,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 
 ---
 
-@import "../python/feat-selection-chi.py" {line_end=17 .line-numbers .top-1 .left4 highlight=[15-17]}
+@import "../python/feature/feat-selection-chi.py" {line_end=17 .line-numbers .top-1 .left4 highlight=[15-17]}
 
 独热编码将约会方式分成三个特征，卡方检验值为$1 + 1 + 0 = 2$
 
@@ -405,7 +405,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 
 ---
 
-熵 (entropy) 可以度量随机变量的{==不确定性==}
+熵 (entropy) 可以度量随机变量的<span class="blue">不确定性</span>
 
 <p>
 \begin{align}
@@ -437,7 +437,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 
 ---
 
-熵 (entropy) 可以度量随机变量的{==不确定性==}
+熵 (entropy) 可以度量随机变量的<span class="blue">不确定性</span>
 
 <p>
 \begin{align}
@@ -445,7 +445,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 \end{align}
 </p>
 
-当$p(x_1) = \cdots = p(x_m) = 1/m$时，熵达到{==最大值==}$\log m$
+当$p(x_1) = \cdots = p(x_m) = 1/m$时，熵达到<span class="blue">最大值</span>$\log m$
 
 拉格朗日函数$L = - \sum_{i \in [m]} p(x_i) \log p(x_i) - \alpha (\sum_{i \in [m]} p(x_i) - 1)$
 
@@ -455,7 +455,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 \end{align}
 </p>
 
-当某个$p(x_i) = 1$、其余为$0$时，熵达到{==最小值==}$0$
+当某个$p(x_i) = 1$、其余为$0$时，熵达到<span class="blue">最小值</span>$0$
 
 <p>
 \begin{align}
@@ -535,7 +535,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 
 利用每个特征和类别标记之间的互信息进行挑选
 
-@import "../python/feat-selection-mutual-info.py" {line_end=19 .line-numbers .top-1 .left4 highlight=[17-19]}
+@import "../python/feature/feat-selection-mutual-info.py" {line_end=19 .line-numbers .top-1 .left4 highlight=[17-19]}
 
 <!-- slide data-notes="" -->
 
@@ -549,7 +549,7 @@ $|p(X,Y) - p(X) p(Y)|$可衡量$X$和$Y$的独立程度
 \end{align}
 </p>
 
-@import "../python/feat-selection-corrcoef.py" {line_end=14 .line-numbers .top-1 .left4 highlight=[12-14]}
+@import "../python/feature/feat-selection-corrcoef.py" {line_end=14 .line-numbers .top-1 .left4 highlight=[12-14]}
 
 <!-- slide data-notes="" -->
 
@@ -587,8 +587,8 @@ $\rb^2$上的 5 个$\ell_p$范数球$\{ \wv \mid \| \wv \|_p \le t \}$
 
 <img src="../tikz/norm/norm.svg" class="center top1 bottom2 width75" title="二维欧氏空间中的 5 个范数球">
 
-- 将$\ell_p~(0 \le p \le 1)$范数球作为学习模型的可行域，可导出{==稀疏==}的解
-- 所有$\ell_p~(p \ge 1)$范数球都是{==凸集==}，数学性质好
+- 将$\ell_p~(0 \le p \le 1)$范数球作为学习模型的可行域，可导出<span class="blue">稀疏</span>的解
+- 所有$\ell_p~(p \ge 1)$范数球都是<span class="blue">凸集</span>，数学性质好
 
 <div class="top2"></div>
 
@@ -625,7 +625,7 @@ $\ell_1$唯一既凸且稀疏，将其范数球作为$\rb^2$上最小二乘的�
 - 右图中以原点为中心的同心圆是$\ell_2$范数球的等高线
 - 两图中右边的一系列同心椭圆是$\| \Xv \wv - \yv \|^2$的等高线
 
-<img src="../python/sparse-norm.svg" class="center top4 bottom2 width80" title="目标函数的等高线与 l1 范数球必然交于正方形顶点，即最优的 w2 = 0">
+<img src="../python/feature/sparse-norm.svg" class="center top4 bottom2 width80" title="目标函数的等高线与 l1 范数球必然交于正方形顶点，即最优的 w2 = 0">
 
 椭圆与正方形必然交于正方形的顶点处，即最优的$w_2 = 0$
 
@@ -643,7 +643,7 @@ $\ell_1$唯一既凸且稀疏，将其范数球作为$\rb^2$上最小二乘的�
 \end{align}
 </p>
 
-投影到$d ~ (<D)$维子空间存在信息损失，$\Wv$应使得{==重构误差小==}
+投影到$d ~ (<D)$维子空间存在信息损失，$\Wv$应使得<span class="blue">重构误差小</span>
 
 <p>
 \begin{align}
@@ -662,8 +662,6 @@ $\ell_1$唯一既凸且稀疏，将其范数球作为$\rb^2$上最小二乘的�
 
 ---
 
-<div class="top2"></div>
-
 <p>
 \begin{align}
     \argmin_{\Wv^\top \Wv = \Iv} \| \Xv & - \Xv \Wv \Wv^\top \|_F^2 = \argmax_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
@@ -680,7 +678,7 @@ $\Xv \wv_1$是样本在投影方向$\wv_1$上的投影，投影均值$\onev^\top
 \end{align}
 </p>
 
-{==最小化重构误差==}等价{==最大化投影方差==}，即投影后样本尽可能散开
+<span class="blue">最小化重构误差</span>等价<span class="blue">最大化投影方差</span>，即投影后样本尽可能散开
 
 拉格朗日函数$L = \wv_1^\top \Xv^\top \Xv \wv_1 - \alpha (\wv_1^\top \wv_1 - 1)$
 
@@ -696,9 +694,9 @@ $\Xv \wv_1$是样本在投影方向$\wv_1$上的投影，投影均值$\onev^\top
 
 ---
 
-{==主成分分析==} (PCA)：寻找一组投影方向 (成分) 使重构误差最小
+<span class="blue">主成分分析</span> (PCA)：寻找一组投影方向 (成分) 使重构误差最小
 
-<img src="../python/pca-plot.svg" class="center top2 width80" title="二维高斯分布采样出的 500 个样本">
+<img src="../python/unsupervised-learning/pca-plot.svg" class="center top2 width50 bottom-4" title="二维高斯分布采样出的 500 个样本">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -706,9 +704,9 @@ $\Xv \wv_1$是样本在投影方向$\wv_1$上的投影，投影均值$\onev^\top
 
 ---
 
-{==主成分分析==} (PCA)：寻找一组投影方向 (成分) 使重构误差最小
+<span class="blue">主成分分析</span> (PCA)：寻找一组投影方向 (成分) 使重构误差最小
 
-@import "../python/pca.py" {line_end=31 .line-numbers .top-1 .left4 highlight=[14-17,20,25-28,31]}
+@import "../python/unsupervised-learning/pca.py" {line_end=31 .line-numbers .top-1 .left4 highlight=[14-17,20,25-28,31]}
 
 <!-- slide data-notes="" -->
 
@@ -737,7 +735,7 @@ _Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m
 
 ---
 
-@import "../python/random-projection.py" {line_end=26 .line-numbers .top1 .left4 highlight=[13,17,22,26]}
+@import "../python/feature/random-projection.py" {line_end=26 .line-numbers .top1 .left4 highlight=[13,17,22,26]}
 
 <!-- slide data-notes="" -->
 
@@ -778,7 +776,7 @@ _Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m
 
 <img src="../tikz/kernel/kernel.svg" class="center top2 bottom4 width80" title="">
 
-- 圆内是一类样本，圆外是另一类样本，它们无法{==线性可分==}
+- 圆内是一类样本，圆外是另一类样本，它们无法<span class="blue">线性可分</span>
 - 令$[x_1; x_2] \mapsto [z_1 = x_1^2; z_2 = x_2^2]$，在新的$(z_1,z_2)$空间中就线性可分了
 
 <div class="top2"></div>
@@ -814,7 +812,7 @@ _Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m
 构造新特征有两套方案：
 
 - 显式构造核映射$\phi([x_1;x_2]) = [x_1^2; x_2^2; \sqrt{2} x_1 x_2; \sqrt{2} x_1; \sqrt{2} x_2; 1]$
-- {==核技巧==}：通过在原空间直接定义{==核函数==}$\kappa (\xv, \zv) = (\xv^\top \zv + 1)^2$隐式构造
+- <span class="blue">核技巧</span>：通过在原空间直接定义<span class="blue">核函数</span>$\kappa (\xv, \zv) = (\xv^\top \zv + 1)^2$隐式构造
 
 <!-- slide data-notes="" -->
 
@@ -922,5 +920,5 @@ _Johnson–Lindenstrauss_ (JL) 定理：给定$\epsilon \in (0,1)$和正整数$m
 
 核方法 vs. 神经网络
 
-- 核方法毕其功于一役，难点在于{==如何设计核函数==}
-- 神经网络一步一个小目标，难点在于{==如何设计一系列非线性函数==}
+- 核方法毕其功于一役，难点在于<span class="blue">如何设计核函数</span>
+- 神经网络一步一个小目标，难点在于<span class="blue">如何设计一系列非线性函数</span>

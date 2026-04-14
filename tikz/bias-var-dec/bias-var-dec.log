@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.3.7)  16 MAR 2026 18:10
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.6)  12 APR 2026 18:53
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -341,7 +341,24 @@ topaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
 \sa@box=\box64
+) (/home/avanti/texmf/tex/latex/avanti/avanti-color.sty
+(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen257
+\ar@mcellbox=\box65
+\extrarowheight=\dimen258
+\NC@list=\toks32
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box66
 )
+\everycr=\toks33
+\minrowclearance=\skip53
+\rownum=\count304
+))
 (/home/avanti/texmf/tex/latex/avanti/avanti-tikz4slides.sty
 (/usr/share/texmf-dist/tex/latex/ctex/ctex.sty
 (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -349,9 +366,9 @@ Package: expl3 2026-01-19 L3 programming layer (loader)
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
-\g__graphics_track_int=\count304
-\g__pdfannot_backend_int=\count305
-\g__pdfannot_backend_link_int=\count306
+\g__graphics_track_int=\count305
+\g__pdfannot_backend_int=\count306
+\g__pdfannot_backend_link_int=\count307
 ))
 Package: ctex 2022/07/14 v2.5.10 Chinese adapter in LaTeX (CTEX)
 
@@ -622,11 +639,11 @@ put line 193.
 LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on inpu
 t line 194.
 ))
-\l__ctex_tmp_int=\count307
-\l__ctex_tmp_box=\box65
-\l__ctex_tmp_dim=\dimen257
-\g__ctex_section_depth_int=\count308
-\g__ctex_font_size_int=\count309
+\l__ctex_tmp_int=\count308
+\l__ctex_tmp_box=\box67
+\l__ctex_tmp_dim=\dimen259
+\g__ctex_section_depth_int=\count309
+\g__ctex_font_size_int=\count310
 
 (/usr/share/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
 File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
@@ -640,13 +657,13 @@ Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
 (/usr/share/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
 Package: xtemplate 2025-10-09 L3 Experimental prototype document functions
 )
-\l__xeCJK_tmp_int=\count310
-\l__xeCJK_tmp_box=\box66
-\l__xeCJK_tmp_dim=\dimen258
-\l__xeCJK_tmp_skip=\skip51
-\g__xeCJK_space_factor_int=\count311
-\l__xeCJK_begin_int=\count312
-\l__xeCJK_end_int=\count313
+\l__xeCJK_tmp_int=\count311
+\l__xeCJK_tmp_box=\box68
+\l__xeCJK_tmp_dim=\dimen260
+\l__xeCJK_tmp_skip=\skip54
+\g__xeCJK_space_factor_int=\count312
+\l__xeCJK_begin_int=\count313
+\l__xeCJK_end_int=\count314
 \c__xeCJK_CJK_class_int=\XeTeXcharclass1
 \c__xeCJK_FullLeft_class_int=\XeTeXcharclass2
 \c__xeCJK_FullRight_class_int=\XeTeXcharclass3
@@ -655,51 +672,51 @@ Package: xtemplate 2025-10-09 L3 Experimental prototype document functions
 \c__xeCJK_NormalSpace_class_int=\XeTeXcharclass6
 \c__xeCJK_CM_class_int=\XeTeXcharclass7
 \c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
-\l__xeCJK_last_skip=\skip52
-\c__xeCJK_none_node=\count314
-\g__xeCJK_node_int=\count315
-\c__xeCJK_CJK_node_dim=\dimen259
-\c__xeCJK_CJK-space_node_dim=\dimen260
-\c__xeCJK_default_node_dim=\dimen261
-\c__xeCJK_CJK-widow_node_dim=\dimen262
-\c__xeCJK_normalspace_node_dim=\dimen263
-\c__xeCJK_default-space_node_skip=\skip53
-\l__xeCJK_ccglue_skip=\skip54
-\l__xeCJK_ecglue_skip=\skip55
-\l__xeCJK_punct_kern_skip=\skip56
-\l__xeCJK_indent_box=\box67
-\l__xeCJK_last_penalty_int=\count316
-\l__xeCJK_last_bound_dim=\dimen264
-\l__xeCJK_last_kern_dim=\dimen265
-\l__xeCJK_widow_penalty_int=\count317
+\l__xeCJK_last_skip=\skip55
+\c__xeCJK_none_node=\count315
+\g__xeCJK_node_int=\count316
+\c__xeCJK_CJK_node_dim=\dimen261
+\c__xeCJK_CJK-space_node_dim=\dimen262
+\c__xeCJK_default_node_dim=\dimen263
+\c__xeCJK_CJK-widow_node_dim=\dimen264
+\c__xeCJK_normalspace_node_dim=\dimen265
+\c__xeCJK_default-space_node_skip=\skip56
+\l__xeCJK_ccglue_skip=\skip57
+\l__xeCJK_ecglue_skip=\skip58
+\l__xeCJK_punct_kern_skip=\skip59
+\l__xeCJK_indent_box=\box69
+\l__xeCJK_last_penalty_int=\count317
+\l__xeCJK_last_bound_dim=\dimen266
+\l__xeCJK_last_kern_dim=\dimen267
+\l__xeCJK_widow_penalty_int=\count318
 
 LaTeX template Info: Declaring template type 'xeCJK/punctuation' taking 0
 (template)           argument(s) on line 2396.
 
-\l__xeCJK_fixed_punct_width_dim=\dimen266
-\l__xeCJK_mixed_punct_width_dim=\dimen267
-\l__xeCJK_middle_punct_width_dim=\dimen268
-\l__xeCJK_fixed_margin_width_dim=\dimen269
-\l__xeCJK_mixed_margin_width_dim=\dimen270
-\l__xeCJK_middle_margin_width_dim=\dimen271
-\l__xeCJK_bound_punct_width_dim=\dimen272
-\l__xeCJK_bound_margin_width_dim=\dimen273
-\l__xeCJK_margin_minimum_dim=\dimen274
-\l__xeCJK_kerning_total_width_dim=\dimen275
-\l__xeCJK_same_align_margin_dim=\dimen276
-\l__xeCJK_different_align_margin_dim=\dimen277
-\l__xeCJK_kerning_margin_width_dim=\dimen278
-\l__xeCJK_kerning_margin_minimum_dim=\dimen279
-\l__xeCJK_bound_dim=\dimen280
-\l__xeCJK_reverse_bound_dim=\dimen281
-\l__xeCJK_margin_dim=\dimen282
-\l__xeCJK_minimum_bound_dim=\dimen283
-\l__xeCJK_kerning_margin_dim=\dimen284
-\g__xeCJK_family_int=\count318
-\l__xeCJK_fam_int=\count319
-\g__xeCJK_fam_allocation_int=\count320
-\l__xeCJK_verb_case_int=\count321
-\l__xeCJK_verb_exspace_skip=\skip57
+\l__xeCJK_fixed_punct_width_dim=\dimen268
+\l__xeCJK_mixed_punct_width_dim=\dimen269
+\l__xeCJK_middle_punct_width_dim=\dimen270
+\l__xeCJK_fixed_margin_width_dim=\dimen271
+\l__xeCJK_mixed_margin_width_dim=\dimen272
+\l__xeCJK_middle_margin_width_dim=\dimen273
+\l__xeCJK_bound_punct_width_dim=\dimen274
+\l__xeCJK_bound_margin_width_dim=\dimen275
+\l__xeCJK_margin_minimum_dim=\dimen276
+\l__xeCJK_kerning_total_width_dim=\dimen277
+\l__xeCJK_same_align_margin_dim=\dimen278
+\l__xeCJK_different_align_margin_dim=\dimen279
+\l__xeCJK_kerning_margin_width_dim=\dimen280
+\l__xeCJK_kerning_margin_minimum_dim=\dimen281
+\l__xeCJK_bound_dim=\dimen282
+\l__xeCJK_reverse_bound_dim=\dimen283
+\l__xeCJK_margin_dim=\dimen284
+\l__xeCJK_minimum_bound_dim=\dimen285
+\l__xeCJK_kerning_margin_dim=\dimen286
+\g__xeCJK_family_int=\count319
+\l__xeCJK_fam_int=\count320
+\g__xeCJK_fam_allocation_int=\count321
+\l__xeCJK_verb_case_int=\count322
+\l__xeCJK_verb_exspace_skip=\skip60
 
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -710,20 +727,20 @@ Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count322
-\l__fontspec_language_int=\count323
-\l__fontspec_strnum_int=\count324
-\l__fontspec_tmp_int=\count325
-\l__fontspec_tmpa_int=\count326
-\l__fontspec_tmpb_int=\count327
-\l__fontspec_tmpc_int=\count328
-\l__fontspec_em_int=\count329
-\l__fontspec_emdef_int=\count330
-\l__fontspec_strong_int=\count331
-\l__fontspec_strongdef_int=\count332
-\l__fontspec_tmpa_dim=\dimen285
-\l__fontspec_tmpb_dim=\dimen286
-\l__fontspec_tmpc_dim=\dimen287
+\l__fontspec_script_int=\count323
+\l__fontspec_language_int=\count324
+\l__fontspec_strnum_int=\count325
+\l__fontspec_tmp_int=\count326
+\l__fontspec_tmpa_int=\count327
+\l__fontspec_tmpb_int=\count328
+\l__fontspec_tmpc_int=\count329
+\l__fontspec_em_int=\count330
+\l__fontspec_emdef_int=\count331
+\l__fontspec_strong_int=\count332
+\l__fontspec_strongdef_int=\count333
+\l__fontspec_tmpa_dim=\dimen287
+\l__fontspec_tmpb_dim=\dimen288
+\l__fontspec_tmpc_dim=\dimen289
 
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
@@ -732,15 +749,15 @@ Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 (/usr/share/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
 File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
-\ccwd=\dimen288
-\l__ctex_ccglue_skip=\skip58
+\ccwd=\dimen290
+\l__ctex_ccglue_skip=\skip61
 )
-\l__ctex_ziju_dim=\dimen289
+\l__ctex_ziju_dim=\dimen291
 
 (/usr/share/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
-\l__zhnum_scale_int=\count333
-\l__zhnum_tmp_int=\count334
+\l__zhnum_scale_int=\count334
+\l__zhnum_tmp_int=\count335
 
 (/usr/share/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
@@ -791,23 +808,6 @@ t;"
 ))
 (/usr/share/texmf-dist/tex/latex/ctex/config/ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
-)
-(/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
-
-(/usr/share/texmf-dist/tex/latex/tools/array.sty
-Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen290
-\ar@mcellbox=\box68
-\extrarowheight=\dimen291
-\NC@list=\toks32
-\extratabsurround=\skip59
-\backup@length=\skip60
-\ar@cellbox=\box69
-)
-\everycr=\toks33
-\minrowclearance=\skip61
-\rownum=\count335
 )
 (/usr/share/texmf-dist/tex/latex/tikz-qtree/tikz-qtree.sty
 (/usr/share/texmf-dist/tex/latex/tikz-qtree/pgftree.sty
@@ -1298,15 +1298,15 @@ e=dflt;"<6.323622-8.9584645>"[NewCMMath-Book.otf]/OT:script=math;language=dflt;
 "
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 62.
+(Font)              `operators' in the math version `normal' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/NewCMMath-Book.otf(1)/m/n on input l
-ine 62.
+ine 14.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 62.
+(Font)              `operators' in the math version `bold' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/NewCMMath-Book.otf(1)/b/n on input 
-line 62.
+line 14.
 
 Package fontspec Info: 
 (fontspec)             NewCMMath-Book scale = 1.0001.
@@ -1352,15 +1352,15 @@ th;language=dflt;"<6.323622-8.9584645>s*[1.0001]"[NewCMMath-Book.otf]/OT:script
 pt=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 62.
+(Font)              `symbols' in the math version `normal' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/cmsy/m/n --> TU/NewCMMath-Book.otf(2)/m/n on input 
-line 62.
+line 14.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 62.
+(Font)              `symbols' in the math version `bold' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> TU/NewCMMath-Book.otf(2)/b/n on input 
-line 62.
+line 14.
 
 Package fontspec Info: 
 (fontspec)             NewCMMath-Book scale = 0.9999.
@@ -1400,36 +1400,37 @@ th;language=dflt;"<6.323622-8.9584645>s*[0.9999]"[NewCMMath-Book.otf]/OT:script
 pt=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 6
-2.
+(Font)              `largesymbols' in the math version `normal' on input line 1
+4.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/m/n on input 
-line 62.
+line 14.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 62.
+(Font)              `largesymbols' in the math version `bold' on input line 14.
 
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/b/n on input 
-line 62.
-) (./bias-var-dec.aux)
+line 14.
+) (/home/avanti/texmf/tex/latex/avanti/avanti-notations.sty)
+(./bias-var-dec.aux)
 \openout1 = `bias-var-dec.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
@@ -1438,19 +1439,19 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
 (Font)                  TU/NewCMMath-Book.otf(1)/m/n --> TU/lmr/m/n on input li
-ne 8.
+ne 10.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 8.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 10.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 8.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 10.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 8.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 10.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 8.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 10.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 8.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 10.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 8.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 10.
 [1
 
 ] (./bias-var-dec.aux)
@@ -1460,12 +1461,12 @@ L3 programming layer <2022/07/14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 38046 strings out of 468168
- 973620 string characters out of 5438845
- 1647602 words of memory out of 5000000
- 66159 multiletter control sequences out of 15000+600000
+ 38416 strings out of 468168
+ 975887 string characters out of 5438845
+ 1647695 words of memory out of 5000000
+ 66523 multiletter control sequences out of 15000+600000
  629783 words of font info for 66 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 117i,5n,145p,899b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,5n,145p,928b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on bias-var-dec.pdf (1 page).
