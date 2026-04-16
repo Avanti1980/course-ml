@@ -101,9 +101,13 @@
 
 [测试环境](python/demo.ipynb)
 
-[k-均值聚类](python/clustering.ipynb)、[密度估计](python/density-estimation.ipynb)、[模型评估](python/model-evaluation.ipynb)、[过拟合](python/overfitting.ipynb)、[偏差方差分解](python/bias-var-dec.ipynb)
+[鸢尾花数据集](python/data/iris-info.ipynb)、[乳腺癌数据集](python/data/cancer-info.ipynb)、[手写数字图片数据集](python/data/digit-info.ipynb)、[糖尿病数据集](python/data/diabetes-info.ipynb)
 
-[文本特征提取](python/feat-text.ipynb)、[独热编码](python/feat-one-hot.ipynb)、[缺失特征处理](python/feat-missing.ipynb)、[特征标准化](python/feat-scaler.ipynb)、[特征选择](python/feat-selection.ipynb)、[稀疏范数](python/sparse-norm.ipynb)、[主成分分析](python/pca.ipynb)、[随机投影](python/random-projection.ipynb)
+[k-均值聚类](python/unsupervised-learning/clustering.ipynb)、[主成分分析](python/unsupervised-learning/pca-plot.ipynb)、[密度估计](python/unsupervised-learning/density-estimation.ipynb)、[模型评估](python/measure/model-evaluation.ipynb)、[查准查全曲线](python/measure/pr-curve.ipynb)、[ROC 曲线](python/measure/roc-curve.ipynb)
+
+[过拟合](python/overfitting/overfitting.ipynb)、[偏差方差分解](python/overfitting/bias-var-dec.ipynb)
+
+[文本特征提取](python/feature/feat-text.ipynb)、[独热编码](python/feature/feat-one-hot.ipynb)、[缺失特征处理](python/feature/feat-missing.ipynb)、[特征标准化](python/feature/feat-scaler.ipynb)、[特征选择](python/feature/feat-selection.ipynb)、[稀疏范数](python/feature/sparse-norm.ipynb)、[随机投影](python/feature/random-projection.ipynb)
 
 决策树[分类鸢尾花](python/dt/dt-iris.ipynb)
 

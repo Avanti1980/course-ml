@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits
 
 digits = load_digits()
-# print(digits.DESCR)
+print(digits.DESCR)
 # --------------------
 # **Data Set Characteristics:**
 #
@@ -46,21 +46,23 @@ digits = load_digits()
 #   - Claudio Gentile. A New Approximate Maximal Margin Classification
 #     Algorithm. NIPS. 2000.
 
+plt.rcParams.update({
+    "savefig.bbox": "tight",
+    'savefig.transparent': True,
+})
 
-with plt.style.context('Solarize_Light2'):
+row, col = 4, 10
+fig, axs = plt.subplots(row, col, figsize=(col, row))
+for i in range(row):
+    for j in range(col):
+        axs[i, j].set_axis_off()
+        axs[i, j].imshow(digits.images[i * 10 + j].reshape(8, 8), interpolation='nearest')
+fig.savefig(f"digit-info-{row}-{col}.svg")
 
-    row, col = 4, 10
-    fig, axs = plt.subplots(row, col, figsize=(col, row))
-    for i in range(row):
-        for j in range(col):
-            axs[i, j].set_axis_off()
-            axs[i, j].imshow(digits.images[i * 10 + j].reshape(8, 8), interpolation='nearest')
-    plt.savefig(f"digit-info-{row}-{col}.svg", transparent=True, bbox_inches="tight")
-
-    row, col = 6, 10
-    fig, axs = plt.subplots(row, col, figsize=(col, row))
-    for i in range(row):
-        for j in range(col):
-            axs[i, j].set_axis_off()
-            axs[i, j].imshow(digits.images[i * 10 + j].reshape(8, 8), interpolation='nearest')
-    plt.savefig(f"digit-info-{row}-{col}.svg", transparent=True, bbox_inches="tight")
+row, col = 6, 10
+fig, axs = plt.subplots(row, col, figsize=(col, row))
+for i in range(row):
+    for j in range(col):
+        axs[i, j].set_axis_off()
+        axs[i, j].imshow(digits.images[i * 10 + j].reshape(8, 8), interpolation='nearest')
+fig.savefig(f"digit-info-{row}-{col}.svg")

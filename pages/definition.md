@@ -60,7 +60,7 @@ presentation:
 
 机器学习之父<a href="https://en.wikipedia.org/wiki/Tom_M._Mitchell" target=_balnk>汤姆·米切尔</a>，1997 年出版《机器学习》
 
-> A {==computer program==} is said to learn from {==experience E==} with respect to some class of {==tasks T==} and {==performance measure P==}, if its performance at tasks in T, as measured by P, improves with experience E. <br>
+> A <span class="blue">computer program</span> is said to learn from <span class="blue">experience E</span> with respect to some class of <span class="blue">tasks T</span> and <span class="blue">performance measure P</span>, if its performance at tasks in T, as measured by P, improves with experience E. <br>
 
 > DeepSeek 的翻译: 若计算机程序在某类任务 T 中的表现 (以评估指标 P 衡量) 随经验 E 的积累而提升，则称该程序具备从经验 E 中学习的能力。
 
@@ -102,8 +102,8 @@ presentation:
 
 </div>
 
-- 行：{==样本==} (example, sample) 或 {==示例==} (instance) 或 {==数据点==} (data point)
-- 列：{==特征==} (feature) 或 {==属性==} (attribute) 或 {==协变量==} (covariate) ，最后一列为{==标记==} (label) 或 {==目标==} (target)
+- 行：<span class="blue">样本</span> (example, sample) 或 <span class="blue">示例</span> (instance) 或 <span class="blue">数据点</span> (data point)
+- 列：<span class="blue">特征</span> (feature) 或 <span class="blue">属性</span> (attribute) 或 <span class="blue">协变量</span> (covariate) ，最后一列为<span class="blue">标记</span> (label) 或 <span class="blue">目标</span> (target)
 
 <p class="footnote book"> 该表格取自<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set" target=_blank>鸢尾花数据集</a>，由美国植物学家 <a href="https://en.wikipedia.org/wiki/Edgar_Anderson" target=_blank>Edgar Shannon Anderson</a> 收集，英国统计学家 <a href="https://en.wikipedia.org/wiki/Ronald_Fisher" target=_blank>Ronald Aylmer Fisher</a> 引入到统计分析中，共有 150 个样本、3 个类别，每类 50 个样本</p>
 
@@ -125,7 +125,17 @@ sklearn 集成了该数据集
 
 将样本看成欧几里得空间$\rb^4$中的点
 
-<img src="../python/data/iris-plot.svg" class="center width85 top1">
+<img src="../python/data/iris-plot.svg" class="center width65 top1 bottom-4">
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 数据分布可视化
+
+---
+
+将样本看成欧几里得空间$\rb^4$中的点
+
+<img src="../python/data/iris-plot2.svg" class="center width65 top1 bottom-4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -204,7 +214,7 @@ sklearn 集成了该数据集
 
 sklearn 集成了该数据集
 
-@import "../python/data/cancer-info.py" {line_begin=0 line_end=119 .line-numbers .top0 .bottom1 .left4 highlight=[]}
+@import "../python/data/cancer-info.py" {.line-numbers .top0 .bottom2 .left4 highlight=[]}
 
 <!-- slide data-notes="" -->
 
@@ -334,14 +344,14 @@ sklearn 集成了该数据集
 
 用于对自然语言的句法分析
 
-- {==S==}：句子
-- {==NP==}：名词短语 (noun phrase)
-- {==VP==}：动词短语 (verb phrase)
-- {==PP==}：介词短语 (prepositional phrase)
-- {==N==}：名词
-- {==V==}：动词
-- {==P==}：介词
-- {==U==}：体标记
+- <span class="blue">S</span>：句子
+- <span class="blue">NP</span>：名词短语 (noun phrase)
+- <span class="blue">VP</span>：动词短语 (verb phrase)
+- <span class="blue">PP</span>：介词短语 (prepositional phrase)
+- <span class="blue">N</span>：名词
+- <span class="blue">V</span>：动词
+- <span class="blue">P</span>：介词
+- <span class="blue">U</span>：体标记
 
 <img src="../tikz/syntax-tree/syntax-tree.svg" class="top-40 width40 bottom-10 right6 lefta">
 
@@ -423,8 +433,8 @@ sklearn 集成了该数据集
 
 <div class="top2"></div>
 
-- 左：从$\rb^2$上各向同性、标准差为 1 的正态分布里采样 2000 个样本，并指定聚成 6 个簇
-- 右：从$\rb^2$上两个中心随机生成、各向同性、标准差为 1 的正态分布里各采样 2000 个样本，并指定聚成 6 个簇
+- 左：从$\rb^2$上各向同性、标准差为 1 的高斯分布里采样 2000 个样本，并指定聚成 6 个簇
+- 右：从$\rb^2$上两个中心随机生成、各向同性、标准差为 1 的高斯分布里各采样 2000 个样本，并指定聚成 6 个簇
 
 <img src="../python/unsupervised-learning/clustering.svg" class="center top2 width80" title="">
 
@@ -447,7 +457,7 @@ sklearn 集成了该数据集
 \end{align}
 </p>
 
-主成分分析 ({==p==}rincipal {==c==}omponents {==a==}nalysis, PCA) 目标为{==最小化重构误差==}
+主成分分析 (<span class="blue">p</span>rincipal <span class="blue">c</span>omponents <span class="blue">a</span>nalysis, PCA) 目标为<span class="blue">最小化重构误差</span>
 
 <p>
 \begin{align}
@@ -465,11 +475,11 @@ sklearn 集成了该数据集
 
 <div class="width40">
 
-输入为$\rb^2$中 500 个点，服从正态分布 (等高线为一族椭圆)，$\rb^2 \mapsto \rb$重构误差最小的投影方向 (主成分) 是椭圆的长轴
+输入为$\rb^2$中 500 个点，服从高斯分布 (等高线为一族椭圆)，$\rb^2 \mapsto \rb$重构误差最小的投影方向 (主成分) 是椭圆的长轴
 
 </div>
 
-<img src="../python/unsupervised-learning/pca-plot.svg" class="lefta right4 top-26 width56" title="成分1是重构误差最小的投影方向">
+<img src="../python/unsupervised-learning/pca-plot.svg" class="lefta right4 top-25 width56" title="成分1是重构误差最小的投影方向">
 
 <!-- slide data-notes="" -->
 
@@ -593,7 +603,7 @@ sklearn 集成了该数据集
 - 机械学习，死记硬背式学习，信息存储检索
 - 示教学习，类似于“从指令中学习”
 - 类比学习，类似于“通过观察和发现学习”
-- {==归纳学习==}，类似于“从样本中学习”，目前研究最多、应用最广
+- <span class="blue">归纳学习</span>，类似于“从样本中学习”，目前研究最多、应用最广
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -633,7 +643,7 @@ sklearn 集成了该数据集
 
 <div class="top4"></div>
 
-### 约还是不约，让{==机器学习==}来拯救你
+### 约还是不约，让<span class="blue">机器学习</span>来拯救你
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -653,7 +663,7 @@ sklearn 集成了该数据集
 
 </div>
 
-用 {==if-then==} 形式的{==合取规则==}尽可能地概括正样本
+用 <span class="blue">if-then</span> 形式的<span class="blue">合取规则</span>尽可能地概括正样本
 
 <p>
 \begin{align}
@@ -664,7 +674,7 @@ sklearn 集成了该数据集
 <div class="top2"></div>
 
 - 可解释强，人类可以秒懂
-- 将规则集合组织成树的形式即为{==决策树==} (decision tree)
+- 将规则集合组织成树的形式即为<span class="blue">决策树</span> (decision tree)
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -684,7 +694,7 @@ sklearn 集成了该数据集
 
 </div>
 
-用{==感知机==} (perceptron) 拟合数据
+用<span class="blue">感知机</span> (perceptron) 拟合数据
 
 <p>
 \begin{align}
@@ -695,7 +705,7 @@ sklearn 集成了该数据集
 <div class="top2"></div>
 
 - 数据中的知识体现为感知机的参数$w_0, w_1, \ldots, w_7$
-- 将大量感知机并行串联就是{==神经网络==} (neural network)
+- 将大量感知机并行串联就是<span class="blue">神经网络</span> (neural network)
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -715,7 +725,7 @@ sklearn 集成了该数据集
 
 </div>
 
-利用{==贝叶斯公式==}求{==后验==} (posterior)
+利用<span class="blue">贝叶斯公式</span>求<span class="blue">后验</span> (posterior)
 
 <p>
 \begin{align}
@@ -725,8 +735,8 @@ sklearn 集成了该数据集
 
 <div class="top2"></div>
 
-- $p (约会)$为{==先验==} (prior)，反映在没有任何信息的情况下对约会的信念
-- 数据通过{==似然==} (likelihood) $p(次序, \ldots, 电视 \mid 约会)$调整对约会的信念
+- $p (约会)$为<span class="blue">先验</span> (prior)，反映在没有任何信息的情况下对约会的信念
+- 数据通过<span class="blue">似然</span> (likelihood) $p(次序, \ldots, 电视 \mid 约会)$调整对约会的信念
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -746,7 +756,7 @@ sklearn 集成了该数据集
 
 </div>
 
-引入{==相似度==}函数$s(\cdot, \cdot)$和样本{==权重==}$\alpha$
+引入<span class="blue">相似度</span>函数$s(\cdot, \cdot)$和样本<span class="blue">权重</span>$\alpha$
 
 <p>
 \begin{align}
@@ -756,8 +766,8 @@ sklearn 集成了该数据集
 
 <div class="top2"></div>
 
-- $\class{blue}{k}${==-近邻==}：$s(\cdot, \cdot)$为欧氏距离，最近的$k$个样本权重为$1/s$，其余为$0$
-- {==支持向量机==}：$s(\cdot, \cdot)$为核函数，权重为对偶问题的拉格朗日乘子变量
+- $\class{blue}{k}$<span class="blue">-近邻</span>：$s(\cdot, \cdot)$为欧氏距离，最近的$k$个样本权重为$1/s$，其余为$0$
+- <span class="blue">支持向量机</span>：$s(\cdot, \cdot)$为核函数，权重为对偶问题的拉格朗日乘子变量
 
 <!-- slide data-notes="" -->
 
@@ -790,12 +800,12 @@ Q：哪个算法更好？
 
 <div class="threelines column2-border-right-solid column3-border-right-solid row3-border-top-dashed head-highlight-1 tr-hover top-1 bottom-3">
 
-| $x_1$ | $x_2$ | $y$ |              薛吒              |              薛跋              |                     薛深                     |
-| :---: | :---: | :-: | :----------------------------: | :----------------------------: | :------------------------------------------: |
-|   0   |   0   |  0  | $ \sgn(\mathrm{rand}() - 0.5)$ | $ (x_1 = 1) \wedge (x_2 = 1) $ | $ \sgn(0.7 \cdot x_1 + 0.3 \cdot x_2 - 0.5)$ |
-|   1   |   1   |  1  |               ^                |               ^                |                      ^                       |
-|   1   |   0   |  ?  |               1                |               0                |                      1                       |
-|   0   |   1   |  ?  |               1                |               0                |                      0                       |
+| $x_1$ | $x_2$ | $y$ |               薛吒               |              薛跋              |                     薛深                     |
+| :---: | :---: | :-: | :------------------------------: | :----------------------------: | :------------------------------------------: |
+|   0   |   0   |  0  | $ \sgn(\textrm{random}() - 0.5)$ | $ (x_1 = 1) \wedge (x_2 = 1) $ | $ \sgn(0.7 \cdot x_1 + 0.3 \cdot x_2 - 0.5)$ |
+|   1   |   1   |  1  |                ^                 |               ^                |                      ^                       |
+|   1   |   0   |  ?  |                1                 |               0                |                      1                       |
+|   0   |   1   |  ?  |                1                 |               0                |                      0                       |
 
 </div>
 
@@ -822,7 +832,7 @@ Q：哪个算法更好？
 
 前页的结果并非偶然，在对真实模型一无所知 (只能假设等概率出现) 的情况下，所有算法的期望错误率均为$1/2$，与随便猜等同，这称为没有免费的午餐 (no free lunch, NFL) 定理
 
-设数据集$\dc \subseteq (\xc \times \{0,1\})^m$，其中$\xc$是{==有限==}的，$p(f \mid \as, \dc)$为算法$\as$基于数据集$\dc$产生模型$f$的概率
+设数据集$\dc \subseteq (\xc \times \{0,1\})^m$，其中$\xc$是<span class="blue">有限</span>的，$p(f \mid \as, \dc)$为算法$\as$基于数据集$\dc$产生模型$f$的概率
 
 模型集合$\gc = \{ \xc \mapsto \{0,1\} \}$，易知$|\gc| = 2^{|\xc|}$
 
@@ -877,7 +887,7 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 
 ---
 
-给定模型$f: \xc \mapsto \rb$、数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，回归任务最常用的评估指标{==均方损失==} ({==m==}ean {==s==}quared {==e==}rror, MSE) 定义为
+给定模型$f: \xc \mapsto \rb$、数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，回归任务最常用的评估指标<span class="blue">均方损失</span> (<span class="blue">m</span>ean <span class="blue">s</span>quared <span class="blue">e</span>rror, MSE) 定义为
 
 <p>
 \begin{align}
@@ -887,8 +897,8 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 
 除此之外，以下损失也会用于回归任务
 
-- 均方根损失 ({==r==}oot {==MSE==}, RMSE)：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
-- 平均绝对损失 ({==m==}ean {==a==}bsolute {==e==}rror, MAE)：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$
+- 均方根损失 (<span class="blue">r</span>oot <span class="blue">MSE</span>, RMSE)：$\sqrt{\frac{1}{m} \sum_{i \in [m]} (f(\xv_i) - y_i)^2}$
+- 平均绝对损失 (<span class="blue">m</span>ean <span class="blue">a</span>bsolute <span class="blue">e</span>rror, MAE)：$\frac{1}{m} \sum_{i \in [m]} |f(\xv_i) - y_i|$
 - Huber 损失：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} (f(\xv_i) - y_i)^2, & |f(\xv_i) - y_i| \le \delta \\ 2 \delta (|f(\xv_i) - y_i| - \delta/2), & |f(\xv_i) - y_i| > \delta \end{cases}$
 - 支持向量损失：$\frac{1}{m} \sum_{i \in [m]} \begin{cases} 0, & |f(\xv_i) - y_i| \le \delta \\ |f(\xv_i) - y_i| - \delta, & |f(\xv_i) - y_i| > \delta \end{cases}$
 
@@ -898,7 +908,7 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 
 ---
 
-给定模型$f: \xc \mapsto \rb$、数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$y_i \in \{1,-1\}$，分类任务最常用的评估指标{==错误率==} (error rate) 定义为
+给定模型$f: \xc \mapsto \rb$、数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$y_i \in \{1,-1\}$，分类任务最常用的评估指标<span class="blue">错误率</span> (error rate) 定义为
 
 <p>
 \begin{align}
@@ -906,7 +916,7 @@ NFL 定理的启示：脱离具体的任务空谈什么算法好没有意义！
 \end{align}
 </p>
 
-此外$\acc_\dc (f) = 1 - \err_\dc (f)$为{==准确率==} (accuracy)
+此外$\acc_\dc (f) = 1 - \err_\dc (f)$为<span class="blue">准确率</span> (accuracy)
 
 $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以下替代损失
 
@@ -923,8 +933,8 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 只看准确率有时不够全面
 
-- {==类别不平衡==}：对某种传染病做预测，数据集中阳性 1%、阴性 99%，此时无脑预测阴性也有 99% 的准确率，但对于疾病预测完全没用
-- {==误分类代价差别大==}：将阴性预测为阳性会导致该病人接受进一步的检查，将阳性预测为阴性会导致潜在的大面积疾病传播
+- <span class="blue">类别不平衡</span>：对某种传染病做预测，数据集中阳性 1%、阴性 99%，此时无脑预测阴性也有 99% 的准确率，但对于疾病预测完全没用
+- <span class="blue">误分类代价差别大</span>：将阴性预测为阳性会导致该病人接受进一步的检查，将阳性预测为阴性会导致潜在的大面积疾病传播
 
 <div class="top4"></div>
 
@@ -932,10 +942,10 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 <div class="threelines column1-border-right-solid column2-border-right-dashed row2-border-top-dashed column1-bold top-1 bottom1 left4 righta fragment" data-fragment-index="1">
 
-|             |  预测 正样本   |  预测 负样本   |
-| :---------: | :------------: | :------------: |
-| 真实 正样本 | $\TP$ (真正例) | $\FN$ (假反例) |
-| 真实 负样本 | $\FP$ (假正例) | $\TN$ (真反例) |
+|             | 预测 正样本 | 预测 负样本 |
+| :---------: | :---------: | :---------: |
+| 真实 正样本 | TP (真正例) | FN (假反例) |
+| 真实 负样本 | FP (假正例) | TN (真反例) |
 
 </div>
 
@@ -943,7 +953,7 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 <p class="fragment top-22 left53per" data-fragment-index="1">
 \begin{align}
-    准确率 = \frac{\TP + \TN}{\TP + \TN + \FP + \FN}
+    \acc = \frac{\TP + \TN}{\TP + \TN + \FP + \FN}
 \end{align}
 </p>
 
@@ -955,15 +965,15 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 <div class="threelines column1-border-right-solid column2-border-right-dashed row2-border-top-dashed column1-bold top-1 bottom1 left4 righta">
 
-|             |  预测 正样本   |  预测 负样本   |
-| :---------: | :------------: | :------------: |
-| 真实 正样本 | $\TP$ (真正例) | $\FN$ (假反例) |
-| 真实 负样本 | $\FP$ (假正例) | $\TN$ (真反例) |
+|             | 预测 正样本 | 预测 负样本 |
+| :---------: | :---------: | :---------: |
+| 真实 正样本 | TP (真正例) | FN (假反例) |
+| 真实 负样本 | FP (假正例) | TN (真反例) |
 
 </div>
 
-- {==查准率==} (precision)：$\frac{\TP}{\TP + \FP}$，预测的正样本中有多少是正样本
-- {==查全率==} (recall)：$\frac{\TP}{\TP + \FN}$，所有正样本中有多少被预测出来了
+- <span class="blue">查准率</span> (precision)：$\TP / (\TP + \FP)$，预测的正样本中有多少是正样本
+- <span class="blue">查全率</span> (recall)：$\TP / (\TP + \FN)$，所有正样本中有多少被预测出来了
 
 <div class="top4"></div>
 
@@ -988,7 +998,7 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 - A 的曲线完全在 B 的右上方
 - A 的曲线下面积大于 B
-- A 的曲线与$P=R$的交点 (平衡点) 更大
+- A 的曲线与$查准率 = 查全率$的交点更大
 
 <img src="../python/measure/pr-curve.svg" class="right4 lefta top-20 bottom-20 width35" title="二分类，1000个样本（800训练、200测试），20个特征">
 
@@ -1006,7 +1016,7 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 <p>
 \begin{align}
-    \mathrm{F_1} = 2 \bigg/ \left( \frac{1}{P} + \frac{1}{R} \right) = 2 \bigg/ \frac{2 \cdot \TP + \FP + \FN}{\TP} = \frac{2 \cdot \TP}{样本数 + \TP - \TN}
+    F_1 = 2 \bigg/ \left( \frac{1}{查准率} + \frac{1}{查全率} \right) = 2 \bigg/ \frac{2 \cdot \TP + \FP + \FN}{\TP} = \frac{2 \cdot \TP}{样本数 + \TP - \TN}
 \end{align}
 </p>
 
@@ -1021,7 +1031,7 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 <p class="fragment" data-fragment-index="2">
 \begin{align}
-    \mathrm{F_\beta} = (1+\beta^2) \bigg/ \left( \frac{1}{P} + \frac{\beta^2}{R} \right) = \frac{(1 + \beta^2) \cdot P \cdot R}{\beta^2 \cdot P + R}
+    F_\beta = (1+\beta^2) \bigg/ \left( \frac{1}{查准率} + \frac{\beta^2}{查全率} \right) = \frac{(1 + \beta^2) \cdot 查准率 \cdot 查全率}{\beta^2 \cdot 查准率 + 查全率}
 \end{align}
 </p>
 
@@ -1035,14 +1045,14 @@ $\ib (y_i f(\xv_i) < 0)$也称为 0-1 损失，不连续、难优化，常用以
 
 ROC 曲线与查准查全曲线类似，只不过纵横轴不同
 
-- 纵轴为{==真正例率==} (true positive rate, TPR)，正类被预测对的比例
-- 横轴为{==假正例率==} (false positive rate, FPR)，负类被预测错的比例
+- 纵轴为<span class="blue">真正例率</span> (<span class="blue">t</span>rue <span class="blue">p</span>ositive <span class="blue">r</span>ate, TPR)，正类被预测对的比例
+- 横轴为<span class="blue">假正例率</span> (<span class="blue">f</span>alse <span class="blue">p</span>ositive <span class="blue">r</span>ate, FPR)，负类被预测错的比例
 
-<div class="bottom2"></div>
+<div class="top2"></div>
 
 <p>
 \begin{align}
-    \mathrm{TPR} = \frac{\TP}{\TP+\FN}, \quad \mathrm{FPR} = \frac{\FP}{\TN+\FP}
+    \textrm{TPR} = \frac{\TP}{\TP+\FN}, \quad \textrm{FPR} = \frac{\FP}{\TN+\FP}
 \end{align}
 </p>
 
@@ -1074,7 +1084,7 @@ ROC 曲线从左下角$(0,0)$开始绘制，设当前绘制点为$(x,y)$
 
 <p>
 \begin{align}
-    \mathrm{AUC} = \frac{1}{m^+ m^-} \sum_{x^+} \sum_{x^-} \left( \ib (f(x^+) > f(x^-)) + \frac{1}{2} \ib (f(x^+) = f(x^-)) \right)
+    \textrm{AUC} = \frac{1}{m^+ m^-} \sum_{x^+} \sum_{x^-} \left( \ib (f(x^+) > f(x^-)) + \frac{1}{2} \ib (f(x^+) = f(x^-)) \right)
 \end{align}
 </p>
 
@@ -1122,7 +1132,7 @@ ROC 曲线 vs. 查准查全曲线
 
 <p>
 \begin{align}
-    \pv = \left[ \frac{e^{f_1(x)}}{\sum_{j \in [c]} e^{f_j(x)}}, \frac{e^{f_2(x)}}{\sum_{j \in [c]} e^{f_j(x)}}, \ldots, \frac{e^{f_c(x)}}{\sum_{j \in [c]} e^{f_j(x)}} \right] \quad \longleftarrow \softmax
+    \pv = \left[ \frac{\exp (f_1(x))}{\sum_{j \in [c]} \exp (f_j(x))}, \frac{\exp (f_2(x))}{\sum_{j \in [c]} \exp (f_j(x))}, \ldots, \frac{\exp (f_c(x))}{\sum_{j \in [c]} \exp (f_j(x))} \right]
 \end{align}
 </p>
 
@@ -1159,7 +1169,7 @@ ROC 曲线 vs. 查准查全曲线
 \end{align}
 </p>
 
-对$(x,y)$，$y \in [c]$，交叉熵损失为$- \ln \frac{e^{f_y(x)}}{\sum_{j \in [c]} e^{f_i(x)}}$
+对$(x,y)$，$y \in [c]$，交叉熵损失为$- \ln \frac{\exp (f_y(x))}{\sum_{j \in [c]} \exp (f_j(x))}$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1171,14 +1181,21 @@ ROC 曲线 vs. 查准查全曲线
 
 <p>
 \begin{align}
-    \mathrm{CE} & = - \frac{1+y}{2} \ln \frac{e^{f_1(x)}}{e^{f_1(x)}+e^{f_2(x)}} - \frac{1-y}{2} \ln \frac{e^{f_2(x)}}{e^{f_1(x)}+e^{f_2(x)}} \\
-    & = - \frac{1+y}{2} \ln \frac{e^{f_1(x)-f_2(x)}}{e^{f_1(x)-f_2(x)}+1} - \frac{1-y}{2} \ln \frac{1}{e^{f_1(x)-f_2(x)}+1} \\
-    & = - \frac{1+y}{2} \ln \frac{e^{w(x)}}{e^{w(x)}+1} - \frac{1-y}{2} \ln \frac{1}{e^{w(x)}+1} \quad \leftarrow w(x) \triangleq f_1(x)-f_2(x) \\
+    \ell_{\textrm{CE}} & = - \frac{1+y}{2} \ln \frac{\exp (f_1(x))}{\exp (f_1(x))+\exp (f_2(x))} - \frac{1-y}{2} \ln \frac{\exp (f_2(x))}{\exp (f_1(x))+\exp (f_2(x))} \\
+    & = - \frac{1+y}{2} \ln \frac{\exp (f_1(x)-f_2(x))}{\exp (f_1(x)-f_2(x))+1} - \frac{1-y}{2} \ln \frac{1}{\exp (f_1(x)-f_2(x))+1}
+\end{align}
+</p>
+
+令$w(x) = f_1(x)-f_2(x)$，于是
+
+<p>
+\begin{align}
+    \ell_{\textrm{CE}} & = - \frac{1+y}{2} \ln \frac{\exp (w(x))}{\exp (w(x))+1} - \frac{1-y}{2} \ln \frac{1}{\exp (w(x))+1} \\
     & = \begin{cases}
-        \ln (1 + e^{-w(x)}), & y = 1 \\
-        \ln (1 + e^{-w(x)}), & y = -1
+        \ln (1 + \exp (-w(x))), & y = 1 \\
+        \ln (1 + \exp (w(x))), & y = -1
     \end{cases} \\
-    & = \ln (1 + e^{- y w(x)})
+    & = \ln (1 + \exp (-y w(x)))
 \end{align}
 </p>
 

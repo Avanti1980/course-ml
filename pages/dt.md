@@ -476,9 +476,11 @@ presentation:
 
 ---
 
-序贯覆盖：删除样本<br>决策树：划分样本
+序贯覆盖：删除样本
 
-@import "../dot/dt.dot" {.center .top-12}
+决策树：划分样本
+
+<img src="../tikz/dt/date.svg" class="right8 lefta width60 top-15">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -962,7 +964,7 @@ presentation:
 
 </div>
 
-@import "../dot/dt-divide-d.dot" {.left60per .top2}
+<img src="../tikz/dt/date1.svg" class="right12 lefta width26 top2">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -992,7 +994,7 @@ presentation:
 \end{align}
 </p>
 
-@import "../dot/dt-divide-d1.dot" {.left60per .top-55per}
+<img src="../tikz/dt/date2.svg" class="right12 lefta width26 top-50per">
 
 <!-- slide data-notes="" -->
 
@@ -1016,8 +1018,6 @@ presentation:
 
 </div>
 
-@import "../dot/dt-divide-d1.dot" {.left60per .top-35per}
-
 <p class="fs16">
 \begin{align}
     & \gain (\dc_1, 时间) = H (\dc_1) - \frac{4}{9} \class{red}{H(\{ 1,4,6,10 \})} - \frac{4}{9} \class{yellow}{H(\{ 2,3,8,15 \})} - \frac{1}{9} \class{blue}{H(\{ 5 \})} \\
@@ -1025,6 +1025,8 @@ presentation:
     & = \frac{8}{3} \log 3 - \frac{7}{9} \log 7 - 2 = 0.043
 \end{align}
 </p>
+
+<img src="../tikz/dt/date2.svg" class="right12 lefta width26 top-52per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1048,8 +1050,6 @@ presentation:
 
 </div>
 
-@import "../dot/dt-divide-d1.dot" {.left60per .top-35per}
-
 <p class="fs16">
 \begin{align}
     & \gain (\dc_1, 方式) = H (\dc_1) - \frac{5}{9} \class{red}{H(\{ 1,2,3,4,5 \})} - \frac{3}{9} \class{yellow}{H(\{ 6,8,15 \})} - \frac{1}{9} \class{blue}{H(\{ 10 \})} \\
@@ -1057,6 +1057,8 @@ presentation:
     & = \frac{5}{3} \log 3 - \frac{7}{9} \log 7 = 0.458
 \end{align}
 </p>
+
+<img src="../tikz/dt/date2.svg" class="right12 lefta width26 top-52per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1080,8 +1082,6 @@ presentation:
 
 </div>
 
-@import "../dot/dt-divide-d1.dot" {.left60per .top-35per}
-
 <p class="fs16">
 \begin{align}
     & \gain (\dc_1, 天气) = H (\dc_1) - \frac{6}{9} \class{red}{H(\{ 1,3,5,6,8,15 \})} - \frac{2}{9} \class{yellow}{H(\{ 2,4 \})} - \frac{1}{9} \class{blue}{H(\{ 10 \})} \\
@@ -1089,6 +1089,8 @@ presentation:
     & = \frac{4}{3} \log 3 - \frac{7}{9} \log 7 + \frac{5}{9} \log 5 - \frac{8}{9} = 0.331
 \end{align}
 </p>
+
+<img src="../tikz/dt/date2.svg" class="right12 lefta width26 top-52per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1112,8 +1114,6 @@ presentation:
 
 </div>
 
-@import "../dot/dt-divide-d1.dot" {.left60per .top-35per}
-
 <p class="fs16">
 \begin{align}
     & \gain (\dc_1, 疫情) = H (\dc_1) - \frac{5}{9} \class{red}{H(\{ 1,2,3,4,5 \})} - \frac{3}{9} \class{yellow}{H(\{ 6,8,15 \})} - \frac{1}{9} \class{blue}{H(\{ 10 \})} \\
@@ -1121,6 +1121,8 @@ presentation:
     & = \frac{5}{3} \log 3 - \frac{7}{9} \log 7 = 0.458
 \end{align}
 </p>
+
+<img src="../tikz/dt/date2.svg" class="right12 lefta width26 top-52per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1144,8 +1146,6 @@ presentation:
 
 </div>
 
-@import "../dot/dt-divide-d1.dot" {.left60per .top-35per}
-
 <p class="fs16">
 \begin{align}
     & \gain (\dc_1, 电视) = H (\dc_1) - \frac{6}{9} \class{red}{H(\{ 1,2,3,4,5,8 \})} - \frac{3}{9} \class{yellow}{H(\{ 6,10,15 \})} \\
@@ -1153,6 +1153,8 @@ presentation:
     & = \frac{5}{3} \log 3 - \frac{7}{9} \log 7 = 0.458
 \end{align}
 </p>
+
+<img src="../tikz/dt/date2.svg" class="right12 lefta width26 top-52per">
 
 <!-- slide data-notes="" -->
 
@@ -1188,7 +1190,7 @@ presentation:
 \end{align}
 </p>
 
-@import "../dot/dt-divide-d4.dot" {.left40per .top-58per}
+<img src="../tikz/dt/date3.svg" class="right8 lefta width48 top-56per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1198,7 +1200,7 @@ presentation:
 
 ID3 ({==i==}terative {==d==}ichotomiser)
 
-@import "../dot/dt.dot" {.center .top-8}
+<img src="../tikz/dt/date.svg" class="right8 lefta width60 top-5">
 
 <!-- slide data-notes="" -->
 
@@ -1285,7 +1287,7 @@ ID3 ({==i==}terative {==d==}ichotomiser)
 - 杂色鸢尾 _iris versicolour_
 - 维吉尼亚鸢尾 _iris virginica_
 
-<img src="../img/iris.png" class="right4 lefta top-45per width50">
+<img src="../img/iris.webp" class="right20 lefta top-45per width30">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1293,7 +1295,7 @@ ID3 ({==i==}terative {==d==}ichotomiser)
 
 ---
 
-@import "../python/iris-info.py" {line_end=34 .line-numbers .top1 .left4 highlight=[18-23,26-34]}
+@import "../python/data/iris-info.py" {.line-numbers .top1 .left4 highlight=[]}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1301,7 +1303,7 @@ ID3 ({==i==}terative {==d==}ichotomiser)
 
 ---
 
-<img src="../python/dt-iris-plot.svg" class="center width90 top1">
+<img src="../python/data/iris-plot.svg" class="center width92 top1">
 
 <!-- slide data-notes="" -->
 
@@ -1322,7 +1324,7 @@ graph = graphviz.Source(dot_data)
 graph
 ```
 
-<img src="../python/dt-iris-gini.svg" class="left17per width80 top-29per">
+<img src="../python/dt/dt-iris-gini.svg" class="right6 lefta width70 top-29per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -1345,7 +1347,7 @@ graph = graphviz.Source(dot_data)
 graph
 ```
 
-<img src="../python/dt-iris-ent.svg" class="left18per width80 top-28per">
+<img src="../python/dt/dt-iris-ent.svg" class="right6 lefta width70 top-28per">
 
 <!-- slide data-notes="" -->
 

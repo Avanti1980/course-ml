@@ -7,16 +7,6 @@ def lsobj(X, y, w):  # 最小二乘平方损失
     return np.linalg.norm(X @ w - y)**2
 
 
-plt.rcParams.update({
-    "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
-    "axes.unicode_minus": True,
-    "savefig.bbox": "tight",
-    'legend.fontsize': 12,
-    "xtick.labelsize": 14,
-    "ytick.labelsize": 14,
-    'text.color': '#586e75',
-})
-
 X = np.array([
     [1., 1., 0., 0., 1., 0., 0., 1., 0., 0., 1., 0., 1.],
     [6., 0., 0., 1., 1., 0., 0., 1., 0., 1., 0., 1., 0.],
@@ -41,6 +31,16 @@ levels_l1 = [1.92**x for x in [-6, -5, -4]]
 levels_l2 = [2.38**x for x in [-8, -7, -6]]
 
 with plt.style.context('Solarize_Light2'):
+
+    plt.rcParams.update({
+        "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
+        "axes.unicode_minus": True,
+        "savefig.bbox": "tight",
+        'legend.fontsize': 12,
+        "xtick.labelsize": 14,
+        "ytick.labelsize": 14,
+        'text.color': '#586e75',
+    })
 
     fig, ax = plt.subplots(1, 2, figsize=(16, 7))
 

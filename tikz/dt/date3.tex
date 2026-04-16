@@ -1,0 +1,30 @@
+\documentclass[tikz]{standalone}
+\usepackage{avanti-color}
+\usepackage{avanti-tikz4slides}
+\usepackage{avanti-notations}
+
+\setmainfont{Ysabeau Office}
+
+\begin{document}
+
+\begin{forest}
+    for tree = {draw = SolarizedBase01, thick, rounded corners = 5pt, edge = {->, -{Stealth},thick, SolarizedBase01}, l sep = 10mm},
+    where level=0{s sep = 6mm}{},
+    where level=1{s sep = 6mm}{},
+    decision/.style = {text = SolarizedYellow},
+    leaf/.style = {text = SolarizedYellow, circle},
+    [{课业 = ?}, decision
+                [{疫情 = ?}, decision, edge label={node[pos=0.3,left,SolarizedBlue]{轻松}}
+                        [{是}, leaf, edge label={node[pos=0.3,left,SolarizedBlue]{清零}}]
+                        [$\dc_4$, decision, edge label={node[pos=0.7,above,SolarizedBlue]{平缓}}]
+                        [{否}, leaf, edge label={node[pos=0.3,right,SolarizedBlue]{严峻}}]
+                ]
+                [{电视 = ?}, decision, edge label={node[pos=0.7,above,SolarizedBlue]{适中}}
+                        [{是}, leaf, edge label={node[pos=0.4,left,SolarizedBlue]{无聊}}]
+                        [{否}, leaf, edge label={node[pos=0.4,right,SolarizedBlue]{精彩}}]
+                ]
+                [{否}, leaf, edge label={node[pos=0.3,right,SolarizedBlue]{繁重}}]
+        ]
+\end{forest}
+
+\end{document}

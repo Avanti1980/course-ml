@@ -125,17 +125,21 @@ presentation:
 
 <div class="top2"></div>
 
-tf = 单词在当前文本中出现的次数 / 当前文本的总词数<br>idf = ln ((全部文本数 + C) / (包含该词的总文本数 + C)) + 1</span>
+$\textrm{tf} = 单词在当前文本中出现的次数 / 当前文本的总词数$
 
-- C = 0，若词典包含从未在任何文本中出现的词，会有分母为零的问题
-- C = 1，sklearn 默认的平滑版本，等于额外有一个包含所有词的文本
+<div class="top-2"></div>
+
+$\textrm{idf} = \ln ((全部文本数 + C) / (包含该词的总文本数 + C)) + 1$
+
+- $C = 0$，若词典包含从未在任何文本中出现的词，会有分母为零的问题
+- $C = 1$，sklearn 默认的平滑版本，等于额外有一个包含所有词的文本
 
 <div class="top2"></div>
 
-tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准化
+tf - idf 特征：将 tf 和 idf 相乘后再标准化
 
-- $\ell_1$标准化，tf × idf / sum (tf × idf)，即线性变换成概率分布
-- $\ell_2$标准化，tf × idf / sqrt(sum ([tf × idf]^2))，即线性变换成单位向量
+- $\ell_1$标准化，线性变换成概率分布：$\textrm{tf} \otimes \textrm{idf} / \sum_i [\textrm{tf} \otimes \textrm{idf}]_i$
+- $\ell_2$标准化，线性变换成单位向量：$\textrm{tf} \otimes \textrm{idf} / (\sum_i [\textrm{tf} \otimes \textrm{idf}]_i^2)^{1/2}$
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -227,11 +231,11 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 也称<span class="blue">归一化</span>，旨在<span class="blue">消除不同特征间的量纲影响</span>
 
-离差标准化：将原始特征线性变换到 [0, 1] 区间
+离差标准化：将原始特征线性变换到$[0, 1]$区间
 
 <p>
 \begin{align}
-    x \leftarrow \frac{x - x_\min}{x_\max - x_\min} \in [0,1]
+    x \gets \frac{x - x_\mint}{x_\maxt - x_\mint} \in [0,1]
 \end{align}
 </p>
 
@@ -241,7 +245,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 <p>
 \begin{align}
-    x \leftarrow \frac{x}{\max_{i \in [m]} |x_i|} \in [-1,1]
+    x \gets \frac{x}{\max_{i \in [m]} |x_i|} \in [-1,1]
 \end{align}
 </p>
 
@@ -251,7 +255,7 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 <p>
 \begin{align}
-    x \leftarrow \frac{x - \mu}{\sigma}, \quad x \leftarrow \frac{x - x_\median}{\sum_{i \in [m]} |x_i - x_\median | / m}
+    x \gets \frac{x - \mu}{\sigma}, \quad x \gets \frac{x - x_\median}{\sum_{i \in [m]} |x_i - x_\median | / m}
 \end{align}
 </p>
 
@@ -302,7 +306,9 @@ tf - idf 特征 = normalize (tf × idf)，即将 tf 和 idf 相乘后再标准�
 
 ---
 
-设共有$k$个类别，总样本数为$m = \sum_{i \in [k]} m_i$，总体均值为$\xbar$<br>设第$i$类第$j$个样本为$x_{ij}$，第$i$类的均值为$\xbar_i$，则总体偏差
+设共有$k$个类别，总样本数为$m = \sum_{i \in [k]} m_i$，总体均值为$\xbar$
+
+设第$i$类第$j$个样本为$x_{ij}$，第$i$类的均值为$\xbar_i$，则总体偏差
 
 <p>
 \begin{align}
@@ -649,10 +655,17 @@ $\ell_1$唯一既凸且稀疏，将其范数球作为$\rb^2$上最小二乘的�
 \begin{align}
     \| \Xv & - \Xv \Wv \Wv^\top \|_F^2 = \tr [(\Xv - \Xv \Wv \Wv^\top) (\Xv - \Xv \Wv \Wv^\top)^\top] \\
     & = \tr [\Xv \Xv^\top - 2 \Xv \Wv \Wv^\top \Xv^\top + \Xv \Wv \class{blue}{\Wv^\top \Wv} \Wv^\top \Xv^\top] \\
-    & = \tr [\Xv \Xv^\top - \Xv \Wv \Wv^\top \Xv^\top] \qquad \longleftarrow ~ \Wv^\top \Wv = \Iv \\
-    & = \const - \tr [\Wv^\top \Xv^\top \Xv \Wv] \qquad \longleftarrow ~ \tr [\Av \Bv] = \tr [\Bv \Av] \\
-    & = \const - \wv_1^\top \Xv^\top \Xv \wv_1 - \cdots - \wv_d^\top \Xv^\top \Xv \wv_d \\[5pt]
-    & \Longrightarrow \argmin_{\Wv^\top \Wv = \Iv} \| \Xv - \Xv \Wv \Wv^\top \|_F^2 = \argmax_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
+    & = \tr [\Xv \Xv^\top - \Xv \Wv \Wv^\top \Xv^\top] \tag{$\Wv^\top \Wv = \Iv$} \\
+    & = \const - \tr [\Wv^\top \Xv^\top \Xv \Wv] \tag{$\tr [\Av \Bv] = \tr [\Bv \Av]$} \\
+    & = \const - \wv_1^\top \Xv^\top \Xv \wv_1 - \cdots - \wv_d^\top \Xv^\top \Xv \wv_d
+\end{align}
+</p>
+
+<div class="top2"></div>
+
+<p>
+\begin{align}
+    \argmin_{\Wv^\top \Wv = \Iv} \| \Xv - \Xv \Wv \Wv^\top \|_F^2 = \argmax_{\Wv^\top \Wv = \Iv} \sum_{i \in [d]} \wv_i^\top \Xv^\top \Xv \wv_i
 \end{align}
 </p>
 

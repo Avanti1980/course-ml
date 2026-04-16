@@ -175,6 +175,10 @@
   color: var(--solarized-blue);
 }
 
+.mermaid text {
+  font-family: Ysabeau, LXGWSong !important;
+}
+
 // 以下用于mathjax4的样式
 // 数学公式统一着色
 .reveal mjx-container[jax="CHTML"] {

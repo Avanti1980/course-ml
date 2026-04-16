@@ -90,7 +90,7 @@ NFL 定理的例子表明，在已知数据上表现好不算什么
 
 两点说明：
 
-1. 训练样本$(\xv_i, y_i) \overset{\mathrm{iid}}{\sim} \ds$以及计算泛化风险的$(\xv, y) \sim \ds$是学习的前提
+1. 训练样本$(\xv_i, y_i) \overset{\textrm{iid}}{\sim} \ds$以及计算泛化风险的$(\xv, y) \sim \ds$是学习的前提
 2. 数据分布$\ds$定义在$\xc \times \yc$上，即允许不同的样本有相同的$\xv$、不同的$y$，这种设定称为<span class="blue">不可知</span> (agnostic) 学习；若$\ds$只定义在$\xc$上，类标记由未知函数$c: \xc \mapsto \yc$给出，则相同的$\xv$必然有相同的$y$，这种设定比前者要简单
 
 <!-- slide vertical=true data-notes="" -->
@@ -238,7 +238,7 @@ A：尝试引入$R_\dc(h_\dc)$作为桥接
 
 如果第二行放缩能成立，目标就变成了两项之和，都是同一个模型的经验风险、泛化风险相减，式$(1)$或许就可以用起来了
 
-欲使$R_\dc(h_\dc) \le R_\dc(h^\star)$，只需令$h_\dc$为经验风险最小化模型
+令$h_\dc$为经验风险最小化 (<span class="blue">e</span>mpirical <span class="blue">r</span>isk <span class="blue">m</span>inimization, ERM) 模型即可
 
 <p>
 \begin{align}
@@ -310,7 +310,7 @@ A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足
 \begin{align}
     R(h_\dc^\erm) - R(h^\star) & \le |R(h_\dc^\erm) - R_\dc(h_\dc^\erm)| + |R_\dc(h^\star) - R(h^\star)| \\
     & \le 2 \max_{h \in \hc} |R_\dc(h) - R(h)| \\
-    & \le \sqrt{\frac{2\ln (2 |\hc| / \delta)}{m}} ~ with ~  probability \ge 1 - \delta
+    & \le \sqrt{\frac{2\ln (2 |\hc| / \delta)}{m}} ~ \textrm{with probability} \ge 1 - \delta
 \end{align}
 </p>
 
@@ -372,9 +372,9 @@ A：$h_\dc^\erm$是从$\hc$中得到的，如果$\hc$中的所有模型都满足
 \end{align}
 </p>
 
-其中$d$为$\hc$的$\vc$维，$\vc (\hc) = \max \{ m: \Pi_\hc (m) = 2^m \}$
+其中$d$为$\hc$的 VC 维，$\VC (\hc) = \max \{ m: \Pi_\hc (m) = 2^m \}$
 
-$\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的，越大说明$\hc$适应不同任务的能力越强，此外还有 <a href="https://en.wikipedia.org/wiki/Rademacher_complexity" target=_blank>Rademacher 复杂度</a>、packing number、<a href="https://en.wikipedia.org/wiki/Covering_number" target=_blank>covering number</a> 等工具，都是类似的作用
+$\Pi_\hc (m)$和$\VC (\hc)$都是用来度量假设空间$\hc$的表示能力的，越大说明$\hc$适应不同任务的能力越强，此外还有 <a href="https://en.wikipedia.org/wiki/Rademacher_complexity" target=_blank>Rademacher 复杂度</a>、packing number、<a href="https://en.wikipedia.org/wiki/Covering_number" target=_blank>covering number</a> 等工具，都是类似的作用
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -412,7 +412,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-设$\vc(\hc) = d$，ERM 算法至少以$1 - \delta$的概率有
+设$\VC(\hc) = d$，ERM 算法至少以$1 - \delta$的概率有
 
 <p>
 \begin{align}
@@ -502,7 +502,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-以回归问题为例，对任意样本$(\xv,y) \sim \ds$，均方误差可分解为
+以回归问题为例，对任意样本$(\xv,y) \sim \ds$
 
 <p>
 \begin{align}
@@ -546,7 +546,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    E = \eb_\dc \eb_{(\xv,y)} [(f_\dc (\xv) - y)^2] = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声
+    \mse = \eb_\dc \eb_{(\xv,y)} [(f_\dc (\xv) - y)^2] = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声
 \end{align}
 </p>
 
@@ -556,7 +556,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-泛化均方误差$E = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声$
+泛化均方误差$\mse = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb [y|\xv])^2] + 噪声$
 
 引入$\xv$的<span class="blue">期望预测</span>$\eb_\dc [f_\dc (\xv)]$，易知有分解
 
@@ -585,12 +585,12 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <p>
 \begin{align}
-    E & = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2] + \eb_\xv \eb_\dc [(\overbrace{\eb_\dc [f_\dc (\xv)] - \eb [y|\xv]}^{与\dc无关})^2] + 噪声 \\
+    \mse & = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2] + \eb_\xv \eb_\dc [(\overbrace{\eb_\dc [f_\dc (\xv)] - \eb [y|\xv]}^{与\dc无关})^2] + 噪声 \\
     & = \underbrace{\eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2]}_{方差} + \underbrace{\eb_\xv [(\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2]}_{偏差^2} + 噪声
 \end{align}
 </p>
 
-综上，泛化均方误差可分解为$E = 偏差^2 + 方差 + 噪声$
+综上，泛化均方误差可分解为$\mse = 偏差^2 + 方差 + 噪声$
 
 - $偏差^2 = \eb_\xv [(\eb_\dc [f_\dc (\xv)] - \eb [y|\xv])^2]$，期望预测与最优模型预测的差别，体现<span class="blue">学习算法的拟合能力</span>，越小拟合能力越强
 - $方差 = \eb_\xv \eb_\dc [(f_\dc (\xv) - \eb_\dc [f_\dc (\xv)])^2]$，$\dc$上模型的预测与期望预测的差别，体现<span class="blue">学习算法对数据集扰动的敏感度</span>，越小越不敏感
@@ -605,7 +605,7 @@ $\Pi_\hc (m)$和$\vc (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 ---
 
-<img src="../python/overfitting/bias-var-dec.svg" class="center width90" title="随机生成了 5 个样本集：1 阶多项式高偏差、低方差；10 阶多项式低偏差、高方差；4 阶多项式低偏差、低偏差，是最理想的假设空间">
+<img src="../python/overfitting/bias-var-dec.svg" class="center width92" title="随机生成了 5 个样本集：1 阶多项式高偏差、低方差；10 阶多项式低偏差、高方差；4 阶多项式低偏差、低偏差，是最理想的假设空间">
 
 <!-- slide vertical=true data-notes="" -->
 

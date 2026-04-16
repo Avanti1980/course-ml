@@ -413,7 +413,7 @@ I propose to consider the question, 'can machines think?'
 
 <p>
 \begin{align}
-    \begin{array}{rll}
+    \begin{array}{rlr}
     A_1: & P \to (Q \to P) & 弱化 \\
     A_2: & (P \to (Q \to R)) \to ((P \to Q) \to (P \to R)) & 分配 \\
     A_3: & (\neg P \to \neg Q) \to (Q \to P) & 逆否

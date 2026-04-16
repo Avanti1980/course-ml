@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 import seaborn as sns
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -11,26 +10,26 @@ def true_fun(X):
     return np.cos(1.5 * np.pi * X)
 
 
-np.random.seed(0)
-
-plt.rcParams.update({
-    "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
-    "mathtext.fontset": 'cm',
-    "axes.unicode_minus": True,
-    "savefig.bbox": "tight",
-    'legend.fontsize': 14,
-    "xtick.labelsize": 14,
-    "ytick.labelsize": 14,
-    'text.color': '#586e75',
-})
+np.random.seed(1)
 
 n_samples = 30
-degrees = [1, 4, 30]
 X = np.random.rand(n_samples)
 y = true_fun(X) + np.random.randn(n_samples) * 0.1
 X_test = np.arange(0, 1, 0.01)
+degrees = [1, 4, 30]
 
 with plt.style.context('Solarize_Light2'):
+
+    plt.rcParams.update({
+        "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
+        "mathtext.fontset": 'cm',
+        "axes.unicode_minus": True,
+        "savefig.bbox": "tight",
+        'legend.fontsize': 16,
+        "xtick.labelsize": 16,
+        "ytick.labelsize": 16,
+        'text.color': '#586e75',
+    })
 
     fig, ax = plt.subplots(1, 3, figsize=(14, 5))
 
@@ -50,11 +49,7 @@ with plt.style.context('Solarize_Light2'):
         sns.scatterplot(x=X, y=y, s=20, label="样本", ax=ax[i])
         sns.lineplot(x=X_test, y=pipeline.predict(X_test[:, np.newaxis]), label="模型", ax=ax[i])
 
-        ax[i].set_xlim((0, 1))
-        ax[i].set_ylim((-1.5, 1.5))
-        ax[i].legend()
-        leg = ax[i].get_legend()
-        leg.texts[0].set_color("#d33682")
-        ax[i].set_title(f"{degree}阶多项式回归")
+        ax[i].set(xlim=(0, 1), ylim=(-1.5, 1.5), title=f"{degree}阶多项式回归")
+        ax[i].get_legend().texts[0].set_color("#d33682")
 
-    plt.savefig("overfitting.svg")
+    fig.savefig("overfitting.svg")
