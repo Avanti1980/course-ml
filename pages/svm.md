@@ -27,7 +27,6 @@ presentation:
 @import "../js/anychart/anychart-venn.min.js"
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-entropy.js"
-@import "https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"
 
 <!-- slide data-notes="" -->
 
