@@ -99,7 +99,7 @@
 
 ## 代码
 
-[测试环境](python/demo.ipynb)
+[测试环境](python/demo.ipynb)、[二分类模型总览](python/svm/binary-classif.ipynb)
 
 [鸢尾花数据集](python/data/iris-info.ipynb)、[乳腺癌数据集](python/data/cancer-info.ipynb)、[手写数字图片数据集](python/data/digit-info.ipynb)、[糖尿病数据集](python/data/diabetes-info.ipynb)
 
@@ -115,4 +115,4 @@
 
 对率回归[预测约会](python/lr/lr-date.ipynb)、对率回归[分类鸢尾花](python/lr/lr-iris.ipynb)、[梯度下降](python/lr/gd.ipynb)、[动量法](python/lr/momentum.ipynb)
 
-多层感知机实现异或：[sklearn 实现](python/mlp-xor.ipynb)、[tensorflow 实现](python/dnn-xor.ipynb)、卷积神经网络实现 MNIST [手写数字识别](python/lenet-mnist.ipynb)、resnet50 [模型复用](python/resnet50-reuse.ipynb)、循环神经网络实现 IMDB [影评情感分析](python/rnn-imdb.ipynb)
+多层感知机实现异或：[sklearn 实现](python/nn/sklearn-xor.ipynb)、[tensorflow 实现](python/nn/tf-xor-neuron.ipynb)、卷积神经网络实现 MNIST [手写数字识别](python/nn/lenet-mnist.ipynb)、resnet50 [模型复用](python/nn/resnet50-reuse.ipynb)、循环神经网络实现 IMDB [影评情感分析](python/nn/rnn-imdb.ipynb)
