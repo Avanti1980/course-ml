@@ -88,7 +88,7 @@ $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \xc \subseteq \rb^d$，$y_i 
 \end{align}
 </p>
 
-<img src="../tikz/margin-hyperplane.svg" class="lefta right6 width40 top-20per">
+<img src="../tikz/svm/margin-hyperplane.svg" class="lefta right6 width40 top-20per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -131,7 +131,7 @@ $\hat{\gamma}$的取值不影响优化，若$(\wv, b, \hat{\gamma})$是最优解
 - 分类超平面$\wv^\top \xv_i + b = 0$
 - 支持超平面$\wv^\top \xv_i + b = \pm 1$，位于该超平面上的样本有最小间隔
 
-<img src="../tikz/margin-hyperplane2.svg" class="left15 righta width40 top4">
+<img src="../tikz/svm/margin-hyperplane2.svg" class="left15 righta width40 top4">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -493,7 +493,7 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 - $\epsilon_i$称为<span class="blue">松弛变量</span> (slack variable)
 - $\epsilon_i$刻画了约束被破坏的程度
 
-<img src="../tikz/margin-hyperplane3.svg" class="lefta right10 width40 top-26per">
+<img src="../tikz/svm/margin-hyperplane3.svg" class="lefta right10 width40 top-26per">
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -543,7 +543,7 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 当采用非线性核函数时，一般只考虑对偶问题
 
-省略$b$可去掉等式约束$\yv^\top \alphav = 0$，所有$\alpha_i$去耦合，每次可只取一对$(\alpha_i)$进行优化，即坐标下降，参考 liblinear
+省略$b$可去掉等式约束$\yv^\top \alphav = 0$，所有$\alpha_i$去耦合，每次可只取一个$\alpha_i$进行优化，即坐标下降，参考 liblinear
 
 <!-- slide data-notes="" -->
 
@@ -637,6 +637,8 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 设$\hc$是$\rb^n$中的超平面集合，$\VC$维为$n+1$，若采用高斯核做特征映射，$\VC$维为无穷，上面的泛化界没有意义
 
+<div class="top2"></div>
+
 支持向量机的$\hc$是$\rb^n$中的大间隔超平面集合
 
 <p>
@@ -649,8 +651,12 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <!-- slide data-notes="vertical=true " -->
 
-##### 模型汇总
+##### 二分类模型总览
 
 ---
 
-<img src="../python/svm/binary-classif.svg" class="center top4 width90">
+3 个数据集：月牙型、圆环型、线性可分 + 均匀随机噪声
+
+200 个样本：训练 (120)、测试 (80)，右下角为测试准确率
+
+<img src="../python/svm/binary-classif.svg" class="center top2 width92">

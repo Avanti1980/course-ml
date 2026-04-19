@@ -1,53 +1,60 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
-from matplotlib.colors import ListedColormap
+import scipy.stats as st
 from sklearn.datasets import make_circles, make_classification, make_moons
-from sklearn.linear_model import Perceptron
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import Perceptron, LogisticRegression
+from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
 
-h = .02
-m = 200
 
-names = [
-    "Decision Tree",
-    "Perceptron",
-    "Neural Network",
-    "Gaussian Naive Bayes",
-    "3 Nearest Neighbors",
-    "RBF SVM",
-]
+def grid(func, *args):  # 计算格点上的函数值 用于后续画等高线或热力图
+    x_min, x_max, y_min, y_max = args
+    grid_x, grid_y = np.meshgrid(np.linspace(x_min, x_max, 1000), np.linspace(y_min, y_max, 1000))
+    grid_z = func(np.column_stack((grid_x.ravel(), grid_y.ravel())))
+    grid_z = grid_z.reshape(grid_x.shape)
+    return grid_x, grid_y, grid_z
 
-classifiers = [
-    DecisionTreeClassifier(max_depth=5),
-    Perceptron(eta0=0.5),
-    MLPClassifier(alpha=1, max_iter=1000),
-    GaussianNB(),
-    KNeighborsClassifier(3),
-    SVC(gamma=2, C=1),
-]
 
-X, y = make_classification(n_samples=m, n_features=2, n_redundant=0, n_informative=2, random_state=1, n_clusters_per_class=1)
-rng = np.random.RandomState(2)
-X += 2 * rng.uniform(size=X.shape)
-linearly_separable = (X, y)
-
+m = 200  # 样本数
+X, y = make_classification(n_samples=m, n_features=2, n_redundant=0, n_informative=2, random_state=1, n_clusters_per_class=1)  # 特征2 有效特征2 冗余特征0 重复特征0 每类1个簇
+X += st.uniform.rvs(loc=-1, scale=2, size=X.shape, random_state=2)  # 特征加扰动
 datasets = [
     make_moons(n_samples=m, noise=0.2, random_state=0),
     make_circles(n_samples=m, noise=0.2, factor=0.5, random_state=1),
-    linearly_separable
+    (X, y)
 ]
 
-figure = plt.figure(figsize=(24, 12))
-i = 1
+classifiers = [
+    ["决策树", DecisionTreeClassifier(max_depth=5)],
+    ["感知机", Perceptron(eta0=0.5)],
+    ["对数几率回归", LogisticRegression()],
+    ["神经网络", MLPClassifier(alpha=1, max_iter=1000)],
+    ["高斯朴素贝叶斯", GaussianNB()],
+    ["3-近邻", KNeighborsClassifier(3)],
+    ["RBF核支持向量机", SVC(gamma=2, C=1)],
+]
 
 with plt.style.context('Solarize_Light2'):
-    for index, ds in enumerate(datasets):
+
+    plt.rcParams.update({
+        "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
+        "axes.unicode_minus": True,
+        "savefig.bbox": "tight",
+        'font.size': 18,
+        'axes.titlesize': 26,
+        'axes.titlecolor': '#586e75',
+        'text.color': '#002b36',
+    })
+
+    fig, ax = plt.subplots(3, 7, figsize=(7 * 4, 3 * 4))
+
+    for i, ds in enumerate(datasets):
 
         X, y = ds
         X = StandardScaler().fit_transform(X)  # 标准化
@@ -55,36 +62,26 @@ with plt.style.context('Solarize_Light2'):
 
         x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
         y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
-        xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 
-        for name, clf in zip(names, classifiers):
-            ax = plt.subplot(len(datasets), len(classifiers), i)
+        for j, (name, clf) in enumerate(classifiers):
 
             clf.fit(X_train, y_train)  # 训练模型
             score = clf.score(X_test, y_test)  # 测试
 
             if hasattr(clf, "decision_function"):
-                Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])
+                grid_x, grid_y, grid_z = grid(clf.decision_function, x_min, x_max, y_min, y_max)
             else:
-                Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
+                grid_x, grid_y, grid_z = grid(lambda m: clf.predict_proba(m)[:, 1], x_min, x_max, y_min, y_max)
 
-            Z = Z.reshape(xx.shape)
-            ax.contourf(xx, yy, Z, alpha=.8)
-            # contours = ax.contour(xx, yy, Z, 16, alpha=.4)
-            # ax.clabel(contours)
+            ax[i, j].contourf(grid_x, grid_y, grid_z, alpha=.8, cmap='inferno')
+            sns.scatterplot(x=X_train[:, 0], y=X_train[:, 1], hue=y_train, palette="inferno", s=50, legend=False, ax=ax[i, j])
+            sns.scatterplot(x=X_test[:, 0], y=X_test[:, 1], hue=y_test, palette="inferno", s=50, legend=False, alpha=0.6, ax=ax[i, j])
 
-            ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, edgecolors='k')
-            ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, edgecolors='k', alpha=0.6)
+            ax[i, j].set(xlim=(x_min, x_max), ylim=(y_min, y_max), xticks=(), yticks=())
 
-            ax.set_xlim(xx.min(), xx.max())
-            ax.set_ylim(yy.min(), yy.max())
-            ax.set_xticks(())
-            ax.set_yticks(())
-            if index == 0:
-                ax.set_title(name, color='#586e75')
-            ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'), size=15, horizontalalignment='right', color='#002b36')
+            if i == 0:
+                ax[i, j].set_title(f"{name}")
+            ax[i, j].text(x_max - .3, y_min + .3, f"{score:.2f}", horizontalalignment='right')
 
-            i += 1
-
-plt.subplots_adjust(wspace=0.05, hspace=0.05)
-plt.show()
+    fig.subplots_adjust(wspace=0.02, hspace=0.02)
+    fig.savefig("binary-classif.svg")
