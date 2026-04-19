@@ -1,39 +1,47 @@
-import random
-
-import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import seaborn as sns
 import numpy as np
-from scipy.stats import norm
-from sklearn.neighbors import KernelDensity
-from sklearn.utils.fixes import parse_version
+from scipy.spatial.distance import pdist
 
 np.random.seed(1)
 
-dim = [2, 3, 10, 100, 1000, 10000]
-# dim = [2, 3, 10, 100]
-m = 2000
-
+m, dim = 2000, [1, 4, 16, 100, 225, 400]
 with plt.style.context('Solarize_Light2'):
-    fig, ax = plt.subplots(2, 3, constrained_layout=True)
 
-    i = 0
-    for axi in ax.ravel():
-        d = dim[i]
-        print(d)
+    plt.rcParams.update({
+        "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
+        "axes.unicode_minus": True,
+        "savefig.bbox": "tight",
+        "font.size": 12,
+        'axes.labelsize': '20',
+        'text.color': "#586e75",
+    })
+
+    fig, axs = plt.subplots(2, 3, figsize=(12, 8))
+
+    for ax, d in zip(axs.ravel(), dim):
+
         X = np.random.rand(m, d)
-        Z = np.random.rand(m, d)
-        X = np.linalg.norm(X-Z, ord=2, axis=1, keepdims=True)
+        dist = pdist(X, metric='euclidean')
+        sns.histplot(dist, bins=50, stat="density", ax=ax)
+        ax.set_xlim(0, np.sqrt(d))
+        ax.set_title(f"{d}维")
+        ax.yaxis.set_major_locator(ticker.MultipleLocator(0.5))
 
-        axi.hist(X, bins=50, density=True)
-        axi.set_xlim(0, np.sqrt(d))
-        axi.set_title(str(d) + ' dims', color='#586e75')
+    for axi in axs[0, :]:
+        axi.set_xlabel('')
 
-        i += 1
+    for axi in axs[1, :]:
+        axi.set_xlabel('距离')
 
-    for axi in ax[1, :]:
-        axi.set_xlabel('distance')
+    for axi in axs[:, 0]:
+        axi.set_ylabel('频率')
 
-    for axi in ax[:, 0]:
-        axi.set_ylabel('frequency')
+    for axi in axs[:, 1]:
+        axi.set_ylabel('')
 
-plt.show()
+    for axi in axs[:, 2]:
+        axi.set_ylabel('')
+
+    fig.savefig("dimension-curse.svg")
