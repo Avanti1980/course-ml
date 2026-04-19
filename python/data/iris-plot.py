@@ -15,12 +15,12 @@ with plt.style.context('Solarize_Light2'):
         # 'figure.figsize': [6.4, 4.8],
         # 'figure.labelsize': '30',
         # 'figure.titlesize': 'large',
-        'axes.labelsize': '20',
+        'axes.labelsize': 20,
         # 'axes.titlesize': 'large',
         "xtick.labelsize": 16,  # x轴刻度字体大小
         "ytick.labelsize": 16,  # y轴刻度字体大小
-        'legend.fontsize': '20',
-        'legend.title_fontsize': "22",
+        'legend.fontsize': 20,
+        'legend.title_fontsize': 22,
         'legend.labelcolor': '#586e75',
         # 'lines.markersize': 6.0,
         # 'savefig.transparent': False,

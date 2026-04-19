@@ -28,31 +28,20 @@ presentation:
 @import "../js/anychart/pastel.min.js"
 @import "../js/anychart/venn-entropy.js"
 
-<!-- slide vertical=true data-notes="" -->
+<!-- slide data-notes="" -->
 
-##### 评估 交叉熵损失
+##### 楚河汉界 间隔
 
 ---
 
-<span class="blue">词频 - 逆文本频率</span>：对当前文本重要的单词必然
+<div id="board2" class="center" style="width:420px"></div>
 
-- 在当前文本中出现的频率高，即词频 (<span class="blue">t</span>erm <span class="blue">f</span>requency, tf) 高
-- 在其他文本中出现的频率低，即逆文本频率 (<span class="blue">i</span>nverse <span class="blue">d</span>ocument <span class="blue">f</span>requency, idf) 高
+<div class="top-33per left-70per bottom-10">
+<button id="startBtn" class="top-40per">开始</button>
+<button id="clearBtn">清空</button>
+</div>
 
-<div class="top2"></div>
+@import "../js/xiangqiboardjs-0.3.3/css/xiangqiboard-0.3.3.css"
+@import "../js/xiangqiboardjs-0.3.3/js/xiangqiboard-0.3.3.js"
+@import "../js/xiangqiboardjs-0.3.3/js/svm-chess.js"
 
-$\textrm{tf} = 单词在当前文本中出现的次数 / 当前文本的总词数$
-
-<div class="top-2"></div>
-
-$\textrm{idf} = \ln ((全部文本数 + C) / (包含该词的总文本数 + C)) + 1$
-
-- $C = 0$，若词典包含从未在任何文本中出现的词，会有分母为零的问题
-- $C = 1$，sklearn 默认的平滑版本，等于额外有一个包含所有词的文本
-
-<div class="top2"></div>
-
-tf - idf 特征：将 tf 和 idf 相乘后再标准化
-
-- $\ell_1$标准化，线性变换成概率分布：$\textrm{tf} \otimes \textrm{idf} / \sum_i [\textrm{tf} \otimes \textrm{idf}]_i$
-- $\ell_2$标准化，线性变换成单位向量：$\textrm{tf} \otimes \textrm{idf} / (\sum_i [\textrm{tf} \otimes \textrm{idf}]_i^2)^{1/2}$

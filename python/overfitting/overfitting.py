@@ -43,11 +43,11 @@ with plt.style.context('Solarize_Light2'):
                 ("linear_regression", linear_regression),
             ]
         )
-        pipeline.fit(X[:, np.newaxis], y)
+        pipeline.fit(X.reshape(-1, 1), y)
 
         sns.lineplot(x=X_test, y=true_fun(X_test), label=r"$\cos (3 \pi x  / 2)$", ax=ax[i])
         sns.scatterplot(x=X, y=y, s=20, label="样本", ax=ax[i])
-        sns.lineplot(x=X_test, y=pipeline.predict(X_test[:, np.newaxis]), label="模型", ax=ax[i])
+        sns.lineplot(x=X_test, y=pipeline.predict(X_test.reshape(-1, 1)), label="模型", ax=ax[i])
 
         ax[i].set(xlim=(0, 1), ylim=(-1.5, 1.5), title=f"{degree}阶多项式回归")
         ax[i].get_legend().texts[0].set_color("#d33682")

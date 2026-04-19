@@ -2,9 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.neighbors import KernelDensity
 
-
-X_plot = np.linspace(-6, 6, 1000)[:, None]
-X_src = np.zeros((1, 1))
+X_plot = np.linspace(-6, 6, 1000)
 
 with plt.style.context('Solarize_Light2'):
 
@@ -17,12 +15,10 @@ with plt.style.context('Solarize_Light2'):
     })
 
     fig, axs = plt.subplots(2, 3, sharex=True, sharey=True, figsize=(10, 6))
-
-    for i, kernel in enumerate(['tophat', 'linear', 'epanechnikov', 'cosine', 'gaussian', 'exponential']):
-        ax = axs.ravel()[i]
-        log_dens = KernelDensity(kernel=kernel).fit(X_src).score_samples(X_plot)
-        ax.fill(X_plot[:, 0], np.exp(log_dens))
-        ax.text(-1.8, 0.9, kernel)
+    for ax, kernel in zip(axs.ravel(), ['tophat', 'linear', 'epanechnikov', 'cosine', 'gaussian', 'exponential']):
+        log_dens = KernelDensity(kernel=kernel).fit([[0]]).score_samples(X_plot.reshape(-1, 1))
+        ax.fill(X_plot, np.exp(log_dens))
+        ax.text(-1.8, 0.88, kernel)
         ax.set(xlim=(-2, 2), ylim=(0, 1))
 
     fig.savefig('density-estimation-2.svg')

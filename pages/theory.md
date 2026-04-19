@@ -460,15 +460,15 @@ $\Pi_\hc (m)$和$\VC (\hc)$都是用来度量假设空间$\hc$的表示能力的
 
 <img src="../python/overfitting/overfitting.svg" class="center width90 bottom2" title="过拟合">
 
-左图：1 阶多项式<span class="blue">欠拟合</span> (underfitting)，经验均方误差很大
+左：1 阶多项式<span class="blue">欠拟合</span> (underfitting)，经验均方误差很大
 
 <div class="top-4"></div>
 
-中图：4 阶多项式拟合地最好，最贴近真实模型
+中：4 阶多项式拟合地最好，最贴近真实模型
 
 <div class="top-4"></div>
 
-右图：30 阶多项式<span class="blue">过拟合</span> (overfitting)，经验均方误差很小
+右：30 阶多项式<span class="blue">过拟合</span> (overfitting)，经验均方误差很小
 
 <div class="top-2"></div>
 

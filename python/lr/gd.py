@@ -77,4 +77,4 @@ with plt.style.context('Solarize_Light2'):
     ax[0].set_title('输入样本空间', size=18)
     ax[1].set_title('模型参数空间', size=18)
 
-    plt.savefig("gd.svg")
+    fig.savefig("gd.svg")

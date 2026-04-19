@@ -490,18 +490,18 @@ presentation:
 
 输入：训练集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，属性集$\ac = \{ a_j \}_{j \in [d]}$<br>过程：函数$\TG(\dc,\ac)$
 
-1. 生成结点$\node$
+1. 生成结点$v$
 2. {==if==} $\dc$中样本全属于同一类别$C$ {==then==} &nbsp;&nbsp;&nbsp;&nbsp;<span class="cyan">// 递归情形 1</span>
-3. &emsp;&emsp;将$\node$标记为$C$类叶结点 {==return==}
+3. &emsp;&emsp;将$v$标记为$C$类叶结点 {==return==}
 4. {==if==} $\ac = \emptyset$ {==or==} $\dc$中样本在$\ac$上取值相同 {==then==} &nbsp;&nbsp;&nbsp;&nbsp;<span class="cyan">// 递归情形 2</span>
-5. &emsp;&emsp;将$\node$标记为叶结点，其类别标记为$\dc$中样本最多的类 {==return==}
-6. 从$\ac$中选择最优划分属性$a^\star$，对$a^\star$的每一个取值$a^\star_v$，为$\node$生成一个分支，令$\dc_v$表示$\dc$在$a^\star$上取值为$a^\star_v$的样本子集
+5. &emsp;&emsp;将$v$标记为叶结点，其类别标记为$\dc$中样本最多的类 {==return==}
+6. 从$\ac$中选择最优划分属性$a^\star$，对$a^\star$的每一个取值$a^\star_v$，为$v$生成一个分支，令$\dc_v$表示$\dc$在$a^\star$上取值为$a^\star_v$的样本子集
 7. {==if==} $\dc_v = \emptyset$ {==then==} &nbsp;&nbsp;&nbsp;&nbsp;<span class="cyan">// 递归情形 3</span>
 8. &emsp;&emsp;将分支结点标记为叶结点，其类别标记为$\dc$中样本最多的类 {==return==}
 9. {==else==}
 10. &emsp;&emsp;以$\TG(\dc_v, \ac \setminus \{ a^\star \})$为分支结点
 
-输出：以$\node$为根结点的一棵决策树
+输出：以$v$为根结点的一棵决策树
 
 <!-- slide data-notes="" -->
 
@@ -1214,7 +1214,7 @@ ID3 ({==i==}terative {==d==}ichotomiser)
 
 <p>
 \begin{align}
-    \mathrm{Gain\_ratio} = \frac{\gain(\dc,a)}{\mathrm{IV}(a)}, \quad \mathrm{IV}(a) = -\sum_{v \in [V]} \frac{|\dc_v|}{|\dc|} \log \frac{|\dc_v|}{|\dc|}
+    \textrm{Gain\_ratio} = \frac{\gain(\dc,a)}{\textrm{IV}(a)}, \quad \textrm{IV}(a) = -\sum_{v \in [V]} \frac{|\dc_v|}{|\dc|} \log \frac{|\dc_v|}{|\dc|}
 \end{align}
 </p>
 
@@ -1222,14 +1222,14 @@ ID3 ({==i==}terative {==d==}ichotomiser)
 
 <p>
 \begin{align}
-    \gini(\dc) = \sum_{k \in [C]} \sum_{k' \ne k} p_k p_{k'}, \quad \mathrm{Gini\_index} (\dc,a) = \sum_{v \in [V]} \frac{|\dc_v|}{|\dc|} \gini(\dc_v)
+    \gini(\dc) = \sum_{k \in [C]} \sum_{k' \ne k} p_k p_{k'}, \quad \textrm{Gini\_index} (\dc,a) = \sum_{v \in [V]} \frac{|\dc_v|}{|\dc|} \gini(\dc_v)
 \end{align}
 </p>
 
 <div class="top2"></div>
 
 - 基尼值等于从$\dc$中随机抽两个样本，其标记不一致的概率，{==越小越纯==}
-- 分类回归树选择$a^\star = \argmin_{a \in \ac} ~ \mathrm{Gini\_index} (\dc,a)$
+- 分类回归树选择$a^\star = \argmin_{a \in \ac} ~ \textrm{Gini\_index} (\dc,a)$
 
 <!-- slide data-notes="" -->
 
@@ -1303,7 +1303,15 @@ ID3 ({==i==}terative {==d==}ichotomiser)
 
 ---
 
-<img src="../python/data/iris-plot.svg" class="center width92 top1">
+<img src="../python/data/iris-plot.svg" class="center width75 top1 bottom-4">
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 鸢尾花数据集
+
+---
+
+<img src="../python/data/iris-plot2.svg" class="center width75 top1 bottom-4">
 
 <!-- slide data-notes="" -->
 

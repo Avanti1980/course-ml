@@ -76,8 +76,8 @@
 |      ^       |                             ^                              | 2. 泛化错误率分析                                                                       |
 |      ^       |                             ^                              | 3. 多数表决的变种：加权、带拒绝                                                         |
 |      ^       |                             ^                              | 4. 维度灾难                                                                             |
-|  支持向量机  |                           slides                           | 1. 最大间隔准则：最小间隔最大化                                                         |
-|      ^       |                             ^                              | 2. 拉格朗日对偶，弱对偶，强对偶，KKT 条件                                               |
+|  支持向量机  |                  [slides](pages/svm.html)                  | 1. 最大间隔准则：最小间隔最大化                                                         |
+|      ^       |                             ^                              | 2. [拉格朗日对偶](notes/Lagrange-dual.pdf)，弱对偶，强对偶，KKT 条件                    |
 |      ^       |                             ^                              | 3. 核支持向量机，软间隔支持向量机                                                       |
 |      ^       |                             ^                              | 4. 正则化，损失函数                                                                     |
 
@@ -85,7 +85,7 @@
 
 ## 补充
 
-[矩阵求导](notes/matrix-calculus.pdf)，[拉格朗日对偶](notes/Lagrange-dual.pdf)，[AdaBoost](notes/adaboost.pdf)
+[矩阵求导](notes/matrix-calculus.pdf)，[AdaBoost](notes/adaboost.pdf)
 
 ## 资料
 
@@ -107,7 +107,7 @@
 
 [过拟合](python/overfitting/overfitting.ipynb)、[偏差方差分解](python/overfitting/bias-var-dec.ipynb)
 
-[文本特征提取](python/feature/feat-text.ipynb)、[独热编码](python/feature/feat-one-hot.ipynb)、[缺失特征处理](python/feature/feat-missing.ipynb)、[特征标准化](python/feature/feat-scaler.ipynb)、[特征选择](python/feature/feat-selection.ipynb)、[稀疏范数](python/feature/sparse-norm.ipynb)、[随机投影](python/feature/random-projection.ipynb)
+[文本特征提取](python/feature/feat-text.ipynb)、[独热编码](python/feature/feat-one-hot.ipynb)、[缺失特征处理](python/feature/feat-missing.ipynb)、[特征标准化](python/feature/feat-scaler.ipynb)、[特征选择](python/feature/feat-selection.ipynb)、[稀疏范数](python/feature/sparse-norm.ipynb)、[主成分分析](python/unsupervised-learning/pca.ipynb)、[随机投影](python/feature/random-projection.ipynb)
 
 决策树[分类鸢尾花](python/dt/dt-iris.ipynb)
 

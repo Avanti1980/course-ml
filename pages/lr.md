@@ -216,8 +216,13 @@ presentation:
 <p>
 \begin{align}
     \gv & = \sum_{i \in [m]} \left( - \frac{\sigma(-\wv^\top \xv_i) (1 - \sigma(-\wv^\top \xv_i))}{\sigma(-\wv^\top \xv_i)} (-\xv_i) - y_i \xv_i \right) \\
-    & = \sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i \\[4pt]
-    \Hv & = \sum_{i \in [m]} \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top
+    & = \sum_{i \in [m]} (\sigma(\wv^\top \xv_i) - y_i) \xv_i
+\end{align}
+</p>
+
+<p>
+\begin{align}
+    \Hv = \sum_{i \in [m]} \sigma(\wv^\top \xv_i) (1 - \sigma(\wv^\top \xv_i)) \xv_i \xv_i^\top
 \end{align}
 </p>
 
@@ -298,7 +303,12 @@ presentation:
         - \ln \sigma(\wv^\top \xv), & y = 1 \\
         - \ln \sigma(-\wv^\top \xv), & y = -1
     \end{cases} \\
-    & = - \ln \sigma(y \wv^\top \xv) = \ln (1 + \exp (- y \wv^\top \xv)) \\[5pt]
+    & = - \ln \sigma(y \wv^\top \xv) = \ln (1 + \exp (- y \wv^\top \xv))
+\end{align}
+</p>
+
+<p>
+\begin{align}
     H_{\qv_{\{ 1,0 \}}} (\pv) & = - y \ln \sigma(\wv^\top \xv) - (1-y) \ln \sigma(-\wv^\top \xv) \\
     & = -y \ln \frac{\sigma(\wv^\top \xv)}{1 - \sigma(\wv^\top \xv)} - \ln \sigma(-\wv^\top \xv) \\
     & = \ln (1 + \exp(\wv^\top \xv)) - y \wv^\top \xv
@@ -317,10 +327,10 @@ presentation:
 
 <p>
 \begin{align}
-    p(1|\xv) & = \sigma_1 (\xv) = \frac{\exp(\wv_1^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{\exp((\wv_1 - \wv_c)^\top \xv)}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)} \\
-    p(2|\xv) & = \sigma_2 (\xv) = \frac{\exp(\wv_2^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{\exp((\wv_2 - \wv_c)^\top \xv)}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)} \\
-    & \vdots \\
-    p(c|\xv) & = \sigma_c (\xv) = \frac{\exp(\wv_c^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{1}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)}
+    & p(1|\xv) = \sigma_1 (\xv) = \frac{\exp(\wv_1^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{\exp((\wv_1 - \wv_c)^\top \xv)}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)} \\
+    & p(2|\xv) = \sigma_2 (\xv) = \frac{\exp(\wv_2^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{\exp((\wv_2 - \wv_c)^\top \xv)}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)} \\
+    & \qquad \vdots \\
+    & p(c|\xv) = \sigma_c (\xv) = \frac{\exp(\wv_c^\top \xv)}{\sum_{k \in [c]} \exp(\wv_k^\top \xv)} = \frac{1}{1 + \sum_{k \in [c-1]} \exp((\wv_k - \wv_c)^\top \xv)}
 \end{align}
 </p>
 
@@ -344,6 +354,8 @@ presentation:
 \end{align}
 </p>
 
+<div class="top2"></div>
+
 真实标记分布为$[\ib(y = 1);\ldots;\ib(y = c)]$，根据最小化交叉熵损失
 
 <p>
@@ -351,6 +363,8 @@ presentation:
     \min_{\wv_1, \ldots, \wv_c} \sum_{i \in [m]} \sum_{k \in [c]} \ib(y_i = k) \ln \frac{1}{\sigma_k(\xv_i)} = \sum_{i \in [m]} \ln \frac{1}{\sigma_{y_i}(\xv_i)}
 \end{align}
 </p>
+
+<div class="top2"></div>
 
 <p class="comments"> <span class="blue">极大似然估计</span>和<span class="blue">最小化交叉熵损失</span>再次取得了一致</p>
 
@@ -371,7 +385,14 @@ presentation:
 <p>
 \begin{align}
     \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) & = \frac{\exp(\wv_{y_i}^\top \xv_i) \xv_i \sum_{k \in [c]} \exp(\wv_k^\top \xv_i) - \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_{y_i}^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} \\[4pt]
-    & = \sigma_{y_i} (\xv_i) \xv_i - \sigma_{y_i}^2 (\xv_i) \xv_i = \sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i \\[10pt]
+    & = \sigma_{y_i} (\xv_i) \xv_i - \sigma_{y_i}^2 (\xv_i) \xv_i = \sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i
+\end{align}
+</p>
+
+<div class="top2"></div>
+
+<p>
+\begin{align}
     \nabla_{\wv_l} \sigma_{y_i} (\xv_i) & = \frac{- \exp(\wv_{y_i}^\top \xv_i) \exp(\wv_l^\top \xv_i) \xv_i}{(\sum_{k \in [c]} \exp(\wv_k^\top \xv_i))^2} = - \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i, ~ l \ne y_i
 \end{align}
 </p>
@@ -385,7 +406,14 @@ presentation:
 <p>
 \begin{align}
     & \nabla_{\wv_{y_i}} \sigma_{y_i} (\xv_i) = \class{blue}{\sigma_{y_i} (\xv_i) (1 - \sigma_{y_i} (\xv_i)) \xv_i} \\
-    & \nabla_{\wv_l} \sigma_{y_i} (\xv_i) = \class{yellow}{- \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}, \quad l \ne y_i \\[15pt]
+    & \nabla_{\wv_l} \sigma_{y_i} (\xv_i) = \class{yellow}{- \sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}, \quad l \ne y_i
+\end{align}
+</p>
+
+<div class="top4"></div>
+
+<p>
+\begin{align}
     & \nabla_{\wv_l} \left( \sum_{i \in [m]} \ln \sigma_{y_i}(\xv_i) \right) = \sum_{i \in [m]} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
     = & \sum_{i: y_i = l} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} + \sum_{i: y_i \neq l} \frac{\nabla_{\wv_l} \sigma_{y_i} (\xv_i)}{\sigma_{y_i}(\xv_i)} \\
     = & \sum_{i: y_i = l} \frac{\class{blue}{\sigma_l (\xv_i) (1 - \sigma_l (\xv_i))\xv_i}}{\sigma_l (\xv_i)} + \sum_{i: y_i \neq l} \frac{\class{yellow}{-\sigma_{y_i} (\xv_i) \sigma_l (\xv_i) \xv_i}}{\sigma_{y_i} (\xv_i)} \\
@@ -400,7 +428,7 @@ presentation:
 
 ---
 
-@import "../python/lr/lr-date.py" {line_end=53 .line-numbers .top-1 .left4 highlight=[2]}
+@import "../python/lr/lr-date.py" {.line-numbers .top1 .left4 highlight=[2]}
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -408,7 +436,7 @@ presentation:
 
 ---
 
-@import "../python/lr/lr-iris.py" {line_end=78 .line-numbers .top-1 .left4 highlight=[3]}
+@import "../python/lr/lr-iris.py" {.line-numbers .top1 .left4 highlight=[3]}
 
 <!-- slide data-notes="" -->
 
@@ -473,7 +501,7 @@ presentation:
 \end{align}
 </p>
 
-<p class="book"> <span class="blue">单调有界序列必收敛</span>，若$F$有下界，序列就会收敛到$F(\wv^\star)$</p>
+<span class="blue">单调有界序列必收敛</span>，若$F$有下界，序列就会收敛到$F(\wv^\star)$
 
 问题：如何实现单调递减？根据泰勒展开式及柯西不等式知
 

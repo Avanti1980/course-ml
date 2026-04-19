@@ -1,21 +1,7 @@
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 import seaborn as sns
 import numpy as np
-from sklearn.linear_model import Perceptron
-
-zhisong = fm.FontEntry(fname="/home/avanti/Fonts/LXGW/LXGWNeoZhiSongScreenFull.ttf", name="LXGW Neo ZhiSong Screen Full")
-fm.fontManager.ttflist.insert(0, zhisong)
-plt.rcParams.update({
-    "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
-    "mathtext.fontset": 'cm',
-    "axes.unicode_minus": True,
-    "savefig.bbox": "tight",
-    'legend.fontsize': 14,
-    "xtick.labelsize": 14,
-    "ytick.labelsize": 14,
-    'text.color': '#586e75',
-})
+import scipy.stats as st
 
 
 class KPerceptron(object):
@@ -75,52 +61,53 @@ class KPerceptron(object):
         return np.sum(self.predict(Z) == y) / float(y.size)
 
 
+def grid(func, *args):  # 计算格点上的函数值 用于后续画等高线或热力图
+    x_min, x_max, y_min, y_max = args
+    grid_x, grid_y = np.meshgrid(np.linspace(x_min, x_max, 1000), np.linspace(y_min, y_max, 1000))
+    grid_z = func(np.column_stack((grid_x.ravel(), grid_y.ravel())))
+    grid_z = grid_z.reshape(grid_x.shape)
+    return grid_x, grid_y, grid_z
+
+
 np.random.seed(1)
 
 X = np.array([[1, 1], [1, 0], [0, 1], [0, 0]])
 y = np.array([-1, 1, 1, -1])
-
 conf = [['poly', 2, "2阶多项式核"], ['poly', 3, "3阶多项式核"], ['rbf', None, "高斯核"]]
 col = len(conf)
+x_min, x_max, y_min, y_max = -0.2, 1.2, -0.2, 1.2
 
 with plt.style.context('Solarize_Light2'):
 
-    plt.figure(figsize=(18, 12))
+    plt.rcParams.update({
+        "font.family": ["Ysabeau Office", "LXGW Neo ZhiSong Screen Full"],
+        "mathtext.fontset": 'cm',
+        "axes.unicode_minus": True,
+        "savefig.bbox": "tight",
+        "xtick.labelsize": 14,
+        "ytick.labelsize": 14,
+        'axes.labelsize': 20,
+        'text.color': '#586e75',
+        'axes.labelcolor': "#d33682",
+    })
 
-    x_min, x_max = -0.2, 1.2
-    y_min, y_max = -0.2, 1.2
-    h = .02
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+    plt.figure(figsize=(8 * col / 2, 8))
 
     for i, (ker, param, name) in enumerate(conf):
-
-        ax = plt.subplot(2, col, i + 1)
-        ax.set_aspect('equal')
-        ax.set_xlim(xx.min(), xx.max())
-        ax.set_ylim(yy.min(), yy.max())
-        ax.set_xticks(())
-        ax.set_yticks(())
 
         kp = KPerceptron(ker=ker, gamma=1, coef0=1, degree=param, eta0=0.5)
         kp.fit(X, y)
         acc = kp.score(X, y)
+        grid_x, grid_y, grid_z = grid(kp.decision_function, x_min, x_max, y_min, y_max)
 
-        Z = kp.decision_function(np.c_[xx.ravel(), yy.ravel()])
-        Z = Z.reshape(xx.shape)
-
-        sns.scatterplot(x=X[:, 0], y=X[:, 1], s=60, hue=y, palette="inferno", legend=False, ax=ax)
-        contours = ax.contour(xx, yy, Z, 16, cmap="inferno", alpha=.8)
-        ax.clabel(contours, fontsize=14, inline=True)
-
-        ax.set_title(f'{name}', color='#586e75', fontsize=28)
+        ax = plt.subplot(2, col, i + 1)
+        ax.set(xlim=(x_min, x_max), ylim=(y_min, y_max), xticks=(), yticks=(), aspect="equal", title=f"{name}\n")
+        contours = ax.contour(grid_x, grid_y, grid_z, 16, alpha=.8, cmap='inferno')
+        ax.clabel(contours)
+        sns.scatterplot(x=X[:, 0], y=X[:, 1], s=60, hue=y, palette='inferno', legend=False, ax=ax)
 
         ax = plt.subplot(2, col, i + col + 1, projection='3d')
-        ax.plot_surface(xx, yy, Z)
-        inc = 0.5
-        ax.set_xticks(np.arange(x_min, x_max + 0.1, inc))
-        ax.set_yticks(np.arange(y_min, y_max + 0.1, inc))
-        ax.set_xlabel(r'$x_1$', c="#d33682", fontsize=20)
-        ax.set_ylabel(r'$x_2$', c="#d33682", fontsize=20)
+        ax.plot_surface(grid_x, grid_y, grid_z)
+        ax.set(xlabel="$x_1$", ylabel="$x_2$")
 
-    plt.subplots_adjust(wspace=0.08, hspace=-0.1)
-    plt.savefig("perceptron-kernel.svg", transparent=True)
+    plt.savefig("perceptron-kernel.svg")

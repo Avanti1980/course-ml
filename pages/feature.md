@@ -625,15 +625,12 @@ $\ell_1$唯一既凸且稀疏，将其范数球作为$\rb^2$上最小二乘的�
 
 ---
 
-<div class="top2"></div>
+两图中左边的一系列同心椭圆是$\| \Xv \wv - \yv \|^2$的等高线
 
-- 左图中以原点为中心的同心正方形是$\ell_1$范数球的等高线
-- 右图中以原点为中心的同心圆是$\ell_2$范数球的等高线
-- 两图中右边的一系列同心椭圆是$\| \Xv \wv - \yv \|^2$的等高线
+- 左图中以原点为中心的菱形是$\ell_1$范数球，椭圆与菱形必然切于菱形的顶点处，即最优的$w_2 = 0$
+- 右图中以原点为中心的圆形是$\ell_2$范数球，切点不在坐标轴上，即最优的$w_1$、$w_2$均不为零
 
-<img src="../python/feature/sparse-norm.svg" class="center top4 bottom2 width80" title="目标函数的等高线与 l1 范数球必然交于正方形顶点，即最优的 w2 = 0">
-
-椭圆与正方形必然交于正方形的顶点处，即最优的$w_2 = 0$
+<img src="../python/feature/sparse-norm.svg" class="center top2 bottom0 width80" title="目标函数的等高线与 l1 范数球必然切于菱形顶点，即最优的 w2 = 0">
 
 <!-- slide data-notes="" -->
 
@@ -719,7 +716,7 @@ $\Xv \wv_1$是样本在投影方向$\wv_1$上的投影，投影均值$\onev^\top
 
 <span class="blue">主成分分析</span> (PCA)：寻找一组投影方向 (成分) 使重构误差最小
 
-@import "../python/unsupervised-learning/pca.py" {line_end=31 .line-numbers .top-1 .left4 highlight=[14-17,20,25-28,31]}
+@import "../python/unsupervised-learning/pca.py" {line_end=31 .line-numbers .top0 .left4 highlight=[14-17,20,25-28,31]}
 
 <!-- slide data-notes="" -->
 

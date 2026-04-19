@@ -32,6 +32,6 @@ with plt.style.context('Solarize_Light2'):
         auc_score = auc(recall, precision)
         sns.lineplot(x=recall, y=precision, label=f'{lab} (AUC = {auc_score:.3f})', ax=ax)
 
-    sns.lineplot(x=np.linspace(0, 1, 10), y=np.linspace(0, 1, 10), ls='--', ax=ax)
+    sns.lineplot(x=np.linspace(0, 1, 10), y=np.linspace(0, 1, 10), ls='--', label="查准率 = 查全率", ax=ax)
     ax.set(xlabel="查全率", ylabel="查准率", xlim=(0, 1.02), ylim=(0, 1.02))
     fig.savefig('pr-curve.svg')

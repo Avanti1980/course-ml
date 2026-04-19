@@ -18,10 +18,9 @@ with plt.style.context('Solarize_Light2'):
     })
 
     fig, ax = plt.subplots(figsize=[5, 5])
-
     sns.scatterplot(x=X[:, 0], y=X[:, 1], label="样本", alpha=0.5, s=10, ax=ax)
     for i, (comp, var) in enumerate(zip(pca.components_, pca.explained_variance_)):
         comp = comp * var
         sns.lineplot(x=[0, comp[0]], y=[0, comp[1]], label=f"成分{i + 1}", ax=ax)
     ax.set_aspect('equal')
-    plt.savefig("pca-plot.svg")
+    fig.savefig("pca-plot.svg")

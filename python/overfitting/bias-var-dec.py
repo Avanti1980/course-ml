@@ -48,14 +48,13 @@ with plt.style.context('Solarize_Light2'):
         ax[i + 1, 0].set_ylabel(f'{degree}阶多项式回归')
 
         polynomial_features = PolynomialFeatures(degree=degree, include_bias=True)
-        XX_plot = polynomial_features.fit_transform(X_plot[:, np.newaxis])
+        XX_plot = polynomial_features.fit_transform(X_plot.reshape(-1, 1))
 
         # 前 trial-1 个样本集各训练一个回归模型 最后一个样本集测试平均模型
         lr = [LinearRegression()] * (trial - 1)
         pre_avg = np.zeros(len(X_plot))
         for t in range(trial - 1):
-            x, y = X[t, :], Y[t, :]
-            lr[t].fit(polynomial_features.fit_transform(x[:, np.newaxis]), y)
+            lr[t].fit(polynomial_features.fit_transform(X[t, :].reshape(-1, 1)), Y[t, :])
             sns.lineplot(x=X_plot, y=lr[t].predict(XX_plot), label="模型", ax=ax[i + 1, t])
             pre_avg += lr[t].predict(XX_plot)
 

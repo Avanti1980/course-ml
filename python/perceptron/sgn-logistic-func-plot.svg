@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="352.99pt" viewBox="0 0 460.8 352.99" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="355pt" viewBox="0 0 460.8 355" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-04-12T02:42:39.470873</dc:date>
+    <dc:date>2026-04-18T03:38:03.228065</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,8 +21,8 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 352.99 
-L 460.8 352.99 
+   <path d="M 0 355 
+L 460.8 355 
 L 460.8 0 
 L 0 0 
 z
@@ -42,21 +42,21 @@ z
      <g id="line2d_1">
       <path d="M 68.154054 339.84 
 L 68.154054 7.2 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_2">
       <defs>
-       <path id="m4b999e4d2c" d="M 0 0 
+       <path id="mfae8e930a8" d="M 0 0 
 L 0 3.5 
 " style="stroke: #657b83; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m4b999e4d2c" x="68.154054" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mfae8e930a8" x="68.154054" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
       <!-- −4 -->
-      <g style="fill: #657b83" transform="translate(60.684835 341.743125) scale(0.14 -0.14)">
+      <g style="fill: #657b83" transform="translate(59.617804 343.175) scale(0.16 -0.16)">
        <defs>
         <path id="YsabeauOffice-Regular-2212" d="M 282 1306 
 L 3238 1306 
@@ -94,16 +94,16 @@ z
      <g id="line2d_3">
       <path d="M 149.480343 339.84 
 L 149.480343 7.2 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m4b999e4d2c" x="149.480343" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mfae8e930a8" x="149.480343" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
       <!-- −2 -->
-      <g style="fill: #657b83" transform="translate(142.011124 341.743125) scale(0.14 -0.14)">
+      <g style="fill: #657b83" transform="translate(140.944093 343.175) scale(0.16 -0.16)">
        <defs>
         <path id="YsabeauOffice-Regular-32" d="M 371 237 
 L 442 0 
@@ -129,16 +129,16 @@ z
      <g id="line2d_5">
       <path d="M 230.806631 339.84 
 L 230.806631 7.2 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_6">
       <g>
-       <use xlink:href="#m4b999e4d2c" x="230.806631" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mfae8e930a8" x="230.806631" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
       <!-- 0 -->
-      <g style="fill: #657b83" transform="translate(227.187413 341.743125) scale(0.14 -0.14)">
+      <g style="fill: #657b83" transform="translate(226.670381 343.175) scale(0.16 -0.16)">
        <defs>
         <path id="YsabeauOffice-Regular-30" d="M 1632 -38 
 C 2438 -38 2982 826 2982 2144 
@@ -162,16 +162,16 @@ z
      <g id="line2d_7">
       <path d="M 312.13292 339.84 
 L 312.13292 7.2 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_8">
       <g>
-       <use xlink:href="#m4b999e4d2c" x="312.13292" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mfae8e930a8" x="312.13292" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
       <!-- 2 -->
-      <g style="fill: #657b83" transform="translate(308.513702 341.743125) scale(0.14 -0.14)">
+      <g style="fill: #657b83" transform="translate(307.99667 343.175) scale(0.16 -0.16)">
        <use xlink:href="#YsabeauOffice-Regular-32"/>
       </g>
      </g>
@@ -180,16 +180,16 @@ L 312.13292 7.2
      <g id="line2d_9">
       <path d="M 393.459209 339.84 
 L 393.459209 7.2 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#m4b999e4d2c" x="393.459209" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mfae8e930a8" x="393.459209" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
       <!-- 4 -->
-      <g style="fill: #657b83" transform="translate(389.839991 341.743125) scale(0.14 -0.14)">
+      <g style="fill: #657b83" transform="translate(389.322959 343.175) scale(0.16 -0.16)">
        <use xlink:href="#YsabeauOffice-Regular-34"/>
       </g>
      </g>
@@ -200,21 +200,21 @@ L 393.459209 7.2
      <g id="line2d_11">
       <path d="M 7.2 324.72 
 L 453.6 324.72 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_12">
       <defs>
-       <path id="m185d49c340" d="M 0 0 
+       <path id="mdbe2918da5" d="M 0 0 
 L -3.5 0 
 " style="stroke: #657b83; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m185d49c340" x="230.806631" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mdbe2918da5" x="230.806631" y="324.72" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
-      <!-- 0.0 -->
-      <g style="fill: #657b83" transform="translate(205.759756 329.731562) scale(0.14 -0.14)">
+      <!-- 0.00 -->
+      <g style="fill: #657b83" transform="translate(194.909131 330.4475) scale(0.16 -0.16)">
        <defs>
         <path id="YsabeauOffice-Regular-2e" d="M 819 -32 
 C 1011 -32 1139 96 1139 288 
@@ -227,23 +227,24 @@ z
        <use xlink:href="#YsabeauOffice-Regular-30"/>
        <use xlink:href="#YsabeauOffice-Regular-2e" transform="translate(51.699997 0)"/>
        <use xlink:href="#YsabeauOffice-Regular-30" transform="translate(77.199982 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-30" transform="translate(128.899979 0)"/>
       </g>
      </g>
     </g>
     <g id="ytick_2">
      <g id="line2d_13">
-      <path d="M 7.2 173.52 
-L 453.6 173.52 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+      <path d="M 7.2 249.12 
+L 453.6 249.12 
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_14">
       <g>
-       <use xlink:href="#m185d49c340" x="230.806631" y="173.52" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mdbe2918da5" x="230.806631" y="249.12" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_7">
-      <!-- 0.5 -->
-      <g style="fill: #657b83" transform="translate(205.759756 178.531562) scale(0.14 -0.14)">
+      <!-- 0.25 -->
+      <g style="fill: #657b83" transform="translate(194.909131 254.8475) scale(0.16 -0.16)">
        <defs>
         <path id="YsabeauOffice-Regular-35" d="M 621 2176 
 C 819 2240 1178 2272 1382 2272 
@@ -265,24 +266,78 @@ z
        </defs>
        <use xlink:href="#YsabeauOffice-Regular-30"/>
        <use xlink:href="#YsabeauOffice-Regular-2e" transform="translate(51.699997 0)"/>
-       <use xlink:href="#YsabeauOffice-Regular-35" transform="translate(77.199982 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-32" transform="translate(77.199982 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-35" transform="translate(128.899979 0)"/>
       </g>
      </g>
     </g>
     <g id="ytick_3">
      <g id="line2d_15">
-      <path d="M 7.2 22.32 
-L 453.6 22.32 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #fdf6e3"/>
+      <path d="M 7.2 173.52 
+L 453.6 173.52 
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
      </g>
      <g id="line2d_16">
       <g>
-       <use xlink:href="#m185d49c340" x="230.806631" y="22.32" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+       <use xlink:href="#mdbe2918da5" x="230.806631" y="173.52" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_8">
-      <!-- 1.0 -->
-      <g style="fill: #657b83" transform="translate(205.759756 27.331563) scale(0.14 -0.14)">
+      <!-- 0.50 -->
+      <g style="fill: #657b83" transform="translate(194.909131 179.2475) scale(0.16 -0.16)">
+       <use xlink:href="#YsabeauOffice-Regular-30"/>
+       <use xlink:href="#YsabeauOffice-Regular-2e" transform="translate(51.699997 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-35" transform="translate(77.199982 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-30" transform="translate(128.899979 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_17">
+      <path d="M 7.2 97.92 
+L 453.6 97.92 
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#mdbe2918da5" x="230.806631" y="97.92" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- 0.75 -->
+      <g style="fill: #657b83" transform="translate(194.909131 103.6475) scale(0.16 -0.16)">
+       <defs>
+        <path id="YsabeauOffice-Regular-37" d="M 1312 0 
+L 3130 4211 
+L 435 4211 
+L 397 3814 
+L 2560 3814 
+L 832 0 
+L 1312 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#YsabeauOffice-Regular-30"/>
+       <use xlink:href="#YsabeauOffice-Regular-2e" transform="translate(51.699997 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-37" transform="translate(77.199982 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-35" transform="translate(128.899979 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_19">
+      <path d="M 7.2 22.32 
+L 453.6 22.32 
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #fdf6e3"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#mdbe2918da5" x="230.806631" y="22.32" style="fill: #657b83; stroke: #657b83; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- 1.00 -->
+      <g style="fill: #657b83" transform="translate(194.909131 28.0475) scale(0.16 -0.16)">
        <defs>
         <path id="YsabeauOffice-Regular-31" d="M 1850 0 
 L 2285 0 
@@ -298,6 +353,7 @@ z
        <use xlink:href="#YsabeauOffice-Regular-31"/>
        <use xlink:href="#YsabeauOffice-Regular-2e" transform="translate(51.699997 0)"/>
        <use xlink:href="#YsabeauOffice-Regular-30" transform="translate(77.199982 0)"/>
+       <use xlink:href="#YsabeauOffice-Regular-30" transform="translate(128.899979 0)"/>
       </g>
      </g>
     </g>
@@ -305,7 +361,7 @@ z
    <g id="FillBetweenPolyCollection_1"/>
    <g id="PathCollection_1">
     <defs>
-     <path id="m85ad1988b7" d="M 0 3.162278 
+     <path id="mc9d8aafbd4" d="M 0 3.162278 
 C 0.838646 3.162278 1.643056 2.82908 2.236068 2.236068 
 C 2.82908 1.643056 3.162278 0.838646 3.162278 0 
 C 3.162278 -0.838646 2.82908 -1.643056 2.236068 -2.236068 
@@ -317,25 +373,25 @@ C -1.643056 2.82908 -0.838646 3.162278 0 3.162278
 z
 " style="stroke: #dc322f; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p09a84ea3b9)">
-     <use xlink:href="#m85ad1988b7" x="230.806631" y="324.72" style="fill: #268bd2; stroke: #dc322f; stroke-width: 2"/>
+    <g clip-path="url(#p4265d59ea8)">
+     <use xlink:href="#mc9d8aafbd4" x="230.806631" y="324.72" style="fill: #268bd2; stroke: #dc322f; stroke-width: 2"/>
     </g>
    </g>
    <g id="FillBetweenPolyCollection_2"/>
    <g id="FillBetweenPolyCollection_3"/>
-   <g id="line2d_17">
+   <g id="line2d_21">
     <path d="M 27.490909 324.72 
 L 229.993369 324.72 
 L 229.993369 324.72 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #dc322f; stroke-width: 2"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #dc322f; stroke-width: 2"/>
    </g>
-   <g id="line2d_18">
+   <g id="line2d_22">
     <path d="M 230.806631 22.32 
 L 433.309091 22.32 
 L 433.309091 22.32 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #dc322f; stroke-width: 2"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #dc322f; stroke-width: 2"/>
    </g>
-   <g id="line2d_19">
+   <g id="line2d_23">
     <path d="M 27.490909 322.696082 
 L 40.503115 321.939823 
 L 51.888796 321.052361 
@@ -404,7 +460,7 @@ L 416.23057 25.45097
 L 427.616251 24.692335 
 L 433.309091 24.384525 
 L 433.309091 24.384525 
-" clip-path="url(#p09a84ea3b9)" style="fill: none; stroke: #268bd2; stroke-width: 2"/>
+" clip-path="url(#p4265d59ea8)" style="fill: none; stroke: #268bd2; stroke-width: 2"/>
    </g>
    <g id="patch_3">
     <path d="M 230.806631 339.84 
@@ -428,27 +484,27 @@ L 453.6 7.2
    </g>
    <g id="legend_1">
     <g id="patch_7">
-     <path d="M 17 60.54 
-L 117.8 60.54 
-Q 120.6 60.54 120.6 57.74 
-L 120.6 17 
-Q 120.6 14.2 117.8 14.2 
-L 17 14.2 
-Q 14.2 14.2 14.2 17 
-L 14.2 57.74 
-Q 14.2 60.54 17 60.54 
+     <path d="M 18.4 68.16 
+L 133.6 68.16 
+Q 136.8 68.16 136.8 64.96 
+L 136.8 18.4 
+Q 136.8 15.2 133.6 15.2 
+L 18.4 15.2 
+Q 15.2 15.2 15.2 18.4 
+L 15.2 64.96 
+Q 15.2 68.16 18.4 68.16 
 z
 " style="fill: #eee8d5; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter"/>
     </g>
-    <g id="line2d_20">
-     <path d="M 19.8 24.923125 
-L 33.8 24.923125 
-L 47.8 24.923125 
+    <g id="line2d_24">
+     <path d="M 21.6 27.455 
+L 37.6 27.455 
+L 53.6 27.455 
 " style="fill: none; stroke: #dc322f; stroke-width: 2"/>
     </g>
-    <g id="text_9">
+    <g id="text_11">
      <!-- 阶跃函数 -->
-     <g style="fill: #586e75" transform="translate(59 29.823125) scale(0.14 -0.14)">
+     <g style="fill: #586e75" transform="translate(66.4 33.055) scale(0.16 -0.16)">
       <defs>
        <path id="LXGWNeoZhiSongScreenFull-9636" d="M 1022 4694 
 L 1022 1334 
@@ -817,15 +873,15 @@ z
       <use xlink:href="#LXGWNeoZhiSongScreenFull-6570" transform="translate(300 0)"/>
      </g>
     </g>
-    <g id="line2d_21">
-     <path d="M 19.8 45.993125 
-L 33.8 45.993125 
-L 47.8 45.993125 
+    <g id="line2d_25">
+     <path d="M 21.6 51.535 
+L 37.6 51.535 
+L 53.6 51.535 
 " style="fill: none; stroke: #268bd2; stroke-width: 2"/>
     </g>
-    <g id="text_10">
+    <g id="text_12">
      <!-- 对率函数 -->
-     <g style="fill: #586e75" transform="translate(59 50.893125) scale(0.14 -0.14)">
+     <g style="fill: #586e75" transform="translate(66.4 57.135) scale(0.16 -0.16)">
       <defs>
        <path id="LXGWNeoZhiSongScreenFull-5bf9" d="M 2063 1875 
 Q 1484 534 428 -306 
@@ -1015,7 +1071,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p09a84ea3b9">
+  <clipPath id="p4265d59ea8">
    <rect x="7.2" y="7.2" width="446.4" height="332.64"/>
   </clipPath>
  </defs>

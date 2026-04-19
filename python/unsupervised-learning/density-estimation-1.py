@@ -21,17 +21,16 @@ with plt.style.context('Solarize_Light2'):
     })
 
     fig, axs = plt.subplots(1, 3, figsize=(16, 5), sharey=True)
-    x, y = -4.8, 6.8
+    x, y = -4.6, 6.8
     sns.histplot(X, bins=bins, stat="frequency", ax=axs[0])
-    axs[0].text(x, y, "直方图")
     axs[0].set_ylabel("频率")
     sns.histplot(X, bins=bins + shift, stat="frequency", ax=axs[1])
-    axs[1].text(x, y, f"直方图，bins 右移 {shift}")
+    axs[1].text(x, y, f"bins 右移 {shift}")
     sns.histplot(X, bins=bins - shift, stat="frequency", ax=axs[2])
-    axs[2].text(x, y, f"直方图，bins 左移 {shift}")
+    axs[2].text(x, y, f"bins 左移 {shift}")
 
     for ax in axs:
-        sns.scatterplot(x=X, y=np.full(len(X), -0.2), s=60, alpha=0.8, marker='.', ax=ax)
+        sns.scatterplot(x=X, y=-0.2 - 0.1 * st.uniform.rvs(size=len(X)), s=60, alpha=0.8, marker='.', ax=ax)
         ax.set_xlim(-5, 10)
 
     fig.savefig('density-estimation-1.svg')
