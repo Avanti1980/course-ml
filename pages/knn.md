@@ -91,7 +91,7 @@ presentation:
 
 ---
 
-近邻数$k$：取值范围$[m] \wedge \{2 \zb + 1\}$
+近邻数$k$：取值范围$[m] \cap \{2 \zb + 1\}$
 
 - <span class="blue">奇数</span>可保证取众数时不会出现<span class="blue">打平</span>的情况，zyzzj 常委都是奇数位
 - 越小越容易过拟合，越大越容易欠拟合，实践中多通过交叉验证选取
@@ -101,7 +101,7 @@ presentation:
 距离函数：
 
 - 闵可夫斯基距离$\dist(\xv, \zv) = \| \xv - \zv \|_p$，由$\ell_p$范数诱导出
-- 马氏距离$\dist_\Mv (\xv, \zv) = \| \xv - \zv \|_\Mv$，当$\Mv = \diag \{w_1, \ldots, w_d\}$时，即为加权平方距离$\sqrt{\sum_{j \in [d]} w_j (x_j - z_j)^2}$
+- 马氏距离$\dist_\Mv (\xv, \zv) = (\xv - \zv)^\top \Mv (\xv - \zv)$，当$\Mv = \diag \{w_1, \ldots, w_d\}$时，即为加权平方距离$\sqrt{\sum_{j \in [d]} w_j (x_j - z_j)^2}$
 
 <div class="top2"></div>
 
@@ -109,7 +109,7 @@ presentation:
 
 <p>
 \begin{align}
-    \min_\Mv & \sum_{(\xv_i, \xv_j) \in \mc} \dist_\Mv(\xv_i, \xv_j), \quad \st \sum_{(\xv_i, \xv_j) \in \cc} \dist_\Mv(\xv_i, \xv_j) \ge 1, ~ \Mv \succeq \zerov
+    \min_{\Mv \succeq \zerov} \sum_{(\xv_i, \xv_j) \in \mc} \dist_\Mv(\xv_i, \xv_j), \quad \st \sum_{(\xv_i, \xv_j) \in \cc} \dist_\Mv(\xv_i, \xv_j) \ge 1
 \end{align}
 </p>
 
@@ -125,7 +125,7 @@ presentation:
 - 无训练过程，只需存下数据，惰性学习 (lazy learning)
 - 样本极少时也能用
 - 特征空间维度不高时效果很好
-- <span class="blue">一致性</span>：若贝叶斯最优分类器的错误率$R^\star = 0$，k-近邻也能渐进达到
+- <span class="blue">一致性</span>：记贝叶斯最优分类器$h^\star$ 的错误率$R^\star = 0$，k-近邻也能渐进达到
 
 <div class="top4"></div>
 

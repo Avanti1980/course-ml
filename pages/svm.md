@@ -69,11 +69,22 @@ Corinna Cortes：纽约 Google Research 的负责人
 
 <!-- slide vertical=true data-notes="" -->
 
+##### 时代的眼泪
+
+---
+
+<div>
+    <img src="../img/svm/learning-with-kernels.jpg" width=400px height=500px>
+    <img src="../img/svm/learning-with-kernels2.jpg" width=400px height=500px class="left4">
+</div>
+
+<!-- slide data-notes="" -->
+
 ##### 最大间隔准则
 
 ---
 
-$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \xc \subseteq \rb^d$，$y_i \in \{ 1, -1 \}$
+数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$且<span class="blue">线性可分</span>，$\xv_i \in \xc \subseteq \rb^n$，$y_i \in \{ 1, -1 \}$
 
 超平面$\wv^\top \xv + b = 0$，点$(\xv_i, y_i)$到超平面的距离为$\frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2}$
 
@@ -83,7 +94,8 @@ $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \xc \subseteq \rb^d$，$y_i 
 
 <p>
 \begin{align}
-    \max_{\wv,b} & ~ \gamma \\ \st & ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2} \ge \gamma, ~ \forall i \in [m]
+    \max_{\wv,b,\gamma} & ~ \gamma \\ 
+    \st & ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2} \ge \gamma, ~ \forall i \in [m]
 \end{align}
 </p>
 
@@ -95,13 +107,13 @@ $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \xc \subseteq \rb^d$，$y_i 
 
 ---
 
-$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \xc \subseteq \rb^d$，$y_i \in \{ 1, -1 \}$
+数据集$\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$且<span class="blue">线性可分</span>，$\xv_i \in \xc \subseteq \rb^n$，$y_i \in \{ 1, -1 \}$
 
 <p>
 \begin{align}
-    & \max_{\wv,b} ~ \gamma, \quad \st ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2} \ge \gamma, ~ \forall i \in [m] \\
+    & \max_{\wv,b,\gamma} ~ \gamma, \quad \st ~ \frac{y_i (\wv^\top \xv_i + b)}{\|\wv\|_2} \ge \gamma, ~ \forall i \in [m] \\
     & \qquad \qquad \qquad \Updownarrow \\
-    & \max_{\wv,b} ~ \frac{\hat{\gamma}}{\|\wv\|_2}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge \hat{\gamma}, ~ \forall i \in [m] \quad \longleftarrow \hat{\gamma} = \gamma \|\wv\|_2 \\
+    & \max_{\wv,b,\hat{\gamma}} ~ \frac{\hat{\gamma}}{\|\wv\|_2}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge \hat{\gamma}, ~ \forall i \in [m] \quad \longleftarrow \hat{\gamma} = \gamma \|\wv\|_2 \\
     & \qquad \qquad \qquad \Updownarrow \\
     & \max_{\wv,b} ~ \frac{1}{\|\wv\|_2}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \quad \longleftarrow \hat{\gamma} = 1 \\
     & \qquad \qquad \qquad \Updownarrow \\
@@ -109,9 +121,9 @@ $\dc = \{ (\xv_i, y_i) \}_{i \in [m]}$，$\xv_i \in \xc \subseteq \rb^d$，$y_i 
 \end{align}
 </p>
 
-$\hat{\gamma}$的取值不影响优化，若$(\wv, b, \hat{\gamma})$是最优解，则$(c \wv, c b, c \hat{\gamma})$也是
+若$(\wv, b, \hat{\gamma})$是最优解，则$(c \wv, c b, c \hat{\gamma})$也是最优解，因此$\hat{\gamma}$的取值不影响优化，可直接取为$1$
 
-<!-- slide data-notes="" -->
+<!-- slide vertical=true data-notes="" -->
 
 ##### 支持向量机
 
@@ -121,43 +133,76 @@ $\hat{\gamma}$的取值不影响优化，若$(\wv, b, \hat{\gamma})$是最优解
 
 <p>
 \begin{align}
-    \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
+    \min_{\wv,b} & ~ \frac{1}{2} \|\wv\|_2^2 \\
+     \st & ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
 \end{align}
 </p>
 
 <div class="top2"></div>
 
 - 分类超平面$\wv^\top \xv_i + b = 0$
+- $\gamma \|\wv\|_2 = \hat{\gamma} = 1 \Longrightarrow \gamma = 1/\|\wv\|_2$
 - 支持超平面$\wv^\top \xv_i + b = \pm 1$，位于该超平面上的样本有最小间隔
 
-<img src="../tikz/svm/margin-hyperplane2.svg" class="left15 righta width40 top4">
+<div class="top6"></div>
 
-<!-- slide vertical=true data-notes="" -->
+<p class="fragment"> 若数据非线性可分，约束$y_i (\wv^\top \xv_i + b) \ge 1$无法对所有样本都成立</p>
 
-##### 支持向量机
+<img src="../tikz/svm/margin-hyperplane2.svg" class="lefta right10 width35 top-47per">
+
+<!-- slide data-notes="" -->
+
+##### 软间隔支持向量机
 
 ---
 
-根据最大间隔准则导出支持向量机：
+引入非负<span class="blue">松弛变量</span>$\epsilon_i \ge 1 - y_i (\wv^\top \xv_i + b)$表示约束被破坏的程度
+
+将松弛变量的和加进目标函数中，得到软间隔 (soft margin) 支持向量机
 
 <p>
 \begin{align}
-    \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
+    \min_{\wv,b,\epsilon_i} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \epsilon_i \Bigg\} \\[2pt]
+    \st & ~ y_i (\wv^\top \xv_i + b) \ge 1 - \epsilon_i \\
+    & ~ \epsilon_i \ge 0, ~ \forall i \in [m]
 \end{align}
 </p>
 
-该优化问题属于<span class="blue">二次规划</span> (quadratic programming, QP)
+<div class="top4"></div>
 
-- 目标函数是关于$\wv$的<span class="blue">强凸</span> (strongly convex) <span class="blue">二次函数</span>，最优解<span class="blue">唯一</span>
-- 约束是$m$个<span class="blue">线性不等式</span>
+- 超参数 C 权衡最大间隔、最小约束破坏
+- 超参数通常都用 C，故也称 C-支持向量机
+- 无松弛变量的版本称为硬间隔支持向量机
+
+<img src="../tikz/svm/margin-hyperplane3.svg" class="lefta right6 width35 top-32per">
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 软间隔支持向量机
+
+---
+
+有约束形式
+
+<p>
+\begin{align}
+    \min_{\wv,b,\epsilon_i} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i \Bigg\} \\[2pt]
+    \st & ~ y_i (\wv^\top \xv_i + b) \ge 1 - \epsilon_i \\
+    & ~ \epsilon_i \ge 0, ~ \forall i \in [m]
+\end{align}
+</p>
 
 <div class="top2"></div>
 
-上面的 QP 问题称为支持向量机的<span class="blue">原问题</span> (primal problem)
+将约束移到目标函数里消去$\epsilon_i$，得到无约束形式
 
-- 可调用标准的 QP 求解器进行求解，但有更高效的方法
-- 变量个数等于$d+1$，高维空间中求解可能会很低效
-- 另一个等价形式：<span class="blue">对偶问题</span> (dual problem)，两者殊途同归
+<p>
+\begin{align}
+    \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \xv_i + b) \} \Bigg\}
+\end{align}
+</p>
+
+其中$\max \{ 0, 1- y_i (\wv^\top \xv_i + b) \}$称为 hinge 损失
 
 <!-- slide data-notes="" -->
 
@@ -165,81 +210,108 @@ $\hat{\gamma}$的取值不影响优化，若$(\wv, b, \hat{\gamma})$是最优解
 
 ---
 
-支持向量机原问题：
+软间隔支持向量机：
 
 <p>
 \begin{align}
-    \min_{\wv,b} ~ f(\wv) = \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m]
+    \min_{\wv,b,\epsilon_i} \underbrace{\frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i}_{f(\wv, \epsilon_i)}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~\forall i \in [m]
 \end{align}
 </p>
 
-引入拉格朗日乘子$\alphav \ge \zerov$，<span class="blue">拉格朗日函数</span>为
+定义指示函数$\ib_\infty (z) = \begin{cases} 0, & z \le 0 \\ \infty, & z > 0 \end{cases}$，于是软间隔支持向量机可重写为
 
 <p>
 \begin{align}
-    L(\wv, b, \alphav) = \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \underbrace{\alpha_i (y_i (\wv^\top \xv_i + b) - 1)}_{\ge ~ 0}
+    \min_{\wv,b,\epsilon_i} \Bigg\{f(\wv, \epsilon_i) + \sum_{i \in [m]} \ib_\infty (1 - \epsilon_i - y_i (\wv^\top \xv_i + b)) + \sum_{i \in [m]} \ib_\infty (- \epsilon_i) \Bigg\}
 \end{align}
 </p>
 
-定义<span class="blue">对偶函数</span>$g(\alphav) = \min_{\wv,b} L(\wv, b, \alphav)$，于是
+即目标函数不变，不满足约束额外受到无穷大的惩罚
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 对偶问题
+
+---
+
+指示函数不连续，很难优化，引入<a href="https://en.wikipedia.org/wiki/Lagrange_multiplier" target="balnk_">拉格朗日乘子</a>$\alpha_i \ge 0$、$\beta_i \ge 0$，易知
 
 <p>
 \begin{align}
-    g(\alphav) = \min_{\wv,b} L(\wv, b, \alphav) \le L(\wv, b, \alphav) \le f(\wv)
+    & f(\wv, \epsilon_i) + \sum_{i \in [m]} \ib_\infty (1 - \epsilon_i - y_i (\wv^\top \xv_i + b)) + \sum_{i \in [m]} \ib_\infty (- \epsilon_i) \\
+    = & \max_{\alpha_i \ge 0,\beta_i \ge 0} \underbrace{\Bigg\{ f(\wv, \epsilon_i) + \sum_{i \in [m]} \alpha_i (1 - \epsilon_i - y_i (\wv^\top \xv_i + b)) + \sum_{i \in [m]} \beta_i (- \epsilon_i) \Bigg\}}_{\ls(\wv, b, \epsilon_i, \alpha_i,\beta_i)}
+\end{align}
+</p>
+
+其中$\ls(\wv, b, \epsilon_i, \alpha_i,\beta_i)$称为<span class="blue">拉格朗日函数</span>，软间隔支持向量机进一步写为
+
+<p>
+\begin{align}
+    \min_{\wv,b,\epsilon_i} \max_{\alpha_i \ge 0,\beta_i \ge 0} \ls(\wv, b, \epsilon_i, \alpha_i,\beta_i)
+\end{align}
+</p>
+
+根据<a href="https://en.wikipedia.org/wiki/Max%E2%80%93min_inequality" target="balnk_">极大极小不等式</a> (max–min inequality) 可得原问题的下界
+
+<p>
+\begin{align}
+    \min_{\wv,b,\epsilon_i} \max_{\alpha_i \ge 0,\beta_i \ge 0} \ls(\wv, b, \epsilon_i, \alpha_i,\beta_i) \ge \max_{\alpha_i \ge 0,\beta_i \ge 0} \min_{\wv,b,\epsilon_i} \ls(\wv, b, \epsilon_i, \alpha_i,\beta_i)
+\end{align}
+</p>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 对偶问题
+
+---
+
+问题下界
+
+<p>
+\begin{align}
+    \max_{\alpha_i \ge 0,\beta_i \ge 0} \min_{\wv,b,\epsilon_i} \underbrace{\Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i + \sum_{i \in [m]} \alpha_i (1 - \epsilon_i - y_i (\wv^\top \xv_i + b)) + \sum_{i \in [m]} \beta_i (- \epsilon_i) \Bigg\}}_{\ls(\wv, b, \epsilon_i, \alpha_i,\beta_i)}
+\end{align}
+</p>
+
+先化简内部优化问题，令$\ls$关于$\wv$、$b$、$\epsilon_i$的偏导为零
+
+<p>
+\begin{align}
+    \wv = \sum_{i \in [m]} \alpha_i y_i \xv_i, \quad \sum_{i \in [m]} \alpha_i y_i = 0, \quad C = \alpha_i + \beta_i
+\end{align}
+</p>
+
+回代可得
+
+<p>
+\begin{align}
+    \max_{\alpha_i \ge 0,\beta_i \ge 0} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0, ~ C = \alpha_i + \beta_i
+\end{align}
+</p>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 对偶问题
+
+---
+
+消去$\beta_i$，可得软间隔支持向量机的对偶问题 (dual problem)
+
+<p>
+\begin{align}
+    \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
 \end{align}
 </p>
 
 <div class="top2"></div>
 
-- 上式对任意<span class="blue">可行</span> (满足约束) 的$(\wv,b)$均成立
-- 设原问题最优解为$(\wv^\star, b^\star)$，则$g(\alphav) \le f(\wv^\star) \triangleq p^\star$
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 对偶问题
-
----
-
-对$\forall \alphav \ge \zerov$，对偶函数$g(\alphav)$给出了原问题最优值$p^\star$的一个下界
-
-所有下界中最好的下界有多好？即<span class="blue">最紧的下界</span>
+记$\Yv = \diag \{ y_1, \ldots, y_m \}$、$[\Kv]_{ij} = \xv_i^\top \xv_j$，对偶问题可写成矩阵形式
 
 <p>
 \begin{align}
-    \max_{\alphav \ge \zerov} g(\alphav) & = \max_{\alphav \ge \zerov} \min_{\wv,b} L(\wv, b, \alphav) \\
-    & = \max_{\alphav \ge \zerov} \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i (y_i (\wv^\top \xv_i + b) - 1) \Bigg\}
+    \max_{\zerov \le \alphav \le C \onev} \underbrace{\bigg\{ - \frac{1}{2} \alphav^\top \Yv \Kv \Yv \alphav + \onev^\top \alphav \bigg\}}_{g(\alphav)}, \quad \st ~ \yv^\top \alphav = 0
 \end{align}
 </p>
-
-先化简内部优化问题，令$L(\wv, b, \alphav)$关于$\wv$和$b$的偏导为零
-
-<p>
-\begin{align}
-    \wv = \sum_{i \in [m]} \alpha_i y_i \xv_i, \quad \sum_{i \in [m]} \alpha_i y_i = 0
-\end{align}
-</p>
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 对偶问题
-
----
-
-$\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0$，回代可得
-
-<p>
-\begin{align}
-    \max_{\alphav \ge \zerov} g(\alphav) & = \max_{\alphav \ge \zerov} \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i (y_i (\wv^\top \xv_i + b) - 1) \Bigg\} \\
-    & = \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\} \\
-    & = \max_{\alphav \ge \zerov} \bigg\{ - \frac{1}{2} \alphav^\top \Hv \alphav + \onev^\top \alphav \bigg\} \quad \longleftarrow [\Hv]_{ij} = y_i y_j \xv_i^\top \xv_j
-\end{align}
-</p>
-
-这就是支持向量机的对偶问题，依然是个 QP 问题
-
-- 将$\max$改成$\min$，去掉负号，目标函数是关于$\alphav$的凸二次函数
-- $\alphav \ge \zerov$是$m$个线性不等式约束，$\sum_{i \in [m]} \alpha_i y_i = 0$是一个等式约束
-- 变量个数等于<span class="blue">样本数</span>$m$，与维度无关
 
 <!-- slide data-notes="" -->
 
@@ -251,15 +323,15 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    & \min_{\wv,b} ~ f(\wv) = \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} ~ g(\alphav) = - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i, \quad \st ~ \yv^\top \alphav = 0
+    & \min_{\wv,b,\epsilon_i} \underbrace{\frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i}_{f(\wv, \epsilon_i)}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~\forall i \in [m] \\
+    & \max_{0 \le \alpha_i \le C} \underbrace{\Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}}_{g(\alphav)}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
 \end{align}
 </p>
 
-设最优解分别为$(\wv^\star, b^\star)$、$\alphav^\star$，记$p^\star = f(\wv^\star)$、$d^\star = g(\alphav^\star)$
+设原问题最优解为$(\wv^\star, b^\star, \epsilon_i^\star)$、对偶问题最优解为$\alphav^\star$，
 
-- <span class="blue">弱对偶</span>：$d^\star \le p^\star$，必然成立
-- <span class="blue">强对偶</span>：$d^\star = p^\star$，并不总是成立，但对支持向量机是成立的
+- <span class="blue">弱对偶</span>：$f(\wv^\star, \epsilon_i^\star) \ge g(\alphav^\star)$，必然成立，极大极小不等式
+- <span class="blue">强对偶</span>：$f(\wv^\star, \epsilon_i^\star) = g(\alphav^\star)$，并不总是成立，但对支持向量机是成立的
 
 <div class="top2"></div>
 
@@ -275,17 +347,18 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    f(\wv^\star) = g(\alphav^\star) & = \min_{\wv,b} L(\wv, b, \alphav^\star) \\
-    & = \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i (\wv^\top \xv_i + b) - 1) \Bigg\} \\
-    & \overset{①}{\le} \frac{1}{2} \|\wv^\star\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) \overset{②}{\le} f(\wv^\star)
+    & f(\wv^\star, \epsilon_i^\star) = g(\alphav^\star) = \min_{\wv,b,\epsilon_i} \ls(\wv, b, \epsilon_i, \alphav^\star, \betav^\star) \\
+    = & \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i + \sum_{i \in [m]} \alpha_i^\star (1 - \epsilon_i - y_i (\wv^\top \xv_i + b)) + \sum_{i \in [m]} \beta_i^\star (- \epsilon_i) \Bigg\} \\
+    \overset{①}{\le} & \frac{1}{2} \|\wv^\star\|_2^2 + C \sum_{i \in [m]} \epsilon_i^\star + \sum_{i \in [m]} \alpha_i^\star (1 - \epsilon_i^\star - y_i ({\wv^\star}^\top \xv_i + b^\star)) + \sum_{i \in [m]} \beta_i^\star (- \epsilon_i^\star) \\
+    \overset{②}{\le} & f(\wv^\star, \epsilon_i^\star)
 \end{align}
 </p>
 
-①：原问题最优解$(\wv^\star, b^\star)$就是拉格朗日函数的驻点
+①：原问题最优解$(\wv^\star, b^\star, \epsilon_i^\star)$就是拉格朗日函数的驻点
 
 <p>
 \begin{align}
-    \wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i, ~ \sum_{i \in [m]} \alpha_i^\star y_i = 0
+    \wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i, ~ \sum_{i \in [m]} \alpha_i^\star y_i = 0, ~ C = \alpha_i^\star + \beta_i^\star
 \end{align}
 </p>
 
@@ -299,9 +372,10 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    f(\wv^\star) = g(\alphav^\star) & = \min_{\wv,b} L(\wv, b, \alphav^\star) \\
-    & = \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i (\wv^\top \xv_i + b) - 1) \Bigg\} \\
-    & \overset{①}{\le} \frac{1}{2} \|\wv^\star\|_2^2 - \sum_{i \in [m]} \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) \overset{②}{\le} f(\wv^\star)
+    & f(\wv^\star, \epsilon_i^\star) = g(\alphav^\star) = \min_{\wv,b,\epsilon_i} \ls(\wv, b, \epsilon_i, \alphav^\star, \betav^\star) \\
+    = & \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i + \sum_{i \in [m]} \alpha_i^\star (1 - \epsilon_i - y_i (\wv^\top \xv_i + b)) + \sum_{i \in [m]} \beta_i^\star (- \epsilon_i) \Bigg\} \\
+    \overset{①}{\le} & \frac{1}{2} \|\wv^\star\|_2^2 + C \sum_{i \in [m]} \epsilon_i^\star + \sum_{i \in [m]} \alpha_i^\star (1 - \epsilon_i^\star - y_i ({\wv^\star}^\top \xv_i + b^\star)) + \sum_{i \in [m]} \beta_i^\star (- \epsilon_i^\star) \\
+    \overset{②}{\le} & f(\wv^\star, \epsilon_i^\star)
 \end{align}
 </p>
 
@@ -309,11 +383,7 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    \forall i & \in [m] : ~ \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) = 0 \\[4pt]
-    & \Longleftrightarrow \begin{cases}
-    \alpha_i^\star > 0 \Longrightarrow y_i ({\wv^\star}^\top \xv_i + b^\star) = 1 \Longleftrightarrow {\wv^\star}^\top \xv_i + b^\star = y_i \\
-    y_i ({\wv^\star}^\top \xv_i + b^\star) > 1 \Longrightarrow \alpha_i^\star = 0
-    \end{cases}
+    \forall i & \in [m] : ~ \alpha_i^\star (1 - \epsilon_i^\star - y_i ({\wv^\star}^\top \xv_i + b^\star)) = 0, ~ \beta_i^\star \epsilon_i^\star = 0
 \end{align}
 </p>
 
@@ -328,20 +398,22 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 <p>
 \begin{align}
     \begin{cases}
-    \wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i & \longleftarrow \partial L(\wv, b, \alphav^\star) / \partial \wv = \zerov \\
-    \sum_{i \in [m]} \alpha_i^\star y_i = 0 & \longleftarrow \partial L(\wv, b, \alphav^\star) / \partial b = 0 \\
-    \alpha_i^\star (y_i ({\wv^\star}^\top \xv_i + b^\star) - 1) = 0, ~ \forall i \in [m] & \longleftarrow 互补松弛条件 \\
-    y_i ({\wv^\star}^\top \xv_i + b^\star) \ge 1, ~ \alpha_i^\star \ge 0, ~ \forall i \in [m] & \longleftarrow 原问题和对偶问题的约束
+    \wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i & \longleftarrow \partial \ls / \partial \wv = \zerov \\
+    \sum_{i \in [m]} \alpha_i^\star y_i = 0 & \longleftarrow \partial \ls / \partial b = 0 \\
+    C = \alpha_i^\star + \beta_i^\star & \longleftarrow \partial \ls / \partial \epsilon_i^\star = 0 \\
+    \alpha_i^\star (1 - \epsilon_i^\star - y_i ({\wv^\star}^\top \xv_i + b^\star)) = 0, ~ \beta_i^\star \epsilon_i^\star = 0, ~ \forall i \in [m] & \longleftarrow 互补松弛条件 \\
+    y_i ({\wv^\star}^\top \xv_i + b^\star) \ge 1 - \epsilon_i^\star, ~ \epsilon_i^\star \ge 0, ~ \forall i \in [m] & \longleftarrow 约束 \\
+    \alpha_i^\star \ge 0, ~ \beta_i^\star \ge 0, ~ \forall i \in [m] & \longleftarrow 拉格朗日乘子非负
     \end{cases}
 \end{align}
 </p>
 
 <div class="top2"></div>
 
-- $\wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i$：原问题最优解只由训练样本线性表出
-- 若某个$\alpha_i^\star > 0$，则$y_i ({\wv^\star}^\top \xv_i + b^\star) - 1 = 0$，由此可解出$b^\star$
-- 非零$\alpha_i^\star$对应的样本称为<span class="blue">支持向量</span> (<span class="blue">s</span>upport <span class="blue">v</span>ector, SV)，均位于支持超平面${\wv^\star}^\top \xv_i + b^\star = \pm 1$上，不在支持超平面上的样本对应的$\alpha_i^\star = 0$
-- $\wv^\star$只与部分支持向量有关，故名<span class="blue">支持向量机</span> (<span class="blue">SV</span> <span class="blue">m</span>achine, SVM)
+- $\wv^\star = \sum_{i \in [m]} \alpha_i^\star y_i \xv_i$：原问题最优解只由训练样本线性表出 (表示定理)
+- 若$y_i ({\wv^\star}^\top \xv_i + b^\star) > 1$，则$\alpha_i^\star = 0$，支持超平面外的样本没有用
+- 若$\alpha_i^\star > 0$，则$y_i ({\wv^\star}^\top \xv_i + b^\star) = 1 - \epsilon_i^\star$，这些样本位于支持超平面上或内，由于它们组成了解，故称为支持向量，算法得名<span class="blue">支持向量机</span>
+- 若$\alpha_i^\star < C$，则$\beta_i^\star > 0 \Longrightarrow \epsilon_i^\star = 0$，故对$\alpha_i^\star \in (0,C)$，有$y_i ({\wv^\star}^\top \xv_i + b^\star) = 1$，由此可解出$b^\star$
 - 预测：${\wv^\star}^\top \zv + b^\star = \sum_{i \in [m]} (\alpha_i^\star \xv_i^\top \zv) y_i  + b^\star$，加权多数投票的形式
 
 <!-- slide data-notes="" -->
@@ -354,19 +426,19 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    & \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i \Bigg\}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~\forall i \in [m] \\
+    & \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \xv_i^\top \xv_j + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
 \end{align}
 </p>
 
 <div class="top2"></div>
 
-若数据非线性可分怎么办？核支持向量机
+对偶问题可很方便地引入核映射，得到核支持向量机
 
 <p>
 \begin{align}
-    & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \class{blue}{\phi(\xv_i)} + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\phi(\xv_i)^\top \phi(\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    & \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i \Bigg\}, \quad \st ~ y_i (\wv^\top \class{blue}{\phi(\xv_i)} + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m] \\
+    & \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\phi(\xv_i)^\top \phi(\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
 \end{align}
 </p>
 
@@ -380,8 +452,8 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    & \min_{\wv,b} ~ \frac{1}{2} \|\wv\|_2^2, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1, ~ \forall i \in [m] \\
-    & \max_{\alphav \ge \zerov} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i,\xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    & \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i \Bigg\}, \quad \st ~ y_i (\wv^\top \class{blue}{\phi(\xv_i)} + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m] \\
+    & \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i, \xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
 \end{align}
 </p>
 
@@ -403,9 +475,9 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 对称函数$\kappa: \xc \times \xc \mapsto \rb$可作为某个希尔伯特空间$\hb$的内积函数，当且仅当它是正定核 (positive semidefinite kernel)，即对任意数据集$\{ \xv_i \}_{i \in [m]} \subseteq \xc$，核矩阵$\Kv = [\kappa(\xv_i, \xv_j)]_{i,j \in [m]}$是半正定矩阵
 
-利用已知正定核构造新的正定核，例如$\kappa_1 + \kappa_2$、$\kappa_1 \cdot \kappa_2$等
+利用已知正定核可构造新的正定核，例如$\kappa_1 + \kappa_2$、$\kappa_1 \cdot \kappa_2$等
 
-正向：若$\kappa(\xv_i, \xv_j) = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\hb}$、$\kappa(\xv, \xv) = \| \phi(\xv) \|_{\hb}^2 \ge 0$
+正向：若$\kappa(\xv_i, \xv_j) = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\hb}$、$\kappa(\xv, \xv) = \| \phi(\xv) \|_{\hb}^2 \ge 0$，则
 
 <p>
 \begin{align}
@@ -413,6 +485,8 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
     & = \left\| \sum_{i \in [m]} a_i \phi(\xv_i) \right\|_{\hb}^2 \ge 0
 \end{align}
 </p>
+
+即$\Kv$是半正定矩阵
 
 <!-- slide vertical=true data-notes="" -->
 
@@ -422,7 +496,7 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 反向：考虑$\xc \mapsto \rb$的所有函数构成的空间$\rb^{\xc} = \{ f: \xc \mapsto \rb \}$，对$\forall \xv \in \xc$，函数$\kappa(\cdot, \xv) \in \rb^{\xc}$
 
-考虑所有$\kappa(\cdot, \xv)$张成的线性空间$\hc$，定义
+考虑所有$\kappa(\cdot, \xv)$张成的线性空间$\hc \subset \rb^{\xc}$，定义
 
 <p>
 \begin{align}
@@ -430,95 +504,16 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 \end{align}
 </p>
 
-验证内积的条件：加法线性、数乘线性、对称性、非负性
+不难验证上式满足内积的所有条件：加法线性、数乘线性、对称性 ($\kappa$是对称函数)、非负定性 ($\Kv$是半正定矩阵)，故$\hc$构成内积空间
 
-记$\phi: \xv \mapsto \kappa(\cdot, \xv)$，于是
-
-<p>
-\begin{align}
-    \kappa(\xv_i, \xv_j) = \langle \kappa(\cdot, \xv_i), \kappa(\cdot, \xv_j) \rangle_{\hc} = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\hc}
-\end{align}
-</p>
-
-<!-- slide data-notes="" -->
-
-##### 软间隔支持向量机
-
----
-
-问题：
-
-- 很难确定什么样的核映射能保证样本在新的特征空间线性可分
-- 即便恰好找到了这样的核映射，如何确定其没有引起过拟合？
-
-<div class="top2"></div>
-
-方案：允许约束$y_i (\wv^\top \phi(\xv_i) + b) \ge 1$对少数样本不成立
+将$\hc$完备化可得<a href="https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space" target="blank_">再生核希尔伯特空间</a>$\hb$ (RKHS)，记$\phi: \xv \mapsto \kappa(\cdot, \xv)$
 
 <p>
 \begin{align}
-    \min_{\wv,b} \Bigg\{\frac{1}{2} \|\wv\|_2^2 + C \underbrace{\sum_{i \in [m]} \ib(y_i (\wv^\top \phi(\xv_i) + b) < 1) }_{破坏约束的样本个数} \Bigg\}
+    & \kappa(\xv_i, \xv_j) = \langle \kappa(\cdot, \xv_i), \kappa(\cdot, \xv_j) \rangle_{\hb} = \langle \phi(\xv_i), \phi(\xv_j) \rangle_{\hb} \\
+    & \forall f = \sum_i a_i \kappa(\cdot, \xv_i) \Longrightarrow \left\langle f, \kappa(\cdot, \xv) \right\rangle_{\hb} = \sum_i a_i \kappa(\xv_i, \xv) = f(\xv) \quad \longleftarrow 再生性
 \end{align}
 </p>
-
-难点：指示函数$\ib(\cdot)$<span class="blue">非凸非连续</span>，导致问题很难求解
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 软间隔支持向量机
-
----
-
-用 hinge 损失代替指示函数可得<span class="blue">软间隔支持向量机</span>：
-
-<p>
-\begin{align}
-    \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\}
-\end{align}
-</p>
-
-令$\epsilon_i = \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \}$可得约束形式：
-
-<p>
-\begin{align}
-    \min_{\wv,b} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \epsilon_i \Bigg\} \\[2pt]
-    \st & ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1 - \epsilon_i \\
-    & ~ \epsilon_i \ge 0, ~ \forall i \in [m]
-\end{align}
-</p>
-
-<div class="top2"></div>
-
-- $\epsilon_i$称为<span class="blue">松弛变量</span> (slack variable)
-- $\epsilon_i$刻画了约束被破坏的程度
-
-<img src="../tikz/svm/margin-hyperplane3.svg" class="lefta right10 width40 top-26per">
-
-<!-- slide vertical=true data-notes="" -->
-
-##### 软间隔支持向量机
-
----
-
-软间隔支持向量机原问题
-
-<p>
-\begin{align}
-    无约束形式： \min_{\wv,b} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\} \\
-    有约束形式： \min_{\wv,b} & ~ \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \epsilon_i \Bigg\} \\
-    \st & ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m]
-\end{align}
-</p>
-
-软间隔支持向量机对偶问题
-
-<p>
-\begin{align}
-    \max_{0 \le \alpha_i \class{blue}{\le C}} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \kappa(\xv_i,\xv_j) + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
-\end{align}
-</p>
-
-<p class="conclusion"> 区别就是$\alpha_i$多了个上界约束</p>
 
 <!-- slide data-notes="" -->
 
@@ -526,23 +521,94 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 ---
 
+原问题：变量个数为特征数$n$
+
 <p>
 \begin{align}
     & \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \phi(\xv_i) + b) \} \Bigg\} \\
-    & \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \kappa(\xv_i,\xv_j) + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \yv^\top \alphav = 0
+    & \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i \Bigg\}, \quad \st ~ y_i (\wv^\top \phi(\xv_i) + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m] \\
 \end{align}
 </p>
 
-当采用线性核函数时，原问题、对偶问题择其易解者解之
+<div class="top2"></div>
 
-- 原问题无约束，可直接用随机梯度下降及其变种，参考 Pegasos
-- 对偶问题可采用 SMO，每次取一对$(\alpha_i, \alpha_j)$进行优化，参考 libSVM
+对偶问题：变量个数为样本数$m$
+
+<p>
+\begin{align}
+    \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i, \xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
+\end{align}
+</p>
+
+<div class="top4"></div>
+
+- 若采用线性核，原问题、对偶问题择其易解者解之
+- 若采用非线性核，除非可显式写出对应的核映射，否则只考虑求解对偶问题
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 支持向量机的求解
+
+---
+
+原问题：变量个数为特征数$n$
+
+<p>
+\begin{align}
+    \min_{\wv,b} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C\sum_{i \in [m]} \max \{ 0, 1- y_i (\wv^\top \xv_i + b) \} \Bigg\}
+\end{align}
+</p>
 
 <div class="top2"></div>
 
-当采用非线性核函数时，一般只考虑对偶问题
+无约束形式可直接用随机次梯度下降及其变种，参考 Pegasos
 
-省略$b$可去掉等式约束$\yv^\top \alphav = 0$，所有$\alpha_i$去耦合，每次可只取一个$\alpha_i$进行优化，即坐标下降，参考 liblinear
+<!-- slide vertical=true data-notes="" -->
+
+##### 支持向量机的求解
+
+---
+
+原问题：变量个数为特征数$n$
+
+<p>
+\begin{align}
+    \min_{\wv,b,\epsilon_i} \Bigg\{ \frac{1}{2} \|\wv\|_2^2 + C \sum_{i \in [m]} \epsilon_i \Bigg\}, \quad \st ~ y_i (\wv^\top \xv_i + b) \ge 1 - \epsilon_i, ~ \epsilon_i \ge 0, ~ \forall i \in [m] \\
+\end{align}
+</p>
+
+<div class="top2"></div>
+
+有约束形式可写成标准的二次规划 (quadratic programming, QP) 形式
+
+<p>
+\begin{align}
+    \min_{\wv,b,\epsilonv} & ~ \left\{ \frac{1}{2} \begin{bmatrix} \wv \\ b \\ \epsilonv \end{bmatrix}^\top \begin{bmatrix} \Iv & 0 & \zerov \\ \zerov & 0 & \zerov \\ \zerov & \zerov & \zerov \end{bmatrix} \begin{bmatrix} \wv \\ b \\ \epsilonv \end{bmatrix} + \begin{bmatrix} \zerov \\ 0 \\ C \onev \end{bmatrix}^\top \begin{bmatrix} \wv \\ b \\ \epsilonv \end{bmatrix} \right\} \\
+    \st & ~ \begin{bmatrix} - \Yv \Xv & - \yv & -\Iv \\ \zerov & 0 & -\Iv \end{bmatrix} \begin{bmatrix} \wv \\ b \\ \epsilonv \end{bmatrix} \le \begin{bmatrix} - \onev \\ \zerov \end{bmatrix}
+\end{align}
+</p>
+
+<!-- slide vertical=true data-notes="" -->
+
+##### 支持向量机的求解
+
+---
+
+对偶问题：变量个数为样本数$m$
+
+<p>
+\begin{align}
+    \max_{0 \le \alpha_i \le C} \Bigg\{ - \frac{1}{2} \sum_{i \in [m]} \sum_{j \in [m]} \alpha_i \alpha_j y_i y_j \class{blue}{\kappa(\xv_i, \xv_j)} + \sum_{i \in [m]} \alpha_i \Bigg\}, \quad \st ~ \sum_{i \in [m]} \alpha_i y_i = 0
+\end{align}
+</p>
+
+<div class="top2"></div>
+
+对偶问题也是QP，但箱式约束$0 \le \alpha_i \le C$比原问题要好处理很多
+
+SMO：每次取一对$(\alpha_i, \alpha_j)$进行优化，参考 libSVM
+
+坐标下降：省略$b$可去掉等式约束$\yv^\top \alphav = 0$，所有$\alpha_i$去耦合，每次可只取一个$\alpha_i$进行优化，参考 liblinear
 
 <!-- slide data-notes="" -->
 
@@ -630,7 +696,7 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    R (h_D^\erm) \le R_D (h_D^\erm) + \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}}
+    R (h_\dc^\erm) \le R_\dc (h_\dc^\erm) + \sqrt{\frac{8 d \ln (2em/d) + 8 \ln (4/\delta)}{m}}
 \end{align}
 </p>
 
@@ -642,7 +708,7 @@ $\wv = \sum_{i \in [m]} \alpha_i y_i \xv_i$，$\sum_{i \in [m]} \alpha_i y_i = 0
 
 <p>
 \begin{align}
-    R (h) \le R_D (h) + 4 \sqrt{\frac{r^2}{m \rho^2}} + \sqrt{\frac{\ln \log_2 (2 r / \rho) }{m}} + \sqrt{\frac{\log (2 / \delta)}{2m}}
+    R (h) \le R_\dc (h) + 4 \sqrt{\frac{r^2}{m \rho^2}} + \sqrt{\frac{\ln \log_2 (2 r / \rho) }{m}} + \sqrt{\frac{\log (2 / \delta)}{2m}}
 \end{align}
 </p>
 
