@@ -1,2 +1,2 @@
 git pull github master
-cp -r ./crossnote/* /home/avanti/Slides/.crossnote/
+cp -r ./crossnote/* /home/avanti/Slides/Courses/.crossnote/
