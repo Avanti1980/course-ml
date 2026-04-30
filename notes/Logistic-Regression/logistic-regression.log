@@ -1,6 +1,6 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.6)  8 APR 2026 03:37
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.6)  29 APR 2026 05:24
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **/home/avanti/Notes/ML/Logistic-Regression/logistic-regression
@@ -164,7 +164,16 @@ LaTeX Encoding Info:    Redeclaring text symbol \textdiv (encoding TS1) on input
 File: ctexopts.cfg 2022/07/14 v2.5.10 Option configuration file (CTEX)
 ) (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(/usr/share/texmf-dist/tex/latex/base/size10.clo
+(/usr/share/texmf-dist/tex/latex/base/fleqn.clo
+File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
+\mathindent=\skip49
+Applying: [2015/01/01] Make \[ robust on input line 50.
+LaTeX Info: Redefining \[ on input line 51.
+Already applied: [0000/00/00] Make \[ robust on input line 62.
+Applying: [2015/01/01] Make \] robust on input line 74.
+LaTeX Info: Redefining \] on input line 75.
+Already applied: [0000/00/00] Make \] robust on input line 83.
+) (/usr/share/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count277
@@ -175,8 +184,8 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \c@subparagraph=\count282
 \c@figure=\count283
 \c@table=\count284
-\abovecaptionskip=\skip49
-\belowcaptionskip=\skip50
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
 \bibindent=\dimen149
 ) (/usr/share/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
 File: ctex-engine-xetex.def 2022/07/14 v2.5.10 XeLaTeX adapter (CTEX)
@@ -188,7 +197,7 @@ Package: xtemplate 2025-10-09 L3 Experimental prototype document functions
 \l__xeCJK_tmp_int=\count285
 \l__xeCJK_tmp_box=\box54
 \l__xeCJK_tmp_dim=\dimen150
-\l__xeCJK_tmp_skip=\skip51
+\l__xeCJK_tmp_skip=\skip52
 \g__xeCJK_space_factor_int=\count286
 \l__xeCJK_begin_int=\count287
 \l__xeCJK_end_int=\count288
@@ -200,7 +209,7 @@ Package: xtemplate 2025-10-09 L3 Experimental prototype document functions
 \c__xeCJK_NormalSpace_class_int=\XeTeXcharclass6
 \c__xeCJK_CM_class_int=\XeTeXcharclass7
 \c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
-\l__xeCJK_last_skip=\skip52
+\l__xeCJK_last_skip=\skip53
 \c__xeCJK_none_node=\count289
 \g__xeCJK_node_int=\count290
 \c__xeCJK_CJK_node_dim=\dimen151
@@ -208,10 +217,10 @@ Package: xtemplate 2025-10-09 L3 Experimental prototype document functions
 \c__xeCJK_default_node_dim=\dimen153
 \c__xeCJK_CJK-widow_node_dim=\dimen154
 \c__xeCJK_normalspace_node_dim=\dimen155
-\c__xeCJK_default-space_node_skip=\skip53
-\l__xeCJK_ccglue_skip=\skip54
-\l__xeCJK_ecglue_skip=\skip55
-\l__xeCJK_punct_kern_skip=\skip56
+\c__xeCJK_default-space_node_skip=\skip54
+\l__xeCJK_ccglue_skip=\skip55
+\l__xeCJK_ecglue_skip=\skip56
+\l__xeCJK_punct_kern_skip=\skip57
 \l__xeCJK_indent_box=\box55
 \l__xeCJK_last_penalty_int=\count291
 \l__xeCJK_last_bound_dim=\dimen156
@@ -244,7 +253,7 @@ LaTeX template Info: Declaring template type 'xeCJK/punctuation' taking 0
 \l__xeCJK_fam_int=\count294
 \g__xeCJK_fam_allocation_int=\count295
 \l__xeCJK_verb_case_int=\count296
-\l__xeCJK_verb_exspace_skip=\skip57
+\l__xeCJK_verb_exspace_skip=\skip58
  (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
@@ -271,7 +280,7 @@ Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
 \ccwd=\dimen180
-\l__ctex_ccglue_skip=\skip58
+\l__ctex_ccglue_skip=\skip59
 )
 \l__ctex_ziju_dim=\dimen181
  (/usr/share/texmf-dist/tex/latex/zhnumber/zhnumber.sty
@@ -281,38 +290,13 @@ Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
  (/usr/share/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
 ))
-\l__ctex_heading_skip=\skip59
+\l__ctex_heading_skip=\skip60
  (/usr/share/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.def
 File: ctex-scheme-chinese-article.def 2022/07/14 v2.5.10 Chinese scheme for article (CTEX)
  (/usr/share/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
 File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
 )) (/usr/share/texmf-dist/tex/latex/ctex/ctex-c5size.clo
 File: ctex-c5size.clo 2022/07/14 v2.5.10 c5size option (CTEX)
-) (/usr/share/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-fandol.def
-File: ctex-fontset-fandol.def 2022/07/14 v2.5.10 Fandol fonts definition (CTEX)
-
-Package fontspec Info: 
-(fontspec)             Script 'CJK' not explicitly supported within font
-(fontspec)             'FandolSong-Regular'. Check the typeset output, and if
-(fontspec)             it is okay then ignore this warning. Otherwise a
-(fontspec)             different font should be chosen.
-
-
-Package fontspec Info: 
-(fontspec)             Font family 'FandolSong-Regular(0)' created for font
-(fontspec)             'FandolSong-Regular' with options
-(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolSong-Bold},ItalicFont={FandolKai-Regular}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolSong-Regular.otf]/OT:script=hani;language=dflt;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolSong-Bold.otf]/OT:script=hani;language=dflt;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->"[FandolKai-Regular.otf]/OT:script=hani;language=dflt;"
-
 )) (/usr/share/texmf-dist/tex/latex/ctex/config/ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
 ) (/home/avanti/texmf/tex/latex/avanti/avanti-color.sty (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -340,14 +324,27 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \ar@mcellbox=\box56
 \extrarowheight=\dimen183
 \NC@list=\toks17
-\extratabsurround=\skip60
-\backup@length=\skip61
+\extratabsurround=\skip61
+\backup@length=\skip62
 \ar@cellbox=\box57
 )
 \everycr=\toks18
-\minrowclearance=\skip62
+\minrowclearance=\skip63
 \rownum=\count310
-)) (/home/avanti/texmf/tex/latex/avanti/avanti-notes.sty (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math.sty
+)) (/home/avanti/texmf/tex/latex/avanti/avanti-theorem.sty (/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip64
+\thm@postskip=\skip65
+\thm@headsep=\skip66
+\dth@everypar=\toks24
+)
+\c@theorem=\count311
+) (/home/avanti/texmf/tex/latex/avanti/avanti-notes.sty (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math.sty
 Package: unicode-math 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
  (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
 Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaTeX
@@ -355,14 +352,14 @@ Package: unicode-math-xetex 2023/08/13 v0.8r Unicode maths in XeLaTeX and LuaLaT
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 ) (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
-\@mathmargin=\skip63
+\@mathmargin=\skip67
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
  (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
+\@emptytoks=\toks25
 \ex@=\dimen184
 )) (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -370,14 +367,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count311
+\inf@bad=\count312
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count312
-\leftroot@=\count313
+\uproot@=\count313
+\leftroot@=\count314
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count314
-\DOTSCASE@=\count315
+\classnum@=\count315
+\DOTSCASE@=\count316
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -390,77 +387,393 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen186
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count316
+\macc@depth=\count317
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count317
+\c@MaxMatrixCols=\count318
 \dotsspace@=\muskip17
-\c@parentequation=\count318
-\dspbrk@lvl=\count319
-\tag@help=\toks20
-\row@=\count320
-\column@=\count321
-\maxfields@=\count322
-\andhelp@=\toks21
+\c@parentequation=\count319
+\dspbrk@lvl=\count320
+\tag@help=\toks26
+\row@=\count321
+\column@=\count322
+\maxfields@=\count323
+\andhelp@=\toks27
 \eqnshift@=\dimen187
 \alignsep@=\dimen188
 \tagshift@=\dimen189
 \tagwidth@=\dimen190
 \totwidth@=\dimen191
 \lineht@=\dimen192
-\@envbody=\toks22
-\multlinegap=\skip64
-\multlinetaggap=\skip65
-\mathdisplay@stack=\toks23
+\@envbody=\toks28
+\multlinegap=\skip68
+\multlinetaggap=\skip69
+\mathdisplay@stack=\toks29
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
 )
-\g__um_fam_int=\count323
-\g__um_fonts_used_int=\count324
-\l__um_primecount_int=\count325
+\g__um_fam_int=\count324
+\g__um_fonts_used_int=\count325
+\l__um_primecount_int=\count326
 \g__um_primekern_muskip=\muskip18
- (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex)))
+ (/usr/share/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))) (/usr/share/texmf-dist/tex/latex/newcomputermodern/newcomputermodern.sty
+Package: newcomputermodern v7.1.1 NewCM fonts by Antonis Tsolomitis
 
-Package xeCJK Warning: Redefining CJKfamily `\CJKrmdefault'
-(xeCJK)                (FandolSong-Regular(0)).
-
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "LXGW Bright Medium/B" (it
-(fontspec)             probably doesn't exist).
-
+Loading NewCM fonts by Antonis Tsolomitis
+(/usr/share/texmf-dist/tex/latex/fontsetup/fspdefault.tex (/usr/share/texmf-dist/tex/latex/newcomputermodern/NewCM10-Book.fontspec)
 
 Package fontspec Info: 
-(fontspec)             Could not resolve font "LXGW Neo XiHei Screen Full/I"
-(fontspec)             (it probably doesn't exist).
-
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "LXGW Neo ZhiSong Screen
-(fontspec)             Full/BI" (it probably doesn't exist).
-
-
-Package fontspec Info: 
-(fontspec)             Font family 'LXGWNeoZhiSongScreenFull(0)' created for
-(fontspec)             font 'LXGW Neo ZhiSong Screen Full' with options
-(fontspec)             [Script={CJK},BoldFont={LXGW Neo XiHei Screen
-(fontspec)             Full},ItalicFont={LXGW Bright Medium}].
+(fontspec)             Font family 'NewCM10-Book.otf(0)' created for font
+(fontspec)             'NewCM10-Book.otf' with options
+(fontspec)             [Ligatures=TeX,UprightFont={NewCM10-Book.otf},UprightFeatures={SizeFeatures={{Size={-8},Font={NewCM08-Book.otf}},{Size={8-},Font={NewCM10-Book.otf}}}},ItalicFont={NewCM10-BookItalic.otf},ItalicFeatures={SizeFeatures={{Size={-8},Font={NewCM08-BookItalic.otf}},{Size={8-},Font={NewCM10-BookItalic.otf}}}},BoldFont={NewCM10-Bold.otf},BoldFeatures={SizeFeatures={{Size={0-},Font={NewCM10-Bold.otf}}}},BoldItalicFont={NewCM10-BoldItalic.otf},BoldItalicFeatures={SizeFeatures={{Size={0-},Font={NewCM10-BoldItalic.otf}}}},SlantedFont={NewCM10-Book.otf},SlantedFeatures={SizeFeatures={{Size={-8},Font={NewCM08-Book.otf}},{Size={8-},Font={NewCM10-Book.otf}}}},BoldSlantedFont={NewCM10-Bold.otf},BoldSlantedFeatures={SizeFeatures={{Size={0-},Font={NewCM10-Bold.otf}}}},SwashFont={NewCM10-Book.otf},SwashFeatures={SizeFeatures={{Size={-8},Font={NewCM08-Book.otf}},{Size={8-},Font={NewCM10-Book.otf}}}},BoldSwashFont={NewCM10-Bold.otf},BoldSwashFeatures={SizeFeatures={{Size={0-},Font={NewCM10-Bold.otf}}}},SizeFeatures={{Size=-8,
+(fontspec)             Font=NewCM08-Book.otf,
+(fontspec)             ItalicFont=NewCM08-BookItalic.otf,BoldFont=NewCM10-Bold.otf,BoldItalicFont=NewCM10-BoldItalic.otf,SlantedFont=NewCM08-Book.otf,BoldSlantedFont=NewCM10-Bold.otf,SmallCapsFeatures={Numbers=OldStyle}},
+(fontspec)             {Size=8, Font=NewCM08-Book.otf,
+(fontspec)             ItalicFont=NewCM08-BookItalic.otf,BoldFont=NewCM10-Bold.otf,BoldItalicFont=NewCM10-BoldItalic.otf,SlantedFont=NewCM08-Book.otf,BoldSlantedFont=NewCM10-Bold.otf,SmallCapsFeatures={Numbers=OldStyle}},
+(fontspec)             {Size= 9-, Font = NewCM10-Book.otf,
+(fontspec)             ItalicFont=NewCM10-BookItalic.otf,BoldFont=NewCM10-Bold.otf,BoldItalicFont=NewCM10-BoldItalic.otf,SlantedFont=NewCM10-Book.otf,BoldSlantedFont=NewCM10-Bold.otf,SmallCapsFeatures={Numbers=OldStyle}}},SmallCapsFeatures={Numbers=OldStyle},BoldSlantedFont=NewCM10-Bold.otf,SlantedFont=NewCM10-Book.otf,BoldItalicFont=NewCM10-BoldItalic.otf,BoldFont=NewCM10-Bold.otf,ItalicFont=NewCM10-BookItalic.otf,SlantedFeatures={FakeSlant=0.25},BoldSlantedFeatures={FakeSlant=0.25}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"LXGW Neo ZhiSong
-(fontspec)             Screen Full/OT:script=hani;language=dflt;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"LXGW Neo XiHei
-(fontspec)             Screen Full/OT:script=hani;language=dflt;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"LXGW Bright
-(fontspec)             Medium/OT:script=hani;language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<9->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<9->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-BookItalic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8->"[NewCM10-BookItalic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
-(fontspec)             <->"LXGW Bright
-(fontspec)             Medium/OT:script=hani;language=dflt;+smcp;"
+(fontspec)             <-8>"[NewCM08-BookItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<8->"[NewCM10-BookItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;slant=0.25;mapping=tex-text;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;mapping=tex-text;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;mapping=tex-text;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'swash' (m/sw) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             -  (m/scsw) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-BoldItalic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-BoldItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;mapping=tex-text;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold swash' (b/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             -  (b/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCM10-Book.otf(1)' created for font
+(fontspec)             'NewCM10-Book.otf' with options
+(fontspec)             [UprightFont={NewCM10-Book.otf},UprightFeatures={SizeFeatures={{Size={-8},Font={NewCM08-Book.otf}},{Size={8-},Font={NewCM10-Book.otf}}}},ItalicFont={NewCM10-BookItalic.otf},ItalicFeatures={SizeFeatures={{Size={-8},Font={NewCM08-BookItalic.otf}},{Size={8-},Font={NewCM10-BookItalic.otf}}}},BoldFont={NewCM10-Bold.otf},BoldFeatures={SizeFeatures={{Size={0-},Font={NewCM10-Bold.otf}}}},BoldItalicFont={NewCM10-BoldItalic.otf},BoldItalicFeatures={SizeFeatures={{Size={0-},Font={NewCM10-BoldItalic.otf}}}},SlantedFont={NewCM10-Book.otf},SlantedFeatures={SizeFeatures={{Size={-8},Font={NewCM08-Book.otf}},{Size={8-},Font={NewCM10-Book.otf}}}},BoldSlantedFont={NewCM10-Bold.otf},BoldSlantedFeatures={SizeFeatures={{Size={0-},Font={NewCM10-Bold.otf}}}},SwashFont={NewCM10-Book.otf},SwashFeatures={SizeFeatures={{Size={-8},Font={NewCM08-Book.otf}},{Size={8-},Font={NewCM10-Book.otf}}}},BoldSwashFont={NewCM10-Bold.otf},BoldSwashFeatures={SizeFeatures={{Size={0-},Font={NewCM10-Bold.otf}}}},SizeFeatures={{Size=-8,
+(fontspec)             Font=NewCM08-Book.otf,
+(fontspec)             ItalicFont=NewCM08-BookItalic.otf,BoldFont=NewCM10-Bold.otf,BoldItalicFont=NewCM10-BoldItalic.otf,SlantedFont=NewCM08-Book.otf,BoldSlantedFont=NewCM10-Bold.otf,SmallCapsFeatures={Numbers=OldStyle}},
+(fontspec)             {Size=8, Font=NewCM08-Book.otf,
+(fontspec)             ItalicFont=NewCM08-BookItalic.otf,BoldFont=NewCM10-Bold.otf,BoldItalicFont=NewCM10-BoldItalic.otf,SlantedFont=NewCM08-Book.otf,BoldSlantedFont=NewCM10-Bold.otf,SmallCapsFeatures={Numbers=OldStyle}},
+(fontspec)             {Size= 9-, Font = NewCM10-Book.otf,
+(fontspec)             ItalicFont=NewCM10-BookItalic.otf,BoldFont=NewCM10-Bold.otf,BoldItalicFont=NewCM10-BoldItalic.otf,SlantedFont=NewCM10-Book.otf,BoldSlantedFont=NewCM10-Bold.otf,SmallCapsFeatures={Numbers=OldStyle}}},SmallCapsFeatures={Numbers=OldStyle},BoldSlantedFont=NewCM10-Bold.otf,SlantedFont=NewCM10-Book.otf,BoldItalicFont=NewCM10-BoldItalic.otf,BoldFont=NewCM10-Bold.otf,ItalicFont=NewCM10-BookItalic.otf,SlantedFeatures={FakeSlant=0.25},BoldSlantedFeatures={FakeSlant=0.25}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;"<8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;"<9->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<9->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-BookItalic.otf]/OT:script=latn;language=dflt;"<8->"[NewCM10-BookItalic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-BookItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<8->"[NewCM10-BookItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;slant=0.25;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"
+(fontspec)             - 'swash' (m/sw) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (m/scsw) with NFSS spec.:
+(fontspec)             <-8>"[NewCM08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<8->"[NewCM10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-BoldItalic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-BoldItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"
+(fontspec)             - 'bold swash' (b/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (b/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCM10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/NewCM10-Book.otf(1)/m/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/NewCM10-Book.otf(1)/m/it on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/NewCM10-Book.otf(1)/b/n on input line 35.
+ (/usr/share/texmf-dist/tex/latex/newcomputermodern/NewCMSans10-Book.fontspec)
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMSans10-Book.otf(0)' created for font
+(fontspec)             'NewCMSans10-Book.otf' with options
+(fontspec)             [Ligatures=TeX,UprightFont={NewCMSans10-Book.otf},UprightFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-Book.otf}},{Size={8-},Font={NewCMSans10-Book.otf}}}},ItalicFont={NewCMSans10-BookOblique.otf},ItalicFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-BookOblique.otf}},{Size={8-},Font={NewCMSans10-BookOblique.otf}}}},BoldFont={NewCMSans10-Bold.otf},BoldFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-Bold.otf}}}},BoldItalicFont={NewCMSans10-BoldOblique.otf},BoldItalicFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-BoldOblique.otf}}}},SlantedFont={NewCMSans10-Book.otf},SlantedFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-Book.otf}},{Size={8-},Font={NewCMSans10-Book.otf}}}},BoldSlantedFont={NewCMSans10-Bold.otf},BoldSlantedFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-Bold.otf}}}},SwashFont={NewCMSans10-Book.otf},SwashFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-Book.otf}},{Size={8-},Font={NewCMSans10-Book.otf}}}},BoldSwashFont={NewCMSans10-Bold.otf},BoldSwashFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-Bold.otf}}}},SizeFeatures={{Size=
+(fontspec)             -8,
+(fontspec)             Font=NewCMSans08-Book.otf,ItalicFont=NewCMSans08-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},},
+(fontspec)             {Size= 8,
+(fontspec)             Font=NewCMSans08-Book.otf,ItalicFont=NewCMSans08-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},},
+(fontspec)             {Size= 9-,
+(fontspec)             Font=NewCMSans10-Book.otf,ItalicFont=NewCMSans10-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},}},ItalicFont=NewCMSans10-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},SlantedFont=NewCMSans10-BookOblique.otf,BoldSlantedFont=NewCMSans10-BoldOblique.otf].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<9->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<9->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-BookOblique.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8->"[NewCMSans10-BookOblique.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'swash' (m/sw) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             -  (m/scsw) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-BoldOblique.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-BoldOblique.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+(fontspec)             - 'bold swash' (b/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             -  (b/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;mapping=tex-text;"
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMSans10-Book.otf(1)' created for font
+(fontspec)             'NewCMSans10-Book.otf' with options
+(fontspec)             [UprightFont={NewCMSans10-Book.otf},UprightFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-Book.otf}},{Size={8-},Font={NewCMSans10-Book.otf}}}},ItalicFont={NewCMSans10-BookOblique.otf},ItalicFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-BookOblique.otf}},{Size={8-},Font={NewCMSans10-BookOblique.otf}}}},BoldFont={NewCMSans10-Bold.otf},BoldFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-Bold.otf}}}},BoldItalicFont={NewCMSans10-BoldOblique.otf},BoldItalicFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-BoldOblique.otf}}}},SlantedFont={NewCMSans10-Book.otf},SlantedFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-Book.otf}},{Size={8-},Font={NewCMSans10-Book.otf}}}},BoldSlantedFont={NewCMSans10-Bold.otf},BoldSlantedFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-Bold.otf}}}},SwashFont={NewCMSans10-Book.otf},SwashFeatures={SizeFeatures={{Size={-8},Font={NewCMSans08-Book.otf}},{Size={8-},Font={NewCMSans10-Book.otf}}}},BoldSwashFont={NewCMSans10-Bold.otf},BoldSwashFeatures={SizeFeatures={{Size={0-},Font={NewCMSans10-Bold.otf}}}},SizeFeatures={{Size=
+(fontspec)             -8,
+(fontspec)             Font=NewCMSans08-Book.otf,ItalicFont=NewCMSans08-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},},
+(fontspec)             {Size= 8,
+(fontspec)             Font=NewCMSans08-Book.otf,ItalicFont=NewCMSans08-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},},
+(fontspec)             {Size= 9-,
+(fontspec)             Font=NewCMSans10-Book.otf,ItalicFont=NewCMSans10-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},}},ItalicFont=NewCMSans10-BookOblique.otf,BoldFont=NewCMSans10-Bold.otf,BoldItalicFont=NewCMSans10-BoldOblique.otf,SmallCapsFeatures={Numbers=OldStyle},SlantedFont=NewCMSans10-BookOblique.otf,BoldSlantedFont=NewCMSans10-BoldOblique.otf].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;"<8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;"<9->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<9->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-BookOblique.otf]/OT:script=latn;language=dflt;"<8->"[NewCMSans10-BookOblique.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'swash' (m/sw) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (m/scsw) with NFSS spec.:
+(fontspec)             <-8>"[NewCMSans08-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"<8->"[NewCMSans10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-BoldOblique.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-BoldOblique.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold swash' (b/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (b/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCMSans10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/NewCMSans10-Book.otf(1)/m/n on input line 62.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/NewCMSans10-Book.otf(1)/b/n on input line 62.
+ (/usr/share/texmf-dist/tex/latex/newcomputermodern/NewCMMono10-Book.fontspec)
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMono10-Book.otf(0)' created for font
+(fontspec)             'NewCMMono10-Book.otf' with options
+(fontspec)             [WordSpace={1,0,0},HyphenChar=None,PunctuationSpace=WordSpace,UprightFont={NewCMMono10-Book.otf},UprightFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Book.otf}}}},ItalicFont={NewCMMono10-BookItalic.otf},ItalicFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-BookItalic.otf}}}},BoldFont={NewCMMono10-Bold.otf},BoldFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Bold.otf}}}},BoldItalicFont={NewCMMono10-BoldOblique.otf},BoldItalicFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-BoldOblique.otf}}}},SlantedFont={NewCMMono10-Book.otf},SlantedFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Book.otf}}}},BoldSlantedFont={NewCMMono10-Bold.otf},BoldSlantedFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Bold.otf}}}},SwashFont={NewCMMono10-Book.otf},SwashFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Book.otf}}}},BoldSwashFont={NewCMMono10-Bold.otf},BoldSwashFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Bold.otf}}}},ItalicFont=NewCMMono10-BookItalic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SlantedFont=NewCMMono10-Book.otf,SlantedFeatures={FakeSlant=0.25},BoldSlantedFont=NewCMMono10-Bold.otf,BoldSlantedFeatures={FakeSlant=0.25},SmallCapsFeatures={Numbers=OldStyle}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BookItalic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BookItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'swash' (m/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (m/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BoldOblique.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BoldOblique.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold swash' (b/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (b/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMono10-Book.otf(1)' created for font
+(fontspec)             'NewCMMono10-Book.otf' with options
+(fontspec)             [UprightFont={NewCMMono10-Book.otf},UprightFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Book.otf}}}},ItalicFont={NewCMMono10-BookItalic.otf},ItalicFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-BookItalic.otf}}}},BoldFont={NewCMMono10-Bold.otf},BoldFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Bold.otf}}}},BoldItalicFont={NewCMMono10-BoldOblique.otf},BoldItalicFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-BoldOblique.otf}}}},SlantedFont={NewCMMono10-Book.otf},SlantedFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Book.otf}}}},BoldSlantedFont={NewCMMono10-Bold.otf},BoldSlantedFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Bold.otf}}}},SwashFont={NewCMMono10-Book.otf},SwashFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Book.otf}}}},BoldSwashFont={NewCMMono10-Bold.otf},BoldSwashFeatures={SizeFeatures={{Size={0-},Font={NewCMMono10-Bold.otf}}}},ItalicFont=NewCMMono10-BookItalic.otf,BoldFont=NewCMMono10-Bold.otf,BoldItalicFont=NewCMMono10-BoldOblique.otf,SlantedFont=NewCMMono10-Book.otf,SlantedFeatures={FakeSlant=0.25},BoldSlantedFont=NewCMMono10-Bold.otf,BoldSlantedFeatures={FakeSlant=0.25},SmallCapsFeatures={Numbers=OldStyle}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BookItalic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BookItalic.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"
+(fontspec)             - 'swash' (m/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (m/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Book.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BoldOblique.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-BoldOblique.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;+smcp;+onum;"
+(fontspec)             - 'bold swash' (b/sw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             -  (b/scsw) with NFSS spec.:
+(fontspec)             <0->"[NewCMMono10-Bold.otf]/OT:script=latn;language=dflt;+smcp;+onum;"
+
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/NewCMMono10-Book.otf(1)/m/n on input line 71.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/NewCMMono10-Book.otf(1)/b/n on input line 71.
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMUncial10-Book.otf(0)' created for
+(fontspec)             font 'NewCMUncial10-Book.otf' with options
+(fontspec)             [SizeFeatures={{Size=-8, Font=NewCMUncial08-Book.otf,
+(fontspec)             BoldFont=NewCMUncial10-Bold.otf,SlantedFont=NewCMUncial08-Book.otf,BoldSlantedFont=NewCMUncial10-Bold.otf,},
+(fontspec)             {Size=8, Font=NewCMUncial08-Book.otf,
+(fontspec)             BoldFont=NewCMUncial08-Bold.otf,SlantedFont=NewCMUncial08-Book.otf,BoldSlantedFont=NewCMUncial10-Bold.otf,},
+(fontspec)             {Size= 9-, Font = NewCMUncial10-Book.otf,
+(fontspec)             BoldFont=NewCMUncial10-Bold.otf,SlantedFont=NewCMUncial10-Book.otf,BoldSlantedFont=NewCMUncial10-Bold.otf,}},BoldSlantedFont=NewCMUncial10-Bold.otf,SlantedFont=NewCMUncial10-Book.otf,BoldFont=NewCMUncial10-Bold.otf,SlantedFeatures={FakeSlant=0.25},BoldSlantedFeatures={FakeSlant=0.25}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <-8>"[NewCMUncial08-Book.otf]/OT:script=latn;language=dflt;"<8>"[NewCMUncial08-Book.otf]/OT:script=latn;language=dflt;"<9->"[NewCMUncial10-Book.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[NewCMUncial10-Bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <->"[NewCMUncial10-Book.otf]/OT:script=latn;language=dflt;slant=0.25;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <->"[NewCMUncial10-Bold.otf]/OT:script=latn;language=dflt;slant=0.25;"
 
 
 Package fontspec Info: 
@@ -487,13 +800,13 @@ Package fontspec Info:
 (fontspec)             <8.9584645->"[NewCMMath-Book.otf]/OT:script=math;language=dflt;"<6.323622-8.9584645>"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.323622>"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 5.
+(Font)              `operators' in the math version `normal' on input line 97.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/NewCMMath-Book.otf(1)/m/n on input line 5.
+(Font)                  OT1/cmr/m/n --> TU/NewCMMath-Book.otf(1)/m/n on input line 97.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 5.
+(Font)              `operators' in the math version `bold' on input line 97.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/NewCMMath-Book.otf(1)/b/n on input line 5.
+(Font)                  OT1/cmr/bx/n --> TU/NewCMMath-Book.otf(1)/b/n on input line 97.
 
 Package fontspec Info: 
 (fontspec)             NewCMMath-Book scale = 1.0001.
@@ -533,13 +846,13 @@ Package fontspec Info:
 (fontspec)             <8.9584645->s*[1.0001]"[NewCMMath-Book.otf]/OT:script=math;language=dflt;"<6.323622-8.9584645>s*[1.0001]"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.323622>s*[1.0001]"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 5.
+(Font)              `symbols' in the math version `normal' on input line 97.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> TU/NewCMMath-Book.otf(2)/m/n on input line 5.
+(Font)                  OMS/cmsy/m/n --> TU/NewCMMath-Book.otf(2)/m/n on input line 97.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 5.
+(Font)              `symbols' in the math version `bold' on input line 97.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> TU/NewCMMath-Book.otf(2)/b/n on input line 5.
+(Font)                  OMS/cmsy/b/n --> TU/NewCMMath-Book.otf(2)/b/n on input line 97.
 
 Package fontspec Info: 
 (fontspec)             NewCMMath-Book scale = 0.9999.
@@ -573,31 +886,205 @@ Package fontspec Info:
 (fontspec)             <8.9584645->s*[0.9999]"[NewCMMath-Book.otf]/OT:script=math;language=dflt;"<6.323622-8.9584645>s*[0.9999]"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.323622>s*[0.9999]"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 5.
+(Font)              `largesymbols' in the math version `normal' on input line 97.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/m/n on input line 5.
+(Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/m/n on input line 97.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 5.
+(Font)              `largesymbols' in the math version `bold' on input line 97.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/b/n on input line 5.
-(/usr/share/texmf-dist/tex/latex/units/nicefrac.sty
+(Font)                  OMX/cmex/m/n --> TU/NewCMMath-Book.otf(3)/b/n on input line 97.
+LaTeX Font Info:    Redeclaring math version `bold' on input line 97.
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMath-Bold.otf(0)' created for font
+(fontspec)             'NewCMMath-Bold.otf' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;"
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMath-Bold.otf(1)' created for font
+(fontspec)             'NewCMMath-Bold.otf' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.9584645-},{Size=6.323622-8.9584645,Font=NewCMMath-Bold.otf,Style=MathScript},{Size=-6.323622,Font=NewCMMath-Bold.otf,Style=MathScriptScript}}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.9584645->"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;"<6.323622-8.9584645>"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.323622>"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;+ssty=1;"
+
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 97.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/m/n --> TU/NewCMMath-Bold.otf(1)/m/n on input line 97.
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 1.0001.
+
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 1.0001.
+
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 1.0001.
+
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 1.0001.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMath-Bold.otf(2)' created for font
+(fontspec)             'NewCMMath-Bold.otf' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.9584645-},{Size=6.323622-8.9584645,Font=NewCMMath-Bold.otf,Style=MathScript},{Size=-6.323622,Font=NewCMMath-Bold.otf,Style=MathScriptScript}},ScaleAgain=1.0001,FontAdjustment={\fontdimen
+(fontspec)             8\font =7.13515pt\relax \fontdimen 9\font
+(fontspec)             =4.15251pt\relax \fontdimen 10\font =4.67947pt\relax
+(fontspec)             \fontdimen 11\font =7.23001pt\relax \fontdimen 12\font
+(fontspec)             =3.63608pt\relax \fontdimen 13\font =3.82579pt\relax
+(fontspec)             \fontdimen 14\font =3.82579pt\relax \fontdimen 15\font
+(fontspec)             =3.04588pt\relax \fontdimen 16\font =2.60323pt\relax
+(fontspec)             \fontdimen 17\font =2.60323pt\relax \fontdimen 18\font
+(fontspec)             =2.63484pt\relax \fontdimen 19\font =2.10788pt\relax
+(fontspec)             \fontdimen 22\font =2.63484pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.9584645->s*[1.0001]"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;"<6.323622-8.9584645>s*[1.0001]"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.323622>s*[1.0001]"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;+ssty=1;"
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 97.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/m/n --> TU/NewCMMath-Bold.otf(2)/m/n on input line 97.
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 0.9999.
+
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 0.9999.
+
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 0.9999.
+
+
+Package fontspec Info: 
+(fontspec)             NewCMMath-Bold scale = 0.9999.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMath-Bold.otf(3)' created for font
+(fontspec)             'NewCMMath-Bold.otf' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.9584645-},{Size=6.323622-8.9584645,Font=NewCMMath-Bold.otf,Style=MathScript},{Size=-6.323622,Font=NewCMMath-Bold.otf,Style=MathScriptScript}},ScaleAgain=0.9999,FontAdjustment={\fontdimen
+(fontspec)             8\font =0.42157pt\relax \fontdimen 9\font
+(fontspec)             =2.10788pt\relax \fontdimen 10\font =1.76007pt\relax
+(fontspec)             \fontdimen 11\font =1.16988pt\relax \fontdimen 12\font
+(fontspec)             =6.32362pt\relax \fontdimen 13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.9584645->s*[0.9999]"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;"<6.323622-8.9584645>s*[0.9999]"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;+ssty=0;"<-6.323622>s*[0.9999]"[NewCMMath-Bold.otf]/OT:script=math;language=dflt;+ssty=1;"
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 97.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> TU/NewCMMath-Bold.otf(3)/m/n on input line 97.
+
+Package fontspec Info: 
+(fontspec)             Font family 'NewCMMath-Book.otf(4)' created for font
+(fontspec)             'NewCMMath-Book.otf' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.9584645-},{Size=6.323622-8.9584645,Font=NewCMMath-Book.otf,Style=MathScript},{Size=-6.323622,Font=NewCMMath-Book.otf,Style=MathScriptScript}},StylisticSet={1}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.9584645->"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ss01;"<6.323622-8.9584645>"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ss01;+ssty=0;"<-6.323622>"[NewCMMath-Book.otf]/OT:script=math;language=dflt;+ss01;+ssty=1;"
+
+\sym__um_fam1=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `__um_fam1' in version `normal'
+(Font)                  TU/NewCMMath-Book.otf(4)/m/n --> TU/NewCMMath-Book.otf(4)/m/n on input line 99.
+LaTeX Font Info:    Overwriting symbol font `__um_fam1' in version `bold'
+(Font)                  TU/NewCMMath-Book.otf(4)/m/n --> TU/NewCMMath-Book.otf(4)/b/n on input line 99.
+))
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "LXGW Bright Medium/B" (it
+(fontspec)             probably doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "LXGW Neo XiHei Screen Full/I"
+(fontspec)             (it probably doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Could not resolve font "LXGW Neo ZhiSong Screen
+(fontspec)             Full/BI" (it probably doesn't exist).
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'LXGWNeoZhiSongScreenFull(0)' created for
+(fontspec)             font 'LXGW Neo ZhiSong Screen Full' with options
+(fontspec)             [Script={CJK},BoldFont={LXGW Neo XiHei Screen
+(fontspec)             Full},ItalicFont={LXGW Bright Medium}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"LXGW Neo ZhiSong
+(fontspec)             Screen Full/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"LXGW Neo XiHei
+(fontspec)             Screen Full/OT:script=hani;language=dflt;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"LXGW Bright
+(fontspec)             Medium/OT:script=hani;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"LXGW Bright
+(fontspec)             Medium/OT:script=hani;language=dflt;+smcp;"
+
+ (/usr/share/texmf-dist/tex/latex/units/nicefrac.sty
 Package: nicefrac 1998/08/04 v0.9b Nice fractions
-\L@UnitsRaiseDisplaystyle=\skip66
-\L@UnitsRaiseTextstyle=\skip67
-\L@UnitsRaiseScriptstyle=\skip68
+\L@UnitsRaiseDisplaystyle=\skip70
+\L@UnitsRaiseTextstyle=\skip71
+\L@UnitsRaiseScriptstyle=\skip72
  (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-)) (/usr/share/texmf-dist/tex/latex/preprint/fullpage.sty
-Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip69
-) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+)) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks30
+) (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
-) (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks24
-) (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+))
+\Gm@cnth=\count327
+\Gm@cntv=\count328
+\c@Gm@tempcnt=\count329
+\Gm@bindingoffset=\dimen193
+\Gm@wd@mp=\dimen194
+\Gm@odd@mp=\dimen195
+\Gm@even@mp=\dimen196
+\Gm@layoutwidth=\dimen197
+\Gm@layoutheight=\dimen198
+\Gm@layouthoffset=\dimen199
+\Gm@layoutvoffset=\dimen256
+\Gm@dimlist=\toks31
+) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+ (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
@@ -624,22 +1111,22 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count326
+\c@section@level=\count330
 ) (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count327
+\etb@tempcnta=\count331
 ) (/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen193
-\Hy@linkcounter=\count328
-\Hy@pagecounter=\count329
+\@linkdim=\dimen257
+\Hy@linkcounter=\count332
+\Hy@pagecounter=\count333
  (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
 ) (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count330
+\Hy@SavedSpaceFactor=\count334
  (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
 )
@@ -655,21 +1142,21 @@ Package hyperref Info: Plain pages OFF on input line 4216.
 Package hyperref Info: Backreferencing OFF on input line 4221.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4468.
-\c@Hy@tempcnt=\count331
+\c@Hy@tempcnt=\count335
  (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip19
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4807.
-\XeTeXLinkMargin=\dimen194
+\XeTeXLinkMargin=\dimen258
  (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count332
-\Field@Width=\dimen195
-\Fld@charsize=\dimen196
+\Fld@menulength=\count336
+\Field@Width=\dimen259
+\Fld@charsize=\dimen260
 Package hyperref Info: Hyper figures OFF on input line 6084.
 Package hyperref Info: Link nesting OFF on input line 6089.
 Package hyperref Info: Hyper index ON on input line 6092.
@@ -677,18 +1164,18 @@ Package hyperref Info: backreferencing OFF on input line 6099.
 Package hyperref Info: Link coloring ON on input line 6102.
 Package hyperref Info: Link coloring with OCG OFF on input line 6109.
 Package hyperref Info: PDF/A mode OFF on input line 6114.
-\Hy@abspage=\count333
-\c@Item=\count334
-\c@Hfootnote=\count335
+\Hy@abspage=\count337
+\c@Item=\count338
+\c@Hfootnote=\count339
 )
 Package hyperref Info: Driver (autodetected): hxetex.
  (/usr/share/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2026-01-29 v7.01p Hyperref driver for XeTeX
 \pdfm@box=\box60
-\c@Hy@AnnotLevel=\count336
-\HyField@AnnotCount=\count337
-\Fld@listcount=\count338
-\c@bookmark@seq@number=\count339
+\c@Hy@AnnotLevel=\count340
+\HyField@AnnotCount=\count341
+\Fld@listcount=\count342
+\c@bookmark@seq@number=\count343
  (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -696,90 +1183,137 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip70
+\Hy@SectionHShift=\skip73
+) (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+\f@nch@headwidth=\skip74
+\f@nch@offset@elh=\skip75
+\f@nch@offset@erh=\skip76
+\f@nch@offset@olh=\skip77
+\f@nch@offset@orh=\skip78
+\f@nch@offset@elf=\skip79
+\f@nch@offset@erf=\skip80
+\f@nch@offset@olf=\skip81
+\f@nch@offset@orf=\skip82
+\f@nch@height=\skip83
+\f@nch@footalignment=\skip84
+\f@nch@widthL=\skip85
+\f@nch@widthC=\skip86
+\f@nch@widthR=\skip87
+\@temptokenb=\toks32
 )) (/home/avanti/texmf/tex/latex/avanti/avanti-notations.sty) (./logistic-regression.aux)
 \openout1 = `logistic-regression.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  TU/NewCMMath-Book.otf(1)/m/n --> TU/lmr/m/n on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 6.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 6.
-Package hyperref Info: Link coloring ON on input line 6.
- (./logistic-regression.out) (./logistic-regression.out)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=702.78308pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-38.1381pt
+* \headheight=15.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 15.
+(./logistic-regression.out) (./logistic-regression.out)
 \@outlinefile=\write3
 \openout3 = `logistic-regression.out'.
 
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 12.04628pt on input line 11.
+(Font)              scaled to size 12.04628pt on input line 19.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 8.00085pt on input line 11.
+(Font)              scaled to size 8.00085pt on input line 19.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 11.
+(Font)              scaled to size 6.00064pt on input line 19.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 12.0437pt on input line 11.
+(Font)              scaled to size 12.0437pt on input line 19.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 11.
+(Font)              scaled to size 7.99915pt on input line 19.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 11.
+(Font)              scaled to size 5.99936pt on input line 19.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 10.54048pt on input line 12.
+(Font)              scaled to size 10.54048pt on input line 20.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 7.37834pt on input line 12.
+(Font)              scaled to size 7.37834pt on input line 20.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 5.27023pt on input line 12.
+(Font)              scaled to size 5.27023pt on input line 20.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 10.53824pt on input line 12.
+(Font)              scaled to size 10.53824pt on input line 20.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 7.37677pt on input line 12.
+(Font)              scaled to size 7.37677pt on input line 20.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 5.26912pt on input line 12.
+(Font)              scaled to size 5.26912pt on input line 20.
  [1
 
-] [2] [3] [4] (./logistic-regression.aux)
+] [2]
+
+LaTeX Font Warning: Font shape `TU/LXGWNeoZhiSongScreenFull(0)/b/it' undefined
+(Font)              using `TU/LXGWNeoZhiSongScreenFull(0)/b/n' instead on input line 112.
+
+[3] [4] (./logistic-regression.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
  ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
 Package rerunfilecheck Info: File `logistic-regression.out' has not changed.
 (rerunfilecheck)             Checksum: EFAF2E67C022CF5D0C51AECE5D46124E;253.
  ) 
 Here is how much of TeX's memory you used:
- 19383 strings out of 468168
- 392985 string characters out of 5438845
- 945119 words of memory out of 5000000
- 47860 multiletter control sequences out of 15000+600000
- 633462 words of font info for 99 fonts, out of 8000000 for 9000
+ 21017 strings out of 468168
+ 431993 string characters out of 5438845
+ 1025624 words of memory out of 5000000
+ 49408 multiletter control sequences out of 15000+600000
+ 635590 words of font info for 137 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 101i,10n,121p,456b,652s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,12n,138p,1269b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on logistic-regression.pdf (4 pages).

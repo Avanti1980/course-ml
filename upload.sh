@@ -1,4 +1,3 @@
-cp -r /home/avanti/Slides/.crossnote/* ./crossnote/
 cp -r /home/avanti/Notes/ML/Logistic-Regression/  ./notes/
 
 git add *
